@@ -12,7 +12,9 @@
 	<APPLICATIONS>
 		<APPLI Name="ActivInfinite" Nature="WEB3" TechnoSDK="V3" Sync="250">
 			<CAPTURE Name="APPLI_ActivInfiniteSite_1" CtxtId="1" Techno="WEB" />
-			<SCENARII />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
 			<ACTIONS />
 			<EVENTS />
 			<CRITERE>
