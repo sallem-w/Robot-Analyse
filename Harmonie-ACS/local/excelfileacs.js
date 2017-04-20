@@ -16,14 +16,13 @@ ActivInfinite.step({ openFile : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ copyFile : function(ev, sc, st) {
-	ctx.excel.sheet.copySheet(pathFileExcelACS, rootOutputPathACS, pathFileExcelACS, 'test');
+	ctx.excel.file.saveAs(pathFileOutputExcelACS); 
+	sc.endStep();
 }});
 
 ActivInfinite.step({ readFile : function(ev, sc, st) {
-	ctx.excel.initialize();
-	ctx.excel.file.open(pathFileExcelACS);
 	var lastIndexRow = ctx.excel.sheet.getLastRow(toColumnName(configExcelACS.startColumnIndex) + configExcelACS.startRowIndex);
-	var a = 1;
+	sc.endStep();
 }});
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {

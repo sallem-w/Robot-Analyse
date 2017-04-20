@@ -1,7 +1,10 @@
 ﻿var rootPathACS = 'C:\\Users\\RICHARD-MAX\\excel\\';
-var pathFileExcelACS = rootPathACS + 'Contrats et Assurés AccèsSanté date fin inf 30042017 CHEQUE coll non Rad....xls';
+var fileNameExcelACS = 'Contrats et Assurés AccèsSanté date fin inf 30042017 CHEQUE coll non Rad....xls';
+var pathFileExcelACS = rootPathACS + fileNameExcelACS;
 
 var rootOutputPathACS = 'C:\\Users\\RICHARD-MAX\\excel\\';
+var fileNameOutputExcelACS = 'Contrats et Assurés AccèsSanté date fin inf 30042017 CHEQUE coll non Rad...1.xls';
+var pathFileOutputExcelACS = rootPathACS + fileNameOutputExcelACS;
 
 var configExcelACS = {
 	startRowIndex: 2,
