@@ -9,3 +9,11 @@ function toColumnName(num) {
   }
   return ret;
 }
+
+function getCell(row, column) {
+	return ctx.excel.sheet.getCell(row, column);
+}
+
+function trim(str) {
+    return str.replace(/^\s+|\s+$/gm,'');
+}
