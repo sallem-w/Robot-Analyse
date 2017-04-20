@@ -21,7 +21,7 @@ ActivInfinite.step({ copyFile : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ readFile : function(ev, sc, st) {
-	var lastIndexRow = ctx.excel.sheet.getLastRow(toColumnName(configExcelACS.startColumnIndex) + configExcelACS.startRowIndex) - 1;
+	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcelACS.startColumnIndex) + configExcelACS.startRowIndex) - 1;
 	var contracts = getAllCells(lastIndexRow)
 	sc.endStep();
 }});
@@ -37,14 +37,14 @@ function getAllCells(lastIndexRow){
 	for(var i = configExcelACS.startRowIndex; i <= lastIndexRow; i++){
 		var contract = {
 			row : i,
-			individualContract: trim(getCell(i, configExcelACS.columnIndex.individualContract)),
-			insuredName: getCell(i, configExcelACS.columnIndex.insuredName),
-			insuredSurName: getCell(i, configExcelACS.columnIndex.insuredSurName),
-			subscribedProduct: getCell(i, configExcelACS.columnIndex.subscribedProduct),
-			ACSCertificateStartDate: getCell(i, configExcelACS.columnIndex.ACSCertificateStartDate),
-			ACSCertificateEndDate: getCell(i, configExcelACS.columnIndex.ACSCertificateEndDate),
-			scheduleCode: getCell(i, configExcelACS.columnIndex.scheduleCode),
-			paymentTypeLabel: getCell(i, configExcelACS.columnIndex.paymentTypeLabel)
+			individualContract: ctx.string.trim(ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.individualContract)),
+			insuredName: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.insuredName),
+			insuredSurName: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.insuredSurName),
+			subscribedProduct: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.subscribedProduct),
+			ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.ACSCertificateStartDate),
+			ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.ACSCertificateEndDate),
+			scheduleCode: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.scheduleCode),
+			paymentTypeLabel: ctx.excel.sheet.getCell(i, configExcelACS.columnIndex.paymentTypeLabel)
 		};
 		contracts.push(contract);
 	}
