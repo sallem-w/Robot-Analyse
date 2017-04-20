@@ -100,11 +100,6 @@ GLOBAL.events.START.on(function (ev) {
 		});
 	});
 
-	/*systray.addMenu('', 'evCtxtRestart', GLOBAL.labels.menu.restart, 'restart', function(ev) {
-		CtxtRestart();
-		GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
-	});*/
-
 	// add a shortcut Ctrl+Shift+D to display diagnostic
 	ctx.regHotKey(e.key.Ctrl + e.key.Shift + 'D', GLOBAL.events.evShowDiagnostic);	
 	
