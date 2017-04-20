@@ -36,7 +36,7 @@ function getAllCells(lastIndexRow){
 	var contracts = [];
 	for(var i = configExcelACS.startRowIndex; i <= lastIndexRow; i++){
 		var contract = {
-			lineExcel : i,
+			row : i,
 			individualContract: trim(getCell(i, configExcelACS.columnIndex.individualContract)),
 			insuredName: getCell(i, configExcelACS.columnIndex.insuredName),
 			insuredSurName: getCell(i, configExcelACS.columnIndex.insuredSurName),
