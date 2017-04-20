@@ -117,9 +117,9 @@ GLOBAL.events.START.on(function (ev) {
 
 	// *** menus displayed in test mode only ***
 	if (ctx.options.isDebug) {
-		systray.addMenu('', 'TestMenu', GLOBAL.labels.menu.test);
-		systray.addMenu('TestMenu', 'evTest1', 'Test 1', '', function(ev) {
-			// add code here
+		systray.addMenu('', 'ReadExcel', 'Read Excel');
+		systray.addMenu('ReadExcel', 'read', 'read', '', function(ev) {
+			ActivInfinite.scenarios.readExcel.start();
 		});
 	}
 });
