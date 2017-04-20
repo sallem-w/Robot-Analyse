@@ -139,5 +139,3 @@ GLOBAL.events.UPDATECTX.on(function(ev) {
 		}
 	});
 });
-
-
