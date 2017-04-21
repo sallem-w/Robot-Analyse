@@ -60,6 +60,7 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 GLOBAL.events.START.on(function (ev) {
 	
 	ctx.config.loadConfigFile();
+	ctx.trace.initFileTrace('C:\\Users\\RICHARD-MAX\\excel\\ACS-20170420-1\\', 'ACS');
 	
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');
