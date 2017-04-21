@@ -21,20 +21,21 @@
 	};
 	
 	_trace.writeInfo = function(str, dateObj, separateur) {
-		_trace.write(_trace.constants.typeError.Info, str, dateObj, separateur)
+		_trace.write(str, _trace.constants.typeError.Info, dateObj, separateur)
 	};
 	
 	_trace.writeError = function(str, dateObj, separateur) {
-		_trace.write(_trace.constants.typeError.Error, str, dateObj, separateur)
+		_trace.write(str, _trace.constants.typeError.Error, dateObj, separateur)
 	};
 	
-	_trace.write = function(typeError, str, dateObj, separateur) {
+	_trace.write = function(str, typeError, dateObj, separateur) {
 		if (str.length === 0) {
 			return;
 		}
 
 		separateur = separateur || '    ';
 		dateObj = dateObj || new Date();
+		typeError = typeError || _trace.constants.typeError.Info
 		
 		ctx.fso.file.write(_pathFileTrace, ctx.date.formatTrace(dateObj) + separateur + typeError + separateur + str);
 	};

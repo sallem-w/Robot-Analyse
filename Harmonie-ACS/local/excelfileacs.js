@@ -3,27 +3,32 @@
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinite.steps.getConfig);
+	sc.step(ActivInfinite.steps.init);
 	sc.step(ActivInfinite.steps.openFile);
 	sc.step(ActivInfinite.steps.copyFile);
 	sc.step(ActivInfinite.steps.readFile);
 	sc.step(ActivInfinite.steps.closeFile);
 }});
 
-ActivInfinite.step({ getConfig : function(ev, sc, st) {
+ActivInfinite.step({ init : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
+	
+	ctx.configACS.init();
+	sc.data.pathFileOutputExcelACS = ctx.configACS.getPathFileOutputExcelACS();
+	sc.data.pathFileExcelACS = ctx.configACS.getPathFileExcelACS();
+	
 	sc.endStep();
 }});
 
 ActivInfinite.step({ openFile : function(ev, sc, st) {
 	ctx.excel.initialize();
-	ctx.excel.file.open(pathFileExcelACS);
+	ctx.excel.file.open(sc.data.pathFileExcelACS);
 	sc.endStep();
 }});
 
 ActivInfinite.step({ copyFile : function(ev, sc, st) {
-	ctx.excel.file.saveAs(pathFileOutputExcelACS); 
+	ctx.excel.file.saveAs(sc.data.pathFileOutputExcelACS); 
 	sc.endStep();
 }});
 
