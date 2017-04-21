@@ -58,7 +58,9 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 
 /** main process start handler */
 GLOBAL.events.START.on(function (ev) {
-
+	
+	ctx.config.loadConfigFile();
+	
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');
 	systray.loadImage('restart', 'FILE', ctx.options.resourceURL + '/bmp/repeat.png');

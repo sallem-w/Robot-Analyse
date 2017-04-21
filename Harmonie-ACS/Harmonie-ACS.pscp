@@ -65,6 +65,7 @@
 				<SCRIPT Name="Main Project" Src="Harmonie-ACS.js" />
 				<SCRIPT Name="ExcelHelper" Src="ExcelHelper.js" />
 				<SCRIPT Name="DateHelper" Src="DateHelper.js" />
+				<SCRIPT Name="Config" Src="Config.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->
