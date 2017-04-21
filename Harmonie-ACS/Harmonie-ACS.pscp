@@ -66,6 +66,7 @@
 				<SCRIPT Name="ExcelHelper" Src="ExcelHelper.js" />
 				<SCRIPT Name="DateHelper" Src="DateHelper.js" />
 				<SCRIPT Name="Config" Src="Config.js" />
+				<SCRIPT Name="Trace" Src="Trace.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->
