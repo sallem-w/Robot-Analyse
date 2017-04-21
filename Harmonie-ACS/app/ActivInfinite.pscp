@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="ActivInfinite" Nature="WEB3" TechnoSDK="V3" Sync="250">
+			<CAPTURE Name="APPLI_ActivInfiniteSite_1" CtxtId="1" Techno="WEB" />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+			<ACTIONS />
+			<EVENTS />
+			<CRITERE>
+				<DOMAIN Scan="Part"><![CDATA[infinite-haur05]]></DOMAIN>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="ActivInfinite" />
+			</_DECLAREVAR>
+			<_ECRANS />
+			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
+			<SCRIPTS>
+				<SCRIPT Name="ConfigFileACS" Src="ConfigFileACS.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ExcelFileACS" Src="ExcelFileACS.js" Folder="ScenarioACS" />
+			</SCRIPTS>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

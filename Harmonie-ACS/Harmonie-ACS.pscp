@@ -63,6 +63,9 @@
 				<SCRIPT Name="Declarations" Src="Harmonie-ACS.resources.js" ReadOnly="Y" />
 				<!-- project files -->
 				<SCRIPT Name="Main Project" Src="Harmonie-ACS.js" />
+				<SCRIPT Name="ExcelHelper" Src="ExcelHelper.js" />
+				<SCRIPT Name="DateHelper" Src="DateHelper.js" />
+				<SCRIPT Name="Config" Src="Config.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->
@@ -96,5 +99,7 @@
 			</SCENARII>
 		</PROCESS>
 	</PROCESSUS>
-	<APPLICATIONS />
+	<APPLICATIONS>
+		<include href="app/ActivInfinite.pscp" xpointer="xpointer(//APPLI)" />
+	</APPLICATIONS>
 </ConteXtorStudio>
