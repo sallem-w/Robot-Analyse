@@ -67,7 +67,3 @@ function getAllCells(lastIndexRow, configACSExcel){
 	
 	return contracts;
 }
-
-// Nom du fichier
-// Temps de total de traitement
-// Nombre de dossier traité
