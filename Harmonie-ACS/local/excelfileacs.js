@@ -2,13 +2,13 @@
 	var data = sc.data;
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
-	sc.onEnd(writeStats);
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinite.steps.init);
 	sc.step(ActivInfinite.steps.openFile);
 	sc.step(ActivInfinite.steps.copyFile);
 	sc.step(ActivInfinite.steps.readFile);
 	sc.step(ActivInfinite.steps.closeFile);
+	sc.step(ActivInfinite.steps.writeStats);
 }});
 
 ActivInfinite.step({ init : function(ev, sc, st) {
@@ -54,13 +54,14 @@ ActivInfinite.step({ closeFile : function(ev, sc, st) {
 	sc.endStep();
 }});
 
-function writeStats(ev, sc, st) {
+ActivInfinite.step({ writeStats : function(ev, sc, st) {
 	var obj = [];
 	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
 	obj['totalTimeDuration'] = getDuration(sc.data.totalTimeDuration);
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
 	ctx.stats.write(obj);
-};
+	sc.endStep();
+}});
 
 function getAllCells(lastIndexRow, configACSExcel){
 	var contracts = [];

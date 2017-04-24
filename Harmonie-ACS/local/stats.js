@@ -8,7 +8,7 @@
 	stats.initFileStats = function(pathTemplate, pathDirectoryOutput, nameScenario) {
 		var pathTemplateFile = pathTemplate + nameScenario + '.html';
 			
-		if (!ctx.file.exists(pathTemplateFile)) {
+		if (!ctx.fso.file.exist(pathTemplateFile)) {
 			ctx.trace.writeError('Ressources template file not found for ' + nameScenario + ' scenario');
 			return;
 		}
@@ -17,7 +17,7 @@
 		ctx.fso.file.copy(pathTemplateFile, pathFile + '.html', true);
 
 		pathFileStats = pathFile;
-		contentTemplate = ctx.fso.file.read(pathFileStats);
+		contentTemplate = ctx.fso.file.read(pathFileStats + '.html');
 	};
 
 	stats.write = function(obj) {
