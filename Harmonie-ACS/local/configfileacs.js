@@ -1,13 +1,31 @@
 ﻿ctx.configACS = (function() {
 	
-	var rootPathACS = 'C:\\Users\\RICHARD-MAX\\excel\\ACS-20170420-1\\';
-	var codeScenario = "ACS";
-	var fileNameExcelACS = 'Contrats et Assurés AccèsSanté date fin inf 30042017 CHEQUE coll non Rad....xls';
+	var rootPathACS;
+	var codeScenario;
+	var fileNameExcelACS;
 	var fileNameOutputExcelACS;
 	
 	var configACS = {};
 	
 	configACS.init = function() {
+		rootPathACS = ctx.config.getConfigACS().rootPath;
+		codeScenario = ctx.config.getCodeScenarioACS();
+		
+		var files = ctx.fso.folder.getFileCollection(rootPathACS);
+		var countFileExcel = 0;
+		for (; !files.atEnd(); files.moveNext()) {
+		  var file = files.item();
+			if (file.Name.indexOf('.xls') !== -1) {
+				countFileExcel += 1;
+				fileNameExcelACS = file.Name;
+			}
+		}
+		
+		if (countFileExcel !== 1) {
+			ctx.trace.writeError(countFileExcel + " found in " + rootPathACS + ", only 1 needed");
+			return false;	
+		}
+		
 		var extensionExcelACS = ctx.fso.file.getExtensionName(fileNameExcelACS);
 		var fileNameOutput = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileNameExcelACS, fileNameExcelACS.length - extensionExcelACS.length - 1)  + "_Result" + "." + extensionExcelACS;
 

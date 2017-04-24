@@ -6,15 +6,17 @@
 	var configFile = {};
 	
 	config.loadConfigFile = function() {
-		ctx.fso.init();
 		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
-		ctx.fso.end();
 		configFile = JSON.parse(pathConfigFile);
 	};
 	
 	config.getConfigACS = function() {
 		return configFile.ACS;
 	}
-
+	
+	config.getCodeScenarioACS = function() {
+		return 'ACS';
+	}
+		
 	return config;
 }) ();
