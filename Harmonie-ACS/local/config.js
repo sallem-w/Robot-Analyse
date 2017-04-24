@@ -10,10 +10,14 @@
 		configFile = JSON.parse(pathConfigFile);
 	};
 	
+	config.getPathTemplate = function() {
+		return configFile.pathTemplate;
+	}
+	
 	config.getConfigACS = function() {
 		return configFile.ACS;
 	}
-	
+		
 	config.getCodeScenarioACS = function() {
 		return 'ACS';
 	}

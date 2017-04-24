@@ -2,6 +2,7 @@
 	var data = sc.data;
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onEnd(writeStats);
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinite.steps.init);
 	sc.step(ActivInfinite.steps.openFile);
@@ -20,7 +21,7 @@ ActivInfinite.step({ init : function(ev, sc, st) {
 	
 	sc.data.pathFileOutputExcelACS = ctx.configACS.getPathFileOutputExcelACS();
 	sc.data.pathFileExcelACS = ctx.configACS.getPathFileExcelACS();
-	
+	sc.data.totalTimeDuration = new Date();
 	sc.endStep();
 }});
 
@@ -39,6 +40,11 @@ ActivInfinite.step({ copyFile : function(ev, sc, st) {
 ActivInfinite.step({ readFile : function(ev, sc, st) {
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
 	var contracts = getAllCells(lastIndexRow, sc.data.configExcel)
+	var countContract = 0;
+	for (var contract in contracts) {
+		countContract += 1;
+	}
+	sc.data.countCaseProcessed = countContract;
 	sc.endStep();
 }});
 
@@ -48,9 +54,17 @@ ActivInfinite.step({ closeFile : function(ev, sc, st) {
 	sc.endStep();
 }});
 
+function writeStats(ev, sc, st) {
+	var obj = [];
+	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
+	obj['totalTimeDuration'] = getDuration(sc.data.totalTimeDuration);
+	obj['countCaseProcessed'] = sc.data.countCaseProcessed
+	ctx.stats.write(obj);
+};
+
 function getAllCells(lastIndexRow, configACSExcel){
 	var contracts = [];
-	for(var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++){
+	for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
 		var contract = {
 			row : i,
 			individualContract: ctx.string.trim(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract)),
@@ -66,4 +80,9 @@ function getAllCells(lastIndexRow, configACSExcel){
 	}
 	
 	return contracts;
+}
+
+function getDuration(startDate) {
+	var diff = startDate.getTime() - new Date().getTime();
+	return diff / 1000;
 }

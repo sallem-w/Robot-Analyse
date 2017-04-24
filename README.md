@@ -6,6 +6,7 @@ Exemple template config file :
 
 ```json
 {
+    "pathTemplate": "C:\\Users\\excel\\template\\",
     "ACS": {
         "rootPath": "C:\\Users\\excel\\ACS-20170420-1\\",
         "excel": {
@@ -24,4 +25,5 @@ Exemple template config file :
         }
     }
 }
+
 ```
