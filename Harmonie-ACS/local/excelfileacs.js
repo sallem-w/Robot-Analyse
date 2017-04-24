@@ -32,6 +32,7 @@ ActivInfinite.step({ openFile : function(ev, sc, st) {
 
 ActivInfinite.step({ copyFile : function(ev, sc, st) {
 	ctx.excel.file.saveAs(sc.data.pathFileOutputExcelACS); 
+	ctx.trace.writeInfo("Create Output Excel file succeed");
 	sc.endStep();
 }});
 
