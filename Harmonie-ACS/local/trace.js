@@ -1,47 +1,47 @@
 ﻿ctx.trace = (function() {
 	
-	var _fileName = ctx.date.formatYYYMMDD(new Date()) + '_{0}_Logs.log';
-	var _trace = {};
-	var _pathFileTrace;
-	var _txtTrace;
+	var fileName = ctx.date.formatYYYMMDD(new Date()) + '_{0}_Logs.log';
+	var trace = {};
+	var pathFileTrace;
+	var txtTrace;
 	
-	_trace.constants = {
+	trace.constants = {
 		typeError: {
 			Info: "INFO",
 			Error: "ERROR"
 		}
 	}		
 	
-	_trace.initFileTrace = function(pathDirectory, nameScenario) {
-		var pathFileTrace = pathDirectory + _fileName.replace('{0}', nameScenario);
-		if (!ctx.fso.file.exist(pathFileTrace)) {
-			ctx.fso.file.create(pathFileTrace);
+	trace.initFileTrace = function(pathDirectory, nameScenario) {
+		var pathFile = pathDirectory + fileName.replace('{0}', nameScenario);
+		if (!ctx.fso.file.exist(pathFile)) {
+			ctx.fso.file.create(pathFile);
 		}
 
-		_pathFileTrace = pathFileTrace;
-		_txtTrace = ctx.fso.file.read(_pathFileTrace);
+		pathFileTrace = pathFile;
+		txtTrace = ctx.fso.file.read(pathFileTrace);
 	};
 	
-	_trace.writeInfo = function(str, dateObj, separateur) {
-		_trace.write(str, _trace.constants.typeError.Info, dateObj, separateur)
+	trace.writeInfo = function(str, dateObj, separateur) {
+		trace.write(str, trace.constants.typeError.Info, dateObj, separateur)
 	};
 	
-	_trace.writeError = function(str, dateObj, separateur) {
-		_trace.write(str, _trace.constants.typeError.Error, dateObj, separateur)
+	trace.writeError = function(str, dateObj, separateur) {
+		trace.write(str, trace.constants.typeError.Error, dateObj, separateur)
 	};
 	
-	_trace.write = function(str, typeError, dateObj, separateur) {
+	trace.write = function(str, typeError, dateObj, separator) {
 		if (str.length === 0) {
 			return;
 		}
 
-		separateur = separateur || '    ';
+		separator = separator || '    ';
 		dateObj = dateObj || new Date();
-		typeError = typeError || _trace.constants.typeError.Info
+		typeError = typeError || trace.constants.typeError.Info;
 		
-		_txtTrace = _txtTrace + ctx.date.formatTrace(dateObj) + separateur + typeError + separateur + str + '\r\n'
-		ctx.fso.file.write(_pathFileTrace, _txtTrace);
+		txtTrace = txtTrace + ctx.date.formatTrace(dateObj) + separator + typeError + separator + str + '\r\n';
+		ctx.fso.file.write(pathFileTrace, txtTrace);
 	};
 	
-	return _trace;
+	return trace;
 }) ();
