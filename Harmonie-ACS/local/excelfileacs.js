@@ -55,7 +55,7 @@ ActivInfinite.step({ closeFile : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ writeStats : function(ev, sc, st) {
-	var obj = [];
+	var obj = {};
 	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
 	obj['totalTimeDuration'] = getDuration(sc.data.totalTimeDuration);
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
