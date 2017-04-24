@@ -3,6 +3,7 @@
 	var _fileName = ctx.date.formatYYYMMDD(new Date()) + '_{0}_Logs.log';
 	var _trace = {};
 	var _pathFileTrace;
+	var _txtTrace;
 	
 	_trace.constants = {
 		typeError: {
@@ -18,6 +19,7 @@
 		}
 
 		_pathFileTrace = pathFileTrace;
+		_txtTrace = ctx.fso.file.read(_pathFileTrace);
 	};
 	
 	_trace.writeInfo = function(str, dateObj, separateur) {
@@ -37,7 +39,8 @@
 		dateObj = dateObj || new Date();
 		typeError = typeError || _trace.constants.typeError.Info
 		
-		ctx.fso.file.write(_pathFileTrace, ctx.date.formatTrace(dateObj) + separateur + typeError + separateur + str);
+		_txtTrace = _txtTrace + ctx.date.formatTrace(dateObj) + separateur + typeError + separateur + str + '\r\n'
+		ctx.fso.file.write(_pathFileTrace, _txtTrace);
 	};
 	
 	return _trace;

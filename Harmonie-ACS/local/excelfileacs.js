@@ -14,7 +14,10 @@ ActivInfinite.step({ init : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
-	ctx.configACS.init();
+	if(!ctx.configACS.init()) {
+		sc.endScenario();	
+	}
+	
 	sc.data.pathFileOutputExcelACS = ctx.configACS.getPathFileOutputExcelACS();
 	sc.data.pathFileExcelACS = ctx.configACS.getPathFileExcelACS();
 	

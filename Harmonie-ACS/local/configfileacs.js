@@ -9,14 +9,17 @@
 	var _configACS = {};
 	
 	_configACS.init = function() {
-		try {
-			var extensionExcelACS = ctx.fso.file.getExtensionName(fileNameExcelACS);
-			var fileNameOutputExcelACS =  ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileNameExcelACS, fileNameExcelACS.length - extensionExcelACS.length - 1)  + "_Result" + "." + extensionExcelACS;
-		} catch (ex) {
+		var extensionExcelACS = ctx.fso.file.getExtensionName(fileNameExcelACS);
+		var fileNameOutputExcelACS =  ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileNameExcelACS, fileNameExcelACS.length - extensionExcelACS.length - 1)  + "_Result" + "." + extensionExcelACS;
+
+		if (!ctx.fso.file.exist(this.getPathFileExcelACS())) {
 			ctx.trace.writeError("Open Excel file FAIL");
+			return false;	
 		}
+
 		ctx.trace.writeInfo("Open Excel file DONE");
 		_fileNameOutputExcelACS = fileNameOutputExcelACS;
+		return true;	
 	};
 	
 	_configACS.getPathFileExcelACS = function() {
