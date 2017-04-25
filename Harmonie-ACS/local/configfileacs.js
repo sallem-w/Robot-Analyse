@@ -13,12 +13,13 @@
 		
 		var files = ctx.fso.folder.getFileCollection(rootPathACS);
 		var countFileExcel = 0;
-		for (; !files.atEnd(); files.moveNext()) {
-		  var file = files.item();
+		while(!files.atEnd()) {
+			var file = files.item();
 			if (file.Name.indexOf('.xls') !== -1) {
 				countFileExcel += 1;
 				fileNameExcelACS = file.Name;
 			}
+			files.moveNext();
 		}
 		
 		if (countFileExcel !== 1) {
