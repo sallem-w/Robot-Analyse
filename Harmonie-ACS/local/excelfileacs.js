@@ -16,7 +16,7 @@ ActivInfinite.step({ init : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
-	ctx.trace.writeInfo('Start scenario ' + ctx.config().getCodeScenarioACS());
+	ctx.trace.writeInfo('Start scenario ' + ctx.config.getCodeScenarioACS());
 	if(!ctx.configACS.init()) {
 		sc.endScenario();	
 	}
