@@ -12,11 +12,11 @@
 }});
 
 ActivInfinite.step({ init : function(ev, sc, st) {
-	ctx.trace.writeInfo('STEP - init');
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
-	ctx.trace.writeInfo('Start scenario ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('Start scenario readExcel ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('STEP - init');
 	if(!ctx.configACS.init()) {
 		sc.endScenario();	
 	}
@@ -53,12 +53,36 @@ ActivInfinite.step({ readFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - readFile');
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
 	var contracts = getAllCells(lastIndexRow, sc.data.configExcel)
-	var countContract = 0;
-	for (var contract in contracts) {
-		countContract += 1;
-	}
-	sc.data.countCaseProcessed = countContract;
-	sc.endStep();
+	var countContractProcessed = 0;
+	
+	
+//	TODO find solution
+//
+//	var i = 0;
+//	while(i <= contracts.length) {
+//		
+//		var data = { contract: contracts[i] };
+//		
+//		var sc = ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
+//			countContractProcessed += 1;
+//			i += 1;
+//		})
+//			
+//		while (ActivInfinite.scenarios.searchContract.isRunning()) {
+//			
+//		}
+//	}
+//
+// 	sc.data.countCaseProcessed = countContractProcessed;
+//	sc.endStep();
+	
+	var i = 0;
+	var data = { contract: contracts[i] };
+	
+	var sc = ActivInfinite.scenarios.searchContract.start(data).onEnd(function(sc) {
+		sc.data.countCaseProcessed = 1;
+		sc.endStep();
+	})
 }});
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {
@@ -76,7 +100,7 @@ ActivInfinite.step({ writeStats : function(ev, sc, st) {
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
 	ctx.stats.write(obj);
 
-	ctx.trace.writeInfo('End scenario ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('End scenario readExcel ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
 

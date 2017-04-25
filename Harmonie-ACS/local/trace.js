@@ -31,7 +31,7 @@
 	};
 	
 	trace.write = function(str, typeError, dateObj, separator) {
-		if (str.length === 0) {
+		if (!str || str.length === 0) {
 			return;
 		}
 
