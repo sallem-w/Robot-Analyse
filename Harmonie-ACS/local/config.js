@@ -1,20 +1,22 @@
 ﻿ctx.config = (function() {
 	
-	var fileName = 'config.json';
-	var _config = {};
+	var pathFileConfig = 'C:\\Users\\RICHARD-MAX\\excel\\config.json';
+	var config = {};
 	
 	var configFile = {};
 	
-	_config.loadConfigFile = function() {
-		ctx.fso.init();
-		var pathConfigFile = ctx.fso.file.read(ctx.options.currentURL + '\\' + fileName);
-		ctx.fso.end();
+	config.loadConfigFile = function() {
+		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
 		configFile = JSON.parse(pathConfigFile);
 	};
 	
-	_config.getConfigACS = function() {
+	config.getConfigACS = function() {
 		return configFile.ACS;
 	}
-
-	return _config;
+	
+	config.getCodeScenarioACS = function() {
+		return 'ACS';
+	}
+		
+	return config;
 }) ();

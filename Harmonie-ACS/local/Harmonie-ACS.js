@@ -60,6 +60,8 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 GLOBAL.events.START.on(function (ev) {
 	
 	ctx.config.loadConfigFile();
+	var configACS = ctx.config.getConfigACS();
+	ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
 	
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');

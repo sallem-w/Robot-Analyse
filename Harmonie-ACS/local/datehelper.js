@@ -1,13 +1,17 @@
 ﻿ ctx.date = (function() {
 	
-	var _date = {};
+	var date = {};
 	
-	_date.formatYYYMMDD = function(dateObj) {
+	date.formatYYYMMDD = function(dateObj) {
 		var month = dateObj.getUTCMonth() + 1;
 		var day = dateObj.getUTCDate();
 		var year = dateObj.getUTCFullYear();
 		return "" + year +  month + day
 	};
 	
-	return _date;
+	date.formatTrace = function(dateObj) {
+		return dateObj.getFullYear() + "-" + (dateObj.getMonth()+1) + "-" + dateObj.getDate() + " " + dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
+	};
+	
+	return date;
 }) ();
