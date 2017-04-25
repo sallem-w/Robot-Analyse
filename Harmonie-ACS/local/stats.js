@@ -14,10 +14,20 @@
 		}
 		
 		var pathFile = pathDirectoryOutput + fileName.replace('{0}', nameScenario);
-		ctx.fso.file.copy(pathTemplateFile, pathFile + '.html', true);
+		try {
+			ctx.fso.file.copy(pathTemplateFile, pathFile + '.html', true);
+		}
+		catch(ex) {
+			ctx.trace.writeError('Can not copy template file, ' + pathTemplateFile + ' to ' + pathFile + '.html');
+		}
 
 		pathFileStats = pathFile;
-		contentTemplate = ctx.fso.file.read(pathFileStats + '.html');
+		try {
+			contentTemplate = ctx.fso.file.read(pathFileStats + '.html');
+		}
+		catch(ex) {
+			ctx.trace.writeError('Can not read template file, ' + pathFileStats + '.html');
+		}
 	};
 
 	stats.write = function(obj) {
@@ -37,11 +47,21 @@
 			}
 		}
 
-		ctx.fso.file.write(pathFileStats + '.html', tempContent);
+		try {
+			ctx.fso.file.write(pathFileStats + '.html', tempContent);
+		}
+		catch(ex) {
+			ctx.trace.writeError('Can not write stats template, ' + pathFileStats + '.html');
+		}
 	};
 	
 	stats.writeJson = function(obj) {
-		ctx.fso.file.write(pathFileStats + '.json', JSON.stringify(obj));
+		try {
+			ctx.fso.file.write(pathFileStats + '.json', JSON.stringify(obj));
+		}
+		catch(ex) {
+			ctx.trace.writeError('Can not write stats json, ' + pathFileStats + '.json');
+		}
 	}
 	
 	return stats;

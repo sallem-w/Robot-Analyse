@@ -12,9 +12,11 @@
 }});
 
 ActivInfinite.step({ init : function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - init');
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
+	ctx.trace.writeInfo('Start scenario ' + ctx.config().getCodeScenarioACS());
 	if(!ctx.configACS.init()) {
 		sc.endScenario();	
 	}
@@ -26,18 +28,29 @@ ActivInfinite.step({ init : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ openFile : function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - openFile');
 	ctx.excel.initialize();
-	ctx.excel.file.open(sc.data.pathFileExcelACS);
+	try {
+		ctx.excel.file.open(sc.data.pathFileExcelACS);
+	} catch (ex) {
+		ctx.trace.writeError('Can not copy open excel file, ' + sc.data.pathFileExcelACS);
+	}
 	sc.endStep();
 }});
 
 ActivInfinite.step({ copyFile : function(ev, sc, st) {
-	ctx.excel.file.saveAs(sc.data.pathFileOutputExcelACS); 
-	ctx.trace.writeInfo("Create Output Excel file succeed");
+	ctx.trace.writeInfo('STEP - copyFile');
+	try {
+		ctx.excel.file.saveAs(sc.data.pathFileOutputExcelACS); 
+		ctx.trace.writeInfo("Create Output Excel file succeed");
+	} catch (ex) {
+		ctx.trace.writeError('Can not copy save excel file, ' + sc.data.pathFileOutputExcelACS);
+	}
 	sc.endStep();
 }});
 
 ActivInfinite.step({ readFile : function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - readFile');
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
 	var contracts = getAllCells(lastIndexRow, sc.data.configExcel)
 	var countContract = 0;
@@ -49,17 +62,21 @@ ActivInfinite.step({ readFile : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - closeFile');
 	ctx.excel.end();
 	ctx.excel.release();
 	sc.endStep();
 }});
 
 ActivInfinite.step({ writeStats : function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - writeStats');
 	var obj = {};
 	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
 	obj['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
 	ctx.stats.write(obj);
+
+	ctx.trace.writeInfo('End scenario ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
 
