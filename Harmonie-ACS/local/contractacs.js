@@ -5,6 +5,7 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
+	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -29,6 +30,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - searchIndividualContract');
 	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
 	ActivInfinite.pContratIndivFound.wait(function() {
