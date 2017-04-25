@@ -47,6 +47,7 @@
 			<SCRIPTS>
 				<SCRIPT Name="ConfigFileACS" Src="ConfigFileACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFileACS" Src="ExcelFileACS.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ContractACS" Folder="ScenarioACS" Src="ContractACS.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>
