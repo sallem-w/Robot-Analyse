@@ -67,6 +67,7 @@
 				<SCRIPT Name="DateHelper" Src="DateHelper.js" />
 				<SCRIPT Name="Config" Src="Config.js" />
 				<SCRIPT Name="Trace" Src="Trace.js" />
+				<SCRIPT Name="Stats" Src="Stats.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->

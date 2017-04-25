@@ -13,5 +13,10 @@
 		return dateObj.getFullYear() + "-" + (dateObj.getMonth()+1) + "-" + dateObj.getDate() + " " + dateObj.getHours() + ":" + dateObj.getMinutes() + ":" + dateObj.getSeconds();
 	};
 	
+	date.diffToSecond = function(startDate, endDate) {
+		var diff = startDate.getTime() - endDate.getTime();
+		return diff / 1000;
+	}
+	
 	return date;
 }) ();
