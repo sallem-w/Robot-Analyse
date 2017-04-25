@@ -57,7 +57,7 @@ ActivInfinite.step({ closeFile : function(ev, sc, st) {
 ActivInfinite.step({ writeStats : function(ev, sc, st) {
 	var obj = {};
 	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
-	obj['totalTimeDuration'] = getDuration(sc.data.totalTimeDuration);
+	obj['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
 	ctx.stats.write(obj);
 	sc.endStep();
@@ -81,9 +81,4 @@ function getAllCells(lastIndexRow, configACSExcel){
 	}
 	
 	return contracts;
-}
-
-function getDuration(startDate) {
-	var diff = startDate.getTime() - new Date().getTime();
-	return diff / 1000;
 }
