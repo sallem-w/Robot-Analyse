@@ -5,6 +5,9 @@
 
 var ActivInfinite = ctx.addApplication('ActivInfinite', {"nature":"WEB3","path":"http://infinite-haur05/WebAneto/ValiderIdentification.do#"});
 
+ActivInfinite.pContractIndivNotFoun = ActivInfinite.addPage('pContractIndivNotFoun', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_201\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
+ActivInfinite.pContractIndivNotFoun.oErreurDetail = ActivInfinite.pContractIndivNotFoun.addItem('oErreurDetail');
+
 ActivInfinite.pContratIndivFound = ActivInfinite.addPage('pContratIndivFound', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
 ActivInfinite.pContratIndivFound.oNumeroContrat2 = ActivInfinite.pContratIndivFound.addItem('oNumeroContrat2', {"mustExist":true});
 ActivInfinite.pContratIndivFound.oBtSuivant = ActivInfinite.pContratIndivFound.addItem('oBtSuivant');

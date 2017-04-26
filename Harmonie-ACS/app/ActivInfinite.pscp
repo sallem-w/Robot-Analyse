@@ -24,6 +24,21 @@
 				<STRUCTUREDON Name="ActivInfinite" />
 			</_DECLAREVAR>
 			<_ECRANS>
+				<PAGE Name="pContractIndivNotFoun" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_201&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
+					<OBJETS>
+						<OBJET Name="oErreurDetail">
+							<CRITERE>
+								<TAG Name="SPAN" Scope="All" CapturedPos="12.R0R1R9R1R3R0R0R0R0R0R0R1R0R0R1R0R1R0R0R1R0R0R0R0R0R2" Range="1" />
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1743314_1" Comment="[frameInitial0] - Web Aneto" CtxtId="12" Techno="WEB" Timestamp="26/04/2017 17:43:38" />
+				</PAGE>
 				<PAGE Name="pContratIndivFound" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>
 						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>

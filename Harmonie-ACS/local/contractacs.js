@@ -37,9 +37,17 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
 	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
+
 	ActivInfinite.pContratIndivFound.wait(function() {
+		//todo write output file SUCCESS
 		sc.endStep();
 	});
+	
+	ActivInfinite.pContratIndivNotFound.wait(function() {
+		//todo write output file FAIL + error find in page
+		sc.endScenario();
+	});
+
 }});
 
 ActivInfinite.step({ closeTabIndivudalContractFound: function(ev, sc, st) {
