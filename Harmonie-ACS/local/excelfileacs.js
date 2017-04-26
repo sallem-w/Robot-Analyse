@@ -79,10 +79,7 @@ ActivInfinite.step({ readFile : function(ev, sc, st) {
 	var i = 0;
 	var data = { contract: contracts[i] };
 	
-	ctx.trace.writeInfo('CONTRACT : ' + data.contract.individualContract + ' START');
-	
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
-		ctx.trace.writeInfo('CONTRACT : ' + data.contract.individualContract + ' END');
 		sc.data.countCaseProcessed = 1;
 		sc.endStep();
 	})

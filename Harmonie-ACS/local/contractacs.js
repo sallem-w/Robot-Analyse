@@ -10,16 +10,12 @@
 }});
 
 ActivInfinite.step({ initializePage: function(ev, sc, st) {
-//	ActivInfinite.pDashboard.start();
-//	ActivInfinite.pDashboard.wait(function() {
-//			sc.endStep();
-//	});
 	sc.endStep();
 }});
 
 ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
-	ctx.trace.writeInfo('Start scenario searchContract ' + ctx.config.getCodeScenarioACS());
-	ctx.trace.writeInfo('STEP - navigateToConsultation');
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 
 	function navigate() {
 		setTimeout(function() {
@@ -37,8 +33,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
-	ctx.trace.writeInfo('STEP - searchIndividualContract');
-	ctx.trace.writeInfo(sc.data.contract.individualContract);
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
 	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
 	ActivInfinite.pContratIndivFound.wait(function() {
@@ -47,7 +42,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ end : function(ev, sc, st) {
-	ctx.trace.writeInfo('STEP - end');
-	ctx.trace.writeInfo('End scenario searchContract ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - end');
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
