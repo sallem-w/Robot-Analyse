@@ -24,6 +24,40 @@
 				<STRUCTUREDON Name="ActivInfinite" />
 			</_DECLAREVAR>
 			<_ECRANS>
+				<PAGE Name="pContratIndivFound" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumeroContrat2" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="9.R0R1R9R1R3R31R0R3R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat2]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[bloque]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[styleDisabled]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtSuivant">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1652494_1" Comment="[frameInitial0] - Web Aneto" CtxtId="9" Techno="WEB" Timestamp="25/04/2017 16:52:58" />
+				</PAGE>
 				<PAGE Name="pDashboard" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)">
 					<CRITERE>
 						<TITRE Scan="Part"><![CDATA[Activ'Infinite - Site]]></TITRE>
@@ -69,40 +103,6 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1651038_1" Comment="[frameInitial0] - Web Aneto" CtxtId="8" Techno="WEB" Timestamp="25/04/2017 16:51:12" />
-				</PAGE>
-				<PAGE Name="pContratIndivFound" Comment="[frameInitial0] - Web Aneto">
-					<CRITERE>
-						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
-						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
-					<OBJETS>
-						<OBJET Name="oNumeroContrat2" MustExist="Y">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="9.R0R1R9R1R3R31R0R3R2R0">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numeroContrat2]]></VALUE>
-									</ATT>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[bloque]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[styleDisabled]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oBtSuivant">
-							<CRITERE>
-								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R7R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1652494_1" Comment="[frameInitial0] - Web Aneto" CtxtId="9" Techno="WEB" Timestamp="25/04/2017 16:52:58" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
