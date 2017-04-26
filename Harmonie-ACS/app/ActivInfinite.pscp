@@ -11,7 +11,7 @@
 	</PROCESSUS>
 	<APPLICATIONS>
 		<APPLI Name="ActivInfinite" Nature="WEB3" TechnoSDK="V3" Sync="250">
-			<CAPTURE Name="APPLI_ActivInfiniteSite_1" CtxtId="1" Techno="WEB" />
+			<CAPTURE Name="APPLI_ActivInfiniteSite_2" CtxtId="1" Techno="WEB" />
 			<SCENARII>
 				<Steps />
 			</SCENARII>
@@ -23,11 +23,102 @@
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="ActivInfinite" />
 			</_DECLAREVAR>
-			<_ECRANS />
+			<_ECRANS>
+				<PAGE Name="pContratIndivFound" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumeroContrat2" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="9.R0R1R9R1R3R31R0R3R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat2]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[bloque]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[styleDisabled]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtSuivant">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtFermer">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1652494_1" Comment="[frameInitial0] - Web Aneto" CtxtId="9" Techno="WEB" Timestamp="25/04/2017 16:52:58" />
+				</PAGE>
+				<PAGE Name="pDashboard" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)">
+					<CRITERE>
+						<TITRE Scan="Part"><![CDATA[Activ'Infinite - Site]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do]]></PATH>
+					<OBJETS>
+						<OBJET Name="btMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="5.R0R1R0R0R0R0R0R0">
+									<ATT Name="InnerHTML">
+										<VALUE Scan="Full"><![CDATA[<IMG onmouseover="image.src='/Commun/multimedia/images/menu/boutonMenuOn.png'" onmouseout="image.src='/Commun/multimedia/images/menu/boutonMenuOff.png'" border=0 name=image src="/Commun/multimedia/images/menu/boutonMenuOff.png">]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ActivInfiniteSite_1131080_1" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)" CtxtId="5" Techno="WEB" Timestamp="25/04/2017 11:31:36" />
+				</PAGE>
+				<PAGE Name="pConsultContratIndiv" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumeroContrat">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R1R1R0R0R0R0R2R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btBtRecherche">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R5R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1651038_1" Comment="[frameInitial0] - Web Aneto" CtxtId="8" Techno="WEB" Timestamp="25/04/2017 16:51:12" />
+				</PAGE>
+			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
 				<SCRIPT Name="ConfigFileACS" Src="ConfigFileACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFileACS" Src="ExcelFileACS.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ContractACS" Folder="ScenarioACS" Src="ContractACS.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

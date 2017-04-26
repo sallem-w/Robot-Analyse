@@ -1,22 +1,23 @@
 ﻿ActivInfinite.scenario({ readExcel: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
+	sc.onTimeout(60000, function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinite.steps.init);
+	sc.step(ActivInfinite.steps.initConfig);
 	sc.step(ActivInfinite.steps.openFile);
 	sc.step(ActivInfinite.steps.copyFile);
 	sc.step(ActivInfinite.steps.readFile);
+	sc.step(ActivInfinite.steps.startScenarioACS);
 	sc.step(ActivInfinite.steps.closeFile);
 	sc.step(ActivInfinite.steps.writeStats);
 }});
 
-ActivInfinite.step({ init : function(ev, sc, st) {
-	ctx.trace.writeInfo('STEP - init');
+ActivInfinite.step({ initConfig : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
-	ctx.trace.writeInfo('Start scenario ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('Start scenario readExcel ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('STEP - init');
 	if(!ctx.configACS.init()) {
 		sc.endScenario();	
 	}
@@ -52,13 +53,29 @@ ActivInfinite.step({ copyFile : function(ev, sc, st) {
 ActivInfinite.step({ readFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - readFile');
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
-	var contracts = getAllCells(lastIndexRow, sc.data.configExcel)
-	var countContract = 0;
-	for (var contract in contracts) {
-		countContract += 1;
-	}
-	sc.data.countCaseProcessed = countContract;
+	sc.data.contracts = getAllCells(lastIndexRow, sc.data.configExcel);
+	sc.data.countCaseProcessed = 0;
+	sc.data.indexCurrentContract = 0;
 	sc.endStep();
+}});
+
+ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
+	var i = sc.data.indexCurrentContract;
+	
+	var currentContracts = sc.data.contracts[i];
+	var data = { contract: currentContracts };
+	
+	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
+		sc.data.countCaseProcessed += 1;
+		
+		if(i < sc.data.contracts.length - 1) {
+			sc.data.indexCurrentContract += 1;
+			sc.endStep(ActivInfinite.steps.startScenarioACS);
+		} else {
+			sc.endStep();			
+		}
+	});
+	
 }});
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {
@@ -76,7 +93,7 @@ ActivInfinite.step({ writeStats : function(ev, sc, st) {
 	obj['countCaseProcessed'] = sc.data.countCaseProcessed
 	ctx.stats.write(obj);
 
-	ctx.trace.writeInfo('End scenario ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo('End scenario readExcel ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
 
