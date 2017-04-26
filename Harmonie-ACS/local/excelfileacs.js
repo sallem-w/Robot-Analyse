@@ -102,14 +102,14 @@ function getAllCells(lastIndexRow, configACSExcel){
 	for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
 		var contract = {
 			row : i,
-			individualContract: ctx.string.trim(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract)),
-			insuredName: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName),
-			insuredSurName: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName),
-			subscribedProduct: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedProduct),
-			ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
-			ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
-			scheduleCode: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode),
-			paymentTypeLabel: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel)
+			individualContract: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))),
+			insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
+			insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
+			subscribedProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedProduct)),
+			ACSCertificateStartDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate)),
+			ACSCertificateEndDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate)),
+			scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
+			paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
 		};
 		contracts.push(contract);
 	}
