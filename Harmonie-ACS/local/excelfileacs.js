@@ -7,6 +7,7 @@
 	sc.step(ActivInfinite.steps.openFile);
 	sc.step(ActivInfinite.steps.copyFile);
 	sc.step(ActivInfinite.steps.readFile);
+	sc.step(ActivInfinite.steps.startScenarioACS);
 	sc.step(ActivInfinite.steps.closeFile);
 	sc.step(ActivInfinite.steps.writeStats);
 }});
@@ -52,37 +53,29 @@ ActivInfinite.step({ copyFile : function(ev, sc, st) {
 ActivInfinite.step({ readFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - readFile');
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
-	var contracts = getAllCells(lastIndexRow, sc.data.configExcel)
-	var countContractProcessed = 0;
+	sc.data.contracts = getAllCells(lastIndexRow, sc.data.configExcel);
+	sc.data.countCaseProcessed = 0;
+	sc.data.indexCurrentContract = 0;
+	sc.endStep();
+}});
+
+ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
+	var i = sc.data.indexCurrentContract;
 	
-	
-//	TODO find solution
-//
-//	var i = 0;
-//	while(i <= contracts.length) {
-//		
-//		var data = { contract: contracts[i] };
-//		
-//		var sc = ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
-//			countContractProcessed += 1;
-//			i += 1;
-//		})
-//			
-//		while (ActivInfinite.scenarios.searchContract.isRunning()) {
-//			
-//		}
-//	}
-//
-// 	sc.data.countCaseProcessed = countContractProcessed;
-//	sc.endStep();
-	
-	var i = 0;
-	var data = { contract: contracts[i] };
+	var currentContracts = sc.data.contracts[i];
+	var data = { contract: currentContracts };
 	
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
-		sc.data.countCaseProcessed = 1;
-		sc.endStep();
-	})
+		sc.data.countCaseProcessed += 1;
+		
+		if(i <= sc.data.contracts.length) {
+			sc.data.indexCurrentContract += 1;
+			sc.endStep(ActivInfinite.steps.startScenarioACS);
+		} else {
+			sc.endStep();			
+		}
+	});
+	
 }});
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {

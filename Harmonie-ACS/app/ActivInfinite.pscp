@@ -55,6 +55,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oBtFermer">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1652494_1" Comment="[frameInitial0] - Web Aneto" CtxtId="9" Techno="WEB" Timestamp="25/04/2017 16:52:58" />
 				</PAGE>

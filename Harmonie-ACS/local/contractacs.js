@@ -6,6 +6,7 @@
 	sc.step(ActivInfinite.steps.initializePage);
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
+	sc.step(ActivInfinite.steps.closeTabIndivudalContractFound);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -39,6 +40,12 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ActivInfinite.pContratIndivFound.wait(function() {
 		sc.endStep();
 	});
+}});
+
+ActivInfinite.step({ closeTabIndivudalContractFound: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeTabIndivudalContractFound');
+	ActivInfinite.pContratIndivFound.oBtFermer.click();
+	sc.endStep();
 }});
 
 ActivInfinite.step({ end : function(ev, sc, st) {
