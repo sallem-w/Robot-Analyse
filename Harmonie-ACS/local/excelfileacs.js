@@ -68,7 +68,7 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
 		sc.data.countCaseProcessed += 1;
 		
-		if(i <= sc.data.contracts.length) {
+		if(i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
 			sc.endStep(ActivInfinite.steps.startScenarioACS);
 		} else {
