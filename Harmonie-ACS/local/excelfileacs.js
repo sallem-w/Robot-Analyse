@@ -1,9 +1,9 @@
 ﻿ActivInfinite.scenario({ readExcel: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
+	sc.onTimeout(60000, function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinite.steps.init);
+	sc.step(ActivInfinite.steps.initConfig);
 	sc.step(ActivInfinite.steps.openFile);
 	sc.step(ActivInfinite.steps.copyFile);
 	sc.step(ActivInfinite.steps.readFile);
@@ -11,7 +11,7 @@
 	sc.step(ActivInfinite.steps.writeStats);
 }});
 
-ActivInfinite.step({ init : function(ev, sc, st) {
+ActivInfinite.step({ initConfig : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	
@@ -81,7 +81,7 @@ ActivInfinite.step({ readFile : function(ev, sc, st) {
 	
 	ctx.trace.writeInfo('CONTRACT : ' + data.contract.individualContract + ' START');
 	
-	var sc = ActivInfinite.scenarios.searchContract.start(data).onEnd(function(sc) {
+	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
 		ctx.trace.writeInfo('CONTRACT : ' + data.contract.individualContract + ' END');
 		sc.data.countCaseProcessed = 1;
 		sc.endStep();

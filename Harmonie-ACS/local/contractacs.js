@@ -1,18 +1,25 @@
 ﻿ActivInfinite.scenario({ searchContract: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	});
+	sc.onTimeout(60000, function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
+	sc.step(ActivInfinite.steps.initializePage);
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
-	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.end);
+}});
+
+ActivInfinite.step({ initializePage: function(ev, sc, st) {
+//	ActivInfinite.pDashboard.start();
+//	ActivInfinite.pDashboard.wait(function() {
+//			sc.endStep();
+//	});
+	sc.endStep();
 }});
 
 ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo('Start scenario searchContract ' + ctx.config.getCodeScenarioACS());
 	ctx.trace.writeInfo('STEP - navigateToConsultation');
-	ctx.trace.writeInfo(sc.data.contract.individualContract);
 
 	function navigate() {
 		setTimeout(function() {
@@ -31,6 +38,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 
 ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - searchIndividualContract');
+	ctx.trace.writeInfo(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
 	ActivInfinite.pContratIndivFound.wait(function() {
