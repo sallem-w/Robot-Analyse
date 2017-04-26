@@ -40,11 +40,15 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 
 	ActivInfinite.pContratIndivFound.wait(function() {
 		//todo write output file SUCCESS
+		sc.data.commentContract = 'Contract found \n';
+		sc.data.statusContract = 'SUCCESS';
 		sc.endStep();
 	});
 	
 	ActivInfinite.pContratIndivNotFound.wait(function() {
 		//todo write output file FAIL + error find in page
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oErreurDetail;
+		sc.data.statusContract = 'FAIL';
 		sc.endScenario();
 	});
 

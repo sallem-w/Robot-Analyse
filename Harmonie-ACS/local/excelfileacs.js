@@ -65,14 +65,19 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	var currentContracts = sc.data.contracts[i];
 	var data = { contract: currentContracts };
 	
-	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
-		sc.data.countCaseProcessed += 1;
+	ActivInfinite.scenarios.searchContract.start(data).onEnd(function(s) {
+		
+		if(s.data.statusContract === 'SUCCESS') {
+			sc.data.countCaseProcessed += 1;
+		}
+
+		ctx.excelHelper.write(sc.data.pathFileOutputExcelACS, [ctx.date.formatYYYMMDD(new Date()), s.data.statusContract, s.data.commentContract]);
 		
 		if(i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
 			sc.endStep(ActivInfinite.steps.startScenarioACS);
 		} else {
-			sc.endStep();			
+			sc.endStep();
 		}
 	});
 	

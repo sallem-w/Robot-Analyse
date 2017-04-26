@@ -13,6 +13,12 @@
 		}
 		return ret;
 	};
+	
+	excelHelper.write = function(path, arrayMessage) {
+	
+		// TODO find last column / write message (every index in column)
+		
+	};
 
 	return excelHelper;
 }) ();
