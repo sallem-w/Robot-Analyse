@@ -7,7 +7,6 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
-	sc.step(ActivInfinite.steps.closeTabIndivudalContractFound);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -39,9 +38,9 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
 	
-	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
-	ActivInfinite.pConsultContratIndiv.oDateDebutEffet.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
-	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
+	ActivInfinite.pConsultContratIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinite.pConsultContratIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
+	ActivInfinite.pConsultContratIndiv.btSearch.click();
 
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
@@ -49,13 +48,8 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		sc.data.commentContract = 'Contract found \n';
 		sc.data.statusContract = 'SUCCESS';
 		
-		function navigateToBlockNote() {
-			$("#frameInitial0").contents().find("#itemTextLink3").click();
-		};
-	
-		ActivInfinite.pDashboard.injectFunction(navigateToBlockNote);
-		ActivInfinite.pDashboard.execScript('navigateToBlockNote()');
-			ActivInfinite.pBlocNotes.wait(function() {
+		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();
+		ActivInfinite.pBlockNotes.wait(function() {
 			sc.endStep();
 		});
 	});
@@ -63,9 +57,9 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 		
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oErreurDetail.get() + '\n';
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
 		sc.data.statusContract = 'FAIL';
-		ActivInfinite.pContractIndivNotFoun.oBtFermer.click();
+		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
 		sc.endScenario();
 	});
 
@@ -74,21 +68,15 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
 	
-	var contentBlockNote = ActivInfinite.pBlocNotes.oTexte2;
+	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
 	if(!contentBlockNote && ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract += contentBlockNote + ' \n';
-		ActivInfinite.pBlocNotes.oBtFermer.click();
+		ActivInfinite.pBlockNotes.oBtClose.click();
 		sc.endScenario();
 	}
 	
-	ActivInfinite.pBlocNotes.oBtFermer.click();
-	sc.endStep();
-}});
-
-ActivInfinite.step({ closeTabIndivudalContractFound: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeTabIndivudalContractFound');
-	ActivInfinite.pContratIndivFound.oBtFermer.click();
+	ActivInfinite.pBlockNotes.oBtClose.click();
 	sc.endStep();
 }});
 

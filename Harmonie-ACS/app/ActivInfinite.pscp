@@ -31,7 +31,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 					<OBJETS>
-						<OBJET Name="oNumeroContrat">
+						<OBJET Name="oIndividualContract">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R1R1R0R0R0R0R2R0R0R0R1R0">
 									<ATT Name="name">
@@ -40,7 +40,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btBtRecherche" MustExist="Y">
+						<OBJET Name="btSearch" MustExist="Y">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R5R0R0">
 									<ATT Name="id">
@@ -49,7 +49,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateDebutEffet">
+						<OBJET Name="oDateContract">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R4R3R0">
 									<ATT Name="name">
@@ -68,7 +68,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
 					<OBJETS>
-						<OBJET Name="oNumeroContrat2" MustExist="Y">
+						<OBJET Name="oIndividualContract" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="9.R0R1R9R1R3R31R0R3R2R0">
 									<ATT Name="name">
@@ -83,7 +83,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBtSuivant">
+						<OBJET Name="oBtNext">
 							<CRITERE>
 								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R7R0R0">
 									<ATT Name="id">
@@ -92,11 +92,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBtFermer">
+						<OBJET Name="oBtClose">
 							<CRITERE>
 								<TAG Name="IMG" Scope="All" CapturedPos="9.R0R1R9R0R1R0R23R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNavigateBlockNote">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="9.R0R1R9R0R0R4R0R0R0R0R0R0R0R0R3R0R1R0R3R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[itemTextLink3]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -111,12 +120,12 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_201&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER=]]></PATH>
 					<OBJETS>
-						<OBJET Name="oErreurDetail">
+						<OBJET Name="oDetailError">
 							<CRITERE>
 								<TAG Name="SPAN" Scope="All" CapturedPos="12.R0R1R9R1R3R0R0R0R0R0R0R1R0R0R1R0R1R0R0R1R0R0R0R0R0R2" Range="1" />
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oListeDesAnomalies" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="TD" Scope="All" CapturedPos="12.R0R1R9R1R3R0R0R0R0R0R0R0R0R0R0R0R0">
 									<ATT Name="Text">
@@ -128,7 +137,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBtFermer">
+						<OBJET Name="oBtClose">
 							<CRITERE>
 								<TAG Name="IMG" Scope="All" CapturedPos="12.R0R1R9R0R1R0R21R0R0">
 									<ATT Name="id">
@@ -158,14 +167,14 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ActivInfiniteSite_1131080_1" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)" CtxtId="5" Techno="WEB" Timestamp="25/04/2017 11:31:36" />
 				</PAGE>
-				<PAGE Name="pBlocNotes" Comment="[frameInitial0] - Web Aneto">
+				<PAGE Name="pBlockNotes" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>
 						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
 						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_139&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
 					<OBJETS>
-						<OBJET Name="oBlocNotes" MustExist="Y">
+						<OBJET Name="oBlockNotes" MustExist="Y">
 							<CRITERE>
 								<TAG Name="TD" Scope="All" CapturedPos="14.R0R1R11R1R5R10R0R0R0">
 									<ATT Name="Text">
@@ -174,11 +183,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTexte2">
+						<OBJET Name="oContentBlockNote">
 							<CRITERE>
 								<TAG Name="TEXTAREA" Scope="All" CapturedPos="14.R0R1R11R1R5R13R3">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[texte[2]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="14.R0R1R11R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
