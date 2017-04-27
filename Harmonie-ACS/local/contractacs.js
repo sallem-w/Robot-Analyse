@@ -6,6 +6,7 @@
 	sc.step(ActivInfinite.steps.initializePage);
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
+	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.closeTabIndivudalContractFound);
 	sc.step(ActivInfinite.steps.end);
 }});
@@ -47,7 +48,16 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		
 		sc.data.commentContract = 'Contract found \n';
 		sc.data.statusContract = 'SUCCESS';
-		sc.endStep();
+		
+		function navigateToBlockNote() {
+			$("#frameInitial0").contents().find("#itemTextLink3").click();
+		};
+	
+		ActivInfinite.pDashboard.injectFunction(navigateToBlockNote);
+		ActivInfinite.pDashboard.execScript('navigateToBlockNote()');
+			ActivInfinite.pBlocNotes.wait(function() {
+			sc.endStep();
+		});
 	});
 	
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
@@ -59,6 +69,21 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		sc.endScenario();
 	});
 
+}});
+
+ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
+	
+	var contentBlockNote = ActivInfinite.pBlocNotes.oTexte2;
+	if(!contentBlockNote && ctx.string.trim(contentBlockNote) !== '') {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
+		sc.data.commentContract += contentBlockNote + ' \n';
+		ActivInfinite.pBlocNotes.oBtFermer.click();
+		sc.endScenario();
+	}
+	
+	ActivInfinite.pBlocNotes.oBtFermer.click();
+	sc.endStep();
 }});
 
 ActivInfinite.step({ closeTabIndivudalContractFound: function(ev, sc, st) {

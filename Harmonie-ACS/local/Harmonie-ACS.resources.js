@@ -22,3 +22,7 @@ ActivInfinite.pContractIndivNotFoun.oBtFermer = ActivInfinite.pContractIndivNotF
 
 ActivInfinite.pDashboard = ActivInfinite.addPage('pDashboard', {"comment":"Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)","path":"http://infinite-haur05/WebAneto/ValiderIdentification.do"});
 ActivInfinite.pDashboard.btMenu = ActivInfinite.pDashboard.addItem('btMenu');
+
+ActivInfinite.pBlocNotes = ActivInfinite.addPage('pBlocNotes', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_139\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
+ActivInfinite.pBlocNotes.oBlocNotes = ActivInfinite.pBlocNotes.addItem('oBlocNotes', {"mustExist":true});
+ActivInfinite.pBlocNotes.oTexte2 = ActivInfinite.pBlocNotes.addItem('oTexte2');

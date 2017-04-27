@@ -158,6 +158,34 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ActivInfiniteSite_1131080_1" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)" CtxtId="5" Techno="WEB" Timestamp="25/04/2017 11:31:36" />
 				</PAGE>
+				<PAGE Name="pBlocNotes" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_139&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oBlocNotes" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="14.R0R1R11R1R5R10R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Bloc notes]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTexte2">
+							<CRITERE>
+								<TAG Name="TEXTAREA" Scope="All" CapturedPos="14.R0R1R11R1R5R13R3">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[texte[2]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1655010_1" Comment="[frameInitial0] - Web Aneto" CtxtId="14" Techno="WEB" Timestamp="27/04/2017 16:55:07" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
