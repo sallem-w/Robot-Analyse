@@ -72,6 +72,7 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	if(!contentBlockNote && ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract += contentBlockNote + ' \n';
+		sc.data.statusContract = 'FAIL';
 		ActivInfinite.pBlockNotes.oBtClose.click();
 		sc.endScenario();
 	}
