@@ -52,6 +52,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		//todo write output file FAIL + error find in page
 		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oErreurDetail;
 		sc.data.statusContract = 'FAIL';
+		ActivInfinite.pContractIndivNotFoun.oBtFermer.click();
 		sc.endScenario();
 	});
 
