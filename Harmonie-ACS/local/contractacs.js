@@ -37,20 +37,23 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 
 ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
+	
 	ActivInfinite.pConsultContratIndiv.oNumeroContrat.set(sc.data.contract.individualContract);
 	ActivInfinite.pConsultContratIndiv.oDateDebutEffet.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
 	ActivInfinite.pConsultContratIndiv.btBtRecherche.click();
 
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
-		//todo write output file SUCCESS
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+		
 		sc.data.commentContract = 'Contract found \n';
 		sc.data.statusContract = 'SUCCESS';
 		sc.endStep();
 	});
 	
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		//todo write output file FAIL + error find in page
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oErreurDetail;
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+		
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oErreurDetail.get() + '\n';
 		sc.data.statusContract = 'FAIL';
 		ActivInfinite.pContractIndivNotFoun.oBtFermer.click();
 		sc.endScenario();

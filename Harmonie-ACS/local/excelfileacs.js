@@ -71,7 +71,13 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 			sc.data.countCaseProcessed += 1;
 		}
 
-		ctx.excelHelper.write(sc.data.pathFileOutputExcelACS, [ctx.date.formatYYYMMDD(new Date()), s.data.statusContract, s.data.commentContract]);
+		var writeArray = [
+			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatYYYMMDD(new Date()) },
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: s.data.statusContract },
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
+		];
+		
+		ctx.excelHelper.write(currentContracts.row, writeArray);
 		
 		if(i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
@@ -85,8 +91,10 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - closeFile');
-	ctx.excel.end();
+	var workbook = ctx.excel.getWorkbooks()[0];
+	ctx.excel.file.close(workbook, true);
 	ctx.excel.release();
+	ctx.excel.end();
 	sc.endStep();
 }});
 
