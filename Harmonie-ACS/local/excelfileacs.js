@@ -65,14 +65,25 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	var currentContracts = sc.data.contracts[i];
 	var data = { contract: currentContracts };
 	
-	ActivInfinite.scenarios.searchContract.start(data).onEnd(function() {
-		sc.data.countCaseProcessed += 1;
+	ActivInfinite.scenarios.searchContract.start(data).onEnd(function(s) {
+		
+		if(s.data.statusContract === 'SUCCESS') {
+			sc.data.countCaseProcessed += 1;
+		}
+
+		var writeArray = [
+			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatYYYMMDD(new Date()) },
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: s.data.statusContract },
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
+		];
+		
+		ctx.excelHelper.write(currentContracts.row, writeArray);
 		
 		if(i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
 			sc.endStep(ActivInfinite.steps.startScenarioACS);
 		} else {
-			sc.endStep();			
+			sc.endStep();
 		}
 	});
 	
@@ -80,8 +91,10 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 
 ActivInfinite.step({ closeFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - closeFile');
-	ctx.excel.end();
+	var workbook = ctx.excel.getWorkbooks()[0];
+	ctx.excel.file.close(workbook, true);
 	ctx.excel.release();
+	ctx.excel.end();
 	sc.endStep();
 }});
 
@@ -102,14 +115,14 @@ function getAllCells(lastIndexRow, configACSExcel){
 	for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
 		var contract = {
 			row : i,
-			individualContract: ctx.string.trim(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract)),
-			insuredName: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName),
-			insuredSurName: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName),
-			subscribedProduct: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedProduct),
-			ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
-			ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
-			scheduleCode: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode),
-			paymentTypeLabel: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel)
+			individualContract: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))),
+			insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
+			insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
+			subscribedProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedProduct)),
+			ACSCertificateStartDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate)),
+			ACSCertificateEndDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate)),
+			scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
+			paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
 		};
 		contracts.push(contract);
 	}
