@@ -226,9 +226,6 @@
 									<ATT Name="Text">
 										<VALUE Scan="start-with"><![CDATA[Contrat : ]]></VALUE>
 									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[Arbre]]></VALUE>
-									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
