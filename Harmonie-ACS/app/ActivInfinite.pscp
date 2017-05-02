@@ -186,8 +186,8 @@
 						<OBJET Name="oContentBlockNote">
 							<CRITERE>
 								<TAG Name="TEXTAREA" Scope="All" CapturedPos="14.R0R1R11R1R5R13R3">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[texte[2]]]></VALUE>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ta_bn_0]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

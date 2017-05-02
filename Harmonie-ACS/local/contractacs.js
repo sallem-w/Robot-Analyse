@@ -75,6 +75,7 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		sc.data.statusContract = 'FAIL';
 		ActivInfinite.pBlockNotes.oBtClose.click();
 		sc.endScenario();
+		return;
 	}
 	
 	ActivInfinite.pBlockNotes.oBtClose.click();
