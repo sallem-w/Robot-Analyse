@@ -117,8 +117,8 @@ GLOBAL.events.START.on(function (ev) {
 
 	// *** menus displayed in test mode only ***
 	if (ctx.options.isDebug) {
-		systray.addMenu('', 'ReadExcel', 'Read Excel');
-		systray.addMenu('ReadExcel', 'read', 'read', '', function(ev) {
+		systray.addMenu('', 'ACS', 'ACS scenario');
+		systray.addMenu('ACS', 'Complete', 'Complete', '', function(ev) {
 			ctx.config.loadConfigFile();
 			var configACS = ctx.config.getConfigACS();
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());

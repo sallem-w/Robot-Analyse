@@ -122,8 +122,8 @@ function getAllCells(lastIndexRow, configACSExcel){
 			insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
 			insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
 			subscribedCodeProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedCodeProduct)),
-			ACSCertificateStartDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate)),
-			ACSCertificateEndDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate)),
+			ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
+			ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
 			scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
 			paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
 		};

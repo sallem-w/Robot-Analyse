@@ -86,13 +86,20 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 }});
 
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
-//	var allProductInfo = ActivInfinite.pProductList.oRowInformation.getAll();
-//	for(var i in allProductInfo) {
-//		var productInfo = allProductInfo[i];
-//		if(sc.data.contract.subscribedCodeProduct.indexOf(productInfo) !== -1) {
-//			
-//		}
-//	}
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+	
+	var allProductInfo = ActivInfinite.pProductList.oRowInformation.getAll();
+	for(var i in allProductInfo) {
+		var productInfo = allProductInfo[i];
+		if(productInfo.indexOf(sc.data.contract.subscribedCodeProduct) !== -1) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code produit trouvé');
+			
+			var endDateIndex = productInfo.indexOf('au');
+			if((endDateIndex !== -1)  && (productInfo.indexOf(sc.data.contract.ACSCertificateEndDate, endDateIndex) !== -1)) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - date de fin trouvé');
+			}
+		}
+	}
 	
 	ActivInfinite.pProductList.oBtClose.click();
 	sc.endStep();
