@@ -213,6 +213,37 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1655010_1" Comment="[frameInitial0] - Web Aneto" CtxtId="14" Techno="WEB" Timestamp="27/04/2017 16:55:07" />
 				</PAGE>
+				<PAGE Name="pProductList" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_33&CONTAINER_NOM_FONCTION=ACPG_500&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTextContract" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2">
+									<ATT Name="Text">
+										<VALUE Scan="start-with"><![CDATA[Contrat : ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[Arbre]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="16.R0R1R11R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
