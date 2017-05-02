@@ -92,11 +92,11 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	for(var i in allProductInfo) {
 		var productInfo = allProductInfo[i];
 		if(productInfo.indexOf(sc.data.contract.subscribedCodeProduct) !== -1) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code produit trouvé');
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
 			
 			var endDateIndex = productInfo.indexOf('au');
 			if((endDateIndex !== -1)  && (productInfo.indexOf(sc.data.contract.ACSCertificateEndDate, endDateIndex) !== -1)) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - date de fin trouvé');
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
 			}
 		}
 	}
