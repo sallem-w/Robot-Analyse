@@ -28,3 +28,4 @@ ActivInfinite.pBlockNotes = ActivInfinite.addPage('pBlockNotes', {"comment":"[fr
 ActivInfinite.pBlockNotes.oBlockNotes = ActivInfinite.pBlockNotes.addItem('oBlockNotes', {"mustExist":true});
 ActivInfinite.pBlockNotes.oContentBlockNote = ActivInfinite.pBlockNotes.addItem('oContentBlockNote');
 ActivInfinite.pBlockNotes.oBtClose = ActivInfinite.pBlockNotes.addItem('oBtClose');
+ActivInfinite.pBlockNotes.btProductList = ActivInfinite.pBlockNotes.addItem('btProductList');

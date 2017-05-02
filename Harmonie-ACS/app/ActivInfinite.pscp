@@ -201,6 +201,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="14.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R7R0R1R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[itemTextLink19]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1655010_1" Comment="[frameInitial0] - Web Aneto" CtxtId="14" Techno="WEB" Timestamp="27/04/2017 16:55:07" />
 				</PAGE>

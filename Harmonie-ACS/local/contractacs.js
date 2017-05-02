@@ -7,6 +7,7 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
+	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -78,7 +79,12 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.oBtClose.click();
+	ActivInfinite.pBlockNotes.btProductList.click();
+	sc.endStep();
+}});
+
+
+ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	sc.endStep();
 }});
 
