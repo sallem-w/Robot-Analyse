@@ -80,7 +80,9 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	}
 	
 	ActivInfinite.pBlockNotes.btProductList.click();
-	sc.endStep();
+	ActivInfinite.pProductList.wait(function() {
+		sc.endStep();
+	});
 }});
 
 
