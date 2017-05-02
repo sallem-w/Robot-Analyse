@@ -18,7 +18,7 @@ ActivInfinite.step({ initConfig : function(ev, sc, st) {
 	
 	ctx.trace.writeInfo('Start scenario readExcel ' + ctx.config.getCodeScenarioACS());
 	ctx.trace.writeInfo('STEP - init');
-	if(!ctx.configACS.init()) {
+	if (!ctx.configACS.init()) {
 		sc.endScenario();	
 	}
 	
@@ -69,7 +69,7 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function(s) {
 			sc.data.countCaseProcessed += 1;
 		
-		if(s.data.statusContract === ctx.excelHelper.constants.status.Success) {
+		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
 			sc.data.countCaseSuccessProcessed += 1;
 		}
 
@@ -81,7 +81,7 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 		
 		ctx.excelHelper.write(currentContracts.row, writeArray);
 		
-		if(i < sc.data.contracts.length - 1) {
+		if (i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
 			sc.endStep(ActivInfinite.steps.startScenarioACS);
 		} else {

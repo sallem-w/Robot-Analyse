@@ -70,7 +70,7 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
 	
 	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
-	if(ctx.string.trim(contentBlockNote) !== '') {
+	if (ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -88,24 +88,23 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
 	
-	var allProductInfo = ActivInfinite.pProductList.oRowInformation.getAll();
-	var allBenefInfo = ActivInfinite.pProductList.oRowBenef.getAll();
-	for(var i in allProductInfo) {
-		var productInfo = allProductInfo[i];
-		var benefInfo = allBenefInfo[i];
+	var productInfoList = ActivInfinite.pProductList.oRowInformation.getAll();
+	var beneficiariesList = ActivInfinite.pProductList.oRowBenef.getAll();
+	for (var i in productInfoList) {
+		var productInfo = productInfoList[i];
+		var benefInfo = beneficiariesList[i];
 		
-		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' +ctx.string.trim(sc.data.contract.insuredSurName);
-		if(benefInfo.indexOf(benefFullName) === -1) {
+		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' + ctx.string.trim(sc.data.contract.insuredSurName);
+		if (benefInfo.indexOf(benefFullName) === -1) {
 			continue;
 		}
 	
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
 		
-		if(productInfo.indexOf(sc.data.contract.subscribedCodeProduct) !== -1) {
+		if (isCodeProductFound(productInfo, sc.data.contract.subscribedCodeProduct)) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
 			
-			var endDateIndex = productInfo.indexOf('au');
-			if((endDateIndex !== -1)  && (productInfo.indexOf(sc.data.contract.ACSCertificateEndDate, endDateIndex) !== -1)) {
+			if (isEndDateFound(productInfo, sc.data.contract.ACSCertificateEndDate)) {
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
 			}
 		}
@@ -120,3 +119,13 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
+
+
+function isCodeProductFound(strProduct, codeProduct) {
+	return (strProduct.indexOf(codeProduct) !== -1)
+}
+
+function isEndDateFound(strProduct, endDate) {
+	var endDateIndex = strProduct.indexOf('au');
+	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
+}
