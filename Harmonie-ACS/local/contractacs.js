@@ -89,8 +89,18 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
 	
 	var allProductInfo = ActivInfinite.pProductList.oRowInformation.getAll();
+	var allBenefInfo = ActivInfinite.pProductList.oRowBenef.getAll();
 	for(var i in allProductInfo) {
 		var productInfo = allProductInfo[i];
+		var benefInfo = allBenefInfo[i];
+		
+		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' +ctx.string.trim(sc.data.contract.insuredSurName);
+		if(benefInfo.indexOf(benefFullName) === -1) {
+			continue;
+		}
+	
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
+		
 		if(productInfo.indexOf(sc.data.contract.subscribedCodeProduct) !== -1) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
 			
