@@ -27,3 +27,11 @@ Exemple template config file :
 }
 
 ```
+
+# Template statistic - HTML
+
+Define `pathTemplate` in config file, arborescence :
+
+```bash
+YourPath/template/YouScenario.html
+```
