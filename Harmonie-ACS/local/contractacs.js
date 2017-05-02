@@ -46,8 +46,8 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract = 'Contract found \n';
-		sc.data.statusContract = 'SUCCESS';
+		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();
 		ActivInfinite.pBlockNotes.wait(function() {
@@ -59,7 +59,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 		
 		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = 'FAIL';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
 		sc.endScenario();
 	});
@@ -72,8 +72,8 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
 	if(ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract += contentBlockNote + ' \n';
-		sc.data.statusContract = 'FAIL';
+		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pBlockNotes.oBtClose.click();
 		sc.endScenario();
 		return;
@@ -85,8 +85,16 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	});
 }});
 
-
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
+//	var allProductInfo = ActivInfinite.pProductList.oRowInformation.getAll();
+//	for(var i in allProductInfo) {
+//		var productInfo = allProductInfo[i];
+//		if(sc.data.contract.subscribedCodeProduct.indexOf(productInfo) !== -1) {
+//			
+//		}
+//	}
+	
+	ActivInfinite.pProductList.oBtClose.click();
 	sc.endStep();
 }});
 

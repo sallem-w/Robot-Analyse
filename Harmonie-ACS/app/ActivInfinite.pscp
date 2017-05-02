@@ -252,20 +252,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowBenefText">
-							<CRITERE>
-								<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R1R0R0R2R0" Occurs="Y" />
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oRowPictureAssure" Ascendant="oTextContract">
-							<CRITERE>
-								<TAG Name="IMG" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R1R0R0R0R0" Occurs="Y">
-									<ATT Name="href">
-										<VALUE Scan="end-with"><![CDATA[/Commun/multimedia/images/admin/assure.gif]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
 				</PAGE>

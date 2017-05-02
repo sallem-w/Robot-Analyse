@@ -55,6 +55,7 @@ ActivInfinite.step({ readFile : function(ev, sc, st) {
 	var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(sc.data.configExcel.startColumnIndex) + sc.data.configExcel.startRowIndex) - 1;
 	sc.data.contracts = getAllCells(lastIndexRow, sc.data.configExcel);
 	sc.data.countCaseProcessed = 0;
+	sc.data.countCaseSuccessProcessed = 0;
 	sc.data.indexCurrentContract = 0;
 	sc.endStep();
 }});
@@ -66,9 +67,10 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	var data = { contract: currentContracts };
 	
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function(s) {
-		
-		if(s.data.statusContract === 'SUCCESS') {
 			sc.data.countCaseProcessed += 1;
+		
+		if(s.data.statusContract === ctx.excelHelper.constants.status.Success) {
+			sc.data.countCaseSuccessProcessed += 1;
 		}
 
 		var writeArray = [
@@ -103,7 +105,8 @@ ActivInfinite.step({ writeStats : function(ev, sc, st) {
 	var obj = {};
 	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
 	obj['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
-	obj['countCaseProcessed'] = sc.data.countCaseProcessed
+	obj['countCaseProcessed'] = sc.data.countCaseProcessed;
+	obj['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
 	ctx.stats.write(obj);
 
 	ctx.trace.writeInfo('End scenario readExcel ' + ctx.config.getCodeScenarioACS());
@@ -118,7 +121,7 @@ function getAllCells(lastIndexRow, configACSExcel){
 			individualContract: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))),
 			insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
 			insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
-			subscribedProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedProduct)),
+			subscribedCodeProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedCodeProduct)),
 			ACSCertificateStartDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate)),
 			ACSCertificateEndDate: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate)),
 			scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),

@@ -35,5 +35,3 @@ ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('o
 ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClose');
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
 ActivInfinite.pProductList.oRowProductText = ActivInfinite.pProductList.addItem('oRowProductText', {"occurs":1});
-ActivInfinite.pProductList.oRowBenefText = ActivInfinite.pProductList.addItem('oRowBenefText', {"occurs":1});
-ActivInfinite.pProductList.oRowPictureAssure = ActivInfinite.pProductList.addItem('oRowPictureAssure', {"occurs":1});
