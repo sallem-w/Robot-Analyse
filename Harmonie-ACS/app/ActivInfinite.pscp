@@ -252,6 +252,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oRowBenef" Ascendant="oTextContract">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
+									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2">
+										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
+									</TAG>
+									<ATT Name="InnerHTML">
+										<VALUE Scan="like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
 				</PAGE>

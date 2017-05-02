@@ -35,3 +35,4 @@ ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('o
 ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClose');
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
 ActivInfinite.pProductList.oRowProductText = ActivInfinite.pProductList.addItem('oRowProductText', {"occurs":1});
+ActivInfinite.pProductList.oRowBenef = ActivInfinite.pProductList.addItem('oRowBenef', {"occurs":1});
