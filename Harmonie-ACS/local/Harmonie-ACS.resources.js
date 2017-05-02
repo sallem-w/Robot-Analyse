@@ -33,3 +33,7 @@ ActivInfinite.pBlockNotes.btProductList = ActivInfinite.pBlockNotes.addItem('btP
 ActivInfinite.pProductList = ActivInfinite.addPage('pProductList', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_33\u0026CONTAINER_NOM_FONCTION=ACPG_500\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
 ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('oTextContract', {"mustExist":true});
 ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClose');
+ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
+ActivInfinite.pProductList.oRowProductText = ActivInfinite.pProductList.addItem('oRowProductText', {"occurs":1});
+ActivInfinite.pProductList.oRowBenefText = ActivInfinite.pProductList.addItem('oRowBenefText', {"occurs":1});
+ActivInfinite.pProductList.oRowPictureAssure = ActivInfinite.pProductList.addItem('oRowPictureAssure', {"occurs":1});
