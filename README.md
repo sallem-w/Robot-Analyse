@@ -57,20 +57,32 @@ Vous pouvez retrouver un exemple de fichier html dans le dossier template qui se
 
 # Déploiement
 
+Pour commencer, on va créer un dossier `deploy` dans `C:` qui va contenir tout ce qu'il faut pour que l'utilisateur lance simplement le projet.
+
+On va mettre le dossier template et le fichier `config.json` dans le dossier `deploy`.
+
 Dans contextor Studio, il faut faire `File -> Export project`, il va générer un dossier `export` qui contient un dossier et un fichier zip. 
-Il suffit de fournir le fichier zip au personne qui s'occupe du déploiement. (Ne pas oublier de fournir le fichier de configuration et les différents template html).
+On va copier/coller le dossier dans notre dossier `deploy`.
 
-# Lancement utilisateur
-
-Aprés avoir bien récupérer le fichier zip et vérifier que Contextor intéractive est bien installé sur la machine, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Windows -> Nouveau -> Raccourci`. On va ensuite modifier dans les propriétés du raccourci `Clic doit -> Propriétés -> Onglet Cible`. 
+Ensuite, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Windows -> Nouveau -> Raccourci` dans le dossiuer `deploy`. On va ensuite modifier dans les propriétés du raccourci `Clic doit -> Propriétés -> Onglet Cible`. 
 
 Pour commencer il faut vider le champ `Démarrer dans :` et remplir le champ `Cible :` par :
 
 ```bash
-"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le fichier zip" -w "%APPDATA%" -p 240
+"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le dossier" -w "%APPDATA%" -p 240
 
 #Exemple
-"C:\Program Files\Contextor\Interactive\CtxtRun.exe" -z "C:\deploy\Harmonie-ACS_1.0.zip" -w "%APPDATA%" -p 240
+"C:\Program Files\Contextor\Interactive\CtxtRun.exe" -z "C:\deploy\Harmonie-ACS_1.0" -w "%APPDATA%" -p 240
 ```
 
 Pour plus d'information sur les paramètres voir la documentation sur `https://contextor.eu/dokuwiki/doku.php?id=training:interactive3:tutorials:ex_deployment`.
+
+Il suffit de zipper le dossier `deploy` et de le fournir aux utilisateurs.
+
+# Lancement utilisateur
+
+- Avoir installer Contextor Interactive sur la machine (Vérifier que l’éxécutable « C:\Program Files\Contextor\Interactive\CtxtRun.exe » existe)
+- Se connecter à  Infinite
+- Extraire le zip dans « C : »
+- Aller dans le fichier config.json pour mettre le chemin vers le dossier qui contient votre fichier Excel
+- Lancer le raccourci Contextor
