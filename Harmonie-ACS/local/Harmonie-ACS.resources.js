@@ -39,3 +39,5 @@ ActivInfinite.pSynthesis = ActivInfinite.addPage('pSynthesis', {"comment":"[fram
 ActivInfinite.pSynthesis.oTypeIdentification = ActivInfinite.pSynthesis.addItem('oTypeIdentification', {"mustExist":true});
 ActivInfinite.pSynthesis.oBenefIdentification = ActivInfinite.pSynthesis.addItem('oBenefIdentification');
 ActivInfinite.pSynthesis.btSearch = ActivInfinite.pSynthesis.addItem('btSearch');
+ActivInfinite.pSynthesis.oIndividualContract = ActivInfinite.pSynthesis.addItem('oIndividualContract', {"occurs":1});
+ActivInfinite.pSynthesis.oDateEnd = ActivInfinite.pSynthesis.addItem('oDateEnd', {"occurs":1});
