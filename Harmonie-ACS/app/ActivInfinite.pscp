@@ -259,7 +259,7 @@
 										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
 									</TAG>
 									<ATT Name="InnerHTML">
-										<VALUE Scan="like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
