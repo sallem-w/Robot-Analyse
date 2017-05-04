@@ -93,17 +93,17 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	
 	ActivInfinite.pDashboard.injectFunction(navigateToSynthesisInjection);
 	ActivInfinite.pDashboard.execScript('navigateToSynthesisInjection()');
-	ActivInfinite.pSynthesis.wait(function() {
+	ActivInfinite.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});
 }});
 
 ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
-	ActivInfinite.pSynthesis.oTypeIdentification.set('PEPE'); // Select "Personne" on list
-	ActivInfinite.pSynthesis.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
-	ActivInfinite.pSynthesis.btSearch.click();
-	ActivInfinite.pSynthesis.wait(function() {
+	ActivInfinite.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinite.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ActivInfinite.pSynthesisSearch.btSearch.click();
+	ActivInfinite.pSynthesisContract.wait(function() {
 		sc.endStep();
 	});
 }});
@@ -111,8 +111,8 @@ ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	var individualContractLists = ActivInfinite.pSynthesis.oIndividualContract.getAll();
-	var dateEndLists = ActivInfinite.pSynthesis.oDateEnd.getAll();
+	var individualContractLists = ActivInfinite.pSynthesisContract.oIndividualContract.getAll();
+	var dateEndLists = ActivInfinite.pSynthesisContract.oDateEnd.getAll();
 	
 	for (var i in individualContractLists) {
 		var individualContract = individualContractLists[i];
@@ -121,7 +121,6 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	for (var i in dateEndLists) {
 		var dateEnd = dateEndLists[i];
 	}
-	
 	
 	sc.endStep();
 }});
