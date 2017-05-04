@@ -252,7 +252,7 @@
 				</PAGE>
 				<PAGE Name="pSynthesis" Comment="[frameInitial0] - Accueil">
 					<CRITERE>
-						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<NAME Scan="Full"><![CDATA[frameInitial1]]></NAME>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
 					<OBJETS>
@@ -309,7 +309,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_Accueil_1646023_1" Comment="[frameInitial0] - Accueil" CtxtId="20" Techno="WEB" Timestamp="04/05/2017 16:46:18" />
+					<CAPTURE Name="PAGE_Accueil_1716322_1" Comment="[frameInitial1] - Accueil" CtxtId="21" Techno="WEB" Timestamp="04/05/2017 17:16:50" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
