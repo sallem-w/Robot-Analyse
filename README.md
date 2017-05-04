@@ -2,7 +2,7 @@
 
 # Installation
 
-Le fichier de configuration doit se trouver dans `C:\contextor-config\config.json`.
+Le fichier de configuration doit se trouver dans `C:\deploy\config.json`.
 
 Exemple de template du fichier de configuration : 
 
