@@ -238,34 +238,17 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowInformation" Ascendant="oRowProductText">
-							<CRITERE>
-								<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2R0" Range="0" />
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oRowProductText">
-							<CRITERE>
-								<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2" Occurs="Y">
-									<ATT Name="Text">
-										<VALUE Scan="start-with"><![CDATA[Produit :]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oRowBenef" Ascendant="oTextContract">
+						<OBJET Name="oRowInformation" Ascendant="oTextContract">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
 									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2">
 										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
 									</TAG>
-									<ATT Name="InnerHTML">
-										<VALUE Scan="Like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
-									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
+					<CAPTURE Name="PAGE_WebAneto_1450334_1" Comment="[frameInitial0] - Web Aneto" CtxtId="18" Techno="WEB" Timestamp="04/05/2017 14:50:44" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
