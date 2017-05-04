@@ -28,7 +28,7 @@ Exemple de template du fichier de configuration :
                 "statusContract": 19,
                 "commentContract": 20
             }
-        }
+        }c
     }
 }
 
@@ -46,7 +46,7 @@ LeCheminPathTemplate\template\LeCodeDuScenario.html
 C:\Users\excel\template\ACS.html
 ```
 
-Il n'y a que quatres champs qui sont pris en compte pour l'instant. Ils doivent être écrit sous cette forme :
+Il n'y a que quatre champs qui sont pris en compte pour l'instant. Ils doivent être écrits sous cette forme :
 
 ```html
 <h1>Temps total de traitement : {{ totalTimeDuration }}></h1>
@@ -81,7 +81,7 @@ Il suffit de zipper le dossier `deploy` et de le fournir aux utilisateurs.
 
 # Lancement utilisateur
 
-- Avoir installer Contextor Interactive sur la machine (Vérifier que l’éxécutable « C:\Program Files\Contextor\Interactive\CtxtRun.exe » existe)
+- Avoir installé Contextor Interactive sur la machine (Vérifier que l’éxécutable « C:\Program Files\Contextor\Interactive\CtxtRun.exe » existe)
 - Se connecter à  Infinite
 - Extraire le zip dans « C : »
 - Aller dans le fichier config.json pour mettre le chemin vers le dossier qui contient votre fichier Excel
