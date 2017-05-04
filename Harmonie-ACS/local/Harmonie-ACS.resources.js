@@ -36,6 +36,6 @@ ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClo
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
 
 ActivInfinite.pSynthesis = ActivInfinite.addPage('pSynthesis', {"comment":"[frameInitial0] - Accueil","path":"http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher\u0026redirection_action=FicheSynthesePersonne\u0026redirection_method=afficherPersonne\u0026NumCtr=00248886\u0026IdfSys=389324\u0026submitSyntheseDate=true"});
-ActivInfinite.pSynthesis.oTypeIdentification = ActivInfinite.pSynthesis.addItem('oTypeIdentification');
+ActivInfinite.pSynthesis.oTypeIdentification = ActivInfinite.pSynthesis.addItem('oTypeIdentification', {"mustExist":true});
 ActivInfinite.pSynthesis.oBenefIdentification = ActivInfinite.pSynthesis.addItem('oBenefIdentification');
 ActivInfinite.pSynthesis.btSearch = ActivInfinite.pSynthesis.addItem('btSearch');

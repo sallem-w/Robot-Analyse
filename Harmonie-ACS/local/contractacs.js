@@ -7,7 +7,9 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
-	sc.step(ActivInfinite.steps.checkProductList);
+	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
+	sc.step(ActivInfinite.steps.checkSynthesis);
+	//sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -21,7 +23,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 
-	function navigate() {
+	function navigateToConsulation() {
 		setTimeout(function() {
 			$('a[menuINFcl="0"]').mouseover();
 			$('a[menuinfcl="41"]').mouseover();
@@ -29,8 +31,8 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 		}, 1500);
 	};
 	
-	ActivInfinite.pDashboard.injectFunction(navigate);
-	ActivInfinite.pDashboard.execScript('navigate()');
+	ActivInfinite.pDashboard.injectFunction(navigateToConsulation);
+	ActivInfinite.pDashboard.execScript('navigateToConsulation()');
 	ActivInfinite.pConsultContratIndiv.wait(function() {
 		sc.endStep();
 	});
@@ -80,10 +82,39 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	}
 	
 	ActivInfinite.pBlockNotes.btProductList.click();
-	ActivInfinite.pProductList.wait(function() {
+	function navigateToSynthesis() {
+		setTimeout(function() {
+			$('a[menuINFcl="0"]').mouseover();
+			$('a[menuINFcl="1"]').mouseover();
+			$('a[menuINFcl="2"]').mouseover();
+			$('a[menuINFcl="3"]').click();
+		}, 1500);
+	};
+	
+	ActivInfinite.pBlockNotes.injectFunction(navigateToSynthesis);
+	ActivInfinite.pBlockNotes.execScript('navigateToSynthesis()');
+	ActivInfinite.pSynthesis.wait(function() {
 		sc.endStep();
 	});
 }});
+
+ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
+	ActivInfinite.pSynthesis.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinite.pSynthesis.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ActivInfinite.pSynthesis.btSearch.click();
+	ActivInfinite.pSynthesis.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
+	
+	
+	sc.endStep();
+}});
+
 
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
@@ -129,3 +160,4 @@ function isEndDateFound(strProduct, endDate) {
 	var endDateIndex = strProduct.indexOf('au');
 	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
 }
+

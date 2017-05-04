@@ -256,7 +256,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTypeIdentification">
+						<OBJET Name="oTypeIdentification" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R0R1R0">
 									<ATT Name="name">
