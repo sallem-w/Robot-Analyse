@@ -1,6 +1,6 @@
 ﻿ctx.config = (function() {
 	
-	var pathFileConfig = 'C:\\contextor-config\\config.json';
+	var pathFileConfig = 'C:\\deploy\\config.json';
 	var config = {};
 	
 	var configFile = {};
