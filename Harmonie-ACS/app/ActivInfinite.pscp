@@ -250,6 +250,42 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1450334_1" Comment="[frameInitial0] - Web Aneto" CtxtId="18" Techno="WEB" Timestamp="04/05/2017 14:50:44" />
 				</PAGE>
+				<PAGE Name="pSynthesis" Comment="[frameInitial0] - Accueil">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTypeIdentification">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBenefIdentification">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R1R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechBd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_Accueil_1646023_1" Comment="[frameInitial0] - Accueil" CtxtId="20" Techno="WEB" Timestamp="04/05/2017 16:46:18" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
