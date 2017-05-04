@@ -252,11 +252,12 @@
 				</PAGE>
 				<PAGE Name="pSynthesis" Comment="[frameInitial0] - Accueil">
 					<CRITERE>
-						<NAME Scan="Full"><![CDATA[frameInitial1]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Accueil]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTypeIdentification" MustExist="Y">
+						<OBJET Name="oTypeIdentification">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R0R1R0">
 									<ATT Name="name">
@@ -274,7 +275,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch">
+						<OBJET Name="btSearch" MustExist="Y">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="20.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R1R0">
 									<ATT Name="name">
@@ -287,11 +288,10 @@
 							<CRITERE>
 								<TAG Name="TR" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
 									<TAG Name="TD" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1" Range="1">
-										<TAG Name="IMG" Scope="Children" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1R1">
+										<TAG Name="IMG" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1R1">
 											<ATT Name="alt">
 												<VALUE Scan="start-with"><![CDATA[Ref. Aneto :]]></VALUE>
 											</ATT>
-											<SET />
 										</TAG>
 									</TAG>
 								</TAG>
@@ -299,17 +299,24 @@
 						</OBJET>
 						<OBJET Name="oDateEnd">
 							<CRITERE>
-								<TAG Name="TR" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
-									<TAG Name="TD" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5" Range="5">
-										<TAG Name="DIV" Scope="Children" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5R0">
-											<SET />
+								<TAG Name="TABLE" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5" Range="5">
+											<TAG Name="DIV" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5R0">
+												<ATT Name="Text">
+													<VALUE Sens="N" Scan="like"><![CDATA[Fin]]></VALUE>
+												</ATT>
+											</TAG>
 										</TAG>
 									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
+									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_Accueil_1716322_1" Comment="[frameInitial1] - Accueil" CtxtId="21" Techno="WEB" Timestamp="04/05/2017 17:16:50" />
+					<CAPTURE Name="PAGE_Accueil_1803548_1" Comment="[frameInitial0] - Accueil" CtxtId="23" Techno="WEB" Timestamp="04/05/2017 18:04:12" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>

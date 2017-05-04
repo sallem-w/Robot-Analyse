@@ -23,7 +23,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 
-	function navigateToConsulation() {
+	function navigateToConsulationInjection() {
 		setTimeout(function() {
 			$('a[menuINFcl="0"]').mouseover();
 			$('a[menuinfcl="41"]').mouseover();
@@ -31,8 +31,8 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 		}, 1500);
 	};
 	
-	ActivInfinite.pDashboard.injectFunction(navigateToConsulation);
-	ActivInfinite.pDashboard.execScript('navigateToConsulation()');
+	ActivInfinite.pDashboard.injectFunction(navigateToConsulationInjection);
+	ActivInfinite.pDashboard.execScript('navigateToConsulationInjection()');
 	ActivInfinite.pConsultContratIndiv.wait(function() {
 		sc.endStep();
 	});
@@ -81,8 +81,8 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.btProductList.click();
-	function navigateToSynthesis() {
+	ActivInfinite.pBlockNotes.oBtClose.click();
+	function navigateToSynthesisInjection() {
 		setTimeout(function() {
 			$('a[menuINFcl="0"]').mouseover();
 			$('a[menuINFcl="1"]').mouseover();
@@ -91,8 +91,8 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		}, 1500);
 	};
 	
-	ActivInfinite.pBlockNotes.injectFunction(navigateToSynthesis);
-	ActivInfinite.pBlockNotes.execScript('navigateToSynthesis()');
+	ActivInfinite.pDashboard.injectFunction(navigateToSynthesisInjection);
+	ActivInfinite.pDashboard.execScript('navigateToSynthesisInjection()');
 	ActivInfinite.pSynthesis.wait(function() {
 		sc.endStep();
 	});
@@ -111,39 +111,49 @@ ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
+	var individualContractLists = ActivInfinite.pSynthesis.oIndividualContract.getAll();
+	var dateEndLists = ActivInfinite.pSynthesis.oDateEnd.getAll();
 	
-	sc.endStep();
-}});
-
-
-ActivInfinite.step({ checkProductList : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
-	
-	var productInfoList = ActivInfinite.pProductList.oRowInformation.getAll();
-	var beneficiariesList = ActivInfinite.pProductList.oRowBenef.getAll();
-	for (var i in productInfoList) {
-		var productInfo = productInfoList[i];
-		var benefInfo = beneficiariesList[i];
-		
-		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' + ctx.string.trim(sc.data.contract.insuredSurName);
-		if (benefInfo.indexOf(benefFullName) === -1) {
-			continue;
-		}
-	
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
-		
-		if (isCodeProductFound(productInfo, sc.data.contract.subscribedCodeProduct)) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
-			
-			if (isEndDateFound(productInfo, sc.data.contract.ACSCertificateEndDate)) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
-			}
-		}
+	for (var i in individualContractLists) {
+		var individualContract = individualContractLists[i];
 	}
 	
-	ActivInfinite.pProductList.oBtClose.click();
+	for (var i in dateEndLists) {
+		var dateEnd = dateEndLists[i];
+	}
+	
+	
 	sc.endStep();
 }});
+
+//ActivInfinite.step({ checkProductList : function(ev, sc, st) {
+//	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+//	
+//	var productInfoList = ActivInfinite.pProductList.oRowInformation.getAll();
+//	var beneficiariesList = ActivInfinite.pProductList.oRowBenef.getAll();
+//	for (var i in productInfoList) {
+//		var productInfo = productInfoList[i];
+//		var benefInfo = beneficiariesList[i];
+//		
+//		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' + ctx.string.trim(sc.data.contract.insuredSurName);
+//		if (benefInfo.indexOf(benefFullName) === -1) {
+//			continue;
+//		}
+//	
+//		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
+//		
+//		if (isCodeProductFound(productInfo, sc.data.contract.subscribedCodeProduct)) {
+//			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
+//			
+//			if (isEndDateFound(productInfo, sc.data.contract.ACSCertificateEndDate)) {
+//				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
+//			}
+//		}
+//	}
+//	
+//	ActivInfinite.pProductList.oBtClose.click();
+//	sc.endStep();
+//}});
 
 ActivInfinite.step({ end : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - end');
