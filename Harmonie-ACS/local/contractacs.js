@@ -7,6 +7,7 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
+	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -45,8 +46,8 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract = 'Contract found \n';
-		sc.data.statusContract = 'SUCCESS';
+		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();
 		ActivInfinite.pBlockNotes.wait(function() {
@@ -58,7 +59,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 		
 		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = 'FAIL';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
 		sc.endScenario();
 	});
@@ -69,16 +70,47 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
 	
 	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
-	if(ctx.string.trim(contentBlockNote) !== '') {
+	if (ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract += contentBlockNote + ' \n';
-		sc.data.statusContract = 'FAIL';
+		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pBlockNotes.oBtClose.click();
 		sc.endScenario();
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.oBtClose.click();
+	ActivInfinite.pBlockNotes.btProductList.click();
+	ActivInfinite.pProductList.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+	
+	var productInfoList = ActivInfinite.pProductList.oRowInformation.getAll();
+	var beneficiariesList = ActivInfinite.pProductList.oRowBenef.getAll();
+	for (var i in productInfoList) {
+		var productInfo = productInfoList[i];
+		var benefInfo = beneficiariesList[i];
+		
+		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' + ctx.string.trim(sc.data.contract.insuredSurName);
+		if (benefInfo.indexOf(benefFullName) === -1) {
+			continue;
+		}
+	
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
+		
+		if (isCodeProductFound(productInfo, sc.data.contract.subscribedCodeProduct)) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
+			
+			if (isEndDateFound(productInfo, sc.data.contract.ACSCertificateEndDate)) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
+			}
+		}
+	}
+	
+	ActivInfinite.pProductList.oBtClose.click();
 	sc.endStep();
 }});
 
@@ -87,3 +119,13 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
+
+
+function isCodeProductFound(strProduct, codeProduct) {
+	return (strProduct.indexOf(codeProduct) !== -1)
+}
+
+function isEndDateFound(strProduct, endDate) {
+	var endDateIndex = strProduct.indexOf('au');
+	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
+}

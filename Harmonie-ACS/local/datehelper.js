@@ -23,7 +23,7 @@
 	};
 	
 	date.diffToSecond = function(startDate, endDate) {
-		var diff = startDate.getTime() - endDate.getTime();
+		var diff = endDate.getTime() - startDate.getTime();
 		return diff / 1000;
 	}
 	

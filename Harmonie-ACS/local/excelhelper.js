@@ -2,6 +2,13 @@
 	
 	var excelHelper = {};
 	
+	excelHelper.constants = {
+		status: {
+			Success: "Traité",
+			Fail: "Non traité"
+		}
+	}
+	
 	/**
 	* Takes a positive integer and returns the corresponding column name.
 	* @param {number} The positive integer to convert to a column name.

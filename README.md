@@ -16,14 +16,25 @@ Exemple template config file :
                 "individualContract": 1,
                 "insuredName": 7,
                 "insuredSurName": 8,
-                "subscribedProduct": 10,
+                "subscribedCodeProduct": 9,
                 "ACSCertificateStartDate": 14,
                 "ACSCertificateEndDate": 15,
                 "scheduleCode": 16,
-                "paymentTypeLabel": 17
+                "paymentTypeLabel": 17,
+                "dateProceedContract": 18,
+                "statusContract": 19,
+                "commentContract": 20
             }
         }
     }
 }
 
+```
+
+# Template statistic - HTML
+
+Define `pathTemplate` in config file, arborescence :
+
+```bash
+YourPath/template/YouScenario.html
 ```

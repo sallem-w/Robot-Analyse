@@ -59,11 +59,6 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 /** main process start handler */
 GLOBAL.events.START.on(function (ev) {
 	
-	ctx.config.loadConfigFile();
-	var configACS = ctx.config.getConfigACS();
-	ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
-	ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
-	
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');
 	systray.loadImage('restart', 'FILE', ctx.options.resourceURL + '/bmp/repeat.png');
@@ -122,8 +117,13 @@ GLOBAL.events.START.on(function (ev) {
 
 	// *** menus displayed in test mode only ***
 	if (ctx.options.isDebug) {
-		systray.addMenu('', 'ReadExcel', 'Read Excel');
-		systray.addMenu('ReadExcel', 'read', 'read', '', function(ev) {
+		systray.addMenu('', 'ACS', 'ACS scenario');
+		systray.addMenu('ACS', 'Complete', 'Complete', '', function(ev) {
+			ctx.config.loadConfigFile();
+			var configACS = ctx.config.getConfigACS();
+			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
+			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
+			
 			ActivInfinite.scenarios.readExcel.start();
 		});
 	}

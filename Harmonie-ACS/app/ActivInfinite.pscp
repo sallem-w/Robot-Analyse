@@ -201,8 +201,71 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="14.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R7R0R1R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[itemTextLink19]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1655010_1" Comment="[frameInitial0] - Web Aneto" CtxtId="14" Techno="WEB" Timestamp="27/04/2017 16:55:07" />
+				</PAGE>
+				<PAGE Name="pProductList" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_33&CONTAINER_NOM_FONCTION=ACPG_500&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTextContract" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2">
+									<ATT Name="Text">
+										<VALUE Scan="start-with"><![CDATA[Contrat : ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="16.R0R1R11R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRowInformation" Ascendant="oRowProductText">
+							<CRITERE>
+								<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2R0" Range="0" />
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRowProductText">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2" Occurs="Y">
+									<ATT Name="Text">
+										<VALUE Scan="start-with"><![CDATA[Produit :]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRowBenef" Ascendant="oTextContract">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
+									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2">
+										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
+									</TAG>
+									<ATT Name="InnerHTML">
+										<VALUE Scan="Like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
