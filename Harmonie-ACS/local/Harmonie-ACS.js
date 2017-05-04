@@ -115,18 +115,15 @@ GLOBAL.events.START.on(function (ev) {
 		GLOBAL.notify(GLOBAL.events.evShowDiagRecorder);
 	});
 
-	// *** menus displayed in test mode only ***
-	if (ctx.options.isDebug) {
-		systray.addMenu('', 'ACS', 'ACS scenario');
-		systray.addMenu('ACS', 'Complete', 'Complete', '', function(ev) {
-			ctx.config.loadConfigFile();
-			var configACS = ctx.config.getConfigACS();
-			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
-			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
-			
-			ActivInfinite.scenarios.readExcel.start();
-		});
-	}
+	systray.addMenu('', 'ACS', 'ACS scenario');
+	systray.addMenu('ACS', 'Complete', 'Complete', '', function(ev) {
+		ctx.config.loadConfigFile();
+		var configACS = ctx.config.getConfigACS();
+		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
+		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
+		
+		ActivInfinite.scenarios.readExcel.start();
+	});
 });
 
 /** Auto-update menu handler */
