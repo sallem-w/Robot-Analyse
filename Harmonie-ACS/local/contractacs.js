@@ -124,7 +124,7 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
 		var individualContract = getIndividualContract(row);
 		
-		var isEndDateEmpty = ((enDate === undefined) || (ctx.string.trim(endDate) === '')) 
+		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
 		
 		if (isEndDateEmpty) {
 			openContractLists.push(individualContract);	
@@ -145,7 +145,7 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
 		sc.endStep();
 
-		}
+	}
 	else if (openContractLists.length === 0 && sc.data.contract.ACSCertificateEndDate === dateEndCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' +sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
 		sc.endStep();
