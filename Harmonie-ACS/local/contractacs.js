@@ -120,19 +120,22 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	for (var index in ActivInfinite.pSynthesisContract.oIndividualContract.getAll()) {
 		var endDate = dateEndLists[index];
 
-		// Get individual contract in alt on img
+		// Get individual contract in alt on img (get only number in alt, represent mostly individual contract)
 		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
-		var individualContract = getIndividualContract(row);
+		var individualContractLists = getListIndividualContract(row);
 		
 		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
-		
+
 		if (isEndDateEmpty) {
-			openContractLists.push(individualContract);	
+			// I add only first element because I never use item in openContractLists, I don't know how many individualContractLists I can have
+			openContractLists.push(individualContractLists[0]);	
 		}
 		
-		if (sc.data.contract.individualContract === individualContract) {
+		var index = individualContractLists.indexOf(String(sc.data.contract.individualContract));
+		
+		if (index !== -1) {
 			isOpenCurrentContract = isEndDateEmpty;
-			dateEndCurrentContract = endDate;
+			dateEndCurrentContract = isEndDateEmpty ? undefined : ctx.date.parseToDate(endDate);
 		}
 	}
 	
@@ -147,7 +150,7 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 		sc.endStep();
 
 	}
-	else if (openContractLists.length === 0 && sc.data.contract.ACSCertificateEndDate === dateEndCurrentContract) {
+	else if (openContractLists.length === 0 && dateEndCurrentContract !== undefined && sc.data.contract.ACSCertificateEndDate === dateEndCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' +sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
 		sc.endStep();
 	
@@ -204,7 +207,13 @@ function isEndDateFound(strProduct, endDate) {
 	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
 }
 
-function getIndividualContract(imageHTML) {
+function getListIndividualContract(imageHTML) {
 	var alt = imageHTML.scriptItem({ alt: null });
-	return alt.match(/\d+/)[0];
+	var pattern = /\d+/g;
+	var numbers = [];
+	var result;
+	while((result = pattern.exec(alt)) !== null) {
+    numbers.push(String(result[0]));
+	}
+	return numbers;
 }

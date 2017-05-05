@@ -37,6 +37,12 @@
 	date.padLeft = function(number) {
 	    return String("00" + number).slice(-2);
 	}
+	
+	date.parseToDate = function(dateString, separator) {
+		separator = separator || '/';
+		var parts = dateString.split(separator);
+		return new Date(parts[2], parts[1]-1, parts[0]); 
+	}
  
 	return date;
 }) ();
