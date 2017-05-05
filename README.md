@@ -28,7 +28,7 @@ Exemple de template du fichier de configuration :
                 "statusContract": 19,
                 "commentContract": 20
             }
-        }c
+        }
     }
 }
 
