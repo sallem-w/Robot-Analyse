@@ -277,7 +277,7 @@
 										<TAG Name="TD" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5" Range="5">
 											<TAG Name="DIV" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5R0">
 												<ATT Name="Text">
-													<VALUE Sens="N" Scan="like"><![CDATA[Fin]]></VALUE>
+													<VALUE Sens="N" Scan="Like"><![CDATA[Fin]]></VALUE>
 												</ATT>
 											</TAG>
 										</TAG>
