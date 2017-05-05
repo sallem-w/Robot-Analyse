@@ -132,6 +132,7 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 		
 		if (sc.data.contract.individualContract === individualContract) {
 			isOpenCurrentContract = isEndDateEmpty;
+			dateEndCurrentContract = endDate;
 		}
 	}
 	
