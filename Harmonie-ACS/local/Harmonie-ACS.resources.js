@@ -36,9 +36,9 @@ ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClo
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
 
 ActivInfinite.pSynthesisContract = ActivInfinite.addPage('pSynthesisContract', {"comment":"[frameInitial0] - Accueil","path":"http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher\u0026redirection_action=FicheSynthesePersonne\u0026redirection_method=afficherPersonne\u0026NumCtr=00248886\u0026IdfSys=389324\u0026submitSyntheseDate=true"});
-ActivInfinite.pSynthesisContract.oIndividualContract = ActivInfinite.pSynthesisContract.addItem('oIndividualContract', {"occurs":1});
 ActivInfinite.pSynthesisContract.oDateEnd = ActivInfinite.pSynthesisContract.addItem('oDateEnd', {"occurs":1});
 ActivInfinite.pSynthesisContract.oContrats = ActivInfinite.pSynthesisContract.addItem('oContrats', {"mustExist":true});
+ActivInfinite.pSynthesisContract.oIndividualContract = ActivInfinite.pSynthesisContract.addItem('oIndividualContract', {"occurs":1});
 
 ActivInfinite.pSynthesisSearch = ActivInfinite.addPage('pSynthesisSearch', {"comment":"[frameInitial0] - Accueil","path":"http://infinite-haur05/WebAneto/AccueilMenu.do?SAPCTOR1\u00261493915114793\u0026method=afficher\u0026redirection_action=ACW1\u0026redirection_method=afficherContrat\u0026tailleFenetre=507"});
 ActivInfinite.pSynthesisSearch.oTypeIdentification = ActivInfinite.pSynthesisSearch.addItem('oTypeIdentification');

@@ -257,19 +257,6 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
 					<OBJETS>
-						<OBJET Name="oIndividualContract">
-							<CRITERE>
-								<TAG Name="TR" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
-									<TAG Name="TD" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1" Range="1">
-										<TAG Name="IMG" Scope="All" CapturedPos="20.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1R1">
-											<ATT Name="alt">
-												<VALUE Scan="start-with"><![CDATA[Ref. Aneto :]]></VALUE>
-											</ATT>
-										</TAG>
-									</TAG>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oDateEnd">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0">
@@ -296,6 +283,25 @@
 									</ATT>
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[Contrats]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oIndividualContract">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1" Range="1">
+											<TAG Name="IMG" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1R1">
+												<ATT Name="alt">
+													<VALUE Scan="start-with"><![CDATA[Ref. Aneto]]></VALUE>
+												</ATT>
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

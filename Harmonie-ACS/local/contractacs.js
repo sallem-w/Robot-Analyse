@@ -111,16 +111,20 @@ ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	var individualContractLists = ActivInfinite.pSynthesisContract.oIndividualContract.getAll();
+	var openContractLists = [];
+	
 	var dateEndLists = ActivInfinite.pSynthesisContract.oDateEnd.getAll();
 	
-	for (var i in individualContractLists) {
-		var individualContract = individualContractLists[i];
+	for (var index in ActivInfinite.pSynthesisContract.oIndividualContract.getAll()) {
+		var endDate = dateEndLists[index];
+
+		// Get individual contract in alt on img
+		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
+		var individualContract = getIndividualContract(row)
+		
+		
 	}
 	
-	for (var i in dateEndLists) {
-		var dateEnd = dateEndLists[i];
-	}
 	
 	sc.endStep();
 }});
@@ -170,3 +174,7 @@ function isEndDateFound(strProduct, endDate) {
 	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
 }
 
+function getIndividualContract(imageHTML) {
+	var alt = imageHTML.scriptItem({ alt: null });
+	return alt.match(/\d+/)[0];
+}
