@@ -112,6 +112,8 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
 	var openContractLists = [];
+	var isOpenCurrentContract = false;
+	var dateEndCurrentContract;
 	
 	var dateEndLists = ActivInfinite.pSynthesisContract.oDateEnd.getAll();
 	
@@ -120,13 +122,40 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 
 		// Get individual contract in alt on img
 		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
-		var individualContract = getIndividualContract(row)
+		var individualContract = getIndividualContract(row);
 		
+		var isEndDateEmpty = ((enDate === undefined) || (ctx.string.trim(endDate) === '')) 
 		
+		if (isEndDateEmpty) {
+			openContractLists.push(individualContract);	
+		}
+		
+		if (sc.data.contract.individualContract === individualContract) {
+			isOpenCurrentContract = isEndDateEmpty;
+		}
 	}
 	
+	if (openContractLists.length > 1) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
+		sc.data.commentContract = 'Plusieurs contrat sont ouvert pour la personne - page synthèse';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();
+		
+	} else if (openContractLists.length === 1 && isOpenCurrentContract) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
+		sc.endStep();
+
+		}
+	else if (openContractLists.length === 0 && sc.data.contract.ACSCertificateEndDate === dateEndCurrentContract) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' +sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
+		sc.endStep();
 	
-	sc.endStep();
+	} else {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
+		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();
+	}
 }});
 
 //ActivInfinite.step({ checkProductList : function(ev, sc, st) {
