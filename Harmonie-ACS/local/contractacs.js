@@ -135,7 +135,7 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	
 	if (countOpenContractLists > 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
-		sc.data.commentContract = 'Plusieurs contrat sont ouvert pour la personne - page synthèse';
+		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endScenario();
 		
@@ -163,7 +163,7 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 }});
 
 
-function isCodeProductFound(strProduct, codeProduct) {
+function isCodeProductFound(strProduct, codeProduct) {c
 	return (strProduct.indexOf(codeProduct) !== -1)
 }
 
