@@ -3,17 +3,17 @@
 	var date = {};
 	
 	date.formatYYYMMDD = function(dateObj) {
-		var month = date.padLeft(dateObj.getUTCMonth() + 1);
-		var day = date.padLeft(dateObj.getUTCDate());
-		var year = dateObj.getUTCFullYear();
+		var month = date.padLeft(dateObj.getMonth() + 1);
+		var day = date.padLeft(dateObj.getDate());
+		var year = dateObj.getFullYear();
 		return "" + year +  month + day
 	};
 	
 	date.formatDDMMYYYY = function(dateObj, separator) {
 		separator = separator || '/';
-		var month = date.padLeft(dateObj.getUTCMonth() + 1);
-		var day = date.padLeft(dateObj.getUTCDate());
-		var year = dateObj.getUTCFullYear();
+		var month = date.padLeft(dateObj.getMonth() + 1);
+		var day = date.padLeft(dateObj.getDate());
+		var year = dateObj.getFullYear();
 		return [day, month, year].join(separator);
 	};
 	
@@ -28,14 +28,14 @@
 	}
 	
 	date.addYear = function(dateObj, number) {
-		var result = new Date(dateObj) || new Date();
+		var result = new Date(dateObj);
 		number = number || 0;
 		result.setFullYear(result.getFullYear() + number);
 		return result;
 	}
 	
 	date.addDay = function(dateObj, number) {
-		var result = new Date(dateObj) || new Date();
+		var result = new Date(dateObj);
 		result.setDate(result.getDate() + number);
     return result;
 	}

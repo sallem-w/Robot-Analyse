@@ -169,8 +169,8 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	var tempEndDate;
 	
 	for (var index in ActivInfinite.pProductList.oRowInformation.getAll()) {
-		var currentRow = ActivInfinite.pProductList.oRowInformation.i(index).get();
-		
+		var currentRow = cleanRowHtml(ActivInfinite.pProductList.oRowInformation.i(index).innerHtml());
+			
 		if (isRowProduct(currentRow)) {
 			
 			var currentEndDate = getEndDate(currentRow);
@@ -184,7 +184,7 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 				sc.endScenario();
 				return;
 			}
-			else if (!isEndDateFound(currentRow, sc.data.contract.ACSCertificateEndDate)) {
+			else if (!isEndDateFound(currentRow, new Date(sc.data.contract.ACSCertificateEndDate))) {	
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
 				sc.data.commentContract = 'Pas de date de fin trouvé ou date différente \n';
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -218,7 +218,7 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 }});
 
 function isRowProduct(strProduct) {
- return (strProduct.indexOf('Produit :') !== 1)
+ return (strProduct.indexOf('Produit :') !== -1)
 }
 
 function isCodeProductFound(strProduct, codeProduct) {
@@ -228,7 +228,7 @@ function isCodeProductFound(strProduct, codeProduct) {
 function isEndDateFound(strProduct, endDate) {
 	var endDateIndex = strProduct.indexOf('au');
 	// Need to add one day, Infinite have one day early
-	return ((endDateIndex !== -1)  && (strProduct.indexOf(ctx.date.addDay(endDate, 1), endDateIndex) !== -1))
+	return ((endDateIndex !== -1)  && (strProduct.indexOf(ctx.date.formatDDMMYYYY(ctx.date.addDay(endDate, 1)), endDateIndex) !== -1))
 }
 
 function isCurrentIndividualContract(imageHTML, individualContract) {
@@ -253,6 +253,10 @@ function getEndDate(strProduct) {
 		return undefined;
 	}
 	
-	var endDate = ctx.date.parseToDate(ctx.string.trim(strProduct.substring(endDateIndex)));
+	var endDate = ctx.date.parseToDate(ctx.string.trim(strProduct.substring(endDateIndex + 2)));
 	return endDate;
+}
+
+function cleanRowHtml(innerHtml) {
+	return ctx.string.trim(innerHtml.split('</B>')[0].replace('<B>', ''));
 }
