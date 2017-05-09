@@ -162,7 +162,6 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 	sc.endStep();
 }});
 
-
 function isCodeProductFound(strProduct, codeProduct) {c
 	return (strProduct.indexOf(codeProduct) !== -1)
 }
