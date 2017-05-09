@@ -4,84 +4,27 @@
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinite.steps.initializePage);
+	sc.step(ActivInfinite.steps.navigateToSynthesis);
+	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
+	sc.step(ActivInfinite.steps.checkSynthesis);
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
-	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
-	sc.step(ActivInfinite.steps.checkSynthesis);
+	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.end);
 }});
 
 ActivInfinite.step({ initializePage: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
 	sc.endStep();
 }});
 
-ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
+ActivInfinite.step({ navigateToSynthesis : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
 
-	function navigateToConsulationInjection() {
-		setTimeout(function() {
-			$('a[menuINFcl="0"]').mouseover();
-			$('a[menuinfcl="41"]').mouseover();
-			$('a[menuinfcl="42"]').click();
-		}, 1500);
-	};
-	
-	ActivInfinite.pDashboard.injectFunction(navigateToConsulationInjection);
-	ActivInfinite.pDashboard.execScript('navigateToConsulationInjection()');
-	ActivInfinite.pConsultContratIndiv.wait(function() {
-		sc.endStep();
-	});
-}});
-
-ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
-	
-	ActivInfinite.pConsultContratIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinite.pConsultContratIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
-	ActivInfinite.pConsultContratIndiv.btSearch.click();
-
-	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
-		
-		sc.data.commentContract = 'Contrat trouvé \n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-		
-		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();
-		ActivInfinite.pBlockNotes.wait(function() {
-			sc.endStep();
-		});
-	});
-	
-	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-		
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
-		sc.endScenario();
-	});
-
-}});
-
-ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
-	
-	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
-	if (ctx.string.trim(contentBlockNote) !== '') {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ActivInfinite.pBlockNotes.oBtClose.click();
-		sc.endScenario();
-		return;
-	}
-	
-	ActivInfinite.pBlockNotes.oBtClose.click();
-	function navigateToSynthesisInjection() {
+function navigateToSynthesisInjection() {
 		setTimeout(function() {
 			$('a[menuINFcl="0"]').mouseover();
 			$('a[menuINFcl="1"]').mouseover();
@@ -153,13 +96,86 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	}
 }});
 
+ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
+
+	function navigateToConsulationInjection() {
+		setTimeout(function() {
+			$('a[menuINFcl="0"]').mouseover();
+			$('a[menuinfcl="41"]').mouseover();
+			$('a[menuinfcl="42"]').click();
+		}, 1500);
+	};
+	
+	ActivInfinite.pDashboard.injectFunction(navigateToConsulationInjection);
+	ActivInfinite.pDashboard.execScript('navigateToConsulationInjection()');
+	ActivInfinite.pConsultContratIndiv.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
+	
+	ActivInfinite.pConsultContratIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinite.pConsultContratIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
+	ActivInfinite.pConsultContratIndiv.btSearch.click();
+
+	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+		
+		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
+		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();
+		ActivInfinite.pBlockNotes.wait(function() {
+			sc.endStep();
+		});
+	});
+	
+	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+		
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
+		sc.endScenario();
+	});
+
+}});
+
+ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
+	
+	var contentBlockNote = ActivInfinite.pBlockNotes.oContentBlockNote.get();
+	if (ctx.string.trim(contentBlockNote) !== '') {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
+		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pBlockNotes.oBtClose.click();
+		sc.endScenario();
+		return;
+	}
+	
+	ActivInfinite.pBlockNotes.btProductList.click();
+	ActivInfinite.pProductList.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+	ActivInfinite.pProductList.oBtClose.click();
+	sc.endStep();
+}});
+
 ActivInfinite.step({ end : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - end');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
 
-function isCodeProductFound(strProduct, codeProduct) {c
+function isCodeProductFound(strProduct, codeProduct) {
 	return (strProduct.indexOf(codeProduct) !== -1)
 }
 
