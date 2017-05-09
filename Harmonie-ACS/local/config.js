@@ -1,6 +1,6 @@
 ﻿ctx.config = (function() {
 	
-	var pathFileConfig = 'C:\\Users\\RICHARD-MAX\\excel\\config.json';
+	var pathFileConfig = 'C:\\deploy\\config.json';
 	var config = {};
 	
 	var configFile = {};
