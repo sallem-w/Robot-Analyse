@@ -111,7 +111,7 @@ ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	var openContractLists = [];
+	var countOpenContractLists = 0;
 	var isOpenCurrentContract = false;
 	var dateEndCurrentContract;
 	
@@ -122,36 +122,31 @@ ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
 
 		// Get individual contract in alt on img (get only number in alt, represent mostly individual contract)
 		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
-		var individualContractLists = getListIndividualContract(row);
-		
 		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
 
 		if (isEndDateEmpty) {
-			// I add only first element because I never use item in openContractLists, I don't know how many individualContractLists I can have
-			openContractLists.push(individualContractLists[0]);	
+			countOpenContractLists += 1;
 		}
 		
-		var index = individualContractLists.indexOf(String(sc.data.contract.individualContract));
-		
-		if (index !== -1) {
+		if (isCurrentIndividualContract(row, sc.data.contract.individualContract)) {
 			isOpenCurrentContract = isEndDateEmpty;
 			dateEndCurrentContract = isEndDateEmpty ? undefined : ctx.date.parseToDate(endDate);
 		}
 	}
 	
-	if (openContractLists.length > 1) {
+	if (countOpenContractLists > 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
 		sc.data.commentContract = 'Plusieurs contrat sont ouvert pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endScenario();
 		
-	} else if (openContractLists.length === 1 && isOpenCurrentContract) {
+	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
 		sc.endStep();
 
 	}
-	else if (openContractLists.length === 0 && dateEndCurrentContract !== undefined && sc.data.contract.ACSCertificateEndDate === dateEndCurrentContract) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' +sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
+	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
 		sc.endStep();
 	
 	} else {
@@ -207,13 +202,14 @@ function isEndDateFound(strProduct, endDate) {
 	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
 }
 
-function getListIndividualContract(imageHTML) {
+function isCurrentIndividualContract(imageHTML, individualContract) {
 	var alt = imageHTML.scriptItem({ alt: null });
 	var pattern = /\d+/g;
-	var numbers = [];
-	var result;
-	while((result = pattern.exec(alt)) !== null) {
-    numbers.push(String(result[0]));
+	var result = alt.match(pattern);
+	for (var index = 0; index < result.length; index++) {
+		if (result[index] === individualContract) {
+			return true;
+		}
 	}
-	return numbers;
+	return false;
 }

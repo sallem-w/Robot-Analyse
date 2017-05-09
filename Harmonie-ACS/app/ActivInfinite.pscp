@@ -241,9 +241,7 @@
 						<OBJET Name="oRowInformation" Ascendant="oTextContract">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
-									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2">
-										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
-									</TAG>
+									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2" />
 								</TAG>
 							</CRITERE>
 						</OBJET>
