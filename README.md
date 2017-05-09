@@ -17,6 +17,7 @@ Exemple de template du fichier de configuration :
             "startRowIndex": 1,
             "columnIndex": {
                 "individualContract": 1,
+                "insuredIdentifiant": 6,
                 "insuredName": 7,
                 "insuredSurName": 8,
                 "subscribedCodeProduct": 9,
