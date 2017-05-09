@@ -28,15 +28,15 @@
 	}
 	
 	date.addYear = function(dateObj, number) {
-		var result = dateObj || new Date();
+		var result = new Date(dateObj) || new Date();
 		number = number || 0;
 		result.setFullYear(result.getFullYear() + number);
 		return result;
 	}
 	
 	date.addDay = function(dateObj, number) {
-		var result = dateObj || new Date();
-		result.setDate(result.getDate() + days);
+		var result = new Date(dateObj) || new Date();
+		result.setDate(result.getDate() + number);
     return result;
 	}
 
