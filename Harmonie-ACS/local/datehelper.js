@@ -28,10 +28,16 @@
 	}
 	
 	date.addYear = function(dateObj, number) {
-		dateObj = dateObj || new Date();
+		var result = dateObj || new Date();
 		number = number || 0;
-		dateObj.setFullYear(dateObj.getFullYear() + number);
-		return dateObj;
+		result.setFullYear(result.getFullYear() + number);
+		return result;
+	}
+	
+	date.addDay = function(dateObj, number) {
+		var result = dateObj || new Date();
+		result.setDate(result.getDate() + days);
+    return result;
 	}
 
 	date.padLeft = function(number) {

@@ -165,6 +165,48 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+
+	var tempEndDate;
+	
+	for (var index in ActivInfinite.pProductList.oRowInformation.getAll()) {
+		var currentRow = ActivInfinite.pProductList.oRowInformation.i(index).get();
+		
+		if (isRowProduct(currentRow)) {
+			
+			var currentEndDate = getEndDate(currentRow);
+			tempEndDate = tempEndDate || currentEndDate
+			
+			if (!isCodeProductFound(currentRow, sc.data.contract.subscribedCodeProduct)) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple code product found');
+				sc.data.commentContract = 'Plusieurs codes produits trouvés \n';
+				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+				ActivInfinite.pProductList.oBtClose.click();
+				sc.endScenario();
+				return;
+			}
+			else if (!isEndDateFound(currentRow, sc.data.contract.ACSCertificateEndDate)) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
+				sc.data.commentContract = 'Pas de date de fin trouvé ou date différente \n';
+				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+				ActivInfinite.pProductList.oBtClose.click();
+				sc.endScenario();
+				return;
+			}
+			else if (currentEndDate !== undefined && tempEnDate !== currentEndDate) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
+				sc.data.commentContract = 'Ils n\'ont pas tous la même date de fin \n';
+				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+				ActivInfinite.pProductList.oBtClose.click();
+				sc.endScenario();
+				return;
+			}
+		}
+	}
+	
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - Simple case');
+	sc.data.commentContract += 'Cas simple \n';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
 	ActivInfinite.pProductList.oBtClose.click();
 	sc.endStep();
 }});
@@ -175,13 +217,18 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 	sc.endStep();
 }});
 
+function isRowProduct(strProduct) {
+ return (currentRow.indexOf('Produit :') !== 1)
+}
+
 function isCodeProductFound(strProduct, codeProduct) {
 	return (strProduct.indexOf(codeProduct) !== -1)
 }
 
 function isEndDateFound(strProduct, endDate) {
 	var endDateIndex = strProduct.indexOf('au');
-	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
+	// Need to add one day, Infinite have one day early
+	return ((endDateIndex !== -1)  && (strProduct.indexOf(ctx.date.addDay(endDate, 1), endDateIndex) !== -1))
 }
 
 function isCurrentIndividualContract(imageHTML, individualContract) {
@@ -194,4 +241,18 @@ function isCurrentIndividualContract(imageHTML, individualContract) {
 		}
 	}
 	return false;
+}
+
+function getCodeProduct(strProduct) {
+	return ctx.string.trim(strProduct.spli('-')[1]);
+}
+
+function getEndDate(strProduct) {
+	var endDateIndex = strProduct.indexOf('au');
+	if (endDateIndex === -1) {
+		return undefined;
+	}
+	
+	var endDate = ctx.date.parseToDate(ctx.string.trim(strProduct.substring(endDateIndex)));
+	return endDate;
 }
