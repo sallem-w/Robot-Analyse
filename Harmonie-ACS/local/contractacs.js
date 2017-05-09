@@ -7,7 +7,8 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
-	sc.step(ActivInfinite.steps.checkProductList);
+	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
+	sc.step(ActivInfinite.steps.checkSynthesis);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -21,7 +22,7 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 
-	function navigate() {
+	function navigateToConsulationInjection() {
 		setTimeout(function() {
 			$('a[menuINFcl="0"]').mouseover();
 			$('a[menuinfcl="41"]').mouseover();
@@ -29,8 +30,8 @@ ActivInfinite.step({ navigateToConsultation : function(ev, sc, st) {
 		}, 1500);
 	};
 	
-	ActivInfinite.pDashboard.injectFunction(navigate);
-	ActivInfinite.pDashboard.execScript('navigate()');
+	ActivInfinite.pDashboard.injectFunction(navigateToConsulationInjection);
+	ActivInfinite.pDashboard.execScript('navigateToConsulationInjection()');
 	ActivInfinite.pConsultContratIndiv.wait(function() {
 		sc.endStep();
 	});
@@ -79,39 +80,77 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.btProductList.click();
-	ActivInfinite.pProductList.wait(function() {
+	ActivInfinite.pBlockNotes.oBtClose.click();
+	function navigateToSynthesisInjection() {
+		setTimeout(function() {
+			$('a[menuINFcl="0"]').mouseover();
+			$('a[menuINFcl="1"]').mouseover();
+			$('a[menuINFcl="2"]').mouseover();
+			$('a[menuINFcl="3"]').click();
+		}, 1500);
+	};
+	
+	ActivInfinite.pDashboard.injectFunction(navigateToSynthesisInjection);
+	ActivInfinite.pDashboard.execScript('navigateToSynthesisInjection()');
+	ActivInfinite.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});
 }});
 
-ActivInfinite.step({ checkProductList : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+ActivInfinite.step({ searchBenefInSynthesis : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
+	ActivInfinite.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinite.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ActivInfinite.pSynthesisSearch.btSearch.click();
+	ActivInfinite.pSynthesisContract.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkSynthesis : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	var productInfoList = ActivInfinite.pProductList.oRowInformation.getAll();
-	var beneficiariesList = ActivInfinite.pProductList.oRowBenef.getAll();
-	for (var i in productInfoList) {
-		var productInfo = productInfoList[i];
-		var benefInfo = beneficiariesList[i];
-		
-		var benefFullName = ctx.string.trim(sc.data.contract.insuredName) + ' ' + ctx.string.trim(sc.data.contract.insuredSurName);
-		if (benefInfo.indexOf(benefFullName) === -1) {
-			continue;
+	var countOpenContractLists = 0;
+	var isOpenCurrentContract = false;
+	var dateEndCurrentContract;
+	
+	var dateEndLists = ActivInfinite.pSynthesisContract.oDateEnd.getAll();
+	
+	for (var index in ActivInfinite.pSynthesisContract.oIndividualContract.getAll()) {
+		var endDate = dateEndLists[index];
+
+		// Get individual contract in alt on img (get only number in alt, represent mostly individual contract)
+		var row = ActivInfinite.pSynthesisContract.oIndividualContract.i(index);
+		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
+
+		if (isEndDateEmpty) {
+			countOpenContractLists += 1;
 		}
-	
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - benef found');
 		
-		if (isCodeProductFound(productInfo, sc.data.contract.subscribedCodeProduct)) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - code product found');
-			
-			if (isEndDateFound(productInfo, sc.data.contract.ACSCertificateEndDate)) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList - end date certificate ACS found');
-			}
+		if (isCurrentIndividualContract(row, sc.data.contract.individualContract)) {
+			isOpenCurrentContract = isEndDateEmpty;
+			dateEndCurrentContract = isEndDateEmpty ? undefined : ctx.date.parseToDate(endDate);
 		}
 	}
 	
-	ActivInfinite.pProductList.oBtClose.click();
-	sc.endStep();
+	if (countOpenContractLists > 1) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
+		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();
+	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
+		sc.endStep();
+	}
+	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
+		sc.endStep();
+	} else {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
+		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();
+	}
 }});
 
 ActivInfinite.step({ end : function(ev, sc, st) {
@@ -120,12 +159,23 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 	sc.endStep();
 }});
 
-
-function isCodeProductFound(strProduct, codeProduct) {
+function isCodeProductFound(strProduct, codeProduct) {c
 	return (strProduct.indexOf(codeProduct) !== -1)
 }
 
 function isEndDateFound(strProduct, endDate) {
 	var endDateIndex = strProduct.indexOf('au');
 	return ((endDateIndex !== -1)  && (strProduct.indexOf(endDate, endDateIndex) !== -1))
+}
+
+function isCurrentIndividualContract(imageHTML, individualContract) {
+	var alt = imageHTML.scriptItem({ alt: null });
+	var pattern = /\d+/g;
+	var result = alt.match(pattern);
+	for (var index = 0; index < result.length; index++) {
+		if (result[index] === individualContract) {
+			return true;
+		}
+	}
+	return false;
 }

@@ -2,7 +2,7 @@
 
 # Installation
 
-Le fichier de configuration doit se trouver dans `C:\contextor-config\config.json`.
+Le fichier de configuration doit se trouver dans `C:\deploy\config.json`.
 
 Exemple de template du fichier de configuration : 
 
@@ -17,6 +17,7 @@ Exemple de template du fichier de configuration :
             "startRowIndex": 1,
             "columnIndex": {
                 "individualContract": 1,
+                "insuredIdentifiant": 6,
                 "insuredName": 7,
                 "insuredSurName": 8,
                 "subscribedCodeProduct": 9,

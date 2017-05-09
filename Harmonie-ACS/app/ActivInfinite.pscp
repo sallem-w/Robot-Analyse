@@ -238,34 +238,111 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowInformation" Ascendant="oRowProductText">
+						<OBJET Name="oRowInformation" Ascendant="oTextContract">
 							<CRITERE>
-								<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2R0" Range="0" />
+								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
+									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2" />
+								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowProductText">
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1450334_1" Comment="[frameInitial0] - Web Aneto" CtxtId="18" Techno="WEB" Timestamp="04/05/2017 14:50:44" />
+				</PAGE>
+				<PAGE Name="pSynthesisContract" Comment="[frameInitial0] - Accueil">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Accueil]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher&redirection_action=FicheSynthesePersonne&redirection_method=afficherPersonne&NumCtr=00248886&IdfSys=389324&submitSyntheseDate=true]]></PATH>
+					<OBJETS>
+						<OBJET Name="oDateEnd">
 							<CRITERE>
-								<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R1R0R0R0R2" Occurs="Y">
-									<ATT Name="Text">
-										<VALUE Scan="start-with"><![CDATA[Produit :]]></VALUE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5" Range="5">
+											<TAG Name="DIV" Scope="All" CapturedPos="21.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R5R0">
+												<ATT Name="Text">
+													<VALUE Sens="N" Scan="Like"><![CDATA[Fin]]></VALUE>
+												</ATT>
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowBenef" Ascendant="oTextContract">
+						<OBJET Name="oContrats" MustExist="Y">
 							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0" Occurs="Y">
-									<TAG Name="TD" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2" Range="2">
-										<TAG Name="B" Scope="All" CapturedPos="16.R0R1R11R1R5R8R0R0R0R0R0R0R0R0R0R0R2R1R0R0R0R2R0" Range="0" />
+								<TAG Name="TD" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeJ]]></VALUE>
+									</ATT>
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Contrats]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oIndividualContract">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1" Range="1">
+											<TAG Name="IMG" Scope="All" CapturedPos="23.R0R1R0R1R5R3R0R0R1R0R1R4R0R0R4R0R0R0R1R0R0R2R4R0R0R0R0R0R0R2R1R1">
+												<ATT Name="alt">
+													<VALUE Scan="start-with"><![CDATA[Ref. Aneto]]></VALUE>
+												</ATT>
+												<SET />
+											</TAG>
+										</TAG>
 									</TAG>
-									<ATT Name="InnerHTML">
-										<VALUE Scan="Like"><![CDATA[src="/Commun/multimedia/images/admin/assure.gif"]]></VALUE>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1101294_1" Comment="[frameInitial0] - Web Aneto" CtxtId="16" Techno="WEB" Timestamp="02/05/2017 11:01:37" />
+					<CAPTURE Name="PAGE_Accueil_1803548_1" Comment="[frameInitial0] - Accueil" CtxtId="23" Techno="WEB" Timestamp="04/05/2017 18:04:12" />
+				</PAGE>
+				<PAGE Name="pSynthesisSearch" Comment="[frameInitial0] - Accueil">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Accueil]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/AccueilMenu.do?SAPCTOR1&1493915114793&method=afficher&redirection_action=ACW1&redirection_method=afficherContrat&tailleFenetre=507]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTypeIdentification">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="24.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBenefIdentification">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="24.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R0R0R0R1R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch" MustExist="Y">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="24.R0R1R0R0R0R0R1R0R1R0R1R2R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechBd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_Accueil_1825398_1" Comment="[frameInitial0] - Accueil" CtxtId="24" Techno="WEB" Timestamp="04/05/2017 18:25:42" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
