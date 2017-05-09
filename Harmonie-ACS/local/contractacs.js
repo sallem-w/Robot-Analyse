@@ -174,7 +174,7 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 		if (isRowProduct(currentRow)) {
 			
 			var currentEndDate = getEndDate(currentRow);
-			tempEndDate = tempEndDate || currentEndDate
+			tempEndDate = tempEndDate || currentEndDate;
 			
 			if (!isCodeProductFound(currentRow, sc.data.contract.subscribedCodeProduct)) {
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple code product found');
@@ -192,7 +192,7 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 				sc.endScenario();
 				return;
 			}
-			else if (currentEndDate !== undefined && tempEndDate !== currentEndDate) {
+			else if (currentEndDate !== undefined && !ctx.date.isEqual(tempEndDate, currentEndDate)) {
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
 				sc.data.commentContract = 'Ils n\'ont pas tous la même date de fin \n';
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -218,7 +218,7 @@ ActivInfinite.step({ end : function(ev, sc, st) {
 }});
 
 function isRowProduct(strProduct) {
- return (strProduct.indexOf('Produit :') !== -1)
+	return (strProduct.indexOf('Produit :') !== -1)
 }
 
 function isCodeProductFound(strProduct, codeProduct) {
