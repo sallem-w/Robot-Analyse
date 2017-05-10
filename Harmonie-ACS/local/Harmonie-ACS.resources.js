@@ -63,3 +63,6 @@ ActivInfinite.pHistoOperationSearch.oFlux = ActivInfinite.pHistoOperationSearch.
 ActivInfinite.pHistoOperationSearch.oRefuse = ActivInfinite.pHistoOperationSearch.addItem('oRefuse');
 ActivInfinite.pHistoOperationSearch.oEdition = ActivInfinite.pHistoOperationSearch.addItem('oEdition');
 ActivInfinite.pHistoOperationSearch.oWithoutEffet = ActivInfinite.pHistoOperationSearch.addItem('oWithoutEffet');
+ActivInfinite.pHistoOperationSearch.oOperationLabel = ActivInfinite.pHistoOperationSearch.addItem('oOperationLabel', {"occurs":1});
+ActivInfinite.pHistoOperationSearch.oEffetDate = ActivInfinite.pHistoOperationSearch.addItem('oEffetDate', {"occurs":1});
+ActivInfinite.pHistoOperationSearch.oContexte = ActivInfinite.pHistoOperationSearch.addItem('oContexte', {"occurs":1});

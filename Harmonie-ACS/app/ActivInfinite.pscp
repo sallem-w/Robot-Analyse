@@ -511,6 +511,42 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oOperationLabel">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="26.R0R1R11R1R5R6R0">
+									<TAG Name="TR" Scope="All" CapturedPos="26.R0R1R11R1R5R6R0R1R1" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="26.R0R1R11R1R5R6R0R1R1R3" Range="2" />
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEffetDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="All" Range="5" />
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oContexte">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="All" Range="9" />
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1732542_1" Comment="[frameInitial0] - Web Aneto" CtxtId="26" Techno="WEB" Timestamp="10/05/2017 17:33:16" />
 				</PAGE>
