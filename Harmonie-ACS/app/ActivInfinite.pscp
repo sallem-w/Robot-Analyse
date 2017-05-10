@@ -385,7 +385,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBalance">
+						<OBJET Name="oBalanceEch">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2" Occurs="Y">

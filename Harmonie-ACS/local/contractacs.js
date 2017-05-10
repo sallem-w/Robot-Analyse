@@ -11,6 +11,7 @@
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.checkProductList);
+	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -207,7 +208,22 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	sc.data.commentContract += 'Cas simple \n';
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-	ActivInfinite.pProductList.oBtClose.click();
+	ActivInfinite.pProductList.btVisuContribution.click();
+	ActivInfinite.pContribution.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkContribution : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
+	
+	for (var index in ActivInfinite.pContribution.oDateEch.getAll()) {
+		var dateEch = ActivInfinite.pContribution.oDateEch.i[index];
+		
+		
+	}
+	
+	ActivInfinite.pContribution.oBtClose.click();
 	sc.endStep();
 }});
 
