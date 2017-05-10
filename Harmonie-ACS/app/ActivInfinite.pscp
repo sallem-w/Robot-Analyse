@@ -344,6 +344,25 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_Accueil_1825398_1" Comment="[frameInitial0] - Accueil" CtxtId="24" Techno="WEB" Timestamp="04/05/2017 18:25:42" />
 				</PAGE>
+				<PAGE Name="pContribution" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_92&CONTAINER_NOM_FONCTION=AC36_900&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oIdTableEch" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1436241_1" Comment="[frameInitial0] - Web Aneto" CtxtId="25" Techno="WEB" Timestamp="10/05/2017 14:36:33" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
