@@ -420,6 +420,100 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1436241_1" Comment="[frameInitial0] - Web Aneto" CtxtId="25" Techno="WEB" Timestamp="10/05/2017 14:36:33" />
 				</PAGE>
+				<PAGE Name="pHistoOperationSearch" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208&CONTAINER_NOM_FONCTION=ACHO_200&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="26.R0R1R11R1R5R2R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Critères de sélection]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="26.R0R1R11R1R5R4R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Rechercher]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPending">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R1R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[enInstance]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCanceled">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R1R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[annule]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCalcul">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R3R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[calcul]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oFlux">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R3R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[flux]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRefuse">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R1R3R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[refuse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEdition">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R3R3R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[edition]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oWithoutEffet">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="26.R0R1R11R1R5R3R0R3R4R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sansEffet]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1732542_1" Comment="[frameInitial0] - Web Aneto" CtxtId="26" Techno="WEB" Timestamp="10/05/2017 17:33:16" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>

@@ -52,3 +52,14 @@ ActivInfinite.pContribution.oDateEch = ActivInfinite.pContribution.addItem('oDat
 ActivInfinite.pContribution.oBalanceEch = ActivInfinite.pContribution.addItem('oBalanceEch', {"occurs":1});
 ActivInfinite.pContribution.oBtClose = ActivInfinite.pContribution.addItem('oBtClose');
 ActivInfinite.pContribution.btHistoOperation = ActivInfinite.pContribution.addItem('btHistoOperation');
+
+ActivInfinite.pHistoOperationSearch = ActivInfinite.addPage('pHistoOperationSearch', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
+ActivInfinite.pHistoOperationSearch.oTitlePage = ActivInfinite.pHistoOperationSearch.addItem('oTitlePage', {"mustExist":true});
+ActivInfinite.pHistoOperationSearch.btSearch = ActivInfinite.pHistoOperationSearch.addItem('btSearch');
+ActivInfinite.pHistoOperationSearch.oPending = ActivInfinite.pHistoOperationSearch.addItem('oPending');
+ActivInfinite.pHistoOperationSearch.oCanceled = ActivInfinite.pHistoOperationSearch.addItem('oCanceled');
+ActivInfinite.pHistoOperationSearch.oCalcul = ActivInfinite.pHistoOperationSearch.addItem('oCalcul');
+ActivInfinite.pHistoOperationSearch.oFlux = ActivInfinite.pHistoOperationSearch.addItem('oFlux');
+ActivInfinite.pHistoOperationSearch.oRefuse = ActivInfinite.pHistoOperationSearch.addItem('oRefuse');
+ActivInfinite.pHistoOperationSearch.oEdition = ActivInfinite.pHistoOperationSearch.addItem('oEdition');
+ActivInfinite.pHistoOperationSearch.oWithoutEffet = ActivInfinite.pHistoOperationSearch.addItem('oWithoutEffet');
