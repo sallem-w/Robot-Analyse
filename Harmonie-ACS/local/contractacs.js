@@ -217,9 +217,15 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
 	
+	var compareDate = ctx.date.addMonth(Date.now(), +1);
+	
 	for (var index in ActivInfinite.pContribution.oDateEch.getAll()) {
 		var dateEch = ActivInfinite.pContribution.oDateEch.i[index];
+		var balanceEch = ActivInfinite.pContribution.oBalanceEch.i[index];
 		
+		if (dateEch <= compareDate && parseInt(balanceEch, 10) < 1) {
+			
+		}
 		
 	}
 	
