@@ -373,11 +373,10 @@
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2" Occurs="Y">
-										<TAG Name="TD" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2R0" Range="0">
-											<ATT Name="Text">
-												<VALUE Sens="N" Scan="like"><![CDATA[Echéance]]></VALUE>
-											</ATT>
-										</TAG>
+										<TAG Name="TD" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2R0" Range="0" />
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[DonneeB2]]></VALUE>
+										</ATT>
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
@@ -389,11 +388,10 @@
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2" Occurs="Y">
-										<TAG Name="TD" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2R6" Range="6">
-											<ATT Name="Text">
-												<VALUE Sens="N" Scan="like"><![CDATA[Solde]]></VALUE>
-											</ATT>
-										</TAG>
+										<TAG Name="TD" Scope="All" CapturedPos="25.R0R1R9R1R6R12R0R4R0R0R0R2R6" Range="6" />
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[DonneeB2]]></VALUE>
+										</ATT>
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
