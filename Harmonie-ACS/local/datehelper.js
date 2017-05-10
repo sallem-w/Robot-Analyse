@@ -61,6 +61,10 @@
 	date.isEqual = function(dateStart, dateEnd) {
 		return (dateStart.getTime() === dateEnd.getTime());
 	}
- 
+	
+	date.now = function() {
+		return new Date().getTime();
+	}
+	
 	return date;
 }) ();
