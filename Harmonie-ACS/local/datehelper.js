@@ -37,7 +37,7 @@
 	date.addDay = function(dateObj, number) {
 		var result = new Date(dateObj);
 		result.setDate(result.getDate() + number);
-    return result;
+		return result;
 	}
 
 	date.padLeft = function(number) {
