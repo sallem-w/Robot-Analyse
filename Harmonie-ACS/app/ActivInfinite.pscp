@@ -408,6 +408,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btHistoOperation">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="25.R0R1R9R0R0R4R0R0R0R0R0R0R0R0R4R0R1R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[itemTextLink4]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1436241_1" Comment="[frameInitial0] - Web Aneto" CtxtId="25" Techno="WEB" Timestamp="10/05/2017 14:36:33" />
 				</PAGE>

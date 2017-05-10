@@ -51,3 +51,4 @@ ActivInfinite.pContribution.oIdTableEch = ActivInfinite.pContribution.addItem('o
 ActivInfinite.pContribution.oDateEch = ActivInfinite.pContribution.addItem('oDateEch', {"occurs":1});
 ActivInfinite.pContribution.oBalanceEch = ActivInfinite.pContribution.addItem('oBalanceEch', {"occurs":1});
 ActivInfinite.pContribution.oBtClose = ActivInfinite.pContribution.addItem('oBtClose');
+ActivInfinite.pContribution.btHistoOperation = ActivInfinite.pContribution.addItem('btHistoOperation');
