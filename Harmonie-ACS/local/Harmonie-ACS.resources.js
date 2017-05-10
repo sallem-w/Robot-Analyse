@@ -47,3 +47,5 @@ ActivInfinite.pSynthesisSearch.btSearch = ActivInfinite.pSynthesisSearch.addItem
 
 ActivInfinite.pContribution = ActivInfinite.addPage('pContribution', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_92\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
 ActivInfinite.pContribution.oIdTableEch = ActivInfinite.pContribution.addItem('oIdTableEch', {"mustExist":true});
+ActivInfinite.pContribution.oDateEch = ActivInfinite.pContribution.addItem('oDateEch', {"occurs":1});
+ActivInfinite.pContribution.oBalance = ActivInfinite.pContribution.addItem('oBalance', {"occurs":1});
