@@ -520,6 +520,9 @@
 											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
 										</ATT>
 									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableOperations]]></VALUE>
+									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
@@ -544,6 +547,15 @@
 											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
 										</ATT>
 									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="26.R0R1R11R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>

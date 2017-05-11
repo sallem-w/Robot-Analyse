@@ -12,6 +12,8 @@
 	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.checkContribution);
+	sc.step(ActivInfinite.steps.searchHistory);
+	sc.step(ActivInfinite.steps.checkHistory);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -239,7 +241,40 @@ ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pContribution.oBtClose.click();
+	ActivInfinite.pContribution.btHistoOperation.click();
+	ActivInfinite.pHistoOperationSearch.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ searchHistory : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchHistory');
+	
+	ActivInfinite.pHistoOperationSearch.oPending.click();
+	ActivInfinite.pHistoOperationSearch.oCanceled.click();
+	ActivInfinite.pHistoOperationSearch.oRefuse.click();
+	ActivInfinite.pHistoOperationSearch.oCalcul.click();
+	ActivInfinite.pHistoOperationSearch.oFlux.click();
+	ActivInfinite.pHistoOperationSearch.oEdition.click();
+	ActivInfinite.pHistoOperationSearch.oWithoutEffet.click();
+	
+	ActivInfinite.pHistoOperationSearch.btSearch.click();
+	ActivInfinite.pHistoOperationSearch.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkHistory : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkHistory');
+	
+	for (var index in ActivInfinite.pHistoOperationSearch.oOperationLabel.getAll()) {
+		var operationLabel = ActivInfinite.pHistoOperationSearch.oOperationLabel.i(index).get();
+		var effectDate = ActivInfinite.pHistoOperationSearch.oEffetDate.i(index).get();
+		var contexte = ActivInfinite.pHistoOperationSearch.oContexte.i(index).get();
+		
+	}
+	
+	ActivInfinite.pHistoOperationSearch.oBtClose.click();
 	sc.endStep();
 }});
 
