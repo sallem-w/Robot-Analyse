@@ -201,17 +201,17 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btProductList">
+						<OBJET Name="btHelpCSCertificate">
 							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="14.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R7R0R1R0R2R0">
+								<TAG Name="A" Scope="All" CapturedPos="27.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R9R0R1R0R3R0">
 									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[itemTextLink19]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[itemTextLink14]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1655010_1" Comment="[frameInitial0] - Web Aneto" CtxtId="14" Techno="WEB" Timestamp="27/04/2017 16:55:07" />
+					<CAPTURE Name="PAGE_WebAneto_1644163_1" Comment="[frameInitial0] - Web Aneto" CtxtId="27" Techno="WEB" Timestamp="11/05/2017 16:44:25" />
 				</PAGE>
 				<PAGE Name="pProductList" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>
@@ -579,6 +579,79 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1732542_1" Comment="[frameInitial0] - Web Aneto" CtxtId="26" Techno="WEB" Timestamp="10/05/2017 17:33:16" />
+				</PAGE>
+				<PAGE Name="pCertificateHelpCS" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_776&CONTAINER_NOM_FONCTION=ACAC_403&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE]]></PATH>
+					<OBJETS>
+						<OBJET Name="oCertificateTitle" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="28.R0R1R11R1R6R0R19R0R0R0R0R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Attestations]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oType">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="28.R0R1R11R1R6R0R19R0R1R0R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="28.R0R1R11R1R6R0R19R0R1R0R0R0R1R2" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="28.R0R1R11R1R6R0R19R0R1R0R0R0R1R2R3" Range="3">
+											<SET />
+										</TAG>
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oStartDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="4">
+											<SET />
+										</TAG>
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEndDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="5">
+											<SET />
+										</TAG>
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[LIDonneeB1]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1647026_1" Comment="[frameInitial0] - Web Aneto" CtxtId="28" Techno="WEB" Timestamp="11/05/2017 16:47:10" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
