@@ -29,6 +29,7 @@ ActivInfinite.pBlockNotes.oBlockNotes = ActivInfinite.pBlockNotes.addItem('oBloc
 ActivInfinite.pBlockNotes.oContentBlockNote = ActivInfinite.pBlockNotes.addItem('oContentBlockNote');
 ActivInfinite.pBlockNotes.oBtClose = ActivInfinite.pBlockNotes.addItem('oBtClose');
 ActivInfinite.pBlockNotes.btHelpCSCertificate = ActivInfinite.pBlockNotes.addItem('btHelpCSCertificate');
+ActivInfinite.pBlockNotes.oNodeInsuredIdent = ActivInfinite.pBlockNotes.addItem('oNodeInsuredIdent');
 
 ActivInfinite.pProductList = ActivInfinite.addPage('pProductList', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_33\u0026CONTAINER_NOM_FONCTION=ACPG_500\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
 ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('oTextContract', {"mustExist":true});
@@ -73,3 +74,5 @@ ActivInfinite.pCertificateHelpCS.oCertificateTitle = ActivInfinite.pCertificateH
 ActivInfinite.pCertificateHelpCS.oType = ActivInfinite.pCertificateHelpCS.addItem('oType', {"occurs":1});
 ActivInfinite.pCertificateHelpCS.oStartDate = ActivInfinite.pCertificateHelpCS.addItem('oStartDate', {"occurs":1});
 ActivInfinite.pCertificateHelpCS.oEndDate = ActivInfinite.pCertificateHelpCS.addItem('oEndDate', {"occurs":1});
+ActivInfinite.pCertificateHelpCS.oBtClose = ActivInfinite.pCertificateHelpCS.addItem('oBtClose');
+ActivInfinite.pCertificateHelpCS.btProductList = ActivInfinite.pCertificateHelpCS.addItem('btProductList');

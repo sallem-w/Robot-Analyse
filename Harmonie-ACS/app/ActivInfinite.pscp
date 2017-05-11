@@ -210,6 +210,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oNodeInsuredIdent">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="27.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R6R0R1R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[nodeIcon11]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1644163_1" Comment="[frameInitial0] - Web Aneto" CtxtId="27" Techno="WEB" Timestamp="11/05/2017 16:44:25" />
 				</PAGE>
@@ -646,6 +655,24 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="28.R0R1R11R0R1R0R23R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="28.R0R1R11R0R0R4R0R0R0R0R0R0R0R0R14R0R1R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[itemTextLink19]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

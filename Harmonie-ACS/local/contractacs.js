@@ -10,6 +10,7 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
+	sc.step(ActivInfinite.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.searchHistory);
@@ -160,7 +161,24 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.btProductList.click();
+	ActivInfinite.pBlockNotes.oNodeInsuredIdent.click();
+	ActivInfinite.pBlockNotes.btHelpCSCertificate.click();
+	ActivInfinite.pCertificateHelpCS.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
+	
+	for (var index in ActivInfinite.pCertificateHelpCS.oType.getAll()) {
+		var type = ctx.string.trim(ActivInfinite.pCertificateHelpCS.oType.i(index).get());
+		var startDate = ctx.string.trim(ActivInfinite.pCertificateHelpCS.oStartDate.i(index).get());
+		var endDate = ctx.string.trim(ActivInfinite.pCertificateHelpCS.oEndDate.i(index).get());
+		var a = 1;
+	}
+	
+	ActivInfinite.pCertificateHelpCS.btProductList.click();
 	ActivInfinite.pProductList.wait(function() {
 		sc.endStep();
 	});
