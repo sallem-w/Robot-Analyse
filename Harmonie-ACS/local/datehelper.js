@@ -34,8 +34,16 @@
 		return result;
 	}
 	
+	date.addMonth = function(dateObj, number) {
+		var result = new Date(dateObj);
+		number = number || 0;
+		result.setMonth(result.getMonth() + number);
+		return result;
+	}
+	
 	date.addDay = function(dateObj, number) {
 		var result = new Date(dateObj);
+		number = number || 0;
 		result.setDate(result.getDate() + number);
 		return result;
 	}
@@ -53,6 +61,10 @@
 	date.isEqual = function(dateStart, dateEnd) {
 		return (dateStart.getTime() === dateEnd.getTime());
 	}
- 
+	
+	date.now = function() {
+		return new Date().getTime();
+	}
+	
 	return date;
 }) ();

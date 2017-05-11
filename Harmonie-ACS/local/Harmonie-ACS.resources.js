@@ -34,6 +34,7 @@ ActivInfinite.pProductList = ActivInfinite.addPage('pProductList', {"comment":"[
 ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('oTextContract', {"mustExist":true});
 ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClose');
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
+ActivInfinite.pProductList.btVisuContribution = ActivInfinite.pProductList.addItem('btVisuContribution');
 
 ActivInfinite.pSynthesisContract = ActivInfinite.addPage('pSynthesisContract', {"comment":"[frameInitial0] - Accueil","path":"http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher\u0026redirection_action=FicheSynthesePersonne\u0026redirection_method=afficherPersonne\u0026NumCtr=00248886\u0026IdfSys=389324\u0026submitSyntheseDate=true"});
 ActivInfinite.pSynthesisContract.oDateEnd = ActivInfinite.pSynthesisContract.addItem('oDateEnd', {"occurs":1});
@@ -44,3 +45,9 @@ ActivInfinite.pSynthesisSearch = ActivInfinite.addPage('pSynthesisSearch', {"com
 ActivInfinite.pSynthesisSearch.oTypeIdentification = ActivInfinite.pSynthesisSearch.addItem('oTypeIdentification');
 ActivInfinite.pSynthesisSearch.oBenefIdentification = ActivInfinite.pSynthesisSearch.addItem('oBenefIdentification');
 ActivInfinite.pSynthesisSearch.btSearch = ActivInfinite.pSynthesisSearch.addItem('btSearch', {"mustExist":true});
+
+ActivInfinite.pContribution = ActivInfinite.addPage('pContribution', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_92\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
+ActivInfinite.pContribution.oIdTableEch = ActivInfinite.pContribution.addItem('oIdTableEch', {"mustExist":true});
+ActivInfinite.pContribution.oDateEch = ActivInfinite.pContribution.addItem('oDateEch', {"occurs":1});
+ActivInfinite.pContribution.oBalanceEch = ActivInfinite.pContribution.addItem('oBalanceEch', {"occurs":1});
+ActivInfinite.pContribution.oBtClose = ActivInfinite.pContribution.addItem('oBtClose');

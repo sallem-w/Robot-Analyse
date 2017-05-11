@@ -11,6 +11,7 @@
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.checkProductList);
+	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -207,7 +208,38 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	sc.data.commentContract += 'Cas simple \n';
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-	ActivInfinite.pProductList.oBtClose.click();
+	ActivInfinite.pProductList.btVisuContribution.click();
+	ActivInfinite.pContribution.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkContribution : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
+	
+	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
+	var isValidContribution = false
+	
+	for (var index in ActivInfinite.pContribution.oDateEch.getAll()) {
+		var dateEch = ctx.string.trim(ActivInfinite.pContribution.oDateEch.i(index).get());
+		var balanceEch = ctx.string.trim(ActivInfinite.pContribution.oBalanceEch.i(index).get());
+		
+		if (ctx.date.parseToDate(dateEch) <= compareDate) {
+			isValidContribution = (parseFloat(balanceEch) < 1)
+			break;
+		}
+	}
+	
+	if (!isValidContribution) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
+		sc.data.commentContract = 'Solde comptable non à jour \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pContribution.oBtClose.click();
+		sc.endScenario();
+		return;
+	}
+	
+	ActivInfinite.pContribution.oBtClose.click();
 	sc.endStep();
 }});
 
