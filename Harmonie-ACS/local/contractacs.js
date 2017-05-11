@@ -269,10 +269,12 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 	
 	for (var index in ActivInfinite.pHistoOperationSearch.oOperationLabel.getAll()) {
 		var operationLabel = ActivInfinite.pHistoOperationSearch.oOperationLabel.i(index).get();
-		var effectDate = ActivInfinite.pHistoOperationSearch.oEffetDate.i(index).get();
+		var effectDate = ActivInfinite.pHistoOperationSearch.oEffectDate.i(index).get();
 		var contexte = ActivInfinite.pHistoOperationSearch.oContexte.i(index).get();
 		
 	}
+	
+	ActivInfinite.pHistoOperationSearch.oContexte.count()
 	
 	ActivInfinite.pHistoOperationSearch.oBtClose.click();
 	sc.endStep();
