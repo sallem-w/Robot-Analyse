@@ -65,5 +65,5 @@ ActivInfinite.pHistoOperationSearch.oEdition = ActivInfinite.pHistoOperationSear
 ActivInfinite.pHistoOperationSearch.oWithoutEffet = ActivInfinite.pHistoOperationSearch.addItem('oWithoutEffet');
 ActivInfinite.pHistoOperationSearch.oOperationLabel = ActivInfinite.pHistoOperationSearch.addItem('oOperationLabel', {"occurs":2});
 ActivInfinite.pHistoOperationSearch.oEffectDate = ActivInfinite.pHistoOperationSearch.addItem('oEffectDate', {"occurs":2});
-ActivInfinite.pHistoOperationSearch.oContexte = ActivInfinite.pHistoOperationSearch.addItem('oContexte', {"occurs":2});
 ActivInfinite.pHistoOperationSearch.oBtClose = ActivInfinite.pHistoOperationSearch.addItem('oBtClose');
+ActivInfinite.pHistoOperationSearch.oContexte = ActivInfinite.pHistoOperationSearch.addItem('oContexte', {"occurs":2});

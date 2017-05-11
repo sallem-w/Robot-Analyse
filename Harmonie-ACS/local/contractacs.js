@@ -257,10 +257,12 @@ ActivInfinite.step({ searchHistory : function(ev, sc, st) {
 	ActivInfinite.pHistoOperationSearch.oFlux.click();
 	ActivInfinite.pHistoOperationSearch.oEdition.click();
 	ActivInfinite.pHistoOperationSearch.oWithoutEffet.click();
-	
+		
 	ActivInfinite.pHistoOperationSearch.btSearch.click();
-	ActivInfinite.pHistoOperationSearch.wait(function() {
-		sc.endStep();
+	ActivInfinite.pHistoOperationSearch.events.UNLOAD.on(function() {
+		ActivInfinite.pHistoOperationSearch.events.LOAD.on(function() {
+			sc.endStep();
+		});
 	});
 }});
 
@@ -268,13 +270,14 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkHistory');
 	
 	for (var index in ActivInfinite.pHistoOperationSearch.oOperationLabel.getAll()) {
-		var operationLabel = ActivInfinite.pHistoOperationSearch.oOperationLabel.i(index).get();
-		var effectDate = ActivInfinite.pHistoOperationSearch.oEffectDate.i(index).get();
-		var contexte = ActivInfinite.pHistoOperationSearch.oContexte.i(index).get();
-		
+		var operationLabelLists = ActivInfinite.pHistoOperationSearch.oOperationLabel.i(index);
+		for (var indexPaging in operationLabelLists.getAll()) {
+			var operationLabel = operationLabelLists.i(indexPaging).get();
+			var effectDate = ActivInfinite.pHistoOperationSearch.oEffectDate.i(index).i(indexPaging).get();
+			var contexte = ActivInfinite.pHistoOperationSearch.oContexte.i(index).i(indexPaging).get();
+			
+		}
 	}
-	
-	ActivInfinite.pHistoOperationSearch.oContexte.count()
 	
 	ActivInfinite.pHistoOperationSearch.oBtClose.click();
 	sc.endStep();
