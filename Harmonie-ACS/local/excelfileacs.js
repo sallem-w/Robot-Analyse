@@ -1,6 +1,6 @@
 ﻿ActivInfinite.scenario({ readExcel: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(300000, function(sc, st) { sc.endScenario(); });
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinite.steps.initConfig);
