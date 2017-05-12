@@ -47,6 +47,12 @@
 		result.setDate(result.getDate() + number);
 		return result;
 	}
+	
+	date.isOnlyOneYearDifference = function(startDate, endDate) {
+		 return (startDate.getDate() === endDate.getDate() 
+					&& startDate.getMonth() === endDate.getMonth() 
+					&& (endDate.getFullYear() - startDate.getFullYear()) === 1) 
+	}
 
 	date.padLeft = function(number) {
 	    return String("00" + number).slice(-2);

@@ -183,11 +183,7 @@ ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		var startDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinite.pCertificateHelpCS.oStartDate.i(index).get()));
 		var endDate = ctx.date.addDay(ctx.date.parseToDate(ctx.string.trim(ActivInfinite.pCertificateHelpCS.oEndDate.i(index).get())), 1);
 
-		// same date with only one year difference
-		if (startDate.getDate() === endDate.getDate() && startDate.getMonth() === endDate.getMonth() && (endDate.getFullYear() - startDate.getFullYear()) === 1) {
-			isCertificateValid = true;	
-		}
-		
+		isCertificateValid = ctx.date.isOnlyOneYearDifference(startDate, endDate);
 		break;
 	}
 	
