@@ -3,7 +3,7 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
-	sc.step(ActivInfinite.steps.initializePage);
+	sc.step(ActivInfinite.steps.initializeSearchContract);
 	sc.step(ActivInfinite.steps.navigateToSynthesis);
 	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
 	sc.step(ActivInfinite.steps.checkSynthesis);
@@ -15,10 +15,10 @@
 	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.searchHistory);
 	sc.step(ActivInfinite.steps.checkHistory);
-	sc.step(ActivInfinite.steps.end);
+	sc.step(ActivInfinite.steps.endSearchContract);
 }});
 
-ActivInfinite.step({ initializePage: function(ev, sc, st) {
+ActivInfinite.step({ initializeSearchContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.data.config = ctx.config.getConfigACS();
 	sc.data.configExcel = sc.data.config.excel;
@@ -343,12 +343,14 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		
-		ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
-			sc.data.commentContract += s.data.commentContract;
-			sc.data.statusContract = s.data.statusContract;
-			
-			sc.endStep();
-			return;
+		ActivInfinite.pDashboard.wait(function() {
+			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
+				sc.data.commentContract += s.data.commentContract;
+				sc.data.statusContract = s.data.statusContract;
+				
+				sc.endStep();
+				return;
+			});
 		});
 	}
 	
@@ -368,8 +370,8 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 	sc.endScenario();
 }});
 
-ActivInfinite.step({ end : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - end');
+ActivInfinite.step({ endSearchContract : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});

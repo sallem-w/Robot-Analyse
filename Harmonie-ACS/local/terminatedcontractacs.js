@@ -9,7 +9,7 @@
 	sc.step(ActivInfinite.steps.goToVisualizationContribution);
 	sc.step(ActivInfinite.steps.validationCalcul);
 	sc.step(ActivInfinite.steps.saveContract);
-	sc.step(ActivInfinite.steps.end);
+	sc.step(ActivInfinite.steps.endTerminatedContract);
 }});
 
 ActivInfinite.step({ initializeTerminatedContract: function(ev, sc, st) {
@@ -68,7 +68,7 @@ ActivInfinite.step({ saveContract: function(ev, sc, st) {
 	sc.endStep();
 }});
 
-ActivInfinite.step({ end: function(ev, sc, st) {
+ActivInfinite.step({ endTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - contract terminated');
 	sc.endStep();
 }});
