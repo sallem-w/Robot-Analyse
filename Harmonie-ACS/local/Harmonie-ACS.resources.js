@@ -81,4 +81,12 @@ ActivInfinite.pCertificateHelpCS.btProductList = ActivInfinite.pCertificateHelpC
 ActivInfinite.pEffectConsultContrac = ActivInfinite.addPage('pEffectConsultContrac', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementScenario.do?SAPCTOR1\u00261494580799195\u0026method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S\u0026tailleFenetre=526"});
 ActivInfinite.pEffectConsultContrac.oIndividualContract = ActivInfinite.pEffectConsultContrac.addItem('oIndividualContract');
 ActivInfinite.pEffectConsultContrac.btSearch = ActivInfinite.pEffectConsultContrac.addItem('btSearch');
-ActivInfinite.pEffectConsultContrac.oTitleMenu = ActivInfinite.pEffectConsultContrac.addItem('oTitleMenu', {"mustExist":true});
+ActivInfinite.pEffectConsultContrac.oTitlePage = ActivInfinite.pEffectConsultContrac.addItem('oTitlePage', {"mustExist":true});
+
+ActivInfinite.pEffectConsultFound = ActivInfinite.addPage('pEffectConsultFound', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_203\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
+ActivInfinite.pEffectConsultFound.oBtNext = ActivInfinite.pEffectConsultFound.addItem('oBtNext');
+ActivInfinite.pEffectConsultFound.oTitlePage = ActivInfinite.pEffectConsultFound.addItem('oTitlePage', {"mustExist":true});
+
+ActivInfinite.pEffectCalcParam = ActivInfinite.addPage('pEffectCalcParam', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_320\u0026CONTAINER_NOM_FONCTION=AC32_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
+ActivInfinite.pEffectCalcParam.oBtNext = ActivInfinite.pEffectCalcParam.addItem('oBtNext');
+ActivInfinite.pEffectCalcParam.oTitlePage = ActivInfinite.pEffectCalcParam.addItem('oTitlePage', {"mustExist":true});
