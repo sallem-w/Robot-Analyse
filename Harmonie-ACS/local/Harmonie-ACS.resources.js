@@ -6,9 +6,10 @@
 var ActivInfinite = ctx.addApplication('ActivInfinite', {"nature":"WEB3","path":"http://infinite-haur05/WebAneto/ValiderIdentification.do#"});
 
 ActivInfinite.pConsultContratIndiv = ActivInfinite.addPage('pConsultContratIndiv', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/ValiderIdentification.do#"});
-ActivInfinite.pConsultContratIndiv.oIndividualContract = ActivInfinite.pConsultContratIndiv.addItem('oIndividualContract');
+ActivInfinite.pConsultContratIndiv.oIndividualContract = ActivInfinite.pConsultContratIndiv.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinite.pConsultContratIndiv.btSearch = ActivInfinite.pConsultContratIndiv.addItem('btSearch', {"mustExist":true});
-ActivInfinite.pConsultContratIndiv.oDateContract = ActivInfinite.pConsultContratIndiv.addItem('oDateContract');
+ActivInfinite.pConsultContratIndiv.oDateContract = ActivInfinite.pConsultContratIndiv.addItem('oDateContract', {"mustExist":true});
+ActivInfinite.pConsultContratIndiv.oTitleMenu = ActivInfinite.pConsultContratIndiv.addItem('oTitleMenu', {"mustExist":true});
 
 ActivInfinite.pContratIndivFound = ActivInfinite.addPage('pContratIndivFound', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
 ActivInfinite.pContratIndivFound.oIndividualContract = ActivInfinite.pContratIndivFound.addItem('oIndividualContract', {"mustExist":true});
@@ -76,3 +77,8 @@ ActivInfinite.pCertificateHelpCS.oStartDate = ActivInfinite.pCertificateHelpCS.a
 ActivInfinite.pCertificateHelpCS.oEndDate = ActivInfinite.pCertificateHelpCS.addItem('oEndDate', {"occurs":1});
 ActivInfinite.pCertificateHelpCS.oBtClose = ActivInfinite.pCertificateHelpCS.addItem('oBtClose');
 ActivInfinite.pCertificateHelpCS.btProductList = ActivInfinite.pCertificateHelpCS.addItem('btProductList');
+
+ActivInfinite.pEffectConsultContrac = ActivInfinite.addPage('pEffectConsultContrac', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementScenario.do?SAPCTOR1\u00261494580799195\u0026method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S\u0026tailleFenetre=526"});
+ActivInfinite.pEffectConsultContrac.oIndividualContract = ActivInfinite.pEffectConsultContrac.addItem('oIndividualContract');
+ActivInfinite.pEffectConsultContrac.btSearch = ActivInfinite.pEffectConsultContrac.addItem('btSearch');
+ActivInfinite.pEffectConsultContrac.oTitleMenu = ActivInfinite.pEffectConsultContrac.addItem('oTitleMenu', {"mustExist":true});

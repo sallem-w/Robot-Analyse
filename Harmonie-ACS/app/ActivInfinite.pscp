@@ -31,7 +31,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 					<OBJETS>
-						<OBJET Name="oIndividualContract">
+						<OBJET Name="oIndividualContract" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R1R1R0R0R0R0R2R0R0R0R1R0">
 									<ATT Name="name">
@@ -49,11 +49,23 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateContract">
+						<OBJET Name="oDateContract" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R4R3R0">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitleMenu" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="8.R0R1R9R0R0R4R0R0R0R0R0R0R0R0R0R0R1R0R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[ST Consult. ADH]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[s3]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -679,6 +691,46 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1647026_1" Comment="[frameInitial0] - Web Aneto" CtxtId="28" Techno="WEB" Timestamp="11/05/2017 16:47:10" />
+				</PAGE>
+				<PAGE Name="pEffectConsultContrac" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementScenario.do?SAPCTOR1&1494580799195&method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S&tailleFenetre=526]]></PATH>
+					<OBJETS>
+						<OBJET Name="oIndividualContract">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="29.R0R1R7R1R3R31R0R1R1R0R0R0R0R2R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="29.R0R1R7R1R3R31R0R5R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitleMenu" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="29.R0R1R7R0R0R4R0R0R0R0R0R0R0R0R0R0R1R0R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Sans effet ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[s3]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1123012_1" Comment="[frameInitial0] - Web Aneto" CtxtId="29" Techno="WEB" Timestamp="12/05/2017 11:23:08" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
