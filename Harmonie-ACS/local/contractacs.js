@@ -343,10 +343,13 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		
-		// TODO start new scenario
-		
-		sc.endStep();
-		return;
+		ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
+			sc.data.commentContract += s.data.commentContract;
+			sc.data.statusContract = s.data.statusContract;
+			
+			sc.endStep();
+			return;
+		});
 	}
 	
 	if (isContractWithAccesSante) {
