@@ -10,6 +10,7 @@
 	sc.step(ActivInfinite.steps.navigateToConsultation);
 	sc.step(ActivInfinite.steps.searchIndividualContract);
 	sc.step(ActivInfinite.steps.checkBlockNote);
+	sc.step(ActivInfinite.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.searchHistory);
@@ -160,7 +161,42 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pBlockNotes.btProductList.click();
+	ActivInfinite.pBlockNotes.oNodeInsuredIdent.click();
+	ActivInfinite.pBlockNotes.btHelpCSCertificate.click();
+	ActivInfinite.pCertificateHelpCS.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
+	
+	var isCertificateValid = false;
+	
+	for (var index in ActivInfinite.pCertificateHelpCS.oType.getAll()) {
+		var type = ctx.string.trim(ActivInfinite.pCertificateHelpCS.oType.i(index).get());
+		
+		if (type !== 'Attestat° CPAM') {
+			continue;
+		}
+		
+		var startDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinite.pCertificateHelpCS.oStartDate.i(index).get()));
+		var endDate = ctx.date.addDay(ctx.date.parseToDate(ctx.string.trim(ActivInfinite.pCertificateHelpCS.oEndDate.i(index).get())), 1);
+
+		isCertificateValid = ctx.date.isOnlyOneYearDifference(startDate, endDate);
+		break;
+	}
+	
+	if (!isCertificateValid) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
+		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un ans \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pCertificateHelpCS.oBtClose.click();
+		sc.endScenario();
+		return;
+	}
+	
+	ActivInfinite.pCertificateHelpCS.btProductList.click();
 	ActivInfinite.pProductList.wait(function() {
 		sc.endStep();
 	});
