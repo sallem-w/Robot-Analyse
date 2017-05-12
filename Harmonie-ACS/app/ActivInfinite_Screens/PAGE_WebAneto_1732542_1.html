@@ -1,0 +1,2373 @@
+<HTML><HEAD><TITLE>Web Aneto</TITLE>
+<META name=GENERATOR content="IBM WebSphere Studio">
+<META content=text/css http-equiv=Content-Style-Type><LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"><LINK rel=stylesheet type=text/css href="/Commun/style/Container.css"><!-- Imports JQuery -->
+<SCRIPT language=JavaScript src="/Commun/jquery/core/jquery.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/jquery/plugin/blockui/blockui.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/jquery/custom/block/block.js"></SCRIPT>
+<!-- JqueryUI -->
+<SCRIPT language=JavaScript src="/Commun/jquery/ui/jqueryui.js"></SCRIPT>
+<LINK rel=stylesheet type=text/css href="/Commun/jquery/ui/jqueryui.css"><!-- Tooltip -->
+<SCRIPT language=JavaScript src="/Commun/jquery/custom/tooltip/tooltip.js"></SCRIPT>
+<!-- Notifications -->
+<SCRIPT language=JavaScript src="/Commun/jquery/plugin/freeow/freeow.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/jquery/custom/notification/notification.js"></SCRIPT>
+<LINK rel=stylesheet type=text/css href="/Commun/jquery/plugin/freeow/freeow.css"><!-- JqGrid (css) --><LINK rel=stylesheet type=text/css href="/Commun/jquery/plugin/jqgrid/jqgrid.css"><!-- Style la page avec JqueryUI -->
+<SCRIPT language=JavaScript src="/Commun/js/jqueryuiApply.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/outils.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/container.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/grdo.js"></SCRIPT>
+<!-- Import style infinite --><LINK rel=stylesheet type=text/css href="/Commun/style/infinite.css">
+<SCRIPT language=javascript>
+
+	<!-- Keep CONTAINER_NOM_SCENARIO_ENREGISTREMENT in JS variable -->
+	var scenarioEnregistrement = "ACCO03STSO_208";
+
+
+/** 
+	Variable indiquant si sur clic entrée on recherche un bouton suivant
+	ou Rechercher apres ne pas avoir trouvé la fonction gestionToucheEntree().
+	Pour cela mettre la variable a 1.
+	Sinon metre 0 
+*/
+var ACTIVE_RECHERCHE = 0;
+
+
+function InterceptEnter()
+{ 
+	var codeEntree = null;
+	//Si exception c'est que la fonction n'existe pas.
+	try
+	{
+		codeEntree = gestionToucheEntree();
+		GestEnter(codeEntree);
+	}
+	
+	catch(err)
+	{
+		if(ACTIVE_RECHERCHE == 1)
+			GestEnter(codeEntree);
+	}
+	return true;
+}
+function GestEnter(codeEntree)
+{
+	var lienRecherche = null;
+	var lienSuivant = null;
+	var lien3PP = null;
+	var nomZone = null;
+	
+	/**	Recherche si focus sur zone de recherche 3PP.
+	* La bidouille consiste à trouver une image ayant un nom identique à la zone ayant le focus.
+	* Exple: zone CodeFournisseur => recherche image ayant comme nom CodeFournisseur_IMG
+	*/
+	nomZone = document.activeElement.name;
+	
+	liste = document.getElementsByTagName("a");
+	
+	if(nomZone && codeEntree == null)
+	{
+		//Recherche lien 3PP sur la zone
+		for(y=0;y<liste.length;y++)
+		{
+			if(liste[y].name == (nomZone + "_IMG"))
+				lien3PP = liste[y];
+		}
+	}
+	
+	//si zone 3PP alors appel
+	if(lien3PP!=null)
+	{
+		lien3PP.click();
+		return true;
+	}
+	
+	
+	
+	//Si action RECHERCHE ou non définie.
+	if(codeEntree == null || codeEntree == "RECHERCHE")
+	{
+		for(y=0;y<liste.length;y++)
+		{
+			if(liste[y].title == "Rechercher" || liste[y].title == "Recherche")
+				lienRecherche = liste[y];
+		}
+	}
+	
+	//si lien recherche présent alors click et sort
+	if(lienRecherche!=null)
+	{
+		lienRecherche.click();
+		return true;
+	}
+	
+	//Si action SUIVANT ou non définie.
+	if(codeEntree == null || codeEntree == "SUIVANT")
+	{
+		for(y=0;y<liste.length;y++)
+		{
+			if(liste[y].title == "Suivant")
+				lienSuivant = liste[y];
+		}
+	}
+	
+	//si lien suivant présent alors click et sort
+	if(lienSuivant!=null)
+	{
+		lienSuivant.click();
+		return true;
+	}
+	
+	return true;
+}
+</SCRIPT>
+
+<SCRIPT language=JScript for=document type=text/jscript event=onkeydown()>
+	whichASC = event.keyCode;
+	try {
+		raccourcisClavier();
+	} catch(err) {
+		if (whichASC == 13) InterceptEnter();
+	}
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+
+
+		// variable nous permettant de connaitre le nombre de boutons à afficher dans la fenêtre
+		var boutons = 7;
+		var fonction = 0;
+
+/* Appel generique */
+function appelGeneriqueFonction(methode)
+{
+	var cheminContexteWebapp = '/WebAneto';
+	var nomFonction= 'ACHO';
+	var nomFormulaire = 'achoForm';
+	var chemin='/jsp/contrat/vue/F013.jsp';
+	var temp = chemin.substring(5,chemin.length-4);
+	var nomDomaine = temp.substring(0,temp.indexOf("/"));
+	var nomMethode = "appelGenerique";
+	var nomMethodeAppel = methode;
+	var scenario='ACCO03STSO_208';
+
+	var parametreContainerObligatoire = "&CONTAINER_NOM_SCENARIO_ENREGISTREMENT="+scenario+"&CONTAINER_NOM_FONCTION="+nomFonction+"&AFFICHAGE_CONTAINER";
+
+	appelGenerique(cheminContexteWebapp,
+							nomFormulaire,nomDomaine,
+							nomFonction,nomMethode,nomMethodeAppel,
+							parametreContainerObligatoire)
+
+}
+
+function appelUrl()
+{
+	var url = 'null';
+	if (!(url=="null" || url==""))
+	{	
+		//alert ( "TEST  = " + url);
+		win=window.open(url,"ItSoft","");
+		win.focus();
+	 }
+}
+
+
+function appelUrlCalligo()
+{
+	var url = 'null';
+	if (!(url=="null" || url==""))
+	{	
+		// on split d'abord l'url 
+		var temp = url.split(";");
+		// on boucle sur l'appel d'url 
+		for(x=0;x<temp.length;x++){
+			win=window.open(temp[x],"Calligo" + new Date().getTime(),"");
+			win.focus();
+		}
+	}
+}
+
+//TT0016297
+function appelUrlGED() {
+	var url = 'null';
+	if (url != "null") {
+//INF0200
+		win=window.open(url,"GED","");
+		win.focus();
+	}
+}
+
+/* Gestion des boutons MCR */
+var bouton_valider="BOUTON_VALIDER";
+var bouton_enregistrer="BOUTON_ENREGISTRER";
+var bouton_miseEnInstance="BOUTON_MISE_EN_INSTANCE";
+var bouton_fermer="BOUTON_FERMER";
+var bouton_suivant="BOUTON_SUIVANT";
+var bouton_precedent="BOUTON_PRECEDENT";
+var bouton_initialiser="BOUTON_INITIALISER";
+var bouton_declenche="";
+
+//Gestion barre de statut et barre de titre.
+
+var barre = '';
+var titleJsp = '';
+
+function assignebouton(bouton)
+{
+	bouton_declenche = '&BOUTON_CONTAINER=' + bouton;
+}
+
+function setTitreFenetre(titre)
+{
+	// Jean-Christophe MICHEL le 22/11/2007 : STAB2.2.1-BARRE-TITRE-02 : Début
+	var libTitre = 'null';
+	if (libTitre != null && libTitre != "" && libTitre != "null"){
+		titre=libTitre+titre;
+	}
+	// Jean-Christophe MICHEL le 22/11/2007 : STAB2.2.1-BARRE-TITRE-02 : Fin
+
+	//Nettoyage du titre ajouté.
+	titleJsp = titre;
+	parent.setTitreFenetre(titleJsp);
+	return true;
+}
+
+function RAZTitreFenetre()
+{
+	titleJsp = '';
+	parent.setTitreFenetre(parent.TITRE);
+	return true;
+}
+
+function initBarreSatus(){
+	//window.alert("initBarre");
+	
+	barre = "Adhérent : Madame  POUVILLE MADELEINE";
+	
+	setBarreStatus(barre);
+	parent.defilement();	// TT0016252
+}
+
+function setBarreStatus(szBarre){
+	barre = szBarre;
+	parent.setBarreStatus(barre);
+}
+initBarreSatus();
+
+/* fonction permettant l'interrogation de l'utilisateur sur la nécessité de sauvegarder la fonction courante
+ retourne '0' S'il choisit Annuler
+ retourne '6' S'il choisit Ok
+ retourne '7' S'il choisit Non */
+function validationVBScript()
+{
+	return window.showModalDialog('/WebAneto/jsp/container/vue/Confirmation.jsp','','dialogHeight: 130px; dialogWidth: 280px; center: Yes; help: No; resizable: No; status: No;');
+}
+
+/* fonction permettant l'interrogation de l'utilisateur sur la nécessité de sauvegarder l'acte de gestion
+ retourne '0' S'il choisit Annuler
+ retourne '6' S'il choisit Ok
+ retourne '7' S'il choisit Non */
+function enregistrementVBScript()
+{
+	return window.showModalDialog('/WebAneto/jsp/container/vue/ConfirmationActe.jsp','','dialogHeight: 130px; dialogWidth: 280px; center: Yes; help: No; resizable: No; status: No;');
+}
+
+//STAB221-SMP-008
+//Fonction permettant l'appel de la boite de dialogue lors de la fermeture d'un acte en reprise d'instance
+function enregistrementActeRepriseInstance()
+{
+	return window.showModalDialog('/WebAneto/jsp/container/vue/ConfirmationActeRepriseInstance.jsp','','dialogHeight: 200px; dialogWidth: 380px; center: Yes; help: No; resizable: No; status: No;');
+}
+//Fin STAB221-SMP-008
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+
+/* ferme le scenario sans demander de confirmation à l'utilisateur */
+function fermerContainerSansPopup() {
+	zzModeForcageValidation = '1';
+	posterFormulaire('LancementFonction','debuter','&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=11','');
+}
+
+/* Détermine le type de scénario
+ zzScenarioForceContainer = '0' : Scénario courant en mode libre
+ zzScenarioForceContainer = '1' : Scénario courant en mode forcé */
+var zzScenarioForceContainer= '1';
+/* Si scénario avec code action 03 : en visualisation */
+
+		zzModeEcranVisualisation='1';
+		zzModeForcageValidation='1';
+
+
+//STAB221-SMP-008
+//Code permettant de savoir si l'acte en cours a été ouvert via la reprise d'instance
+var codeActionInitial = "";
+
+//Fin STAB221-SMP-008
+
+/* Permet de lancer la fermeture du container (NEW) */
+function newFermerContainer(fonction,scenario)
+{
+	var isFonctionValidation = false;
+	var codeAction = 03;
+	
+	// Si scénario forcé et l'acte n'est pas en mode visualisation
+	// ANO => ED-V2.2.0-ACSO-02
+	//if(zzScenarioForceContainer=='1' && zzModeEcranVisualisation=='0'&& (validation == 0 || isFonctionValidation == true))
+	/*
+		public final static String SCENARIO_CODE_ACTION_CREATION = "01";			==> on doit proposer l'enregistrement
+		public final static String SCENARIO_CODE_ACTION_REPRISE_INSTANCE = "02";	==> on doit proposer l'enregistrement
+		public final static String SCENARIO_CODE_ACTION_VISUALISATION = "03";		==> on NE doit PAS proposer l'enregistrement
+		public final static String SCENARIO_CODE_ACTION_SANS_EFFET = "04";			==> on NE doit PAS proposer l'enregistrement
+	*/
+	if (zzScenarioForceContainer=='1' && zzModeEcranVisualisation=='0'&& (codeAction != 3  || isFonctionValidation == true))
+	{
+			// On interroge l'utilisateur s'il veut sauvegarder l'acte
+			
+			//STAB221-SMP-008
+			var userChoise ="";
+			if(codeActionInitial == "02"){
+				//Si l'acte a été ouvert en reprise d'instance
+				userChoise = enregistrementActeRepriseInstance();
+			}else{
+				userChoise = enregistrementVBScript();
+			}
+			//Fin STAB221-SMP-008
+			
+			// Cas ou il veut le sauvegarder
+			if(userChoise == '6')
+				newLancerFonction('LancementFonction','debuter',fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=1',scenario);
+		
+			// On sort si l'utilisateur a fait un choix différent de ne pas sauvegarder l'acte
+			if(userChoise!='7')
+				return;
+			// Rajout MCR le 29/11 ano SCE_WEB_SOCLE_001
+			if (userChoise == '7'){
+				
+				setBarreStatus("");
+				zzModeForcageValidation = 1;
+			}
+	}
+	else {
+		
+		userChoice = newInterrogerClientSurValidation();
+		if (userChoice == '0') 
+			return;
+		if (zzModeForcageValidation == '2') {
+			// Scénario libre avec sauvegarde
+			posterFormulaire('LancementFonction', 'debuter', fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=12', scenario);
+			return;
+		}
+	}
+	posterFormulaire('LancementFonction','debuter',fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=11',scenario);
+
+}
+/* Postage d'un lancement de fonction */
+function posterFormulaire(mapping,methode,fonction,scenario)
+{
+
+	if(scenario=='')
+			scenario='ACCO03STSO_208';
+	var actionValue= '/WebAneto/container/'+mapping+'.do?method='+methode
+						+'&CONTAINER_NOM_SCENARIO_ENREGISTREMENT='+scenario+'&CONTAINER_NOM_FONCTION='
+						+fonction ;
+	basiquePosterFormulaire(scenario,actionValue);
+
+}
+/* Postage d'un lancement de fonction scénario */
+function posterFormulaireScenario(mapping,methode,scenario)
+{
+
+		var scenarioCourant='ACCO03STSO_208';
+		var actionValue= '/WebAneto/container/'+mapping+'.do?method='+methode
+							+'&CONTAINER_NOM_SCENARIO_ENREGISTREMENT='+scenarioCourant+'&CONTAINER_NOM_SCENARIO_FILS='
+							+scenario ;
+
+		basiquePosterFormulaire(scenario,actionValue);
+
+}
+//MAC_154425 : formulaireDejaPoste : éviter que l'utilisateur ne puisse cliquer plusieurs fois sur les boutons (Christophe RAYMOND)
+var formulaireDejaPoste = false;
+/* Postage d'un lancement basique */
+function basiquePosterFormulaire(scenario,actionValue)
+{
+	if (formulaireDejaPoste == false) {
+	//Suppr MAC_20061102_1244_RKO01 : ligne descendue
+	//formulaireDejaPoste = true;
+	var i=0;
+	var affichageContainer='&AFFICHAGE_CONTAINER=OK';
+
+	var nameFormFonctionSpecification='achoForm';
+	if(document.forms.length>0)
+	{
+		var documentFormObject=document.forms[0];
+		if(document.forms[nameFormFonctionSpecification]!=null)
+			documentFormObject=document.forms[nameFormFonctionSpecification];
+		
+		if(documentFormObject.onsubmit!=null)
+		{
+			if(documentFormObject.onsubmit()!=false)
+				i=1;
+		}
+		else i=1;
+
+			
+		if(i==1)
+		{
+			actionValue=actionValue + affichageContainer;
+			// Ajout Michel pour gestion des boutons
+			actionValue=actionValue + bouton_declenche;
+			if(zzModeForcageValidation == '1' || (zzModeForcageValidation == '0' && forcageFonctionContainer=='true'))
+				actionValue = actionValue+'&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE';
+
+			documentFormObject.action=actionValue;
+			//Ajout MAC_20061102_1244_RKO01 : ligne descendue
+			formulaireDejaPoste = true;
+			nePasModifierForcageValidation='false';
+			documentFormObject.submit();
+		}
+	}
+	else window.location="/WebAneto/container/LancementScenario.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT="+ scenario + affichageContainer;
+	}
+}
+
+
+/******************** DEBUT ANCIEN FONCTIONNEMENT **************************/
+var valideFonctionCouranteContainer;
+var forcageFonctionContainer='false';
+var presenceBandeau='false';
+function ancienFermerContainer(fonction,scenario)
+{
+		// Cas d'un acte de gestion en mode visualisation
+		
+		zzValidation='0';
+		
+		if(zzScenarioForceContainer=='1' && zzValidation=='1')
+		{
+			valideFonctionCouranteContainer=enregistrementVBScript();
+			if(valideFonctionCouranteContainer!=null)
+				{
+					if(valideFonctionCouranteContainer=='6')
+					{
+						ancienLancerFonction('LancementFonction','debuter',fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=1',scenario);
+					}
+					if(valideFonctionCouranteContainer=='7')
+					{
+						forcageFonctionContainer='true';
+						posterFormulaire('LancementFonction','debuter',fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=11',scenario);
+					}
+				}
+		}
+		else
+		{
+			forcageFonctionContainer='true';
+			posterFormulaire('LancementFonction','debuter',fonction+'&CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=11',scenario);
+		}
+}
+function ancienLancerFonction(mapping,methode,fonction,scenario)
+{
+	if(zzBlocageArbreVar=='false')
+	{
+		// Cas d'un acte de gestion en mode visualisation
+		
+			forcageFonctionContainer='true';
+		
+		if(forcageFonctionContainer=='true')
+		{
+			posterFormulaire(mapping,methode,fonction,scenario);
+		}
+		else
+		{
+			valideFonctionCouranteContainer=validationVBScript();
+			if(valideFonctionCouranteContainer!=null)
+			{
+				if(valideFonctionCouranteContainer=='6')
+				{
+					posterFormulaire(mapping,methode,fonction,scenario);
+				}
+				if(valideFonctionCouranteContainer=='7')
+				{
+					forcageFonctionContainer='true'
+					posterFormulaire(mapping,methode,fonction,scenario);
+				}
+			}
+		}
+	}
+
+}
+
+function ancienLancerFonctionScenario(mapping,methode,scenario)
+{
+	if(zzBlocageArbreVar=='false')
+	{
+		// Cas d'un acte de gestion en mode visualisation
+		
+			forcageFonctionContainer='true';
+		
+		if(forcageFonctionContainer=='true')
+		{
+			posterFormulaireScenario(mapping,methode,scenario);
+		}
+		else
+		{
+			valideFonctionCouranteContainer=validationVBScript();
+			if(valideFonctionCouranteContainer!=null)
+			{
+				if(valideFonctionCouranteContainer=='6')
+				{
+					posterFormulaireScenario(mapping,methode,scenario);
+				}
+				if(valideFonctionCouranteContainer=='7')
+				{
+					forcageFonctionContainer='true'
+					posterFormulaireScenario(mapping,methode,scenario);
+				}
+			}
+		}
+	}
+}
+/******************** FIN ANCIEN FONCTIONNEMENT **************************/
+</SCRIPT>
+</HEAD>
+<BODY id=containerBody onload="desactiverValidationFonction() " leftMargin=0 topMargin=0 bgColor=#ffffff>
+<DIV id=notification class="freeow freeow-top-right" jQuery17106414509055652096="4"></DIV><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Gestion des groupes de données 
+	 Michel Crumière le 29/12/2005-->
+<SCRIPT language=JavaScript>
+
+
+	var id = 'HO04';
+	var etat = 'VI';
+	_initParamContainer(id,etat);
+
+	var id = 'HO03';
+	var etat = 'MO';
+	_initParamContainer(id,etat);
+
+	var id = 'HO02';
+	var etat = 'MO';
+	_initParamContainer(id,etat);
+
+	var id = 'HO01';
+	var etat = 'MO';
+	_initParamContainer(id,etat);
+
+</SCRIPT>
+
+<DIV id=Container jQuery17106414509055652096="3">
+<DIV id=arbreContainer>
+<DIV id=scenario style="HEIGHT: 227px"><!-- Identifiant scénario pour injecteur --><INPUT type=hidden value=ACCO03STSO_208 name=zz_NomScenario>
+<SCRIPT language=JavaScript src="/Commun/js/arbreNC.js">
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+
+// Java script composant l'arbre
+
+USETEXTLINKS = 1
+STARTALLOPEN = 0
+USEFRAMES = 0
+USEICONS = 1
+WRAPTEXT = 0
+PERSERVESTATE = 1
+ICONPATH="/Commun/multimedia/images/arbre/"
+NODEIDTODEPLOY = 'empty';
+
+//FGA : Tableau pour occultation arbre (boutons fonctions du container)
+TABLIEN = new Array(Array)
+TABLIEN[0][0] = "Valider";
+TABLIEN[1] = new Array(Array);
+//NC1472617 : Mise en phase avec l'id du bouton "Reinitialiser" de la jsp NavigationNC pour une gestion correcte de son affichage (s'appuie sur l'id "lien"+nom_bouton).
+TABLIEN[1][0] = "Reinit";
+TABLIEN[2] = new Array(Array);
+TABLIEN[2][0] = "Precedent";
+TABLIEN[3] = new Array(Array);
+TABLIEN[3][0] = "Suivant";
+TABLIEN[4] = new Array(Array);
+TABLIEN[4][0] = "MEI";
+TABLIEN[5] = new Array(Array);
+TABLIEN[5][0] = "Enregistrer";
+		
+foldersTree = gFld('ST Consult. ADH', '#','','s3');
+foldersTree.xID = 'ACCO03STSO_208';
+
+				 aux1 = insFld(foldersTree, gFld('Ident contrat', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIC_100","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACIC_100ACCO03STSO_208';
+				
+							aux2 =insFld(aux1, gFld('Données géné.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACDG_101","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACDG_101ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Bloc-notes CI', 'JavaScript:lancerFonction("LancementFonction","debuter","ACBN_102","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACBN_102ACCO03STSO_208';
+
+						
+						NODEIDTODEPLOY = ('ACHO_200ACCO03STSO_208');
+					
+				 aux1 = insFld(foldersTree, gFld('Hist. opération', 'JavaScript:lancerFonction("LancementFonction","debuter","ACHO_200","ACCO03STSO_208");','18','s5'));
+				 aux1.xID = 'ACHO_200ACCO03STSO_208';
+				
+							aux2 =insFld(aux1, gFld('Trac. mandat', 'JavaScript:lancerFonction("LancementFonction","debuter","ACTM_201","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACTM_201ACCO03STSO_208';
+
+						
+				 aux1 = insFld(foldersTree, gFld('Inter. Princip.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIN_300","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACIN_300ACCO03STSO_208';
+				
+							aux2 =insFld(aux1, gFld('Ident payeur', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIP_301","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACIP_301ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Souscripteur', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIS_302","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACIS_302ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Dest. prestat.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACID_303","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACID_303ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Ident dest rel', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIR_304","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACIR_304ACCO03STSO_208';
+
+						
+				 aux1 = insFld(foldersTree, gFld('Ident assurés', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIA_400","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACIA_400ACCO03STSO_208';
+				
+							aux2 =insFld(aux1, gFld('Réf. externes', 'JavaScript:lancerFonction("LancementFonction","debuter","ACRF_401","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACRF_401ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Info. RO', 'JavaScript:lancerFonction("LancementFonction","debuter","ACRO_402","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACRO_402ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Attest. Aide CS', 'JavaScript:lancerFonction("LancementFonction","debuter","ACAC_403","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACAC_403ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Info. presta.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACPR_404","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACPR_404ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Profil profes.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACPF_405","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACPF_405ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Bloc-notes CI', 'JavaScript:lancerFonction("LancementFonction","debuter","ACBN_406","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACBN_406ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Remise carte', 'JavaScript:lancerFonction("LancementFonction","debuter","ACRC_407","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACRC_407ACCO03STSO_208';
+
+						
+				 aux1 = insFld(foldersTree, gFld('Produits/GT', 'JavaScript:lancerFonction("LancementFonction","debuter","ACPG_500","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACPG_500ACCO03STSO_208';
+				
+							aux2 =insFld(aux1, gFld('Garanties dérog', 'JavaScript:lancerFonction("LancementFonction","debuter","ACGD_501","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACGD_501ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Dérog commerc', 'JavaScript:lancerFonction("LancementFonction","debuter","ACDC_502","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACDC_502ACCO03STSO_208';
+
+						
+							aux2 =insFld(aux1, gFld('Modulation com.', 'JavaScript:lancerFonction("LancementFonction","debuter","ACMC_503","ACCO03STSO_208");','6','s4'));
+							aux2.xID = 'ACMC_503ACCO03STSO_208';
+
+						
+				 aux1 = insFld(foldersTree, gFld('Crit souscript', 'JavaScript:lancerFonction("LancementFonction","debuter","ACCS_600","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACCS_600ACCO03STSO_208';
+				
+				 aux1 = insFld(foldersTree, gFld('Param divers', 'JavaScript:lancerFonction("LancementFonction","debuter","ACPD_700","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'ACPD_700ACCO03STSO_208';
+				
+				 aux1 = insFld(foldersTree, gFld('Histo. cotis.', 'JavaScript:lancerFonction("LancementFonction","debuter","AC3Q_800","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'AC3Q_800ACCO03STSO_208';
+				
+				 aux1 = insFld(foldersTree, gFld('Visu. cpt cotis', 'JavaScript:lancerFonction("LancementFonction","debuter","AC36_900","ACCO03STSO_208");','18','s4'));
+				 aux1.xID = 'AC36_900ACCO03STSO_208';
+				
+				 aux1 = insFld(foldersTree, gFld('Clauses', 'JavaScript:lancerFonction("LancementFonction","debuter","ACCL_1000","ACCO03STSO_208");','6','s4'));
+				 aux1.xID = 'ACCL_1000ACCO03STSO_208';
+				
+
+// Fonction Javascript permettant le blocage de tous les liens de l'arbre
+
+function blocageArbre(blocage)
+{
+	zzBlocageArbreVar=blocage;	
+	zzBlocageArbreActiveVar='true';
+	zzBlocageArbreAction();
+	
+}
+function zzBlocageArbreAction()
+{
+	if(zzBlocageArbreActiveVar=='true')
+	{
+		listhref= document.getElementsByTagName("a");
+		
+		for(i=0;i!=listhref.length;i++)
+			{
+				if(listhref[i].id.substring(0,18) == 'itemDrawFolderLink'
+				|| listhref[i].id.substring(0,12) == 'itemTextLink'
+				|| listhref[i].id.substring(0,18) == 'itemFolderHTMLLink'
+				|| listhref[i].id.substring(0,12) == 'itemIconLink')
+				{
+					if(zzBlocageArbreVar=='true')
+						listhref[i].disabled=true;
+					else listhref[i].disabled=false;
+				}
+			}
+		
+		//FGA:Blocage des boutons du container + image grisé + curseur sans main
+		for(i=0;i<TABLIEN.length;i++)
+		{
+			objLink = document.getElementById("lien"+TABLIEN[i][0]);
+			objImg = document.getElementById("bt"+TABLIEN[i][0]);
+			if(objLink && objImg)
+			{
+				if(zzBlocageArbreVar=='true')
+				{
+					TABLIEN[i][1] = objLink.href;
+					objLink.href = '#';
+					//Image du bouton grisée + curseur sans main +sav href et mouseover.
+					objImg.style.filter = "alpha(opacity=30)"; 
+					TABLIEN[i][2] = objImg.onmouseover; 
+					objImg.onmouseover ='';
+					objImg.style.cursor = "default";					
+				}
+				else
+				{
+					if(TABLIEN[i][1] && TABLIEN[i][1]!="")
+						objLink.href = TABLIEN[i][1];
+					objImg.style.filter = "alpha(opacity=100)";
+					if(TABLIEN[i][2] && TABLIEN[i][2]!="")
+						objImg.onmouseover =  TABLIEN[i][2]; 
+					objImg.style.cursor = "auto";
+				}
+			}
+		}
+	}
+}
+
+function goFocusScroll() {
+	if (document.getElementById("scrolltop").value != null) {
+		val = document.getElementById('scrolltop').value;
+		document.getElementById('scenario').scrollTop = val;
+	}		
+	//-- Ajout LPI
+	goFocusArbre();
+	//-- Fin LPI
+}
+
+function goFocusArbre() {
+	if (document.getElementById("folderSel").value != null) {
+		noSel = document.getElementById("folderSel").value;
+		if (document.getElementById("itemTextLink"+noSel) != null) {
+			$("#itemTextLink"+noSel).focus();
+		}			
+	}	
+}
+
+</SCRIPT>
+ <INPUT id=folderSel type=hidden value=4 length="4"> <INPUT id=scrolltop type=hidden value=0 length="4"> 
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+<TBODY>
+<TR vAlign=top>
+<TD colSpan=2>
+<TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+<TBODY>
+<TR>
+<TD>
+<SCRIPT language=Javascript>initializeDocument(NODEIDTODEPLOY);</SCRIPT>
+
+<DIV id=domRoot>
+<DIV id=folder0 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre0></A>
+<TBODY>
+<TR>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACCO03STSO_208","0", false)' id=itemFolderHTMLLink class=s3 href="http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208&amp;CONTAINER_NOM_FONCTION=ACHO_200&amp;AFFICHAGE_CONTAINER=OK&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE#"><IMG id=folderIcon0 border=0 name=folderIcon0 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap>
+<DIV class=s3>ST Consult. ADH</DIV></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder1 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre1></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACIC_100ACCO03STSO_208")'><IMG id=nodeIcon1 border=0 name=nodeIcon1 src="/Commun/multimedia/images/arbre/ftv2mnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACIC_100ACCO03STSO_208","1", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACCO03STSO_208");'><IMG id=folderIcon1 border=0 name=folderIcon1 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACIC_100ACCO03STSO_208","1", false)' id=itemTextLink1 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACCO03STSO_208");'>Ident contrat</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder2 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre2></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACDG_101ACCO03STSO_208")'><IMG id=nodeIcon2 border=0 name=nodeIcon2 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACDG_101ACCO03STSO_208","2", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACDG_101","ACCO03STSO_208");'><IMG id=folderIcon2 border=0 name=folderIcon2 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACDG_101ACCO03STSO_208","2", false)' id=itemTextLink2 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACDG_101","ACCO03STSO_208");'>Données géné.</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder3 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre3></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACBN_102ACCO03STSO_208")'><IMG id=nodeIcon3 border=0 name=nodeIcon3 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACBN_102ACCO03STSO_208","3", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACBN_102","ACCO03STSO_208");'><IMG id=folderIcon3 border=0 name=folderIcon3 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACBN_102ACCO03STSO_208","3", false)' id=itemTextLink3 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACBN_102","ACCO03STSO_208");'>Bloc-notes CI</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder4 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre4></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACHO_200ACCO03STSO_208")'><IMG id=nodeIcon4 border=0 name=nodeIcon4 src="/Commun/multimedia/images/arbre/ftv2mnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACHO_200ACCO03STSO_208","4", false)' id=itemFolderHTMLLink class=s5 href='javascript:lancerFonction("LancementFonction","debuter","ACHO_200","ACCO03STSO_208");'><IMG id=folderIcon4 border=0 name=folderIcon4 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACHO_200ACCO03STSO_208","4", false)' id=itemTextLink4 class=s5 href='javascript:lancerFonction("LancementFonction","debuter","ACHO_200","ACCO03STSO_208");'>Hist. opération</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder5 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre5></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACTM_201ACCO03STSO_208")'><IMG id=nodeIcon5 border=0 name=nodeIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACTM_201ACCO03STSO_208","5", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACTM_201","ACCO03STSO_208");'><IMG id=folderIcon5 border=0 name=folderIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACTM_201ACCO03STSO_208","5", false)' id=itemTextLink5 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACTM_201","ACCO03STSO_208");'>Trac. mandat</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder6 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre6></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACIN_300ACCO03STSO_208")'><IMG id=nodeIcon6 border=0 name=nodeIcon6 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2pnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACIN_300ACCO03STSO_208","6", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIN_300","ACCO03STSO_208");'><IMG id=folderIcon6 border=0 name=folderIcon6 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACIN_300ACCO03STSO_208","6", false)' id=itemTextLink6 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIN_300","ACCO03STSO_208");'>Inter. Princip.</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder11 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre11></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACIA_400ACCO03STSO_208")'><IMG id=nodeIcon11 border=0 name=nodeIcon11 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2pnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACIA_400ACCO03STSO_208","11", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIA_400","ACCO03STSO_208");'><IMG id=folderIcon11 border=0 name=folderIcon11 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACIA_400ACCO03STSO_208","11", false)' id=itemTextLink11 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIA_400","ACCO03STSO_208");'>Ident assurés</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder19 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre19></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACPG_500ACCO03STSO_208")'><IMG id=nodeIcon19 border=0 name=nodeIcon19 src="/Commun/multimedia/images/arbre/ftv2mnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACPG_500ACCO03STSO_208","19", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACPG_500","ACCO03STSO_208");'><IMG id=folderIcon19 border=0 name=folderIcon19 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACPG_500ACCO03STSO_208","19", false)' id=itemTextLink19 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACPG_500","ACCO03STSO_208");'>Produits/GT</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder20 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre20></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACGD_501ACCO03STSO_208")'><IMG id=nodeIcon20 border=0 name=nodeIcon20 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACGD_501ACCO03STSO_208","20", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACGD_501","ACCO03STSO_208");'><IMG id=folderIcon20 border=0 name=folderIcon20 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACGD_501ACCO03STSO_208","20", false)' id=itemTextLink20 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACGD_501","ACCO03STSO_208");'>Garanties dérog</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder21 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre21></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACDC_502ACCO03STSO_208")'><IMG id=nodeIcon21 border=0 name=nodeIcon21 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACDC_502ACCO03STSO_208","21", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACDC_502","ACCO03STSO_208");'><IMG id=folderIcon21 border=0 name=folderIcon21 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACDC_502ACCO03STSO_208","21", false)' id=itemTextLink21 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACDC_502","ACCO03STSO_208");'>Dérog commerc</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder22 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre22></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><IMG src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2vertline.gif" width=16 height=22></TD>
+<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACMC_503ACCO03STSO_208")'><IMG id=nodeIcon22 border=0 name=nodeIcon22 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACMC_503ACCO03STSO_208","22", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACMC_503","ACCO03STSO_208");'><IMG id=folderIcon22 border=0 name=folderIcon22 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACMC_503ACCO03STSO_208","22", false)' id=itemTextLink22 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACMC_503","ACCO03STSO_208");'>Modulation com.</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder23 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre23></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACCS_600ACCO03STSO_208")'><IMG id=nodeIcon23 border=0 name=nodeIcon23 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACCS_600ACCO03STSO_208","23", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACCS_600","ACCO03STSO_208");'><IMG id=folderIcon23 border=0 name=folderIcon23 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACCS_600ACCO03STSO_208","23", false)' id=itemTextLink23 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACCS_600","ACCO03STSO_208");'>Crit souscript</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder24 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre24></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACPD_700ACCO03STSO_208")'><IMG id=nodeIcon24 border=0 name=nodeIcon24 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACPD_700ACCO03STSO_208","24", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACPD_700","ACCO03STSO_208");'><IMG id=folderIcon24 border=0 name=folderIcon24 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACPD_700ACCO03STSO_208","24", false)' id=itemTextLink24 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACPD_700","ACCO03STSO_208");'>Param divers</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder25 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre25></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC3Q_800ACCO03STSO_208")'><IMG id=nodeIcon25 border=0 name=nodeIcon25 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("AC3Q_800ACCO03STSO_208","25", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_800","ACCO03STSO_208");'><IMG id=folderIcon25 border=0 name=folderIcon25 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC3Q_800ACCO03STSO_208","25", false)' id=itemTextLink25 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_800","ACCO03STSO_208");'>Histo. cotis.</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder26 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre26></A>
+<TBODY>
+<TR>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC36_900ACCO03STSO_208")'><IMG id=nodeIcon26 border=0 name=nodeIcon26 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("AC36_900ACCO03STSO_208","26", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC36_900","ACCO03STSO_208");'><IMG id=folderIcon26 border=0 name=folderIcon26 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC36_900ACCO03STSO_208","26", false)' id=itemTextLink26 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC36_900","ACCO03STSO_208");'>Visu. cpt cotis</A></TD></TR></TBODY></TABLE></DIV>
+<DIV id=folder27 style="DISPLAY: block">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre27></A>
+<TBODY>
+<TR>
+<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACCL_1000ACCO03STSO_208")'><IMG id=nodeIcon27 border=0 name=nodeIcon27 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACCL_1000ACCO03STSO_208","27", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACCL_1000","ACCO03STSO_208");'><IMG id=folderIcon27 border=0 name=folderIcon27 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier6.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACCL_1000ACCO03STSO_208","27", false)' id=itemTextLink27 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACCL_1000","ACCO03STSO_208");'>Clauses</A></TD></TR></TBODY></TABLE></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript>
+	if (document.getElementById("folderSel").value != null) {
+		noSel = document.getElementById("folderSel").value;
+
+		// -- Modif LPI du 15/12/2010	
+		//nbFn = 20;
+		hauteurDiv = document.getElementById("scenario").offsetHeight;
+		hauteurFolder = document.getElementById("itemDrawFolderLink").offsetHeight;
+		valeur = hauteurDiv / hauteurFolder;
+		nbFn = Math.ceil(valeur);
+		// -- Fin LPI
+
+		val = document.getElementById('scrolltop').value;
+		if (noSel < nbFn) {
+			goFocusArbre();
+		} else {	
+			goFocusScroll();
+		}
+	}	
+</SCRIPT>
+</DIV>
+<DIV id=zonebouton style="HEIGHT: 259px">
+<DIV id=bouton>
+<SCRIPT language=JavaScript>
+		// Ajout SCE_ZZWEB_004
+		var tabFonctions = new Array();
+	</SCRIPT>
+
+<DIV id=boutonFonction><A href="JavaScript:gestionBoutonFonction();"><IMG onmouseover="javascript:afficheBoutonOn('btFonction','128');" onmouseout="javascript:afficheBoutonOff('btFonction','128');" id=btFonction title=Fonction border=0 src="/Commun/multimedia/images/container/128.gif"></A> </DIV>
+<DIV id=boutGestBoutonFonction class=divColor style="HEIGHT: 8px; WIDTH: 100px; POSITION: absolute; LEFT: 160px; DISPLAY: none; TOP: 283px">
+<DIV></DIV></DIV>
+<DIV id=gestBoutonFonction class=divColor style="HEIGHT: 15px; POSITION: absolute; LEFT: 190px; Z-INDEX: 200; DISPLAY: none; TOP: 249px"><IFRAME style="HEIGHT: 20px; WIDTH: 150px; POSITION: absolute; LEFT: 0px; FILTER: mask(); Z-INDEX: -1; DISPLAY: block; TOP: 0px"></IFRAME>
+<TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
+<TBODY>
+<TR>
+<TD width="100%"><A class=S3 href="javascript:posterFormulaire('LancementFonction', 'debuter', 'ACIC_100&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE', 'ACCO03STSO_208');"><B>&nbsp;&nbsp;Abandonner</B></A><BR></TD></TR></TBODY></TABLE></DIV><!-- Affichage du boutons de navigation Précédent -->
+<DIV id=boutonPrecedent><A id=lienPrecedent title=Précédent href="JavaScript:assignebouton(bouton_precedent);lancerFonction('LancementFonction','debuter','ACIC_100','ACCO03STSO_208','0');"><IMG onmouseover="javascript:afficheBoutonOn('btPrecedent','107');" onmouseout="javascript:afficheBoutonOff('btPrecedent','107');" id=btPrecedent border=0 src="/Commun/multimedia/images/container/107.gif"></A> </DIV><!-- Affichage du bouton de navigation Suivant --><!-- DEBUT ED-V2.2.0-GRC-001 -->
+<DIV id=boutonSuivant><A id=lienSuivant title=Suivant href="JavaScript:assignebouton(bouton_suivant);posterFormulaire('LancementFonction','debuter','ACIN_300','ACCO03STSO_208');"><IMG onmouseover="javascript:afficheBoutonOn('btSuivant','121');" onmouseout="javascript:afficheBoutonOff('btSuivant','121');" id=btSuivant border=0 src="/Commun/multimedia/images/container/121.gif"></A> </DIV><!-- FIN ED-V2.2.0-GRC-001 --><!-- Affichage du boutons de navigation Enregistrer  --><!-- DEBUT ED-V2.2.0-PSCD-001 -->
+<SCRIPT>boutons = boutons + 1;</SCRIPT>
+<!-- Affichage du boutons de navigation Continuer  -->
+<DIV id=boutonEnregistrer><A id=lienEnregistrer title=Continuer href="JavaScript:assignebouton(bouton_enregistrer);lancerFonction('LancementFonction','debuter','&amp;CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=9','ACCO03STSO_208');"><IMG onmouseover="javascript:afficheBoutonOn('btContinuer','130');" onmouseout="javascript:afficheBoutonOff('btContinuer','130');" id=btContinuer border=0 src="/Commun/multimedia/images/container/130.gif"></A> </DIV><!-- FIN ED-V2.2.0-PSCD-001 --><!-- Affichage du boutons de navigation Mis en instance  -->
+<DIV id=boutonMiseEnInstance><IMG style="FILTER: alpha(opacity=30)" border=0 src="/Commun/multimedia/images/container/123.gif"> </DIV><!-- DEBUT AC_ZZ_STAB221_001 
+		Affichage du bouton réinitialiser au dessus du bouton fermer
+	--><!-- Affichage du boutons de navigation Reinitialiser -->
+<DIV id=boutonReinit><A id=lienReinit href="Javascript:posterFormulaire('LancementFonction','debuter','ACHO_200&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACCO03STSO_208');"><IMG onmouseover="javascript:afficheBoutonOn('btReinit','202');" onmouseout="javascript:afficheBoutonOff('btReinit','202');" id=btReinit title=Réinitialiser border=0 src="/Commun/multimedia/images/container/202.gif"> </A></DIV><!-- FIN AC_ZZ_STAB221_001 --><!-- Affichage du bouton d'aide -->
+<DIV id=boutonAide><A id=lienAide href="JavaScript:openHelp();"><IMG onmouseover="javascript:afficheBoutonOn('btAide','129');" onmouseout="javascript:afficheBoutonOff('btAide','129');" id=btAide title=Aide border=0 src="/Commun/multimedia/images/container/129.gif"></A> </DIV><!-- Affichage du boutons de navigation Fermer -->
+<DIV id=boutonFermer><A id=lienFermer href="JavaScript:assignebouton(bouton_fermer);fermerContainer('','ACCO03STSO_208');"><IMG onmouseover="javascript:afficheBoutonOn('btFermer','127');" onmouseout="javascript:afficheBoutonOff('btFermer','127');" id=btFermer title=Fermer border=0 src="/Commun/multimedia/images/container/127.gif"></A> </DIV>
+<SCRIPT language=JavaScript src="/Commun/js/aide.js"></SCRIPT>
+
+<SCRIPT language=JavaScript>
+	
+	/****************************************************************
+	* Fonctions liées au bouton Fonction.
+	* Ajout, supression de fonctions secondaires.
+	* Calcul placement des boutons.
+	****************************************************************/
+		function trim (chaine) {
+ 			chaine = unescape(chaine);
+			 return chaine.replace(/(^\s*)|(\s*$)/g, "");
+		}
+	
+		var htmlFonction = "";
+		var nomForm = '';
+		var nomFonction= 'ACHO';
+	
+		var libelle = '';
+		var parametre1 = '';
+		var parametre2 = '';
+		var action2 = '';
+		var action = '';
+		var scenar = 'ACCO03STSO_208';
+        var contextPath = '/WebAneto';
+		
+		// Début Ajout SCE_ZZWEB_004
+		fonction = 0;
+		tabFonctions = new Array();
+		// Fin Ajout SCE_ZZWEB_004
+		
+
+		// Fonction ajoutée pour SCE_ZZWEB_004
+		function _reaffichageMenu() {
+			var htmlFonction = '';
+			if (fonction > 0) { 
+				var hIframe = (15*fonction) + 5;
+				htmlFonction += '<iframe style="{display:block;position:absolute;top:0;left:0;z-index:-1;filter:mask();width:150px;height:'+hIframe+';}"></iframe>';
+				htmlFonction += '<table border="0" width="150px" cellspacing="0" cellpadding="0"><tr><td width="100%">';
+				for(var i = 0; i < fonction; i++) {
+					if (tabFonctions[i][1]=="MO" || tabFonctions[i][1]=="VI") {
+						htmlFonction += tabFonctions[i][2];
+					}
+				}
+				htmlFonction += '</td></tr></table>';
+			}
+			document.getElementById("gestBoutonFonction").innerHTML = [htmlFonction];
+			calculPlaceSsFct();
+		}
+
+		// Fonction ajoutée pour SCE_ZZWEB_004
+		function creerNouvelleFonctionJS(libelle, nomFonction, parametres) {
+
+			var chaineParametres = '';
+			var libBulle = '';
+			
+			if (libelle.length > 25) {
+				libBulle = libelle;
+				libelle = libelle.substr(0, 22) + '...';
+			}
+			for(var i = 0; i < parametres.length; i++) {
+				chaineParametres += '\'' + parametres[i] + '\'';
+				if (i<parametres.length-1) {
+					chaineParametres += ', ';
+				}
+			}
+
+			var fonctionExiste = false;
+			for(var i = 0; i < fonction; i++) {
+				if (tabFonctions[i][0] == libelle) {
+					fonctionExiste = true;
+				}
+			}
+
+			if (!fonctionExiste) {
+				var menu = '<A href="JavaScript:' + nomFonction + '(' + chaineParametres + ');" class="S3"';
+				if (libBulle != '') {
+					// SBD_TT27005 Ajout info bulle si libellé tronqué
+					menu += ' title="' + libBulle + '"';
+				}
+				menu += '><b>&nbsp;&nbsp;'+ libelle + '</b></A><br>';
+				tabFonctions[fonction] = new Array(libelle, 'VI', menu);
+				fonction = fonction + 1;
+			}
+
+			_reaffichageMenu();
+		}
+
+		// Fonction ajoutée pour SCE_ZZWEB_004
+		function cacherFonctionOptionnelle(nom) {
+			if (nom.length > 25) {
+				// SBD_TT27005 Recherche le libellé tronqué
+				nom = nom.substr(0, 22) + '...';
+			}
+			for (var i = 0; i < fonction; i++) {
+				if (tabFonctions[i][0] == nom) {
+					tabFonctions[i][1] = "CA";
+				}
+			}
+			_reaffichageMenu();
+		}
+
+		// Fonction ajoutée pour SCE_ZZWEB_004
+		function montrerFonctionOptionnelle(nom) {
+			if (libelle.length > 25) {
+				// SBD_TT27005 Recherche le libellé tronqué
+				libelle = libelle.substr(0, 22) + '...';
+			}
+			for (var i = 0; i < fonction; i++) {
+				if (tabFonctions[i][0] == nom) {
+					tabFonctions[i][1] = "VI";
+				}
+			}
+			_reaffichageMenu();
+		}
+		
+		/**********************************
+		* Calcule le placements des boutons de navigation
+		* par rapport à l'arbre et la place des fonctions
+		* secondaires.
+		**************************************/
+		function calculPlaceBoutons()
+		{
+			//TT9031		
+			var heightcontenuFrame = parent.heightcontenuFrame;
+			if (heightcontenuFrame == 0) {
+				heightcontenuFrame = parseInt(document.body.clientHeight);
+				parent.heightcontenuFrame = heightcontenuFrame;
+			}
+			//Fin TT9031
+			// on calcul la hauteur  = place + ( 30 * place par boutons)+( 15 * place par fonction)
+			var height = (heightcontenuFrame - (33*boutons));
+			var obj = document.getElementById('scenario');
+			obj.style.height = height;
+			var obj2 = document.getElementById('zonebouton');
+			obj2.style.height = heightcontenuFrame - height;
+			return true;
+		}
+		
+		function calculPlaceSsFct()
+		{
+			var objDiv = document.getElementById('gestBoutonFonction');
+			//Calcul de la place qu'il faut pour placer les sous fonctions.
+			var objContainer = document.getElementById('zonebouton');
+			
+			objDiv.style.left = 190;
+			var objDivHeight = 15*fonction;
+			objDiv.style.height = objDivHeight;
+			var hauteurFenetre = parseInt(document.body.clientHeight);
+			var pos = 0;
+			//Calcul position du calque pour que toutes les fonctions rentrent dans la fenêtre
+			if (objDivHeight > objContainer.clientHeight) {
+				pos = hauteurFenetre - objDivHeight;
+			} else {
+				pos = hauteurFenetre - objContainer.clientHeight + 20;
+			}
+				
+			objDiv.style.top = pos;
+			
+			var objDesign = document.getElementById('boutGestBoutonFonction');
+			objDesign.style.width = 100;
+			objDesign.style.top = objContainer.clientHeight + 24;
+			objDesign.style.left = 160;
+			return true;
+		}
+		
+		/***********************************************************
+		* Fonction activant l'ouverture de l'aide contextuelle.
+		**************************************************************/
+		function openHelp()
+		{
+			var fonction = 'ACHO_200';
+			var scenario = 'ACCO03STSO_208';
+			var scenarioPere = 'ACCO03STSO_208';
+			var codeActe = 'ACCO';
+			var codeAction = '03';
+			var codeContexte = 'STSO'; 
+			var applicationContextRoot = "/WebAneto";
+			LectureXml(codeActe,fonction,applicationContextRoot)
+			//Récup du xml de correspondance code acte/nom doc (ajax).
+		}
+		//calculPlaceBoutons();
+		
+		// DEBUT AC_ZZ_STAB221_001
+		// supression fonction réinitialiser dans le menu fonction
+		//Affichage du bouton Reinitialiser (et donc des ss fonctions données par la jsp (appel reaffichage menu)
+		//var tabReinit = new Array('LancementFonction','debuter','ACHO_200&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACCO03STSO_208');
+		//creerNouvelleFonctionJS('Reinitialiser','posterFormulaire',tabReinit);
+		// FIN AC_ZZ_STAB221_001
+		
+		
+		// DEBUT STAB221_PSSP_001
+		//Affiche les sous fonctions données à la JSP
+		//nc 417731 by MJLI move to container.js after jqueyr.show
+		//_reaffichageMenu();
+		// FIN STAB221_PSSP_001
+		
+		//Affichage du bouton Abandonner (et donc des ss fonctions données par la jsp (appel reaffichage menu))
+		
+				var tabAbandon = new Array('LancementFonction','debuter','ACIC_100&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE','ACCO03STSO_208');
+				creerNouvelleFonctionJS('Abandonner','posterFormulaire',tabAbandon);
+		
+
+		//Check si aide présente donc bouton à afficher.
+		if(!checkAide())
+			document.getElementById('boutonAide').style.display = 'none';
+	</SCRIPT>
+</DIV></DIV>
+<SCRIPT language=Javascript>
+		</SCRIPT>
+</DIV>
+<DIV id=contenu style="HEIGHT: 486px"><!-- Cas normal de chargement d'une fonction --><LINK rel=stylesheet type=text/css href="/Commun/style/cssDynamique.css"><LINK rel=stylesheet type=text/css href="/Commun/style/disabled.css"><LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css">
+<SCRIPT language=JavaScript src="/Commun/js/calendrier.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/cssDynamique.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/disabled.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/lmt_navig.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/lov.js"></SCRIPT>
+
+<SCRIPT language=JavaScript src="/Commun/js/MasqueSaisie.js"></SCRIPT>
+
+<SCRIPT language=Javascript src="/WebAneto/jsp/contrat/js/F013.js"></SCRIPT>
+
+<SCRIPT language=javascript>
+function invalidateZZToken(form) {
+if(form!= null && form._zzToken_ != null){
+form._zzToken_.value = false;
+}
+zzDisableHref('true');
+}
+function isZZTokenValid(form) {
+if(form!= null && form._zzToken_ != null){
+var tokenValue = form._zzToken_.value;
+if (tokenValue == 'true') {
+return true;
+}
+}
+else return true;
+return false;
+}
+function zzSubmitForm(form) {
+if(isZZTokenValid(form)){
+if(!pageIsReloaded){
+invalidateZZToken(form);
+}else{
+pageIsReloaded = false;
+}
+form.submit();
+}
+}
+function zzValidateFormWithTokenActivatef013Form(form){
+if(isZZTokenValid(form) && zzPersonnalOnsubmitf013Form() ){
+invalidateZZToken(form);
+return true;
+}
+return false;
+}
+function zzPersonnalOnsubmitf013Form(form) {
+
+ return true;
+}
+</SCRIPT>
+
+<FORM onsubmit="return zzValidateFormWithTokenActivatef013Form(this);" method=post name=f013Form action=#><INPUT id=_zzToken_ type=hidden value=true name=_zzToken_> <INPUT type=hidden value=&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208&amp;CONTAINER_NOM_FONCTION=ACHO_200&amp;AFFICHAGE_CONTAINER name=params> 
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD class=TitreGroupeB colSpan=4>Critères de sélection</TD></TR>
+<TR>
+<TD class=LibelleB2>Date de début de consultation :</TD>
+<TD class=DonneeB2><INPUT onkeypress=javascript:masqueSaisieDateFormate(this) style="VISIBILITY: visible" maxLength=10 size=15 name=dateDebConsultation> <A id=imgDate href="JavaScript:show_calendar('','f013Form.dateDebConsultation')"><IMG id=imgDate border=0 alt=Calendrier src="/Commun/multimedia/images/calendar.gif"></A> </TD>
+<TD class=LibelleB2>Date de fin de consultation :</TD>
+<TD class=DonneeB2><INPUT onkeypress=javascript:masqueSaisieDateFormate(this); style="VISIBILITY: visible" maxLength=10 size=15 value=10/05/2060 name=dateFinConsultation> <A id=imgDate href="JavaScript:show_calendar('','f013Form.dateFinConsultation')"><IMG id=imgDate border=0 alt=Calendrier src="/Commun/multimedia/images/calendar.gif"></A> <INPUT type=hidden value=10/05/2060 name=dateEffetActeGestion> </TD></TR>
+<TR>
+<TD class=LibelleB2>Filtre :</TD>
+<TD class=DonneeB2 colSpan=3><SELECT tabIndex=4 id=nonbloque style="VISIBILITY: visible" name=filtre> <OPTION value=02>Opérations dt date créat. comprise dans la période</OPTION> <OPTION value=03>Opérations dt date effet comprise dans la période</OPTION> <OPTION selected value=01>Toutes les opérations de la période</OPTION></SELECT> </TD></TR></TBODY></TABLE>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD class=TitreGroupeB colSpan=5>Etat</TD></TR>
+<TR class=LibelleB2>
+<TD width="20%"><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=valide> valide </TD>
+<TD width="20%"><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=enInstance> en instance </TD>
+<TD width="20%"><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=annule> annulé </TD>
+<TD width="20%"><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=refuse> refusé </TD>
+<TD width="20%"></TD></TR>
+<TR>
+<TD class=TitreGroupeB colSpan=5>Type</TD></TR>
+<TR class=LibelleB2>
+<TD><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=gestion> gestion et/ou propo </TD>
+<TD><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=calcul> calcul </TD>
+<TD><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=flux> flux </TD>
+<TD><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=edition> édition </TD>
+<TD noWrap><INPUT style="VISIBILITY: visible" CHECKED type=checkbox value=1 name=sansEffet> sans effet </TD></TR></TBODY></TABLE>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD align=center><A tabIndex=6 title="Rechercher opérations" class=AdminBT_B href="Javascript:goSubmit('doRechercheOperations', '/WebAneto');">Rechercher</A> </TD></TR></TBODY></TABLE>
+<TABLE width="100%">
+<TBODY>
+<TR>
+<TD class=TitreGroupeB>Liste des opérations</TD></TR></TBODY></TABLE>
+<DIV class=listeCol style="HEIGHT: 265px; WIDTH: 100%">
+<TABLE id=TableOperations width="100%">
+<TBODY>
+<TR class=LILibelleB1>
+<TH>&nbsp;N°&nbsp;</TH>
+<TH noWrap>&nbsp;Date de création&nbsp;</TH>
+<TH noWrap>&nbsp;Libellé de l'opération&nbsp;</TH>
+<TH noWrap>&nbsp;Etat de l'opération&nbsp;</TH>
+<TH noWrap>&nbsp;Type d'opération&nbsp;</TH>
+<TH noWrap>&nbsp;Date d'effet&nbsp;</TH>
+<TH noWrap>&nbsp;Date de cotisation&nbsp;</TH>
+<TH noWrap>&nbsp;Date de vente&nbsp;</TH>
+<TH noWrap>&nbsp;Date de demande&nbsp;</TH>
+<TH noWrap>&nbsp;Contexte&nbsp;</TH>
+<TH noWrap>&nbsp;Opération de génération&nbsp;</TH>
+<TH noWrap>&nbsp;Opération annulante&nbsp;</TH>
+<TH noWrap>&nbsp;Motif d'instance ou de refus&nbsp;</TH>
+<TH noWrap>&nbsp;Code utilisateur de création&nbsp;</TH>
+<TH noWrap>&nbsp;Info. visa&nbsp;</TH></TR><!-- code pr récupérer les valeurs du tableau  --><!-- Boucle sur la liste des operations -->
+<TBODY id=_pageOperations_1_ style="DISPLAY: block"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('0');" onmouseover="JavaScript:MouseOver('0','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('0');" id=0 class=LIDonneeB1 style="BACKGROUND-COLOR: #e1f1ff"><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>124</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('1');" onmouseover="JavaScript:MouseOver('1','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('1');" id=1 class=LIDonneeB1 style="BACKGROUND-COLOR: #cbe6ff"><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>123</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('2');" onmouseover="JavaScript:MouseOver('2','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('2');" id=2 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>122</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('3');" onmouseover="JavaScript:MouseOver('3','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('3');" id=3 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>121</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('4');" onmouseover="JavaScript:MouseOver('4','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('4');" id=4 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>120</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('5');" onmouseover="JavaScript:MouseOver('5','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('5');" id=5 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>119</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap align=center>29/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('6');" onmouseover="JavaScript:MouseOver('6','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('6');" id=6 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>118</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('7');" onmouseover="JavaScript:MouseOver('7','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('7');" id=7 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>117</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap align=center>26/07/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_2_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('8');" onmouseover="JavaScript:MouseOver('8','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('8');" id=8 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>116</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('9');" onmouseover="JavaScript:MouseOver('9','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('9');" id=9 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>115</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('10');" onmouseover="JavaScript:MouseOver('10','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('10');" id=10 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>114</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('11');" onmouseover="JavaScript:MouseOver('11','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('11');" id=11 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>113</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('12');" onmouseover="JavaScript:MouseOver('12','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('12');" id=12 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>112</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('13');" onmouseover="JavaScript:MouseOver('13','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('13');" id=13 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>111</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>23/04/2016&nbsp;</TD>
+<TD noWrap align=center>22/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('14');" onmouseover="JavaScript:MouseOver('14','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('14');" id=14 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>110</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('15');" onmouseover="JavaScript:MouseOver('15','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('15');" id=15 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>109</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_3_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('16');" onmouseover="JavaScript:MouseOver('16','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('16');" id=16 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>108</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Aller Mandat /Gestion Mandat /Impact mandat </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC111&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('17');" onmouseover="JavaScript:MouseOver('17','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('17');" id=17 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>107</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Ouverture droit </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC002&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('18');" onmouseover="JavaScript:MouseOver('18','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('18');" id=18 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>102</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap>CMU INTERNE&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('19');" onmouseover="JavaScript:MouseOver('19','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('19');" id=19 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>103</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI /Param.calc. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Calcul&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap>CMU INTERNE&nbsp;</TD>
+<TD noWrap align=right>102&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('20');" onmouseover="JavaScript:MouseOver('20','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('20');" id=20 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>104</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI /Validation acte </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap>CMU INTERNE&nbsp;</TD>
+<TD noWrap align=right>102&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('21');" onmouseover="JavaScript:MouseOver('21','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('21');" id=21 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>105</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI /Lettr. résil. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap align=center>01/03/2016&nbsp;</TD>
+<TD noWrap>CMU INTERNE&nbsp;</TD>
+<TD noWrap align=right>102&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('22');" onmouseover="JavaScript:MouseOver('22','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('22');" id=22 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>106</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI /Emission TP </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>CMU INTERNE&nbsp;</TD>
+<TD noWrap align=right>102&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('23');" onmouseover="JavaScript:MouseOver('23','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('23');" id=23 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>101</TD>
+<TD noWrap align=center>19/04/2016&nbsp;</TD>
+<TD noWrap>Résiliation CI </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Sans-effet&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>SANS EFFET&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42TEYSVE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_4_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('24');" onmouseover="JavaScript:MouseOver('24','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('24');" id=24 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>100</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>Avis ind dem </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC015&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('25');" onmouseover="JavaScript:MouseOver('25','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('25');" id=25 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>98</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>Calcul demande /Param.calc. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Calcul&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>30SOLEDE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('26');" onmouseover="JavaScript:MouseOver('26','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('26');" id=26 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>99</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>Calcul demande /Avis éch diff. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap align=center>15/04/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>98&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>30SOLEDE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('27');" onmouseover="JavaScript:MouseOver('27','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('27');" id=27 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>96</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('28');" onmouseover="JavaScript:MouseOver('28','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('28');" id=28 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>95</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('29');" onmouseover="JavaScript:MouseOver('29','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('29');" id=29 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>94</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap align=center>07/04/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('30');" onmouseover="JavaScript:MouseOver('30','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('30');" id=30 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>93</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>12/01/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('31');" onmouseover="JavaScript:MouseOver('31','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('31');" id=31 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>92</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>12/01/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_5_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('32');" onmouseover="JavaScript:MouseOver('32','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('32');" id=32 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>91</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>13/01/2016&nbsp;</TD>
+<TD noWrap align=center>12/01/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('33');" onmouseover="JavaScript:MouseOver('33','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('33');" id=33 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>90</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('34');" onmouseover="JavaScript:MouseOver('34','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('34');" id=34 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>88</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap>Av administ CI </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap>Modif bloc note&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>56LEPOME&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('35');" onmouseover="JavaScript:MouseOver('35','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('35');" id=35 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>89</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap>Av administ CI /Validation acte </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap align=center>23/12/2015&nbsp;</TD>
+<TD noWrap>Modif bloc note&nbsp;</TD>
+<TD noWrap align=right>88&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>56LEPOME&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('36');" onmouseover="JavaScript:MouseOver('36','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('36');" id=36 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>87</TD>
+<TD noWrap align=center>22/12/2015&nbsp;</TD>
+<TD noWrap>Carte NOE dem. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>22/12/2015&nbsp;</TD>
+<TD noWrap align=center>22/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC003&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('37');" onmouseover="JavaScript:MouseOver('37','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('37');" id=37 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>86</TD>
+<TD noWrap align=center>21/12/2015&nbsp;</TD>
+<TD noWrap>Dem. cartes TP /Cartes TP dif. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>21/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>IZINCKME&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('38');" onmouseover="JavaScript:MouseOver('38','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('38');" id=38 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>85</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>Carte NOE dem. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/11/2015&nbsp;</TD>
+<TD noWrap align=center>01/11/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC003&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('39');" onmouseover="JavaScript:MouseOver('39','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('39');" id=39 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>84</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>Demande trt &nbsp;<IMG border=0 alt="DIV            - DIV" src="/Commun/multimedia/images/a1.gif" width=15 height=15> </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>IZINCKME&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_6_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('40');" onmouseover="JavaScript:MouseOver('40','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('40');" id=40 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>83</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('41');" onmouseover="JavaScript:MouseOver('41','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('41');" id=41 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>82</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('42');" onmouseover="JavaScript:MouseOver('42','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('42');" id=42 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>81</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('43');" onmouseover="JavaScript:MouseOver('43','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('43');" id=43 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>80</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('44');" onmouseover="JavaScript:MouseOver('44','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('44');" id=44 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>79</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('45');" onmouseover="JavaScript:MouseOver('45','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('45');" id=45 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>78</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 9xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>18/12/2015&nbsp;</TD>
+<TD noWrap align=center>17/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC010&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('46');" onmouseover="JavaScript:MouseOver('46','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('46');" id=46 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>77</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap>Avis éch local /Avis éch immed </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/01/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('47');" onmouseover="JavaScript:MouseOver('47','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('47');" id=47 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>76</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_7_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('48');" onmouseover="JavaScript:MouseOver('48','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('48');" id=48 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>75</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap>NOEMIE 4xx </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap align=center>15/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC009&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('49');" onmouseover="JavaScript:MouseOver('49','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('49');" id=49 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>74</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Ouverture droit </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>AC002&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('50');" onmouseover="JavaScript:MouseOver('50','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('50');" id=50 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>72</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Résiliation CI </TD>
+<TD noWrap>Annulé&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Fin ACS&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>101&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('51');" onmouseover="JavaScript:MouseOver('51','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('51');" id=51 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>73</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Résiliation CI /Validation acte </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Fin ACS&nbsp;</TD>
+<TD noWrap align=right>72&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('52');" onmouseover="JavaScript:MouseOver('52','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('52');" id=52 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>67</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('53');" onmouseover="JavaScript:MouseOver('53','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('53');" id=53 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>68</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Param.calc. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Calcul&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>67&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('54');" onmouseover="JavaScript:MouseOver('54','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('54');" id=54 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>69</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Lettr sans édit </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>67&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('55');" onmouseover="JavaScript:MouseOver('55','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('55');" id=55 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>70</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Validation acte </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>01/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>67&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY>
+<TBODY id=_pageOperations_8_ style="DISPLAY: none"><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('56');" onmouseover="JavaScript:MouseOver('56','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('56');" id=56 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>71</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Emission TP </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Flux&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>67&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('57');" onmouseover="JavaScript:MouseOver('57','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('57');" id=57 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>63</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Sans-effet&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('58');" onmouseover="JavaScript:MouseOver('58','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('58');" id=58 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>64</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Param.calc. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Calcul&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>63&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('59');" onmouseover="JavaScript:MouseOver('59','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('59');" id=59 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>62</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Résiliation CI </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Sans-effet&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>SANS EFFET&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>42MAJEAE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('60');" onmouseover="JavaScript:MouseOver('60','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('60');" id=60 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>60</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Résiliation CI </TD>
+<TD noWrap>Annulé&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Fin ACS&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>62&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>T69SOMSE&nbsp;</TD>
+<TD noWrap>&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('61');" onmouseover="JavaScript:MouseOver('61','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('61');" id=61 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>61</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Résiliation CI /Validation acte </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Edition&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>07/01/2017&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Fin ACS&nbsp;</TD>
+<TD noWrap align=right>60&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>T69SOMSE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('62');" onmouseover="JavaScript:MouseOver('62','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('62');" id=62 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>56</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv </TD>
+<TD noWrap>Annulé&nbsp;</TD>
+<TD noWrap>Gestion&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap align=right>63&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>T69SOMSE&nbsp;</TD>
+<TD noWrap>&nbsp;</TD></TR><!-- DEBUT CSU TT17667 : ajout de l'appel des fonctions js pour la gestion de la séléction d'une ligne -->
+<TR onclick="JavaScript:onClickLigneTableOperations('63');" onmouseover="JavaScript:MouseOver('63','TableOperations');" onmouseout="JavaScript:onMouseOutTableOperations('63');" id=63 class=LIDonneeB1><!-- FIN CSU TT17667 -->
+<TD noWrap align=right>57</TD>
+<TD noWrap align=center>14/12/2015&nbsp;</TD>
+<TD noWrap>Changement couv/Param.calc. </TD>
+<TD noWrap>Valide&nbsp;</TD>
+<TD noWrap>Calcul&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap align=center>07/01/2016&nbsp;</TD>
+<TD noWrap>STD&nbsp;</TD>
+<TD noWrap align=right>56&nbsp;</TD>
+<TD noWrap align=right>&nbsp;</TD>
+<TD noWrap>&nbsp;</TD>
+<TD noWrap>T69SOMSE&nbsp;</TD>
+<TD noWrap>Accord administratif&nbsp;</TD></TR></TBODY><INPUT type=hidden value=afficherSuiteListeOperations name=method> <INPUT type=hidden value=1 name=pageOperations> <INPUT type=hidden value=_pageOperations_1_ name=_pageOperations_> <INPUT type=hidden value=_pageOperations_1_Page name=_pageOperations_Class_> 
+<TBODY>
+<TR>
+<TD colSpan=100 align=left>
+<TABLE id=idtabNbEnr width=10>
+<TBODY>
+<TR>
+<TD id=idNbEnr noWrap>Nb Enr.:121 -&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='1';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_1_';document.f013Form._pageOperations_Class_.value='_pageOperations_1_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_1_Page class=AdminBTCalendrier2 href="#">1</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='2';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_2_';document.f013Form._pageOperations_Class_.value='_pageOperations_2_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_2_Page class=AdminBTCalendrier href="#">2</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='3';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_3_';document.f013Form._pageOperations_Class_.value='_pageOperations_3_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_3_Page class=AdminBTCalendrier href="#">3</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='4';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_4_';document.f013Form._pageOperations_Class_.value='_pageOperations_4_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_4_Page class=AdminBTCalendrier href="#">4</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='5';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_5_';document.f013Form._pageOperations_Class_.value='_pageOperations_5_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_5_Page class=AdminBTCalendrier href="#">5</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='6';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_6_';document.f013Form._pageOperations_Class_.value='_pageOperations_6_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_6_Page class=AdminBTCalendrier href="#">6</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='7';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_7_';document.f013Form._pageOperations_Class_.value='_pageOperations_7_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_7_Page class=AdminBTCalendrier href="#">7</A>&nbsp;</TD>
+<TD noWrap><A onclick="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='8';document.getElementById(document.f013Form._pageOperations_.value).style.display='none';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier';document.f013Form._pageOperations_.value='_pageOperations_8_';document.f013Form._pageOperations_Class_.value='_pageOperations_8_Page';document.getElementById(document.f013Form._pageOperations_.value).style.display='block';document.getElementById(document.f013Form._pageOperations_Class_.value).className='AdminBTCalendrier2';return false;" id=_pageOperations_8_Page class=AdminBTCalendrier href="#">8</A>&nbsp;</TD>
+<TD noWrap><A class=AdminBTCalendrier href="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='9';document.f013Form._pageOperations_.value='_pageOperations_9_';document.f013Form.action='/WebAneto/contrat/ACHO.do?method=afficherSuiteListeOperations&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208&amp;CONTAINER_NOM_FONCTION=ACHO_200&amp;AFFICHAGE_CONTAINER';document.f013Form.submit();">&gt;&gt;</A>&nbsp;</TD>
+<TD noWrap><A class=AdminBTCalendrier href="JavaScript:document.getElementById('_pageOperations_1_').style.display='none';document.getElementById('_pageOperations_1_Page').className='AdminBTCalendrier';document.f013Form.pageOperations.value='16';document.f013Form.action='/WebAneto/contrat/ACHO.do?method=afficherSuiteListeOperations&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208&amp;CONTAINER_NOM_FONCTION=ACHO_200&amp;AFFICHAGE_CONTAINER';document.f013Form._pageOperations_.value='_pageOperations_16_';document.f013Form.submit();">16</A>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<SCRIPT language=Javascript>
+		// L'appel de ces fonctions doit être en fin de page
+		setGrpItemACHO();
+		appGrpDon();
+	</SCRIPT>
+</FORM>
+<SCRIPT type=text/javascript>var pageIsReloaded = true;</SCRIPT>
+</DIV>
+<SCRIPT>
+//TT9031
+//		heightcontenuFrame = (document.body.clientHeight);
+//		var heightcontenuFrame = (document.body.clientHeight);
+//		var obj = document.getElementById('contenu');
+//		obj.style.height = heightcontenuFrame;
+		//calculPlaceBoutons();
+	</SCRIPT>
+</DIV>
+<SCRIPT language=JavaScript>
+	
+</SCRIPT>
+<!-- Partie permettant la persistance du bandeau en cas d'erreur s'il existe -->
+<SCRIPT language=JavaScript>
+zzBlocageArbreAction();
+function gestionRetourErreurBandeau()
+{
+	if(presenceBandeau=='true')
+		gestionRetourPageErreur();
+	var liste= document.forms;
+	if(liste!=null)
+	for(i=0;i<liste.length;i++)
+		if(liste[i]!=null && liste[i]._zzToken_!=null)
+			liste[i]._zzToken_.value='true';
+}
+</SCRIPT>
+<IFRAME onload=JavaScript:gestionRetourErreurBandeau();appelUrl();appelUrlCalligo(); height=0 src="#" frameBorder=0 width=0 ?>
+</IFRAME>
+<META content=no-cache http-equiv=Pragma>
+<META content=-1 http-equiv=Expires><INPUT id=notificationPluginShowError style="CURSOR: hand; HEIGHT: 23px; WIDTH: 23px; RIGHT: 2px; POSITION: absolute; DISPLAY: none; TOP: 2px; index: 9998" src="/Commun/multimedia/images/notification/error.png" type=image jQuery17106414509055652096="2"></INPUT></BODY></HTML>

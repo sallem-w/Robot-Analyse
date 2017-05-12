@@ -1,6 +1,6 @@
 ﻿ActivInfinite.scenario({ searchContract: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(60000, function(sc, st) { sc.endScenario();	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinite.steps.initializePage);
@@ -12,6 +12,8 @@
 	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.checkProductList);
 	sc.step(ActivInfinite.steps.checkContribution);
+	sc.step(ActivInfinite.steps.searchHistory);
+	sc.step(ActivInfinite.steps.checkHistory);
 	sc.step(ActivInfinite.steps.end);
 }});
 
@@ -239,8 +241,92 @@ ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinite.pContribution.oBtClose.click();
-	sc.endStep();
+	ActivInfinite.pContribution.btHistoOperation.click();
+	ActivInfinite.pHistoOperationSearch.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ searchHistory : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchHistory');
+	
+	ActivInfinite.pHistoOperationSearch.oPending.click();
+	ActivInfinite.pHistoOperationSearch.oCanceled.click();
+	ActivInfinite.pHistoOperationSearch.oRefuse.click();
+	ActivInfinite.pHistoOperationSearch.oCalcul.click();
+	ActivInfinite.pHistoOperationSearch.oFlux.click();
+	ActivInfinite.pHistoOperationSearch.oEdition.click();
+	ActivInfinite.pHistoOperationSearch.oWithoutEffet.click();
+		
+	ActivInfinite.pHistoOperationSearch.btSearch.click();
+	ActivInfinite.pHistoOperationSearch.events.UNLOAD.on(function() {
+		ActivInfinite.pHistoOperationSearch.events.LOAD.on(function() {
+			sc.endStep();
+		});
+	});
+}});
+
+ActivInfinite.step({ checkHistory : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkHistory');
+	
+	var isContractTerminated = false
+	var isContractWithAccesSante = false
+		
+	var compareDate = ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1);
+	
+	for (var index in ActivInfinite.pHistoOperationSearch.oOperationLabel.getAll()) {
+		var operationLabelLists = ActivInfinite.pHistoOperationSearch.oOperationLabel.i(index);
+		for (var indexPaging in operationLabelLists.getAll()) {
+			var operationLabel = ctx.string.trim(operationLabelLists.i(indexPaging).get());
+			var effectDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinite.pHistoOperationSearch.oEffectDate.i(index).i(indexPaging).get()));
+			var contexte = ctx.string.trim(ActivInfinite.pHistoOperationSearch.oContexte.i(index).i(indexPaging).get());
+			var isSameDate = ctx.date.formatDDMMYYYY(effectDate) === ctx.date.formatDDMMYYYY(compareDate);
+			
+			if (operationLabel === 'Résiliation CI' && contexte === 'Fin ACS' && isSameDate) {
+				isContractTerminated = true;	
+			}
+			
+			if (operationLabel === 'Changement de couv' && contexte === 'STD' && isSameDate) {
+				isContractWithAccesSante = true;
+			}
+		}
+	}
+	
+	if (isContractTerminated && isContractWithAccesSante) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - two scenario found');
+		sc.data.commentContract = 'Le contract est résilié et en plus a un produit accès santé radié \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pHistoOperationSearch.oBtClose.click();
+		sc.endScenario();
+		return;
+	}
+	
+	if (isContractTerminated) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract terminated');
+		sc.data.commentContract += 'Cas d\'un contract résilié \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		ActivInfinite.pHistoOperationSearch.oBtClose.click();
+		
+		// TODO start new scenario
+		
+		sc.endStep();
+		return;
+	}
+	
+	if (isContractWithAccesSante) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract with product accès santé');
+		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pHistoOperationSearch.oBtClose.click();
+		sc.endScenario();
+		return;
+	}
+	
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
+	sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de l\'historique \n';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+	ActivInfinite.pHistoOperationSearch.oBtClose.click();
+	sc.endScenario();
 }});
 
 ActivInfinite.step({ end : function(ev, sc, st) {

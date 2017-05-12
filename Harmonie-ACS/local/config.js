@@ -22,5 +22,10 @@
 		return 'ACS';
 	}
 	
+	config.getTimeout = function() {
+		// Time in millisecond 
+		return 1000 * 60 * 5;
+	}
+	
 	return config;
 }) ();
