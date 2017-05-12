@@ -65,12 +65,6 @@
 	date.now = function() {
 		return new Date().getTime();
 	}
-	
-//	var d1 = new Date(2017, 0, 20);
-//var d2 = new Date(2016, 0, 20);
-//
-//var timeDiff = Math.abs(d2.getTime() - d1.getTime());
-//var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
 
 	return date;
 }) ();
