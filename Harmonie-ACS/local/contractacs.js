@@ -171,7 +171,7 @@ ActivInfinite.step({ checkBlockNote: function(ev, sc, st) {
 ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 	
-	var isCertifivateValid = false;
+	var isCertificateValid = false;
 	
 	for (var index in ActivInfinite.pCertificateHelpCS.oType.getAll()) {
 		var type = ctx.string.trim(ActivInfinite.pCertificateHelpCS.oType.i(index).get());
@@ -185,13 +185,13 @@ ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 
 		// same date with only one year difference
 		if (startDate.getDate() === endDate.getDate() && startDate.getMonth() === endDate.getMonth() && (endDate.getFullYear() - startDate.getFullYear()) === 1) {
-			isCertifivateValid = true;	
+			isCertificateValid = true;	
 		}
 		
 		break;
 	}
 	
-	if (!isCertifivateValid) {
+	if (!isCertificateValid) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
 		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un ans \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
