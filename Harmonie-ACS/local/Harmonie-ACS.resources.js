@@ -54,6 +54,7 @@ ActivInfinite.pContribution.oDateEch = ActivInfinite.pContribution.addItem('oDat
 ActivInfinite.pContribution.oBalanceEch = ActivInfinite.pContribution.addItem('oBalanceEch', {"occurs":1});
 ActivInfinite.pContribution.oBtClose = ActivInfinite.pContribution.addItem('oBtClose');
 ActivInfinite.pContribution.btHistoOperation = ActivInfinite.pContribution.addItem('btHistoOperation', {"mustExist":true});
+ActivInfinite.pContribution.oListeDesOperations = ActivInfinite.pContribution.addItem('oListeDesOperations', {"mustExist":true});
 
 ActivInfinite.pHistoOperationSearch = ActivInfinite.addPage('pHistoOperationSearch', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_208\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
 ActivInfinite.pHistoOperationSearch.oTitlePage = ActivInfinite.pHistoOperationSearch.addItem('oTitlePage', {"mustExist":true});
@@ -101,6 +102,5 @@ ActivInfinite.pEffectVisuCotis.oBtNext = ActivInfinite.pEffectVisuCotis.addItem(
 ActivInfinite.pEffectVisuCotis.oTitlePage = ActivInfinite.pEffectVisuCotis.addItem('oTitlePage', {"mustExist":true});
 
 ActivInfinite.pEffectParamCalc = ActivInfinite.addPage('pEffectParamCalc', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416\u0026CONTAINER_NOM_FONCTION=AC32_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
-ActivInfinite.pEffectParamCalc.oBtNext = ActivInfinite.pEffectParamCalc.addItem('oBtNext');
-ActivInfinite.pEffectParamCalc.btCalcParam = ActivInfinite.pEffectParamCalc.addItem('btCalcParam', {"mustExist":true});
 ActivInfinite.pEffectParamCalc.oParametresDuCalcul = ActivInfinite.pEffectParamCalc.addItem('oParametresDuCalcul', {"mustExist":true});
+ActivInfinite.pEffectParamCalc.oBtNext = ActivInfinite.pEffectParamCalc.addItem('oBtNext');

@@ -441,6 +441,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oListeDesOperations" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="25.R0R1R9R1R6R6R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Liste des opérations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1436241_1" Comment="[frameInitial0] - Web Aneto" CtxtId="25" Techno="WEB" Timestamp="10/05/2017 14:36:33" />
 				</PAGE>
@@ -881,27 +890,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCalcParam" MustExist="Y">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="36.R0R1R9R0R0R4R0R0R0R0R0R0R0R0R2R0R1R0R2R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[itemTextLink2]]></VALUE>
-									</ATT>
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Param.calc.]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oParametresDuCalcul" MustExist="Y">
 							<CRITERE>
-								<TAG Name="TD" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0R0R7R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Parametres du calcul]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
-									</ATT>
+								<TAG Name="TABLE" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0">
+									<TAG Name="TR" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0R0R7" Range="7">
+										<TAG Name="TD" Scope="Children" CapturedPos="36.R0R1R9R1R4R9R0R0R7R0">
+											<ATT Name="Text">
+												<VALUE Scan="Full"><![CDATA[Parametres du calcul]]></VALUE>
+											</ATT>
+											<ATT Name="class">
+												<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+											</ATT>
+											<SET />
+										</TAG>
+									</TAG>
 								</TAG>
 							</CRITERE>
 						</OBJET>
