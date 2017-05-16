@@ -13,16 +13,14 @@ ActivInfinite.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	function navigateToCoverageChange() {
 		setTimeout(function() {
 			$('a[menuINFcl="41"]').mouseover();
-			$('a[menuINFcl="117"]').mouseover();
-			$('a[menuINFcl="129"]').click();
+			$('a[menuINFcl="52"]').mouseover();
+			$('a[menuINFcl="53"]').click();
 		}, 1500);
 	};
 	
 	ActivInfinite.pDashboard.injectFunction(navigateToCoverageChange);
 	ActivInfinite.pDashboard.execScript('navigateToCoverageChange()');
-	ActivInfinite.pEffectConsultContrac.wait(function() {
-		sc.endStep();
-	});
+	sc.endStep();
 }});
 
 ActivInfinite.step({ endCoverageChangeContract: function(ev, sc, st) {
