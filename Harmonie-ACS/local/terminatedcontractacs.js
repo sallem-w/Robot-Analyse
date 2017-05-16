@@ -15,7 +15,7 @@
 ActivInfinite.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - contract terminated');
 	
-function navigateToEffect() {
+	function navigateToEffect() {
 		setTimeout(function() {
 			$('a[menuINFcl="41"]').mouseover();
 			$('a[menuINFcl="117"]').mouseover();
