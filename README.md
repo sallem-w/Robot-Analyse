@@ -11,6 +11,7 @@ Exemple de template du fichier de configuration :
     "pathTemplate": "C:\\Users\\excel\\template\\",
     "ACS": {
         "rootPath": "C:\\Users\\excel\\ACS-20170420-1\\",
+        "controlOnly": true,
         "addYearSearchContract": 30,
         "excel": {
             "startColumnIndex": 2,

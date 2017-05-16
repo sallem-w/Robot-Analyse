@@ -340,6 +340,11 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		
+		if (sc.data.config.controlOnly) {
+			sc.endStep();
+			return;
+		}
+			
 		ActivInfinite.pDashboard.wait(function() {
 			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
 				sc.data.commentContract += s.data.commentContract;
