@@ -335,9 +335,8 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
 		return;
-	}
-	
-	if (isContractTerminated) {
+		
+	} else if (isContractTerminated) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract terminated');
 		sc.data.commentContract += 'Cas d\'un contract résilié \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
@@ -352,22 +351,23 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 				return;
 			});
 		});
-	}
-	
-	if (isContractWithAccesSante) {
+		
+	} else if (isContractWithAccesSante) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract with product accès santé');
 		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
 		return;
+		
+	} else {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
+		sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de l\'historique \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pHistoOperationSearch.oBtClose.click();
+		sc.endScenario();
+		return;
 	}
-	
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
-	sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de l\'historique \n';
-	sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-	ActivInfinite.pHistoOperationSearch.oBtClose.click();
-	sc.endScenario();
 }});
 
 ActivInfinite.step({ endSearchContract : function(ev, sc, st) {

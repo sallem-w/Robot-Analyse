@@ -34,20 +34,38 @@ ActivInfinite.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
 	ActivInfinite.pEffectConsultContrac.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinite.pEffectConsultContrac.btSearch.click();
-	sc.endStep();
+	
+	ActivInfinite.pEffectContractFound.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+		
+		sc.data.commentContract += 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
+		ActivInfinite.pEffectContractFound.oBtNext.click();
+		sc.endStep();
+	});
+	
+	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+		
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		
+		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+			ActivInfinite.pPopupCloseEffect.btNo.click();				
+			sc.endScenario();
+		});
+	});
 }});
 
 ActivInfinite.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
-	ActivInfinite.pEffectContractFound.wait(function() {
-		ActivInfinite.pEffectContractFound.oBtNext.click();
-		ActivInfinite.pEffectParamCalc.wait(function() {
-			ActivInfinite.pEffectParamCalc.oBtNext.click();
-			ActivInfinite.pEffectHistoCoti.wait(function() {
-				ActivInfinite.pEffectHistoCoti.oBtNext.click();
-				ActivInfinite.pEffectVisuCotis.wait(function() {
-					sc.endStep();
-				});
+	ActivInfinite.pEffectParamCalc.wait(function() {
+		ActivInfinite.pEffectParamCalc.oBtNext.click();
+		ActivInfinite.pEffectHistoCoti.wait(function() {
+			ActivInfinite.pEffectHistoCoti.oBtNext.click();
+			ActivInfinite.pEffectVisuCotis.wait(function() {
+				sc.endStep();
 			});
 		});
 	});
