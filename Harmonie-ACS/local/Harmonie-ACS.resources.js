@@ -97,7 +97,7 @@ ActivInfinite.pEffectHistoCoti.oTitlePage = ActivInfinite.pEffectHistoCoti.addIt
 ActivInfinite.pEffectHistoCoti.oBtNext = ActivInfinite.pEffectHistoCoti.addItem('oBtNext');
 
 ActivInfinite.pEffectVisuCotis = ActivInfinite.addPage('pEffectVisuCotis', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416\u0026CONTAINER_NOM_FONCTION=AC36_400\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
-ActivInfinite.pEffectVisuCotis.oValidation = ActivInfinite.pEffectVisuCotis.addItem('oValidation', {"mustExist":true});
+ActivInfinite.pEffectVisuCotis.oValidation = ActivInfinite.pEffectVisuCotis.addItem('oValidation', {"mustExist":true,"type":"Key"});
 ActivInfinite.pEffectVisuCotis.oBtNext = ActivInfinite.pEffectVisuCotis.addItem('oBtNext');
 ActivInfinite.pEffectVisuCotis.oTitlePage = ActivInfinite.pEffectVisuCotis.addItem('oTitlePage', {"mustExist":true});
 

@@ -6,7 +6,6 @@
 	sc.step(ActivInfinite.steps.initializeTerminatedContract);
 	sc.step(ActivInfinite.steps.searchIndividualContractEffect);
 	sc.step(ActivInfinite.steps.goToVisualizationContribution);
-	sc.step(ActivInfinite.steps.goToVisualizationContribution);
 	sc.step(ActivInfinite.steps.validationCalcul);
 	sc.step(ActivInfinite.steps.saveContract);
 	sc.step(ActivInfinite.steps.endTerminatedContract);
@@ -74,7 +73,7 @@ ActivInfinite.step({ goToVisualizationContribution: function(ev, sc, st) {
 
 ActivInfinite.step({ validationCalcul: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
-	ActivInfinite.pEffectVisuCotis.oValidation.set('OUI');
+	ActivInfinite.pEffectVisuCotis.oValidation.set('Oui');
 	ActivInfinite.pEffectVisuCotis.oBtNext.click();
 	ActivInfinite.pEffectValidation.wait(function() {
 		sc.endStep();

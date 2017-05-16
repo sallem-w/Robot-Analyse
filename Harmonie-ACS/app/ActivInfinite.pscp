@@ -841,7 +841,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&CONTAINER_NOM_FONCTION=AC36_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
 					<OBJETS>
-						<OBJET Name="oValidation" MustExist="Y">
+						<OBJET Name="oValidation" MustExist="Y" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="38.R0R1R9R1R6R12R0R3R0R0R0">
 									<ATT Name="name">
@@ -875,7 +875,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1617256_1" Comment="[frameInitial0] - Web Aneto" CtxtId="38" Techno="WEB" Timestamp="12/05/2017 16:17:32" />
+					<CAPTURE Name="PAGE_WebAneto_1425383_1" Comment="[frameInitial0] - Web Aneto" CtxtId="44" Techno="WEB" Timestamp="16/05/2017 14:25:46" />
 				</PAGE>
 				<PAGE Name="pEffectValidation" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>

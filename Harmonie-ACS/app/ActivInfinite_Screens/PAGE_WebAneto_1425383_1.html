@@ -26,7 +26,7 @@
 <SCRIPT language=javascript>
 
 	<!-- Keep CONTAINER_NOM_SCENARIO_ENREGISTREMENT in JS variable -->
-	var scenarioEnregistrement = "ACRE04RE4S_416";
+	var scenarioEnregistrement = "ACRE04RE4S_252";
 
 
 /** 
@@ -154,7 +154,7 @@ function appelGeneriqueFonction(methode)
 	var nomDomaine = temp.substring(0,temp.indexOf("/"));
 	var nomMethode = "appelGenerique";
 	var nomMethodeAppel = methode;
-	var scenario='ACRE04RE4S_416';
+	var scenario='ACRE04RE4S_252';
 
 	var parametreContainerObligatoire = "&CONTAINER_NOM_SCENARIO_ENREGISTREMENT="+scenario+"&CONTAINER_NOM_FONCTION="+nomFonction+"&AFFICHAGE_CONTAINER";
 
@@ -370,7 +370,7 @@ function posterFormulaire(mapping,methode,fonction,scenario)
 {
 
 	if(scenario=='')
-			scenario='ACRE04RE4S_416';
+			scenario='ACRE04RE4S_252';
 	var actionValue= '/WebAneto/container/'+mapping+'.do?method='+methode
 						+'&CONTAINER_NOM_SCENARIO_ENREGISTREMENT='+scenario+'&CONTAINER_NOM_FONCTION='
 						+fonction ;
@@ -381,7 +381,7 @@ function posterFormulaire(mapping,methode,fonction,scenario)
 function posterFormulaireScenario(mapping,methode,scenario)
 {
 
-		var scenarioCourant='ACRE04RE4S_416';
+		var scenarioCourant='ACRE04RE4S_252';
 		var actionValue= '/WebAneto/container/'+mapping+'.do?method='+methode
 							+'&CONTAINER_NOM_SCENARIO_ENREGISTREMENT='+scenarioCourant+'&CONTAINER_NOM_SCENARIO_FILS='
 							+scenario ;
@@ -528,17 +528,17 @@ function ancienLancerFonctionScenario(mapping,methode,scenario)
 /******************** FIN ANCIEN FONCTIONNEMENT **************************/
 </SCRIPT>
 </HEAD>
-<BODY id=containerBody onload=Javascript:initialisation() leftMargin=0 topMargin=0 bgColor=#ffffff jQuery17106338293394479216="14">
-<DIV id=notification class="freeow freeow-top-right" jQuery17106338293394479216="4"></DIV><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Gestion des groupes de données 
+<BODY id=containerBody onload=Javascript:initialisation() leftMargin=0 topMargin=0 bgColor=#ffffff>
+<DIV id=notification class="freeow freeow-top-right" jQuery17109080263870954677="4"></DIV><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Affichage des boutons de navigation autre que Fermer   --><!-- Affichage des boutons de navigation   --><!-- Gestion des groupes de données 
 	 Michel Crumière le 29/12/2005-->
 <SCRIPT language=JavaScript>
 
 
 </SCRIPT>
 
-<DIV id=Container jQuery17106338293394479216="3">
+<DIV id=Container jQuery17109080263870954677="3">
 <DIV id=arbreContainer>
-<DIV id=scenario style="HEIGHT: 260px"><!-- Identifiant scénario pour injecteur --><INPUT type=hidden value=ACRE04RE4S_416 name=zz_NomScenario>
+<DIV id=scenario style="HEIGHT: 586px"><!-- Identifiant scénario pour injecteur --><INPUT type=hidden value=ACRE04RE4S_252 name=zz_NomScenario>
 <SCRIPT language=JavaScript src="/Commun/js/arbreNC.js">
 </SCRIPT>
 
@@ -571,24 +571,24 @@ TABLIEN[5] = new Array(Array);
 TABLIEN[5][0] = "Enregistrer";
 		
 foldersTree = gFld('Sans effet     ', '#','','s3');
-foldersTree.xID = 'ACRE04RE4S_416';
+foldersTree.xID = 'ACRE04RE4S_252';
 
-				 aux1 = insFld(foldersTree, gFld('Ident contrat', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_416");','18','s4'));
-				 aux1.xID = 'ACIC_100ACRE04RE4S_416';
+				 aux1 = insFld(foldersTree, gFld('Ident contrat', 'JavaScript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_252");','18','s4'));
+				 aux1.xID = 'ACIC_100ACRE04RE4S_252';
 				
-				 aux1 = insFld(foldersTree, gFld('Param.calc.', 'JavaScript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_416");','18','s4'));
-				 aux1.xID = 'AC32_200ACRE04RE4S_416';
+				 aux1 = insFld(foldersTree, gFld('Param.calc.', 'JavaScript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_252");','18','s4'));
+				 aux1.xID = 'AC32_200ACRE04RE4S_252';
 				
-				 aux1 = insFld(foldersTree, gFld('Histo. cotis.', 'JavaScript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_416");','18','s4'));
-				 aux1.xID = 'AC3Q_300ACRE04RE4S_416';
+				 aux1 = insFld(foldersTree, gFld('Histo. cotis.', 'JavaScript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_252");','18','s4'));
+				 aux1.xID = 'AC3Q_300ACRE04RE4S_252';
 				
-						NODEIDTODEPLOY = ('AC36_400ACRE04RE4S_416');
+						NODEIDTODEPLOY = ('AC36_400ACRE04RE4S_252');
 					
-				 aux1 = insFld(foldersTree, gFld('Visu. cpt cotis', 'JavaScript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_416");','18','s5'));
-				 aux1.xID = 'AC36_400ACRE04RE4S_416';
+				 aux1 = insFld(foldersTree, gFld('Visu. cpt cotis', 'JavaScript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_252");','18','s5'));
+				 aux1.xID = 'AC36_400ACRE04RE4S_252';
 				
 				 aux1 = insFld(foldersTree, gFld('Validation acte', '#','19','s4'));
-				 aux1.xID = 'ACVV_500ACRE04RE4S_416';
+				 aux1.xID = 'ACVV_500ACRE04RE4S_252';
 				
 
 // Fonction Javascript permettant le blocage de tous les liens de l'arbre
@@ -670,7 +670,7 @@ function goFocusArbre() {
 }
 
 </SCRIPT>
- <INPUT id=folderSel type=hidden value=4 length="4"> <INPUT id=scrolltop type=hidden value=0 length="4"> 
+ <INPUT id=folderSel type=hidden value=4 length="4"> <INPUT id=scrolltop type=hidden length="4"> 
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
 <TBODY>
 <TR vAlign=top>
@@ -686,43 +686,43 @@ function goFocusArbre() {
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre0></A>
 <TBODY>
 <TR>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("ACRE04RE4S_416","0", false)' id=itemFolderHTMLLink class=s3 href="http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&amp;CONTAINER_NOM_FONCTION=AC36_400&amp;AFFICHAGE_CONTAINER=OK&amp;BOUTON_CONTAINER=BOUTON_SUIVANT#"><IMG id=folderIcon0 border=0 name=folderIcon0 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACRE04RE4S_252","0", false)' id=itemFolderHTMLLink class=s3 href="http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_252&amp;CONTAINER_NOM_FONCTION=AC36_400&amp;AFFICHAGE_CONTAINER=OK&amp;BOUTON_CONTAINER=BOUTON_SUIVANT#"><IMG id=folderIcon0 border=0 name=folderIcon0 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
 <TD vAlign=middle width="100%" noWrap>
 <DIV class=s3>Sans effet </DIV></TD></TR></TBODY></TABLE></DIV>
 <DIV id=folder1 style="DISPLAY: block">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre1></A>
 <TBODY>
 <TR>
-<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACIC_100ACRE04RE4S_416")'><IMG id=nodeIcon1 border=0 name=nodeIcon1 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("ACIC_100ACRE04RE4S_416","1", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_416");'><IMG id=folderIcon1 border=0 name=folderIcon1 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
-<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACIC_100ACRE04RE4S_416","1", false)' id=itemTextLink1 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_416");'>Ident contrat</A></TD></TR></TBODY></TABLE></DIV>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("ACIC_100ACRE04RE4S_252")'><IMG id=nodeIcon1 border=0 name=nodeIcon1 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACIC_100ACRE04RE4S_252","1", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_252");'><IMG id=folderIcon1 border=0 name=folderIcon1 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("ACIC_100ACRE04RE4S_252","1", false)' id=itemTextLink1 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","ACIC_100","ACRE04RE4S_252");'>Ident contrat</A></TD></TR></TBODY></TABLE></DIV>
 <DIV id=folder2 style="DISPLAY: block">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre2></A>
 <TBODY>
 <TR>
-<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC32_200ACRE04RE4S_416")'><IMG id=nodeIcon2 border=0 name=nodeIcon2 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("AC32_200ACRE04RE4S_416","2", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_416");'><IMG id=folderIcon2 border=0 name=folderIcon2 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
-<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC32_200ACRE04RE4S_416","2", false)' id=itemTextLink2 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_416");'>Param.calc.</A></TD></TR></TBODY></TABLE></DIV>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC32_200ACRE04RE4S_252")'><IMG id=nodeIcon2 border=0 name=nodeIcon2 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("AC32_200ACRE04RE4S_252","2", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_252");'><IMG id=folderIcon2 border=0 name=folderIcon2 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC32_200ACRE04RE4S_252","2", false)' id=itemTextLink2 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC32_200","ACRE04RE4S_252");'>Param.calc.</A></TD></TR></TBODY></TABLE></DIV>
 <DIV id=folder3 style="DISPLAY: block">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre3></A>
 <TBODY>
 <TR>
-<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC3Q_300ACRE04RE4S_416")'><IMG id=nodeIcon3 border=0 name=nodeIcon3 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("AC3Q_300ACRE04RE4S_416","3", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_416");'><IMG id=folderIcon3 border=0 name=folderIcon3 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
-<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC3Q_300ACRE04RE4S_416","3", false)' id=itemTextLink3 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_416");'>Histo. cotis.</A></TD></TR></TBODY></TABLE></DIV>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC3Q_300ACRE04RE4S_252")'><IMG id=nodeIcon3 border=0 name=nodeIcon3 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("AC3Q_300ACRE04RE4S_252","3", false)' id=itemFolderHTMLLink class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_252");'><IMG id=folderIcon3 border=0 name=folderIcon3 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC3Q_300ACRE04RE4S_252","3", false)' id=itemTextLink3 class=s4 href='javascript:lancerFonction("LancementFonction","debuter","AC3Q_300","ACRE04RE4S_252");'>Histo. cotis.</A></TD></TR></TBODY></TABLE></DIV>
 <DIV id=folder4 style="DISPLAY: block">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre4></A>
 <TBODY>
 <TR>
-<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC36_400ACRE04RE4S_416")'><IMG id=nodeIcon4 border=0 name=nodeIcon4 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("AC36_400ACRE04RE4S_416","4", false)' id=itemFolderHTMLLink class=s5 href='javascript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_416");'><IMG id=folderIcon4 border=0 name=folderIcon4 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
-<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC36_400ACRE04RE4S_416","4", false)' id=itemTextLink4 class=s5 href='javascript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_416");'>Visu. cpt cotis</A></TD></TR></TBODY></TABLE></DIV>
+<TD vAlign=top background=/Commun/multimedia/images/arbre/ftv2vertline.gif><A id=itemDrawFolderLink href='javascript:clickOnNode("AC36_400ACRE04RE4S_252")'><IMG id=nodeIcon4 border=0 name=nodeIcon4 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2node.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("AC36_400ACRE04RE4S_252","4", false)' id=itemFolderHTMLLink class=s5 href='javascript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_252");'><IMG id=folderIcon4 border=0 name=folderIcon4 src="/Commun/multimedia/images/arbre/Dossier18.gif"></A></TD>
+<TD vAlign=middle width="100%" noWrap><A onclick='javascript:clickOnFolder("AC36_400ACRE04RE4S_252","4", false)' id=itemTextLink4 class=s5 href='javascript:lancerFonction("LancementFonction","debuter","AC36_400","ACRE04RE4S_252");'>Visu. cpt cotis</A></TD></TR></TBODY></TABLE></DIV>
 <DIV id=folder5 style="DISPLAY: block">
 <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0><A id=ligneArbre5></A>
 <TBODY>
 <TR>
-<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACVV_500ACRE04RE4S_416")'><IMG id=nodeIcon5 border=0 name=nodeIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
-<TD vAlign=top><A onclick='javascript:clickOnFolder("ACVV_500ACRE04RE4S_416","5", false)' id=itemFolderHTMLLink class=s4 href="http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&amp;CONTAINER_NOM_FONCTION=AC36_400&amp;AFFICHAGE_CONTAINER=OK&amp;BOUTON_CONTAINER=BOUTON_SUIVANT#"><IMG id=folderIcon5 border=0 name=folderIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier19.gif"></A></TD>
+<TD vAlign=top><A id=itemDrawFolderLink href='javascript:clickOnNode("ACVV_500ACRE04RE4S_252")'><IMG id=nodeIcon5 border=0 name=nodeIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/ftv2lastnode.gif" width=16 height=22></A></TD>
+<TD vAlign=top><A onclick='javascript:clickOnFolder("ACVV_500ACRE04RE4S_252","5", false)' id=itemFolderHTMLLink class=s4 href="http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&amp;CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_252&amp;CONTAINER_NOM_FONCTION=AC36_400&amp;AFFICHAGE_CONTAINER=OK&amp;BOUTON_CONTAINER=BOUTON_SUIVANT#"><IMG id=folderIcon5 border=0 name=folderIcon5 src="http://infinite-haur05/Commun/multimedia/images/arbre/Dossier19.gif"></A></TD>
 <TD vAlign=middle width="100%" noWrap>
 <DIV class=s4>Validation acte</DIV></TD></TR></TBODY></TABLE></DIV></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
 <SCRIPT language=JavaScript>
@@ -756,19 +756,19 @@ function goFocusArbre() {
 <DIV id=boutonFonction><A href="JavaScript:gestionBoutonFonction();"><IMG onmouseover="javascript:afficheBoutonOn('btFonction','128');" onmouseout="javascript:afficheBoutonOff('btFonction','128');" id=btFonction title=Fonction border=0 src="/Commun/multimedia/images/container/128.gif"></A> </DIV>
 <DIV id=boutGestBoutonFonction class=divColor style="HEIGHT: 8px; WIDTH: 100px; POSITION: absolute; LEFT: 160px; DISPLAY: none; TOP: 250px">
 <DIV></DIV></DIV>
-<DIV id=gestBoutonFonction class=divColor style="HEIGHT: 15px; POSITION: absolute; LEFT: 190px; Z-INDEX: 200; DISPLAY: none; TOP: 282px"><IFRAME style="HEIGHT: 20px; WIDTH: 150px; POSITION: absolute; LEFT: 0px; FILTER: mask(); Z-INDEX: -1; DISPLAY: block; TOP: 0px"></IFRAME>
+<DIV id=gestBoutonFonction class=divColor style="HEIGHT: 15px; POSITION: absolute; LEFT: 190px; Z-INDEX: 200; DISPLAY: none; TOP: 608px"><IFRAME style="HEIGHT: 20px; WIDTH: 150px; POSITION: absolute; LEFT: 0px; FILTER: mask(); Z-INDEX: -1; DISPLAY: block; TOP: 0px"></IFRAME>
 <TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
 <TBODY>
 <TR>
-<TD width="100%"><A class=S3 href="javascript:posterFormulaire('LancementFonction', 'debuter', 'AC3Q_300&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE', 'ACRE04RE4S_416');"><B>&nbsp;&nbsp;Abandonner</B></A><BR></TD></TR></TBODY></TABLE></DIV><!-- Affichage du boutons de navigation Précédent -->
-<DIV id=boutonPrecedent><A id=lienPrecedent title="" href="JavaScript:assignebouton(bouton_precedent);lancerFonction('LancementFonction','debuter','AC3Q_300','ACRE04RE4S_416','');" tOpacity="1" tooltipText="Précédent" alt jQuery17106338293394479216="12"><IMG onmouseover="javascript:afficheBoutonOn('btPrecedent','107');" onmouseout="javascript:afficheBoutonOff('btPrecedent','107');" id=btPrecedent border=0 src="/Commun/multimedia/images/container/107.gif"></A> </DIV><!-- Affichage du bouton de navigation Suivant --><!-- DEBUT ED-V2.2.0-GRC-001 -->
-<DIV id=boutonSuivant><A id=lienSuivant title="" href="JavaScript:assignebouton(bouton_suivant);posterFormulaire('LancementFonction','debuter','ACVV_500','ACRE04RE4S_416');" tOpacity="1" tooltipText="Suivant" alt jQuery17106338293394479216="10"><IMG onmouseover="javascript:afficheBoutonOn('btSuivant','121');" onmouseout="javascript:afficheBoutonOff('btSuivant','121');" id=btSuivant border=0 src="/Commun/multimedia/images/container/121_On.gif"></A> </DIV><!-- FIN ED-V2.2.0-GRC-001 --><!-- Affichage du boutons de navigation Enregistrer  --><!-- DEBUT ED-V2.2.0-PSCD-001 --><!-- FIN ED-V2.2.0-PSCD-001 --><!-- Affichage du boutons de navigation Mis en instance  -->
+<TD width="100%"><A class=S3 href="javascript:posterFormulaire('LancementFonction', 'debuter', 'AC3Q_300&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE', 'ACRE04RE4S_252');"><B>&nbsp;&nbsp;Abandonner</B></A><BR></TD></TR></TBODY></TABLE></DIV><!-- Affichage du boutons de navigation Précédent -->
+<DIV id=boutonPrecedent><A id=lienPrecedent title=Précédent href="JavaScript:assignebouton(bouton_precedent);lancerFonction('LancementFonction','debuter','AC3Q_300','ACRE04RE4S_252','');"><IMG onmouseover="javascript:afficheBoutonOn('btPrecedent','107');" onmouseout="javascript:afficheBoutonOff('btPrecedent','107');" id=btPrecedent border=0 src="/Commun/multimedia/images/container/107.gif"></A> </DIV><!-- Affichage du bouton de navigation Suivant --><!-- DEBUT ED-V2.2.0-GRC-001 -->
+<DIV id=boutonSuivant><A id=lienSuivant title=Suivant href="JavaScript:assignebouton(bouton_suivant);posterFormulaire('LancementFonction','debuter','ACVV_500','ACRE04RE4S_252');"><IMG onmouseover="javascript:afficheBoutonOn('btSuivant','121');" onmouseout="javascript:afficheBoutonOff('btSuivant','121');" id=btSuivant border=0 src="/Commun/multimedia/images/container/121.gif"></A> </DIV><!-- FIN ED-V2.2.0-GRC-001 --><!-- Affichage du boutons de navigation Enregistrer  --><!-- DEBUT ED-V2.2.0-PSCD-001 --><!-- FIN ED-V2.2.0-PSCD-001 --><!-- Affichage du boutons de navigation Mis en instance  -->
 <DIV id=boutonMiseEnInstance><IMG style="FILTER: alpha(opacity=30)" border=0 src="/Commun/multimedia/images/container/123.gif"> </DIV><!-- DEBUT AC_ZZ_STAB221_001 
 		Affichage du bouton réinitialiser au dessus du bouton fermer
 	--><!-- Affichage du boutons de navigation Reinitialiser -->
-<DIV id=boutonReinit><A id=lienReinit href="Javascript:posterFormulaire('LancementFonction','debuter','AC36_400&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACRE04RE4S_416');"><IMG onmouseover="javascript:afficheBoutonOn('btReinit','202');" onmouseout="javascript:afficheBoutonOff('btReinit','202');" id=btReinit title=Réinitialiser border=0 src="/Commun/multimedia/images/container/202.gif"> </A></DIV><!-- FIN AC_ZZ_STAB221_001 --><!-- Affichage du bouton d'aide -->
+<DIV id=boutonReinit><A id=lienReinit href="Javascript:posterFormulaire('LancementFonction','debuter','AC36_400&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACRE04RE4S_252');"><IMG onmouseover="javascript:afficheBoutonOn('btReinit','202');" onmouseout="javascript:afficheBoutonOff('btReinit','202');" id=btReinit title=Réinitialiser border=0 src="/Commun/multimedia/images/container/202.gif"> </A></DIV><!-- FIN AC_ZZ_STAB221_001 --><!-- Affichage du bouton d'aide -->
 <DIV id=boutonAide><A id=lienAide href="JavaScript:openHelp();"><IMG onmouseover="javascript:afficheBoutonOn('btAide','129');" onmouseout="javascript:afficheBoutonOff('btAide','129');" id=btAide title=Aide border=0 src="/Commun/multimedia/images/container/129.gif"></A> </DIV><!-- Affichage du boutons de navigation Fermer -->
-<DIV id=boutonFermer><A id=lienFermer href="JavaScript:assignebouton(bouton_fermer);fermerContainer('ACVV_500','ACRE04RE4S_416');"><IMG onmouseover="javascript:afficheBoutonOn('btFermer','127');" onmouseout="javascript:afficheBoutonOff('btFermer','127');" id=btFermer title=Fermer border=0 src="/Commun/multimedia/images/container/127.gif"></A> </DIV>
+<DIV id=boutonFermer><A id=lienFermer href="JavaScript:assignebouton(bouton_fermer);fermerContainer('ACVV_500','ACRE04RE4S_252');"><IMG onmouseover="javascript:afficheBoutonOn('btFermer','127');" onmouseout="javascript:afficheBoutonOff('btFermer','127');" id=btFermer title=Fermer border=0 src="/Commun/multimedia/images/container/127.gif"></A> </DIV>
 <SCRIPT language=JavaScript src="/Commun/js/aide.js"></SCRIPT>
 
 <SCRIPT language=JavaScript>
@@ -792,7 +792,7 @@ function goFocusArbre() {
 		var parametre2 = '';
 		var action2 = '';
 		var action = '';
-		var scenar = 'ACRE04RE4S_416';
+		var scenar = 'ACRE04RE4S_252';
         var contextPath = '/WebAneto';
 		
 		// Début Ajout SCE_ZZWEB_004
@@ -941,8 +941,8 @@ function goFocusArbre() {
 		function openHelp()
 		{
 			var fonction = 'AC36_400';
-			var scenario = 'ACRE04RE4S_416';
-			var scenarioPere = 'ACRE04RE4S_416';
+			var scenario = 'ACRE04RE4S_252';
+			var scenarioPere = 'ACRE04RE4S_252';
 			var codeActe = 'ACRE';
 			var codeAction = '04';
 			var codeContexte = 'RE4S'; 
@@ -955,7 +955,7 @@ function goFocusArbre() {
 		// DEBUT AC_ZZ_STAB221_001
 		// supression fonction réinitialiser dans le menu fonction
 		//Affichage du bouton Reinitialiser (et donc des ss fonctions données par la jsp (appel reaffichage menu)
-		//var tabReinit = new Array('LancementFonction','debuter','AC36_400&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACRE04RE4S_416');
+		//var tabReinit = new Array('LancementFonction','debuter','AC36_400&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&amp;BOUTON_CONTAINER=BOUTON_INITIALISER','ACRE04RE4S_252');
 		//creerNouvelleFonctionJS('Reinitialiser','posterFormulaire',tabReinit);
 		// FIN AC_ZZ_STAB221_001
 		
@@ -968,7 +968,7 @@ function goFocusArbre() {
 		
 		//Affichage du bouton Abandonner (et donc des ss fonctions données par la jsp (appel reaffichage menu))
 		
-				var tabAbandon = new Array('LancementFonction','debuter','AC3Q_300&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE','ACRE04RE4S_416');
+				var tabAbandon = new Array('LancementFonction','debuter','AC3Q_300&amp;CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE','ACRE04RE4S_252');
 				creerNouvelleFonctionJS('Abandonner','posterFormulaire',tabAbandon);
 		
 
@@ -980,7 +980,7 @@ function goFocusArbre() {
 <SCRIPT language=Javascript>
 		</SCRIPT>
 </DIV>
-<DIV id=contenu style="HEIGHT: 486px"><!-- Cas normal de chargement d'une fonction --><LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"><LINK rel=stylesheet type=text/css href="/Commun/style/disabled.css"><LINK rel=stylesheet type=text/css href="/Commun/style/cssDynamique.css">
+<DIV id=contenu style="HEIGHT: 812px"><!-- Cas normal de chargement d'une fonction --><LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"><LINK rel=stylesheet type=text/css href="/Commun/style/disabled.css"><LINK rel=stylesheet type=text/css href="/Commun/style/cssDynamique.css">
 <SCRIPT language=JavaScript src="/Commun/js/lov.js"></SCRIPT>
 
 <SCRIPT language=JavaScript src="/Commun/js/calendrier.js"></SCRIPT>
@@ -1027,7 +1027,7 @@ function goFocusArbre() {
 		}
 	}
 
-	var parametreRequete='&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&CONTAINER_NOM_FONCTION=AC36_400&AFFICHAGE_CONTAINER=';
+	var parametreRequete='&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_252&CONTAINER_NOM_FONCTION=AC36_400&AFFICHAGE_CONTAINER=';
 	
 	function goNavigationActionSecondaire(nomFormulaire,nomDomaine,nomFonction,nomMethode) 
 	{
@@ -1102,9 +1102,9 @@ return ctlSaisie();return document.returnValue;
 <TD noWrap align=center>Opération annulante</TD>
 <TD noWrap align=center>Motif d'instance ou de refus</TD>
 <TD noWrap align=center>Code utilisateur de création</TD></TR>
-<TR onmouseover=surligneStd(this); onmouseout=retablieStd(this); id=trLigneOpe-1 class=LIDonneeB1 style="BACKGROUND-COLOR: #e1f1ff">
-<TD noWrap align=center>43</TD>
-<TD noWrap align=center>12/05/2017</TD>
+<TR onmouseover=surligneStd(this); onmouseout=retablieStd(this); id=trLigneOpe-1 class=LIDonneeB1>
+<TD noWrap align=center>65</TD>
+<TD noWrap align=center>16/05/2017</TD>
 <TD noWrap align=center>Résiliation CI /Param.calc.</TD>
 <TD noWrap align=center>En cours</TD>
 <TD noWrap align=center>Calcul</TD>
@@ -1114,13 +1114,13 @@ return ctlSaisie();return document.returnValue;
 <TD noWrap align=center>01/05/2017</TD>
 <TD noWrap align=center>SANS EFFET</TD>
 <TD noWrap align=center>21998269</TD>
-<TD noWrap align=center>42</TD>
+<TD noWrap align=center>64</TD>
 <TD noWrap align=center>0</TD>
 <TD noWrap align=center></TD>
 <TD noWrap align=center>SAPCTOR1</TD></TR>
-<TR onmouseover=surligneStd(this); onmouseout=retablieStd(this); id=trLigneOpe-1 class=LIDonneeB1 style="BACKGROUND-COLOR: #e1f1ff">
-<TD noWrap align=center>42</TD>
-<TD noWrap align=center>12/05/2017</TD>
+<TR onmouseover=surligneStd(this); onmouseout=retablieStd(this); id=trLigneOpe-1 class=LIDonneeB1>
+<TD noWrap align=center>64</TD>
+<TD noWrap align=center>16/05/2017</TD>
 <TD noWrap align=center>Résiliation CI</TD>
 <TD noWrap align=center>En cours</TD>
 <TD noWrap align=center>Sans-effet</TD>
@@ -1137,7 +1137,7 @@ return ctlSaisie();return document.returnValue;
 <TABLE cellSpacing=15 width="100%" border=0>
 <TBODY>
 <TR align=center>
-<TD colSpan=2 align=right><A tabIndex=1 title="" class=AdminBT_B href="javascript:calculPrecedent();" tOpacity="1" tooltipText="CalculPrecedent" alt jQuery17106338293394479216="6">Calcul précédent</A> </TD>
+<TD colSpan=2 align=right><A tabIndex=1 title=CalculPrecedent class=AdminBT_B href="javascript:calculPrecedent();">Calcul précédent</A> </TD>
 <TD colSpan=2 align=left><A tabIndex=2 disabled title=CalculSuivant class=AdminBT_B href="#" name=calculSuiv>Calcul &nbsp;suivant&nbsp;</A> </TD></TR></TBODY></TABLE><INPUT type=hidden value=1 name=nbCompte> <INPUT type=hidden value=true name=topACD6> <INPUT type=hidden value=false name=topValide> 
 <TABLE id=idTableCptCotisant cellPadding=5 width="100%" border=0>
 <TBODY>
@@ -1320,8 +1320,4 @@ function gestionRetourErreurBandeau()
 <IFRAME onload=JavaScript:gestionRetourErreurBandeau();appelUrl();appelUrlCalligo(); height=0 src="#" frameBorder=0 width=0 ?>
 </IFRAME>
 <META content=no-cache http-equiv=Pragma>
-<META content=-1 http-equiv=Expires><INPUT id=notificationPluginShowError style="CURSOR: hand; HEIGHT: 23px; WIDTH: 23px; RIGHT: 2px; POSITION: absolute; DISPLAY: none; TOP: 2px; index: 9998" src="/Commun/multimedia/images/notification/error.png" type=image jQuery17106338293394479216="2"></INPUT>
-<DIV id=tooltip style="RIGHT: auto; ZOOM: 1; LEFT: 174px; FILTER:    ; DISPLAY: none; TOP: 361px" jQuery17106338293394479216="5">
-<H3>Suivant</H3>
-<DIV class=body style="DISPLAY: none" jQuery17106338293394479216="7"></DIV>
-<DIV class=url style="DISPLAY: none" jQuery17106338293394479216="8"></DIV></DIV></BODY></HTML>
+<META content=-1 http-equiv=Expires><INPUT id=notificationPluginShowError style="CURSOR: hand; HEIGHT: 23px; WIDTH: 23px; RIGHT: 2px; POSITION: absolute; DISPLAY: none; TOP: 2px; index: 9998" src="/Commun/multimedia/images/notification/error.png" type=image jQuery17109080263870954677="2"></INPUT></BODY></HTML>
