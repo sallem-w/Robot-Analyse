@@ -954,6 +954,7 @@
 				<SCRIPT Name="ExcelFileACS" Src="ExcelFileACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ContractACS" Folder="ScenarioACS" Src="ContractACS.js" />
 				<SCRIPT Name="TerminatedContractACS" Src="TerminatedContractACS.js" Folder="ScenarioACS" />
+				<SCRIPT Name="CoverageChangeContract" Src="CoverageChangeContract.js" Folder="ScenarioACS" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

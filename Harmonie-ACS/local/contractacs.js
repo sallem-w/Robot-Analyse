@@ -349,7 +349,12 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 				sc.data.commentContract += s.data.commentContract;
 				sc.data.statusContract = s.data.statusContract;
 				
-				sc.endStep();
+				ActivInfinite.scenarios.coverageChangeContract.start(sc.data).onEnd(function(ss) {
+					sc.data.commentContract += ss.data.commentContract;
+					sc.data.statusContract = ss.data.statusContract;
+					
+					sc.endStep();
+				});
 			});
 		});
 		
