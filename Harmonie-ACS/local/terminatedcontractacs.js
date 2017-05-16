@@ -83,6 +83,7 @@ ActivInfinite.step({ validationCalcul: function(ev, sc, st) {
 ActivInfinite.step({ saveContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 	ActivInfinite.pEffectValidation.oBtSave.click();
+	sc.endStep();
 }});
 
 ActivInfinite.step({ endTerminatedContract: function(ev, sc, st) {
