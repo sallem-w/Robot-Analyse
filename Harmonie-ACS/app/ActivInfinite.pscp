@@ -24,6 +24,55 @@
 				<STRUCTUREDON Name="ActivInfinite" />
 			</_DECLAREVAR>
 			<_ECRANS>
+				<PAGE Name="pDashboard" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)">
+					<CRITERE>
+						<TITRE Scan="Part"><![CDATA[Activ'Infinite - Site]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do]]></PATH>
+					<OBJETS>
+						<OBJET Name="btMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="5.R0R1R0R0R0R0R0R0">
+									<ATT Name="InnerHTML">
+										<VALUE Scan="Full"><![CDATA[<IMG onmouseover="image.src='/Commun/multimedia/images/menu/boutonMenuOn.png'" onmouseout="image.src='/Commun/multimedia/images/menu/boutonMenuOff.png'" border=0 name=image src="/Commun/multimedia/images/menu/boutonMenuOff.png">]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ActivInfiniteSite_1131080_1" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)" CtxtId="5" Techno="WEB" Timestamp="25/04/2017 11:31:36" />
+				</PAGE>
+				<PAGE Name="pEffectParamCalc" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&CONTAINER_NOM_FONCTION=AC32_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
+					<OBJETS>
+						<OBJET Name="oBtNext">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="36.R0R1R9R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0R0R7R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Parametres du calcul]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1616047_1" Comment="[frameInitial0] - Web Aneto" CtxtId="36" Techno="WEB" Timestamp="12/05/2017 16:16:09" />
+				</PAGE>
 				<PAGE Name="pConsultContratIndiv" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>
 						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
@@ -160,24 +209,6 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1743314_1" Comment="[frameInitial0] - Web Aneto" CtxtId="12" Techno="WEB" Timestamp="26/04/2017 17:43:38" />
-				</PAGE>
-				<PAGE Name="pDashboard" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)">
-					<CRITERE>
-						<TITRE Scan="Part"><![CDATA[Activ'Infinite - Site]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do]]></PATH>
-					<OBJETS>
-						<OBJET Name="btMenu" MustExist="Y">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="5.R0R1R0R0R0R0R0R0">
-									<ATT Name="InnerHTML">
-										<VALUE Scan="Full"><![CDATA[<IMG onmouseover="image.src='/Commun/multimedia/images/menu/boutonMenuOn.png'" onmouseout="image.src='/Commun/multimedia/images/menu/boutonMenuOff.png'" border=0 name=image src="/Commun/multimedia/images/menu/boutonMenuOff.png">]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ActivInfiniteSite_1131080_1" Comment="Activ Infinite - Site 01 - SAPCTOR1 (Utilisateur)" CtxtId="5" Techno="WEB" Timestamp="25/04/2017 11:31:36" />
 				</PAGE>
 				<PAGE Name="pBlockNotes" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>
@@ -774,37 +805,6 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1547233_1" Comment="[frameInitial0] - Web Aneto" CtxtId="34" Techno="WEB" Timestamp="12/05/2017 15:47:29" />
-				</PAGE>
-				<PAGE Name="pEffectParamCalc" Comment="[frameInitial0] - Web Aneto">
-					<CRITERE>
-						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
-						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416&CONTAINER_NOM_FONCTION=AC32_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
-					<OBJETS>
-						<OBJET Name="oBtNext">
-							<CRITERE>
-								<TAG Name="IMG" Scope="All" CapturedPos="36.R0R1R9R0R1R0R7R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oParametresDuCalcul" MustExist="Y">
-							<CRITERE>
-								<TAG Name="TD" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0R0R7R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Parametres du calcul]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_WebAneto_1616047_1" Comment="[frameInitial0] - Web Aneto" CtxtId="36" Techno="WEB" Timestamp="12/05/2017 16:16:09" />
 				</PAGE>
 				<PAGE Name="pEffectHistoCoti" Comment="[frameInitial0] - Web Aneto">
 					<CRITERE>

@@ -46,11 +46,12 @@ ActivInfinite.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	});
 	
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract error');
 		
 		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		
+		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
 		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
 			ActivInfinite.pPopupCloseEffect.btNo.click();				
 			sc.endScenario();
@@ -73,7 +74,7 @@ ActivInfinite.step({ goToVisualizationContribution: function(ev, sc, st) {
 
 ActivInfinite.step({ validationCalcul: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
-	ActivInfinite.pEffectVisuCotis.oValidation.set('Oui');
+	ActivInfinite.pEffectVisuCotis.oValidation.set('OUI');
 	ActivInfinite.pEffectVisuCotis.oBtNext.click();
 	ActivInfinite.pEffectValidation.wait(function() {
 		sc.endStep();
@@ -83,10 +84,6 @@ ActivInfinite.step({ validationCalcul: function(ev, sc, st) {
 ActivInfinite.step({ saveContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 	ActivInfinite.pEffectValidation.oBtSave.click();
-	ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
-		ActivInfinite.pPopupCloseEffect.btNo.click();				
-		sc.endStep();
-	});
 }});
 
 ActivInfinite.step({ endTerminatedContract: function(ev, sc, st) {

@@ -20,8 +20,6 @@
 
 ActivInfinite.step({ initializeSearchContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
-	sc.data.config = ctx.config.getConfigACS();
-	sc.data.configExcel = sc.data.config.excel;
 	sc.endStep();
 }});
 
