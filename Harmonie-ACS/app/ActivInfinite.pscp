@@ -306,6 +306,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oImpactHidden" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TR" Scope="All" CapturedPos="18.R0R1R11R1R5R8R0R1">
+									<ATT Name="style">
+										<VALUE Scan="Full"><![CDATA[VISIBILITY: hidden]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[Impact]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1450334_1" Comment="[frameInitial0] - Web Aneto" CtxtId="18" Techno="WEB" Timestamp="04/05/2017 14:50:44" />
 				</PAGE>
@@ -946,6 +958,43 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Confirmation_1057020_1" Comment="Confirmation" CtxtId="42" Techno="WEB" Timestamp="16/05/2017 10:57:02" />
+				</PAGE>
+				<PAGE Name="pCoverageProduct" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
+					<OBJETS>
+						<OBJET Name="oBtNext">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="46.R0R1R13R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btEdit" MustExist="Y">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="46.R0R1R13R1R5R8R0R5R0R0R0R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[modifier]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oImpactVisible" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="46.R0R1R13R1R5R8R0R1R0R0R0R1R1">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Impacter l'ajout ou la radiation des garanties sur tous les assurés du contrat ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1158376_1" Comment="[frameInitial0] - Web Aneto" CtxtId="46" Techno="WEB" Timestamp="17/05/2017 11:58:46" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>

@@ -41,6 +41,7 @@ ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('o
 ActivInfinite.pProductList.oBtClose = ActivInfinite.pProductList.addItem('oBtClose');
 ActivInfinite.pProductList.oRowInformation = ActivInfinite.pProductList.addItem('oRowInformation', {"occurs":1});
 ActivInfinite.pProductList.btVisuContribution = ActivInfinite.pProductList.addItem('btVisuContribution');
+ActivInfinite.pProductList.oImpactHidden = ActivInfinite.pProductList.addItem('oImpactHidden', {"mustExist":true});
 
 ActivInfinite.pSynthesisContract = ActivInfinite.addPage('pSynthesisContract', {"comment":"[frameInitial0] - Accueil","path":"http://infinite-haur05/WebAneto/AccueilMenu.do?method=afficher\u0026redirection_action=FicheSynthesePersonne\u0026redirection_method=afficherPersonne\u0026NumCtr=00248886\u0026IdfSys=389324\u0026submitSyntheseDate=true"});
 ActivInfinite.pSynthesisContract.oDateEnd = ActivInfinite.pSynthesisContract.addItem('oDateEnd', {"occurs":1});
@@ -110,3 +111,8 @@ ActivInfinite.pPopupCloseEffect = ActivInfinite.addPage('pPopupCloseEffect', {"c
 ActivInfinite.pPopupCloseEffect.btNo = ActivInfinite.pPopupCloseEffect.addItem('btNo', {"mustExist":true});
 ActivInfinite.pPopupCloseEffect.btYes = ActivInfinite.pPopupCloseEffect.addItem('btYes', {"mustExist":true});
 ActivInfinite.pPopupCloseEffect.btCancel = ActivInfinite.pPopupCloseEffect.addItem('btCancel', {"mustExist":true});
+
+ActivInfinite.pCoverageProduct = ActivInfinite.addPage('pCoverageProduct', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22\u0026CONTAINER_NOM_FONCTION=ACPG_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
+ActivInfinite.pCoverageProduct.oBtNext = ActivInfinite.pCoverageProduct.addItem('oBtNext');
+ActivInfinite.pCoverageProduct.btEdit = ActivInfinite.pCoverageProduct.addItem('btEdit', {"mustExist":true});
+ActivInfinite.pCoverageProduct.oImpactVisible = ActivInfinite.pCoverageProduct.addItem('oImpactVisible', {"mustExist":true});
