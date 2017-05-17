@@ -1,0 +1,847 @@
+﻿<PAGE Techno="WEB" Name="PAGE_Confirmation_1057020_1" ProcessName="IEXPLORE" ParamName="Confirmation" ParentTree="">
+	<PROPERTIES>
+		<TITRE>Confirmation</TITRE>
+		<DOMAIN>infinite-haur05</DOMAIN>
+		<URL>http://infinite-haur05/WebAneto/jsp/container/vue/ConfirmationActe.jsp</URL>
+		<CX>280</CX>
+		<CY>130</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+	<CHILDREN>
+		<ITEM>
+			<PROPERTIES>
+				<TAG>HTML</TAG>
+				<Text>Confirmation 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+				<InnerHTML>&lt;HEAD&gt;&lt;TITLE&gt;Confirmation&lt;/TITLE&gt;&lt;LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"&gt;
+&lt;SCRIPT language=javascript&gt;
+function sendAndClose(mode){
+  window.returnValue=mode;
+  window.close();
+}
+
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;!--bgcolor="#E1F1FF"--&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</InnerHTML>
+				<OuterHTML>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;Confirmation&lt;/TITLE&gt;&lt;LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"&gt;
+&lt;SCRIPT language=javascript&gt;
+function sendAndClose(mode){
+  window.returnValue=mode;
+  window.close();
+}
+
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;!--bgcolor="#E1F1FF"--&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/HTML&gt;</OuterHTML>
+				<range>0</range>
+				<contentEditable>inherit</contentEditable>
+			</PROPERTIES>
+			<CTX_PROPS>
+				<BOUNDINGRECT>0|0|280|130</BOUNDINGRECT>
+				<TITLE>HTML</TITLE>
+				<NAMEKEY>id</NAMEKEY>
+				<CONTROLTYPE>HTML</CONTROLTYPE>
+				<PREFIX />
+				<TEXT />
+				<TEXTKEY>Text</TEXTKEY>
+				<PARAMNAME />
+				<PARENTTREE />
+				<ISVISIBLE>True</ISVISIBLE>
+			</CTX_PROPS>
+			<CHILDREN>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>HEAD</TAG>
+						<Text>Confirmation</Text>
+						<InnerHTML>&lt;TITLE&gt;Confirmation&lt;/TITLE&gt;&lt;LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"&gt;
+&lt;SCRIPT language=javascript&gt;
+function sendAndClose(mode){
+  window.returnValue=mode;
+  window.close();
+}
+
+&lt;/SCRIPT&gt;</InnerHTML>
+						<OuterHTML>&lt;HEAD&gt;&lt;TITLE&gt;Confirmation&lt;/TITLE&gt;&lt;LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"&gt;
+&lt;SCRIPT language=javascript&gt;
+function sendAndClose(mode){
+  window.returnValue=mode;
+  window.close();
+}
+
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+						<TITLE>HEAD</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>HEAD</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TITLE</TAG>
+								<Text>Confirmation</Text>
+								<InnerHTML>Confirmation</InnerHTML>
+								<OuterHTML>&lt;TITLE&gt;Confirmation&lt;/TITLE&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+								<TITLE>TITLE - Confirmation</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TITLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Confirmation</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>LINK</TAG>
+								<href>/Commun/style/Soltim.css</href>
+								<OuterHTML>&lt;LINK rel=stylesheet type=text/css href="/Commun/style/Soltim.css"&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+								<rel>stylesheet</rel>
+								<type>text/css</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+								<TITLE>LINK</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>LINK</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>BODY</TAG>
+						<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+						<InnerHTML>&lt;!--bgcolor="#E1F1FF"--&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;</InnerHTML>
+						<OuterHTML>
+&lt;BODY&gt;&lt;!--bgcolor="#E1F1FF"--&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/BODY&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+						<topMargin>15</topMargin>
+						<rightMargin>10</rightMargin>
+						<bottomMargin>15</bottomMargin>
+						<leftMargin>10</leftMargin>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|280|130</BOUNDINGRECT>
+						<TITLE>BODY</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>BODY</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>!</TAG>
+								<InnerHTML>&lt;!--bgcolor="#E1F1FF"--&gt;</InnerHTML>
+								<OuterHTML>&lt;!--bgcolor="#E1F1FF"--&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|92</BOUNDINGRECT>
+								<TITLE>!</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>!</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TABLE</TAG>
+								<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+								<InnerHTML>&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;</InnerHTML>
+								<OuterHTML>
+&lt;TABLE width="100%"&gt;&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+								<width>100%</width>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|263|92</BOUNDINGRECT>
+								<TITLE>TABLE</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TABLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<TAG>TBODY</TAG>
+										<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+										<InnerHTML>&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;</InnerHTML>
+										<OuterHTML>
+&lt;TBODY&gt;&lt;TR&gt;
+&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+										<range>0</range>
+										<contentEditable>inherit</contentEditable>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>0|2|263|88</BOUNDINGRECT>
+										<TITLE>TBODY</TITLE>
+										<NAMEKEY>id</NAMEKEY>
+										<CONTROLTYPE>TBODY</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME />
+										<PARENTTREE />
+										<ISVISIBLE>True</ISVISIBLE>
+									</CTX_PROPS>
+									<CHILDREN>
+										<ITEM>
+											<PROPERTIES>
+												<TAG>TR</TAG>
+												<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+												<InnerHTML>&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;</InnerHTML>
+												<OuterHTML>
+&lt;TR&gt;&lt;TD align=center&gt;
+&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+												<range>0</range>
+												<contentEditable>inherit</contentEditable>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>0|2|263|88</BOUNDINGRECT>
+												<TITLE>TR</TITLE>
+												<NAMEKEY>id</NAMEKEY>
+												<CONTROLTYPE>TR</CONTROLTYPE>
+												<PREFIX />
+												<TEXT />
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME />
+												<PARENTTREE />
+												<ISVISIBLE>True</ISVISIBLE>
+											</CTX_PROPS>
+											<CHILDREN>
+												<ITEM>
+													<PROPERTIES>
+														<TAG>TD</TAG>
+														<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+														<InnerHTML>&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;</InnerHTML>
+														<OuterHTML>
+&lt;TD align=center&gt;&lt;TABLE width="100%"&gt;
+&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;&lt;/TD&gt;</OuterHTML>
+														<range>0</range>
+														<contentEditable>inherit</contentEditable>
+														<align>center</align>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>2|2|259|88</BOUNDINGRECT>
+														<TITLE>TD</TITLE>
+														<NAMEKEY>id</NAMEKEY>
+														<CONTROLTYPE>TD</CONTROLTYPE>
+														<PREFIX />
+														<TEXT />
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME />
+														<PARENTTREE />
+														<ISVISIBLE>True</ISVISIBLE>
+													</CTX_PROPS>
+													<CHILDREN>
+														<ITEM>
+															<PROPERTIES>
+																<TAG>TABLE</TAG>
+																<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+																<InnerHTML>&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;</InnerHTML>
+																<OuterHTML>
+&lt;TABLE width="100%"&gt;&lt;TBODY&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;/TBODY&gt;&lt;/TABLE&gt;</OuterHTML>
+																<range>0</range>
+																<contentEditable>inherit</contentEditable>
+																<width>100%</width>
+															</PROPERTIES>
+															<CTX_PROPS>
+																<BOUNDINGRECT>3|3|257|86</BOUNDINGRECT>
+																<TITLE>TABLE</TITLE>
+																<NAMEKEY>id</NAMEKEY>
+																<CONTROLTYPE>TABLE</CONTROLTYPE>
+																<PREFIX />
+																<TEXT />
+																<TEXTKEY>Text</TEXTKEY>
+																<PARAMNAME />
+																<PARENTTREE />
+																<ISVISIBLE>True</ISVISIBLE>
+															</CTX_PROPS>
+															<CHILDREN>
+																<ITEM>
+																	<PROPERTIES>
+																		<TAG>TBODY</TAG>
+																		<Text> 
+Voulez-vous sauvegarder l'acte de gestion ?
+OuiNonAnnuler</Text>
+																		<InnerHTML>&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;</InnerHTML>
+																		<OuterHTML>
+&lt;TBODY&gt;&lt;TR&gt;
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+																		<range>0</range>
+																		<contentEditable>inherit</contentEditable>
+																	</PROPERTIES>
+																	<CTX_PROPS>
+																		<BOUNDINGRECT>3|5|257|82</BOUNDINGRECT>
+																		<TITLE>TBODY</TITLE>
+																		<NAMEKEY>id</NAMEKEY>
+																		<CONTROLTYPE>TBODY</CONTROLTYPE>
+																		<PREFIX />
+																		<TEXT />
+																		<TEXTKEY>Text</TEXTKEY>
+																		<PARAMNAME />
+																		<PARENTTREE />
+																		<ISVISIBLE>True</ISVISIBLE>
+																	</CTX_PROPS>
+																	<CHILDREN>
+																		<ITEM>
+																			<PROPERTIES>
+																				<TAG>TR</TAG>
+																				<Text> </Text>
+																				<InnerHTML>&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;</InnerHTML>
+																				<OuterHTML>
+&lt;TR&gt;&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+																				<range>0</range>
+																				<contentEditable>inherit</contentEditable>
+																			</PROPERTIES>
+																			<CTX_PROPS>
+																				<BOUNDINGRECT>3|5|257|20</BOUNDINGRECT>
+																				<TITLE>TR</TITLE>
+																				<NAMEKEY>id</NAMEKEY>
+																				<CONTROLTYPE>TR</CONTROLTYPE>
+																				<PREFIX />
+																				<TEXT />
+																				<TEXTKEY>Text</TEXTKEY>
+																				<PARAMNAME />
+																				<PARENTTREE />
+																				<ISVISIBLE>True</ISVISIBLE>
+																			</CTX_PROPS>
+																			<CHILDREN>
+																				<ITEM>
+																					<PROPERTIES>
+																						<TAG>TD</TAG>
+																						<Text> </Text>
+																						<InnerHTML>&amp;nbsp;</InnerHTML>
+																						<OuterHTML>
+&lt;TD colSpan=3&gt;&amp;nbsp;&lt;/TD&gt;</OuterHTML>
+																						<range>0</range>
+																						<contentEditable>inherit</contentEditable>
+																					</PROPERTIES>
+																					<CTX_PROPS>
+																						<BOUNDINGRECT>5|5|253|20</BOUNDINGRECT>
+																						<TITLE>TD -  </TITLE>
+																						<NAMEKEY>id</NAMEKEY>
+																						<CONTROLTYPE>TD</CONTROLTYPE>
+																						<PREFIX />
+																						<TEXT> </TEXT>
+																						<TEXTKEY>Text</TEXTKEY>
+																						<PARAMNAME />
+																						<PARENTTREE />
+																						<ISVISIBLE>True</ISVISIBLE>
+																					</CTX_PROPS>
+																				</ITEM>
+																			</CHILDREN>
+																		</ITEM>
+																		<ITEM>
+																			<PROPERTIES>
+																				<TAG>TR</TAG>
+																				<Text>Voulez-vous sauvegarder l'acte de gestion ?</Text>
+																				<InnerHTML>&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;</InnerHTML>
+																				<OuterHTML>
+&lt;TR&gt;&lt;TD colSpan=3 align=center&gt;
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+																				<range>1</range>
+																				<contentEditable>inherit</contentEditable>
+																			</PROPERTIES>
+																			<CTX_PROPS>
+																				<BOUNDINGRECT>3|27|257|30</BOUNDINGRECT>
+																				<TITLE>TR</TITLE>
+																				<NAMEKEY>id</NAMEKEY>
+																				<CONTROLTYPE>TR</CONTROLTYPE>
+																				<PREFIX />
+																				<TEXT />
+																				<TEXTKEY>Text</TEXTKEY>
+																				<PARAMNAME />
+																				<PARENTTREE />
+																				<ISVISIBLE>True</ISVISIBLE>
+																			</CTX_PROPS>
+																			<CHILDREN>
+																				<ITEM>
+																					<PROPERTIES>
+																						<TAG>TD</TAG>
+																						<Text>Voulez-vous sauvegarder l'acte de gestion ?</Text>
+																						<InnerHTML>&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;</InnerHTML>
+																						<OuterHTML>
+&lt;TD colSpan=3 align=center&gt;&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;&lt;/TD&gt;</OuterHTML>
+																						<range>0</range>
+																						<contentEditable>inherit</contentEditable>
+																						<align>center</align>
+																					</PROPERTIES>
+																					<CTX_PROPS>
+																						<BOUNDINGRECT>5|27|253|30</BOUNDINGRECT>
+																						<TITLE>TD</TITLE>
+																						<NAMEKEY>id</NAMEKEY>
+																						<CONTROLTYPE>TD</CONTROLTYPE>
+																						<PREFIX />
+																						<TEXT />
+																						<TEXTKEY>Text</TEXTKEY>
+																						<PARAMNAME />
+																						<PARENTTREE />
+																						<ISVISIBLE>True</ISVISIBLE>
+																					</CTX_PROPS>
+																					<CHILDREN>
+																						<ITEM>
+																							<PROPERTIES>
+																								<TAG>DIV</TAG>
+																								<Text>Voulez-vous sauvegarder l'acte de gestion ?</Text>
+																								<class>PrincipalDate</class>
+																								<InnerHTML>Voulez-vous sauvegarder l'acte de gestion ?</InnerHTML>
+																								<OuterHTML>
+&lt;DIV class=PrincipalDate&gt;Voulez-vous sauvegarder l'acte de gestion ?&lt;/DIV&gt;</OuterHTML>
+																								<range>0</range>
+																								<contentEditable>inherit</contentEditable>
+																							</PROPERTIES>
+																							<CTX_PROPS>
+																								<BOUNDINGRECT>6|28|251|28</BOUNDINGRECT>
+																								<TITLE>DIV - Voulez-vous sauvegarder l'acte de gestion ?</TITLE>
+																								<NAMEKEY>id</NAMEKEY>
+																								<CONTROLTYPE>DIV</CONTROLTYPE>
+																								<PREFIX />
+																								<TEXT>Voulez-vous sauvegarder l'acte de gestion ?</TEXT>
+																								<TEXTKEY>Text</TEXTKEY>
+																								<PARAMNAME />
+																								<PARENTTREE />
+																								<ISVISIBLE>True</ISVISIBLE>
+																							</CTX_PROPS>
+																						</ITEM>
+																					</CHILDREN>
+																				</ITEM>
+																			</CHILDREN>
+																		</ITEM>
+																		<ITEM>
+																			<PROPERTIES>
+																				<TAG>TR</TAG>
+																				<Text>OuiNonAnnuler</Text>
+																				<InnerHTML>&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;</InnerHTML>
+																				<OuterHTML>
+&lt;TR&gt;&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;&lt;/TR&gt;</OuterHTML>
+																				<range>2</range>
+																				<contentEditable>inherit</contentEditable>
+																			</PROPERTIES>
+																			<CTX_PROPS>
+																				<BOUNDINGRECT>3|59|257|28</BOUNDINGRECT>
+																				<TITLE>TR</TITLE>
+																				<NAMEKEY>id</NAMEKEY>
+																				<CONTROLTYPE>TR</CONTROLTYPE>
+																				<PREFIX />
+																				<TEXT />
+																				<TEXTKEY>Text</TEXTKEY>
+																				<PARAMNAME />
+																				<PARENTTREE />
+																				<ISVISIBLE>True</ISVISIBLE>
+																			</CTX_PROPS>
+																			<CHILDREN>
+																				<ITEM>
+																					<PROPERTIES>
+																						<TAG>TD</TAG>
+																						<Text>Oui</Text>
+																						<InnerHTML>&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;</InnerHTML>
+																						<OuterHTML>
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;&lt;/TD&gt;</OuterHTML>
+																						<range>0</range>
+																						<contentEditable>inherit</contentEditable>
+																					</PROPERTIES>
+																					<CTX_PROPS>
+																						<BOUNDINGRECT>5|59|83|28</BOUNDINGRECT>
+																						<TITLE>TD</TITLE>
+																						<NAMEKEY>id</NAMEKEY>
+																						<CONTROLTYPE>TD</CONTROLTYPE>
+																						<PREFIX />
+																						<TEXT />
+																						<TEXTKEY>Text</TEXTKEY>
+																						<PARAMNAME />
+																						<PARENTTREE />
+																						<ISVISIBLE>True</ISVISIBLE>
+																					</CTX_PROPS>
+																					<CHILDREN>
+																						<ITEM>
+																							<PROPERTIES>
+																								<TAG>A</TAG>
+																								<Text>Oui</Text>
+																								<class>AdminBT_B</class>
+																								<href>http://infinite-haur05/WebAneto/jsp/container/vue/ConfirmationActe.jsp#</href>
+																								<InnerHTML>Oui</InnerHTML>
+																								<OuterHTML>&lt;A onclick=javascript:sendAndClose(6); title=Oui class=AdminBT_B href="#"&gt;Oui&lt;/A&gt;</OuterHTML>
+																								<title>Oui</title>
+																								<range>0</range>
+																								<contentEditable>inherit</contentEditable>
+																							</PROPERTIES>
+																							<CTX_PROPS>
+																								<BOUNDINGRECT>6|70|80|16</BOUNDINGRECT>
+																								<TITLE>A - Oui</TITLE>
+																								<NAMEKEY>id</NAMEKEY>
+																								<CONTROLTYPE>A</CONTROLTYPE>
+																								<PREFIX>bt</PREFIX>
+																								<TEXT>Oui</TEXT>
+																								<TEXTKEY>Text</TEXTKEY>
+																								<PARAMNAME />
+																								<PARENTTREE />
+																								<ISVISIBLE>True</ISVISIBLE>
+																							</CTX_PROPS>
+																						</ITEM>
+																					</CHILDREN>
+																				</ITEM>
+																				<ITEM>
+																					<PROPERTIES>
+																						<TAG>TD</TAG>
+																						<Text>Non</Text>
+																						<InnerHTML>&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;</InnerHTML>
+																						<OuterHTML>
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;&lt;/TD&gt;</OuterHTML>
+																						<range>1</range>
+																						<contentEditable>inherit</contentEditable>
+																					</PROPERTIES>
+																					<CTX_PROPS>
+																						<BOUNDINGRECT>90|59|83|28</BOUNDINGRECT>
+																						<TITLE>TD</TITLE>
+																						<NAMEKEY>id</NAMEKEY>
+																						<CONTROLTYPE>TD</CONTROLTYPE>
+																						<PREFIX />
+																						<TEXT />
+																						<TEXTKEY>Text</TEXTKEY>
+																						<PARAMNAME />
+																						<PARENTTREE />
+																						<ISVISIBLE>True</ISVISIBLE>
+																					</CTX_PROPS>
+																					<CHILDREN>
+																						<ITEM>
+																							<PROPERTIES>
+																								<TAG>A</TAG>
+																								<Text>Non</Text>
+																								<class>AdminBT_B</class>
+																								<href>http://infinite-haur05/WebAneto/jsp/container/vue/ConfirmationActe.jsp#</href>
+																								<InnerHTML>Non</InnerHTML>
+																								<OuterHTML>&lt;A onclick=javascript:sendAndClose(7); title=Non class=AdminBT_B href="#"&gt;Non&lt;/A&gt;</OuterHTML>
+																								<title>Non</title>
+																								<range>0</range>
+																								<contentEditable>inherit</contentEditable>
+																							</PROPERTIES>
+																							<CTX_PROPS>
+																								<BOUNDINGRECT>91|70|80|16</BOUNDINGRECT>
+																								<TITLE>A - Non</TITLE>
+																								<NAMEKEY>id</NAMEKEY>
+																								<CONTROLTYPE>A</CONTROLTYPE>
+																								<PREFIX>bt</PREFIX>
+																								<TEXT>Non</TEXT>
+																								<TEXTKEY>Text</TEXTKEY>
+																								<PARAMNAME />
+																								<PARENTTREE />
+																								<ISVISIBLE>True</ISVISIBLE>
+																							</CTX_PROPS>
+																						</ITEM>
+																					</CHILDREN>
+																				</ITEM>
+																				<ITEM>
+																					<PROPERTIES>
+																						<TAG>TD</TAG>
+																						<Text>Annuler</Text>
+																						<InnerHTML>&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;</InnerHTML>
+																						<OuterHTML>
+&lt;TD&gt;&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;&lt;/TD&gt;</OuterHTML>
+																						<range>2</range>
+																						<contentEditable>inherit</contentEditable>
+																					</PROPERTIES>
+																					<CTX_PROPS>
+																						<BOUNDINGRECT>175|59|83|28</BOUNDINGRECT>
+																						<TITLE>TD</TITLE>
+																						<NAMEKEY>id</NAMEKEY>
+																						<CONTROLTYPE>TD</CONTROLTYPE>
+																						<PREFIX />
+																						<TEXT />
+																						<TEXTKEY>Text</TEXTKEY>
+																						<PARAMNAME />
+																						<PARENTTREE />
+																						<ISVISIBLE>True</ISVISIBLE>
+																					</CTX_PROPS>
+																					<CHILDREN>
+																						<ITEM>
+																							<PROPERTIES>
+																								<TAG>A</TAG>
+																								<Text>Annuler</Text>
+																								<class>AdminBT_B</class>
+																								<href>http://infinite-haur05/WebAneto/jsp/container/vue/ConfirmationActe.jsp#</href>
+																								<InnerHTML>Annuler</InnerHTML>
+																								<OuterHTML>&lt;A onclick=javascript:sendAndClose(0); title=Annuler class=AdminBT_B href="#"&gt;Annuler&lt;/A&gt;</OuterHTML>
+																								<title>Annuler</title>
+																								<range>0</range>
+																								<contentEditable>inherit</contentEditable>
+																							</PROPERTIES>
+																							<CTX_PROPS>
+																								<BOUNDINGRECT>176|70|80|16</BOUNDINGRECT>
+																								<TITLE>A - Annuler</TITLE>
+																								<NAMEKEY>id</NAMEKEY>
+																								<CONTROLTYPE>A</CONTROLTYPE>
+																								<PREFIX>bt</PREFIX>
+																								<TEXT>Annuler</TEXT>
+																								<TEXTKEY>Text</TEXTKEY>
+																								<PARAMNAME />
+																								<PARENTTREE />
+																								<ISVISIBLE>True</ISVISIBLE>
+																							</CTX_PROPS>
+																						</ITEM>
+																					</CHILDREN>
+																				</ITEM>
+																			</CHILDREN>
+																		</ITEM>
+																	</CHILDREN>
+																</ITEM>
+															</CHILDREN>
+														</ITEM>
+													</CHILDREN>
+												</ITEM>
+											</CHILDREN>
+										</ITEM>
+									</CHILDREN>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+			</CHILDREN>
+		</ITEM>
+	</CHILDREN>
+</PAGE>

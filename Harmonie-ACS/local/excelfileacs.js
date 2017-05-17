@@ -64,7 +64,8 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
 	var currentContracts = sc.data.contracts[i];
-	var data = { contract: currentContracts };
+	var config = ctx.config.getConfigACS();
+	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
 	ActivInfinite.scenarios.searchContract.start(data).onEnd(function(s) {
 			sc.data.countCaseProcessed += 1;

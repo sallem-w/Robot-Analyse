@@ -3,7 +3,7 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
-	sc.step(ActivInfinite.steps.initializePage);
+	sc.step(ActivInfinite.steps.initializeSearchContract);
 	sc.step(ActivInfinite.steps.navigateToSynthesis);
 	sc.step(ActivInfinite.steps.searchBenefInSynthesis);
 	sc.step(ActivInfinite.steps.checkSynthesis);
@@ -15,13 +15,11 @@
 	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.searchHistory);
 	sc.step(ActivInfinite.steps.checkHistory);
-	sc.step(ActivInfinite.steps.end);
+	sc.step(ActivInfinite.steps.endSearchContract);
 }});
 
-ActivInfinite.step({ initializePage: function(ev, sc, st) {
+ActivInfinite.step({ initializeSearchContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - searchContract - ' + ctx.config.getCodeScenarioACS());
-	sc.data.config = ctx.config.getConfigACS();
-	sc.data.configExcel = sc.data.config.excel;
 	sc.endStep();
 }});
 
@@ -335,38 +333,43 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
 		return;
-	}
-	
-	if (isContractTerminated) {
+		
+	} else if (isContractTerminated) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract terminated');
 		sc.data.commentContract += 'Cas d\'un contract résilié \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		
-		// TODO start new scenario
+		ActivInfinite.pDashboard.wait(function() {
+			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
+				sc.data.commentContract += s.data.commentContract;
+				sc.data.statusContract = s.data.statusContract;
+				
+				sc.endStep();
+				return;
+			});
+		});
 		
-		sc.endStep();
-		return;
-	}
-	
-	if (isContractWithAccesSante) {
+	} else if (isContractWithAccesSante) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract with product accès santé');
 		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
 		return;
+		
+	} else {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
+		sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de l\'historique \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pHistoOperationSearch.oBtClose.click();
+		sc.endScenario();
+		return;
 	}
-	
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
-	sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de l\'historique \n';
-	sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-	ActivInfinite.pHistoOperationSearch.oBtClose.click();
-	sc.endScenario();
 }});
 
-ActivInfinite.step({ end : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - end');
+ActivInfinite.step({ endSearchContract : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
 	sc.endStep();
 }});
