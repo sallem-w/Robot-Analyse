@@ -1015,6 +1015,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btValidate">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R4R0R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Valider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1206150_1" Comment="[frameInitial0] - Web Aneto" CtxtId="47" Techno="WEB" Timestamp="17/05/2017 12:06:25" />
 				</PAGE>
