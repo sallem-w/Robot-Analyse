@@ -4,6 +4,8 @@
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinite.steps.initializeCoverageChangeContract);
+	sc.step(ActivInfinite.steps.searchCoverageContract);
+	sc.step(ActivInfinite.steps.editProductCoverageContract);
 	sc.step(ActivInfinite.steps.endCoverageChangeContract);
 }});
 
@@ -20,8 +22,55 @@ ActivInfinite.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	
 	ActivInfinite.pDashboard.injectFunction(navigateToCoverageChange);
 	ActivInfinite.pDashboard.execScript('navigateToCoverageChange()');
+	ActivInfinite.pConsultContratIndiv.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ searchCoverageContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchCoverageContract');
+	
+	ActivInfinite.pConsultContratIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinite.pConsultContratIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1)));
+	ActivInfinite.pConsultContratIndiv.btSearch.click();
+
+	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+		
+		sc.data.commentContract += 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
+		ActivInfinite.pContratIndivFound.oBtNext.click();
+		ActivInfinite.pBlockNotes.wait(function() {
+			ActivInfinite.pBlockNotes.oBtNext.click();
+			ActivInfinite.pCoverageProduct.wait(function() {
+				ActivInfinite.pCoverageProduct.btEdit.click();
+				ActivInfinite.pCoverageEditProduct.wait(function() {
+					sc.endStep();
+				});
+			});
+		});
+	});
+	
+	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+		
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
+		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+			ActivInfinite.pPopupCloseEffect.btNo.click();				
+			sc.endScenario();
+		});
+	});
+
+}});
+
+ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - edit product coverage change');
 	sc.endStep();
 }});
+
 
 ActivInfinite.step({ endCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');

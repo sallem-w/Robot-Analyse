@@ -16,13 +16,12 @@ ActivInfinite.pConsultContratIndiv = ActivInfinite.addPage('pConsultContratIndiv
 ActivInfinite.pConsultContratIndiv.oIndividualContract = ActivInfinite.pConsultContratIndiv.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinite.pConsultContratIndiv.btSearch = ActivInfinite.pConsultContratIndiv.addItem('btSearch', {"mustExist":true});
 ActivInfinite.pConsultContratIndiv.oDateContract = ActivInfinite.pConsultContratIndiv.addItem('oDateContract', {"mustExist":true});
-ActivInfinite.pConsultContratIndiv.oTitleMenu = ActivInfinite.pConsultContratIndiv.addItem('oTitleMenu', {"mustExist":true});
 
 ActivInfinite.pContratIndivFound = ActivInfinite.addPage('pContratIndivFound', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_59\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
 ActivInfinite.pContratIndivFound.oIndividualContract = ActivInfinite.pContratIndivFound.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinite.pContratIndivFound.oBtNext = ActivInfinite.pContratIndivFound.addItem('oBtNext');
 ActivInfinite.pContratIndivFound.oBtClose = ActivInfinite.pContratIndivFound.addItem('oBtClose');
-ActivInfinite.pContratIndivFound.btNavigateBlockNote = ActivInfinite.pContratIndivFound.addItem('btNavigateBlockNote', {"mustExist":true});
+ActivInfinite.pContratIndivFound.btNavigateBlockNote = ActivInfinite.pContratIndivFound.addItem('btNavigateBlockNote');
 
 ActivInfinite.pContractIndivNotFoun = ActivInfinite.addPage('pContractIndivNotFoun', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_201\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
 ActivInfinite.pContractIndivNotFoun.oDetailError = ActivInfinite.pContractIndivNotFoun.addItem('oDetailError');
@@ -35,6 +34,7 @@ ActivInfinite.pBlockNotes.oContentBlockNote = ActivInfinite.pBlockNotes.addItem(
 ActivInfinite.pBlockNotes.oBtClose = ActivInfinite.pBlockNotes.addItem('oBtClose');
 ActivInfinite.pBlockNotes.btHelpCSCertificate = ActivInfinite.pBlockNotes.addItem('btHelpCSCertificate');
 ActivInfinite.pBlockNotes.oNodeInsuredIdent = ActivInfinite.pBlockNotes.addItem('oNodeInsuredIdent');
+ActivInfinite.pBlockNotes.oBtNext = ActivInfinite.pBlockNotes.addItem('oBtNext');
 
 ActivInfinite.pProductList = ActivInfinite.addPage('pProductList', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_33\u0026CONTAINER_NOM_FONCTION=ACPG_500\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE"});
 ActivInfinite.pProductList.oTextContract = ActivInfinite.pProductList.addItem('oTextContract', {"mustExist":true});
@@ -83,15 +83,6 @@ ActivInfinite.pCertificateHelpCS.oStartDate = ActivInfinite.pCertificateHelpCS.a
 ActivInfinite.pCertificateHelpCS.oEndDate = ActivInfinite.pCertificateHelpCS.addItem('oEndDate', {"occurs":1});
 ActivInfinite.pCertificateHelpCS.oBtClose = ActivInfinite.pCertificateHelpCS.addItem('oBtClose');
 ActivInfinite.pCertificateHelpCS.btProductList = ActivInfinite.pCertificateHelpCS.addItem('btProductList');
-
-ActivInfinite.pEffectConsultContrac = ActivInfinite.addPage('pEffectConsultContrac', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementScenario.do?SAPCTOR1\u00261494580799195\u0026method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S\u0026tailleFenetre=526"});
-ActivInfinite.pEffectConsultContrac.oIndividualContract = ActivInfinite.pEffectConsultContrac.addItem('oIndividualContract');
-ActivInfinite.pEffectConsultContrac.btSearch = ActivInfinite.pEffectConsultContrac.addItem('btSearch');
-ActivInfinite.pEffectConsultContrac.oResiliationHidden = ActivInfinite.pEffectConsultContrac.addItem('oResiliationHidden', {"mustExist":true});
-
-ActivInfinite.pEffectContractFound = ActivInfinite.addPage('pEffectContractFound', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER="});
-ActivInfinite.pEffectContractFound.oResiliationDisplay = ActivInfinite.pEffectContractFound.addItem('oResiliationDisplay', {"mustExist":true});
-ActivInfinite.pEffectContractFound.oBtNext = ActivInfinite.pEffectContractFound.addItem('oBtNext');
 
 ActivInfinite.pEffectHistoCoti = ActivInfinite.addPage('pEffectHistoCoti', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE04RE4S_416\u0026CONTAINER_NOM_FONCTION=AC3Q_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
 ActivInfinite.pEffectHistoCoti.oTitlePage = ActivInfinite.pEffectHistoCoti.addItem('oTitlePage', {"mustExist":true});
