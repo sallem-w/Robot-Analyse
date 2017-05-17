@@ -996,6 +996,28 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1158376_1" Comment="[frameInitial0] - Web Aneto" CtxtId="46" Techno="WEB" Timestamp="17/05/2017 11:58:46" />
 				</PAGE>
+				<PAGE Name="pCoverageEditProduct" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionProduit&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=]]></PATH>
+					<OBJETS>
+						<OBJET Name="oModificationDeLaCo" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R0R0R1R0R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Modification de la couverture de l'assuré]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1206150_1" Comment="[frameInitial0] - Web Aneto" CtxtId="47" Techno="WEB" Timestamp="17/05/2017 12:06:25" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
