@@ -109,9 +109,11 @@ ActivInfinite.pCoverageProduct.btEdit = ActivInfinite.pCoverageProduct.addItem('
 ActivInfinite.pCoverageProduct.oImpactVisible = ActivInfinite.pCoverageProduct.addItem('oImpactVisible', {"mustExist":true});
 
 ActivInfinite.pCoverageEditProduct = ActivInfinite.addPage('pCoverageEditProduct', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionProduit\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22\u0026CONTAINER_NOM_FONCTION=ACPG_300\u0026AFFICHAGE_CONTAINER="});
-ActivInfinite.pCoverageEditProduct.oTitlePage = ActivInfinite.pCoverageEditProduct.addItem('oTitlePage', {"mustExist":true});
 ActivInfinite.pCoverageEditProduct.btValidate = ActivInfinite.pCoverageEditProduct.addItem('btValidate');
 ActivInfinite.pCoverageEditProduct.oCheckProduct = ActivInfinite.pCoverageEditProduct.addItem('oCheckProduct', {"occurs":1});
 ActivInfinite.pCoverageEditProduct.oCodeProduct = ActivInfinite.pCoverageEditProduct.addItem('oCodeProduct', {"occurs":1});
+ActivInfinite.pCoverageEditProduct.oTitlePage = ActivInfinite.pCoverageEditProduct.addItem('oTitlePage', {"mustExist":true});
 
 ActivInfinite.pCoverageValidProduct = ActivInfinite.addPage('pCoverageValidProduct', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionGarantie\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88\u0026CONTAINER_NOM_FONCTION=ACPG_300\u0026AFFICHAGE_CONTAINER="});
+ActivInfinite.pCoverageValidProduct.btValidate = ActivInfinite.pCoverageValidProduct.addItem('btValidate');
+ActivInfinite.pCoverageValidProduct.oTitlePage = ActivInfinite.pCoverageValidProduct.addItem('oTitlePage', {"mustExist":true});

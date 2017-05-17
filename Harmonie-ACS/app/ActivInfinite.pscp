@@ -929,18 +929,6 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionProduit&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
-							<CRITERE>
-								<TAG Name="TD" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R0R0R1R0R0R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Modification de la couverture de l'assuré]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btValidate">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R4R0R0R0R0R0">
@@ -968,6 +956,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R0R0R2R0R0R0R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Saisie d'un code produit :  ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[LibelleB2]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1206150_1" Comment="[frameInitial0] - Web Aneto" CtxtId="47" Techno="WEB" Timestamp="17/05/2017 12:06:25" />
 				</PAGE>
@@ -977,7 +977,29 @@
 						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionGarantie&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=]]></PATH>
-					<OBJETS />
+					<OBJETS>
+						<OBJET Name="btValidate">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="48.R0R1R13R1R5R7R0R3R0R0R0R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Valider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="48.R0R1R13R1R5R7R0R0R0R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Modification de la couverture]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1657227_1" Comment="[frameInitial0] - Web Aneto" CtxtId="48" Techno="WEB" Timestamp="17/05/2017 16:57:29" />
 				</PAGE>
 			</_ECRANS>
