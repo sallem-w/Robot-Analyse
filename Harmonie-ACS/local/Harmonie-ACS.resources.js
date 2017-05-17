@@ -109,5 +109,7 @@ ActivInfinite.pCoverageProduct.btEdit = ActivInfinite.pCoverageProduct.addItem('
 ActivInfinite.pCoverageProduct.oImpactVisible = ActivInfinite.pCoverageProduct.addItem('oImpactVisible', {"mustExist":true});
 
 ActivInfinite.pCoverageEditProduct = ActivInfinite.addPage('pCoverageEditProduct', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionProduit\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22\u0026CONTAINER_NOM_FONCTION=ACPG_300\u0026AFFICHAGE_CONTAINER="});
-ActivInfinite.pCoverageEditProduct.oModificationDeLaCo = ActivInfinite.pCoverageEditProduct.addItem('oModificationDeLaCo', {"mustExist":true});
+ActivInfinite.pCoverageEditProduct.oTitlePage = ActivInfinite.pCoverageEditProduct.addItem('oTitlePage', {"mustExist":true});
 ActivInfinite.pCoverageEditProduct.btValidate = ActivInfinite.pCoverageEditProduct.addItem('btValidate');
+ActivInfinite.pCoverageEditProduct.oCheckProduct = ActivInfinite.pCoverageEditProduct.addItem('oCheckProduct', {"occurs":1});
+ActivInfinite.pCoverageEditProduct.oCodeProduct = ActivInfinite.pCoverageEditProduct.addItem('oCodeProduct', {"occurs":1});

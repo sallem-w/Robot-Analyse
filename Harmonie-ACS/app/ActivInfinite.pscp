@@ -929,7 +929,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionProduit&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_22&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=]]></PATH>
 					<OBJETS>
-						<OBJET Name="oModificationDeLaCo" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="TD" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R0R0R1R0R0R0R0R0">
 									<ATT Name="Text">
@@ -946,6 +946,24 @@
 								<TAG Name="A" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R4R0R0R0R0R0">
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[Valider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCheckProduct">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R1R0R0R0R0R0R0R0R0R0" Occurs="Y">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[chkPrd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCodeProduct">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="47.R0R1R13R1R5R10R0R0R0R1R0R0R0R0R0R0R0R0R1" Occurs="Y">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codePrd]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
