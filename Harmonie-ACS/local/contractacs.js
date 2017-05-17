@@ -332,7 +332,6 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
-		return;
 		
 	} else if (isContractTerminated) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract terminated');
@@ -340,13 +339,17 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		
+		if (sc.data.config.controlOnly) {
+			sc.endStep();
+			return;
+		}
+			
 		ActivInfinite.pDashboard.wait(function() {
 			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
 				sc.data.commentContract += s.data.commentContract;
 				sc.data.statusContract = s.data.statusContract;
 				
 				sc.endStep();
-				return;
 			});
 		});
 		
@@ -356,7 +359,6 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
-		return;
 		
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - history verification');
@@ -364,7 +366,6 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pHistoOperationSearch.oBtClose.click();
 		sc.endScenario();
-		return;
 	}
 }});
 
