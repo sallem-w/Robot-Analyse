@@ -971,6 +971,15 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1206150_1" Comment="[frameInitial0] - Web Aneto" CtxtId="47" Techno="WEB" Timestamp="17/05/2017 12:06:25" />
 				</PAGE>
+				<PAGE Name="pCoverageValidProduct" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionGarantie&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88&CONTAINER_NOM_FONCTION=ACPG_300&AFFICHAGE_CONTAINER=]]></PATH>
+					<OBJETS />
+					<CAPTURE Name="PAGE_WebAneto_1657227_1" Comment="[frameInitial0] - Web Aneto" CtxtId="48" Techno="WEB" Timestamp="17/05/2017 16:57:29" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
