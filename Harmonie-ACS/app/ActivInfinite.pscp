@@ -991,7 +991,7 @@
 							<CRITERE>
 								<TAG Name="TD" Scope="All" CapturedPos="48.R0R1R13R1R5R7R0R0R0R0R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Modification de la couverture]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Modification de la couverture]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
