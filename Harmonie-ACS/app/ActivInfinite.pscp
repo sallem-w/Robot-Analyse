@@ -98,7 +98,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateContract" MustExist="Y">
+						<OBJET Name="oDateContract">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="8.R0R1R9R1R3R31R0R4R3R0">
 									<ATT Name="name">
