@@ -117,3 +117,12 @@ ActivInfinite.pCoverageEditProduct.oTitlePage = ActivInfinite.pCoverageEditProdu
 ActivInfinite.pCoverageValidProduct = ActivInfinite.addPage('pCoverageValidProduct', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/contrat/ACPG.do?method=selectionGarantie\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88\u0026CONTAINER_NOM_FONCTION=ACPG_300\u0026AFFICHAGE_CONTAINER="});
 ActivInfinite.pCoverageValidProduct.btValidate = ActivInfinite.pCoverageValidProduct.addItem('btValidate');
 ActivInfinite.pCoverageValidProduct.oTitlePage = ActivInfinite.pCoverageValidProduct.addItem('oTitlePage', {"mustExist":true});
+
+ActivInfinite.pCoverageImmediateEch = ActivInfinite.addPage('pCoverageImmediateEch', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88\u0026CONTAINER_NOM_FONCTION=AC3U_900\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
+ActivInfinite.pCoverageImmediateEch.oEditContract = ActivInfinite.pCoverageImmediateEch.addItem('oEditContract', {"mustExist":true,"type":"Key"});
+ActivInfinite.pCoverageImmediateEch.oBtNext = ActivInfinite.pCoverageImmediateEch.addItem('oBtNext');
+
+ActivInfinite.pCoverageImmediateCar = ActivInfinite.addPage('pCoverageImmediateCar', {"comment":"[frameInitial0] - Web Aneto","path":"http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88\u0026CONTAINER_NOM_FONCTION=ACEK_1000\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT"});
+ActivInfinite.pCoverageImmediateCar.oTypeDiffere = ActivInfinite.pCoverageImmediateCar.addItem('oTypeDiffere');
+ActivInfinite.pCoverageImmediateCar.oBtNext = ActivInfinite.pCoverageImmediateCar.addItem('oBtNext');
+ActivInfinite.pCoverageImmediateCar.oTitlePage = ActivInfinite.pCoverageImmediateCar.addItem('oTitlePage', {"mustExist":true});

@@ -1002,6 +1002,74 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1657227_1" Comment="[frameInitial0] - Web Aneto" CtxtId="48" Techno="WEB" Timestamp="17/05/2017 16:57:29" />
 				</PAGE>
+				<PAGE Name="pCoverageImmediateEch" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88&CONTAINER_NOM_FONCTION=AC3U_900&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
+					<OBJETS>
+						<OBJET Name="oEditContract" MustExist="Y" TypObj="Key">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="49.R0R1R13R1R5R12R0R1R2R0R0R1R0R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[edition]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtNext">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="49.R0R1R13R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1718186_1" Comment="[frameInitial0] - Web Aneto" CtxtId="49" Techno="WEB" Timestamp="17/05/2017 17:18:25" />
+				</PAGE>
+				<PAGE Name="pCoverageImmediateCar" Comment="[frameInitial0] - Web Aneto">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Web Aneto]]></TITRE>
+						<NAME Scan="Full"><![CDATA[frameInitial0]]></NAME>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haur05/WebAneto/container/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_88&CONTAINER_NOM_FONCTION=ACEK_1000&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTypeDiffere">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="50.R0R1R13R1R7R1R9R0R1R1R0R0R2R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typeEdition2]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtNext">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="50.R0R1R13R0R1R0R7R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="TD" Scope="All" CapturedPos="50.R0R1R13R1R7R1R9R0R1R1R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Type d'édition]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[TitreGroupeB]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WebAneto_1721593_1" Comment="[frameInitial0] - Web Aneto" CtxtId="50" Techno="WEB" Timestamp="17/05/2017 17:22:07" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haur05/WebAneto/ValiderIdentification.do#]]></PATH>
 			<SCRIPTS>
