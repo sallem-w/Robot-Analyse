@@ -69,6 +69,14 @@ ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
 	var isCheckNewProduct = false;
 	var newCodeProduct = ctx.configACS.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 	
+	if (newCodeProduct === undefined || newCodeProduct === '') {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
+		sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct + '\n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();
+		return;
+	}
+	
 	for (var index in ActivInfinite.pCoverageEditProduct.oCheckProduct.getAll()) {
 		var checkProduct = ActivInfinite.pCoverageEditProduct.oCheckProduct.i(index).get() === '1';
 		var codeProduct = ctx.string.trim(ActivInfinite.pCoverageEditProduct.oCodeProduct.i(index).get());
