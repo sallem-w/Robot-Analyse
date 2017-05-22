@@ -6,12 +6,16 @@
 	sc.step(ActivInfinite.steps.initializeCoverageChangeContract);
 	sc.step(ActivInfinite.steps.searchCoverageContract);
 	sc.step(ActivInfinite.steps.editProductCoverageContract);
+	sc.step(ActivInfinite.steps.goToImmediateNotice);
+	sc.step(ActivInfinite.steps.selectElementInImmediateEch);
+	sc.step(ActivInfinite.steps.checkElementInImmediateEch);
+	sc.step(ActivInfinite.steps.saveContractCoverage);
 	sc.step(ActivInfinite.steps.endCoverageChangeContract);
 }});
 
 ActivInfinite.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-	
+
 	function navigateToCoverageChange() {
 		setTimeout(function() {
 			$('a[menuINFcl="41"]').mouseover();
@@ -52,17 +56,9 @@ ActivInfinite.step({ searchCoverageContract: function(ev, sc, st) {
 		});
 	});
 	
-	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-		
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
-		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
-			ActivInfinite.pPopupCloseEffect.btNo.click();				
-			sc.endScenario();
-		});
-	});
+	contractNotFoundEvent(sc, closePopupEvent(function() {
+		sc.endScenario();
+	}));
 
 }});
 
@@ -98,6 +94,67 @@ ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
 	sc.endStep();
 }});
 
+ActivInfinite.step({ goToImmediateNotice: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToImmediateNotice');
+	
+	ActivInfinite.pCoverageValidProduct.wait(function() {
+		ActivInfinite.pCoverageValidProduct.btValidate.click();
+		ActivInfinite.pCoverageProduct.wait(function() {
+			ActivInfinite.pCoverageProduct.oBtNext.click();
+			ActivInfinite.pEffectParamCalc.wait(function() {
+				ActivInfinite.pEffectParamCalc.oBtNext.click();
+				ActivInfinite.pEffectHistoCoti.wait(function() {
+					ActivInfinite.pEffectHistoCoti.oBtNext.click();
+					ActivInfinite.pEffectVisuCotis.wait(function() {
+						ActivInfinite.pEffectVisuCotis.oValidation.set('Oui');
+						ActivInfinite.pEffectVisuCotis.oBtNext.click();
+						ActivInfinite.pCoverageImmediateEch.wait(function() {
+							sc.endStep();
+						});
+					});
+				});
+			});
+		});
+	});
+}});
+
+ActivInfinite.step({ selectElementInImmediateEch: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - selectElementInImmediateEch');
+	
+	ActivInfinite.pCoverageImmediateEch.oEditContract.set('Différé');
+	ActivInfinite.pCoverageImmediateEch.oBtNext.click();
+	ActivInfinite.pCoverageImmediateCar.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ checkElementInImmediateEch: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkElementInImmediateEch');
+	
+	ActivInfinite.pCoverageImmediateCar.oTypeDiffere.click();
+	ActivInfinite.pCoverageImmediateCar.oBtNext.click();
+	
+	ActivInfinite.pEffectValidation.events.LOAD.on(function() {
+		sc.endStep();
+	});
+	
+	contractNotFoundEvent(sc, closePopupEvent(function() {
+		sc.endScenario();
+	}));
+}});
+
+ActivInfinite.step({ saveContractCoverage: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+	ActivInfinite.pEffectValidation.oBtSave.click();
+	
+	ActivInfinite.pConsultContratIndiv.events.LOAD.on(function() {
+		ActivInfinite.pConsultContratIndiv.oBtClose.click();
+		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+			ActivInfinite.pPopupCloseEffect.btNo.click();
+			sc.endStep();
+		});
+	});
+}});
 
 ActivInfinite.step({ endCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');
