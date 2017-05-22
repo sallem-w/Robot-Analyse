@@ -162,7 +162,14 @@ ActivInfinite.step({ checkElementInImmediateEch: function(ev, sc, st) {
 ActivInfinite.step({ saveContractCoverage: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 	ActivInfinite.pEffectValidation.oBtSave.click();
-	sc.endStep();
+	
+	ActivInfinite.pConsultContratIndiv.events.LOAD.on(function() {
+		ActivInfinite.pConsultContratIndiv.oBtClose.click();
+		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+			ActivInfinite.pPopupCloseEffect.btNo.click();
+			sc.endStep();
+		});
+	});
 }});
 
 ActivInfinite.step({ endCoverageChangeContract: function(ev, sc, st) {
