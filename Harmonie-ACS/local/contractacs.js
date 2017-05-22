@@ -344,11 +344,25 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 				sc.data.commentContract += s.data.commentContract;
 				sc.data.statusContract = s.data.statusContract;
 				
+				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+					sc.endStep();
+					return;
+				}
+				
 				ActivInfinite.scenarios.coverageChangeContract.start(sc.data).onEnd(function(ss) {
 					sc.data.commentContract += ss.data.commentContract;
 					sc.data.statusContract = ss.data.statusContract;
 					
-					sc.endStep();
+					if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+						sc.endStep();
+						return;
+					}
+
+					ActivInfinite.scenarios.terminatedInAdvanceContract.start(sc.data).onEnd(function(sss) {
+						sc.data.commentContract += sss.data.commentContract;
+						sc.data.statusContract = sss.data.statusContract;
+						sc.endStep();
+					});
 				});
 			});
 		});
