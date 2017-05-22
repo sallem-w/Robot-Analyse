@@ -1087,6 +1087,7 @@
 				<SCRIPT Name="ContractACS" Folder="ScenarioACS" Src="ContractACS.js" />
 				<SCRIPT Name="TerminatedContractACS" Src="TerminatedContractACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="CoverageChangeContract" Src="CoverageChangeContract.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ScenarioHelper" Folder="ScenarioACS" Src="ScenarioHelper.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

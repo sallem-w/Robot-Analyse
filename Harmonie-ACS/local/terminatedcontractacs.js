@@ -44,18 +44,9 @@ ActivInfinite.step({ searchIndividualContractEffect: function(ev, sc, st) {
 		sc.endStep();
 	});
 	
-	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract error');
-		
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		
-		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
-		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
-			ActivInfinite.pPopupCloseEffect.btNo.click();				
-			sc.endScenario();
-		});
-	});
+	contractNotFoundEvent(sc, closePopupEvent(function() {
+		sc.endScenario();
+	}));
 }});
 
 ActivInfinite.step({ goToVisualizationContribution: function(ev, sc, st) {

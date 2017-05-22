@@ -135,12 +135,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 		});
 	});
 	
-	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-		
-		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
+	contractNotFoundEvent(sc, function() {
 		sc.endScenario();
 	});
 
