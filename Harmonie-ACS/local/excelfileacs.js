@@ -67,7 +67,7 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 	var config = ctx.config.getConfigACS();
 	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
-	ActivInfinite.scenarios.terminatedInAdvanceContract.start(data).onEnd(function(s) {
+	ActivInfinite.scenarios.coverageChangeContract.start(data).onEnd(function(s) {
 			sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {

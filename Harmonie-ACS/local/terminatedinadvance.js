@@ -5,6 +5,9 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinite.steps.initializeTerminatedInAdvanceContract);
 	sc.step(ActivInfinite.steps.searchTerminatedInAdvanceContract);
+	sc.step(ActivInfinite.steps.calculTerminatedInAdvanceContract);
+	sc.step(ActivInfinite.steps.goToSavePageTerminatedInAdvanceContract);
+	sc.step(ActivInfinite.steps.saveTerminatedInAdvanceContract);
 	sc.step(ActivInfinite.steps.endTerminatedInAdvanceContract);
 }});
 
@@ -40,7 +43,12 @@ ActivInfinite.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinite.pContratIndivFound.oBtNext.click();
-		sc.endStep();
+		ActivInfinite.pBlockNotes.wait(function() {
+			ActivInfinite.pBlockNotes.oBtNext.click();
+				ActivInfinite.pEffectParamCalc.wait(function() {
+					sc.endStep();
+			});
+		});
 	});
 	
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
@@ -57,7 +65,66 @@ ActivInfinite.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 
 }});
 
+ActivInfinite.step({ calculTerminatedInAdvanceContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - calculTerminatedInAdvanceContract');
+	
+	ActivInfinite.pEffectParamCalc.oBtNext.click();
+	
+	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - compare date');
+		
+		var errorMessage = ActivInfinite.pContractIndivNotFoun.oDetailError.get();
+		var date = getDateInErrorMessage(errorMessage);
+		
+		// TODO compare date
+		
+		ActivInfinite.pContractIndivNotFoun.oBtCloseThisPage.click();
+		ActivInfinite.pEffectParamCalc.wait(function() {
+			ActivInfinite.pEffectParamCalc.oCheckCalcul.click();
+			ActivInfinite.pEffectParamCalc.oBtNext.click();
+				sc.endStep(ActivInfinite.steps.saveTerminatedInAdvanceContract);
+				return;
+		});
+	});
+	
+	ActivInfinite.pEffectHistoCoti.events.LOAD.on(function() {
+		ActivInfinite.pEffectHistoCoti.oBtNext.click();
+		sc.endStep();
+	});
+	
+}});
+
+ActivInfinite.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToSavePageTerminatedInAdvanceContract');
+	
+	ActivInfinite.pEffectVisuCotis.wait(function() {
+		ActivInfinite.pEffectVisuCotis.oValidation.set('Oui');
+		ActivInfinite.pEffectVisuCotis.oBtNext.click();
+		sc.endStep();
+	});
+}});
+
+ActivInfinite.step({ saveTerminatedInAdvanceContract: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveTerminatedInAdvanceContract');
+	ActivInfinite.pEffectValidation.wait(function() {
+		ActivInfinite.pEffectValidation.oBtSave.click();
+		
+		ActivInfinite.pConsultContratIndiv.events.LOAD.on(function() {
+			ActivInfinite.pConsultContratIndiv.oBtClose.click();
+			ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+				ActivInfinite.pPopupCloseEffect.btNo.click();
+				sc.endStep();
+			});
+		});
+	});
+}});
+
 ActivInfinite.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated in advance');
 	sc.endStep();
 }});
+
+function getDateInErrorMessage(errorMessage) {
+	var strDate = ctx.string.trim(errorMessage.split(':')[1]);
+	return ctx.date.parseToDate(strDate);
+}
