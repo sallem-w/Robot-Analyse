@@ -69,8 +69,8 @@ ActivInfinite.step({ searchCoverageContract: function(ev, sc, st) {
 ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - edit product coverage change');
 
-	var isUncheckProduct = false;
-	var isCheckProduct = false;
+	var isUncheckOldProduct = false;
+	var isCheckNewProduct = false;
 	var newCodeProduct = ctx.configACS.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 	
 	for (var index in ActivInfinite.pCoverageEditProduct.oCheckProduct.getAll()) {
@@ -80,16 +80,16 @@ ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
 		// uncheck current product
 		if (checkProduct && codeProduct === sc.data.contract.subscribedCodeProduct) {
 			ActivInfinite.pCoverageEditProduct.oCheckProduct.i(index).click();
-			isUncheckProduct = true;
+			isUncheckOldProduct = true;
 		}
 		
 		// check new product
 		if (!checkProduct && codeProduct === newCodeProduct) {
 			ActivInfinite.pCoverageEditProduct.oCheckProduct.i(index).click();
-			isCheckProduct = true;
+			isCheckNewProduct = true;
 		}
 		
-		if (isUncheckProduct && isCheckProduct) {
+		if (isUncheckOldProduct && isCheckNewProduct) {
 			break;
 		}
 	}
