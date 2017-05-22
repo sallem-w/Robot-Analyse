@@ -147,6 +147,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oBtClose">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="8.R0R1R9R0R1R0R21R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1651038_1" Comment="[frameInitial0] - Web Aneto" CtxtId="8" Techno="WEB" Timestamp="25/04/2017 16:51:12" />
 				</PAGE>

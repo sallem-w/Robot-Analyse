@@ -15,7 +15,7 @@
 
 ActivInfinite.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-	
+
 	function navigateToCoverageChange() {
 		setTimeout(function() {
 			$('a[menuINFcl="41"]').mouseover();
@@ -141,8 +141,21 @@ ActivInfinite.step({ checkElementInImmediateEch: function(ev, sc, st) {
 	
 	ActivInfinite.pCoverageImmediateCar.oTypeDiffere.click();
 	ActivInfinite.pCoverageImmediateCar.oBtNext.click();
-	ActivInfinite.pEffectValidation.wait(function() {
+	
+	ActivInfinite.pEffectValidation.events.LOAD.on(function() {
 		sc.endStep();
+	});
+	
+	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract error found');
+		
+		sc.data.commentContract = ActivInfinite.pContractIndivNotFoun.oDetailError.get() + '\n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ActivInfinite.pContractIndivNotFoun.oBtClose.click();
+		ActivInfinite.pPopupCloseEffect.events.LOAD.on(function() {
+			ActivInfinite.pPopupCloseEffect.btNo.click();				
+			sc.endScenario();
+		});
 	});
 }});
 
