@@ -24,23 +24,23 @@ ActivInfinite.step({ initializeTerminatedContract: function(ev, sc, st) {
 	
 	ActivInfinite.pDashboard.injectFunction(navigateToEffect);
 	ActivInfinite.pDashboard.execScript('navigateToEffect()');
-	ActivInfinite.pEffectConsultContrac.wait(function() {
+	ActivInfinite.pConsultContratIndiv.wait(function() {
 		sc.endStep();
 	});
 }});
 
 ActivInfinite.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
-	ActivInfinite.pEffectConsultContrac.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinite.pEffectConsultContrac.btSearch.click();
+	ActivInfinite.pConsultContratIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinite.pConsultContratIndiv.btSearch.click();
 	
-	ActivInfinite.pEffectContractFound.events.LOAD.on(function() {
+	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
 		sc.data.commentContract += 'Contrat trouvé \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-		ActivInfinite.pEffectContractFound.oBtNext.click();
+		ActivInfinite.pContratIndivFound.oBtNext.click();
 		sc.endStep();
 	});
 	

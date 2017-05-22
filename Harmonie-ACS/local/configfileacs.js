@@ -51,6 +51,11 @@
 	configACS.getPathFileOutputExcelACS = function() {
 		return rootPathACS + fileNameOutputExcelACS;
 	}
+	
+	configACS.getCodeProductCorrespond = function(codeProduct) {
+		var config = ctx.config.getConfigACS();
+		return config.productAccesSante[codeProduct];
+	}
 
 	return configACS;
 }) ();
