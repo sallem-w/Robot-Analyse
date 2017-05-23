@@ -15,7 +15,8 @@
 
 ActivInfinite.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-
+	sc.data.commentContract += 'Changement de couverture du contrat \n';
+	
 	function navigateToCoverageChange() {
 		setTimeout(function() {
 			$('a[menuINFcl="41"]').mouseover();
