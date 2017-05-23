@@ -63,13 +63,8 @@ ActivInfinite.step({ calculTerminatedInAdvanceContract: function(ev, sc, st) {
 	ActivInfinite.pEffectParamCalc.oBtNext.click();
 	
 	ActivInfinite.pContractIndivNotFoun.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - compare date');
-		
-		var errorMessage = ActivInfinite.pContractIndivNotFoun.oDetailError.get();
-		var date = getDateInErrorMessage(errorMessage);
-		
-		// TODO compare date
-		
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - error page');
+
 		ActivInfinite.pContractIndivNotFoun.oBtCloseThisPage.click();
 		ActivInfinite.pEffectParamCalc.wait(function() {
 			ActivInfinite.pEffectParamCalc.oCheckCalcul.click();
@@ -115,8 +110,3 @@ ActivInfinite.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated in advance');
 	sc.endStep();
 }});
-
-function getDateInErrorMessage(errorMessage) {
-	var strDate = ctx.string.trim(errorMessage.split(':')[1]);
-	return ctx.date.parseToDate(strDate);
-}
