@@ -13,6 +13,7 @@
 
 ActivInfinite.step({ initializeTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
+	sc.data.commentContract += 'Résiliation en avance du contrat \n';
 
 	function navigateToTerminatedInAdvance() {
 		setTimeout(function() {

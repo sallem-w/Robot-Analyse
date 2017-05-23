@@ -341,7 +341,7 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 			
 		ActivInfinite.pDashboard.wait(function() {
 			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(scTerminatedContract) {
-				sc.data.commentContract += scTerminatedContract.data.commentContract;
+				sc.data.commentContract = scTerminatedContract.data.commentContract;
 				sc.data.statusContract = scTerminatedContract.data.statusContract;
 				
 				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
@@ -350,7 +350,7 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 				}
 				
 				ActivInfinite.scenarios.coverageChangeContract.start(sc.data).onEnd(function(scCoverageChangeContract) {
-					sc.data.commentContract += scCoverageChangeContract.data.commentContract;
+					sc.data.commentContract = scCoverageChangeContract.data.commentContract;
 					sc.data.statusContract = scCoverageChangeContract.data.statusContract;
 					
 					if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
@@ -359,7 +359,7 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 					}
 
 					ActivInfinite.scenarios.terminatedInAdvanceContract.start(sc.data).onEnd(function(scTerminatedInAdvanceContract) {
-						sc.data.commentContract += scTerminatedInAdvanceContract.data.commentContract;
+						sc.data.commentContract = scTerminatedInAdvanceContract.data.commentContract;
 						sc.data.statusContract = scTerminatedInAdvanceContract.data.statusContract;
 						sc.endStep();
 					});

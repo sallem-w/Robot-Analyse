@@ -13,6 +13,7 @@
 
 ActivInfinite.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - contract terminated');
+	sc.data.commentContract += 'Résiliation du contrat \n';
 	
 	function navigateToEffect() {
 		setTimeout(function() {
