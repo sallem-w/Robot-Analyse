@@ -340,15 +340,29 @@ ActivInfinite.step({ checkHistory : function(ev, sc, st) {
 		}
 			
 		ActivInfinite.pDashboard.wait(function() {
-			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(s) {
-				sc.data.commentContract += s.data.commentContract;
-				sc.data.statusContract = s.data.statusContract;
+			ActivInfinite.scenarios.terminatedContract.start(sc.data).onEnd(function(scTerminatedContract) {
+				sc.data.commentContract += scTerminatedContract.data.commentContract;
+				sc.data.statusContract = scTerminatedContract.data.statusContract;
 				
-				ActivInfinite.scenarios.coverageChangeContract.start(sc.data).onEnd(function(ss) {
-					sc.data.commentContract += ss.data.commentContract;
-					sc.data.statusContract = ss.data.statusContract;
-					
+				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
 					sc.endStep();
+					return;
+				}
+				
+				ActivInfinite.scenarios.coverageChangeContract.start(sc.data).onEnd(function(scCoverageChangeContract) {
+					sc.data.commentContract += scCoverageChangeContract.data.commentContract;
+					sc.data.statusContract = scCoverageChangeContract.data.statusContract;
+					
+					if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+						sc.endStep();
+						return;
+					}
+
+					ActivInfinite.scenarios.terminatedInAdvanceContract.start(sc.data).onEnd(function(scTerminatedInAdvanceContract) {
+						sc.data.commentContract += scTerminatedInAdvanceContract.data.commentContract;
+						sc.data.statusContract = scTerminatedInAdvanceContract.data.statusContract;
+						sc.endStep();
+					});
 				});
 			});
 		});

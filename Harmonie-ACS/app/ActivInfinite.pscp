@@ -110,6 +110,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oCheckCalcul">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="36.R0R1R9R1R4R9R0R0R9R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[calcul]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1616047_1" Comment="[frameInitial0] - Web Aneto" CtxtId="36" Techno="WEB" Timestamp="12/05/2017 16:16:09" />
 				</PAGE>
@@ -240,6 +249,15 @@
 								<TAG Name="IMG" Scope="All" CapturedPos="12.R0R1R9R0R1R0R21R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBtCloseThisPage">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="12.R0R1R9R1R3R3R0R0R0R4">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Fermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1048,6 +1066,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oValide" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="48.R0R1R13R1R5R7R0R3R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[Valide]]></VALUE>
+									</ATT>
+									<ATT Name="style">
+										<VALUE Scan="Full"><![CDATA[DISPLAY: block]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_WebAneto_1657227_1" Comment="[frameInitial0] - Web Aneto" CtxtId="48" Techno="WEB" Timestamp="17/05/2017 16:57:29" />
 				</PAGE>
@@ -1087,6 +1117,7 @@
 				<SCRIPT Name="ContractACS" Folder="ScenarioACS" Src="ContractACS.js" />
 				<SCRIPT Name="TerminatedContractACS" Src="TerminatedContractACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="CoverageChangeContract" Src="CoverageChangeContract.js" Folder="ScenarioACS" />
+				<SCRIPT Name="TerminatedInAdvance" Src="TerminatedInAdvance.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ScenarioHelper" Folder="ScenarioACS" Src="ScenarioHelper.js" />
 			</SCRIPTS>
 		</APPLI>
