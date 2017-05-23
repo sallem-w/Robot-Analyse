@@ -117,6 +117,11 @@ ActivInfinite.step({ writeStats : function(ev, sc, st) {
 function getAllCells(lastIndexRow, configACSExcel){
 	var contracts = [];
 	for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
+		var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
+		if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
+			continue;
+		}
+		
 		var contract = {
 			row : i,
 			individualContract: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))),
