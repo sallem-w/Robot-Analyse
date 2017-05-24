@@ -42,6 +42,14 @@
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
+			<SCRIPTS>
+				<SCRIPT Name="Navigation" Src="Navigation.js" Folder="ScenarioACS" />
+			</SCRIPTS>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
 		</APPLI>
 	</APPLICATIONS>
 </ConteXtorStudio>
