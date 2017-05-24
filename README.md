@@ -44,6 +44,15 @@ Exemple de template du fichier de configuration :
 
 ```
 
+- `pathTemplate`: Chemin du dossier des différents template HTML
+- `rootPath`: Chemin du dossier vers le fichier excel qui va être traité
+- `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
+- `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
+
+# Utilisation
+
+Il est possbile de relancer facilement un fichier excel déjà traité, il suffit de vider les champs date, statut et commentaire. Contextor ne vas pas passer sur les lignes qui contiennent ces informations.
+
 # Template HTML pour les statistiques
 
 Il faut déjà commencer par définir le `pathTemplate` du fichier de configuration.
@@ -74,7 +83,7 @@ On va mettre le dossier template et le fichier `config.json` dans le dossier `de
 Dans contextor Studio, il faut faire `File -> Export project`, il va générer un dossier `export` qui contient un dossier et un fichier zip. 
 On va copier/coller le dossier dans notre dossier `deploy`.
 
-Ensuite, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Windows -> Nouveau -> Raccourci` dans le dossiuer `deploy`. On va ensuite modifier dans les propriétés du raccourci `Clic doit -> Propriétés -> Onglet Cible`. 
+Ensuite, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Windows -> Nouveau -> Raccourci` dans le dossier `deploy`. On va ensuite modifier dans les propriétés du raccourci `Clic doit -> Propriétés -> Onglet Cible`. 
 
 Pour commencer il faut vider le champ `Démarrer dans :` et remplir le champ `Cible :` par :
 
