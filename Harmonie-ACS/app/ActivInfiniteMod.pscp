@@ -10,13 +10,13 @@
 		</PROCESS>
 	</PROCESSUS>
 	<APPLICATIONS>
-		<APPLI Name="ActivInfiniteMod" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
+		<APPLI Name="ActivInfinitev7" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
 			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
 			<CRITERE>
 				<DOMAIN Scan="Part"><![CDATA[infinite-haum0a]]></DOMAIN>
 			</CRITERE>
 			<_DECLAREVAR>
-				<STRUCTUREDON Name="ActivInfiniteMod" />
+				<STRUCTUREDON Name="ActivInfinitev7" />
 			</_DECLAREVAR>
 			<_ECRANS>
 				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">

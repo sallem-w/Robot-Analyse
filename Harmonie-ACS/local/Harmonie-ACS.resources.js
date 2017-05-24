@@ -132,7 +132,7 @@ ActivInfinite.pCoverageImmediateEch.oEditContract = ActivInfinite.pCoverageImmed
 ActivInfinite.pCoverageImmediateEch.oBtNext = ActivInfinite.pCoverageImmediateEch.addItem('oBtNext');
 
 
-var ActivInfiniteMod = ctx.addApplication('ActivInfiniteMod', {"comment":"v7","nature":"WEB3","path":"http://infinite-haum0a/mdg/auth/Login.do"});
+var ActivInfinitev7 = ctx.addApplication('ActivInfinitev7', {"comment":"v7","nature":"WEB3","path":"http://infinite-haum0a/mdg/auth/Login.do"});
 
-ActivInfiniteMod.pDashboard = ActivInfiniteMod.addPage('pDashboard', {"comment":"haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/"});
-ActivInfiniteMod.pDashboard.oMenuHidden = ActivInfiniteMod.pDashboard.addItem('oMenuHidden', {"mustExist":true});
+ActivInfinitev7.pDashboard = ActivInfinitev7.addPage('pDashboard', {"comment":"haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/"});
+ActivInfinitev7.pDashboard.oMenuHidden = ActivInfinitev7.pDashboard.addItem('oMenuHidden', {"mustExist":true});
