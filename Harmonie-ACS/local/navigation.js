@@ -10,8 +10,7 @@ ActivInfinitev7.step({ navigate : function(ev, sc, st) {
 	
 	function navigateToConsultation() {
 		setTimeout(function() {
-			$('a[href="#menuEntry3"]').click();
-			$('a[data-code-fonction="ACCO03STSO"]').click();
+			window.location.href = "/mdg/Go.do?id=ACCO03STSO";
 		}, 1500);
 	};
 	
