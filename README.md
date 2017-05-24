@@ -44,9 +44,9 @@ Exemple de template du fichier de configuration :
 
 ```
 
-- `pathTemplate`: Chemin du dossier des différentes template HTML
+- `pathTemplate`: Chemin du dossier des différents template HTML
 - `rootPath`: Chemin du dossier vers le fichier excel qui va être traité
-- `addYearSearchContrac`: Représente le nombre d'année que l'on rajoute lors de la recherche d'un contrat
+- `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
 - `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
 
 # Utilisation
