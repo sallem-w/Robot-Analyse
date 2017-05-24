@@ -125,7 +125,7 @@ GLOBAL.events.START.on(function (ev) {
 		ActivInfinite.scenarios.readExcel.start();
 	});
 	
-		systray.addMenu('ACS', 'Complet V7', 'Complet V7', '', function(ev) {
+	systray.addMenu('ACS', 'Complet V7', 'Complet V7', '', function(ev) {
 		ctx.config.loadConfigFile();
 		var configACS = ctx.config.getConfigACS();
 		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
