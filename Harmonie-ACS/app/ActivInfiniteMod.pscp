@@ -21,7 +21,7 @@
 			<_ECRANS>
 				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="Full"><![CDATA[haum0a - Activ'Infinite - Module de gestion]]></TITRE>
+						<TITRE Scan="end-with"><![CDATA[- Activ'Infinite - Module de gestion]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
 					<OBJETS>
