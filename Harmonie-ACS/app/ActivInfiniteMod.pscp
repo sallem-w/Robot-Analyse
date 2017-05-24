@@ -13,7 +13,7 @@
 		<APPLI Name="ActivInfinitev7" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
 			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
 			<CRITERE>
-				<TITRE Scan="Full"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
+				<TITRE Scan="like"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
 			</CRITERE>
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="ActivInfinitev7" />
