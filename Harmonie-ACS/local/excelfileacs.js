@@ -75,7 +75,7 @@ ActivInfinite.step({ startScenarioACS : function(ev, sc, st) {
 		}
 
 		var writeArray = [
-			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatYYYMMDD(new Date()) },
+			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
 			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: s.data.statusContract },
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
 		];
