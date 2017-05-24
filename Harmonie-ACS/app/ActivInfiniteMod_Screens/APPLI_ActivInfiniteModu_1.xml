@@ -1,0 +1,10 @@
+﻿<APPLI Techno="WEB" Name="APPLI_ActivInfiniteModu_1" ParamName="Activ'Infinite - Module de gestion">
+	<PROPERTIES>
+		<TITRE>Activ'Infinite - Module de gestion</TITRE>
+		<DOMAIN>infinite-haum0a</DOMAIN>
+		<URL>http://infinite-haum0a/mdg/auth/Login.do</URL>
+		<CX>1904</CX>
+		<CY>896</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+</APPLI>

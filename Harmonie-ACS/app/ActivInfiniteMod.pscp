@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="ActivInfiniteMod" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
+			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
+			<CRITERE>
+				<DOMAIN Scan="Part"><![CDATA[infinite-haum0a]]></DOMAIN>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="ActivInfiniteMod" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[haum0a - Activ'Infinite - Module de gestion]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
+					<OBJETS>
+						<OBJET Name="oMenuHidden" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="52.R0R1R2R0R0R0">
+									<ATT Name="style">
+										<VALUE Scan="Full"><![CDATA[display: none;]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[cssmenu]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>
