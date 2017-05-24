@@ -43,6 +43,14 @@ ActivInfinite.step({ copyFile : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - copyFile');
 	try {
 		ctx.excel.file.saveAs(sc.data.pathFileOutputExcelACS); 
+		
+		var writeArray = [
+			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: "Date traitement contrat" },
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: "Status contrat" },
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: "Commentaire" }
+		];
+		
+		ctx.excelHelper.write(sc.data.configExcel.startRowIndex - 1, writeArray);
 		ctx.trace.writeInfo("Create Output Excel file succeed");
 	} catch (ex) {
 		ctx.trace.writeError('Can not copy save excel file, ' + sc.data.pathFileOutputExcelACS);
