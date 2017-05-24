@@ -13,7 +13,7 @@
 		<APPLI Name="ActivInfinitev7" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
 			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
 			<CRITERE>
-				<DOMAIN Scan="Part"><![CDATA[infinite-haum0a]]></DOMAIN>
+				<TITRE Scan="Full"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
 			</CRITERE>
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="ActivInfinitev7" />
@@ -39,6 +39,27 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
+				</PAGE>
+				<PAGE Name="pConsultContratIndiv" Comment="Consultation - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACCO03STSO]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="54.R0R1R7R0R0R2R0R0R0R27R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Identification (Renseigner un ou plusieurs champs) ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationHaum0a_1619543_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="54" Techno="WEB" Timestamp="24/05/2017 16:20:07" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

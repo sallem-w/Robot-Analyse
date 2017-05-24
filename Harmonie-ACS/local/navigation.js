@@ -4,6 +4,7 @@
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.navigate);
+	sc.step(ActivInfinitev7.steps.end);
 }});
 
 ActivInfinitev7.step({ navigate : function(ev, sc, st) {
@@ -16,6 +17,11 @@ ActivInfinitev7.step({ navigate : function(ev, sc, st) {
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultation);
 	ActivInfinitev7.pDashboard.execScript('navigateToConsultation()');
-	sc.endStep();
+	ActivInfinitev7.pConsultContratIndiv.wait(function() {
+		sc.endStep();
+	});
 }});
 
+ActivInfinitev7.step({ end : function(ev, sc, st) {
+	sc.endStep();
+}});
