@@ -13,7 +13,7 @@
 		<APPLI Name="ActivInfinitev7" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
 			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
 			<CRITERE>
-				<TITRE Scan="like"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
+				<TITRE Scan="Like"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
 			</CRITERE>
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="ActivInfinitev7" />
@@ -65,6 +65,7 @@
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
 				<SCRIPT Name="Navigation" Src="Navigation.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ExcelFileV7ACS" Folder="ScenarioACS" Src="ExcelFileV7ACS.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

@@ -416,7 +416,7 @@ function isCurrentIndividualContract(imageHTML, individualContract) {
 }
 
 function getCodeProduct(strProduct) {
-	return ctx.string.trim(strProduct.spli('-')[1]);
+	return ctx.string.trim(strProduct.split('-')[1]);
 }
 
 function getEndDate(strProduct) {

@@ -131,7 +131,7 @@ GLOBAL.events.START.on(function (ev) {
 		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
 		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
 		
-		ActivInfinitev7.scenarios.navigationMenu.start();
+		ActivInfinitev7.scenarios.readExcel.start();
 	});
 });
 
