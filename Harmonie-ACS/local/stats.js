@@ -48,7 +48,7 @@
 		}
 
 		try {
-			ctx.fso.file.write(pathFileStats + '.html', tempContent);
+			ctx.fso.file.write(pathFileStats + '.html', tempContent, e.fileEncoding.UTF8);
 		}
 		catch(ex) {
 			ctx.trace.writeError('Can not write stats template, ' + pathFileStats + '.html');
