@@ -10,7 +10,7 @@
 		</PROCESS>
 	</PROCESSUS>
 	<APPLICATIONS>
-		<APPLI Name="ActivInfinite" Nature="WEB3" TechnoSDK="V3" Sync="250">
+		<APPLI Name="ActivInfinite" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v6">
 			<CAPTURE Name="APPLI_ActivInfiniteSite_2" CtxtId="1" Techno="WEB" />
 			<SCENARII>
 				<Steps />

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="ActivInfinitev7" Nature="WEB3" TechnoSDK="V3" Sync="250" Comment="v7">
+			<CAPTURE Name="APPLI_ActivInfiniteModu_1" CtxtId="1" Techno="WEB" />
+			<CRITERE>
+				<TITRE Scan="like"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="ActivInfinitev7" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="end-with"><![CDATA[- Activ'Infinite - Module de gestion]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
+					<OBJETS>
+						<OBJET Name="oMenuHidden" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="52.R0R1R2R0R0R0">
+									<ATT Name="style">
+										<VALUE Scan="Full"><![CDATA[display: none;]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[cssmenu]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
+				</PAGE>
+				<PAGE Name="pConsultContratIndiv" Comment="Consultation - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACCO03STSO]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="54.R0R1R7R0R0R2R0R0R0R27R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Identification (Renseigner un ou plusieurs champs) ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationHaum0a_1619543_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="54" Techno="WEB" Timestamp="24/05/2017 16:20:07" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
+			<SCRIPTS>
+				<SCRIPT Name="Navigation" Src="Navigation.js" Folder="ScenarioACS" />
+			</SCRIPTS>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>
