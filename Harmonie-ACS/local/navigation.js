@@ -3,11 +3,11 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinitev7.steps.navigate);
-	sc.step(ActivInfinitev7.steps.end);
+	sc.step(ActivInfinitev7.steps.startNavigationMenu);
+	sc.step(ActivInfinitev7.steps.endNavigationMenu);
 }});
 
-ActivInfinitev7.step({ navigate : function(ev, sc, st) {
+ActivInfinitev7.step({ startNavigationMenu : function(ev, sc, st) {
 	
 	function navigateToConsultation() {
 		setTimeout(function() {
@@ -22,6 +22,6 @@ ActivInfinitev7.step({ navigate : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ end : function(ev, sc, st) {
+ActivInfinitev7.step({ endNavigationMenu : function(ev, sc, st) {
 	sc.endStep();
 }});
