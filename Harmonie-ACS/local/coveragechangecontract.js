@@ -71,6 +71,7 @@ ActivInfinite.step({ editProductCoverageContract: function(ev, sc, st) {
 	var newCodeProduct = ctx.configACS.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 	
 	if (newCodeProduct === undefined || newCodeProduct === '') {
+		ActivInfinite.pCoverageEditProduct.oBtClose.click();
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
 		sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct + '\n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
