@@ -64,7 +64,6 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="Navigation" Src="Navigation.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFileV7ACS" Folder="ScenarioACS" Src="ExcelFileV7ACS.js" />
 			</SCRIPTS>
 			<ACTIONS />
