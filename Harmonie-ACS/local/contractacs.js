@@ -198,7 +198,7 @@ ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
-
+	
 	var tempEndDate;
 	
 	for (var index in ActivInfinite.pProductList.oRowInformation.getAll()) {
@@ -261,7 +261,7 @@ ActivInfinite.step({ conditionControlContribution : function(ev, sc, st) {
 
 ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
-		
+
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
 	var isValidContribution = false;
 	
