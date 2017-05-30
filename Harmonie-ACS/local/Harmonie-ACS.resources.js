@@ -146,6 +146,7 @@ ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractI
 ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinitev7.pSearchContractIndiv.btSearch = ActivInfinitev7.pSearchContractIndiv.addItem('btSearch', {"mustExist":true});
 ActivInfinitev7.pSearchContractIndiv.oStaticAskDate = ActivInfinitev7.pSearchContractIndiv.addItem('oStaticAskDate', {"mustExist":true});
+ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
 
 ActivInfinitev7.pProductUpdate = ActivInfinitev7.addPage('pProductUpdate', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACG2_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProductUpdate.oTitlePage = ActivInfinitev7.pProductUpdate.addItem('oTitlePage', {"mustExist":true});

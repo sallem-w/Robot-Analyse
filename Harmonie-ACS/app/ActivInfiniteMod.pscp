@@ -103,6 +103,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1042372_1" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion" CtxtId="59" Techno="WEB" Timestamp="30/05/2017 10:42:40" />
 				</PAGE>

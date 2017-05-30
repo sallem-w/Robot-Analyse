@@ -36,15 +36,24 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-	
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
+		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : TODO');
+			sc.data.commentContract += 'Erreur recherche contrat : TODO \n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			
+			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+		})
 		
-		sc.data.commentContract += 'Contrat trouvé \n';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-		
-		sc.endStep();
-	});
+		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+			
+			sc.data.commentContract += 'Contrat trouvé \n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+			
+			sc.endStep();
+		});		
+	})
 }});
 
 
@@ -89,14 +98,16 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-	ActivInfinitev7.pSaveUpdate.btClose.click();
+	var currentPage = ActivInfinitev7.getCurrentPage();
+	currentPage.btClose.click();
 	
 	function cancelSave() {
 		$('.modal-footer > button[data-bb-handler="no"]').click();
 	};
 	
-	ActivInfinitev7.pSaveUpdate.injectFunction(cancelSave);
-	ActivInfinitev7.pSaveUpdate.execScript('cancelSave()');
+	currentPage.injectFunction(cancelSave);
+	currentPage.execScript('cancelSave()');
+	sc.endStep();
 }});
 
 ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
@@ -105,3 +116,4 @@ ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
+
