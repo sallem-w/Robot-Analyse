@@ -250,7 +250,6 @@ ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 		ActivInfinite.pContribution.btHistoOperation.click();
 		ActivInfinite.pHistoOperationSearch.wait(function() {
 			sc.endStep();
-			return;
 		});
 		return;
 	}
