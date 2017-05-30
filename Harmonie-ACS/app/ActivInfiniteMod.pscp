@@ -40,36 +40,68 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 				</PAGE>
-				<PAGE Name="pConsultContratIndiv" Comment="Consultation - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Consultation]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture - ]]></TITRE>
 					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACCO03STSO]]></PATH>
+					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="btNext" MustExist="Y">
 							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="54.R0R1R7R0R0R2R0R0R0R27R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Identification (Renseigner un ou plusieurs champs) ]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="57.R0R1R15R1R2R0R0R0R1R0R0R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btFermerNavigation">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="54.R0R1R7R0R1R0R0R0R0R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+								<TAG Name="H2" Scope="All" CapturedPos="57.R0R1R15R1R0R2R0R0R3R27R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Identification (Renseigner un ou plusieurs champs)]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationHaum0a_1619543_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="54" Techno="WEB" Timestamp="24/05/2017 16:20:07" />
+					<CAPTURE Name="PAGE_SansEffetChangeme_1005179_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="57" Techno="WEB" Timestamp="30/05/2017 10:05:21" />
+				</PAGE>
+				<PAGE Name="pSearchContractIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
+					<OBJETS>
+						<OBJET Name="oIndividualContract" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R1R0R0R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch" MustExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateDemandeStatic" MustExist="Y">
+							<CRITERE>
+								<TAG Name="P" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R28R0R0R1R0R2R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[dateDemande-static]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1042372_1" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion" CtxtId="59" Techno="WEB" Timestamp="30/05/2017 10:42:40" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
