@@ -75,7 +75,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var config = ctx.config.getConfigACS();
 	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
-	ActivInfinitev7.scenarios.navigationMenu.start(data).onEnd(function(s) {
+	ActivInfinitev7.scenarios.terminatedProduct.start(data).onEnd(function(s) {
 			sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
@@ -92,7 +92,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 		
 		if (i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;
-			sc.endStep(ActivInfinite.steps.startScenarioACS);
+			sc.endStep(ActivInfinitev7.steps.startScenarioACS);
 		} else {
 			sc.endStep();
 		}

@@ -42,7 +42,8 @@
 				</PAGE>
 				<PAGE Name="pConsultContratIndiv" Comment="Consultation - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACCO03STSO]]></PATH>
 					<OBJETS>
@@ -58,14 +59,23 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btFermerNavigation">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="54.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1619543_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="54" Techno="WEB" Timestamp="24/05/2017 16:20:07" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="Navigation" Src="Navigation.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFileV7ACS" Folder="ScenarioACS" Src="ExcelFileV7ACS.js" />
+				<SCRIPT Name="TerminatedProductACS" Folder="ScenarioACS" Src="TerminatedProduct.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
