@@ -13,6 +13,7 @@ Exemple de template du fichier de configuration :
         "rootPath": "C:\\Users\\excel\\ACS-20170420-1\\",
         "controlOnly": true,
         "controlContribution": true,
+        "saveUpdate": true,
         "addYearSearchContract": 30,
         "excel": {
             "startColumnIndex": 2,
@@ -49,7 +50,7 @@ Exemple de template du fichier de configuration :
 - `rootPath`: Chemin du dossier vers le fichier excel qui va être traité
 - `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
 - `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
-
+- `saveUpdate`: Permet d'activer ou non la sauvegarde des différentes modifications. Si il est à `true`, les modifications vont être sauvegardées. Si il est à `false`, les modification ne seront pas sauvegardées.
 # Utilisation
 
 Il est possbile de relancer facilement un fichier excel déjà traité, il suffit de vider les champs date, statut et commentaire. Contextor ne vas pas passer sur les lignes qui contiennent ces informations.
