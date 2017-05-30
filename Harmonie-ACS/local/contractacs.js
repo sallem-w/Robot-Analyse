@@ -261,7 +261,7 @@ ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 		}
 	}
 	
-	if (!isValidContribution) {
+	if (!isValidContribution && sc.data.config.controlContribution) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
 		sc.data.commentContract = 'Solde comptable non à jour \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
