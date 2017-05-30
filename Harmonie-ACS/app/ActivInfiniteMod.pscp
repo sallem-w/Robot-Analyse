@@ -56,7 +56,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateDemande" MustExist="Y">
+						<OBJET Name="oAskDate" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="57.R0R1R15R1R0R2R0R0R3R28R0R0R1R0R2R1">
 									<ATT Name="name">
@@ -107,7 +107,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateDemandeStatic" MustExist="Y">
+						<OBJET Name="oStaticAskDate" MustExist="Y">
 							<CRITERE>
 								<TAG Name="P" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R28R0R0R1R0R2R2">
 									<ATT Name="id">
@@ -124,6 +124,15 @@
 									</ATT>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+                  </ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -137,7 +146,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oCouvertureDesAdhere" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="61.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
@@ -164,7 +173,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oVariablesDeSouscrip" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="62.R0R1R15R1R0R2R0R0R3R7R0">
 									<ATT Name="Text">
@@ -191,7 +200,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oParametresDuCalcul" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="63.R0R1R15R1R0R2R0R0R2R9R0">
 									<ATT Name="Text">
@@ -218,7 +227,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oListeDesOperations" MustExist="Y">
+						<OBJET Name="oTitlePage1" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R7R0R0">
 									<ATT Name="Text">
@@ -227,7 +236,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oSelection" MustExist="Y">
+						<OBJET Name="oTitlePage2" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R9R0R0">
 									<ATT Name="Text">
@@ -281,7 +290,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=ACVV_700&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oConfirmerLenregistr" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="71.R0R1R7R0R0R2R0R0R0R7R0">
 									<ATT Name="Text">
@@ -298,6 +307,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="71.R0R1R7R0R1R0R0R0R1R0R0R1R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSauvegarder]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="71.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
