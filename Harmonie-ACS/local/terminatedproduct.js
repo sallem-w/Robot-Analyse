@@ -7,7 +7,11 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
 	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
-	sc.step(ActivInfinitev7.steps.saveContract);
+	if (sc.data.config.saveUpdate) {
+		sc.step(ActivInfinitev7.steps.saveContract);
+	} else {
+		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+	}
 	sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 }});
 
@@ -80,13 +84,24 @@ ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 	ActivInfinitev7.pSaveUpdate.btSave.click();
-	ActivInfinitev7.pDashboard.wait(function() {
-		sc.endStep();
-	});
+	sc.endStep();
 }});
 
+ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
+	ActivInfinitev7.pSaveUpdate.btClose.click();
+	
+	function cancelSave() {
+		$('.modal-footer > button[data-bb-handler="no"]').click();
+	};
+	
+	ActivInfinitev7.pSaveUpdate.injectFunction(cancelSave);
+	ActivInfinitev7.pSaveUpdate.execScript('cancelSave()');
+}});
 
 ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated');
-	sc.endStep();
+	ActivInfinitev7.pDashboard.wait(function() {
+		sc.endStep();
+	});
 }});
