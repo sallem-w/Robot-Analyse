@@ -12,6 +12,7 @@
 	sc.step(ActivInfinite.steps.checkBlockNote);
 	sc.step(ActivInfinite.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinite.steps.checkProductList);
+	sc.step(ActivInfinite.steps.conditionControlContribution);
 	sc.step(ActivInfinite.steps.checkContribution);
 	sc.step(ActivInfinite.steps.searchHistory);
 	sc.step(ActivInfinite.steps.checkHistory);
@@ -197,7 +198,7 @@ ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 
 ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
-
+	
 	var tempEndDate;
 	
 	for (var index in ActivInfinite.pProductList.oRowInformation.getAll()) {
@@ -245,11 +246,24 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 	});
 }});
 
+ActivInfinite.step({ conditionControlContribution : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - conditionControlContribution');
+	if (sc.data.config.controlContribution) {
+		sc.endStep();
+		return;
+	}
+	
+	ActivInfinite.pContribution.btHistoOperation.click();
+	ActivInfinite.pHistoOperationSearch.wait(function() {
+		sc.endStep(ActivInfinite.steps.searchHistory);
+	});
+}});
+
 ActivInfinite.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
-	
+
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
-	var isValidContribution = false
+	var isValidContribution = false;
 	
 	for (var index in ActivInfinite.pContribution.oDateEch.getAll()) {
 		var dateEch = ctx.string.trim(ActivInfinite.pContribution.oDateEch.i(index).get());
