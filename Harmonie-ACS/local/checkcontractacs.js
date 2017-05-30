@@ -120,7 +120,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	
-	ActivInfinite.pTerminatedContractFo.events.LOAD.on(function() {
+	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
 		sc.data.commentContract = 'Contrat trouvé \n';
