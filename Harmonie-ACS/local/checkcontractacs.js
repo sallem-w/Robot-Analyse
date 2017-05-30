@@ -126,10 +126,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		sc.data.commentContract = 'Contrat trouvé \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote();
-		ActivInfinitev7.pBlockNotes.wait(function() {
-			sc.endStep();
-		});
+		sc.endStep();
 	});
 	
 	sc.endStep();
