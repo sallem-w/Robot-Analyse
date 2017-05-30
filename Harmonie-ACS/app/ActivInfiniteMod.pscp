@@ -55,11 +55,14 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oDateDemande" MustExist="Y">
 							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="57.R0R1R15R1R0R2R0R0R3R27R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Identification (Renseigner un ou plusieurs champs)]]></VALUE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="57.R0R1R15R1R0R2R0R0R3R28R0R0R1R0R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -102,6 +105,150 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1042372_1" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion" CtxtId="59" Techno="WEB" Timestamp="30/05/2017 10:42:40" />
+				</PAGE>
+				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oCouvertureDesAdhere" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="61.R0R1R14R1R0R2R0R0R3R14R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Couverture des Adhérents]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="61.R0R1R14R1R2R0R0R0R1R0R0R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1053357_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="61" Techno="WEB" Timestamp="30/05/2017 10:53:38" />
+				</PAGE>
+				<PAGE Name="pDiversParam" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oVariablesDeSouscrip" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="62.R0R1R15R1R0R2R0R0R3R7R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Variables de Souscription]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1054378_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="62" Techno="WEB" Timestamp="30/05/2017 10:54:39" />
+				</PAGE>
+				<PAGE Name="pCalculParam" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oParametresDuCalcul" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="63.R0R1R15R1R0R2R0R0R2R9R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Paramètres du calcul]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1055404_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="63" Techno="WEB" Timestamp="30/05/2017 10:55:42" />
+				</PAGE>
+				<PAGE Name="pContributionHistory" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture -]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oListeDesOperations" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R7R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Liste des opérations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelection" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R9R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Sélection]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1114331_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="66" Techno="WEB" Timestamp="30/05/2017 11:15:00" />
+				</PAGE>
+				<PAGE Name="pContributionVisu" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture -]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oValidation" MustExist="Y">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[validation]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1134402_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="69" Techno="WEB" Timestamp="30/05/2017 11:34:59" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

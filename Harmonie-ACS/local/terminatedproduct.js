@@ -5,6 +5,7 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeTerminatedProduct);
 	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
+	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 }});
 
@@ -39,6 +40,30 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
+
+
+ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
+	ActivInfinitev7.pTerminatedContractFo.wait(function() {
+		ActivInfinitev7.pTerminatedContractFo.btNext.click();
+		ActivInfinitev7.pProductUpdate.wait(function() {
+			ActivInfinitev7.pProductUpdate.btNext.click();
+			ActivInfinitev7.pDiversParam.wait(function() {
+				ActivInfinitev7.pDiversParam.btNext.click();
+				ActivInfinitev7.pCalculParam.wait(function() {
+					ActivInfinitev7.pCalculParam.btNext.click();
+					ActivInfinitev7.pContributionHistory.wait(function() {
+						ActivInfinitev7.pContributionHistory.btNext.click();
+						ActivInfinitev7.pContributionVisu.wait(function() {	
+							sc.endStep();
+						});
+					});
+				});		
+			});
+		});
+	});
+}});
+
 
 ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated');
