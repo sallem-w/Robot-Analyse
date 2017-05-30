@@ -250,6 +250,36 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1134402_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="69" Techno="WEB" Timestamp="30/05/2017 11:34:59" />
 				</PAGE>
+				<PAGE Name="pSaveUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=ACVV_700&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oConfirmerLenregistr" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="71.R0R1R7R0R0R2R0R0R0R7R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Confirmer l'enregistrement de l'acte de gestion ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-info-message]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSave" MustExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="71.R0R1R7R0R1R0R0R0R1R0R0R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSauvegarder]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
