@@ -71,19 +71,27 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
 		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		sc.endScenario();
+		goHome(function() {
+			sc.endScenario();
+		});
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		sc.endStep();
+		goHome(function() {
+			sc.endStep();
+		});
 	}
 	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		sc.endStep();
+		goHome(function() {
+			sc.endStep();
+		});
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		sc.endScenario();
+		goHome(function() {
+			sc.endScenario();
+		});
 	}
 }});
 
@@ -110,4 +118,18 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 		}
 	}
 	return false;
+}
+
+function goHome(callback) {
+		function navigateToHome() {
+		setTimeout(function() {
+			window.location.href = '/mdg/';
+		}, 1500);
+	};
+	
+	ActivInfinitev7.pSynthesis.injectFunction(navigateToHome);
+	ActivInfinitev7.pSynthesis.execScript('navigateToHome()');
+	ActivInfinitev7.pDashboard.wait(function() {
+		callback();
+	});
 }
