@@ -20,9 +20,7 @@ ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 	sc.data.commentContract += 'Radiation du produit \n';
 	
 	function navigateToTerminatedProduct() {
-		setTimeout(function() {
 			window.location.href = '/mdg/Go.do?id=ACCC04STD';
-		}, 1500);
 	};
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedProduct);
@@ -98,15 +96,14 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-	var currentPage = ActivInfinitev7.getCurrentPage();
-	currentPage.btClose.click();
+	ActivInfinitev7.currentPage.btClose.click();
 	
 	function cancelSave() {
 		$('.modal-footer > button[data-bb-handler="no"]').click();
 	};
 	
-	currentPage.injectFunction(cancelSave);
-	currentPage.execScript('cancelSave()');
+	ActivInfinitev7.currentPage.injectFunction(cancelSave);
+	ActivInfinitev7.currentPage.execScript('cancelSave()');
 	sc.endStep();
 }});
 
