@@ -43,6 +43,7 @@
 				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -67,12 +68,24 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btNavigateBlockNote">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R1R0R0R1R1">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Bloc-notes niveau individuel
+
+]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_SansEffetChangeme_1005179_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="57" Techno="WEB" Timestamp="30/05/2017 10:05:21" />
+					<CAPTURE Name="PAGE_ConsultationN0006_1538399_1" Comment="Consultation - N°00061366 - Résilié - Adhérent : Madame MUHLMANN M LOUISE - haum0a - Activ Infinite - Module de gestion" CtxtId="74" Techno="WEB" Timestamp="30/05/2017 15:38:44" />
 				</PAGE>
 				<PAGE Name="pSearchContractIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
@@ -103,6 +116,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oDateContract">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+                  </ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btClose">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R2R0R0R0R0R0R0">
@@ -113,7 +138,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_SansEffetChangeme_1042372_1" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion" CtxtId="59" Techno="WEB" Timestamp="30/05/2017 10:42:40" />
+					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
 				</PAGE>
 				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>

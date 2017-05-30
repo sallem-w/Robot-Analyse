@@ -7,6 +7,8 @@
 	sc.step(ActivInfinitev7.steps.navigateToSynthesis);
 	sc.step(ActivInfinitev7.steps.searchBenefInSynthesis);
 	sc.step(ActivInfinitev7.steps.checkSynthesis);
+	sc.step(ActivInfinitev7.steps.navigateToConsultation);
+	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
 
@@ -95,6 +97,53 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	}
 }});
 
+ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
+	
+	function navigateToConsultation() {
+		setTimeout(function() {
+			window.location.href = '/mdg/Go.do?id=ACCO03STSO';
+		}, 1500);
+	};
+	
+	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultation);
+	ActivInfinitev7.pDashboard.execScript('navigateToConsultation()');
+	ActivInfinitev7.pSearchContractIndiv.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
+	
+	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
+	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
+	
+	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+		
+		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
+		goHome(function() {
+			sc.endStep();
+		});
+	});
+	
+	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
+		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+			var message = withEmptyMessagesPopup(getMessagesPopup());
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
+			sc.data.commentContract = message + '\n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			goHome(function() {
+				sc.endScenario();
+			});
+		});
+	});
+}});
+
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
@@ -127,9 +176,27 @@ function goHome(callback) {
 		}, 1500);
 	};
 	
-	ActivInfinitev7.pSynthesis.injectFunction(navigateToHome);
-	ActivInfinitev7.pSynthesis.execScript('navigateToHome()');
+	ActivInfinitev7.currentPage.injectFunction(navigateToHome);
+	ActivInfinitev7.currentPage.execScript('navigateToHome()');
 	ActivInfinitev7.pDashboard.wait(function() {
 		callback();
 	});
+}
+
+function getMessagesPopup() {
+	
+	function getMessages() {
+		return $('#cgd-toast-container-right .toast-message > .row:first-child').text();
+	}
+	
+	ActivInfinitev7.currentPage.injectFunction(getMessages);
+	var message = ActivInfinitev7.currentPage.execScript('getMessages()');
+	return message;
+}
+
+function withEmptyMessagesPopup(message) {
+	if (ctx.string.trim(message) === '' || message === undefined) {
+		message = 'Problème inconnu, impossible de récupérer le message de la POPUP d\'erreur \n';
+	}
+	return message;
 }
