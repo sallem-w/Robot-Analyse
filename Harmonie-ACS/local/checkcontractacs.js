@@ -9,6 +9,7 @@
 	sc.step(ActivInfinitev7.steps.checkSynthesis);
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
+	sc.step(ActivInfinitev7.steps.checkBlockNote);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
 
@@ -126,7 +127,8 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		sc.data.commentContract = 'Contrat trouvé \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-		goHome(function() {
+		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
+		ActivInfinitev7.pBlockNotes.wait(function() {
 			sc.endStep();
 		});
 	});
@@ -141,6 +143,27 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 				sc.endScenario();
 			});
 		});
+	});
+}});
+
+ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
+	
+	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
+	if (ctx.string.trim(contentBlockNote) !== '') {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
+		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		goHome(function() {
+			sc.endScenario();
+		});
+		return;
+	}
+	
+	// todo continue scenario (wait page and add other step)
+	// ActivInfinitev7.pBlockNotes.btInsuredIdent.click();
+	goHome(function() {
+		sc.endStep();
 	});
 }});
 
