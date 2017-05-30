@@ -7,6 +7,7 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
 	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
+	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 }});
 
@@ -79,7 +80,9 @@ ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 	ActivInfinitev7.pSaveUpdate.btSave.click();
-	sc.endStep();
+	ActivInfinitev7.pDashboard.wait(function() {
+		sc.endStep();
+	});
 }});
 
 
