@@ -127,10 +127,8 @@
 						<OBJET Name="oIndividualContract">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
-									<TAG Name="TR" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y">
-										<TAG Name="TD" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0R1" Range="1">
-											<TAG Name="I" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0R1R2" />
-										</TAG>
+									<TAG Name="TBODY" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y" />
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>

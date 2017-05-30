@@ -18,7 +18,7 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
 
-function navigateToSynthesisInjection() {
+	function navigateToSynthesisInjection() {
 		setTimeout(function() {
 			window.location.href = '/mdg/Go.do?id=ACW1&action=afficherContrat';
 		}, 1500);
@@ -51,17 +51,17 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	var dateEndCurrentContract;
 	
 	for (var index in ActivInfinitev7.pSynthesis.oIndividualContract.getAll()) {
-		var endDate = ActivInfinitev7.pSynthesis.oDateEnd.i(index);
+		var endDate = ActivInfinitev7.pSynthesis.oDateEnd.i(index).get();
 
-		// Get individual contract in title on i (get only number in title, represent mostly individual contract)
-		var row = ActivInfinitev7.pSynthesis.oIndividualContract.i(index);
+		// Get individual contract in tooltip on i (get only number in tooltip, represent mostly individual contract)
+		var idRow = ActivInfinitev7.pSynthesis.oIndividualContract.i(index).scriptItem({ id: null });
 		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
 
 		if (isEndDateEmpty) {
 			countOpenContractLists += 1;
 		}
 		
-		if (isCurrentIndividualContractIHTML(row, sc.data.contract.individualContract)) {
+		if (isCurrentIndividualContractTooltip(idRow, sc.data.contract.individualContract)) {
 			isOpenCurrentContract = isEndDateEmpty;
 			dateEndCurrentContract = isEndDateEmpty ? undefined : ctx.date.parseToDate(endDate);
 		}
@@ -93,10 +93,17 @@ ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	sc.endStep();
 }});
 
-function isCurrentIndividualContractIHTML(iHTML, individualContract) {
-	var title = iHTML.scriptItem({ title: null });
+function isCurrentIndividualContractTooltip(idRow, individualContract) {
+	
+	function getValueToolTipSynthesis(idRow) {
+		return $('tr[id="' + idRow + '"] td:nth-child(2) i').tooltipster('content');
+	};
+	
+	ActivInfinitev7.pSynthesis.injectFunction(getValueToolTipSynthesis);
+	var content = ActivInfinitev7.pSynthesis.execScript('getValueToolTipSynthesis(' + idRow + ')');
+	
 	var pattern = /\d+/g;
-	var result = title.match(pattern);
+	var result = content.match(pattern);
 	for (var index = 0; index < result.length; index++) {
 		if (result[index] === individualContract) {
 			return true;
