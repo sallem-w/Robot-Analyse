@@ -10,6 +10,7 @@
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.checkBlockNote);
+	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
 
@@ -41,13 +42,23 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ActivInfinitev7.pSynthesis.btSearch.click();
 	ActivInfinitev7.pSynthesis.events.UNLOAD.on(function() {
 		ActivInfinitev7.pSynthesis.events.LOAD.on(function() {
-		sc.endStep();
+			sc.endStep();
 		});
 	});
 }});
 
 ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
+	
+	if (ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get() === "Aucune donnée disponible dans le tableau") {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
+		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		goHome(function() {
+			sc.endScenario();
+		});
+		return;
+	}
 	
 	var countOpenContractLists = 0;
 	var isOpenCurrentContract = false;
@@ -160,12 +171,52 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	// todo continue scenario (wait page and add other step)
-	// ActivInfinitev7.pBlockNotes.btInsuredIdent.click();
+	ActivInfinitev7.pBlockNotes.btInsuredIdentPage.click();
+	ActivInfinitev7.pInsuredIdent.wait(function() {
+		ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
+		ActivInfinitev7.pCertificateHelpCS.wait(function() {
+			sc.endStep();
+		});
+	});
+}});
+
+
+ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
+	
+	var isCertificateValid = false;
+	
+	for (var index in ActivInfinitev7.pCertificateHelpCS.oType.getAll()) {
+		var type = ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oType.i(index).get());
+		
+		if (type !== 'Attestat° CPAM') {
+			continue;
+		}
+		
+		var startDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oStartDate.i(index).get()));
+		var endDate = ctx.date.addDay(ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oEndDate.i(index).get())), 1);
+
+		isCertificateValid = ctx.date.isOnlyOneYearDifference(startDate, endDate);
+		break;
+	}
+	
+	if (!isCertificateValid) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
+		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		goHome(function() {
+			sc.endScenario();
+		});
+		return;
+	}
+	
+	// TODO next step
+	//ActivInfinitev7.pCertificateHelpCS.btProductList.click();
 	goHome(function() {
 		sc.endStep();
 	});
 }});
+
 
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
@@ -180,7 +231,7 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 	};
 	
 	ActivInfinitev7.pSynthesis.injectFunction(getValueToolTipSynthesis);
-	var content = ActivInfinitev7.pSynthesis.execScript('getValueToolTipSynthesis(' + idRow + ')');
+	var content = ActivInfinitev7.pSynthesis.evalScript('getValueToolTipSynthesis(' + idRow + ')');
 	
 	var pattern = /\d+/g;
 	var result = content.match(pattern);
