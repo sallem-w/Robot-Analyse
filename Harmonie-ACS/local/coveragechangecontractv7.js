@@ -5,6 +5,14 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCoverageChangeContract);
 	sc.step(ActivInfinitev7.steps.searchCoverageContract);
+	sc.step(ActivInfinitev7.steps.goToProductUpdatePage);
+	sc.step(ActivInfinitev7.steps.updateProduct);
+	sc.step(ActivInfinitev7.steps.goToVisualizationContributionFromCoverageChange);
+//	sc.step(ActivInfinitev7.steps.validationCalcul); //TO uncomment when the before step are done
+	sc.step(ActivInfinitev7.steps.goToImmediateNoticePage);
+	sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
+	sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
+//	sc.step(ActivInfinitev7.steps.saveContract); //TO uncomment when the before step are done
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 }});
@@ -44,6 +52,40 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 	});
 }});
 	
+ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
+	ActivInfinitev7.pTerminatedContractFo.btNext.click();
+	ActivInfinitev7.pBlockNotes.wait(function() {
+		ActivInfinitev7.pBlockNotes.btNext.click();
+		ActivInfinitev7.pProductUpdate.wait(function() {
+			sc.endStep();
+		});
+	});
+}});
+
+ActivInfinitev7.step({ updateProduct: function(ev, sc, st) {
+	//TODO on the next PR
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function(ev, sc, st) {
+	//TODO
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ goToImmediateNoticePage: function(ev, sc, st) {
+	//TODO
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc, st) {
+	//TODO
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev, sc, st) {
+	//TODO
+	sc.endStep();
+}});
 
 ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');

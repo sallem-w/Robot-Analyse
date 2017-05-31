@@ -73,21 +73,19 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	});
 }});
 
-
 ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
 	ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
 	ActivInfinitev7.pContributionVisu.btNext.click();
-	ActivInfinitev7.pSaveUpdate.wait(function() {
-		sc.endStep();
-	});
+	sc.endStep();
 }});
 
-
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-	ActivInfinitev7.pSaveUpdate.btSave.click();
-	sc.endStep();
+	ActivInfinitev7.pSaveUpdate.wait(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+		ActivInfinitev7.pSaveUpdate.btSave.click();
+		sc.endStep()
+	});
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
