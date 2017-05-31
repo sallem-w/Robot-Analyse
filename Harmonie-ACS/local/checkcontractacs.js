@@ -100,10 +100,6 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 			sc.endStep();
 		});
 	} else {
-		goHome(function() {
-			sc.endStep();
-		});
-		return;
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -175,7 +171,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinitev7.pBlockNotes.btInsuredIdent.click();
+	ActivInfinitev7.pBlockNotes.btInsuredIdentPage.click();
 	ActivInfinitev7.pInsuredIdent.wait(function() {
 		ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
 		ActivInfinitev7.pCertificateHelpCS.wait(function() {

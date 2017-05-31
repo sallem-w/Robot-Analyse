@@ -429,7 +429,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btInsuredIdent">
+						<OBJET Name="btInsuredIdentPage">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="75.R0R1R15R1R0R0R2R0R3">
 									<TAG Name="DIV" Scope="Children" CapturedPos="75.R0R1R15R1R0R0R2R0R3R0">
