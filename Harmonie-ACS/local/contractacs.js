@@ -183,7 +183,7 @@ ActivInfinite.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	if (!isCertificateValid) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
-		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un ans \n';
+		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ActivInfinite.pCertificateHelpCS.oBtClose.click();
 		sc.endScenario();
@@ -219,7 +219,7 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 			}
 			else if (!isEndDateFound(currentRow, new Date(sc.data.contract.ACSCertificateEndDate))) {	
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
-				sc.data.commentContract = 'Pas de date de fin trouvé ou date différente \n';
+				sc.data.commentContract = 'Pas de date de fin trouvée ou date différente \n';
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 				ActivInfinite.pProductList.oBtClose.click();
 				sc.endScenario();
@@ -227,7 +227,7 @@ ActivInfinite.step({ checkProductList : function(ev, sc, st) {
 			}
 			else if (currentEndDate !== undefined && !ctx.date.isEqual(tempEndDate, currentEndDate)) {
 				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
-				sc.data.commentContract = 'Ils n\'ont pas tous la même date de fin \n';
+				sc.data.commentContract = 'Les produits n\'ont pas tous la même date de fin \n';
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 				ActivInfinite.pProductList.oBtClose.click();
 				sc.endScenario();
