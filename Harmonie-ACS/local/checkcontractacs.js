@@ -135,7 +135,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-			var message = withEmptyMessagesPopup(getMessagesPopup());
+			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 			sc.data.commentContract = message + '\n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -204,22 +204,4 @@ function goHome(callback) {
 	ActivInfinitev7.pDashboard.wait(function() {
 		callback();
 	});
-}
-
-function getMessagesPopup() {
-	
-	function getMessages() {
-		return $('#cgd-toast-container-right .toast-message > .row:first-child').text();
-	}
-	
-	ActivInfinitev7.currentPage.injectFunction(getMessages);
-	var message = ActivInfinitev7.currentPage.execScript('getMessages()');
-	return message;
-}
-
-function withEmptyMessagesPopup(message) {
-	if (ctx.string.trim(message) === '' || message === undefined) {
-		message = 'Problème inconnu, impossible de récupérer le message de la POPUP d\'erreur \n';
-	}
-	return message;
 }
