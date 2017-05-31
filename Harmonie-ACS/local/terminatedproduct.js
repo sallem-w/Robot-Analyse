@@ -59,20 +59,20 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
 	ActivInfinitev7.pTerminatedContractFo.wait(function() {
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
-		ActivInfinitev7.pProductUpdate.wait(function() {
+		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
 			ActivInfinitev7.pProductUpdate.btNext.click();
-			ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
-				ActivInfinitev7.pDiversParam.btNext.click();
-			});
-			ActivInfinitev7.pCalculParam.wait(function() {
-				ActivInfinitev7.pCalculParam.btNext.click();
-				ActivInfinitev7.pContributionHistory.wait(function() {
-					ActivInfinitev7.pContributionHistory.btNext.click();
-					ActivInfinitev7.pContributionVisu.wait(function() {	
-						sc.endStep();
-					});
-				});		
-			});
+		});
+		ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
+			ActivInfinitev7.pDiversParam.btNext.click();
+		});
+		ActivInfinitev7.pCalculParam.wait(function() {
+			ActivInfinitev7.pCalculParam.btNext.click();
+			ActivInfinitev7.pContributionHistory.wait(function() {
+				ActivInfinitev7.pContributionHistory.btNext.click();
+				ActivInfinitev7.pContributionVisu.wait(function() {	
+					sc.endStep();
+				});
+			});		
 		});
 	});
 }});
