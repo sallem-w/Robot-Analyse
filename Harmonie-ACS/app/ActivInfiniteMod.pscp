@@ -358,6 +358,66 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
+				<PAGE Name="pProductList" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Couverture des Adhérents]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNameBenef">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1R0R2" Range="2">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCodeProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0R1" Range="1">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableGaranties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEndDateProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0R7" Range="7">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableGaranties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
+				</PAGE>
 				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
@@ -540,14 +600,6 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
-				</PAGE>
-				<PAGE Name="pProductList" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS />
-					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
