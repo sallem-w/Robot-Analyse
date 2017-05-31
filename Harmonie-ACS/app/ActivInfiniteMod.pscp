@@ -498,6 +498,65 @@ Attestations Aide Complémentaire Santé]]></VALUE>
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oType">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3">
+										<TAG Name="TR" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3R0R2" Range="2">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oStartDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TBODY" Scope="Children">
+										<TAG Name="TR" Scope="Children" Occurs="Y">
+											<TAG Name="TD" Scope="Children" Range="3">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEndDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TBODY" Scope="Children">
+										<TAG Name="TR" Scope="Children" Occurs="Y">
+											<TAG Name="TD" Scope="Children" Range="4">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[
+ 
+Produits/Garanties ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>

@@ -195,3 +195,7 @@ ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCertificateHelpCS.oTitlePage = ActivInfinitev7.pCertificateHelpCS.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
+ActivInfinitev7.pCertificateHelpCS.oStartDate = ActivInfinitev7.pCertificateHelpCS.addItem('oStartDate', {"occurs":1});
+ActivInfinitev7.pCertificateHelpCS.oEndDate = ActivInfinitev7.pCertificateHelpCS.addItem('oEndDate', {"occurs":1});
+ActivInfinitev7.pCertificateHelpCS.btProductList = ActivInfinitev7.pCertificateHelpCS.addItem('btProductList');
