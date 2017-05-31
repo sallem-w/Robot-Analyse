@@ -37,4 +37,3 @@ ActivInfinitev7.step({ endTerminatedContract: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
-

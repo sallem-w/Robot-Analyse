@@ -35,6 +35,7 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
+		//If page is reloaded, it seems that an error is found
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
@@ -60,9 +61,11 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
 	ActivInfinitev7.pTerminatedContractFo.wait(function() {
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
+		//Product update isn't a page of terminated contract scenario
 		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
 			ActivInfinitev7.pProductUpdate.btNext.click();
 		});
+		//Divers param isn't a page of terminated contract scenario and it is not in all the terminated product scenario
 		ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
 			ActivInfinitev7.pDiversParam.btNext.click();
 		});

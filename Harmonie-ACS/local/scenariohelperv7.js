@@ -8,7 +8,7 @@
 		}
 		
 		ActivInfinitev7.currentPage.injectFunction(getMessages);
-		var message = ActivInfinitev7.currentPage.execScript('getMessages()');
+		var message = ActivInfinitev7.currentPage.evalScript('getMessages()');
 		return message;
 	}
 
