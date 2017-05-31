@@ -485,7 +485,20 @@ Attestations Aide Complémentaire Santé]]></VALUE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACAC_403&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS />
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Attestations]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
 			</_ECRANS>
