@@ -448,50 +448,6 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
 				</PAGE>
-				<PAGE Name="pInsuredIdent" Comment="Consultation - N°21452751 - Résilié - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACHO_200&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS>
-						<OBJET Name="btHelpCSCertificate">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="77.R0R1R7R0R0R2R0R1R0R0R1R2">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[
-
-Attestations Aide Complémentaire Santé]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="77.R0R1R7R0R0R2R0R0R0R55R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Identification Adhérent ]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTitlePage2" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="77.R0R1R7R0R0R2R0R0R0R55R1R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationAdhere_1001413_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="77" Techno="WEB" Timestamp="31/05/2017 10:02:03" />
-				</PAGE>
 				<PAGE Name="pCertificateHelpCS" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
@@ -574,6 +530,38 @@ Produits/Garanties ]]></VALUE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
+				</PAGE>
+				<PAGE Name="pInsuredIdent" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btHelpCSCertificate">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R1R0R0R1R2">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[
+
+Attestations Aide Complémentaire Santé]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Identification Adhérent ]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
