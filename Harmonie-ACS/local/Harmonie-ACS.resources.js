@@ -150,6 +150,7 @@ ActivInfinitev7.pTerminatedContractFo = ActivInfinitev7.addPage('pTerminatedCont
 ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContractFo.addItem('btNext');
 ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateBlockNote');
 ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
+ActivInfinitev7.pTerminatedContractFo.btClose = ActivInfinitev7.pTerminatedContractFo.addItem('btClose');
 
 ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract');
