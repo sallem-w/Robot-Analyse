@@ -35,13 +35,15 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
+		//If page is reloaded, it seems that an error is found
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : TODO');
-			sc.data.commentContract += 'Erreur recherche contrat : TODO \n';
+			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
+			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			
 			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-		})
+		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
@@ -59,20 +61,22 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
 	ActivInfinitev7.pTerminatedContractFo.wait(function() {
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
-		ActivInfinitev7.pProductUpdate.wait(function() {
+		//Product update isn't a page of terminated contract scenario
+		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
 			ActivInfinitev7.pProductUpdate.btNext.click();
-			ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
-				ActivInfinitev7.pDiversParam.btNext.click();
-			});
-			ActivInfinitev7.pCalculParam.wait(function() {
-				ActivInfinitev7.pCalculParam.btNext.click();
-				ActivInfinitev7.pContributionHistory.wait(function() {
-					ActivInfinitev7.pContributionHistory.btNext.click();
-					ActivInfinitev7.pContributionVisu.wait(function() {	
-						sc.endStep();
-					});
-				});		
-			});
+		});
+		//Divers param isn't a page of terminated contract scenario and it is not in all the terminated product scenario
+		ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
+			ActivInfinitev7.pDiversParam.btNext.click();
+		});
+		ActivInfinitev7.pCalculParam.wait(function() {
+			ActivInfinitev7.pCalculParam.btNext.click();
+			ActivInfinitev7.pContributionHistory.wait(function() {
+				ActivInfinitev7.pContributionHistory.btNext.click();
+				ActivInfinitev7.pContributionVisu.wait(function() {	
+					sc.endStep();
+				});
+			});		
 		});
 	});
 }});
