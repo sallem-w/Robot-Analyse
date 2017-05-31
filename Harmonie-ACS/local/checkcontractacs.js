@@ -100,6 +100,10 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 			sc.endStep();
 		});
 	} else {
+		goHome(function() {
+			sc.endStep();
+		});
+		return;
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -231,7 +235,7 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 	};
 	
 	ActivInfinitev7.pSynthesis.injectFunction(getValueToolTipSynthesis);
-	var content = ActivInfinitev7.pSynthesis.execScript('getValueToolTipSynthesis(' + idRow + ')');
+	var content = ActivInfinitev7.pSynthesis.evalScript('getValueToolTipSynthesis(' + idRow + ')');
 	
 	var pattern = /\d+/g;
 	var result = content.match(pattern);
@@ -264,7 +268,7 @@ function getMessagesPopup() {
 	}
 	
 	ActivInfinitev7.currentPage.injectFunction(getMessages);
-	var message = ActivInfinitev7.currentPage.execScript('getMessages()');
+	var message = ActivInfinitev7.currentPage.evalScript('getMessages()');
 	return message;
 }
 
