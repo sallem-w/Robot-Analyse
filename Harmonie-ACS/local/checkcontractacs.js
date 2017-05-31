@@ -42,7 +42,7 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ActivInfinitev7.pSynthesis.btSearch.click();
 	ActivInfinitev7.pSynthesis.events.UNLOAD.on(function() {
 		ActivInfinitev7.pSynthesis.events.LOAD.on(function() {
-		sc.endStep();
+			sc.endStep();
 		});
 	});
 }});

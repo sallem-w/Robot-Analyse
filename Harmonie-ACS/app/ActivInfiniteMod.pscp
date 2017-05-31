@@ -477,6 +477,18 @@ Attestations Aide Complémentaire Santé]]></VALUE>
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oTitlePage2" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="77.R0R1R7R0R0R2R0R0R0R55R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1001413_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="77" Techno="WEB" Timestamp="31/05/2017 10:02:03" />
 				</PAGE>
@@ -549,6 +561,9 @@ Attestations Aide Complémentaire Santé]]></VALUE>
 						<OBJET Name="btProductList">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
+									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0">
+										<SET />
+									</TAG>
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[
  
