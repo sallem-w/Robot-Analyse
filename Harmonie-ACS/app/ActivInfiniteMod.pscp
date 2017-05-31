@@ -40,31 +40,96 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 				</PAGE>
-				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pSynthesis" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-						<URL Scan="Like"><![CDATA[method=rechercher]]></URL>
+						<TITRE Scan="start-with"><![CDATA[Contexte Contrat -]]></TITRE>
 					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
 					<OBJETS>
-						<OBJET Name="btNext" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="57.R0R1R15R1R2R0R0R0R1R0R0R1R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Critères de recherche simplifiés]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oAskDate" MustExist="Y">
+						<OBJET Name="btSearch">
 							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="57.R0R1R15R1R0R2R0R0R3R28R0R0R1R0R2R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
-									</ATT>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R1R1R0">
 									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[linkRechBd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBenefIdentification">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R1R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTypeIdentification">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateEnd">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0R5" Range="5" />
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oIndividualContract">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y" />
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ContexteContratHa_1717568_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="56" Techno="WEB" Timestamp="29/05/2017 17:18:02" />
+				</PAGE>
+				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="57.R0R1R15R1R2R0R0R0R1R0R0R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -80,17 +145,29 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btSearch" MustExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R0R3R27R0R0R1R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+									<ATT Name="style">
+										<VALUE Scan="Full"><![CDATA[display: none;]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0006_1538399_1" Comment="Consultation - N°00061366 - Résilié - Adhérent : Madame MUHLMANN M LOUISE - haum0a - Activ Infinite - Module de gestion" CtxtId="74" Techno="WEB" Timestamp="30/05/2017 15:38:44" />
 				</PAGE>
 				<PAGE Name="pSearchContractIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
-						<OBJET Name="oIndividualContract" MustExist="Y">
+						<OBJET Name="oIndividualContract">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R1R0R0R2">
 									<ATT Name="name">
@@ -104,15 +181,6 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oStaticAskDate" MustExist="Y">
-							<CRITERE>
-								<TAG Name="P" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R28R0R0R1R0R2R2">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[dateDemande-static]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -140,6 +208,159 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
+				</PAGE>
+				<PAGE Name="pBlockNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oContentBlockNote">
+							<CRITERE>
+								<TAG Name="TEXTAREA" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R1R0R8R0R2R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ta_bn_0]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Bloc notes]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btInsuredIdentPage">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="75.R0R1R15R1R0R0R2R0R3">
+									<TAG Name="DIV" Scope="Children" CapturedPos="75.R0R1R15R1R0R0R2R0R3R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Identification des assurés
+]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
+				</PAGE>
+				<PAGE Name="pInsuredIdent" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btHelpCSCertificate">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R1R0R0R1R2">
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Attestations Aide Complémentaire Santé]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="LABEL" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[txtAssRo]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
+				</PAGE>
+				<PAGE Name="pCertificateHelpCS" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACAC_403&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oType">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3">
+										<TAG Name="TR" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R1R0R1R0R4R1R0R0R3R0R2" Range="2">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oStartDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TBODY" Scope="Children">
+										<TAG Name="TR" Scope="Children" Occurs="Y">
+											<TAG Name="TD" Scope="Children" Range="3">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEndDate">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TBODY" Scope="Children">
+										<TAG Name="TR" Scope="Children" Occurs="Y">
+											<TAG Name="TD" Scope="Children" Range="4">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAttestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
+									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0">
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[
+ 
+Produits/Garanties ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Attestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
 				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -323,130 +544,6 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
-				</PAGE>
-				<PAGE Name="pSynthesis" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Contexte Contrat -]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
-					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Critères de recherche simplifiés]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btSearch">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R1R1R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[linkRechBd]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oBenefIdentification">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R1R1">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
-									</ATT>
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTypeIdentification">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R0R1">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
-									</ATT>
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oDateEnd">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
-									<TAG Name="TR" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y">
-										<TAG Name="TD" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0R5" Range="5" />
-									</TAG>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oIndividualContract">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
-									<TAG Name="TBODY" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1">
-										<TAG Name="TR" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y" />
-									</TAG>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ContexteContratHa_1717568_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="56" Techno="WEB" Timestamp="29/05/2017 17:18:02" />
-				</PAGE>
-				<PAGE Name="pBlockNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<URL Scan="Like"><![CDATA[method=debuter]]></URL>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS>
-						<OBJET Name="oContentBlockNote">
-							<CRITERE>
-								<TAG Name="TEXTAREA" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R1R0R8R0R2R0R1">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[ta_bn_0]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Bloc notes]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btInsuredIdent">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="75.R0R1R15R1R0R0R2R0R3">
-									<TAG Name="DIV" Scope="Children" CapturedPos="75.R0R1R15R1R0R0R2R0R3R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Identification des assurés
-]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
