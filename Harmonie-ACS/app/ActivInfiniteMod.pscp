@@ -265,7 +265,7 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R1R0R0R1R2">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Attestations Aide Complémentaire Santé]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Attestations Aide Complémentaire Santé]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

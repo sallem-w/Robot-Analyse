@@ -54,7 +54,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
 		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
@@ -85,25 +85,25 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
 		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
 	}
 	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 	}
@@ -150,7 +150,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 			sc.data.commentContract = message + '\n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			goHome(function() {
+			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
 			});
 		});
@@ -165,7 +165,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
@@ -204,7 +204,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
 		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
@@ -212,7 +212,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	// TODO next step
 	//ActivInfinitev7.pCertificateHelpCS.btProductList.click();
-	goHome(function() {
+	ctx.scenarioHelper.goHome(function() {
 		sc.endStep();
 	});
 }});
@@ -241,18 +241,4 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 		}
 	}
 	return false;
-}
-
-function goHome(callback) {
-		function navigateToHome() {
-		setTimeout(function() {
-			window.location.href = '/mdg/';
-		}, 1500);
-	};
-	
-	ActivInfinitev7.currentPage.injectFunction(navigateToHome);
-	ActivInfinitev7.currentPage.execScript('navigateToHome()');
-	ActivInfinitev7.pDashboard.wait(function() {
-		callback();
-	});
 }
