@@ -455,6 +455,7 @@
 				<SCRIPT Name="TerminatedProductACS" Folder="ScenarioACS" Src="TerminatedProduct.js" />
 				<SCRIPT Name="CheckContractACS" Folder="ScenarioACS" Src="CheckContractACS.js" />
 				<SCRIPT Name="TerminatedContractV7" Src="TerminatedContractV7.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ScenarioHelperV7" Src="ScenarioHelperV7.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
