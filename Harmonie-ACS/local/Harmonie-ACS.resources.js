@@ -139,14 +139,13 @@ ActivInfinitev7.pDashboard = ActivInfinitev7.addPage('pDashboard', {"comment":"h
 ActivInfinitev7.pDashboard.oMenuHidden = ActivInfinitev7.pDashboard.addItem('oMenuHidden', {"mustExist":true});
 
 ActivInfinitev7.pTerminatedContractFo = ActivInfinitev7.addPage('pTerminatedContractFo', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContractFo.addItem('btNext', {"mustExist":true});
-ActivInfinitev7.pTerminatedContractFo.oAskDate = ActivInfinitev7.pTerminatedContractFo.addItem('oAskDate', {"mustExist":true});
+ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContractFo.addItem('btNext');
 ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateBlockNote');
+ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
 
 ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
-ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract', {"mustExist":true});
+ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract');
 ActivInfinitev7.pSearchContractIndiv.btSearch = ActivInfinitev7.pSearchContractIndiv.addItem('btSearch', {"mustExist":true});
-ActivInfinitev7.pSearchContractIndiv.oStaticAskDate = ActivInfinitev7.pSearchContractIndiv.addItem('oStaticAskDate', {"mustExist":true});
 ActivInfinitev7.pSearchContractIndiv.oDateContract = ActivInfinitev7.pSearchContractIndiv.addItem('oDateContract');
 ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
 
@@ -190,11 +189,11 @@ ActivInfinitev7.pBlockNotes.oTitlePage = ActivInfinitev7.pBlockNotes.addItem('oT
 ActivInfinitev7.pBlockNotes.btInsuredIdentPage = ActivInfinitev7.pBlockNotes.addItem('btInsuredIdentPage');
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pCertificateHelpCS.oTitlePage = ActivInfinitev7.pCertificateHelpCS.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
 ActivInfinitev7.pCertificateHelpCS.oStartDate = ActivInfinitev7.pCertificateHelpCS.addItem('oStartDate', {"occurs":1});
 ActivInfinitev7.pCertificateHelpCS.oEndDate = ActivInfinitev7.pCertificateHelpCS.addItem('oEndDate', {"occurs":1});
 ActivInfinitev7.pCertificateHelpCS.btProductList = ActivInfinitev7.pCertificateHelpCS.addItem('btProductList');
+ActivInfinitev7.pCertificateHelpCS.oTitlePage = ActivInfinitev7.pCertificateHelpCS.addItem('oTitlePage', {"mustExist":true});
 
 ActivInfinitev7.pInsuredIdent = ActivInfinitev7.addPage('pInsuredIdent', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIdent.addItem('btHelpCSCertificate');
