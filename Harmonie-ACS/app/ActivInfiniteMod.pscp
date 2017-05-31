@@ -148,6 +148,16 @@
 									</ATT>
 								</TAG>
 							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btSearch" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R0R3R27R0R0R1R1R0R0">
@@ -278,7 +288,7 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R1R0R0R1R2">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Attestations Aide Complémentaire Santé]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Attestations Aide Complémentaire Santé]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -409,8 +419,53 @@ Produits/Garanties ]]></VALUE>
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btUpdatePage">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="83.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[modifier]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btUpdateProduct">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="84.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[boutonModifier]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btAddProduct">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="84.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R0R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[boutonNouveau]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInputNewCodeProduct">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codeProduitNelleGar]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSaveNewCodeProduct">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[boutonValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_SansEffetChangeme_1053357_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="61" Techno="WEB" Timestamp="30/05/2017 10:53:38" />
+					<CAPTURE Name="PAGE_ChangementDeCouvert_1749256_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="87" Techno="WEB" Timestamp="31/05/2017 17:49:40" />
 				</PAGE>
 				<PAGE Name="pDiversParam" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -700,6 +755,33 @@ Produits/Garanties ]]></VALUE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
+				</PAGE>
+				<PAGE Name="pChangeStateProduct" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACG2.do?method=doModifierCouverture&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2_300&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oStateProduct">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="85.R0R1R7R0R0R2R0R0R0R1R0R0R1R0R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codeEtatProduit]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSave">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="85.R0R1R7R0R0R2R0R0R0R2R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[btValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ChangementDeCouvert_1732596_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="85" Techno="WEB" Timestamp="31/05/2017 17:33:12" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
