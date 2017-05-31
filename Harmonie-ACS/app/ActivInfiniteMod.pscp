@@ -339,13 +339,9 @@
 						<OBJET Name="btProductList">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
-									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0">
-										<SET />
-									</TAG>
+									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0" />
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[
- 
-Produits/Garanties ]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Produits/Garanties]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -544,6 +540,14 @@ Produits/Garanties ]]></VALUE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
+				</PAGE>
+				<PAGE Name="pProductList" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS />
+					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

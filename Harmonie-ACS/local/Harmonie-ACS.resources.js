@@ -198,3 +198,5 @@ ActivInfinitev7.pSaveUpdate = ActivInfinitev7.addPage('pSaveUpdate', {"comment":
 ActivInfinitev7.pSaveUpdate.oTitlePage = ActivInfinitev7.pSaveUpdate.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pSaveUpdate.btSave = ActivInfinitev7.pSaveUpdate.addItem('btSave', {"mustExist":true});
 ActivInfinitev7.pSaveUpdate.btClose = ActivInfinitev7.pSaveUpdate.addItem('btClose');
+
+ActivInfinitev7.pProductList = ActivInfinitev7.addPage('pProductList', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
