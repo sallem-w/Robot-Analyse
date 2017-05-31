@@ -35,15 +35,7 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
-		//If page is reloaded, it seems that an error is found
-		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
-			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			
-			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-		});
+		ctx.scenarioHelper.checkIfContractFound(sc, ActivInfinitev7.steps.closeContractUpdate);
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
