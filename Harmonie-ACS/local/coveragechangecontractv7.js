@@ -8,11 +8,10 @@
 	sc.step(ActivInfinitev7.steps.goToProductUpdatePage);
 	sc.step(ActivInfinitev7.steps.updateProduct);
 	sc.step(ActivInfinitev7.steps.goToVisualizationContributionFromCoverageChange);
-//	sc.step(ActivInfinitev7.steps.validationCalcul); //TO uncomment when the before step are done
-	sc.step(ActivInfinitev7.steps.goToImmediateNoticePage);
+	sc.step(ActivInfinitev7.steps.validationCalcul); 
 	sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 	sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
-//	sc.step(ActivInfinitev7.steps.saveContract); //TO uncomment when the before step are done
+	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 }});
@@ -41,6 +40,7 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
+			ctx.log("MERD3");
 			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 		});
 		
@@ -55,6 +55,7 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 }});
 	
 ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToProductUpdatePage');
 	ActivInfinitev7.pTerminatedContractFo.btNext.click();
 	ActivInfinitev7.pBlockNotes.wait(function() {
 		ActivInfinitev7.pBlockNotes.btNext.click();
@@ -65,28 +66,47 @@ ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ updateProduct: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - updateProduct');
 	//TODO on the next PR
 	sc.endStep();
 }});
 
 ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function(ev, sc, st) {
-	//TODO
-	sc.endStep();
-}});
-
-ActivInfinitev7.step({ goToImmediateNoticePage: function(ev, sc, st) {
-	//TODO
-	sc.endStep();
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContributionFromCoverageChange');
+	ActivInfinitev7.pProductUpdate.btNext.click();
+	
+	//pDiversParam is an optional page, so we check if it is loaded for click on the next button instead of wait this page directly
+	ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
+		ActivInfinitev7.pDiversParam.btNext.click();
+	});
+	
+	ActivInfinitev7.pCalculParam.wait(function() {
+		ActivInfinitev7.pCalculParam.btNext.click();
+		ActivInfinitev7.pContributionHistory.wait(function() {
+			ActivInfinitev7.pContributionHistory.btNext.click();
+			ActivInfinitev7.pContributionVisu.wait(function() {
+				sc.endStep();	
+			});
+		});
+	});
 }});
 
 ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc, st) {
-	//TODO
-	sc.endStep();
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - selectElementDiffereIntoImmediateNotice');
+	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
+		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Différé');
+		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
+		sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev, sc, st) {
-	//TODO
-	sc.endStep();
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkElementDiffereIntoAskThirdPartyPayment');
+	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
+		ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
+		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
+		sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
