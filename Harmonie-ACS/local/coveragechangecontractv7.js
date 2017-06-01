@@ -40,7 +40,9 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
-		ctx.scenarioHelper.checkIfContractFound(sc, ActivInfinitev7.steps.closeContractUpdate);
+		ctx.scenarioHelper.checkIfContractFound(sc, function() {
+			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');

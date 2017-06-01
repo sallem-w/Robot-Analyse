@@ -19,15 +19,15 @@
 		return message;
 	}
 	
-	scenarioHelper.checkIfContractFound = function(sc, step) {
+	scenarioHelper.checkIfContractFound = function(sc, callback) {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			
-			if (step) {
-				sc.endStep(step);	
+			if (callback) {
+				callback();
 			}
 		});
 	}
