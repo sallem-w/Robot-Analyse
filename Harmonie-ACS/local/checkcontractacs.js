@@ -11,6 +11,8 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.checkBlockNote);
 	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
+	sc.step(ActivInfinitev7.steps.checkProductList);
+	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
 
@@ -210,14 +212,48 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		return;
 	}
 	
-	// TODO next step
-	//ActivInfinitev7.pCertificateHelpCS.btProductList.click();
-	ctx.scenarioHelper.goHome(function() {
+	ActivInfinitev7.pCertificateHelpCS.btProductList.click();
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.indexBenef = 0;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
 		sc.endStep();
 	});
 }});
 
+ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+	
+	if (sc.data.indexBenef === sc.data.countBenef) {
+		sc.endStep();
+		return;
+	}
+		
+	if (sc.data.indexBenef === 0) {
+		GetDataProduct();
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkProductList);
+		return;
+	}
+	
+	ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef).click();
+	
+	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
+		ActivInfinitev7.pProductList.events.LOAD.on(function() {
+			GetDataProduct();
+			sc.data.indexBenef += 1;
+			sc.endStep(ActivInfinitev7.steps.checkProductList);
+		});
+	});
+}});
 
+ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - manageDataProductList');
+	
+	ctx.scenarioHelper.goHome(function() {
+		sc.endStep();
+	});
+}});
+	
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
@@ -241,4 +277,15 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 		}
 	}
 	return false;
+}
+
+function GetDataProduct() {
+		
+	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
+		var codeProduct = ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get();
+		var endDateProduct = ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get();
+		
+		var a = codeProduct;
+	}
+		
 }

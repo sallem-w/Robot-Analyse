@@ -341,7 +341,7 @@
 								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
 									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0" />
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Produits/Garanties]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
