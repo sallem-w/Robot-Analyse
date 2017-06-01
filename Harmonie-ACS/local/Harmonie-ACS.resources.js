@@ -149,9 +149,9 @@ ActivInfinitev7.pSynthesis.oIndividualContract = ActivInfinitev7.pSynthesis.addI
 ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinitev7.pSearchContractIndiv.oDateContract = ActivInfinitev7.pSearchContractIndiv.addItem('oDateContract');
-ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
 ActivInfinitev7.pSearchContractIndiv.btNext = ActivInfinitev7.pSearchContractIndiv.addItem('btNext', {"mustNotExist":true});
 ActivInfinitev7.pSearchContractIndiv.btSearch = ActivInfinitev7.pSearchContractIndiv.addItem('btSearch', {"mustExist":true});
+ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
 
 ActivInfinitev7.pTerminatedContractFo = ActivInfinitev7.addPage('pTerminatedContractFo', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContractFo.addItem('btNext');

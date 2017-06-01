@@ -42,15 +42,7 @@
 				</PAGE>
 				<PAGE Name="pSynthesis" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-						<URL Scan="Like"><![CDATA[method=rechercher]]></URL>
-						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Contexte Contrat -]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-						<URL Scan="Like"><![CDATA[method=rechercher]]></URL>
-						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
 					<OBJETS>
@@ -155,20 +147,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R1R0R0R1R1">
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Bloc-notes niveau individuel]]></VALUE>
-                  </ATT>
-								</TAG>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R2R0R0R0R0R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btNext" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
@@ -183,6 +161,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="73.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
