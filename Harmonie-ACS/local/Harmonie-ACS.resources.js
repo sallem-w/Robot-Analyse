@@ -182,6 +182,13 @@ ActivInfinitev7.pProductList.oTitlePage = ActivInfinitev7.pProductList.addItem('
 ActivInfinitev7.pProductList.oNameBenef = ActivInfinitev7.pProductList.addItem('oNameBenef', {"occurs":1});
 ActivInfinitev7.pProductList.oCodeProduct = ActivInfinitev7.pProductList.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pProductList.oEndDateProduct = ActivInfinitev7.pProductList.addItem('oEndDateProduct', {"occurs":1});
+ActivInfinitev7.pProductList.btVisuContribution = ActivInfinitev7.pProductList.addItem('btVisuContribution');
+
+ActivInfinitev7.pContribution = ActivInfinitev7.addPage('pContribution', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pContribution.oTitlePage = ActivInfinitev7.pContribution.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pContribution.btHistoOperation = ActivInfinitev7.pContribution.addItem('btHistoOperation');
+ActivInfinitev7.pContribution.oDateEch = ActivInfinitev7.pContribution.addItem('oDateEch', {"occurs":1});
+ActivInfinitev7.pContribution.oBalanceEch = ActivInfinitev7.pContribution.addItem('oBalanceEch', {"occurs":1});
 
 ActivInfinitev7.pProductUpdate = ActivInfinitev7.addPage('pProductUpdate', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACG2_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProductUpdate.oTitlePage = ActivInfinitev7.pProductUpdate.addItem('oTitlePage', {"mustExist":true});
