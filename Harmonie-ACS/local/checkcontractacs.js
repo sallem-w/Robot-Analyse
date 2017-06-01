@@ -216,6 +216,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
 		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.dataBenef = [];
 		sc.endStep();
 	});
 }});
@@ -227,19 +228,22 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 		sc.endStep();
 		return;
 	}
-		
+	
+	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
+	var nameBenef = nameBenefElement.get();
+	
 	if (sc.data.indexBenef === 0) {
-		GetDataProduct();
+		sc.data.dataBenef.push(GetDataProduct(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 		return;
 	}
 	
-	ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef).click();
+	nameBenefElement.click();
 	
 	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			GetDataProduct();
+			sc.data.dataBenef.push(GetDataProduct(nameBenef));
 			sc.data.indexBenef += 1;
 			sc.endStep(ActivInfinitev7.steps.checkProductList);
 		});
@@ -248,6 +252,37 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - manageDataProductList');
+	
+	var tempEndDate;
+	
+	for (var index in sc.data.dataBenef) {
+		var benef = sc.data.dataBenef[index];
+		tempEndDate = tempEndDate || benef.endDateProduct;
+
+		// Need to add one day, Infinite have one day early
+		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
+			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente \n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
+			return;
+		}
+		
+		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(tempEndDate, benef.endDateProduct)) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
+			sc.data.commentContract = 'Les produits n\'ont pas tous la même date de fin \n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
+			return;
+		}
+	}
+	
+	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple \n' : 'Cas complexe \n';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	
 	ctx.scenarioHelper.goHome(function() {
 		sc.endStep();
@@ -279,13 +314,17 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 	return false;
 }
 
-function GetDataProduct() {
+function GetDataProduct(nameBenef) {
+	
+	var data = [];
 		
 	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
-		var codeProduct = ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get();
-		var endDateProduct = ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get();
+		var codeProduct = ctx.string.trim(ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get());
+		var endDateProduct = ctx.string.trim(ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get());
+		endDateProduct = (endDateProduct !== '' ? ctx.date.parseToDate(endDateProduct) : undefined)
 		
-		var a = codeProduct;
+		data.push({nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct });
 	}
 		
+	return data;
 }
