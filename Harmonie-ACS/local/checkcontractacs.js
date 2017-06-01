@@ -114,14 +114,14 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 	
-	function navigateToConsultation() {
+	function navigateToConsultationInjection() {
 		setTimeout(function() {
 			window.location.href = '/mdg/Go.do?id=ACCO03STSO';
 		}, 1500);
 	};
 	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultation);
-	ActivInfinitev7.pDashboard.execScript('navigateToConsultation()');
+	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultationInjection);
+	ActivInfinitev7.pDashboard.execScript('navigateToConsultationInjection()');
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
