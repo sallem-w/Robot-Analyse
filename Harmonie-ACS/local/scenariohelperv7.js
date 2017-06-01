@@ -25,7 +25,6 @@
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			
 			if (callback) {
 				callback();
 			}

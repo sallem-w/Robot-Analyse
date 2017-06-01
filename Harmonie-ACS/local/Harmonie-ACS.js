@@ -126,14 +126,12 @@ GLOBAL.events.START.on(function (ev) {
 	});
 	
 	systray.addMenu('ACS', 'CompletV7', 'Complet V7', '', function(ev) {
-			ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set("00248886");
-			ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-//		ctx.config.loadConfigFile();
-//		var configACS = ctx.config.getConfigACS();
-//		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
-//		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
-//		
-//		ActivInfinitev7.scenarios.readExcel.start();
+		ctx.config.loadConfigFile();
+		var configACS = ctx.config.getConfigACS();
+		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
+		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
+		
+		ActivInfinitev7.scenarios.readExcel.start();
 	});
 });
 
