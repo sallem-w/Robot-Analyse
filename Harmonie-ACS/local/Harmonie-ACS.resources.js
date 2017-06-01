@@ -146,17 +146,17 @@ ActivInfinitev7.pSynthesis.oTypeIdentification = ActivInfinitev7.pSynthesis.addI
 ActivInfinitev7.pSynthesis.oDateEnd = ActivInfinitev7.pSynthesis.addItem('oDateEnd', {"occurs":1});
 ActivInfinitev7.pSynthesis.oIndividualContract = ActivInfinitev7.pSynthesis.addItem('oIndividualContract', {"occurs":1});
 
+ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
+ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract', {"mustExist":true});
+ActivInfinitev7.pSearchContractIndiv.oDateContract = ActivInfinitev7.pSearchContractIndiv.addItem('oDateContract');
+ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
+ActivInfinitev7.pSearchContractIndiv.btNext = ActivInfinitev7.pSearchContractIndiv.addItem('btNext', {"mustNotExist":true});
+
 ActivInfinitev7.pTerminatedContractFo = ActivInfinitev7.addPage('pTerminatedContractFo', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContractFo.addItem('btNext');
 ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateBlockNote');
-ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
 ActivInfinitev7.pTerminatedContractFo.btClose = ActivInfinitev7.pTerminatedContractFo.addItem('btClose');
-
-ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
-ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract');
-ActivInfinitev7.pSearchContractIndiv.btSearch = ActivInfinitev7.pSearchContractIndiv.addItem('btSearch', {"mustExist":true});
-ActivInfinitev7.pSearchContractIndiv.oDateContract = ActivInfinitev7.pSearchContractIndiv.addItem('oDateContract');
-ActivInfinitev7.pSearchContractIndiv.btClose = ActivInfinitev7.pSearchContractIndiv.addItem('btClose');
+ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
 
 ActivInfinitev7.pBlockNotes = ActivInfinitev7.addPage('pBlockNotes', {"comment":"Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlockNotes.oContentBlockNote = ActivInfinitev7.pBlockNotes.addItem('oContentBlockNote');
@@ -221,5 +221,13 @@ ActivInfinitev7.pBlockNotes.btInsuredIdent = ActivInfinitev7.pBlockNotes.addItem
 ActivInfinitev7.pBlockNotes.btNext = ActivInfinitev7.pBlockNotes.addItem('btNext');
 
 ActivInfinitev7.pChangeStateProduct = ActivInfinitev7.addPage('pChangeStateProduct', {"comment":"Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACG2.do?method=doModifierCouverture\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67\u0026CONTAINER_NOM_FONCTION=ACG2_300\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pChangeStateProduct.oStateProduct = ActivInfinitev7.pChangeStateProduct.addItem('oStateProduct');
-ActivInfinitev7.pChangeStateProduct.btSave = ActivInfinitev7.pChangeStateProduct.addItem('btSave');
+ActivInfinitev7.pChangeStateProduct.oStateProduct = ActivInfinitev7.pChangeStateProduct.addItem('oStateProduct', {"mustExist":true});
+ActivInfinitev7.pChangeStateProduct.btSave = ActivInfinitev7.pChangeStateProduct.addItem('btSave', {"mustExist":true});
+
+ActivInfinitev7.pCoverageImmediateEch = ActivInfinitev7.addPage('pCoverageImmediateEch', {"comment":"Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=AC3U_900\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=AC36_800\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pCoverageImmediateEch.oTitlePage = ActivInfinitev7.pCoverageImmediateEch.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pCoverageImmediateEch.oEditionSelect = ActivInfinitev7.pCoverageImmediateEch.addItem('oEditionSelect', {"mustExist":true,"type":"Key"});
+
+ActivInfinitev7.pCoverageImmediateCar = ActivInfinitev7.addPage('pCoverageImmediateCar', {"comment":"Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=ACEK_1000\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=AC3U_900\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pCoverageImmediateCar.oEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oEditionCheck', {"mustExist":true});
+ActivInfinitev7.pCoverageImmediateCar.oTitlePage = ActivInfinitev7.pCoverageImmediateCar.addItem('oTitlePage', {"mustExist":true});
