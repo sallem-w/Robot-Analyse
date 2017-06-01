@@ -233,7 +233,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	var nameBenef = nameBenefElement.get();
 	
 	if (sc.data.indexBenef === 0) {
-		sc.data.dataBenef.push(GetDataProduct(nameBenef));
+		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 		return;
@@ -243,7 +243,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			sc.data.dataBenef.push(GetDataProduct(nameBenef));
+			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
 			sc.data.indexBenef += 1;
 			sc.endStep(ActivInfinitev7.steps.checkProductList);
 		});
