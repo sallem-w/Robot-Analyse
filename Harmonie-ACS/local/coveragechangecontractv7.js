@@ -94,7 +94,7 @@ ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function
 ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - selectElementDiffereIntoImmediateNotice');
 	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
-		//TODO
+		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Différé');
 		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
 		sc.endStep();
 	});
@@ -103,7 +103,7 @@ ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc,
 ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkElementDiffereIntoAskThirdPartyPayment');
 	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
-		//TODO
+		ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
 		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
 		sc.endStep();
 	});
