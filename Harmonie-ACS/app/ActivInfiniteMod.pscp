@@ -42,6 +42,10 @@
 				</PAGE>
 				<PAGE Name="pSynthesis" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<URL Scan="Like"><![CDATA[method=rechercher]]></URL>
+						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
@@ -153,6 +157,15 @@
 						</OBJET>
 						<OBJET Name="btClose">
 							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch" MustExist="Y">
+							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="59.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
@@ -175,8 +188,8 @@
 				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -851,7 +864,7 @@ Produits/Garanties ]]></VALUE>
 				<SCRIPT Name="CheckContractACS" Folder="ScenarioACS" Src="CheckContractACS.js" />
 				<SCRIPT Name="TerminatedContractV7" Src="TerminatedContractV7.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ScenarioHelperV7" Src="ScenarioHelperV7.js" />
-				<SCRIPT Name="CoverageChangeContractV7" Src="CoverageChangeContractV7.js" />
+				<SCRIPT Name="CoverageChangeContractV7" Src="CoverageChangeContractV7.js" Folder="ScenarioACS" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
