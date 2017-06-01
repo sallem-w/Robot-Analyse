@@ -35,14 +35,8 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
-		//If page is reloaded, it seems that an error is found
-		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
-			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			
-			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+		ctx.scenarioHelper.checkIfContractFound(sc, function() { 
+			sc.endStep(ActivInfinitev7.steps.closeContractUpdate); 
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
@@ -81,21 +75,19 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	});
 }});
 
-
 ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
 	ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
 	ActivInfinitev7.pContributionVisu.btNext.click();
-	ActivInfinitev7.pSaveUpdate.wait(function() {
-		sc.endStep();
-	});
+	sc.endStep();
 }});
 
-
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-	ActivInfinitev7.pSaveUpdate.btSave.click();
-	sc.endStep();
+	ActivInfinitev7.pSaveUpdate.wait(function() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+		ActivInfinitev7.pSaveUpdate.btSave.click();
+		sc.endStep()
+	});
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
