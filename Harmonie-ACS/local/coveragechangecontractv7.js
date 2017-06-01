@@ -67,8 +67,37 @@ ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
 
 ActivInfinitev7.step({ updateProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - updateProduct');
-	//TODO on the next PR
-	sc.endStep();
+	ActivInfinitev7.pProductUpdate.btUpdatePage.click();
+	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
+			ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+				var newCodeProduct = ctx.configACS.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
+				
+				if (newCodeProduct === undefined || newCodeProduct === '') {
+					ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
+					sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct + '\n';
+					sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+					sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+				}
+				
+				for (var index in ActivInfinitev7.pProductUpdate.oCodeProduct.getAll()) {
+					var codeProduct = ctx.string.trim(ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).get());
+					
+					if (codeProduct === sc.data.contract.subscribedCodeProduct) {
+						ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).click();
+						ActivInfinitev7.pProductUpdate.btUpdateProduct.click();
+						ActivInfinitev7.pChangeStateProduct.wait(function() {
+							ActivInfinitev7.pChangeStateProduct.oStateProduct.set("Radié");
+							ActivInfinitev7.pChangeStateProduct.btSave.click();
+							ActivInfinitev7.pProductUpdate.wait(function() {
+								//TODO
+								sc.endStep();	
+							});
+						});
+						break;
+					}
+				}
+		});
+	});
 }});
 
 ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function(ev, sc, st) {
