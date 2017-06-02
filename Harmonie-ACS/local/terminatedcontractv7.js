@@ -8,17 +8,13 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
 	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
-	if (sc.data.config.saveUpdate) {
-		sc.step(ActivInfinitev7.steps.saveContract);
-	} else {
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
-	}
+	sc.step(ActivInfinitev7.steps.saveContract);
+	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endTerminatedContract);
 }});
 
 ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated contract');
-	sc.data.commentContract = 'Résiliation du contrat';
 	
 	function navigateToTerminatedContract() {
 		window.location.href = '/mdg/Go.do?id=ACRE04RE4S';

@@ -42,7 +42,6 @@ ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 			
-			sc.data.commentContract += 'Contrat trouvé \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success
 			sc.endStep();
 		});
