@@ -261,7 +261,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		tempEndDate = tempEndDate || benef.endDateProduct;
 
 		// Need to add one day, Infinite have one day early
-		if (benef.endDateProduct === undefined || (benef.endDateProduct !== undefined && !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate)))) {	
+		if (benef.endDateProduct === undefined || !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
 			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
