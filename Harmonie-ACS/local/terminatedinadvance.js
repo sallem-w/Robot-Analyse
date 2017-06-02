@@ -13,7 +13,7 @@
 
 ActivInfinite.step({ initializeTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
-	sc.data.commentContract += 'Résiliation en avance du contrat \n';
+	sc.data.commentContract = 'Résiliation en avance du contrat';
 
 	function navigateToTerminatedInAdvance() {
 		setTimeout(function() {
@@ -40,7 +40,7 @@ ActivInfinite.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract += 'Contrat trouvé \n';
+		sc.data.commentContract = 'Contrat trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinite.pContratIndivFound.oBtNext.click();

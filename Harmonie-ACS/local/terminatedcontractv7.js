@@ -17,10 +17,10 @@
 
 ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated contract');
-	sc.data.commentContract += 'Résiliation du contrat \n';
+	sc.data.commentContract = 'Résiliation du contrat';
 	
 	function navigateToTerminatedContract() {
-			window.location.href = '/mdg/Go.do?id=ACRE04RE4S';
+		window.location.href = '/mdg/Go.do?id=ACRE04RE4S';
 	};
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedContract);

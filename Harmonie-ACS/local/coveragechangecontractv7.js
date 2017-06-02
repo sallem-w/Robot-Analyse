@@ -20,7 +20,7 @@
 
 ActivInfinitev7.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-	sc.data.commentContract += 'Changement de couverture du contrat \n';
+	sc.data.commentContract = 'Changement de couverture du contrat';
 	
 	function navigateToCoverageChange() {
 		window.location.href = '/mdg/Go.do?id=ACCC01STD';
@@ -48,7 +48,6 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 			
-			sc.data.commentContract += 'Contrat trouvé \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success
 			sc.endStep();
 		});
