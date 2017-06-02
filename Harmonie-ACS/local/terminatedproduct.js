@@ -20,7 +20,7 @@ ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 	sc.data.commentContract = 'Radiation du produit';
 	
 	function navigateToTerminatedProduct() {
-			window.location.href = '/mdg/Go.do?id=ACCC04STD';
+		window.location.href = '/mdg/Go.do?id=ACCC04STD';
 	};
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedProduct);
@@ -84,12 +84,12 @@ ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	ActivInfinitev7.pSaveUpdate.wait(function() {
-	    if (sc.data.config.saveUpdate) {
-	      ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-	      ActivInfinitev7.pSaveUpdate.btSave.click();
-	      sc.data.commentContract += '/ Modification effectuée';
-	      sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-	    }
+		if (sc.data.config.saveUpdate) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+			ActivInfinitev7.pSaveUpdate.btSave.click();
+			sc.data.commentContract += '/ Modification effectuée';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		}
 		sc.endStep();
 	});
 }});
