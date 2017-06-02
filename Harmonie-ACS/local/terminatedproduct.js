@@ -84,9 +84,11 @@ ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	ActivInfinitev7.pSaveUpdate.wait(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-		ActivInfinitev7.pSaveUpdate.btSave.click();
-		sc.endStep()
+		if (sc.data.config.saveUpdate) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+			ActivInfinitev7.pSaveUpdate.btSave.click();
+		}
+		sc.endStep();
 	});
 }});
 
