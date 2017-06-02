@@ -234,7 +234,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	var nameBenef = nameBenefElement.get();
 	
 	if (sc.data.indexBenef === 0) {
-		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
+		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 		return;
@@ -244,7 +244,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
+			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 			sc.data.indexBenef += 1;
 			sc.endStep(ActivInfinitev7.steps.checkProductList);
 		});
@@ -255,39 +255,47 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - manageDataProductList');
 	
 	var tempEndDate;
+	var allContractSameEndDate = true;
+	var validDateCurrentProduct = false;
 	
 	for (var index in sc.data.dataBenef) {
 		var benef = sc.data.dataBenef[index];
 		tempEndDate = tempEndDate || benef.endDateProduct;
 
 		// Need to add one day, Infinite have one day early
-		if (benef.endDateProduct === undefined || !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
-			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente pour le produit ' + benef.codeProduct + '\n';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
-			return;
+		if (benef.codeProduct === sc.data.contract.subscribedCodeProduct &&
+			  benef.endDateProduct !== undefined && 
+			  ctx.date.isEqual(benef.endDateProduct, ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1))) {	
+			validDateCurrentProduct = true;
 		}
 		
 		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(tempEndDate, benef.endDateProduct)) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
-			sc.data.commentContract = 'Les produits n\'ont pas tous la même date de fin \n';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
-			return;
+			allContractSameEndDate = false;
 		}
 	}
 	
-	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple, un seul produit présent \n' : 'Cas complexe, plusieurs produits présent \n';
-	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-	
-	ctx.scenarioHelper.goHome(function() {
-		sc.endStep();
-	});
+	if (allContractSameEndDate && validDateCurrentProduct) {
+		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin'
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		ctx.scenarioHelper.goHome(function() {
+			sc.endStep();
+		});
+	}
+	else if (validDateCurrentProduct) {
+		sc.data.commentContract += 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin'
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		ctx.scenarioHelper.goHome(function() {
+			sc.endStep();
+		});
+	}
+	else {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
+		sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de de la page produit';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ctx.scenarioHelper.goHome(function() {
+			sc.endScenario();
+		});
+	}
 }});
 	
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
@@ -315,7 +323,7 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 	return false;
 }
 
-function GetDataProduct(nameBenef) {
+function GetDataProductPage(nameBenef) {
 	
 	var data = [];
 		
