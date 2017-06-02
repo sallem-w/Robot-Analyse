@@ -232,6 +232,7 @@
 				<PAGE Name="pBlockNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -276,6 +277,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="75.R0R1R15R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="75.R0R1R15R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -516,7 +526,30 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oCodeProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R5R1R0R0R1R0R1" Range="1">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableGaranties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btSaveNewCodeProduct">
+							<CRITERE>
+								<TAG Name="SPAN" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codeProduitSearch]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSaveUpdateProduct">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R1R0R1">
 									<ATT Name="name">
@@ -695,7 +728,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACG2.do?method=doModifierCouverture&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oStateProduct" MustExist="Y">
+						<OBJET Name="oStateProduct" MustExist="Y" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="85.R0R1R7R0R0R2R0R0R0R1R0R0R1R0R0R0R1">
 									<ATT Name="name">
