@@ -138,7 +138,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.commentContract = 'Contrat trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
@@ -151,7 +151,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-			sc.data.commentContract = message + '\n';
+			sc.data.commentContract = 'Revoir centre: ' + message;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -166,7 +166,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
 	if (ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.commentContract = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -205,7 +205,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	if (!isCertificateValid) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
-		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
+		sc.data.commentContract = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -263,7 +263,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		// Need to add one day, Infinite have one day early
 		if (benef.endDateProduct === undefined || !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
-			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente pour le produit ' + benef.codeProduct + '\n';
+			sc.data.commentContract = 'Revoir centre: Pas de date de fin trouvée ou date différente pour le produit ' + benef.codeProduct;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -273,7 +273,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		
 		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(tempEndDate, benef.endDateProduct)) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
-			sc.data.commentContract = 'Les produits n\'ont pas tous la même date de fin \n';
+			sc.data.commentContract = 'Revoir centre: Les produits n\'ont pas tous la même date de fin';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -282,7 +282,9 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		}
 	}
 	
-	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple, un seul produit présent \n' : 'Cas complexe, plusieurs produits présent \n';
+	var messageCaseType = (sc.data.dataBenef.count === 1 ) ? 'Cas simple, un seul produit présent' : 'Cas complexe, plusieurs produits présent';
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - ' + messageCaseType);
+	sc.data.commentContract = messageCaseType;
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	
 	ctx.scenarioHelper.goHome(function() {
