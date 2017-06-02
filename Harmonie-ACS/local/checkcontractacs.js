@@ -11,6 +11,8 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.checkBlockNote);
 	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
+	sc.step(ActivInfinitev7.steps.checkProductList);
+	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
 
@@ -23,7 +25,9 @@ ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
 
 	function navigateToSynthesisInjection() {
+		setTimeout(function() {
 			window.location.href = '/mdg/Go.do?id=ACW1&action=afficherContrat';
+		}, 1500);
 	};
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
@@ -52,7 +56,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
 		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
@@ -83,25 +87,25 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
 		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
 	}
 	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 	}
@@ -110,12 +114,15 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 	
-	function navigateToConsultation() {
+	function navigateToConsultationInjection() {
+		setTimeout(function() {
 			window.location.href = '/mdg/Go.do?id=ACCO03STSO';
+		}, 1500);
 	};
+			
 	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultation);
-	ActivInfinitev7.pDashboard.execScript('navigateToConsultation()');
+	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultationInjection);
+	ActivInfinitev7.pDashboard.execScript('navigateToConsultationInjection()');
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
@@ -146,7 +153,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 			sc.data.commentContract = message + '\n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			goHome(function() {
+			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
 			});
 		});
@@ -161,7 +168,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
@@ -200,20 +207,89 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
 		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		goHome(function() {
+		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
 		return;
 	}
 	
-	// TODO next step
-	//ActivInfinitev7.pCertificateHelpCS.btProductList.click();
-	goHome(function() {
+	ActivInfinitev7.pCertificateHelpCS.btProductList.click();
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.indexBenef = 0;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.dataBenef = [];
 		sc.endStep();
 	});
 }});
 
+ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
+	
+	if (sc.data.indexBenef === sc.data.countBenef) {
+		sc.endStep();
+		return;
+	}
+	
+	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
+	var nameBenef = nameBenefElement.get();
+	
+	if (sc.data.indexBenef === 0) {
+		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkProductList);
+		return;
+	}
+	
+	nameBenefElement.click();
+	
+	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
+		ActivInfinitev7.pProductList.events.LOAD.on(function() {
+			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProduct(nameBenef));
+			sc.data.indexBenef += 1;
+			sc.endStep(ActivInfinitev7.steps.checkProductList);
+		});
+	});
+}});
 
+ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - manageDataProductList');
+	
+	var tempEndDate;
+	
+	for (var index in sc.data.dataBenef) {
+		var benef = sc.data.dataBenef[index];
+		tempEndDate = tempEndDate || benef.endDateProduct;
+
+		// Need to add one day, Infinite have one day early
+		if (benef.endDateProduct === undefined || !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
+			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente pour le produit ' + benef.codeProduct + '\n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
+			return;
+		}
+		
+		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(tempEndDate, benef.endDateProduct)) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not same end date for all');
+			sc.data.commentContract = 'Les produits n\'ont pas tous la même date de fin \n';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
+			return;
+		}
+	}
+	
+	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple, un seul produit présent \n' : 'Cas complexe, plusieurs produits présent \n';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+	
+	ctx.scenarioHelper.goHome(function() {
+		sc.endStep();
+	});
+}});
+	
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
@@ -239,16 +315,17 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 	return false;
 }
 
-function goHome(callback) {
-		function navigateToHome() {
-		setTimeout(function() {
-			window.location.href = '/mdg/';
-		}, 1500);
-	};
+function GetDataProduct(nameBenef) {
 	
-	ActivInfinitev7.currentPage.injectFunction(navigateToHome);
-	ActivInfinitev7.currentPage.execScript('navigateToHome()');
-	ActivInfinitev7.pDashboard.wait(function() {
-		callback();
-	});
+	var data = [];
+		
+	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
+		var codeProduct = ctx.string.trim(ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get());
+		var endDateProduct = ctx.string.trim(ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get());
+		endDateProduct = (endDateProduct !== '' ? ctx.date.parseToDate(endDateProduct) : undefined)
+		
+		data.push({nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct });
+	}
+		
+	return data;
 }

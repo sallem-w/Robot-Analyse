@@ -31,5 +31,20 @@
 		});
 	}
 	
+	scenarioHelper.goHome = function(callback) {
+	
+		function navigateToHome() {
+			setTimeout(function() {
+				window.location.href = '/mdg/';
+			}, 1500);
+		};
+	
+		ActivInfinitev7.currentPage.injectFunction(navigateToHome);
+		ActivInfinitev7.currentPage.execScript('navigateToHome()');
+		ActivInfinitev7.pDashboard.wait(function() {
+			callback();
+		});
+	}
+	
 	return scenarioHelper;
 }) ();
