@@ -1,5 +1,6 @@
 ﻿ActivInfinitev7.scenario({ terminatedContract: function(ev, sc) {
 	var data = sc.data;
+	sc.data.currentScenario = 'Sans-effet contrat';
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
