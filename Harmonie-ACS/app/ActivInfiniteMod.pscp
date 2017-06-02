@@ -377,16 +377,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btProductList">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
-									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0" />
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
@@ -456,18 +446,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btVisuContribution">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="83.R0R1R14R1R0R0R2R0R8">
-									<TAG Name="DIV" Scope="Children" CapturedPos="83.R0R1R14R1R0R0R2R0R8R0">
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>
@@ -485,18 +463,6 @@
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btHistoOperation">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="91.R0R1R15R1R0R0R2R0R1">
-									<TAG Name="DIV" Scope="Children" CapturedPos="91.R0R1R15R1R0R0R2R0R1R0">
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Historique des opérations]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -525,6 +491,16 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children" />
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
