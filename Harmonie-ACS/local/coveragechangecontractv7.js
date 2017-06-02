@@ -87,6 +87,7 @@ ActivInfinitev7.step({ removeCurrentProduct: function(ev, sc, st) {
 					sc.data.commentContract = 'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit';
 					sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 					sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+					return;
 				}
 				
 				ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).click();
@@ -111,6 +112,7 @@ ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 			sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return;
 		}
 		
 		ActivInfinitev7.pProductUpdate.btAddProduct.click();
