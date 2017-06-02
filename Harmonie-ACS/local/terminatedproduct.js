@@ -102,7 +102,9 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	
 	ActivInfinitev7.currentPage.injectFunction(cancelSave);
 	ActivInfinitev7.currentPage.execScript('cancelSave()');
-	sc.endStep();
+	ActivInfinitev7.pDashboard.wait(function() {
+		sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
@@ -111,4 +113,3 @@ ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
-

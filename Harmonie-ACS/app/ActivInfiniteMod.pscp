@@ -715,7 +715,7 @@
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="71.R0R1R7R0R0R2R0R0R0R7R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Confirmer l'enregistrement de l'acte de gestion]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Confirmer l'enregistrement de l'acte de gestion]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-info-message]]></VALUE>
