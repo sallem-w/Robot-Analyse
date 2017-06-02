@@ -298,15 +298,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="75.R0R1R15R1R2R0R0R0R1R0R0R2R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
 				</PAGE>
