@@ -127,7 +127,7 @@ ActivInfinite.step({ searchIndividualContract: function(ev, sc, st) {
 	ActivInfinite.pContratIndivFound.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.commentContract = 'Contrat trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinite.pContratIndivFound.btNavigateBlockNote.click();

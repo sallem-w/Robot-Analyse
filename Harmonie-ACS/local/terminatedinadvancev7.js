@@ -1,5 +1,6 @@
 ﻿ActivInfinitev7.scenario({ terminatedInAdvanceContract: function(ev, sc) {
 	var data = sc.data;
+	sc.data.currentScenario = 'Contrat résilié en avance';
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
@@ -13,7 +14,6 @@
 
 ActivInfinitev7.step({ initializeTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
-	sc.data.commentContract += 'Résiliation en avance du contrat \n';
 
 	function navigateToTerminatedInAdvance() {
 		setTimeout(function() {
@@ -42,7 +42,6 @@ ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 			
-			sc.data.commentContract += 'Contrat trouvé \n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success
 			sc.endStep();
 		});

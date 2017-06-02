@@ -1,5 +1,6 @@
 ﻿ActivInfinitev7.scenario({ terminatedProduct: function(ev, sc) {
 	var data = sc.data;
+	sc.data.currentScenario = 'Sans-effet produit';
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
@@ -17,10 +18,9 @@
 
 ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - product terminated');
-	sc.data.commentContract += 'Radiation du produit \n';
 	
 	function navigateToTerminatedProduct() {
-			window.location.href = '/mdg/Go.do?id=ACCC04STD';
+		window.location.href = '/mdg/Go.do?id=ACCC04STD';
 	};
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedProduct);
@@ -40,9 +40,7 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
-			
-			sc.data.commentContract += 'Contrat trouvé \n';
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found')
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			
 			sc.endStep();
@@ -87,6 +85,8 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 		if (sc.data.config.saveUpdate) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 			ActivInfinitev7.pSaveUpdate.btSave.click();
+			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		}
 		sc.endStep();
 	});

@@ -23,7 +23,7 @@
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
-			sc.data.commentContract += 'Erreur recherche contrat : ' + errorMessage + ' \n';
+			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			if (callback) {
 				callback();

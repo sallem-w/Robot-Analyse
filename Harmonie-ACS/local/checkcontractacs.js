@@ -138,7 +138,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
-		sc.data.commentContract = 'Contrat trouvé \n';
+		sc.data.commentContract = 'Contrat trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
 		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
@@ -151,7 +151,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-			sc.data.commentContract = message + '\n';
+			sc.data.commentContract = 'Revoir centre: ' + message;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -166,7 +166,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
 	if (ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract = 'Bloc note non vide, contenu : \n' + contentBlockNote + ' \n';
+		sc.data.commentContract = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -205,7 +205,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	if (!isCertificateValid) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
-		sc.data.commentContract = 'La durée du contrat n\'est pas d\'un an \n';
+		sc.data.commentContract = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -275,14 +275,14 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	
 	if (allContractSameEndDate && validDateCurrentProduct) {
-		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin'
+		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
 	}
 	else if (validDateCurrentProduct) {
-		sc.data.commentContract += 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin'
+		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin --> Faire sans-effet produit + Changement couverture produit + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
@@ -290,7 +290,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
-		sc.data.commentContract = 'Ne rentre dans aucun lors de la vérification de de la page produit';
+		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun lors de la vérification de de la page produit';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
