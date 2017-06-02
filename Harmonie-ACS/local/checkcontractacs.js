@@ -255,7 +255,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - manageDataProductList');
 	
 	var tempEndDate;
-	var allContractSameEndDate = false;
+	var allContractSameEndDate = true;
 	var validDateCurrentProduct = false;
 	
 	for (var index in sc.data.dataBenef) {
@@ -263,12 +263,14 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		tempEndDate = tempEndDate || benef.endDateProduct;
 
 		// Need to add one day, Infinite have one day early
-		if (benef.codeProduct === sc.data.contract.subscribedCodeProduct && benef.endDateProduct !== undefined && !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
+		if (benef.codeProduct === sc.data.contract.subscribedCodeProduct &&
+			  benef.endDateProduct !== undefined && 
+			  ctx.date.isEqual(benef.endDateProduct, ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1))) {	
 			validDateCurrentProduct = true;
 		}
 		
 		if (benef.endDateProduct !== undefined && !ctx.date.isEqual(tempEndDate, benef.endDateProduct)) {
-			allContractSameEndDate = true;
+			allContractSameEndDate = false;
 		}
 	}
 	
