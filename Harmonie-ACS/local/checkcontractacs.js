@@ -263,7 +263,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		// Need to add one day, Infinite have one day early
 		if (benef.endDateProduct === undefined || !ctx.date.isEqual(ctx.date.addDay(benef.endDateProduct, 1), new Date(sc.data.contract.ACSCertificateEndDate))) {	
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - not end date found');
-			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente \n';
+			sc.data.commentContract = 'Pas de date de fin trouvée ou date différente pour le produit ' + benef.codeProduct + '\n';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -282,7 +282,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		}
 	}
 	
-	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple \n' : 'Cas complexe \n';
+	sc.data.commentContract += (sc.data.dataBenef.count === 1 ) ? 'Cas simple, un seul produit présent \n' : 'Cas complexe, plusieurs produits présent \n';
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	
 	ctx.scenarioHelper.goHome(function() {
