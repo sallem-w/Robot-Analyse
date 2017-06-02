@@ -123,6 +123,7 @@
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
@@ -182,6 +183,7 @@
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -233,6 +235,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -593,6 +596,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -614,13 +618,29 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oCalculCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="91.R0R1R14R1R0R2R0R0R2R9R1R0R1R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[calcul]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[pasCalcul]]></VALUE>
+									</ATT>
+									<ATT Name="type">
+										<VALUE Scan="Full"><![CDATA[checkbox]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_SansEffetChangeme_1055404_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="63" Techno="WEB" Timestamp="30/05/2017 10:55:42" />
+					<CAPTURE Name="PAGE_ResiliationContrat_1411275_1" Comment="Resiliation Contrat - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="02/06/2017 14:11:29" />
 				</PAGE>
 				<PAGE Name="pContributionHistory" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet -]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -658,6 +678,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -686,6 +707,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=ACVV_700&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -693,7 +715,7 @@
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="71.R0R1R7R0R0R2R0R0R0R7R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Confirmer l'enregistrement de l'acte de gestion ]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Confirmer l'enregistrement de l'acte de gestion]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-info-message]]></VALUE>
@@ -839,6 +861,7 @@
 				<SCRIPT Name="TerminatedContractV7" Src="TerminatedContractV7.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ScenarioHelperV7" Src="ScenarioHelperV7.js" />
 				<SCRIPT Name="CoverageChangeContractV7" Src="CoverageChangeContractV7.js" Folder="ScenarioACS" />
+				<SCRIPT Name="TerminatedInAdvanceV7" Folder="ScenarioACS" Src="TerminatedInAdvanceV7.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
