@@ -29,6 +29,8 @@ ActivInfinitev7.step({ initScenarioACS : function(ev, sc, st) {
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
+	sc.data.countCaseProductTerminated = 0;
+	sc.data.countCaseContractWithProductACS = 0;
 	sc.data.indexCurrentContract = 0;
 	sc.endStep();
 }});
@@ -74,6 +76,8 @@ ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
 	stats['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
+	stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
+	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
 
 	sc.endStep();
@@ -101,6 +105,7 @@ function startScenarioACS(sc, data, callback) {
 				
 				startCoverageChangeContract(sc, callback, function() {
 					startTerminatedInAdvanceContract(sc, callback, function() {
+						sc.data.countCaseProductTerminated += 1;
 						callback();
 					});
 				});
@@ -118,6 +123,7 @@ function startScenarioACS(sc, data, callback) {
 				
 				startCoverageChangeContract(sc, callback, function() {
 					startTerminatedInAdvanceContract(sc, callback, function() {
+						sc.data.countCaseContractWithProductACS += 1;
 						callback();
 					});
 				});
