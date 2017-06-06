@@ -18,8 +18,16 @@
 		return configFile.ACS;
 	}
 	
+	config.getConfigCMU = function() {
+		return configFile.CMU;
+	}
+	
 	config.getCodeScenarioACS = function() {
 		return 'ACS';
+	}
+	
+	config.getCodeScenarioCMU = function() {
+		return 'CMU';
 	}
 	
 	config.getTimeout = function() {
