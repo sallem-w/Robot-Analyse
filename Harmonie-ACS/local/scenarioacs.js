@@ -38,12 +38,12 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
 	var currentContracts = sc.data.contracts[i];
-	var config = ctx.config.getConfig(ctx.config.ACS);
-	var data = { contract: currentContracts, config: config, configExcel: config.excel };
-	
+	sc.data.contract = currentContracts;
+	sc.data.config = ctx.config.getConfig(ctx.config.ACS);
+	sc.data.configExcel = sc.data.config.excel;
 	sc.data.countCaseProcessed += 1;
 	
-	startScenarioACS(sc, data, (function() {
+	startScenarioACS(sc, (function() {
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
 			sc.data.countCaseSuccessProcessed += 1;
 		}
@@ -82,8 +82,8 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	sc.endStep();
 }});
 
-function startScenarioACS(sc, data, callback) {
-	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(scCheckContract) {
+function startScenarioACS(sc, callback) {
+	ActivInfinitev7.scenarios.checkContract.start(sc.data).onEnd(function(scCheckContract) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
