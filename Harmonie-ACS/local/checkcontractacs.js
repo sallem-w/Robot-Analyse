@@ -19,7 +19,7 @@
 }});
 
 ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - checkContract - ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - checkContract - ' + ctx.config.ACS);
 	sc.endStep();
 }});
 

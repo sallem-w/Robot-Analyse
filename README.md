@@ -16,8 +16,8 @@ Exemple de template du fichier de configuration :
         "saveUpdate": true,
         "addYearSearchContract": 30,
         "excel": {
-            "startColumnIndex": 2,
-            "startRowIndex": 1,
+            "startColumnIndex": 1,
+            "startRowIndex": 2,
             "columnIndex": {
                 "individualContract": 1,
                 "insuredIdentifiant": 6,
@@ -40,6 +40,35 @@ Exemple de template du fichier de configuration :
             "TPSARLACSA": "TPSARLSACA",
             "TPSARLACSB": "TPSARLSACB",
             "TPSARLACSC": "TPSARLSACC"
+        }
+    },
+    "CMU":{
+        "rootPath": "C:\\Users\\excel\\CMU-1\\", 
+        "controlOnly": false,
+        "controlContribution": false,
+        "saveUpdate": false,
+        "autoConnect": true,
+        "excel": {
+            "startRowIndex": 5,
+            "startColumnIndex": 1,
+            "columnIndex":{
+                "name": 1,
+                "firstName": 2,
+                "individualContract": 3,
+                "type": 4,
+                "icStartDate": 5,
+                "icEndDate": 6,
+                "suscribedCodeProduct": 7,
+                "subscribedProductStartDate": 8,
+                "subscribedProductEndDate": 9,
+                "nbDayCMUCover": 10,
+                "particularSituationStartDate": 11,
+                "particularSituationEndDate": 12,
+                "managementCenterCode": 13,
+                "dateProceedContract": 14,
+                "statusContract": 15,
+                "commentContract": 16
+            }
         }
     }
 }

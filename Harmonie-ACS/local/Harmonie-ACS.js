@@ -116,13 +116,23 @@ GLOBAL.events.START.on(function (ev) {
 	});
 
 	systray.addMenu('', 'ACS', 'ACS scenario');
-	systray.addMenu('ACS', 'CompletV7', 'Complet V7', '', function(ev) {
+	systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
 		ctx.config.loadConfigFile();
-		var configACS = ctx.config.getConfigACS();
-		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
-		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
+		var configACS = ctx.config.getConfig(ctx.config.ACS);
+		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
+		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
 		
 		ActivInfinitev7.scenarios.scenarioACS.start();
+	});
+	
+	systray.addMenu('', 'CMU', 'CMU scenario');
+	systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
+		ctx.config.loadConfigFile();
+		var config = ctx.config.getConfig(ctx.config.CMU);
+		ctx.trace.initFileTrace(config.rootPath, ctx.config.CMU);
+		ctx.stats.initFileStats(ctx.config.getPathTemplate(), config.rootPath, ctx.config.CMU);
+		
+		ActivInfinitev7.scenarios.scenarioCMU.start();
 	});
 });
 

@@ -1,31 +1,30 @@
 ﻿ActivInfinitev7.scenario({ scenarioACS: function(ev, sc) {
-	var data = sc.data;
+	sc.data.scenarioCode = ctx.config.ACS;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinitev7.steps.initScenarioACS);
+	sc.step(ActivInfinitev7.steps.initScenario);
 	sc.step(ActivInfinitev7.steps.startScenarioACS);
-	sc.step(ActivInfinitev7.steps.endScenarioACS);
+	sc.step(ActivInfinitev7.steps.endScenario);
 }});
 
-ActivInfinitev7.step({ initScenarioACS : function(ev, sc, st) {
-	ctx.trace.writeInfo('Start scenario ' + ctx.config.getCodeScenarioACS());
-	if (!ctx.excelFile.initConfig()) {
+ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
+	ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
+	if (!ctx.excelFile.initConfig(sc.data.scenarioCode)) {
 		sc.endScenario();
 	}
 	
-	sc.data.config = ctx.config.getConfigACS();
+	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
 	sc.data.configExcel = sc.data.config.excel;
 
 	ctx.trace.writeInfo('STEP - openFile');
-	ctx.excelHelper.openFile(ctx.configACS.getPathFileExcelACS());
+	ctx.excelHelper.openFile(ctx.configFile.getPathFileExcel());
 	
 	ctx.trace.writeInfo('STEP - copyFile');
-	ctx.excelHelper.copyFile(ctx.configACS.getPathFileOutputExcelACS(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
+	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutputExcel(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
 
 	ctx.trace.writeInfo('STEP - readFile');
-	sc.data.contracts = ctx.excelFile.readFile();
-
+	sc.data.contracts = ctx.excelFile.readFile(sc.data.scenarioCode);
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
@@ -39,7 +38,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
 	var currentContracts = sc.data.contracts[i];
-	var config = ctx.config.getConfigACS();
+	var config = ctx.config.getConfig(ctx.config.ACS);
 	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
 	sc.data.countCaseProcessed += 1;
@@ -66,13 +65,13 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	}));
 }});
 
-ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
+ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - closeFile');
 	ctx.excelHelper.closeFile();
 	
 	ctx.trace.writeInfo('STEP - writeStats');
 	var stats = {};
-	stats['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
+	stats['fileName'] = ctx.config.getFileNameOutputExcel();
 	stats['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;

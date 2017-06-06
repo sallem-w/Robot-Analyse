@@ -62,7 +62,7 @@
 				<!-- generated definition file -->
 				<SCRIPT Name="Declarations" Src="Harmonie-ACS.resources.js" ReadOnly="Y" />
 				<!-- project files -->
-				<SCRIPT Name="ConfigFileACS" Src="ConfigFileACS.js" Folder="ScenarioACS" />
+				<SCRIPT Name="ConfigFile" Src="ConfigFile.js" />
 				<SCRIPT Name="Main Project" Src="Harmonie-ACS.js" />
 				<SCRIPT Name="ExcelHelper" Src="ExcelHelper.js" />
 				<SCRIPT Name="DateHelper" Src="DateHelper.js" />
