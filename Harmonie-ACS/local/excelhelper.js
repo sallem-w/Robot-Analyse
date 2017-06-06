@@ -35,7 +35,6 @@
 	};
 	
 	excelHelper.openFile = function(pathFileExcel) {
-		ctx.trace.writeInfo('STEP - openFile');
 		ctx.excel.initialize();
 		try {
 			ctx.excel.file.open(pathFileExcel);
@@ -45,7 +44,6 @@
 	}
 	
 	excelHelper.copyFile = function(pathFileExcel, startRowIndex, writeColumn) {
-		ctx.trace.writeInfo('STEP - copyFile');
 		try {
 			ctx.excel.file.saveAs(pathFileExcel); 
 			ctx.excelHelper.write(startRowIndex, writeColumn);
@@ -56,7 +54,6 @@
 	}
 	
 	excelHelper.closeFile = function() {
-		ctx.trace.writeInfo('STEP - closeFile');
 		var workbook = ctx.excel.getWorkbooks()[0];
 		ctx.excel.file.close(workbook, true);
 		ctx.excel.release();

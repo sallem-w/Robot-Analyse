@@ -112,6 +112,7 @@ function startScenarioACS(sc, data, callback) {
 			});
 		}
 		else if (scCheckContract.data.isContractWithProductACS) {
+			
 			ActivInfinitev7.scenarios.terminatedContract.start(sc.data).onEnd(function(scTerminatedContract) {
 				sc.data.commentContract = scTerminatedContract.data.commentContract;
 				sc.data.statusContract = scTerminatedContract.data.statusContract;
