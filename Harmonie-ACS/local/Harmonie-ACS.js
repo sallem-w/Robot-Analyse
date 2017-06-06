@@ -116,15 +116,6 @@ GLOBAL.events.START.on(function (ev) {
 	});
 
 	systray.addMenu('', 'ACS', 'ACS scenario');
-	systray.addMenu('ACS', 'CompletV6', 'Complet V6', '', function(ev) {
-		ctx.config.loadConfigFile();
-		var configACS = ctx.config.getConfigACS();
-		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.getCodeScenarioACS());
-		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.getCodeScenarioACS());
-		
-		ActivInfinite.scenarios.readExcel.start();
-	});
-	
 	systray.addMenu('ACS', 'CompletV7', 'Complet V7', '', function(ev) {
 		ctx.config.loadConfigFile();
 		var configACS = ctx.config.getConfigACS();
