@@ -104,7 +104,7 @@ ActivInfinitev7.step({ removeCurrentProduct: function(ev, sc, st) {
 
 ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - addOutputProduct');
-	var newCodeProduct = ctx.configACS.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
+	var newCodeProduct = ctx.configFile.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 
 	if (newCodeProduct === undefined || newCodeProduct === '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
