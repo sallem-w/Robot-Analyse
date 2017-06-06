@@ -1,6 +1,5 @@
 ﻿ActivInfinitev7.scenario({ scenarioACS: function(ev, sc) {
-	var data = sc.data;
-	data.scenarioCode = ctx.config.ACS;
+	sc.data.scenarioCode = ctx.config.ACS;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
@@ -25,7 +24,7 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutputExcel(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
 
 	ctx.trace.writeInfo('STEP - readFile');
-	sc.data.contracts = ctx.excelFile.readFile();
+	sc.data.contracts = ctx.excelFile.readFile(sc.data.scenarioCode);
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
