@@ -329,6 +329,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	if (allContractSameEndDate && validDateCurrentProduct) {
 		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		sc.data.isContractTerminated = true;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
@@ -336,6 +337,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	else if (validDateCurrentProduct) {
 		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin --> Faire sans-effet produit + Changement couverture produit + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		sc.data.isContractWithProductACS = true;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endStep();
 		});
