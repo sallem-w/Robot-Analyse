@@ -54,10 +54,9 @@
 				paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
 			};
 			contracts.push(contract);
+		}
+		return contracts;
 	}
-	
-	return contracts;
-}
 	
 	excelFileV7ACS.writeStats = function(obj) {
 		ctx.stats.write(obj);
