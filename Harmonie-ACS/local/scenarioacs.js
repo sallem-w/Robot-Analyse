@@ -40,10 +40,10 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var config = ctx.config.getConfigACS();
 	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
+	sc.data.countCaseProcessed += 1;
+	
 	startScenarioACS(sc, data, (function() {
-		sc.data.countCaseProcessed += 1;
-		
-		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
 			sc.data.countCaseSuccessProcessed += 1;
 		}
 
@@ -84,12 +84,73 @@ function startScenarioACS(sc, data, callback) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
-		ActivInfinitev7.scenarios.terminatedProduct.start(sc.data).onEnd(function(scTerminatedProduct) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+			callback();
+			return;
+		}
+		
+		if (scCheckContract.data.isContractTerminated) {
+			ActivInfinitev7.scenarios.terminatedProduct.start(sc.data).onEnd(function(scTerminatedProduct) {
 				sc.data.commentContract = scTerminatedProduct.data.commentContract;
 				sc.data.statusContract = scTerminatedProduct.data.statusContract;
-			
-		});
-
-		callback();
-	})
+				
+				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+					callback();
+					return;
+				}
+				
+				startCoverageChangeContract(sc, callback, function() {
+					startTerminatedInAdvanceContract(sc, callback, function() {
+						callback();
+					});
+				});
+			});
+		}
+		else if (scCheckContract.data.isContractWithProductACS) {
+			ActivInfinitev7.scenarios.terminatedContract.start(sc.data).onEnd(function(scTerminatedContract) {
+				sc.data.commentContract = scTerminatedContract.data.commentContract;
+				sc.data.statusContract = scTerminatedContract.data.statusContract;
+				
+				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+					callback();
+					return;
+				}
+				
+				startCoverageChangeContract(sc, callback, function() {
+					startTerminatedInAdvanceContract(sc, callback, function() {
+						callback();
+					});
+				});
+			});
+		}
+	});
 }
+
+function startCoverageChangeContract(sc, callbackError, callbackSuccess) {
+	ActivInfinitev7.scenarios.coverageChangeContract.start(sc.data).onEnd(function(scCoverageChangeContract) {
+		sc.data.commentContract = scCoverageChangeContract.data.commentContract;
+		sc.data.statusContract = scCoverageChangeContract.data.statusContract;
+		
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+			callbackError();
+			return;
+		}
+		
+		callbackSuccess();
+	});
+}
+
+function startTerminatedInAdvanceContract(sc, callbackError, callbackSuccess) {
+	ActivInfinitev7.scenarios.terminatedInAdvanceContract.start(sc.data).onEnd(function(scTerminatedInAdvanceContract) {
+		sc.data.commentContract = scTerminatedInAdvanceContract.data.commentContract;
+		sc.data.statusContract = scTerminatedInAdvanceContract.data.statusContract;
+		
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+			callback();
+			return;
+		}
+		
+		callbackSuccess();
+	});
+}
+
