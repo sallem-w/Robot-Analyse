@@ -88,7 +88,7 @@ function startScenarioACS(sc, data, callback) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
-		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly) {
 			callback();
 			return;
 		}
