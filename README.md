@@ -67,13 +67,13 @@ LeCheminPathTemplate\template\LeCodeDuScenario.html
 C:\Users\excel\template\ACS.html
 ```
 
-Il n'y a que quatre champs qui sont pris en compte pour l'instant. Ils doivent être écrits sous cette forme :
+Il y a plusieurs champs qui sont pris en compte pour l'instant. Ils doivent être écrits sous cette forme :
 
 ```html
 <h1>Temps total de traitement : {{ totalTimeDuration }}></h1>
 ```
 
-On a les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`.
+On a les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`, `countCaseContractWithProductACS`, `countCaseProductTerminated`.
 Vous pouvez retrouver un exemple de fichier html dans le dossier template qui se trouve à la racine du projet.
 
 # Déploiement
