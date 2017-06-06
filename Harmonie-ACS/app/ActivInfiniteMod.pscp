@@ -381,7 +381,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Attestations]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Attestations]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -391,7 +391,7 @@
 								<TAG Name="LI" Scope="All">
 									<TAG Name="DIV" Scope="Children" />
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -409,7 +409,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Couverture des Adhérents]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Couverture des Adhérents]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -469,7 +469,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Echéances du compte cotisant]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Echéances du compte cotisant]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
