@@ -152,7 +152,7 @@ function startTerminatedInAdvanceContract(sc, callbackError, callbackSuccess) {
 		sc.data.statusContract = scTerminatedInAdvanceContract.data.statusContract;
 		
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
-			callback();
+			callbackError();
 			return;
 		}
 		
