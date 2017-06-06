@@ -25,6 +25,7 @@ ActivInfinitev7.step({ initScenarioACS : function(ev, sc, st) {
 
 	ctx.trace.writeInfo('STEP - readFile');
 	sc.data.contracts = ctx.excelFile.readFile();
+
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
@@ -74,5 +75,6 @@ ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
 	ctx.excelFile.writeStats(stats);
+
 	sc.endStep();
 }});
