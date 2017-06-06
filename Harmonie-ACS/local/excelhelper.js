@@ -33,6 +33,35 @@
 			ctx.excel.sheet.setCell(rowIndex, message.columnIndex, String(message.value)); 
 		}
 	};
+	
+	excelHelper.openFile = function(pathFileExcel) {
+		ctx.trace.writeInfo('STEP - openFile');
+		ctx.excel.initialize();
+		try {
+			ctx.excel.file.open(pathFileExcel);
+		} catch (ex) {
+			ctx.trace.writeError('Can not copy open excel file, ' + pathFileExcel);
+		}
+	}
+	
+	excelHelper.copyFile = function(pathFileExcel, startRowIndex, writeColumn) {
+		ctx.trace.writeInfo('STEP - copyFile');
+		try {
+			ctx.excel.file.saveAs(pathFileExcel); 
+			ctx.excelHelper.write(startRowIndex, writeColumn);
+			ctx.trace.writeInfo("Create Output Excel file succeed");
+		} catch (ex) {
+			ctx.trace.writeError('Can not copy save excel file, ' + pathFileExcel);
+		}
+	}
+	
+	excelHelper.closeFile = function() {
+		ctx.trace.writeInfo('STEP - closeFile');
+		var workbook = ctx.excel.getWorkbooks()[0];
+		ctx.excel.file.close(workbook, true);
+		ctx.excel.release();
+		ctx.excel.end();
+	}
 
 	return excelHelper;
 }) ();

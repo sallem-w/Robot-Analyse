@@ -1,11 +1,11 @@
-﻿ctx.excelFileV7ACS = (function() {
+﻿ctx.excelFile = (function() {
 	
 	var config;
 	var configExcel;
 	
-	var excelFileV7ACS = {};
+	var excelFile = {};
 	
-	excelFileV7ACS.initConfig = function() {
+	excelFile.initConfig = function() {
 		if (!ctx.configACS.init()) {
 			return false;
 		}
@@ -15,7 +15,7 @@
 		return true;
 	}
 	
-	excelFileV7ACS.getHeaderFile = function() {
+	excelFile.getHeaderFile = function() {
 		var writeArray = [
 			{ columnIndex: configExcel.columnIndex.dateProceedContract, value: "Date traitement contrat" },
 			{ columnIndex: configExcel.columnIndex.statusContract, value: "Status contrat" },
@@ -24,16 +24,16 @@
 		return writeArray;
 	}
 	
-	excelFileV7ACS.startRowIndex = function() {
+	excelFile.startRowIndex = function() {
 		return configExcel.startRowIndex - 1;
 	}
 
-	excelFileV7ACS.readFile = function() {
+	excelFile.readFile = function() {
 		var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcel.startColumnIndex) + configExcel.startRowIndex) - 1;
-		return ctx.excelFileV7ACS.getAllCellsACS(lastIndexRow, configExcel);
+		return ctx.excelFile.getAllCellsACS(lastIndexRow, configExcel);
 	}
 	
-	excelFileV7ACS.getAllCellsACS = function(lastIndexRow, configACSExcel) {
+	excelFile.getAllCellsACS = function(lastIndexRow, configACSExcel) {
 		var contracts = [];
 		for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
 			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
@@ -58,8 +58,9 @@
 		return contracts;
 	}
 	
-	excelFileV7ACS.writeStats = function(obj) {
+	excelFile.writeStats = function(obj) {
 		ctx.stats.write(obj);
 	}
-	return excelFileV7ACS;
+	
+	return excelFile;
 }) ();

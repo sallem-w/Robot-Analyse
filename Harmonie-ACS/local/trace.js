@@ -42,7 +42,7 @@
 		txtTrace = txtTrace + ctx.date.formatTrace(dateObj) + separator + typeError + separator + str + '\r\n';
 		ctx.fso.file.write(pathFileTrace, txtTrace);
 		
-		if (ctx.isDebug()) {
+		if (ctx.options.isDebug) {
 			ctx.log(typeError + '		' + str);
 		}
 	};

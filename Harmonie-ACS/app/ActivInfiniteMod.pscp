@@ -914,7 +914,8 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="ExcelFileV7ACS" Folder="ScenarioACS" Src="ExcelFileV7ACS.js" />
+				<SCRIPT Name="ScenarioACS" Folder="ScenarioACS" Src="ScenarioACS.js" />
+				<SCRIPT Name="ExcelFile" Src="ExcelFile.js" />
 				<SCRIPT Name="TerminatedProductACS" Folder="ScenarioACS" Src="TerminatedProduct.js" />
 				<SCRIPT Name="CheckContractACS" Folder="ScenarioACS" Src="CheckContractACS.js" />
 				<SCRIPT Name="TerminatedContractV7" Src="TerminatedContractV7.js" Folder="ScenarioACS" />
