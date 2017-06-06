@@ -40,7 +40,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var config = ctx.config.getConfigACS();
 	var data = { contract: currentContracts, config: config, configExcel: config.excel };
 	
-	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(s) {
+	startScenarioACS(sc, data, (function() {
 		sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
@@ -49,8 +49,8 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 
 		var writeArray = [
 			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
-			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: s.data.statusContract },
-			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: sc.data.statusContract },
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: sc.data.commentContract }
 		];
 		
 		ctx.excelHelper.write(currentContracts.row, writeArray);
@@ -61,7 +61,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 		} else {
 			sc.endStep();
 		}
-	});
+	}));
 }});
 
 ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
@@ -78,3 +78,18 @@ ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
 
 	sc.endStep();
 }});
+
+function startScenarioACS(sc, data, callback) {
+	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(scCheckContract) {
+		sc.data.commentContract = scCheckContract.data.commentContract;
+		sc.data.statusContract = scCheckContract.data.statusContract;
+		
+		ActivInfinitev7.scenarios.terminatedProduct.start(sc.data).onEnd(function(scTerminatedProduct) {
+				sc.data.commentContract = scTerminatedProduct.data.commentContract;
+				sc.data.statusContract = scTerminatedProduct.data.statusContract;
+			
+		});
+
+		callback();
+	})
+}
