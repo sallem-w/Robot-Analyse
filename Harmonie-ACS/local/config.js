@@ -2,8 +2,10 @@
 	
 	var pathFileConfig = 'C:\\deploy\\config.json';
 	var config = {};
-	
 	var configFile = {};
+	
+	config.CMU = 'CMU';
+	config.ACS = 'ACS';
 	
 	config.loadConfigFile = function() {
 		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
@@ -14,20 +16,8 @@
 		return configFile.pathTemplate;
 	}
 	
-	config.getConfigACS = function() {
-		return configFile.ACS;
-	}
-	
-	config.getConfigCMU = function() {
-		return configFile.CMU;
-	}
-	
-	config.getCodeScenarioACS = function() {
-		return 'ACS';
-	}
-	
-	config.getCodeScenarioCMU = function() {
-		return 'CMU';
+	config.getConfig = function(codeScenario) {
+		return configFile[codeScenario];
 	}
 	
 	config.getTimeout = function() {

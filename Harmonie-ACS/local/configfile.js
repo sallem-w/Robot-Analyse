@@ -1,5 +1,4 @@
 ﻿ctx.configFile = (function() {
-	
 	var rootPath;
 	var codeScenario;
 	var fileNameExcel;
@@ -7,7 +6,8 @@
 	
 	var configFile = {};
 	
-	configFile.init = function(config, codeScenario) {
+	configFile.init = function(codeScenario) {
+		var config = ctx.config.getConfig(codeScenario);
 		rootPath = config.rootPath;
 		
 		var files = ctx.fso.folder.getFileCollection(rootPath);

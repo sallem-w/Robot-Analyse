@@ -5,12 +5,12 @@
 	
 	var excelFile = {};
 	
-	excelFile.initConfig = function() {
-		if (!ctx.configACS.init()) {
+	excelFile.initConfig = function(codeScenario) {
+		if (!ctx.configFile.init(codeScenario)) {
 			return false;
 		}
 			
-		config = ctx.config.getConfigACS();
+		config = ctx.config.getConfig(codeScenario);
 		configExcel = config.excel;
 		return true;
 	}
@@ -36,6 +36,31 @@
 	excelFile.getAllCellsACS = function(lastIndexRow, configACSExcel) {
 		var contracts = [];
 		for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
+			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
+			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
+				continue;
+			}
+			
+			var contract = {
+				row : i,
+				individualContract: ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))), '00000000'),
+				insuredIdentifiant: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredIdentifiant))),
+				insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
+				insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
+				subscribedCodeProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedCodeProduct)),
+				ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
+				ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
+				scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
+				paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
+			};
+			contracts.push(contract);
+		}
+		return contracts;
+	}
+	
+	excelFile.getAllCellsCMU = function(lastIndexRow, configACSExcel) {
+		var contracts = [];
+		for (var i = config.startRowIndex; i <= lastIndexRow; i++) {
 			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
 			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
 				continue;
