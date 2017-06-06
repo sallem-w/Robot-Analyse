@@ -68,11 +68,11 @@ ActivInfinitev7.step({ endScenarioACS : function(ev, sc, st) {
 	ctx.excelHelper.closeFile();
 	
 	ctx.trace.writeInfo('STEP - writeStats');
-	var obj = {};
-	obj['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
-	obj['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
-	obj['countCaseProcessed'] = sc.data.countCaseProcessed;
-	obj['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
-	ctx.excelFileV7ACS.writeStats(obj);
+	var stats = {};
+	stats['fileName'] = ctx.configACS.getFileNameOutputExcelACS();
+	stats['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
+	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
+	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
+	ctx.excelFileV7ACS.writeStats(stats);
 	sc.endStep();
 }});
