@@ -13,9 +13,11 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	
 	var currentContracts = sc.data.contracts[i];
 	var config = ctx.config.getConfig(ctx.config.CMU);
-	var data = { contract: currentContracts, config: config, configExcel: config.excel };
+	sc.data.contract = currentContracts;
+	sc.data.config = config;
+	sc.data.configExcel = config.excel;
 	
-	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(s) {
+	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(s) { // TODO : change to the good scenario into the next PR
 		sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {

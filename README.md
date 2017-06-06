@@ -42,7 +42,6 @@ Exemple de template du fichier de configuration :
             "TPSARLACSC": "TPSARLSACC"
         }
     },
-
     "CMU":{
         "rootPath": "C:\\Users\\excel\\CMU-1\\", 
         "controlOnly": false,

@@ -31,10 +31,19 @@
 
 	excelFile.readFile = function(codeScenario) {
 		var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcel.startColumnIndex) + configExcel.startRowIndex) - 1;
-		if (codeScenario === ctx.config.ACS) {
-			return ctx.excelFile.getAllCellsACS(lastIndexRow, configExcel);
+		switch (codeScenario) {
+			case ctx.config.ACS :
+				return ctx.excelFile.getAllCellsACS(lastIndexRow, configExcel);
+				break;
+			case ctx.config.CMU :
+				return ctx.excelFile.getAllCellsCMU(lastIndexRow, configExcel);
+				break;
+			default: 
+				var errorMessage = 'Scenario not found into excel readfile. Code found : ' + codeScenario;
+				ctx.trace.writeError(errorMessage);
+				throw new Error(errorMessage);
+				break;
 		}
-		return ctx.excelFile.getAllCellsCMU(lastIndexRow, configExcel);
 	}
 	
 	excelFile.getAllCellsACS = function(lastIndexRow, configACSExcel) {
@@ -65,7 +74,6 @@
 	excelFile.getAllCellsCMU = function(lastIndexRow) {
 		var contracts = [];
 		var insured = [];
-		var listNumContract = [];
 		var lastIndividualContract;
 		for (var i = configExcel.startRowIndex; i <= lastIndexRow; i++) {
 			var dateProceedContract = ctx.excel.sheet.getCell(i, configExcel.columnIndex.dateProceedContract);
@@ -83,7 +91,6 @@
 					insured = [];
 				}
 				lastIndividualContract = individualContract;
-				listNumContract.push(individualContract);
 			}
 			insured.push(contract)
 		}
@@ -95,17 +102,15 @@
 		ctx.stats.write(obj);
 	}
 	
-	
-function createInsuredObject(indexOfExcel) {
-	var res = {};
-	var keys = Object.keys(configExcel.columnIndex);
-	for (var i in keys) {
-		var key = keys[i];
-		var test = ctx.excel.sheet.getCell(indexOfExcel, configExcel.columnIndex[key]);
-		res[key] = ctx.excel.sheet.getCell(indexOfExcel, configExcel.columnIndex[key]);
+	function createInsuredObject(indexOfExcel) {
+		var res = {};
+		var keys = Object.keys(configExcel.columnIndex);
+		for (var i in keys) {
+			var key = keys[i];
+			res[key] = ctx.excel.sheet.getCell(indexOfExcel, configExcel.columnIndex[key]);
+		}
+		return res;
 	}
-	return res;
-}
+	
 	return excelFile;
 }) ();
-
