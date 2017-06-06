@@ -11,6 +11,8 @@
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.checkBlockNote);
 	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
+	sc.step(ActivInfinitev7.steps.conditionControlContribution);
+	sc.step(ActivInfinitev7.steps.checkContribution);
 	sc.step(ActivInfinitev7.steps.checkProductList);
 	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -213,7 +215,57 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinitev7.pCertificateHelpCS.btProductList.click();
+	ActivInfinitev7.pCertificateHelpCS.btVisuCotisation.click();
+	ActivInfinitev7.pContribution.wait(function() {
+		sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - conditionControlContribution');
+	if (sc.data.config.controlContribution) {
+		sc.endStep();
+		return;
+	}
+	
+	ActivInfinitev7.pContribution.btProductList.click();
+	
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.indexBenef = 0;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.dataBenef = [];
+		sc.endStep(ActivInfinitev7.steps.checkProductList);
+	});
+}});
+
+
+ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
+
+	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
+	var isValidContribution = false;
+	
+	for (var index in ActivInfinitev7.pContribution.oDateEch.getAll()) {
+		var dateEch = ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(index).get());
+		var balanceEch = ctx.string.trim(ActivInfinitev7.pContribution.oBalanceEch.i(index).get());
+		
+		if (ctx.date.parseToDate(dateEch) <= compareDate) {
+			isValidContribution = (parseFloat(balanceEch) < 1)
+			break;
+		}
+	}
+	
+	if (!isValidContribution) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
+		sc.data.commentContract = 'Solde comptable non à jour';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		ctx.scenarioHelper.goHome(function() {
+			sc.endScenario();
+		});
+		return;
+	}
+	
+	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
 		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();

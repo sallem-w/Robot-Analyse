@@ -377,21 +377,21 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btProductList">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="79.R0R1R7R0R0R0R2R0R4">
-									<TAG Name="DIV" Scope="Children" CapturedPos="79.R0R1R7R0R0R0R2R0R4R0" />
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Attestations]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Attestations]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btVisuCotisation">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children" />
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -409,7 +409,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Couverture des Adhérents]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Couverture des Adhérents]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -458,6 +458,65 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
+				</PAGE>
+				<PAGE Name="pContribution" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC36_900&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC3Q_800&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Echéances du compte cotisant]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateEch">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R1R0R0R0R3R1R0R1">
+									<TAG Name="TR" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R1R0R0R0R3R1R0R1R1R2" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R1R0R0R0R3R1R0R1R1R2R0" Range="0">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBalanceEch">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="6">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[idTableEch]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btProductList">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children" />
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN0024_1743355_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="01/06/2017 17:43:40" />
 				</PAGE>
 				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
