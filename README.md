@@ -67,7 +67,7 @@ LeCheminPathTemplate\template\LeCodeDuScenario.html
 C:\Users\excel\template\ACS.html
 ```
 
-Il n'y a plusieurs champs qui sont pris en compte pour l'instant. Ils doivent être écrits sous cette forme :
+Il y a plusieurs champs qui sont pris en compte pour l'instant. Ils doivent être écrits sous cette forme :
 
 ```html
 <h1>Temps total de traitement : {{ totalTimeDuration }}></h1>
