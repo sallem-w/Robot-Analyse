@@ -30,10 +30,10 @@
 
 	excelFileV7ACS.readFile = function() {
 		var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcel.startColumnIndex) + configExcel.startRowIndex) - 1;
-		return ctx.excelFileV7ACS.getAllCellsv7(lastIndexRow, configExcel);
+		return ctx.excelFileV7ACS.getAllCellsACS(lastIndexRow, configExcel);
 	}
 	
-	excelFileV7ACS.getAllCellsv7 = function(lastIndexRow, configACSExcel) {
+	excelFileV7ACS.getAllCellsACS = function(lastIndexRow, configACSExcel) {
 		var contracts = [];
 		for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
 			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
