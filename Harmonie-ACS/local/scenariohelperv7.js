@@ -46,5 +46,15 @@
 		});
 	}
 	
+	scenarioHelper.searchASSPRI = function(beneficiaries) {
+		for (var i in beneficiaries) {
+			var beneficiary = beneficiaries[i];
+			if (beneficiary.type === 'ASSPRI') {
+				return beneficiary;
+			}
+		}
+		return false;
+	}
+	
 	return scenarioHelper;
 }) ();

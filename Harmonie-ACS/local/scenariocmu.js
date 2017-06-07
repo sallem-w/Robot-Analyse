@@ -10,14 +10,17 @@
 	
 ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
-	
-	var currentContracts = sc.data.contracts[i];
 	var config = ctx.config.getConfig(ctx.config.CMU);
-	sc.data.contract = currentContracts;
+	sc.data.beneficiaries = sc.data.contracts[i];
+	sc.data.contract = ctx.scenarioHelper.searchASSPRI(sc.data.beneficiaries)
+	if (!sc.data.contract) {
+		ctx.trace.writeError('ASSPRI is not found');
+		throw new Error('ASSPRI is not found');
+	}
 	sc.data.config = config;
 	sc.data.configExcel = config.excel;
 	
-	ActivInfinitev7.scenarios.checkContract.start(data).onEnd(function(s) { // TODO : change to the good scenario into the next PR
+	ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(s) {
 		sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
@@ -30,7 +33,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
 		];
 		
-		ctx.excelHelper.write(currentContracts.row, writeArray);
+		ctx.excelHelper.write(sc.data.contract.row, writeArray);
 		
 		if (i < sc.data.contracts.length - 1) {
 			sc.data.indexCurrentContract += 1;

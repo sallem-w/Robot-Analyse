@@ -28,6 +28,7 @@ ActivInfinitev7.pTerminatedContractFo.btNext = ActivInfinitev7.pTerminatedContra
 ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateBlockNote');
 ActivInfinitev7.pTerminatedContractFo.btClose = ActivInfinitev7.pTerminatedContractFo.addItem('btClose');
 ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
+ActivInfinitev7.pTerminatedContractFo.btNavigateInsuredIden = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateInsuredIden');
 
 ActivInfinitev7.pBlockNotes = ActivInfinitev7.addPage('pBlockNotes', {"comment":"Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlockNotes.oContentBlockNote = ActivInfinitev7.pBlockNotes.addItem('oContentBlockNote');
@@ -39,6 +40,7 @@ ActivInfinitev7.pBlockNotes.btClose = ActivInfinitev7.pBlockNotes.addItem('btClo
 ActivInfinitev7.pInsuredIdent = ActivInfinitev7.addPage('pInsuredIdent', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIdent.addItem('btHelpCSCertificate');
 ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pInsuredIdent.btInfoRo = ActivInfinitev7.pInsuredIdent.addItem('btInfoRo');
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
@@ -107,3 +109,6 @@ ActivInfinitev7.pCoverageImmediateCar = ActivInfinitev7.addPage('pCoverageImmedi
 ActivInfinitev7.pCoverageImmediateCar.oEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oEditionCheck', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.oTitlePage = ActivInfinitev7.pCoverageImmediateCar.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.btNext = ActivInfinitev7.pCoverageImmediateCar.addItem('btNext');
+
+ActivInfinitev7.pInfoRo = ActivInfinitev7.addPage('pInfoRo', {"comment":"Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACRO_402\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pInfoRo.oTitlePage = ActivInfinitev7.pInfoRo.addItem('oTitlePage');
