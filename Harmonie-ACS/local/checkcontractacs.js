@@ -354,7 +354,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.getCodeScenarioACS());
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
 	sc.endStep();
 }});
 
