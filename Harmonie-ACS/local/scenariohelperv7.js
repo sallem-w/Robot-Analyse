@@ -63,7 +63,5 @@
 		return false;
 	}
 	
-	
-	
 	return scenarioHelper;
 }) ();

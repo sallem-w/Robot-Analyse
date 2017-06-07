@@ -39,7 +39,13 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 
 	if (sc.data.indexBenef === 0) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
-		// TODO : save the end date into variable for compare to other date
+		sc.data.dateEndEffectToCompare = getEndEffectInfiniteDate();
+		if (!sc.data.dateEndEffectToCompare) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - No end effect date found for CMU');
+			sc.data.commentContract = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		}
+		
 		// TODO compare date to Excel
 		sc.data.indexBenef += 1;
 		sc.endStep();
@@ -72,3 +78,18 @@ ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
+
+function getEndEffectInfiniteDate() {
+	var infiniteParticularSituationRows = ActivInfinitev7.pInfoRo.oCodeProduct.getAll();
+	var dateEndEffect;
+	
+	for (var i in infiniteParticularSituationRows) {
+		if (infiniteParticularSituationRows[i] === 'CMU') {
+			var currentDate = new Date(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
+			if (dateEndEffect === undefined || ctx.date.isBefore(dateEndEffect, currentDate)) {
+				dateEndEffect = currentDate;
+			}
+		}
+	}
+	return dateEndEffect;
+}
