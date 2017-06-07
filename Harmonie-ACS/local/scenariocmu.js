@@ -15,7 +15,16 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	sc.data.contract = ctx.scenarioHelper.searchInsuredFromType(ctx.scenarioHelper.constantes.ASSPRI, sc.data.beneficiaries);
 	if (!sc.data.contract) {
 		ctx.trace.writeError('ASSPRI is not found');
-		throw new Error('ASSPRI is not found');
+		sc.data.indexCurrentContract += 1;
+		
+		var writeArray = [
+			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: ctx.excelHelper.constants.status.Fail},
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: 'l\'ASSPRI n\'a pas été trouvé dans le fichier excel' }
+		];
+		
+		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
 	}
 	sc.data.config = config;
 	sc.data.configExcel = config.excel;
