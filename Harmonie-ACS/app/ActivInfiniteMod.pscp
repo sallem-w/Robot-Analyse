@@ -235,7 +235,7 @@
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Identification des assurés]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Identification des assurés]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -947,7 +947,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R18R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Informations RO]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Informations RO]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -990,6 +990,22 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[ListeAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEndEffect">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0R1R0R9" Range="5">
+											<TAG Name="P" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0R1R0R9R1">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[tableParts]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

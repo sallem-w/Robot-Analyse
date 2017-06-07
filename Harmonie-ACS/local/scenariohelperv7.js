@@ -48,7 +48,12 @@
 			callback();
 		});
 	}
-	
+
+	/**
+	 * Function use to find an insured into the list created by the input file.
+	 * type : String 
+	 * Array of contract
+	 */	
 	scenarioHelper.searchInsuredFromType = function(type, beneficiaries) {
 		for (var i in beneficiaries) {
 			if (beneficiaries[i].type === type) {
@@ -57,6 +62,8 @@
 		}
 		return false;
 	}
+	
+	
 	
 	return scenarioHelper;
 }) ();
