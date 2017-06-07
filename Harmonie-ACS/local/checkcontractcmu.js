@@ -58,7 +58,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 
 	currentBeneficiaryInfinite.click();
 	ActivInfinitev7.pInfoRo.events.UNLOAD.on(function() {
-		ActivInfinitev7.pInfoRo.events.ACTIVATE.on(function() {
+		ActivInfinitev7.pInfoRo.events.LOAD.on(function() {
 			// TODO : compare date to Excel & compare date to other beneficiary
 			sc.data.indexBenef += 1;
 			sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
@@ -72,5 +72,3 @@ ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
 		sc.endStep();
 	});
 }});
-
-	
