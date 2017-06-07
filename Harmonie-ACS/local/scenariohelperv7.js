@@ -1,6 +1,9 @@
 ﻿ ctx.scenarioHelper = (function() {
 	
 	var scenarioHelper = {};
+	scenarioHelper.constantes = {
+		ASSPRI: 'ASSPRI'
+	};
 	
 	scenarioHelper.getMessagesPopup = function() {
 		function getMessages() {
@@ -44,6 +47,15 @@
 		ActivInfinitev7.pDashboard.wait(function() {
 			callback();
 		});
+	}
+	
+	scenarioHelper.searchInsuredFromType = function(type, beneficiaries) {
+		for (var i in beneficiaries) {
+			if (beneficiaries[i].type === type) {
+				return beneficiaries[i];
+			}
+		}
+		return false;
 	}
 	
 	return scenarioHelper;
