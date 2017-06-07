@@ -136,3 +136,12 @@ Il suffit de zipper le dossier `deploy` et de le fournir aux utilisateurs.
 - Extraire le zip dans « C : »
 - Aller dans le fichier config.json pour mettre le chemin vers le dossier qui contient votre fichier Excel
 - Lancer le raccourci Contextor
+
+# Utilisation de git
+
+Lors de notre utilisation de git sur les VDI, nous avons constaté un problème venant de l'utilisation d'un proxy. 
+Pour règler ce problème il faut taper la commande suivante dans un invite de commande : 
+
+`git config --global http.proxy http://nomUtilisateur:motDePasse@sr37cti00073507.hm.dm.ad:8080/` 
+
+Il ne faut pas oublier de remplacer `nomUtilisateur` et `motDePasse` par vos identifiants.
