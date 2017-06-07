@@ -34,20 +34,18 @@ ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
 	ActivInfinitev7.pDashboard.execScript('navigateToSynthesisInjection()');
-	ActivInfinitev7.pSynthesis.wait(function() {
+	ActivInfinitev7.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
-	ActivInfinitev7.pSynthesis.oTypeIdentification.set('PEPE'); // Select "Personne" on list
-	ActivInfinitev7.pSynthesis.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
-	ActivInfinitev7.pSynthesis.btSearch.click();
-	ActivInfinitev7.pSynthesis.events.UNLOAD.on(function() {
-		ActivInfinitev7.pSynthesis.events.LOAD.on(function() {
-			sc.endStep();
-		});
+	ActivInfinitev7.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ActivInfinitev7.pSynthesisSearch.btSearch.click();
+	ActivInfinitev7.pSynthesis.wait(function() {
+		sc.endStep();
 	});
 }});
 

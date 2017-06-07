@@ -8,11 +8,16 @@ var ActivInfinitev7 = ctx.addApplication('ActivInfinitev7', {"comment":"v7","nat
 ActivInfinitev7.pDashboard = ActivInfinitev7.addPage('pDashboard', {"comment":"haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/"});
 ActivInfinitev7.pDashboard.oMenuHidden = ActivInfinitev7.pDashboard.addItem('oMenuHidden', {"mustExist":true});
 
+ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
+ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pSynthesisSearch.oTitlePage2 = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage2', {"mustNotExist":true});
+ActivInfinitev7.pSynthesisSearch.btSearch = ActivInfinitev7.pSynthesisSearch.addItem('btSearch');
+ActivInfinitev7.pSynthesisSearch.oBenefIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oBenefIdentification');
+ActivInfinitev7.pSynthesisSearch.oTypeIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oTypeIdentification');
+
 ActivInfinitev7.pSynthesis = ActivInfinitev7.addPage('pSynthesis', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher"});
 ActivInfinitev7.pSynthesis.oTitlePage = ActivInfinitev7.pSynthesis.addItem('oTitlePage', {"mustExist":true});
-ActivInfinitev7.pSynthesis.btSearch = ActivInfinitev7.pSynthesis.addItem('btSearch');
-ActivInfinitev7.pSynthesis.oBenefIdentification = ActivInfinitev7.pSynthesis.addItem('oBenefIdentification');
-ActivInfinitev7.pSynthesis.oTypeIdentification = ActivInfinitev7.pSynthesis.addItem('oTypeIdentification');
+ActivInfinitev7.pSynthesis.oTitlePage2 = ActivInfinitev7.pSynthesis.addItem('oTitlePage2', {"mustExist":true});
 ActivInfinitev7.pSynthesis.oDateEnd = ActivInfinitev7.pSynthesis.addItem('oDateEnd', {"occurs":1});
 ActivInfinitev7.pSynthesis.oIndividualContract = ActivInfinitev7.pSynthesis.addItem('oIndividualContract', {"occurs":1});
 
