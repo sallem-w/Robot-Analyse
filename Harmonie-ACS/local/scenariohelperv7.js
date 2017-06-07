@@ -56,5 +56,14 @@
 		return false;
 	}
 	
+	scenarioHelper.insuredIntoInputFile = function(type, beneficiaries) {
+		for (var i in beneficiaries) {
+			if (beneficiaries[i].type === type) {
+				return beneficiaries[i];
+			}
+		}
+		return false;
+	}
+	
 	return scenarioHelper;
 }) ();

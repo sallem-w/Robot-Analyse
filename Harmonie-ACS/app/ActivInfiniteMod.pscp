@@ -952,6 +952,48 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oTypeInsured">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0R1R0R4" Range="4">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oStateProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="0">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRangeInsured">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="1">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[ListeAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2130_0925520_1" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion" CtxtId="93" Techno="WEB" Timestamp="07/06/2017 09:25:56" />
 				</PAGE>
