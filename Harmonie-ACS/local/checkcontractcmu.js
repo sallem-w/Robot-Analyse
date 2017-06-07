@@ -28,30 +28,11 @@ ActivInfinitev7.step({ initializeCheckBeneficiaries: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - initializeCheckBeneficiaries');
 	sc.data.indexBenef = 0;
 	sc.data.countBenef = ActivInfinitev7.pInfoRo.oTypeInsured.count();
+	sc.data.contractIsProlonged = false;
 	sc.endStep();
 }});
 
 ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
-	if (sc.data.indexBenef === sc.data.countBenef) {
-		sc.endStep();
-		return;
-	}
-
-	if (sc.data.indexBenef === 0) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
-		sc.data.dateEndEffectToCompare = getEndEffectInfiniteDate();
-		if (!sc.data.dateEndEffectToCompare) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - No end effect date found for CMU');
-			sc.data.commentContract = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		}
-		
-		// TODO compare date to Excel
-		sc.data.indexBenef += 1;
-		sc.endStep();
-		return;
-	}
-
 	var currentBeneficiaryInfinite = ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef);
 	var currentTypeText = currentBeneficiaryInfinite.get();
 	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(currentTypeText, sc.data.beneficiaries);
@@ -61,12 +42,43 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
 		return;
 	}
+	
+	var dateEndEffectInfinite = getEndEffectInfiniteDate();
+	if (!dateEndEffectInfinite) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - No end effect date found for CMU');
+		sc.data.commentContract = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endStep(ActivInfinitev7.steps.closeConsultation);
+		return;
+	}
+	
+	if (sc.data.indexBenef === 0) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
+		sc.data.dateEndEffectToCompare = dateEndEffectInfinite;
+	}
+	
+	if (ctx.date.isBefore(ctx.date.parseToDate((String)(insuredInfoExcel.particularSituationEndDate)), sc.data.dateEndEffectToCompare)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract prolonged');
+		sc.data.commentContract = 'Contrat prolongé';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		sc.data.contractIsProlonged = true;
+	}
+	
+	// TODO : compare date to other beneficiary
 
-	currentBeneficiaryInfinite.click();
+	if (sc.data.indexBenef === sc.data.countBenef - 1) {
+		if (sc.data.contractIsProlonged) {
+			sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return;
+		}
+		sc.endStep();
+		return;
+	}
+	
+	sc.data.indexBenef += 1;
+	ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef).click();
 	ActivInfinitev7.pInfoRo.events.UNLOAD.on(function() {
 		ActivInfinitev7.pInfoRo.events.LOAD.on(function() {
-			// TODO : compare date to Excel & compare date to other beneficiary
-			sc.data.indexBenef += 1;
 			sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
 		});
 	});
@@ -85,7 +97,7 @@ function getEndEffectInfiniteDate() {
 	
 	for (var i in infiniteParticularSituationRows) {
 		if (infiniteParticularSituationRows[i] === 'CMU') {
-			var currentDate = new Date(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
+			var currentDate = ctx.date.parseToDate(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
 			if (dateEndEffect === undefined || ctx.date.isBefore(dateEndEffect, currentDate)) {
 				dateEndEffect = currentDate;
 			}
