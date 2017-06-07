@@ -1,5 +1,5 @@
 ﻿ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
-	sc.data.scenarioCode = ctx.config.CMU;
+	sc.data.codeScenario = ctx.config.CMU;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
@@ -48,7 +48,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 
 	var currentBeneficiaryInfinite = ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef);
 	var currentTypeText = currentBeneficiaryInfinite.get();
-	var insuredInfoExcel = ctx.scenarioHelper.insuredIntoInputFile(currentTypeText, sc.data.beneficiaries);
+	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(currentTypeText, sc.data.beneficiaries);
 
 	if (!insuredInfoExcel) {
 		sc.data.indexBenef += 1;

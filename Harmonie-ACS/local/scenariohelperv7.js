@@ -1,6 +1,9 @@
 ﻿ ctx.scenarioHelper = (function() {
 	
 	var scenarioHelper = {};
+	scenarioHelper.constantes = {
+		ASSPRI: 'ASSPRI'
+	};
 	
 	scenarioHelper.getMessagesPopup = function() {
 		function getMessages() {
@@ -46,17 +49,7 @@
 		});
 	}
 	
-	scenarioHelper.searchASSPRI = function(beneficiaries) {
-		for (var i in beneficiaries) {
-			var beneficiary = beneficiaries[i];
-			if (beneficiary.type === 'ASSPRI') {
-				return beneficiary;
-			}
-		}
-		return false;
-	}
-	
-	scenarioHelper.insuredIntoInputFile = function(type, beneficiaries) {
+	scenarioHelper.searchInsuredFromType = function(type, beneficiaries) {
 		for (var i in beneficiaries) {
 			if (beneficiaries[i].type === type) {
 				return beneficiaries[i];

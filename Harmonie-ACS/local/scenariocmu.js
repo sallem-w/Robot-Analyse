@@ -12,7 +12,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	var config = ctx.config.getConfig(ctx.config.CMU);
 	sc.data.beneficiaries = sc.data.contracts[i];
-	sc.data.contract = ctx.scenarioHelper.searchASSPRI(sc.data.beneficiaries)
+	sc.data.contract = ctx.scenarioHelper.searchInsuredFromType(ctx.scenarioHelper.constantes.ASSPRI, sc.data.beneficiaries);
 	if (!sc.data.contract) {
 		ctx.trace.writeError('ASSPRI is not found');
 		throw new Error('ASSPRI is not found');

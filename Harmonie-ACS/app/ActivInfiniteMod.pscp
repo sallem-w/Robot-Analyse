@@ -200,7 +200,9 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R1R0R0R1R1">
 									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Bloc-notes niveau individuel]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[Bloc-notes niveau individuel
+
+]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
