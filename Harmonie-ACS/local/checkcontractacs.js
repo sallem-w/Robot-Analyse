@@ -26,14 +26,15 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
 
-	function navigateToSynthesisInjection() {
-		setTimeout(function() {
-			window.location.href = '/mdg/Go.do?id=ACW1&action=afficherContrat';
-		}, 1500);
-	};
+//	function navigateToSynthesisInjection() {
+//		setTimeout(function() {
+//			window.location.href = '/mdg/Go.do?id=ACW1&action=afficherContrat';
+//		}, 1500);
+//	};
 	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
-	ActivInfinitev7.pDashboard.execScript('navigateToSynthesisInjection()');
+//	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
+//	ActivInfinitev7.pDashboard.execScript('navigateToSynthesisInjection()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.synthesis);
 	ActivInfinitev7.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});

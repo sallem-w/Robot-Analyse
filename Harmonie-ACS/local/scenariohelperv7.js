@@ -7,6 +7,10 @@
 		productTerminated : 'RA'
 	};
 	
+	scenarioHelper.pageLinks = {
+		synthesis : '/mdg/Go.do?id=ACW1&action=afficherContrat'
+	};
+	
 	scenarioHelper.getMessagesPopup = function() {
 		function getMessages() {
 			return $('#cgd-toast-container-right .toast-message > .row:first-child').text();
@@ -51,6 +55,17 @@
 		});
 	}
 
+	scenarioHelper.goTo = function(page) {
+		function navigateTo(pageToGo) {
+			setTimeout(function() {
+				window.location.href = pageToGo;
+			}, 1500);
+		}
+		
+		ActivInfinitev7.currentPage.injectFunction(navigateTo);
+		ActivInfinitev7.currentPage.execScript('navigateTo(\''+ page +'\')');
+	}
+	
 	/**
 	 * Function use to find an insured into the list created by the input file.
 	 * type : String 
