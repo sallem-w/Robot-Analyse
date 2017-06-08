@@ -47,7 +47,6 @@ Exemple de template du fichier de configuration :
         "controlOnly": false,
         "controlContribution": false,
         "saveUpdate": false,
-        "autoConnect": true,
         "excel": {
             "startRowIndex": 5,
             "startColumnIndex": 1,
