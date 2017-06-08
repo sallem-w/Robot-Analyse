@@ -183,7 +183,6 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	});
 }});
 
-
 ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 	
@@ -230,12 +229,11 @@ ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
 		sc.data.dataBenef = [];
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 	});
 }});
-
 
 ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
@@ -266,7 +264,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
 		sc.data.dataBenef = [];
 		sc.endStep();
 	});
@@ -283,7 +281,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
 	var nameBenef = nameBenefElement.get();
 	
-	if (sc.data.indexBenef === 0) {
+	if (sc.data.indexBenef === 1) {
 		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
