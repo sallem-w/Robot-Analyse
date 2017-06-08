@@ -48,9 +48,12 @@
 					<OBJETS>
 						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="94.R0R1R8R0R0R0R0">
+								<TAG Name="H2" Scope="All">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Vues de synthèse ]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -110,7 +113,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Critères de recherche simplifiés]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
