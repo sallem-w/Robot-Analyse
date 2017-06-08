@@ -68,6 +68,10 @@
 		return (dateStart.getTime() === dateEnd.getTime());
 	}
 	
+	date.isBefore = function(dateStart, dateEnd) {
+		return (dateStart.getTime() < dateEnd.getTime());
+	}
+	
 	date.now = function() {
 		return new Date().getTime();
 	}
