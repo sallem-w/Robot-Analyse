@@ -59,7 +59,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Détail personne physique]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Détail personne physique]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -146,7 +146,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R3R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Détail personne physique]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Détail personne physique]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
