@@ -21,13 +21,7 @@
 
 ActivInfinitev7.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-	
-	function navigateToCoverageChange() {
-		window.location.href = '/mdg/Go.do?id=ACCC01STD';
-	};
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToCoverageChange);
-	ActivInfinitev7.pDashboard.execScript('navigateToCoverageChange()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.coverageChange);
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});

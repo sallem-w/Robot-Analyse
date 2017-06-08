@@ -25,15 +25,7 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
-
-	function navigateToSynthesisInjection() {
-		setTimeout(function() {
-			window.location.href = '/mdg/Go.do?id=ACW1&action=afficherContrat';
-		}, 1500);
-	};
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
-	ActivInfinitev7.pDashboard.execScript('navigateToSynthesisInjection()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.synthesis);
 	ActivInfinitev7.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});
@@ -113,16 +105,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
-	
-	function navigateToConsultationInjection() {
-		setTimeout(function() {
-			window.location.href = '/mdg/Go.do?id=ACCO03STSO';
-		}, 1500);
-	};
-			
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToConsultationInjection);
-	ActivInfinitev7.pDashboard.execScript('navigateToConsultationInjection()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.consultation);
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
