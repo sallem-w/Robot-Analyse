@@ -121,7 +121,11 @@ function getEndEffectInfiniteDate() {
 	
 	for (var i in infiniteParticularSituationRows) {
 		if (infiniteParticularSituationRows[i] === ctx.config.CMU) {
-			var currentDate = ctx.date.parseToDate(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
+			var currentDate = ctx.string.trim(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
+			if (currentDate === '') {
+				continue;
+			}
+			currentDate = ctx.date.parseToDate(currentDate);
 			if (dateEndEffect === undefined || ctx.date.isBefore(dateEndEffect, currentDate)) {
 				dateEndEffect = currentDate;
 			}
