@@ -9,6 +9,7 @@
 	sc.step(ActivInfinitev7.steps.navigateToInfoRo);
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
+	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
 }});
@@ -29,17 +30,28 @@ ActivInfinitev7.step({ initializeCheckBeneficiaries: function(ev, sc, st) {
 	sc.data.indexBenef = 0;
 	sc.data.countBenef = ActivInfinitev7.pInfoRo.oTypeInsured.count();
 	sc.data.contractIsProlonged = false;
+	sc.data.ASSPRIIsTerminated = false;
+	sc.data.insuredIsValid = false;
 	sc.endStep();
 }});
 
 ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	var currentBeneficiaryInfinite = ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef);
-	var currentTypeText = currentBeneficiaryInfinite.get();
-	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(currentTypeText, sc.data.beneficiaries);
-
+	var typeInsured = currentBeneficiaryInfinite.get();
+	var currentState = ActivInfinitev7.pInfoRo.oStateProduct.i(sc.data.indexBenef).get();
+	
+	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
 	if (!insuredInfoExcel) {
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+		return;
+	}
+	
+	if (isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, currentState)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - ASSPRI is terminated but one or more other beneficiaries are not');
+		sc.data.commentContract = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
 	}
 	
@@ -57,14 +69,14 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		sc.data.dateEndEffectToCompare = dateEndEffectInfinite;
 	}
 	
-	if (ctx.date.isBefore(ctx.date.parseToDate((String)(insuredInfoExcel.particularSituationEndDate)), sc.data.dateEndEffectToCompare)) {
+	if (ctx.date.isBefore(ctx.date.parseToDate(String(insuredInfoExcel.particularSituationEndDate)), sc.data.dateEndEffectToCompare)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract prolonged');
 		sc.data.commentContract = 'Contrat prolongé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.contractIsProlonged = true;
 	}
 	
-	// TODO : compare date to other beneficiary
+	// TODO : compare date to other beneficiary & range (let's talk about that before)
 
 	if (sc.data.indexBenef === sc.data.countBenef - 1) {
 		if (sc.data.contractIsProlonged) {
@@ -84,6 +96,13 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	});
 }});
 
+ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract ready for terminated');
+	sc.data.commentContract = 'À résilier';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+	sc.endStep();
+}});
+
 ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - closeConsultation');
 	ctx.scenarioHelper.goHome(function() {
@@ -91,6 +110,11 @@ ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
 	});
 }});
 
+/**
+ **
+ ** Functions used by scenario
+ **
+ */
 function getEndEffectInfiniteDate() {
 	var infiniteParticularSituationRows = ActivInfinitev7.pInfoRo.oCodeProduct.getAll();
 	var dateEndEffect;
@@ -104,4 +128,14 @@ function getEndEffectInfiniteDate() {
 		}
 	}
 	return dateEndEffect;
+}
+
+function isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, stateProduct) {
+	if (typeInsured === ctx.scenarioHelper.constantes.ASSPRI) {
+		sc.data.ASSPRIIsTerminated = (stateProduct === ctx.scenarioHelper.constantes.productTerminated);
+	} else if (stateProduct === ctx.scenarioHelper.constantes.productValid) {
+		sc.data.insuredIsValid = true;
+	}
+	
+	return (sc.data.insuredIsValid && sc.data.ASSPRIIsTerminated);
 }

@@ -2,7 +2,9 @@
 	
 	var scenarioHelper = {};
 	scenarioHelper.constantes = {
-		ASSPRI: 'ASSPRI'
+		ASSPRI: 'ASSPRI',
+		productValid: 'VA',
+		productTerminated : 'RA'
 	};
 	
 	scenarioHelper.getMessagesPopup = function() {
