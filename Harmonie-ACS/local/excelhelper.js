@@ -56,8 +56,8 @@
 	excelHelper.closeFile = function() {
 		var workbook = ctx.excel.getWorkbooks()[0];
 		ctx.excel.file.close(workbook, true);
-		ctx.excel.release();
 		ctx.excel.end();
+		ctx.excel.release();
 	}
 
 	return excelHelper;
