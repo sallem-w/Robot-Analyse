@@ -325,7 +325,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	
 	if (allContractSameEndDate && validDateCurrentProduct) {
-		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
+		sc.data.commentContract = 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractTerminated = true;
 		ctx.scenarioHelper.goHome(function() {

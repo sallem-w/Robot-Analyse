@@ -71,7 +71,7 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	
 	ctx.trace.writeInfo('STEP - writeStats');
 	var stats = {};
-	stats['fileName'] = ctx.config.getFileNameOutputExcel();
+	stats['fileName'] = ctx.configFile.getFileNameOutputExcel();
 	stats['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
