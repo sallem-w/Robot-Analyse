@@ -18,13 +18,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - product terminated');
-	
-	function navigateToTerminatedProduct() {
-		window.location.href = '/mdg/Go.do?id=ACCC04STD';
-	};
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedProduct);
-	ActivInfinitev7.pDashboard.execScript('navigateToTerminatedProduct()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedProduct);
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
