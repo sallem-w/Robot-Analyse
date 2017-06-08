@@ -15,13 +15,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated contract');
-	
-	function navigateToTerminatedContract() {
-		window.location.href = '/mdg/Go.do?id=ACRE04RE4S';
-	};
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedContract);
-	ActivInfinitev7.pDashboard.execScript('navigateToTerminatedContract()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedContract);
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});

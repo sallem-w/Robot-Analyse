@@ -14,15 +14,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
-
-	function navigateToTerminatedInAdvance() {
-		setTimeout(function() {
-			window.location.href = '/mdg/Go.do?id=ACRE01REAC';
-		}, 1500);
-	};
-	
-	ActivInfinitev7.pDashboard.injectFunction(navigateToTerminatedInAdvance);
-	ActivInfinitev7.pDashboard.execScript('navigateToTerminatedInAdvance()');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedInAdvance);
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
