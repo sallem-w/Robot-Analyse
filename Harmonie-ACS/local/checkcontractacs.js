@@ -292,13 +292,12 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	nameBenefElement.click();
 	
-	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
-			sc.data.indexBenef += 1;
-			sc.endStep(ActivInfinitev7.steps.checkProductList);
-		});
-	});
+	// I use wait instead of unload/load event, I don't understand why this events doesn't work
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkProductList);
+	})
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {

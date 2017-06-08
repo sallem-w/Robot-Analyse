@@ -42,6 +42,8 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfig(ctx.config.ACS);
 	sc.data.configExcel = sc.data.config.excel;
 	sc.data.countCaseProcessed += 1;
+	sc.data.statusContract = '';
+	sc.data.commentContract = '';
 	
 	startScenarioACS(sc, (function() {
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
