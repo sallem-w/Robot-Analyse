@@ -519,6 +519,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oStateProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="0">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableGaranties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>
