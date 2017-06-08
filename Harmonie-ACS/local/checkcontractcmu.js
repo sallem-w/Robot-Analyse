@@ -9,6 +9,7 @@
 	sc.step(ActivInfinitev7.steps.navigateToInfoRo);
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
+	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -93,6 +94,14 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		ActivInfinitev7.pInfoRo.events.LOAD.on(function() {
 			sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
 		});
+	});
+}});
+
+ActivInfinitev7.step({ navigateToProductList: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - navigateToProductList');
+	ActivInfinitev7.pInfoRo.btNavigateProductList.click();
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.endStep();
 	});
 }});
 

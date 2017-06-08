@@ -124,3 +124,4 @@ ActivInfinitev7.pInfoRo.oStateProduct = ActivInfinitev7.pInfoRo.addItem('oStateP
 ActivInfinitev7.pInfoRo.oRangeInsured = ActivInfinitev7.pInfoRo.addItem('oRangeInsured', {"occurs":1});
 ActivInfinitev7.pInfoRo.oEndEffectProductDate = ActivInfinitev7.pInfoRo.addItem('oEndEffectProductDate', {"occurs":1});
 ActivInfinitev7.pInfoRo.oCodeProduct = ActivInfinitev7.pInfoRo.addItem('oCodeProduct', {"occurs":1});
+ActivInfinitev7.pInfoRo.btNavigateProductList = ActivInfinitev7.pInfoRo.addItem('btNavigateProductList');
