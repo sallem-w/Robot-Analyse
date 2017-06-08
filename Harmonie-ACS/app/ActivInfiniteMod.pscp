@@ -50,7 +50,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
@@ -113,7 +113,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Critères de recherche simplifiés]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-search-title]]></VALUE>
@@ -239,9 +239,7 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R1R0R0R1R1">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Bloc-notes niveau individuel
-
-]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Bloc-notes niveau individuel]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
