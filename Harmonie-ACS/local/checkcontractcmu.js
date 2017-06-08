@@ -120,7 +120,7 @@ function getEndEffectInfiniteDate() {
 	var dateEndEffect;
 	
 	for (var i in infiniteParticularSituationRows) {
-		if (infiniteParticularSituationRows[i] === 'CMU') {
+		if (infiniteParticularSituationRows[i] === ctx.config.CMU) {
 			var currentDate = ctx.date.parseToDate(ActivInfinitev7.pInfoRo.oEndEffectProductDate.i(i).get());
 			if (dateEndEffect === undefined || ctx.date.isBefore(dateEndEffect, currentDate)) {
 				dateEndEffect = currentDate;
