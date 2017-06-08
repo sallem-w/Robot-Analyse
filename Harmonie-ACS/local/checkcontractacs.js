@@ -34,20 +34,18 @@ ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
 	
 	ActivInfinitev7.pDashboard.injectFunction(navigateToSynthesisInjection);
 	ActivInfinitev7.pDashboard.execScript('navigateToSynthesisInjection()');
-	ActivInfinitev7.pSynthesis.wait(function() {
+	ActivInfinitev7.pSynthesisSearch.wait(function() {
 		sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
-	ActivInfinitev7.pSynthesis.oTypeIdentification.set('PEPE'); // Select "Personne" on list
-	ActivInfinitev7.pSynthesis.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
-	ActivInfinitev7.pSynthesis.btSearch.click();
-	ActivInfinitev7.pSynthesis.events.UNLOAD.on(function() {
-		ActivInfinitev7.pSynthesis.events.LOAD.on(function() {
-			sc.endStep();
-		});
+	ActivInfinitev7.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ActivInfinitev7.pSynthesisSearch.btSearch.click();
+	ActivInfinitev7.pSynthesis.wait(function() {
+		sc.endStep();
 	});
 }});
 
@@ -185,7 +183,6 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	});
 }});
 
-
 ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 	
@@ -232,12 +229,11 @@ ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
 		sc.data.dataBenef = [];
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 	});
 }});
-
 
 ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
@@ -268,7 +264,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
 		sc.data.dataBenef = [];
 		sc.endStep();
 	});
@@ -285,7 +281,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
 	var nameBenef = nameBenefElement.get();
 	
-	if (sc.data.indexBenef === 0) {
+	if (sc.data.indexBenef === 1) {
 		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
@@ -294,13 +290,12 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	nameBenefElement.click();
 	
-	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
-			sc.data.indexBenef += 1;
-			sc.endStep(ActivInfinitev7.steps.checkProductList);
-		});
-	});
+	// I use wait instead of unload/load event, I don't understand why this events doesn't work
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkProductList);
+	})
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
@@ -327,7 +322,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	
 	if (allContractSameEndDate && validDateCurrentProduct) {
-		sc.data.commentContract += 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
+		sc.data.commentContract = 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractTerminated = true;
 		ctx.scenarioHelper.goHome(function() {

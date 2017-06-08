@@ -42,6 +42,8 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	sc.data.config = ctx.config.getConfig(ctx.config.ACS);
 	sc.data.configExcel = sc.data.config.excel;
 	sc.data.countCaseProcessed += 1;
+	sc.data.statusContract = '';
+	sc.data.commentContract = '';
 	
 	startScenarioACS(sc, (function() {
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
@@ -71,7 +73,7 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	
 	ctx.trace.writeInfo('STEP - writeStats');
 	var stats = {};
-	stats['fileName'] = ctx.config.getFileNameOutputExcel();
+	stats['fileName'] = ctx.configFile.getFileNameOutputExcel();
 	stats['totalTimeDuration'] = ctx.date.diffToSecond(sc.data.totalTimeDuration, new Date());
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
