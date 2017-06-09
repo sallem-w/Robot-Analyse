@@ -212,7 +212,7 @@ ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
 		sc.data.dataBenef = [];
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
 	});
@@ -247,7 +247,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count() - 1;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
 		sc.data.dataBenef = [];
 		sc.endStep();
 	});
@@ -264,7 +264,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
 	var nameBenef = nameBenefElement.get();
 	
-	if (sc.data.indexBenef === 1) {
+	if (sc.data.indexBenef === 0) {
 		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkProductList);
@@ -273,12 +273,13 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	nameBenefElement.click();
 	
-	// I use wait instead of unload/load event, I don't understand why this events doesn't work
-	ActivInfinitev7.pProductList.wait(function() {
-		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
-		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkProductList);
-	})
+	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
+		ActivInfinitev7.pProductList.events.LOAD.on(function() {
+			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
+			sc.data.indexBenef += 1;
+			sc.endStep(ActivInfinitev7.steps.checkProductList);
+		});
+	});
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
@@ -358,7 +359,6 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 function GetDataProductPage(nameBenef) {
 	
 	var data = [];
-		
 	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
 		var codeProduct = ctx.string.trim(ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get());
 		var endDateProduct = ctx.string.trim(ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get());
