@@ -996,7 +996,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Situations particulières]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Situations particulières]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>

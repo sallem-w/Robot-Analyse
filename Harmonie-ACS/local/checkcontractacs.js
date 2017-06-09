@@ -44,7 +44,8 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	if (ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get() === "Aucune donnée disponible dans le tableau") {
+	if (ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
+		  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau") {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
 		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
