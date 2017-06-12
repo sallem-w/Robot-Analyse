@@ -44,7 +44,8 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	if (ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get() === "Aucune donnée disponible dans le tableau") {
+	if (ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
+		  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau") {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
 		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -77,7 +78,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	
 	if (countOpenContractLists > 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
-		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
+		sc.data.commentContract = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -95,7 +96,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		});
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
-		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
+		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -323,7 +324,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
-		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun lors de la vérification de de la page produit';
+		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();

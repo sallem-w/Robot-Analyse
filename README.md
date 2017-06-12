@@ -104,7 +104,7 @@ Il y a plusieurs champs qui sont pris en compte pour l'instant. Ils doivent êtr
 <h1>Temps total de traitement : {{ totalTimeDuration }}></h1>
 ```
 
-On a les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`, `countCaseContractWithProductACS`, `countCaseProductTerminated`.
+On a les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`, `countCaseFailProcessed`, `countCaseContractWithProductACS`, `countCaseProductTerminated`.
 Vous pouvez retrouver un exemple de fichier html dans le dossier template qui se trouve à la racine du projet.
 
 # Déploiement
