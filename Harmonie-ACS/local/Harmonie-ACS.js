@@ -114,26 +114,30 @@ GLOBAL.events.START.on(function (ev) {
 	systray.addMenu('', 'evRecordTraces', GLOBAL.labels.menu.recordTraces + ' (Ctrl+Shift+R)', 'ICON2', function(ev) {
 		GLOBAL.notify(GLOBAL.events.evShowDiagRecorder);
 	});
-
-	systray.addMenu('', 'ACS', 'ACS scenario');
-	systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
-		ctx.config.loadConfigFile();
-		var configACS = ctx.config.getConfig(ctx.config.ACS);
-		ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
-		ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
-		
-		ActivInfinitev7.scenarios.scenarioACS.start();
-	});
 	
-	systray.addMenu('', 'CMU', 'CMU scenario');
-	systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
-		ctx.config.loadConfigFile();
-		var config = ctx.config.getConfig(ctx.config.CMU);
-		ctx.trace.initFileTrace(config.rootPath, ctx.config.CMU);
-		ctx.stats.initFileStats(ctx.config.getPathTemplate(), config.rootPath, ctx.config.CMU);
-		
-		ActivInfinitev7.scenarios.scenarioCMU.start();
-	});
+	ctx.config.loadConfigFile();
+	var configACS = ctx.config.getConfig(ctx.config.ACS);
+	var configCMU = ctx.config.getConfig(ctx.config.CMU);
+
+	if (configACS.showMenu) {
+		systray.addMenu('', 'ACS', 'ACS scenario');
+		systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
+			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+			
+			ActivInfinitev7.scenarios.scenarioACS.start();
+		});	
+	}
+	
+	if (configCMU.showMenu) {
+		systray.addMenu('', 'CMU', 'CMU scenario');
+		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
+			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
+			
+			ActivInfinitev7.scenarios.scenarioCMU.start();
+		});	
+	}
 });
 
 /** Auto-update menu handler */
