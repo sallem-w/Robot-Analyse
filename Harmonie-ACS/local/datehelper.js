@@ -84,7 +84,7 @@
 		var min = Math.floor((time % HOUR) / MINUTE);
 		var sec = Math.floor(((time % HOUR) % MINUTE) / SECONDE);
  
-		var message = sec +" seconde" + (sec > 1 ? 's' : '') + ".";
+		var message = sec + " seconde" + (sec > 1 ? 's' : '') + ".";
 			if (time >= MINUTE) {
 				message = min + " minute" + (min > 1 ? 's' : '') + " et " + message;
 				if (time >= HOUR) {
