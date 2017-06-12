@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>{{ fileName }}</h1>
+
+<table>
+  <tr>
+    <td>Temps total de traitement</td>
+    <td>{{ totalTimeDuration }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats trouvés</td>
+    <td>{{ countCaseFindIntoExcel }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats traités</td>
+    <td>{{ countCaseProcessed }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats non traités</td>
+    <td>{{ countCaseNotProcessed }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats prêts à être résiliés</td>
+    <td>{{ countCaseReadyToRemove }}</td>
+  </tr>
+</table>
+
+</body>
+</html>
