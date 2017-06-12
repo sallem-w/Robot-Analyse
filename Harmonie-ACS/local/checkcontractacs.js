@@ -78,7 +78,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	
 	if (countOpenContractLists > 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
-		sc.data.commentContract = 'Plusieurs contrats sont ouverts pour la personne - page synthèse';
+		sc.data.commentContract = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -96,7 +96,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		});
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
-		sc.data.commentContract = 'Ne rentre dans aucun cas - page synthèse';
+		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -324,7 +324,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	}
 	else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
-		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun lors de la vérification de de la page produit';
+		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();

@@ -28,6 +28,7 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
+	sc.data.countCaseFailProcessed = 0;
 	sc.data.countCaseProductTerminated = 0;
 	sc.data.countCaseContractWithProductACS = 0;
 	sc.data.indexCurrentContract = 0;
@@ -48,6 +49,10 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	startScenarioACS(sc, (function() {
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
 			sc.data.countCaseSuccessProcessed += 1;
+		}
+		
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+			sc.data.countCaseFailProcessed += 1;
 		}
 
 		var writeArray = [
@@ -77,6 +82,7 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
+	stats['countCaseFailProcessed'] = sc.data.countCaseFailProcessed;
 	stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
