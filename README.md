@@ -10,6 +10,7 @@ Exemple de template du fichier de configuration :
 {
     "pathTemplate": "C:\\Users\\excel\\template\\",
     "ACS": {
+        "showMenu": true,
         "rootPath": "C:\\Users\\excel\\ACS-20170420-1\\",
         "controlOnly": true,
         "controlContribution": true,
@@ -43,6 +44,7 @@ Exemple de template du fichier de configuration :
         }
     },
     "CMU":{
+        "showMenu": false,
         "rootPath": "C:\\Users\\excel\\CMU-1\\", 
         "controlOnly": false,
         "controlContribution": false,
@@ -74,6 +76,7 @@ Exemple de template du fichier de configuration :
 
 ```
 
+- `showMenu` : Permet d'afficher ou non le menu permettant de lancer le scenario
 - `pathTemplate`: Chemin du dossier des différents template HTML
 - `rootPath`: Chemin du dossier vers le fichier excel qui va être traité
 - `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
