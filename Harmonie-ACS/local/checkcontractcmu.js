@@ -40,6 +40,10 @@ ActivInfinitev7.step({ initializeCheckBeneficiaries: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
+	if (sc.data.indexBenef === 0) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
+	}
+
 	var currentBeneficiaryInfinite = ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef);
 	var typeInsured = currentBeneficiaryInfinite.get();
 	var currentState = ActivInfinitev7.pInfoRo.oStateProduct.i(sc.data.indexBenef).get();
@@ -77,19 +81,23 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		return;
 	}
 	
-	if (sc.data.indexBenef === 0) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
-		sc.data.dateEndEffectToCompare = dateEndEffectInfinite;
-	}
-	
-	if (ctx.date.isBefore(ctx.date.parseToDate(String(insuredInfoExcel.particularSituationEndDate)), sc.data.dateEndEffectToCompare)) {
+	//Check if the infinite date is after the input file date
+	if (ctx.date.isBefore(ctx.date.parseToDate(String(insuredInfoExcel.particularSituationEndDate)), dateEndEffectInfinite)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract prolonged');
 		sc.data.commentContract = 'Contrat prolongé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.contractIsProlonged = true;
+		sc.endStep();
+		return;
 	}
-	
-	// TODO : compare date to other beneficiary & range (let's talk about that before)
+	//Check if the beneficiary date is after the asspri date
+	if (ctx.date.isBefore(new Date(sc.data.contract.particularSituationEndDate), dateEndEffectInfinite)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Problem date end effect beneficiary');
+		sc.data.commentContract = 'Revoir centre: problème sur les dates de fin d\'effet des bénéficiaires';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endStep(ActivInfinitev7.steps.closeConsultation);
+		return;
+	}
 
 	if (sc.data.indexBenef === sc.data.countBenef - 1) {
 		if (sc.data.contractIsProlonged) {
