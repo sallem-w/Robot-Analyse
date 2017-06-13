@@ -30,10 +30,9 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	sc.data.configExcel = config.excel;
 	
 	ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(s) {
-		sc.data.countCaseProcessed += 1;
 		
-		if (s.data.statusContract === ctx.excelHelper.constants.status.Success) {
-			sc.data.countCaseSuccessProcessed += 1;
+		if (s.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+			sc.data.countCaseFailProcessed += 1;
 		}
 
 		var writeArray = [

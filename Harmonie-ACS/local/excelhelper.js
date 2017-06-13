@@ -35,6 +35,7 @@
 	};
 	
 	excelHelper.openFile = function(pathFileExcel) {
+		ctx.excel.release();
 		ctx.excel.initialize();
 		try {
 			ctx.excel.file.open(pathFileExcel);

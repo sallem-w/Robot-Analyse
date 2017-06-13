@@ -25,10 +25,13 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 
 	ctx.trace.writeInfo('STEP - readFile');
 	sc.data.contracts = ctx.excelFile.readFile(sc.data.scenarioCode);
+	sc.data.countCaseFindIntoExcel = sc.data.contracts.length;
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
 	sc.data.countCaseFailProcessed = 0;
+	sc.data.countCaseBackToCenter = 0;
+	sc.data.countCaseReadyToRemove = 0;
 	sc.data.countCaseProductTerminated = 0;
 	sc.data.countCaseContractWithProductACS = 0;
 	sc.data.indexCurrentContract = 0;
@@ -81,8 +84,11 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['fileName'] = ctx.configFile.getFileNameOutputExcel();
 	stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
+	stats['countCaseFindIntoExcel'] = sc.data.countCaseFindIntoExcel;
+	stats['countCaseReadyToRemove'] = sc.data.countCaseReadyToRemove;
 	stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
 	stats['countCaseFailProcessed'] = sc.data.countCaseFailProcessed;
+	stats['countCaseBackToCenter'] = sc.data.countCaseBackToCenter;
 	stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
