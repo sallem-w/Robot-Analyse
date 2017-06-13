@@ -50,7 +50,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		return;
 	}
 	
-	if (rangeIsNotCoherent(typeInsured, rangeInsured)) {
+	if (!rangeIsValid(typeInsured, rangeInsured)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Range is not coherent');
 		sc.data.commentContract = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -233,15 +233,15 @@ function containsValidProduct(arrayStateProduct) {
 	return false;
 }
 
-function rangeIsNotCoherent(type, range) {
-	var arrayRange = ctx.scenarioHelper.correspondanceRange[type]
+function rangeIsValid(type, range) {
+	var arrayRange = ctx.scenarioHelper.correspondenceRange[type]
 	if (arrayRange) {
 		for (var i in arrayRange) {
 			if (arrayRange[i] === range) {
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 }
