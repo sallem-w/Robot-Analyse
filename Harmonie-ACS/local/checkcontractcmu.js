@@ -77,6 +77,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (!rangeIsValid(typeInsured, rangeInsured)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Range is not coherent');
 		sc.data.commentContract = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -85,6 +86,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, currentState)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - ASSPRI is terminated but one or more other beneficiaries are not');
 		sc.data.commentContract = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -94,6 +96,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (!dateEndEffectInfinite) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - No end effect date found for CMU');
 		sc.data.commentContract = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -103,6 +106,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (ctx.date.isBefore(ctx.date.parseToDate(String(insuredInfoExcel.particularSituationEndDate)), dateEndEffectInfinite)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract prolonged');
 		sc.data.commentContract = 'Contrat prolongé';
+		sc.data.countCaseSuccessProcessed += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.contractIsProlonged = true;
 		sc.endStep();
@@ -112,6 +116,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (typeInsured !== ctx.scenarioHelper.constantes.ASSPRI && ctx.date.isBefore(new Date(sc.data.contract.particularSituationEndDate), dateEndEffectInfinite)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Problem date end effect beneficiary');
 		sc.data.commentContract = 'Revoir centre: problème sur les dates de fin d\'effet des bénéficiaires';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -161,7 +166,8 @@ ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
 	
 	if (sc.data.indexBenef === sc.data.countBenef - 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
-		sc.data.commentContract = 'Les produits sont déjà radiés';
+		sc.data.commentContract = 'Déjà fait';
+		sc.data.countCaseSuccessProcessed += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -211,6 +217,10 @@ ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract ready for terminated');
 	sc.data.commentContract = 'À résilier';
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+	sc.data.countCaseReadyToRemove += 1;
+	if (sc.data.config.controlOnly) {
+		sc.data.countCaseSuccessProcessed += 1; 
+	}
 	sc.endStep();
 }});
 

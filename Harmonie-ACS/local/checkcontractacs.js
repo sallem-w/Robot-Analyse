@@ -80,6 +80,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	if (countOpenContractLists > 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
 		sc.data.commentContract = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -98,6 +99,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	} else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
 		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -137,6 +139,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
 			sc.data.commentContract = 'Revoir centre: ' + message;
+			sc.data.countCaseBackToCenter += 1;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
@@ -152,6 +155,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	if (ctx.string.trim(contentBlockNote) !== '') {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
 		sc.data.commentContract = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -190,6 +194,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	if (!isCertificateValid) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
 		sc.data.commentContract = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -237,6 +242,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	if (!isValidContribution) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
 		sc.data.commentContract = 'Revoir centre: Solde comptable non à jour';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -328,6 +334,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 	else {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
 		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
+		sc.data.countCaseBackToCenter += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();

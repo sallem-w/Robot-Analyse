@@ -18,15 +18,23 @@
   </tr>
   <tr>
     <td>Nombre de contrats traités</td>
-    <td>{{ countCaseProcessed }}</td>
+    <td>{{ countCaseSuccessProcessed }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats non traités</td>
-    <td>{{ countCaseNotProcessed }}</td>
+    <td>{{ countCaseFailProcessed }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats renvoyés en centre</td>
+    <td>{{ countCaseBackToCenter }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats prêts à être résiliés</td>
     <td>{{ countCaseReadyToRemove }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats résiliés</td>
+    <td>{{ countCaseProductTerminated }}</td>
   </tr>
 </table>
 
