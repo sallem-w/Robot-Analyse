@@ -8,7 +8,7 @@
 	};
 	
 	scenarioHelper.correspondanceRange = {
-    ASSPRI: ['1'],
+		ASSPRI: ['1'],
 		CONJOI: ['11'],
 		ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
   };
