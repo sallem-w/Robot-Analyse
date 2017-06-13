@@ -6,7 +6,7 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeTerminatedCMU);
 	sc.step(ActivInfinitev7.steps.searchTerminatedContractCMU);
-		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
+	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
 	sc.step(ActivInfinitev7.steps.saveContract);
 	//When the save is done in this scenario, the contract is closed and the dashboard page is loaded. So we have to close the contract if the save is not done in this scenario
@@ -27,7 +27,7 @@ ActivInfinitev7.step({ initializeTerminatedCMU: function(ev, sc, st) {
 ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchTerminatedContractCMU');
 	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1)));
+	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1)));
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {

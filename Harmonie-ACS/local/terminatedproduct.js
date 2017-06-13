@@ -55,6 +55,10 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 		ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
 			ActivInfinitev7.pDiversParam.btNext.click();
 		});
+		//Block notes page comes from 'terminatedCMU' scenario
+		ActivInfinitev7.pBlockNotes.events.LOAD.on(function() {
+			ActivInfinitev7.pBlockNotes.btNext.click();
+		});
 		ActivInfinitev7.pCalculParam.wait(function() {
 			ActivInfinitev7.pCalculParam.btNext.click();
 			ActivInfinitev7.pContributionHistory.wait(function() {

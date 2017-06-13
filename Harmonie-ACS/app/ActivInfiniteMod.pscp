@@ -804,20 +804,17 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage1" MustExist="Y">
+						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R7R0R0">
+								<TAG Name="LI" Scope="All" CapturedPos="66.R0R1R7R0R0R0R2R0R4">
+									<TAG Name="DIV" Scope="Children" CapturedPos="66.R0R1R7R0R0R0R2R0R4R0">
+										<ATT Name="class">
+											<VALUE Scan="like"><![CDATA[cgd-step-active]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Liste des opérations]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTitlePage2" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="66.R0R1R7R0R0R2R0R0R0R9R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Sélection]]></VALUE>
+										<VALUE Scan="like"><![CDATA[Historique cotisations]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -842,6 +839,18 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Echéances du compte cotisant]]></VALUE>
+									</ATT>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oValidation" MustExist="Y" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1">
