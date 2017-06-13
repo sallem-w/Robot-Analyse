@@ -11,6 +11,8 @@
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductState);
+	sc.step(ActivInfinitev7.steps.goToContribution);
+	sc.step(ActivInfinitev7.steps.checkContribution);
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -155,6 +157,18 @@ ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
 			sc.endStep(ActivInfinitev7.steps.checkProductState);
 		});
 	});
+}});
+
+ActivInfinitev7.step({ goToContribution: function(ev, sc, st) {
+	if (sc.data.config.controlContribution) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToContribution');
+		ActivInfinitev7.pContribution.wait(function() {
+			sc.endStep();
+		});
+		return;
+	}
+	
+	sc.endStep(ActivInfinitev7.scenarios.toTerminated);
 }});
 
 ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
