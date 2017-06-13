@@ -29,7 +29,8 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	sc.data.config = config;
 	sc.data.configExcel = config.excel;
 	
-	ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(s) {
+	startScenarioCMU(sc, (function() {
+		sc.data.countCaseProcessed += 1;
 		
 		if (s.data.statusContract === ctx.excelHelper.constants.status.Fail) {
 			sc.data.countCaseFailProcessed += 1;
@@ -37,8 +38,8 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 
 		var writeArray = [
 			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
-			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: s.data.statusContract },
-			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: s.data.commentContract }
+			{ columnIndex: sc.data.configExcel.columnIndex.statusContract, value: sc.data.statusContract },
+			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: sc.data.commentContract }
 		];
 		
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
@@ -49,5 +50,30 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		} else {
 			sc.endStep();
 		}
-	});
+	}));
 }});
+
+function startScenarioCMU(sc, callback) {
+	ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(scCheckContract) {
+		sc.data.commentContract = scCheckContract.data.commentContract;
+		sc.data.statusContract = scCheckContract.data.statusContract;
+		
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly) {
+			callback();
+			return;
+		}
+		
+		ActivInfinitev7.scenarios.terminatedCMU.start(sc.data).onEnd(function(scTerminatedCMU) {
+				sc.data.commentContract = scTerminatedCMU.data.commentContract;
+				sc.data.statusContract = scTerminatedCMU.data.statusContract;
+
+				if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+					callback();
+					return;
+				}
+				
+				// TODO stats
+		});
+	});
+}
+
