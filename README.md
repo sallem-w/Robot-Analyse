@@ -121,13 +121,13 @@ Ensuite, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Wind
 Pour commencer il faut vider le champ `Démarrer dans :` et remplir le champ `Cible :` par :
 
 ```bash
-"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le dossier" -w "%APPDATA%" -p 240
+"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le dossier" -w "%APPDATA%" -p 240 -lic "Chemin vers le dossier qui content la licence (Réseau ou HTTP)"
 
 #Exemple
-"C:\Program Files\Contextor\Interactive\CtxtRun.exe" -z "C:\deploy\Harmonie-ACS_1.0" -w "%APPDATA%" -p 240
+"C:\Program Files\Contextor\Interactive\CtxtRun.exe" -z "C:\deploy\Harmonie-ACS_1.0" -w "%APPDATA%" -p 240 -lic "Z:\licence"
 ```
 
-Pour plus d'information sur les paramètres voir la documentation sur `https://contextor.eu/dokuwiki/doku.php?id=training:interactive3:tutorials:ex_deployment`.
+Pour plus d'information sur les paramètres voir la documentation sur `https://contextor.eu/dokuwiki/doku.php?id=training:interactive3:tutorials:ex_deployment` et `https://contextor.eu/dokuwiki/doku.php?id=pg:proj.licence&s[]=licence`.
 
 Il suffit de zipper le dossier `deploy` et de le fournir aux utilisateurs.
 
