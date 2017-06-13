@@ -121,7 +121,7 @@ Ensuite, on peut créer un nouveau raccourci `Clic droit dans l'explorateur Wind
 Pour commencer il faut vider le champ `Démarrer dans :` et remplir le champ `Cible :` par :
 
 ```bash
-"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le dossier" -w "%APPDATA%" -p 240 -lic "Chemin vers le dossier qui content la licence (Réseau ou HTTP"
+"Chemin vers l'éxécutable CtxRun de contextor intéractive" -z "Chemin vers le dossier" -w "%APPDATA%" -p 240 -lic "Chemin vers le dossier qui content la licence (Réseau ou HTTP)"
 
 #Exemple
 "C:\Program Files\Contextor\Interactive\CtxtRun.exe" -z "C:\deploy\Harmonie-ACS_1.0" -w "%APPDATA%" -p 240 -lic "Z:\licence"
