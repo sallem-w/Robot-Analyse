@@ -118,7 +118,7 @@ ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
 	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
 	if (!insuredInfoExcel) {
 		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+		sc.endStep(ActivInfinitev7.steps.checkProductState);
 		return;
 	}
 	
