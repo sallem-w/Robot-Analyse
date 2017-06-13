@@ -41,11 +41,20 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	var currentBeneficiaryInfinite = ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef);
 	var typeInsured = currentBeneficiaryInfinite.get();
 	var currentState = ActivInfinitev7.pInfoRo.oStateProduct.i(sc.data.indexBenef).get();
+	var rangeInsured = ActivInfinitev7.pInfoRo.oRangeInsured.i(sc.data.indexBenef).get();
 	
 	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
 	if (!insuredInfoExcel) {
 		sc.data.indexBenef += 1;
 		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+		return;
+	}
+	
+	if (rangeIsNotCoherent(typeInsured, rangeInsured)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Range is not coherent');
+		sc.data.commentContract = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
 	}
 	
@@ -220,6 +229,19 @@ function containsValidProduct(arrayStateProduct) {
 		if (arrayStateProduct[i] === ctx.scenarioHelper.constantes.productValid) {
 			return true;
 		}
+	}
+	return false;
+}
+
+function rangeIsNotCoherent(type, range) {
+	var arrayRange = ctx.scenarioHelper.correspondanceRange[type]
+	if (arrayRange) {
+		for (var i in arrayRange) {
+			if (arrayRange[i] === range) {
+				return false;
+			}
+		}
+		return true;
 	}
 	return false;
 }
