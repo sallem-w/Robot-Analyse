@@ -57,6 +57,7 @@ ActivInfinitev7.pCertificateHelpCS.btVisuCotisation = ActivInfinitev7.pCertifica
 ActivInfinitev7.pProductList = ActivInfinitev7.addPage('pProductList', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProductList.oTitlePage = ActivInfinitev7.pProductList.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pProductList.oNameBenef = ActivInfinitev7.pProductList.addItem('oNameBenef', {"occurs":1});
+ActivInfinitev7.pProductList.oTypeBenef = ActivInfinitev7.pProductList.addItem('oTypeBenef', {"occurs":1});
 ActivInfinitev7.pProductList.oCodeProduct = ActivInfinitev7.pProductList.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pProductList.oEndDateProduct = ActivInfinitev7.pProductList.addItem('oEndDateProduct', {"occurs":1});
 ActivInfinitev7.pProductList.oStateProduct = ActivInfinitev7.pProductList.addItem('oStateProduct', {"occurs":1});

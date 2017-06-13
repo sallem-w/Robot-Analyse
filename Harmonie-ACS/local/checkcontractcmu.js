@@ -10,6 +10,7 @@
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
+	sc.step(ActivInfinitev7.steps.checkProductState);
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -101,7 +102,58 @@ ActivInfinitev7.step({ navigateToProductList: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - navigateToProductList');
 	ActivInfinitev7.pInfoRo.btNavigateProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
+		sc.data.indexBenef = 0;
+		sc.data.countBenef = ActivInfinitev7.pProductList.oTypeBenef.count();
 		sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
+	if (sc.data.indexBenef === 0) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkProductState');
+	}
+	
+	var currentBeneficiaryInfinite = ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef);
+	var typeInsured = currentBeneficiaryInfinite.get();
+	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
+	if (!insuredInfoExcel) {
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+		return;
+	}
+	
+	if (sc.data.indexBenef === sc.data.countBenef - 1) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
+		sc.data.commentContract = 'Les produits sont déjà radiés';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		sc.endStep(ActivInfinitev7.steps.closeConsultation);
+		return;
+	}
+	
+	if (sc.data.indexBenef === 0) {
+		var arrayStateSuscribedProduct = findStateSuscribedProduct(sc.data.contract.suscribedCodeProduct);
+		if (arrayStateSuscribedProduct && containsValidProduct(arrayStateSuscribedProduct)) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - one product or more is valid. Continue verifications');
+			sc.endStep();	
+			return;
+		}
+		sc.data.indexBenef += 1;
+		sc.endStep(ActivInfinitev7.steps.checkProductState);
+		return;
+	}
+	
+	ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef).click();
+	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
+		ActivInfinitev7.pProductList.events.LOAD.on(function() {
+			sc.data.indexBenef += 1;
+			var arrayStateSuscribedProduct = findStateSuscribedProduct(sc.data.contract.suscribedCodeProduct);
+			if (arrayStateSuscribedProduct && containsValidProduct(arrayStateSuscribedProduct)) {
+				ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - one product or more is valid. Continue verifications');
+				sc.endStep();
+				return;
+			}
+			sc.endStep(ActivInfinitev7.steps.checkProductState);
+		});
 	});
 }});
 
@@ -151,4 +203,23 @@ function isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, stateProduct) 
 	}
 	
 	return (sc.data.insuredIsValid && sc.data.ASSPRIIsTerminated);
+}
+
+function findStateSuscribedProduct(codeProduct) {
+	var arrayState = [];
+	for (var i in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
+		if (ActivInfinitev7.pProductList.oCodeProduct.i(i).get() === codeProduct) {
+			arrayState.push(ActivInfinitev7.pProductList.oStateProduct.i(i).get());
+		}
+	}
+	return (arrayState.length > 0 ? arrayState : false);
+}
+
+function containsValidProduct(arrayStateProduct) {
+	for (var i in arrayStateProduct) {
+		if (arrayStateProduct[i] === ctx.scenarioHelper.constantes.productValid) {
+			return true;
+		}
+	}
+	return false;
 }
