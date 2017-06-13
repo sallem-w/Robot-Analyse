@@ -13,6 +13,7 @@
 	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinitev7.steps.conditionControlContribution);
 	sc.step(ActivInfinitev7.steps.checkContribution);
+	sc.step(ActivInfinitev7.steps.goToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductList);
 	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -209,18 +210,16 @@ ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 		return;
 	}
 	
-	ActivInfinitev7.pContribution.btProductList.click();
-	
-	ActivInfinitev7.pProductList.wait(function() {
-		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
-		sc.data.dataBenef = [];
-		sc.endStep(ActivInfinitev7.steps.checkProductList);
-	});
+	sc.endStep(ActivInfinitev7.steps.goToProductList);
 }});
 
 ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
+	
+	if (ActivInfinitev7.pContribution.oDateEch.count() === 1 &&
+		  ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(0).get()) === "Aucune donnée disponible dans le tableau") {
+		sc.endStep();
+	}
 
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
 	var isValidContribution = false;
@@ -237,7 +236,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	
 	if (!isValidContribution) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
-		sc.data.commentContract = 'Solde comptable non à jour';
+		sc.data.commentContract = 'Revoir centre: Solde comptable non à jour';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
@@ -245,6 +244,10 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 		return;
 	}
 	
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ goToProductList : function(ev, sc, st) {
 	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;

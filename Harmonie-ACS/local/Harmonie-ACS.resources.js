@@ -61,6 +61,7 @@ ActivInfinitev7.pProductList.oTypeBenef = ActivInfinitev7.pProductList.addItem('
 ActivInfinitev7.pProductList.oCodeProduct = ActivInfinitev7.pProductList.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pProductList.oEndDateProduct = ActivInfinitev7.pProductList.addItem('oEndDateProduct', {"occurs":1});
 ActivInfinitev7.pProductList.oStateProduct = ActivInfinitev7.pProductList.addItem('oStateProduct', {"occurs":1});
+ActivInfinitev7.pProductList.btVisuCotisation = ActivInfinitev7.pProductList.addItem('btVisuCotisation');
 
 ActivInfinitev7.pContribution = ActivInfinitev7.addPage('pContribution', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pContribution.oTitlePage = ActivInfinitev7.pContribution.addItem('oTitlePage', {"mustExist":true});
