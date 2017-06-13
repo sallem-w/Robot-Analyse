@@ -109,7 +109,7 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		return;
 	}
 	//Check if the beneficiary date is after the asspri date
-	if (ctx.date.isBefore(new Date(sc.data.contract.particularSituationEndDate), dateEndEffectInfinite)) {
+	if (typeInsured !== ctx.scenarioHelper.constantes.ASSPRI && ctx.date.isBefore(new Date(sc.data.contract.particularSituationEndDate), dateEndEffectInfinite)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Problem date end effect beneficiary');
 		sc.data.commentContract = 'Revoir centre: problème sur les dates de fin d\'effet des bénéficiaires';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
