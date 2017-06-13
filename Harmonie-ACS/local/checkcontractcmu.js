@@ -5,7 +5,7 @@
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
-	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
+	sc.step(ActivInfinitev7.steps.searchIndividualContractCMU);
 	sc.step(ActivInfinitev7.steps.navigateToInfoRo);
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
@@ -16,6 +16,24 @@
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
+}});
+
+ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractCMU');
+	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
+	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
+		ctx.scenarioHelper.checkIfContractFound(sc, function() {
+			sc.endStep(ActivInfinitev7.steps.closeConsultation);
+		});
+
+		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found')
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+
+			sc.endStep();
+		});
+	})
 }});
 
 ActivInfinitev7.step({ navigateToInfoRo: function(ev, sc, st) {
