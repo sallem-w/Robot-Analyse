@@ -491,6 +491,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oTypeBenef">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="4">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oCodeProduct">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
@@ -510,6 +524,20 @@
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
 										<TAG Name="TD" Scope="Children" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0R7" Range="7">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableGaranties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oStateProduct">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All">
+									<TAG Name="TR" Scope="All" Occurs="Y">
+										<TAG Name="TD" Scope="Children" Range="0">
 											<SET />
 										</TAG>
 									</TAG>
@@ -1074,6 +1102,18 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[tableParts]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNavigateProductList">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children">
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
