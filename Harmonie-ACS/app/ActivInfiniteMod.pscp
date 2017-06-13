@@ -1144,6 +1144,7 @@
 				<SCRIPT Name="TerminatedInAdvanceV7" Folder="ScenarioACS" Src="TerminatedInAdvanceV7.js" />
 				<SCRIPT Name="ScenarioCMU" Folder="ScenarioCMU" Src="ScenarioCMU.js" />
 				<SCRIPT Name="CheckContractCMU" Folder="ScenarioCMU" Src="CheckContractCMU.js" />
+				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
