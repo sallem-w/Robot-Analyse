@@ -547,6 +547,16 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btVisuCotisation">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children" />
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>

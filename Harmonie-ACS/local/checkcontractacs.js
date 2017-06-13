@@ -210,11 +210,16 @@ ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 		return;
 	}
 	
-	sc.endStep(ActivInfinitev7.scenarios.goToProductList);
+	sc.endStep(ActivInfinitev7.steps.goToProductList);
 }});
 
 ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
+	
+	if (ActivInfinitev7.pContribution.oDateEch.count() === 1 &&
+		  ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(0).get()) === "Aucune donnée disponible dans le tableau") {
+		sc.endStep();
+	}
 
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
 	var isValidContribution = false;
@@ -231,7 +236,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	
 	if (!isValidContribution) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
-		sc.data.commentContract = 'Solde comptable non à jour';
+		sc.data.commentContract = 'Revoir centre: Solde comptable non à jour';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
