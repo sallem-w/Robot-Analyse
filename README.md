@@ -104,8 +104,8 @@ Il y a plusieurs champs qui sont pris en compte pour l'instant. Ils doivent êtr
 <h1>Temps total de traitement : {{ totalTimeDuration }}></h1>
 ```
 
-On a les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`, `countCaseFailProcessed`, `countCaseContractWithProductACS`, `countCaseProductTerminated`.
-Vous pouvez retrouver un exemple de fichier html dans le dossier template qui se trouve à la racine du projet.
+On a par exemple les variables `fileName`, `totalTimeDuration`, `countCaseProcessed`, `countCaseSuccessProcessed`, `countCaseFailProcessed`, `countCaseContractWithProductACS`, `countCaseProductTerminated`.
+Vous pouvez retrouver des exemples de fichier html dans le dossier template qui se trouve à la racine du projet, l'intégralité des variables utilisables pour chaque scénario sont utilisés dans ces templates. Libre à vous de modifier ou créer vos propres templates avec du CSS si vous le souhaitez.
 
 # Déploiement
 
