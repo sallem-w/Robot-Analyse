@@ -214,6 +214,7 @@ ActivInfinitev7.step({ goToContribution: function(ev, sc, st) {
 ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract ready for terminated');
 	sc.data.commentContract = 'À résilier';
+	sc.data.toTerminated = true;
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	sc.data.countCaseReadyToRemove += 1;
 	sc.endStep();

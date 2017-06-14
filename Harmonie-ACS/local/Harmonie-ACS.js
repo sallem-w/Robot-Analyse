@@ -129,7 +129,7 @@ GLOBAL.events.START.on(function (ev) {
 			}
 			else {
 				ctx.trace.writeError('Open Infinite on dashboard page');
-				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter a Infinite, et il faut se trouver sur la page d\'accueil');
+				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter à Infinite, et il faut se trouver sur la page d\'accueil');
 			}
 		});	
 	}
@@ -144,7 +144,7 @@ GLOBAL.events.START.on(function (ev) {
 			}
 			else {
 				ctx.trace.writeError('Open Infinite on dashboard page');
-				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter a Infinite, et il faut se trouver sur la page d\'accueil');
+				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter à Infinite, et il faut se trouver sur la page d\'accueil');
 			}
 		});	
 	}
