@@ -42,5 +42,7 @@ ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 
 ActivInfinitev7.step({ endTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated CMU');
-	sc.endStep();
+	ctx.scenarioHelper.goHome(function() {
+		sc.endStep();
+	});
 }});

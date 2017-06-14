@@ -91,7 +91,7 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-	if (!sc.data.config.saveUpdate) {
+	if (sc.data.config.saveUpdate) {
 		sc.endStep();
 		return;
 	}
