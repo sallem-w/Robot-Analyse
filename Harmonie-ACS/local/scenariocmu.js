@@ -30,7 +30,6 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	sc.data.configExcel = config.excel;
 	
 	startScenarioCMU(sc, (function() {
-		sc.data.countCaseProcessed += 1;
 		
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
 			sc.data.countCaseFailProcessed += 1;
@@ -72,7 +71,7 @@ function startScenarioCMU(sc, callback) {
 					return;
 				}
 				
-				// TODO stats
+				sc.data.countCaseSuccessProcessed += 1;
 		});
 	});
 }
