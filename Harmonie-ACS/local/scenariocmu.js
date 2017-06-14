@@ -32,7 +32,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	startScenarioCMU(sc, (function() {
 		sc.data.countCaseProcessed += 1;
 		
-		if (s.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
 			sc.data.countCaseFailProcessed += 1;
 		}
 
