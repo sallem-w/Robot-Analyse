@@ -14,13 +14,14 @@
 	};
 	
 	scenarioHelper.pageLinks = {
-		dashboard : '/mdg/',
-		consultation : '/mdg/Go.do?id=ACCO03STSO',
-		coverageChange : '/mdg/Go.do?id=ACCC01STD',
-		terminatedProduct : '/mdg/Go.do?id=ACCC04STD',
-		terminatedContract : '/mdg/Go.do?id=ACRE04RE4S',
-		terminatedInAdvance : '/mdg/Go.do?id=ACRE01REAC',
-		synthesis : '/mdg/Go.do?id=ACW1&action=afficherContrat'
+		dashboard: '/mdg/',
+		consultation: '/mdg/Go.do?id=ACCO03STSO',
+		coverageChange: '/mdg/Go.do?id=ACCC01STD',
+		terminatedProduct: '/mdg/Go.do?id=ACCC04STD',
+		terminatedContract: '/mdg/Go.do?id=ACRE04RE4S',
+		terminatedInAdvance: '/mdg/Go.do?id=ACRE01REAC',
+		terminatedCMU: '/mdg/Go.do?id=ACRE01RE3F',
+		synthesis: '/mdg/Go.do?id=ACW1&action=afficherContrat'
 	};
 	
 	scenarioHelper.getMessagesPopup = function() {

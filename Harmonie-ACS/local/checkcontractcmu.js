@@ -106,7 +106,6 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	if (ctx.date.isBefore(ctx.date.parseToDate(String(insuredInfoExcel.particularSituationEndDate)), dateEndEffectInfinite)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract prolonged');
 		sc.data.commentContract = 'Contrat prolongé';
-		sc.data.countCaseSuccessProcessed += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.contractIsProlonged = true;
 		sc.endStep();
@@ -167,7 +166,6 @@ ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
 	if (sc.data.indexBenef === sc.data.countBenef - 1) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
 		sc.data.commentContract = 'Déjà fait';
-		sc.data.countCaseSuccessProcessed += 1;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
@@ -218,9 +216,6 @@ ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 	sc.data.commentContract = 'À résilier';
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	sc.data.countCaseReadyToRemove += 1;
-	if (sc.data.config.controlOnly) {
-		sc.data.countCaseSuccessProcessed += 1; 
-	}
 	sc.endStep();
 }});
 

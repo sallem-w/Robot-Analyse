@@ -91,11 +91,11 @@ ActivInfinitev7.pCalculParam.btNext = ActivInfinitev7.pCalculParam.addItem('btNe
 ActivInfinitev7.pCalculParam.oCalculCheck = ActivInfinitev7.pCalculParam.addItem('oCalculCheck');
 
 ActivInfinitev7.pContributionHistory = ActivInfinitev7.addPage('pContributionHistory', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC3Q_500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC32_400\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pContributionHistory.oTitlePage1 = ActivInfinitev7.pContributionHistory.addItem('oTitlePage1', {"mustExist":true});
-ActivInfinitev7.pContributionHistory.oTitlePage2 = ActivInfinitev7.pContributionHistory.addItem('oTitlePage2', {"mustExist":true});
+ActivInfinitev7.pContributionHistory.oTitlePage = ActivInfinitev7.pContributionHistory.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pContributionHistory.btNext = ActivInfinitev7.pContributionHistory.addItem('btNext');
 
 ActivInfinitev7.pContributionVisu = ActivInfinitev7.addPage('pContributionVisu', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC36_600\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC3Q_500\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pContributionVisu.oTitlePage = ActivInfinitev7.pContributionVisu.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pContributionVisu.oValidation = ActivInfinitev7.pContributionVisu.addItem('oValidation', {"mustExist":true,"type":"Key"});
 ActivInfinitev7.pContributionVisu.btNext = ActivInfinitev7.pContributionVisu.addItem('btNext');
 
