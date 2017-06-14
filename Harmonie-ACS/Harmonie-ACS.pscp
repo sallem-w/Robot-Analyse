@@ -70,6 +70,7 @@
 				<SCRIPT Name="Config" Src="Config.js" />
 				<SCRIPT Name="Trace" Src="Trace.js" />
 				<SCRIPT Name="Stats" Src="Stats.js" />
+				<SCRIPT Name="PopupHelper" Src="PopupHelper.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->

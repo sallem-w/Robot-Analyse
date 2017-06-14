@@ -843,7 +843,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Echéances du compte cotisant]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Echéances du compte cotisant]]></VALUE>
 									</ATT>
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[cgd-title]]></VALUE>
