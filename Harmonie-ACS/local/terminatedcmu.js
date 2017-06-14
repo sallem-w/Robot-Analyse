@@ -9,10 +9,7 @@
 	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
 	sc.step(ActivInfinitev7.steps.saveContract);
-	//When the save is done in this scenario, the contract is closed and the dashboard page is loaded. So we have to close the contract if the save is not done in this scenario
-	if (!sc.data.config.saveUpdate) {
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
-	}
+	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endTerminatedCMU);
 }});
 

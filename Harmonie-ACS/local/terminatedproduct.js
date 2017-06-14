@@ -9,10 +9,7 @@
 	sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 	sc.step(ActivInfinitev7.steps.validationCalcul);
 	sc.step(ActivInfinitev7.steps.saveContract);
-	//When the save is done in this scenario, the contract is closed and the dashboard page is loaded. So we have to close the contract if the save is not done in this scenario
-	if (!sc.data.config.saveUpdate) {
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
-	}
+	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 }});
 
@@ -80,17 +77,25 @@ ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 
 ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	ActivInfinitev7.pSaveUpdate.wait(function() {
-		if (sc.data.config.saveUpdate) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-			ActivInfinitev7.pSaveUpdate.btSave.click();
-			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		if (!sc.data.config.saveUpdate) {
+			sc.endStep();
+			return;
 		}
+			
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+		ActivInfinitev7.pSaveUpdate.btSave.click();
+		sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
+	if (!sc.data.config.saveUpdate) {
+		sc.endStep();
+		return;
+	}
+	
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
 	ActivInfinitev7.currentPage.btClose.click();
 	
