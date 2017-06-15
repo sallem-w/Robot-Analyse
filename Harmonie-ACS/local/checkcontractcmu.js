@@ -24,7 +24,9 @@ ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
-			ctx.scenarioHelper.goHome(sc.endScenario); 
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			}); 
 		});
 
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
