@@ -224,6 +224,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	if (ActivInfinitev7.pContribution.oDateEch.count() === 1 &&
 		  ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(0).get()) === "Aucune donnée disponible dans le tableau") {
 		sc.endStep();
+		return;
 	}
 
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
