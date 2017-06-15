@@ -73,6 +73,7 @@ function startScenarioCMU(sc, callback) {
 				}
 				
 				sc.data.countCaseSuccessProcessed += 1;
+				callback();
 		});
 	});
 }
