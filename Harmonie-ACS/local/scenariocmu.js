@@ -59,6 +59,9 @@ function startScenarioCMU(sc, callback) {
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly || !sc.data.toTerminated) {
+			if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
+				sc.data.countCaseSuccessProcessed += 1;
+			}
 			callback();
 			return;
 		}
