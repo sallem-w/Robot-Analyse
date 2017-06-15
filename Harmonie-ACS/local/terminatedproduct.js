@@ -70,7 +70,10 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 
 ActivInfinitev7.step({ validationCalcul: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
-	ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
+	// Into CMU, the contribution array is empty (message "aucune donnée") so the validation button doesn't exist
+	if (ActivInfinitev7.pContributionVisu.oValidation.exist()) {
+		ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
+	}
 	ActivInfinitev7.pContributionVisu.btNext.click();
 	sc.endStep();
 }});

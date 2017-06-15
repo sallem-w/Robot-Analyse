@@ -851,7 +851,22 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oValidation" MustExist="Y" TypObj="Key">
+						<OBJET Name="oTitlePage2" MustExist="Y">
+							<CRITERE>
+								<TAG Name="LI" Scope="All">
+									<TAG Name="DIV" Scope="Children">
+										<ATT Name="class">
+											<VALUE Scan="Like"><![CDATA[cgd-step-active]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oValidation" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1">
 									<ATT Name="name">
