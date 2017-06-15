@@ -23,9 +23,9 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - copyFile');
 	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutputExcel(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
 
-	ctx.trace.writeInfo('STEP - readFile');
-	sc.data.contracts = ctx.excelFile.readFile(sc.data.scenarioCode);
-	sc.data.countCaseFindIntoExcel = sc.data.contracts.length;
+	var indexLastRow = ctx.excelFile.getLastIndexRow();
+	
+	sc.data.countCaseFindIntoExcel = indexLastRow - sc.data.configExcel.startRowIndex + 1;
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
@@ -34,17 +34,19 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	sc.data.countCaseReadyToRemove = 0;
 	sc.data.countCaseProductTerminated = 0;
 	sc.data.countCaseContractWithProductACS = 0;
-	sc.data.indexCurrentContract = 0;
+	sc.data.indexCurrentContract = sc.data.configExcel.startRowIndex;
+	sc.data.indexLastRow = indexLastRow;
 	sc.endStep();
 }});
 	
 ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
-	var currentContracts = sc.data.contracts[i];
-	sc.data.contract = currentContracts;
-	sc.data.config = ctx.config.getConfig(ctx.config.ACS);
-	sc.data.configExcel = sc.data.config.excel;
+	sc.data.contract = ctx.excelFile.getContractRowACS(i);
+	if (!sc.data.contract) {
+		loopStepContractACS(sc, i);
+	}
+	
 	sc.data.countCaseProcessed += 1;
 	sc.data.statusContract = '';
 	sc.data.commentContract = '';
@@ -64,14 +66,9 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: sc.data.commentContract }
 		];
 		
-		ctx.excelHelper.write(currentContracts.row, writeArray);
+		ctx.excelHelper.write(sc.data.contract.row, writeArray);
 		
-		if (i < sc.data.contracts.length - 1) {
-			sc.data.indexCurrentContract += 1;
-			sc.endStep(ActivInfinitev7.steps.startScenarioACS);
-		} else {
-			sc.endStep();
-		}
+		loopStepContractACS(sc, i);
 	}));
 }});
 
@@ -95,6 +92,15 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 
 	sc.endStep();
 }});
+
+function loopStepContractACS(sc, i) {
+	if (i < sc.data.indexLastRow) {
+		sc.data.indexCurrentContract += 1;
+		sc.endStep(ActivInfinitev7.steps.startScenarioACS);
+	} else {
+		sc.endStep();
+	}
+}
 
 function startScenarioACS(sc, callback) {
 	ActivInfinitev7.scenarios.checkContract.start(sc.data).onEnd(function(scCheckContract) {

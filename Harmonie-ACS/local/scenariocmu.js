@@ -10,13 +10,16 @@
 	
 ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
-	var config = ctx.config.getConfig(ctx.config.CMU);
-	sc.data.beneficiaries = sc.data.contracts[i];
 	sc.data.toTerminated = false;
+	sc.data.beneficiaries = ctx.excelFile.getContractRowCMU(i);
+	if (!sc.data.beneficiaries) {
+		loopStepContractCMU(sc, i);
+	}
+	
 	sc.data.contract = ctx.scenarioHelper.searchInsuredFromType(ctx.scenarioHelper.constantes.ASSPRI, sc.data.beneficiaries);
 	if (!sc.data.contract) {
 		ctx.trace.writeError('ASSPRI is not found');
-		sc.data.indexCurrentContract += 1;
+		sc.data.indexCurrentContract += sc.data.beneficiaries.length;
 		
 		var writeArray = [
 			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
@@ -27,8 +30,6 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
 		sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
 	}
-	sc.data.config = config;
-	sc.data.configExcel = config.excel;
 	
 	startScenarioCMU(sc, (function() {
 		
@@ -44,12 +45,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
 		
-		if (i < sc.data.contracts.length - 1) {
-			sc.data.indexCurrentContract += 1;
-			sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
-		} else {
-			sc.endStep();
-		}
+		loopStepContractCMU(sc, i);
 	}));
 }});
 
@@ -81,3 +77,12 @@ function startScenarioCMU(sc, callback) {
 	});
 }
 
+function loopStepContractCMU(sc, i) {
+	if (i < sc.data.indexLastRow) {
+		// We add the number of line occuped by the current contract
+		sc.data.indexCurrentContract += sc.data.beneficiaries.length;
+		sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
+	} else {
+		sc.endStep();
+	}
+}

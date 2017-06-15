@@ -28,78 +28,60 @@
 	excelFile.startRowIndex = function() {
 		return configExcel.startRowIndex - 1;
 	}
-
-	excelFile.readFile = function(codeScenario) {
+	
+	excelFile.getLastIndexRow = function() {
 		var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcel.startColumnIndex) + configExcel.startRowIndex) - 1;
-		switch (codeScenario) {
-			case ctx.config.ACS :
-				return ctx.excelFile.getAllCellsACS(lastIndexRow, configExcel);
-				break;
-			case ctx.config.CMU :
-				return ctx.excelFile.getAllCellsCMU(lastIndexRow, configExcel);
-				break;
-			default: 
-				var errorMessage = 'Scenario not found into excel readfile. Code found : ' + codeScenario;
-				ctx.trace.writeError(errorMessage);
-				throw new Error(errorMessage);
-				break;
-		}
+		return lastIndexRow;
 	}
-	
-	excelFile.getAllCellsACS = function(lastIndexRow, configACSExcel) {
-		var contracts = [];
-		for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
-			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
-			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
-				continue;
-			}
-			
-			var contract = {
-				row : i,
-				individualContract: ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))), '00000000'),
-				insuredIdentifiant: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredIdentifiant))),
-				insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
-				insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
-				subscribedCodeProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedCodeProduct)),
-				ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
-				ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
-				scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
-				paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
-			};
-			contracts.push(contract);
+
+	excelFile.getContractRowACS = function(indexRow) {
+		if (!isValidRow(indexRow)) {
+			return undefined;
 		}
-		return contracts;
+		
+		var contract = {
+			row : indexRow,
+			individualContract: ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.individualContract))), '00000000'),
+			insuredIdentifiant: ctx.string.trim(String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredIdentifiant))),
+			insuredName: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredName)),
+			insuredSurName: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredSurName)),
+			subscribedCodeProduct: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.subscribedCodeProduct)),
+			ACSCertificateStartDate: ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.ACSCertificateStartDate),
+			ACSCertificateEndDate: ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.ACSCertificateEndDate),
+			scheduleCode: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.scheduleCode)),
+			paymentTypeLabel: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.paymentTypeLabel))
+		};
+		
+		return contract;
 	}
-	
-	excelFile.getAllCellsCMU = function(lastIndexRow) {
-		var contracts = [];
+
+	excelFile.getContractRowCMU = function(indexRow) {
+		if (!isValidRow(indexRow)) {
+			return undefined;
+		}
+		
 		var insured = [];
-		var lastIndividualContract;
-		for (var i = configExcel.startRowIndex; i <= lastIndexRow; i++) {
-			var dateProceedContract = ctx.excel.sheet.getCell(i, configExcel.columnIndex.dateProceedContract);
-			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
-				continue;
-			}
-			var individualContract = ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(i, configExcel.columnIndex.individualContract))), '00000000');
-			var contract = createInsuredObject(i);
-			contract.row = i;
-			contract.individualContract = individualContract;
-			
-			if (individualContract !== lastIndividualContract) {
-				if (i > configExcel.startRowIndex) {
-					contracts.push(insured);
-					insured = [];
-				}
-				lastIndividualContract = individualContract;
-			}
+		var individualContractNumber = getIndividualContractNumber(indexRow);
+		var newIndividualContractNumber = individualContractNumber;
+		
+		while (newIndividualContractNumber !== undefined && individualContractNumber === newIndividualContractNumber) {
+			var contract = createInsuredObject(indexRow);
+			contract.row = indexRow;
+			contract.individualContract = individualContractNumber;
 			insured.push(contract)
+			
+			indexRow += 1;
+			newIndividualContractNumber = getIndividualContractNumber(indexRow);
 		}
-		contracts.push(insured);
-		return contracts;
+		return insured;
 	}
 	
 	excelFile.writeStats = function(obj) {
 		ctx.stats.write(obj);
+	}
+	
+	function getIndividualContractNumber(index) {
+		return ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(index, configExcel.columnIndex.individualContract))), '00000000');
 	}
 	
 	function createInsuredObject(indexOfExcel) {
@@ -110,6 +92,15 @@
 			res[key] = ctx.excel.sheet.getCell(indexOfExcel, configExcel.columnIndex[key]);
 		}
 		return res;
+	}
+	
+	function isValidRow(indexRow) {
+		var dateProceedContract = ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.dateProceedContract);
+		if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	return excelFile;
