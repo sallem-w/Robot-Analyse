@@ -24,7 +24,7 @@ ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
-			sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			ctx.scenarioHelper.goHome(sc.endScenario); 
 		});
 
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
@@ -214,6 +214,7 @@ ActivInfinitev7.step({ goToContribution: function(ev, sc, st) {
 ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract ready for terminated');
 	sc.data.commentContract = 'À résilier';
+	sc.data.toTerminated = true;
 	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 	sc.data.countCaseReadyToRemove += 1;
 	sc.endStep();
