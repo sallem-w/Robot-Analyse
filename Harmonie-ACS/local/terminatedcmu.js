@@ -29,7 +29,7 @@ ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
-			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			ctx.scenarioHelper.goHome(sc.endScenario);
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
@@ -42,7 +42,4 @@ ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 
 ActivInfinitev7.step({ endTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated CMU');
-	ctx.scenarioHelper.goHome(function() {
-		sc.endStep();
-	});
 }});
