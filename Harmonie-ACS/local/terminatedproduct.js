@@ -112,9 +112,7 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ActivInfinitev7.currentPage.execScript('cancelSave()');
 	// if the search contract page is loaded, we redirect to home
 	ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
-		});
+		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 	});
 	ActivInfinitev7.pDashboard.wait(function() {
 		sc.endStep();
