@@ -28,49 +28,33 @@
 	excelFile.startRowIndex = function() {
 		return configExcel.startRowIndex - 1;
 	}
-
-	excelFile.readFile = function(codeScenario) {
+	
+	excelFile.getLastIndexRow = function() {
 		var lastIndexRow = ctx.excel.sheet.getLastRow(ctx.excelHelper.toColumnName(configExcel.startColumnIndex) + configExcel.startRowIndex) - 1;
-		switch (codeScenario) {
-			case ctx.config.ACS :
-				return ctx.excelFile.getAllCellsACS(lastIndexRow, configExcel);
-				break;
-			case ctx.config.CMU :
-				return ctx.excelFile.getAllCellsCMU(lastIndexRow, configExcel);
-				break;
-			default: 
-				var errorMessage = 'Scenario not found into excel readfile. Code found : ' + codeScenario;
-				ctx.trace.writeError(errorMessage);
-				throw new Error(errorMessage);
-				break;
-		}
+		return lastIndexRow;
 	}
-	
-	excelFile.getAllCellsACS = function(lastIndexRow, configACSExcel) {
-		var contracts = [];
-		for (var i = configACSExcel.startRowIndex; i <= lastIndexRow; i++) {
-			var dateProceedContract = ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.dateProceedContract);
-			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
-				continue;
-			}
-			
-			var contract = {
-				row : i,
-				individualContract: ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.individualContract))), '00000000'),
-				insuredIdentifiant: ctx.string.trim(String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredIdentifiant))),
-				insuredName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredName)),
-				insuredSurName: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.insuredSurName)),
-				subscribedCodeProduct: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.subscribedCodeProduct)),
-				ACSCertificateStartDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateStartDate),
-				ACSCertificateEndDate: ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.ACSCertificateEndDate),
-				scheduleCode: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.scheduleCode)),
-				paymentTypeLabel: String(ctx.excel.sheet.getCell(i, configACSExcel.columnIndex.paymentTypeLabel))
-			};
-			contracts.push(contract);
+
+	excelFile.getContractRowACS = function(indexRow) {
+		if (!isValidRowACS(indexRow)) {
+			return undefined;
 		}
-		return contracts;
+		
+		var contract = {
+			row : indexRow,
+			individualContract: ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.individualContract))), '00000000'),
+			insuredIdentifiant: ctx.string.trim(String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredIdentifiant))),
+			insuredName: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredName)),
+			insuredSurName: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.insuredSurName)),
+			subscribedCodeProduct: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.subscribedCodeProduct)),
+			ACSCertificateStartDate: ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.ACSCertificateStartDate),
+			ACSCertificateEndDate: ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.ACSCertificateEndDate),
+			scheduleCode: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.scheduleCode)),
+			paymentTypeLabel: String(ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.paymentTypeLabel))
+		};
+		
+		return contract;
 	}
-	
+
 	excelFile.getAllCellsCMU = function(lastIndexRow) {
 		var contracts = [];
 		var insured = [];
@@ -110,6 +94,15 @@
 			res[key] = ctx.excel.sheet.getCell(indexOfExcel, configExcel.columnIndex[key]);
 		}
 		return res;
+	}
+	
+	function isValidRowACS(indexRow) {
+		var dateProceedContract = ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.dateProceedContract);
+		if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	return excelFile;
