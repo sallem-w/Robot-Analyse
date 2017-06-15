@@ -35,7 +35,9 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
-			ctx.scenarioHelper.goHome(sc.endScenario);
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
