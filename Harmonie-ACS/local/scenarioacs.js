@@ -23,7 +23,9 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - copyFile');
 	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutputExcel(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
 
-	sc.data.countCaseFindIntoExcel = ctx.excelFile.getLastIndexRow() - sc.data.configExcel.startRowIndex + 1;
+	var indexLastRow = ctx.excelFile.getLastIndexRow();
+	
+	sc.data.countCaseFindIntoExcel = indexLastRow - sc.data.configExcel.startRowIndex + 1;
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = 0;
 	sc.data.countCaseSuccessProcessed = 0;
@@ -33,7 +35,7 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	sc.data.countCaseProductTerminated = 0;
 	sc.data.countCaseContractWithProductACS = 0;
 	sc.data.indexCurrentContract = sc.data.configExcel.startRowIndex;
-	sc.data.indexLastRow = ctx.excelFile.getLastIndexRow();
+	sc.data.indexLastRow = indexLastRow;
 	sc.endStep();
 }});
 	
