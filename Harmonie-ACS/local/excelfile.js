@@ -35,7 +35,7 @@
 	}
 
 	excelFile.getContractRowACS = function(indexRow) {
-		if (!isValidRowACS(indexRow)) {
+		if (!isValidRow(indexRow)) {
 			return undefined;
 		}
 		
@@ -55,35 +55,33 @@
 		return contract;
 	}
 
-	excelFile.getAllCellsCMU = function(lastIndexRow) {
-		var contracts = [];
-		var insured = [];
-		var lastIndividualContract;
-		for (var i = configExcel.startRowIndex; i <= lastIndexRow; i++) {
-			var dateProceedContract = ctx.excel.sheet.getCell(i, configExcel.columnIndex.dateProceedContract);
-			if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
-				continue;
-			}
-			var individualContract = ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(i, configExcel.columnIndex.individualContract))), '00000000');
-			var contract = createInsuredObject(i);
-			contract.row = i;
-			contract.individualContract = individualContract;
-			
-			if (individualContract !== lastIndividualContract) {
-				if (i > configExcel.startRowIndex) {
-					contracts.push(insured);
-					insured = [];
-				}
-				lastIndividualContract = individualContract;
-			}
-			insured.push(contract)
+	excelFile.getContractRowCMU = function(indexRow) {
+		if (!isValidRow(indexRow)) {
+			return undefined;
 		}
-		contracts.push(insured);
-		return contracts;
+		
+		var insured = [];
+		var individualContractNumber = getIndividualContractNumber(indexRow);
+		var newIndividualContractNumber = individualContractNumber;
+		
+		while (newIndividualContractNumber !== undefined && individualContractNumber === newIndividualContractNumber) {
+			var contract = createInsuredObject(indexRow);
+			contract.row = indexRow;
+			contract.individualContract = individualContractNumber;
+			insured.push(contract)
+			
+			indexRow += 1;
+			newIndividualContractNumber = getIndividualContractNumber(indexRow);
+		}
+		return insured;
 	}
 	
 	excelFile.writeStats = function(obj) {
 		ctx.stats.write(obj);
+	}
+	
+	function getIndividualContractNumber(index) {
+		return ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(index, configExcel.columnIndex.individualContract))), '00000000');
 	}
 	
 	function createInsuredObject(indexOfExcel) {
@@ -96,7 +94,7 @@
 		return res;
 	}
 	
-	function isValidRowACS(indexRow) {
+	function isValidRow(indexRow) {
 		var dateProceedContract = ctx.excel.sheet.getCell(indexRow, configExcel.columnIndex.dateProceedContract);
 		if (dateProceedContract !== undefined && ctx.string.trim(String(dateProceedContract)) !== '') {
 			return false;
