@@ -27,7 +27,7 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() { 
-			sc.endStep(ActivInfinitev7.steps.closeContractUpdate); 
+			ctx.scenarioHelper.goHome(sc.endScenario); 
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
@@ -91,7 +91,7 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-	if (sc.data.config.saveUpdate) {
+	if (!ActivInfinitev7.currentPage.btClose.exist()) {
 		sc.endStep();
 		return;
 	}
@@ -105,6 +105,10 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	
 	ActivInfinitev7.currentPage.injectFunction(cancelSave);
 	ActivInfinitev7.currentPage.execScript('cancelSave()');
+	// if the search contract page is loaded, we redirect to home
+	ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+		ctx.scenarioHelper.goHome(sc.endStep);
+	});
 	ActivInfinitev7.pDashboard.wait(function() {
 		sc.endStep();
 	});

@@ -10,7 +10,7 @@
 	
 ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
-	
+	sc.data.toTerminated = false;
 	sc.data.beneficiaries = ctx.excelFile.getContractRowCMU(i);
 	if (!sc.data.beneficiaries) {
 		loopStepContractCMU(sc, i);
@@ -54,7 +54,11 @@ function startScenarioCMU(sc, callback) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
-		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly || !sc.data.toTerminated) {
+			// If to terminated is true, it is success
+			if (sc.data.toTerminated) {
+				sc.data.countCaseSuccessProcessed += 1;
+			}
 			callback();
 			return;
 		}
