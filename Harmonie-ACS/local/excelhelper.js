@@ -39,7 +39,12 @@
 			var obj = arrayObj[rowIndex];
 			var keys = Object.keys(obj);
 			for (var cellIndex in keys) {
-				ctx.excel.sheet.setCell(parseInt(rowIndex) + 1, parseInt(cellIndex) + 1, String(obj[keys[cellIndex]]));
+				// write header
+				if (rowIndex === '0') {
+					ctx.excel.sheet.setCell(1, parseInt(cellIndex) + 1, String(keys[cellIndex]));
+				}
+				
+				ctx.excel.sheet.setCell(parseInt(rowIndex) + 2, parseInt(cellIndex) + 1, String(obj[keys[cellIndex]]));
 			}
 		}
 	}
