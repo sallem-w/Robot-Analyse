@@ -28,6 +28,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		];
 		
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.saveFile();
 		sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
 	}
 	
@@ -44,6 +45,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		];
 		
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.saveFile();
 		
 		loopStepContractCMU(sc, i);
 	}));

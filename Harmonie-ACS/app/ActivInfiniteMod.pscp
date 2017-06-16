@@ -861,7 +861,7 @@
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Visualisation du compte cotisant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
