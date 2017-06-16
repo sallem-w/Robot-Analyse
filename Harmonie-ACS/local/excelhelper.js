@@ -30,7 +30,7 @@
 	excelHelper.write = function(rowIndex, arrayMessage) {
 		for (var i in arrayMessage) {
 			var message = arrayMessage[i];
-			ctx.excel.sheet.setCell(rowIndex, message.columnIndex, String(message.value)); 
+			ctx.excel.sheet.setCell(rowIndex, message.columnIndex, String(message.value));
 		}
 	};
 	
@@ -51,6 +51,14 @@
 			ctx.trace.writeInfo("Create Output Excel file succeed");
 		} catch (ex) {
 			ctx.trace.writeError('Can not copy save excel file, ' + pathFileExcel);
+		}
+	}
+	
+	excelHelper.saveFile = function() {
+		try {
+			ctx.excel.file.save(); 
+		} catch (ex) {
+			ctx.trace.writeError('Can not save result excel file');
 		}
 	}
 	

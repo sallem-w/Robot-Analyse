@@ -67,6 +67,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 		];
 		
 		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.saveFile();
 		
 		loopStepContractACS(sc, i);
 	}));
