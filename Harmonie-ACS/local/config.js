@@ -30,7 +30,7 @@
 		return codeScenario === ctx.config.SIRH ? '.json' : '.xls';
 	}
 	
-	config.getExtensionName = function(codeScenario, fileName) {
+	config.getResultFileExtension = function(codeScenario, fileName) {
 		return codeScenario === ctx.config.SIRH ? 'xls' : ctx.fso.file.getExtensionName(fileName);
 	}
 	

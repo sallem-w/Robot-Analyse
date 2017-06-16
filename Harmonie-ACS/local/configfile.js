@@ -27,7 +27,7 @@
 			return false;	
 		}
 		
-		var extension = ctx.config.getExtensionName(codeScenario, fileName);
+		var extension = ctx.config.getResultFileExtension(codeScenario, fileName);
 		var fileNameOutputComplete = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileName, fileName.length - extension.length - 1)  + "_Result." + extension;
 
 		if (!ctx.fso.file.exist(this.getPathFile())) {
