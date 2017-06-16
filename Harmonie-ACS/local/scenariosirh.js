@@ -21,7 +21,13 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	var contracts = JSON.parse(fileContracts);
 	
 	ctx.trace.writeInfo('STEP - createOutputFile');
-	ctx.excelHelper.createFile(ctx.configFile.getPathFileOutput());
+	ctx.excelHelper.createFile();
+	
+	ctx.trace.writeInfo('STEP - saveOutputFile');
+	ctx.excelHelper.saveFile(ctx.configFile.getPathFileOutput()); 
+	
+	ctx.trace.writeInfo('STEP - writeOutputFile');
+	ctx.excelHelper.write(contracts);
 	
 	sc.endStep();
 }});

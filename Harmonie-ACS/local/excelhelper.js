@@ -34,14 +34,24 @@
 		}
 	};
 	
-	excelHelper.createFile = function(pathFileExcel) {
+	excelHelper.write = function(arrayObj) {
+		for (var rowIndex in arrayObj) {
+			var obj = arrayObj[rowIndex];
+			var keys = Object.keys(obj);
+			for (var cellIndex in keys) {
+				ctx.excel.sheet.setCell(parseInt(rowIndex) + 1, parseInt(cellIndex) + 1, String(obj[keys[cellIndex]]));
+			}
+		}
+	}
+	
+	
+	excelHelper.createFile = function() {
 		ctx.excel.release();
 		ctx.excel.initialize();
 		try {
-			ctx.fso.file.create(pathFileExcel);
 			ctx.excel.file.create();
 		} catch (ex) {
-			ctx.trace.writeError('Can not create excel file, ' + pathFileExcel);
+			ctx.trace.writeError('Can not create excel file');
 		}
 	}
 		
@@ -65,9 +75,14 @@
 		}
 	}
 	
-	excelHelper.saveFile = function() {
+	excelHelper.saveFile = function(pathFileExcel) {
 		try {
-			ctx.excel.file.save(); 
+			if (pathFileExcel) {
+				ctx.excel.file.saveAs(pathFileExcel);
+			}
+			else {
+				ctx.excel.file.save(); 
+			}
 		} catch (ex) {
 			ctx.trace.writeError('Can not save result excel file');
 		}
