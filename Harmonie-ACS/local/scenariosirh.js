@@ -4,7 +4,7 @@
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initScenarioSIRH);
-	sc.step(ActivInfinitev7.steps.startScenarioASIRH);
+	sc.step(ActivInfinitev7.steps.startScenarioSIRH);
 	sc.step(ActivInfinitev7.steps.endScenarioSIRH);
 }});
 	
@@ -26,7 +26,7 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	sc.endStep();
 }});
 	
-ActivInfinitev7.step({ startScenarioASIRH : function(ev, sc, st) {
+ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	sc.endStep();
 }});
 
