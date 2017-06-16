@@ -71,6 +71,10 @@ Exemple de template du fichier de configuration :
                 "commentContract": 16
             }
         }
+    },
+    "SIRH": {
+        "showMenu": true,
+        "rootPath": "C:\\deploy\\eram\\"
     }
 }
 
@@ -78,7 +82,7 @@ Exemple de template du fichier de configuration :
 
 - `showMenu` : Permet d'afficher ou non le menu permettant de lancer le scenario
 - `pathTemplate`: Chemin du dossier des différents template HTML
-- `rootPath`: Chemin du dossier vers le fichier excel qui va être traité
+- `rootPath`: Chemin du dossier vers le fichier excel qui va être traité (pour SIRH dossier qui contient un seul fichier json)
 - `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
 - `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
 - `saveUpdate`: Permet d'activer ou non la sauvegarde des différentes modifications. Si il est à `true`, les modifications vont être sauvegardées. Si il est à `false`, les modification ne seront pas sauvegardées.

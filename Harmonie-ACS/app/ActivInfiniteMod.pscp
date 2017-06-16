@@ -1169,6 +1169,7 @@
 				<SCRIPT Name="ScenarioCMU" Folder="ScenarioCMU" Src="ScenarioCMU.js" />
 				<SCRIPT Name="CheckContractCMU" Folder="ScenarioCMU" Src="CheckContractCMU.js" />
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
+				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

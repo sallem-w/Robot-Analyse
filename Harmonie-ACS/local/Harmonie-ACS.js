@@ -118,6 +118,7 @@ GLOBAL.events.START.on(function (ev) {
 	ctx.config.loadConfigFile();
 	var configACS = ctx.config.getConfig(ctx.config.ACS);
 	var configCMU = ctx.config.getConfig(ctx.config.CMU);
+	var configSIRH = ctx.config.getConfig(ctx.config.SIRH);
 
 	if (configACS.showMenu) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
@@ -146,6 +147,14 @@ GLOBAL.events.START.on(function (ev) {
 				ctx.trace.writeError('Open Infinite on dashboard page');
 				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter à Infinite, et il faut se trouver sur la page d\'accueil');
 			}
+		});	
+	}
+	
+	if (configSIRH.showMenu) {
+		systray.addMenu('', 'SIRH', 'SIRH scenario');
+		systray.addMenu('SIRH', 'SIRHCompletV7', 'Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRH);
+				ActivInfinitev7.scenarios.scenarioSIRH.start();
 		});	
 	}
 });
