@@ -1,8 +1,8 @@
 ﻿ctx.configFile = (function() {
 	var rootPath;
 	var codeScenario;
-	var fileNameExcel;
-	var fileNameOutputExcel;
+	var fileName;
+	var fileNameOutput;
 	
 	var configFile = {};
 	
@@ -10,49 +10,50 @@
 		var config = ctx.config.getConfig(codeScenario);
 		rootPath = config.rootPath;
 		
+		var extensionCheck = ctx.config.getCheckExtension(codeScenario);
 		var files = ctx.fso.folder.getFileCollection(rootPath);
-		var countFileExcel = 0;
+		var countFile = 0;
 		while(!files.atEnd()) {
 			var file = files.item();
-			if (file.Name.indexOf('.xls') !== -1) {
-				countFileExcel += 1;
-				fileNameExcel = file.Name;
+			if (file.Name.indexOf(extensionCheck) !== -1) {
+				countFile += 1;
+				fileName = file.Name;
 			}
 			files.moveNext();
 		}
 		
-		if (countFileExcel !== 1) {
-			ctx.trace.writeError(countFileExcel + " excel files found in " + rootPath + ", only 1 needed");
+		if (countFile !== 1) {
+			ctx.trace.writeError(countFile + " " + extensionCheck + " files found in " + rootPath + ", only 1 needed");
 			return false;	
 		}
 		
-		var extensionExcel = ctx.fso.file.getExtensionName(fileNameExcel);
-		var fileNameOutput = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileNameExcel, fileNameExcel.length - extensionExcel.length - 1)  + "_Result." + extensionExcel;
+		var extension = ctx.config.getExtensionName(codeScenario, fileName);
+		var fileNameOutputComplete = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileName, fileName.length - extension.length - 1)  + "_Result." + extension;
 
-		if (!ctx.fso.file.exist(this.getPathFileExcel())) {
-			ctx.trace.writeError("Open Excel file FAIL");
+		if (!ctx.fso.file.exist(this.getPathFile())) {
+			ctx.trace.writeError("Open file FAIL");
 			return false;	
 		}
 
-		ctx.trace.writeInfo("Open Excel file DONE");
-		fileNameOutputExcel = fileNameOutput;
+		ctx.trace.writeInfo("Open file DONE");
+		fileNameOutput = fileNameOutputComplete;
 		return true;	
 	};
 	
-	configFile.getPathFileExcel = function() {
-		return rootPath + fileNameExcel;
+	configFile.getPathFile = function() {
+		return rootPath + fileName;
 	}
 		
-	configFile.getFileNameOutputExcel = function() {
-		return fileNameOutputExcel;
+	configFile.getFileNameOutput = function() {
+		return fileNameOutput;
 	}
 	
-	configFile.getPathFileOutputExcel = function() {
-		return rootPath + fileNameOutputExcel;
+	configFile.getPathFileOutput = function() {
+		return rootPath + fileNameOutput;
 	}
 	
 	configFile.getCodeProductCorrespond = function(codeProduct) {
-		var config = ctx.config.getConfigACS();
+		var config = ctx.config.getConfig(ctx.config.ACS);
 		return config.productAccesSante[codeProduct];
 	}
 

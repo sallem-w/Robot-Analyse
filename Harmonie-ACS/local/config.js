@@ -26,5 +26,13 @@
 		return 1000 * 60 * 5;
 	}
 	
+	config.getCheckExtension = function(codeScenario) {
+		return codeScenario === ctx.config.SIRH ? '.json' : '.xls';
+	}
+	
+	config.getExtensionName = function(codeScenario, fileName) {
+		return codeScenario === ctx.config.SIRH ? 'xls' : ctx.fso.file.getExtensionName(fileName);
+	}
+	
 	return config;
 }) ();

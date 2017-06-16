@@ -10,8 +10,12 @@
 	
 ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
-	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
+	if (!ctx.configFile.init(sc.data.scenarioCode)) {
+		sc.endScenario();
+	}
 
+	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
+	
 	sc.endStep();
 }});
 	
