@@ -16,6 +16,13 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
 	
+	ctx.trace.writeInfo('STEP - readFile');
+	var fileContracts = ctx.fso.file.read(ctx.configFile.getPathFile());
+	var contracts = JSON.parse(fileContracts);
+	
+	ctx.trace.writeInfo('STEP - createOutputFile');
+	ctx.excelHelper.createFile(ctx.configFile.getPathFileOutput());
+	
 	sc.endStep();
 }});
 	

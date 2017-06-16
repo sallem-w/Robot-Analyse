@@ -34,6 +34,17 @@
 		}
 	};
 	
+	excelHelper.createFile = function(pathFileExcel) {
+		ctx.excel.release();
+		ctx.excel.initialize();
+		try {
+			ctx.fso.file.create(pathFileExcel);
+			ctx.excel.file.create();
+		} catch (ex) {
+			ctx.trace.writeError('Can not create excel file, ' + pathFileExcel);
+		}
+	}
+		
 	excelHelper.openFile = function(pathFileExcel) {
 		ctx.excel.release();
 		ctx.excel.initialize();
