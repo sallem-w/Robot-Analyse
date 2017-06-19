@@ -223,6 +223,7 @@
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1154,6 +1155,87 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2130_0925520_1" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion" CtxtId="93" Techno="WEB" Timestamp="07/06/2017 09:25:56" />
+				</PAGE>
+				<PAGE Name="pMembershipColSearch" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumberContractCol" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContratCol]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="InsureGroup" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R2R0R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1144039_1" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion" CtxtId="96" Techno="WEB" Timestamp="19/06/2017 11:44:07" />
+				</PAGE>
+				<PAGE Name="pMembershipSearchBene" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumberINSEE" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="98.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R1R0R2R1R0R1R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroInsee5]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearch">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="98.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechPE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSearchValid">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Résultat par personne]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btValid">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1206374_1" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="99" Techno="WEB" Timestamp="19/06/2017 12:06:41" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

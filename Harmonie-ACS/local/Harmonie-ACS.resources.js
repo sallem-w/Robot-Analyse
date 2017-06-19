@@ -128,3 +128,14 @@ ActivInfinitev7.pInfoRo.oRangeInsured = ActivInfinitev7.pInfoRo.addItem('oRangeI
 ActivInfinitev7.pInfoRo.oEndEffectProductDate = ActivInfinitev7.pInfoRo.addItem('oEndEffectProductDate', {"occurs":1});
 ActivInfinitev7.pInfoRo.oCodeProduct = ActivInfinitev7.pInfoRo.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pInfoRo.btNavigateProductList = ActivInfinitev7.pInfoRo.addItem('btNavigateProductList');
+
+ActivInfinitev7.pMembershipColSearch = ActivInfinitev7.addPage('pMembershipColSearch', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
+ActivInfinitev7.pMembershipColSearch.oNumberContractCol = ActivInfinitev7.pMembershipColSearch.addItem('oNumberContractCol', {"mustExist":true});
+ActivInfinitev7.pMembershipColSearch.InsureGroup = ActivInfinitev7.pMembershipColSearch.addItem('InsureGroup', {"mustExist":true});
+ActivInfinitev7.pMembershipColSearch.btSearch = ActivInfinitev7.pMembershipColSearch.addItem('btSearch');
+
+ActivInfinitev7.pMembershipSearchBene = ActivInfinitev7.addPage('pMembershipSearchBene', {"comment":"Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pMembershipSearchBene.oNumberINSEE = ActivInfinitev7.pMembershipSearchBene.addItem('oNumberINSEE', {"mustExist":true});
+ActivInfinitev7.pMembershipSearchBene.btSearch = ActivInfinitev7.pMembershipSearchBene.addItem('btSearch');
+ActivInfinitev7.pMembershipSearchBene.oSearchValid = ActivInfinitev7.pMembershipSearchBene.addItem('oSearchValid');
+ActivInfinitev7.pMembershipSearchBene.btValid = ActivInfinitev7.pMembershipSearchBene.addItem('btValid');
