@@ -43,7 +43,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	
 	sc.data.statusContract = '';
 	sc.data.commentContract = '';
-	sc.data.contract = sc.data.contracts[i];	
+	sc.data.contract = sc.data.contracts[i];
 	
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
 		sc.data.commentContract = scCheckMembership.data.commentContract;

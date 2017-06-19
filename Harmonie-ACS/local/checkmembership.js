@@ -3,11 +3,11 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
-	sc.step(ActivInfinitev7.steps.initializeCheckContract);
+	sc.step(ActivInfinitev7.steps.initializeCheckMembership);
 	sc.step(ActivInfinitev7.steps.navigateToMembership);
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
-	sc.step(ActivInfinitev7.steps.endCheckContract);
+	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
 
 ActivInfinitev7.step({ initializeCheckMembership: function(ev, sc, st) {
@@ -42,23 +42,43 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		});
 	});
 	
-	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
-		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
-			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-			sc.data.commentContract = 'Revoir centre: ' + message;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
-		});
-	});
+//	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
+//		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+//			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+//			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
+//			sc.data.commentContract = 'Revoir centre: ' + message;
+//			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+//			ctx.scenarioHelper.goHome(function() {
+//				sc.endScenario();
+//			});
+//		});
+//	});
 }});
 
 ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembershipBenef');
-	ctx.scenarioHelper.goHome(function() {
-		sc.endStep();
+	
+	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.numberRO);
+	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
+	
+	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
+		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
+			if (ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist()) {
+				// case benef doesn't exist in Infitite
+				ActivInfinitev7.pMembershipSearchBene.btValid.click();
+				// TODO next task on trello
+				ctx.scenarioHelper.goHome(function() {
+					sc.endStep();
+				});
+			}
+			else {
+				// case benef exist in Infitite
+				// TODO next task on trello
+				ctx.scenarioHelper.goHome(function() {
+					sc.endStep();
+				});
+			}
+		});
 	});
 }});
 	
