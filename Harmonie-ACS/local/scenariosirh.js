@@ -52,9 +52,10 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 		if (i < sc.data.countContracts - 1) {
 			sc.data.indexCurrentContract += 1;
 			sc.endStep(ActivInfinitev7.steps.startScenarioSIRH);
-		} else {
-			sc.endStep();
+			return;
 		}
+		
+		sc.endStep();
 	});
 }});
 
