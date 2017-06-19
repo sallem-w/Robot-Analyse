@@ -27,7 +27,7 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.excelHelper.saveFile(ctx.configFile.getPathFileOutput()); 
 	
 	ctx.trace.writeInfo('STEP - writeOutputFile');
-	ctx.excelHelper.write(contracts);
+	ctx.excelHelper.writeObject(contracts);
 	
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = contracts.length;
