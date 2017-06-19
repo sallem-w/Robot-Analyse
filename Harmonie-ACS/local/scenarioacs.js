@@ -18,10 +18,10 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	sc.data.configExcel = sc.data.config.excel;
 
 	ctx.trace.writeInfo('STEP - openFile');
-	ctx.excelHelper.openFile(ctx.configFile.getPathFileExcel());
+	ctx.excelHelper.openFile(ctx.configFile.getPathFile());
 	
 	ctx.trace.writeInfo('STEP - copyFile');
-	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutputExcel(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
+	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
 
 	var indexLastRow = ctx.excelFile.getLastIndexRow();
 	
@@ -79,7 +79,7 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	
 	ctx.trace.writeInfo('STEP - writeStats');
 	var stats = {};
-	stats['fileName'] = ctx.configFile.getFileNameOutputExcel();
+	stats['fileName'] = ctx.configFile.getFileNameOutput();
 	stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	stats['countCaseFindIntoExcel'] = sc.data.countCaseFindIntoExcel;
