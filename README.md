@@ -86,9 +86,13 @@ Exemple de template du fichier de configuration :
 - `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
 - `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
 - `saveUpdate`: Permet d'activer ou non la sauvegarde des différentes modifications. Si il est à `true`, les modifications vont être sauvegardées. Si il est à `false`, les modification ne seront pas sauvegardées.
-# Utilisation
+# Utilisation ACS / CMU
 
 Il est possbile de relancer facilement un fichier excel déjà traité, il suffit de vider les champs date, statut et commentaire. Contextor ne vas pas passer sur les lignes qui contiennent ces informations.
+
+# SIRH
+
+Vous pouvez retrouver un exemple de fichier pivot dans [SIRH/example_template.json](SIRH/example_template.json).
 
 # Template HTML pour les statistiques
 
