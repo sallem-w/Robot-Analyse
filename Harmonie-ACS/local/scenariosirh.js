@@ -29,6 +29,8 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - writeOutputFile');
 	ctx.excelHelper.write(contracts);
 	
+	sc.data.totalTimeDuration = new Date();
+	sc.data.countCaseProcessed = contracts.length;
 	sc.endStep();
 }});
 	
@@ -39,5 +41,13 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - closeFile');
 	ctx.excelHelper.closeFile();
+	
+	ctx.trace.writeInfo('STEP - writeStats');
+	var stats = {};
+	stats['fileName'] = ctx.configFile.getFileNameOutput();
+	stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
+	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
+	ctx.stats.write(stats);
+	
 	sc.endStep();
 }});
