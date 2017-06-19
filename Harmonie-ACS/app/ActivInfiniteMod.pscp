@@ -1171,11 +1171,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="InsureGroup" MustExist="Y">
+						<OBJET Name="oInsureGroup" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R2R0R2">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext" MustNotExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1220,7 +1229,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Résultat par personne]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Résultat par personne]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1252,6 +1261,7 @@
 				<SCRIPT Name="CheckContractCMU" Folder="ScenarioCMU" Src="CheckContractCMU.js" />
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
+				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
