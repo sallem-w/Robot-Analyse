@@ -34,7 +34,7 @@
 		}
 	};
 	
-	excelHelper.write = function(arrayObj) {
+	excelHelper.writeObject = function(arrayObj) {
 		for (var rowIndex in arrayObj) {
 			var obj = arrayObj[rowIndex];
 			var keys = Object.keys(obj);
