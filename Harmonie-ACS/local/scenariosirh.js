@@ -19,7 +19,8 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - readFile');
 	var fileContracts = ctx.fso.file.read(ctx.configFile.getPathFile());
 	var contracts = JSON.parse(fileContracts);
-	
+	var countContracts = contracts.length;
+		
 	ctx.trace.writeInfo('STEP - createOutputFile');
 	ctx.excelHelper.createFile();
 	
@@ -29,13 +30,33 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - writeOutputFile');
 	ctx.excelHelper.writeObject(contracts);
 	
+	sc.data.indexCurrentContract = 0;
+	sc.data.contracts = contracts;
+	sc.data.countContracts = countContracts;
 	sc.data.totalTimeDuration = new Date();
-	sc.data.countCaseProcessed = contracts.length;
+	sc.data.countCaseProcessed = countContracts;
 	sc.endStep();
 }});
 	
 ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
-	sc.endStep();
+	var i = sc.data.indexCurrentContract;
+	
+	sc.data.statusContract = '';
+	sc.data.commentContract = '';
+	sc.data.contract = sc.data.contracts[i];
+	
+	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
+		sc.data.commentContract = scCheckMembership.data.commentContract;
+		sc.data.statusContract = scCheckMembership.data.statusContract;
+		
+		if (i < sc.data.countContracts - 1) {
+			sc.data.indexCurrentContract += 1;
+			sc.endStep(ActivInfinitev7.steps.startScenarioSIRH);
+			return;
+		}
+		
+		sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {

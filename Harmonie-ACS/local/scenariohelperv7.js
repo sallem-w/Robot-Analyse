@@ -21,7 +21,8 @@
 		terminatedContract: '/mdg/Go.do?id=ACRE04RE4S',
 		terminatedInAdvance: '/mdg/Go.do?id=ACRE01REAC',
 		terminatedCMU: '/mdg/Go.do?id=ACRE01RE3F',
-		synthesis: '/mdg/Go.do?id=ACW1&action=afficherContrat'
+		synthesis: '/mdg/Go.do?id=ACW1&action=afficherContrat',
+		membershipCollective: '/mdg/Go.do?id=ACSO01ASOB'
 	};
 	
 	scenarioHelper.getMessagesPopup = function() {
