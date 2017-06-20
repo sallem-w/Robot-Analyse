@@ -66,7 +66,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
 			if (ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist()) {
 				// case benef doesn't exist in Infitite
-				ActivInfinitev7.pMembershipSearchBene.btValid.click();
+				// ActivInfinitev7.pMembershipSearchBene.btValid.click();
 				// TODO next task on trello
 				ctx.scenarioHelper.goHome(function() {
 					sc.endStep();

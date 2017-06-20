@@ -23,32 +23,28 @@
 		
 	/**
 	* Write in cells
-	* @param {path} Excel Path file
 	* @param {rowIndex} The positive integer to represents row
 	* @param {arrayMessage} The Array of object with represents cells, like [{ columnIndex: 1, value: 'foo' }]
 	*/
-	excelHelper.write = function(rowIndex, arrayMessage) {
+	excelHelper.writeArrayObject = function(rowIndex, arrayMessage) {
 		for (var i in arrayMessage) {
 			var message = arrayMessage[i];
 			ctx.excel.sheet.setCell(rowIndex, message.columnIndex, String(message.value));
 		}
 	};
 	
-	excelHelper.writeObject = function(arrayObj) {
-		for (var rowIndex in arrayObj) {
-			var obj = arrayObj[rowIndex];
-			var keys = Object.keys(obj);
-			for (var cellIndex in keys) {
-				// write header
-				if (rowIndex === '0') {
-					ctx.excel.sheet.setCell(1, parseInt(cellIndex) + 1, String(keys[cellIndex]));
-				}
-				
-				ctx.excel.sheet.setCell(parseInt(rowIndex) + 2, parseInt(cellIndex) + 1, String(obj[keys[cellIndex]]));
-			}
+			
+	/**
+	* Write in cells
+	* @param {rowIndex} The positive integer to represents row
+	* @param {arrayMessage} The Array of string with represents cells, like ['foo', 'bar']
+	*/
+	excelHelper.writeArray = function(rowIndex, arrayMessage) {
+		for (var i in arrayMessage) {
+			var message = arrayMessage[i];
+			ctx.excel.sheet.setCell(rowIndex, parseInt(i) + 1, String(message));
 		}
 	}
-	
 	
 	excelHelper.createFile = function() {
 		ctx.excel.release();
@@ -73,7 +69,7 @@
 	excelHelper.copyFile = function(pathFileExcel, startRowIndex, writeColumn) {
 		try {
 			ctx.excel.file.saveAs(pathFileExcel); 
-			ctx.excelHelper.write(startRowIndex, writeColumn);
+			ctx.excelHelper.writeArrayObject(startRowIndex, writeColumn);
 			ctx.trace.writeInfo("Create Output Excel file succeed");
 		} catch (ex) {
 			ctx.trace.writeError('Can not copy save excel file, ' + pathFileExcel);
