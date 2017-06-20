@@ -28,7 +28,9 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
-	ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
+	if (ActivInfinitev7.pMembershipColSearch.oContractType.get() !== '2') {
+		ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
+	}
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
