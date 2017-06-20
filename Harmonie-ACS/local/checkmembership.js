@@ -28,6 +28,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+	ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
@@ -42,17 +43,17 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		});
 	});
 	
-//	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
-//		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
-//			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-//			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-//			sc.data.commentContract = 'Revoir centre: ' + message;
-//			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-//			ctx.scenarioHelper.goHome(function() {
-//				sc.endScenario();
-//			});
-//		});
-//	});
+	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
+		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
+			sc.data.commentContract = 'Revoir centre: ' + message;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
+		});
+	});
 }});
 
 ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
