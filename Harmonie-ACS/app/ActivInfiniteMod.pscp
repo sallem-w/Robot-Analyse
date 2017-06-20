@@ -278,6 +278,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oDemandDate">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R0R3R28R0R0R1R0R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0006_1538399_1" Comment="Consultation - N°00061366 - Résilié - Adhérent : Madame MUHLMANN M LOUISE - haum0a - Activ Infinite - Module de gestion" CtxtId="74" Techno="WEB" Timestamp="30/05/2017 15:38:44" />
 				</PAGE>
@@ -1207,6 +1216,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oStartDateEffect">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1144039_1" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion" CtxtId="96" Techno="WEB" Timestamp="19/06/2017 11:44:07" />
 				</PAGE>
@@ -1288,6 +1306,7 @@
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
+				<SCRIPT Name="NewMembership" Folder="ScenarioSIRH" Src="NewMembership.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
