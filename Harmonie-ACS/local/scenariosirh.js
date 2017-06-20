@@ -49,9 +49,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	sc.data.commentContract = '';
 	sc.data.contract = sc.data.contracts[i];
 	
-	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
-		sc.data.commentContract = scCheckMembership.data.commentContract;
-		sc.data.statusContract = scCheckMembership.data.statusContract;
+	startScenarioSIRH(sc, (function() {
 		
 		var writeArray = getContractValues(sc.data.contract);
 		writeArray.push(ctx.date.formatTrace(new Date()));
@@ -68,7 +66,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 		}
 		
 		sc.endStep();
-	});
+	}));
 }});
 
 ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
@@ -101,4 +99,20 @@ function getContractValues(obj) {
 		array.push(String(obj[keys[cellIndex]]));
 	}
 	return array;
+}
+
+function startScenarioSIRH(sc, callback) {
+	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
+		sc.data.commentContract = scCheckMembership.data.commentContract;
+		sc.data.statusContract = scCheckMembership.data.statusContract;
+		
+		if (scCheckMembership.data.isNewBenef) {
+			ActivInfinitev7.scenarios.newMembership.start(sc.data).onEnd(function(scNewMemberShip) {
+				callback();
+			});	
+		} else if (scCheckMembership.data.isUpdateBenef) {
+			// TODO next task on trello #44
+			callback();
+		}
+	});
 }
