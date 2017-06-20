@@ -34,21 +34,12 @@
 		}
 	};
 	
-	excelHelper.writeObject = function(arrayObj) {
-		for (var rowIndex in arrayObj) {
-			var obj = arrayObj[rowIndex];
-			var keys = Object.keys(obj);
-			for (var cellIndex in keys) {
-				// write header
-				if (rowIndex === '0') {
-					ctx.excel.sheet.setCell(1, parseInt(cellIndex) + 1, String(keys[cellIndex]));
-				}
-				
-				ctx.excel.sheet.setCell(parseInt(rowIndex) + 2, parseInt(cellIndex) + 1, String(obj[keys[cellIndex]]));
-			}
+	excelHelper.writeArray = function(rowIndex, arrayMessage) {
+		for (var i in arrayMessage) {
+			var message = arrayMessage[i];
+			ctx.excel.sheet.setCell(rowIndex, parseInt(i) + 1, String(message));
 		}
 	}
-	
 	
 	excelHelper.createFile = function() {
 		ctx.excel.release();

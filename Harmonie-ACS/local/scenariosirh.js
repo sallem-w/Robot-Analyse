@@ -27,8 +27,12 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - saveOutputFile');
 	ctx.excelHelper.saveFile(ctx.configFile.getPathFileOutput()); 
 	
-	ctx.trace.writeInfo('STEP - writeOutputFile');
-	ctx.excelHelper.writeObject(contracts);
+	ctx.trace.writeInfo('STEP - writeHeaderOutputFile');
+	var names = getHeaderNames(contracts[0]);
+	names.push('Date traitement contrat');
+	names.push('Status contrat');
+	names.push('Commentaire');
+	ctx.excelHelper.writeArray(1, names);
 	
 	sc.data.indexCurrentContract = 0;
 	sc.data.contracts = contracts;
@@ -48,6 +52,14 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
+		
+		var writeArray = getContractValues(sc.data.contract);
+		writeArray.push(ctx.date.formatTrace(new Date()));
+		writeArray.push(sc.data.statusContract);
+		writeArray.push(sc.data.commentContract);
+		
+		ctx.excelHelper.writeArray(i + 2, writeArray);
+		ctx.excelHelper.saveFile();
 		
 		if (i < sc.data.countContracts - 1) {
 			sc.data.indexCurrentContract += 1;
@@ -72,3 +84,21 @@ ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
 	
 	sc.endStep();
 }});
+
+function getHeaderNames(obj) {
+	var names = [];
+	var keys = Object.keys(obj);
+	for (var cellIndex in keys) {
+		names.push(String(keys[cellIndex]));
+	}
+	return names;
+}
+
+function getContractValues(obj) {
+	var array = [];
+	var keys = Object.keys(obj);
+	for (var cellIndex in keys) {
+		array.push(String(obj[keys[cellIndex]]));
+	}
+	return array;
+}
