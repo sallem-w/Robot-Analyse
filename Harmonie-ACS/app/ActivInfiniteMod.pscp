@@ -1180,6 +1180,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oContractType">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R0R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeCtt]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btNext" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
