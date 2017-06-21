@@ -73,6 +73,20 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 		});
 	});
 }});
+
+ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
+	ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
+	ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
+	ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
+	ActivInfinitev7.pMembershipMainBenef.oAdress.set(sc.data.contract.adress);
+	ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode + ' - ' + sc.data.contract.locality);
+	ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set('TR'); // Select 'trimestriel'
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set('1'); // Select 'Chèque'
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
+	ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
+	ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
+	sc.endStep();
+}});
 	
 ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
