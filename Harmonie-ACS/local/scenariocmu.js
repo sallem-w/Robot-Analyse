@@ -26,7 +26,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: 'l\'ASSPRI n\'a pas été trouvé dans le fichier excel' }
 		];
 		
-		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.writeArrayObject(sc.data.contract.row, writeArray);
 		ctx.excelHelper.saveFile();
 		
 		loopStepContractCMU(sc, i);
@@ -45,7 +45,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: sc.data.commentContract }
 		];
 		
-		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.writeArrayObject(sc.data.contract.row, writeArray);
 		ctx.excelHelper.saveFile();
 		
 		loopStepContractCMU(sc, i);

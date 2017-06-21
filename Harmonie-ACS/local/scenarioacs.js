@@ -66,7 +66,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: sc.data.commentContract }
 		];
 		
-		ctx.excelHelper.write(sc.data.contract.row, writeArray);
+		ctx.excelHelper.writeArrayObject(sc.data.contract.row, writeArray);
 		ctx.excelHelper.saveFile();
 		
 		loopStepContractACS(sc, i);

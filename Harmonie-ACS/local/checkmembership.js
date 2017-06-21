@@ -59,14 +59,13 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembershipBenef');
 	
-	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.numberRO);
+	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
 	
 	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
 		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
-			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();
-			sc.data.isNewBenef = !benefExist;
-			sc.data.isUpdateBenef = benefExist;
+			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
+			// TODO next task
 			
 			ctx.scenarioHelper.goHome(function() {
 				sc.endStep();

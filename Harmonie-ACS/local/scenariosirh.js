@@ -106,13 +106,6 @@ function startScenarioSIRH(sc, callback) {
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
 		
-		if (scCheckMembership.data.isNewBenef) {
-			ActivInfinitev7.scenarios.newMembership.start(sc.data).onEnd(function(scNewMemberShip) {
-				callback();
-			});	
-		} else if (scCheckMembership.data.isUpdateBenef) {
-			// TODO next task on trello #44
-			callback();
-		}
+		callback();
 	});
 }
