@@ -66,7 +66,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		sc.data.commentContract = 'Adhésion trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-		ActivInfinitev7.pTerminatedContractFo.oDemandDate.set(ctx.date.formatDDMMYYYY(ctx.date.setFirstDayOfMonth(ctx.date.now())));
+		ActivInfinitev7.pTerminatedContractFo.oDemandDate.set(ctx.date.formatDDMMYYYY(ctx.date.setDate(ctx.date.now(), 1)));
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
 		ActivInfinitev7.pMembershipSearchBene.wait(function() {
 			sc.endStep();

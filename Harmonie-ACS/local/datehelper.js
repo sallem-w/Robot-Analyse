@@ -95,9 +95,10 @@
 		return message;
 	}
 	
-	date.setFirstDayOfMonth = function(dateObj) {
-		var date = new Date(dateObj);
-		return new Date(date.getFullYear(), date.getMonth(), 1);
+	date.setDate = function(dateObj, day) {
+		var result = new Date(dateObj);
+		result.setDate(day);
+		return result;
 	}
 
 	return date;
