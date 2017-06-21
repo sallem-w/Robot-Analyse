@@ -70,11 +70,36 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			if (!benefExist) {
 				ActivInfinitev7.pMembershipSearchBene.btCancel.click();
 				sc.data.isNewBenef = true;
-				sc.endStep();
+				ActivInfinitev7.pMembershipMainBenef.wait(function() {
+					sc.endStep();
+				});
 				return;
 			}
-
 			
+			var isBenefFound = false;
+			var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
+			for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
+				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index));
+				if (benefName.indexOf(contractBenefName) !== -1) {
+					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
+					isBenefFound = true;
+				}
+			}
+			
+			if (isBenefFound) {
+				ActivInfinitev7.pMembershipSearchBene.btValid.click();
+				sc.data.isUpdateBenef = true;
+				ActivInfinitev7.pMembershipMainBenef.wait(function() {
+					sc.endStep();
+				});
+				return;
+			}
+			
+			sc.data.commentContract = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
 		});
 	});
 }});
