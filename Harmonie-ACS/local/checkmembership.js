@@ -111,6 +111,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 				if (benefName.indexOf(contractBenefName) !== -1) {
 					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
 					isBenefFound = true;
+					break;
 				}
 			}
 			
