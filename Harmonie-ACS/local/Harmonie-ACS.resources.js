@@ -48,6 +48,15 @@ ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIden
 ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pInsuredIdent.btInfoRo = ActivInfinitev7.pInsuredIdent.addItem('btInfoRo');
 ActivInfinitev7.pInsuredIdent.btClose = ActivInfinitev7.pInsuredIdent.addItem('btClose');
+ActivInfinitev7.pInsuredIdent.oInsuredROCheck = ActivInfinitev7.pInsuredIdent.addItem('oInsuredROCheck');
+ActivInfinitev7.pInsuredIdent.oRankBirthday = ActivInfinitev7.pInsuredIdent.addItem('oRankBirthday');
+ActivInfinitev7.pInsuredIdent.oNumberRO = ActivInfinitev7.pInsuredIdent.addItem('oNumberRO');
+ActivInfinitev7.pInsuredIdent.oKeyRO = ActivInfinitev7.pInsuredIdent.addItem('oKeyRO');
+ActivInfinitev7.pInsuredIdent.oFamilySite = ActivInfinitev7.pInsuredIdent.addItem('oFamilySite');
+ActivInfinitev7.pInsuredIdent.oMaidenName = ActivInfinitev7.pInsuredIdent.addItem('oMaidenName');
+ActivInfinitev7.pInsuredIdent.oInsuredType = ActivInfinitev7.pInsuredIdent.addItem('oInsuredType');
+ActivInfinitev7.pInsuredIdent.oSexe = ActivInfinitev7.pInsuredIdent.addItem('oSexe');
+ActivInfinitev7.pInsuredIdent.oBirthday = ActivInfinitev7.pInsuredIdent.addItem('oBirthday');
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
