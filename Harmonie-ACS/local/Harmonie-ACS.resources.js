@@ -147,3 +147,15 @@ ActivInfinitev7.pMembershipSearchBene.btCancel = ActivInfinitev7.pMembershipSear
 ActivInfinitev7.pMembershipSearchBene.oResultNameBenef = ActivInfinitev7.pMembershipSearchBene.addItem('oResultNameBenef', {"occurs":1});
 
 ActivInfinitev7.pMembershipMainBenef = ActivInfinitev7.addPage('pMembershipMainBenef', {"comment":"Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pMembershipMainBenef.oCivility = ActivInfinitev7.pMembershipMainBenef.addItem('oCivility');
+ActivInfinitev7.pMembershipMainBenef.oName = ActivInfinitev7.pMembershipMainBenef.addItem('oName');
+ActivInfinitev7.pMembershipMainBenef.oFirstname = ActivInfinitev7.pMembershipMainBenef.addItem('oFirstname');
+ActivInfinitev7.pMembershipMainBenef.oPostalCode = ActivInfinitev7.pMembershipMainBenef.addItem('oPostalCode');
+ActivInfinitev7.pMembershipMainBenef.oAddress = ActivInfinitev7.pMembershipMainBenef.addItem('oAddress');
+ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentPrestatio');
+ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentContribut');
+ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency = ActivInfinitev7.pMembershipMainBenef.addItem('oPaymentFrequency');
+ActivInfinitev7.pMembershipMainBenef.oTermeType = ActivInfinitev7.pMembershipMainBenef.addItem('oTermeType');
+ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency = ActivInfinitev7.pMembershipMainBenef.addItem('oExpiryFrequency');
+ActivInfinitev7.pMembershipMainBenef.btNext = ActivInfinitev7.pMembershipMainBenef.addItem('btNext');
+ActivInfinitev7.pMembershipMainBenef.oLocality = ActivInfinitev7.pMembershipMainBenef.addItem('oLocality');

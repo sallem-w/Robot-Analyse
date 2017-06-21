@@ -358,6 +358,7 @@
 				<PAGE Name="pInsuredIdent" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1301,7 +1302,125 @@
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS />
+					<OBJETS>
+						<OBJET Name="oCivility">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[civilite]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oName">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R2R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nom]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oFirstname">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[prenom]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPostalCode">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R1R0R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codePostalAdresse-display]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codePostalAdresse-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oAddress">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[voieAdresse]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[voieAdresse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oModePaymentPrestatio">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R43R0R1R1R0R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[modePaiement]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oModePaymentContribut">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[modeReglement]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPaymentFrequency">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R0R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[frequenceReglement]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTermeType">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeTerme]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oExpiryFrequency">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[frequenceAvisEcheance]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="103.R0R1R15R1R2R0R0R0R1R0R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oLocality">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R1R2R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse-display]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1420036_1" Comment="Adhésions en collectif - N°22468408 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion" CtxtId="103" Techno="WEB" Timestamp="20/06/2017 14:20:07" />
 				</PAGE>
 			</_ECRANS>
