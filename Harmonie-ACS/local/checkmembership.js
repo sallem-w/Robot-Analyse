@@ -75,13 +75,15 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		});
   });
 	
-  ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
-		var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-		sc.data.commentContract = 'Revoir centre: ' + message;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
+  ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
+	  ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
+			sc.data.commentContract = 'Revoir centre: ' + message;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			ctx.scenarioHelper.goHome(function() {
+				sc.endScenario();
+			});
 		});
 	});
 }});
