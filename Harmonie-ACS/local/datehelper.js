@@ -94,6 +94,12 @@
 			
 		return message;
 	}
+	
+	date.setDate = function(dateObj, day) {
+		var result = new Date(dateObj);
+		result.setDate(day);
+		return result;
+	}
 
 	return date;
 }) ();

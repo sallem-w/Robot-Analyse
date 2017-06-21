@@ -1280,6 +1280,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oResultNameBenef">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TR" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
+										<TAG Name="TD" Scope="Children" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1R0R0" Range="0">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[resultListPew1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1206374_1" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="99" Techno="WEB" Timestamp="19/06/2017 12:06:41" />
 				</PAGE>
