@@ -1327,7 +1327,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oAdress">
+						<OBJET Name="oAddress">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R2R1">
 									<ATT Name="name">
@@ -1389,6 +1389,18 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="103.R0R1R15R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oLocality">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R1R2R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse-display]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse-display]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

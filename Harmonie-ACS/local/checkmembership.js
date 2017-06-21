@@ -7,6 +7,7 @@
 	sc.step(ActivInfinitev7.steps.navigateToMembership);
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
+	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
 
@@ -31,19 +32,19 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
-		
-		sc.data.commentContract = 'Adhésion trouvé';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-		
-		ActivInfinitev7.pTerminatedContractFo.btNext.click();
-		ActivInfinitev7.pMembershipSearchBene.wait(function() {
-			sc.endStep();
-		});
-	});
-	
 	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
+		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
+			
+			sc.data.commentContract = 'Adhésion trouvé';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+			
+			ActivInfinitev7.pTerminatedContractFo.btNext.click();
+			ActivInfinitev7.pMembershipSearchBene.wait(function() {
+				sc.endStep();
+			});
+		});
+	
 		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
 			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
@@ -67,7 +68,8 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
 			// TODO next task
 			
-			ctx.scenarioHelper.goHome(function() {
+			ActivInfinitev7.pMembershipSearchBene.btCancel.click();
+			ActivInfinitev7.pMembershipMainBenef.wait(function() {
 				sc.endStep();
 			});
 		});
@@ -75,17 +77,26 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
-	ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
-	ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
-	ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
-	ActivInfinitev7.pMembershipMainBenef.oAdress.set(sc.data.contract.adress);
-	ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode + ' - ' + sc.data.contract.locality);
-	ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set('TR'); // Select 'trimestriel'
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
+	
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set('1'); // Select 'Chèque'
-	ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
-	ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
-	ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
-	sc.endStep();
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+			ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
+			ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
+			ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
+			ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode);
+			ActivInfinitev7.pMembershipMainBenef.oLocality.set(sc.data.contract.locality);
+			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.address);
+			ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set('TR'); // Select 'trimestriel'
+			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
+			ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
+			ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
+			ctx.scenarioHelper.goHome(function() {
+				sc.endStep();
+			});
+		});
+	});
 }});
 	
 ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
