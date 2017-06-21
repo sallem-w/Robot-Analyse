@@ -34,6 +34,7 @@ ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote = ActivInfinitev7.pTer
 ActivInfinitev7.pTerminatedContractFo.btClose = ActivInfinitev7.pTerminatedContractFo.addItem('btClose');
 ActivInfinitev7.pTerminatedContractFo.btSearch = ActivInfinitev7.pTerminatedContractFo.addItem('btSearch', {"mustExist":true});
 ActivInfinitev7.pTerminatedContractFo.btNavigateInsuredIden = ActivInfinitev7.pTerminatedContractFo.addItem('btNavigateInsuredIden');
+ActivInfinitev7.pTerminatedContractFo.oDemandDate = ActivInfinitev7.pTerminatedContractFo.addItem('oDemandDate');
 
 ActivInfinitev7.pBlockNotes = ActivInfinitev7.addPage('pBlockNotes', {"comment":"Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlockNotes.oContentBlockNote = ActivInfinitev7.pBlockNotes.addItem('oContentBlockNote');
@@ -135,9 +136,13 @@ ActivInfinitev7.pMembershipColSearch.oInsureGroup = ActivInfinitev7.pMembershipC
 ActivInfinitev7.pMembershipColSearch.oContractType = ActivInfinitev7.pMembershipColSearch.addItem('oContractType');
 ActivInfinitev7.pMembershipColSearch.btNext = ActivInfinitev7.pMembershipColSearch.addItem('btNext', {"mustNotExist":true});
 ActivInfinitev7.pMembershipColSearch.btSearch = ActivInfinitev7.pMembershipColSearch.addItem('btSearch');
+ActivInfinitev7.pMembershipColSearch.oStartDateEffect = ActivInfinitev7.pMembershipColSearch.addItem('oStartDateEffect');
 
 ActivInfinitev7.pMembershipSearchBene = ActivInfinitev7.addPage('pMembershipSearchBene', {"comment":"Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pMembershipSearchBene.oNumberINSEE = ActivInfinitev7.pMembershipSearchBene.addItem('oNumberINSEE', {"mustExist":true});
 ActivInfinitev7.pMembershipSearchBene.btSearch = ActivInfinitev7.pMembershipSearchBene.addItem('btSearch');
 ActivInfinitev7.pMembershipSearchBene.oSearchValid = ActivInfinitev7.pMembershipSearchBene.addItem('oSearchValid');
 ActivInfinitev7.pMembershipSearchBene.btValid = ActivInfinitev7.pMembershipSearchBene.addItem('btValid');
+ActivInfinitev7.pMembershipSearchBene.btCancel = ActivInfinitev7.pMembershipSearchBene.addItem('btCancel');
+
+ActivInfinitev7.pMembershipMainBenef = ActivInfinitev7.addPage('pMembershipMainBenef', {"comment":"Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});

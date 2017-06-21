@@ -59,26 +59,17 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembershipBenef');
 	
-	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.numberRO);
+	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
 	
 	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
 		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
-			if (ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist()) {
-				// case benef doesn't exist in Infitite
-				// ActivInfinitev7.pMembershipSearchBene.btValid.click();
-				// TODO next task on trello
-				ctx.scenarioHelper.goHome(function() {
-					sc.endStep();
-				});
-			}
-			else {
-				// case benef exist in Infitite
-				// TODO next task on trello
-				ctx.scenarioHelper.goHome(function() {
-					sc.endStep();
-				});
-			}
+			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
+			// TODO next task
+			
+			ctx.scenarioHelper.goHome(function() {
+				sc.endStep();
+			});
 		});
 	});
 }});
