@@ -28,6 +28,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
 	ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
@@ -37,6 +38,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		sc.data.commentContract = 'Adhésion trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
+		ActivInfinitev7.pTerminatedContractFo.oDemandDate.set(ctx.date.formatDDMMYYYY(ctx.date.setFirstDayOfMonth(ctx.date.now())));
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
 		ActivInfinitev7.pMembershipSearchBene.wait(function() {
 			sc.endStep();
@@ -65,11 +67,14 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
 		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
 			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
-			// TODO next task
-			
-			ctx.scenarioHelper.goHome(function() {
+			if (!benefExist) {
+				ActivInfinitev7.pMembershipSearchBene.btCancel.click();
+				sc.data.isNewBenef = true;
 				sc.endStep();
-			});
+				return;
+			}
+
+			
 		});
 	});
 }});

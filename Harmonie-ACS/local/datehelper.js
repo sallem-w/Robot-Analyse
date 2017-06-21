@@ -94,6 +94,11 @@
 			
 		return message;
 	}
+	
+	date.setFirstDayOfMonth = function(dateObj) {
+		var date = new Date(dateObj);
+		return new Date(date.getFullYear(), date.getMonth(), 1);
+	}
 
 	return date;
 }) ();
