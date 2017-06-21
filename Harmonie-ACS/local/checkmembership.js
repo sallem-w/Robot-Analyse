@@ -54,7 +54,11 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
 	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
-	ActivInfinitev7.pMembershipColSearch.btSearch.click();
+	
+	if (ctx.options.isDebug) {
+		ctx.log('Need to click on button');
+	}
+	// ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
@@ -103,7 +107,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			var isBenefFound = false;
 			var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
 			for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
-				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index));
+				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
 				if (benefName.indexOf(contractBenefName) !== -1) {
 					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
 					isBenefFound = true;
