@@ -358,6 +358,7 @@
 				<PAGE Name="pInsuredIdent" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>

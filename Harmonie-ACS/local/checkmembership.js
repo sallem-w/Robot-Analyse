@@ -8,6 +8,7 @@
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
+	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
 
@@ -92,13 +93,22 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
 			ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
 			ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
-			ctx.scenarioHelper.goHome(function() {
+			ActivInfinitev7.pMembershipMainBenef.btNext.click();
+			
+			ActivInfinitev7.pInsuredIdent.wait(function() {
 				sc.endStep();
 			});
 		});
 	});
 }});
 	
+ActivInfinitev7.step({ setInsuredIndentData: function(ev, sc, st) {
+	ctx.scenarioHelper.goHome(function() {
+		sc.endStep();
+	});
+}});
+
+
 ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - checkMembership - ' + sc.data.codeScenario);
