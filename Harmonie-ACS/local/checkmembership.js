@@ -5,6 +5,7 @@
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckMembership);
 	sc.step(ActivInfinitev7.steps.navigateToMembership);
+	sc.step(ActivInfinitev7.steps.setListSearchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
@@ -23,13 +24,36 @@ ActivInfinitev7.step({ navigateToMembership : function(ev, sc, st) {
 	});
 }});
 
+ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setListSearchMembership');
+	
+	// need to force onchange on list
+	// Select 'Adhésion' on contract select list
+	var selectValue = '2';
+	if (ActivInfinitev7.pMembershipColSearch.oContractType.get() !== selectValue) {
+		ActivInfinitev7.pMembershipColSearch.oContractType.set(selectValue);
+	}
+	
+	function forceOnChange() {
+		$('select[name="typeCtt"]').change();
+	};
+	
+	ActivInfinitev7.pMembershipColSearch.injectFunction(forceOnChange);
+	ActivInfinitev7.pMembershipColSearch.evalScript('forceOnChange()');
+	
+	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
+		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+			sc.endStep();
+		});
+	});
+}});
+
 ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembership');
 	
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
 	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
-	ActivInfinitev7.pMembershipColSearch.oContractType.set('2'); // Select 'Adhésion' on contract select list
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
