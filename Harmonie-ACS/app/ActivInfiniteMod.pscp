@@ -1306,7 +1306,6 @@
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
-				<SCRIPT Name="NewMembership" Folder="ScenarioSIRH" Src="NewMembership.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
