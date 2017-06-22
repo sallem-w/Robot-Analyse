@@ -11,6 +11,7 @@
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
 	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
+	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
 
@@ -82,9 +83,8 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
 			sc.data.commentContract = 'Revoir centre: ' + message;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
+			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return;
 		});
 	});
 }});
@@ -168,10 +168,8 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 				ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
 				sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-				ctx.scenarioHelper.goHome(function() {
-					sc.endScenario();
-					return;
-				});
+				sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+				return;
 			}
 				
 			ActivInfinitev7.pMembershipMainBenef.oCountry.set('ZZZ'); // Select 'pays inconnu' into list
@@ -188,9 +186,7 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 
 
 ActivInfinitev7.step({ setInsuredIndentData: function(ev, sc, st) {
-	ctx.scenarioHelper.goHome(function() {
-		sc.endStep();
-	});
+	sc.endStep();
 }});
 
 

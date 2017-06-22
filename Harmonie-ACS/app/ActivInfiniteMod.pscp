@@ -394,6 +394,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
@@ -1226,6 +1235,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="96.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1144039_1" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion" CtxtId="96" Techno="WEB" Timestamp="19/06/2017 11:44:07" />
 				</PAGE>
@@ -1440,6 +1458,15 @@
 									</ATT>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[paysAdresse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
