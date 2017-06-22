@@ -138,7 +138,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
-	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set('1'); // Select 'Chèque'
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
 	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
 		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
 			ActivInfinitev7.pMembershipMainBenef.oCountry.set('FRA'); // Select 'France' into list
@@ -149,11 +149,10 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 			ActivInfinitev7.pMembershipMainBenef.oLocality.set(sc.data.contract.locality);
 			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set(sc.data.contract.addressNumber);
 			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.address);
-			//TODO : change static value by pivot values
-			ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set('TR'); // Select 'trimestriel'
-			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
-			ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
-			ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
+			ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set(sc.data.contract.paymentFrequency);
+			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set(sc.data.contract.paymentMethodPresta);
+			ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
+			ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
 			sc.endStep();
 		});
