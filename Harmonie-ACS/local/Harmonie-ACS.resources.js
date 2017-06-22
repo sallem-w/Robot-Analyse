@@ -159,3 +159,5 @@ ActivInfinitev7.pMembershipMainBenef.oTermeType = ActivInfinitev7.pMembershipMai
 ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency = ActivInfinitev7.pMembershipMainBenef.addItem('oExpiryFrequency');
 ActivInfinitev7.pMembershipMainBenef.btNext = ActivInfinitev7.pMembershipMainBenef.addItem('btNext');
 ActivInfinitev7.pMembershipMainBenef.oLocality = ActivInfinitev7.pMembershipMainBenef.addItem('oLocality');
+ActivInfinitev7.pMembershipMainBenef.oAddressNumber = ActivInfinitev7.pMembershipMainBenef.addItem('oAddressNumber');
+ActivInfinitev7.pMembershipMainBenef.oCountry = ActivInfinitev7.pMembershipMainBenef.addItem('oCountry');

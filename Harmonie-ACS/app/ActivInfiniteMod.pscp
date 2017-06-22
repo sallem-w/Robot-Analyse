@@ -1420,6 +1420,30 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oAddressNumber">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroAdresse]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[numeroAdresse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCountry">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R0R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[paysAdresse]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[paysAdresse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1420036_1" Comment="Adhésions en collectif - N°22468408 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion" CtxtId="103" Techno="WEB" Timestamp="20/06/2017 14:20:07" />
 				</PAGE>

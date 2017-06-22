@@ -9,6 +9,7 @@
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
+	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
 	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
@@ -137,29 +138,55 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
-	
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set('1'); // Select 'Chèque'
 	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
 		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+			ActivInfinitev7.pMembershipMainBenef.oCountry.set('FRA'); // Select 'France' into list
 			ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
 			ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
 			ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
 			ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode);
 			ActivInfinitev7.pMembershipMainBenef.oLocality.set(sc.data.contract.locality);
+			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set(sc.data.contract.addressNumber);
 			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.address);
+			//TODO : change static value by pivot values
 			ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set('TR'); // Select 'trimestriel'
 			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set('C'); // Select 'Chèque'
 			ActivInfinitev7.pMembershipMainBenef.oExpiryFrequency.set('A'); // Select 'Annuel'
 			ActivInfinitev7.pMembershipMainBenef.oTermeType.set('AE'); // Select 'A échoir'
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-			
-			ActivInfinitev7.pInsuredIdent.wait(function() {
-				sc.endStep();
-			});
+			sc.endStep();
 		});
 	});
 }});
 	
+ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function() {
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function() {
+			var errorMessage = ctx.scenarioHelper.getMessagesPopup();
+			if (errorMessage.indexOf('Le contrôle des voies est activé pour cette localité.') === -1) {
+				ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
+				sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
+				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+				ctx.scenarioHelper.goHome(function() {
+					sc.endScenario();
+					return;
+				});
+			}
+				
+			ActivInfinitev7.pMembershipMainBenef.oCountry.set('ZZZ'); // Select 'pays inconnu' into list
+			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
+			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
+			ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		});
+		
+		ActivInfinitev7.pInsuredIdent.wait(function() {
+			sc.endStep();
+		});
+	});
+}});
+
+
 ActivInfinitev7.step({ setInsuredIndentData: function(ev, sc, st) {
 	ctx.scenarioHelper.goHome(function() {
 		sc.endStep();
