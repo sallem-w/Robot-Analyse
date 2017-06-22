@@ -479,6 +479,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oSocialCategorie">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R57R1R1R0R0R1R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[catSoc]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
