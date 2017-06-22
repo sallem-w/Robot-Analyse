@@ -11,6 +11,7 @@
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
 	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
+	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
@@ -175,19 +176,34 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
 			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		});
 		
-		ActivInfinitev7.pInsuredIdent.wait(function() {
-			sc.endStep();
+			ActivInfinitev7.pInsuredIdent.wait(function() {
+				sc.endStep();
+			});
 		});
 	});
+}});	
+	
+ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
+	
+	ActivInfinitev7.pInsuredIdent.oInsuredROCheck.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oNumberRO.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oKeyRO.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.)
+	
+	ActivInfinitev7.pInsuredIdent.btNext.click();
+	
+	ctx.scenarioHelper.goHome(function() {
+		sc.endStep();
+	});
 }});
-
-
-ActivInfinitev7.step({ setInsuredIndentData: function(ev, sc, st) {
-	sc.endStep();
-}});
-
 
 ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
