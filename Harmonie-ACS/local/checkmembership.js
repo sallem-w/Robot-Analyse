@@ -10,7 +10,6 @@
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
-	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
