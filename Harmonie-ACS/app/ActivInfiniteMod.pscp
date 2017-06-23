@@ -1531,7 +1531,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oExpiryFrequency" TypObj="Key">
+						<OBJET Name="oFrequencyEch" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R0R1">
 									<ATT Name="name">
