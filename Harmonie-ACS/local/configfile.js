@@ -24,6 +24,7 @@
 		
 		if (countFile !== 1) {
 			ctx.trace.writeError(countFile + " " + extensionCheck + " files found in " + rootPath + ", only 1 needed");
+			ctx.popupHelper.newPopup(countFile + " fichier(s) Excel trouvé(s) dans " + rootPath + ", il en faut un et un seul.", 'Erreur Excel');
 			return false;	
 		}
 		
