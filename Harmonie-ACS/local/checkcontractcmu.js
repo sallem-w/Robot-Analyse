@@ -1,7 +1,13 @@
 ﻿ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.CMU;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onError(function(sc, st, ex) {
+		ctx.trace.writeError(sc.data.contract.individualContract +  ' - Error undefined');
+		sc.data.commentContract = 'Erreur traitement inconnue';
+		sc.data.countCaseFailProcessed += 1;
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.endScenario();	
+	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
@@ -9,6 +15,7 @@
 	sc.step(ActivInfinitev7.steps.navigateToInfoRo);
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
+	sc.step(ActivInfinitev7.steps.clickIntoBeneficiary);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductState);
 	sc.step(ActivInfinitev7.steps.goToContribution);
@@ -26,6 +33,7 @@ ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
 		ctx.scenarioHelper.checkIfContractFound(sc, function() {
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
+				return;
 			}); 
 		});
 
@@ -60,6 +68,7 @@ ActivInfinitev7.step({ initializeCheckBeneficiaries: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
+	
 	if (sc.data.indexBenef === 0) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkBeneficiaries');
 	}
@@ -68,11 +77,10 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 	var typeInsured = currentBeneficiaryInfinite.get();
 	var currentState = ActivInfinitev7.pInfoRo.oStateProduct.i(sc.data.indexBenef).get();
 	var rangeInsured = ActivInfinitev7.pInfoRo.oRangeInsured.i(sc.data.indexBenef).get();
-	
+
 	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
 	if (!insuredInfoExcel) {
-		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+		sc.endStep();
 		return;
 	}
 	
@@ -122,7 +130,11 @@ ActivInfinitev7.step({ checkBeneficiaries: function(ev, sc, st) {
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
 	}
+	
+	sc.endStep();
+}});
 
+ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 	if (sc.data.indexBenef === sc.data.countBenef - 1) {
 		if (sc.data.contractIsProlonged) {
 			sc.endStep(ActivInfinitev7.steps.closeConsultation);
