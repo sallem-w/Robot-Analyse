@@ -186,16 +186,16 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
 	
-	ActivInfinitev7.pInsuredIdent.oInsuredROCheck.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oInsuredROCheck.set(sc.data.contract.isInsuredRO)
 	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.)
 	ActivInfinitev7.pInsuredIdent.oNumberRO.set(sc.data.contract.)
 	ActivInfinitev7.pInsuredIdent.oKeyRO.set(sc.data.contract.)
-	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.)
-	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.)
-	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.familyStatus)
+	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.maidenName)
+	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.insuredType)
 	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.)
-	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.)
-	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.)
+	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.birthDate)
+	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory)
 	
 	ActivInfinitev7.pInsuredIdent.btNext.click();
 	
