@@ -403,6 +403,129 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oInsuredROCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssRO1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEntitleROCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssAyd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRankBirthday">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[rangNaiss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumberRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oKeyRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[cleRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oFamilySite">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sitFam]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oMaidenName">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nomJF]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInsuredType">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSexe">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sexe]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBirthday">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateNaiss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSocialCategorie">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R57R1R1R0R0R1R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[catSoc]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="81.R0R1R7R0R1R0R0R0R1R0R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCheckTeletrans">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[indTeletrans]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
@@ -1321,7 +1444,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oCivility" TypObj="Key">
+						<OBJET Name="oCivility">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R1R1">
 									<ATT Name="name">
@@ -1408,7 +1531,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oExpiryFrequency" TypObj="Key">
+						<OBJET Name="oFrequencyEch" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R0R1">
 									<ATT Name="name">

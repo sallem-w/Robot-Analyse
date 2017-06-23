@@ -10,7 +10,7 @@
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
-	sc.step(ActivInfinitev7.steps.setInsuredIndentData);
+	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
@@ -175,19 +175,40 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
 			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		});
 		
-		ActivInfinitev7.pInsuredIdent.wait(function() {
-			sc.endStep();
+			ActivInfinitev7.pInsuredIdent.wait(function() {
+				sc.endStep();
+			});
 		});
 	});
+}});	
+	
+ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
+	
+	if (sc.data.contract.isInsuredRO) {
+		ActivInfinitev7.pInsuredIdent.oInsuredROCheck.click();
+	}
+	else {
+		ActivInfinitev7.pInsuredIdent.oEntitleROCheck.click();
+	}
+	ActivInfinitev7.pInsuredIdent.oCheckTeletrans.set(sc.data.contract.isTeletransCheck ? 1 : 0)
+	ActivInfinitev7.pInsuredIdent.oNumberRO.set(sc.data.contract.inseeNumber)
+	ActivInfinitev7.pInsuredIdent.oKeyRO.set(sc.data.contract.keyRO)
+	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.familyStatus)
+	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.maidenName)
+	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.insuredType)
+	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.sexe)
+	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.birthDate)
+	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory)
+	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.rankBirthday)
+	
+	ActivInfinitev7.pInsuredIdent.btNext.click();
+	
+	ActivInfinitev7.pProductList.wait(function() {
+		sc.endStep();
+	});
 }});
-
-
-ActivInfinitev7.step({ setInsuredIndentData: function(ev, sc, st) {
-	sc.endStep();
-}});
-
 
 ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
