@@ -9,6 +9,10 @@
 }});
 	
 ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
+	sc.data.statusContract = '';
+	sc.data.commentContract = '';
+	sc.data.contract = undefined;
+	sc.data.beneficiaries = undefined;
 	var i = sc.data.indexCurrentContract;
 	sc.data.toTerminated = false;
 	sc.data.beneficiaries = ctx.excelFile.getContractRowCMU(i);
@@ -18,7 +22,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	
 	sc.data.contract = ctx.scenarioHelper.searchInsuredFromType(ctx.scenarioHelper.constantes.ASSPRI, sc.data.beneficiaries);
 	if (!sc.data.contract) {
-		ctx.trace.writeError('ASSPRI is not found');
+		ctx.trace.writeError(sc.data.beneficiaries[0].individualContract + ' - ASSPRI is not found');
 		
 		var writeArray = [
 			{ columnIndex: sc.data.configExcel.columnIndex.dateProceedContract, value: ctx.date.formatTrace(new Date()) },
@@ -26,7 +30,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 			{ columnIndex: sc.data.configExcel.columnIndex.commentContract, value: 'l\'ASSPRI n\'a pas été trouvé dans le fichier excel' }
 		];
 		
-		ctx.excelHelper.writeArrayObject(sc.data.contract.row, writeArray);
+		ctx.excelHelper.writeArrayObject(i, writeArray);
 		ctx.excelHelper.saveFile();
 		
 		loopStepContractCMU(sc, i);

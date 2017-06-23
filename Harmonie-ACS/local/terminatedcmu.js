@@ -32,6 +32,7 @@ ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 			ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
 			});
+			return;
 		});
 		
 		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
