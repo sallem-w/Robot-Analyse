@@ -409,6 +409,21 @@
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
 									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssRO1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEntitleROCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssAyd]]></VALUE>
+									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
@@ -498,6 +513,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="81.R0R1R7R0R1R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCheckTeletrans">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[indTeletrans]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
