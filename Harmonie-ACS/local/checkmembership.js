@@ -196,6 +196,7 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.sexe)
 	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.birthDate)
 	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory)
+	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.rankBirthday)
 	
 	ActivInfinitev7.pInsuredIdent.btNext.click();
 	
