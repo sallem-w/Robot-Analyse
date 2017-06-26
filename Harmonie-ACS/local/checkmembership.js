@@ -163,7 +163,7 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function() {
 		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.getMessagesPopup();
-			if (errorMessage.indexOf('Le contrôle des voies est activé pour cette localité.') === -1) {
+			if (errorMessage.indexOf('La localité est obligatoire') === -1) {
 				ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
 				sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
 				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -172,14 +172,16 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 			}
 				
 			ActivInfinitev7.pMembershipMainBenef.oCountry.set('ZZZ'); // Select 'pays inconnu' into list
+			ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl.set(sc.data.contract.postalCode);
+			ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl.set(sc.data.contract.locality);
 			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
 			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		
-			ActivInfinitev7.pInsuredIdent.wait(function() {
-				sc.endStep();
-			});
 		});
+	});
+	
+	ActivInfinitev7.pInsuredIdent.wait(function() {
+		sc.endStep();
 	});
 }});	
 	

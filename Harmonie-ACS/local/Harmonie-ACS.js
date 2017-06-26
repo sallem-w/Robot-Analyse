@@ -1,6 +1,6 @@
 ﻿
 // *** Choose language (en|fr|de) ***
-GLOBAL.labels.setLanguage('en');
+GLOBAL.labels.setLanguage('fr');
 
 // Global Systray object
 var systray = ctx.systray();
