@@ -1483,6 +1483,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oPostalCodeNoControl">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codePostalAdresse]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codePostalAdresse]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oAddress">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R2R1">
@@ -1557,6 +1569,18 @@
 									</ATT>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[localiteAdresse-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oLocalityNoControl">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[localiteAdresse]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
