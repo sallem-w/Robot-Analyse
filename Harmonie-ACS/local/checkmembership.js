@@ -207,8 +207,13 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	
 	ActivInfinitev7.pInsuredIdent.btValid.click();
 	
-	ActivInfinitev7.pProductList.wait(function() {
-		sc.endStep();
+	ActivInfinitev7.pInsuredIdent.events.UNLOAD.on(function() {
+		ActivInfinitev7.pInsuredIdent.events.LOAD.on(function() {
+			ActivInfinitev7.pInsuredIdent.btNext.click();
+			ActivInfinitev7.pProductList.wait(function() {
+				sc.endStep();
+			});
+		});
 	});
 }});
 
