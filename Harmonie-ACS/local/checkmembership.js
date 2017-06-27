@@ -9,7 +9,8 @@
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
-	sc.step(ActivInfinitev7.steps.validPrincipalInterlocuteur);
+	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
+	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
@@ -122,7 +123,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 				ActivInfinitev7.pMembershipSearchBene.btValid.click();
 				sc.data.isUpdateBenef = true;
 				ActivInfinitev7.pMembershipMainBenef.wait(function() {
-					sc.endStep();
+					sc.endStep(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 				});
 				return;
 			}
@@ -159,7 +160,7 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	});
 }});
 	
-ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
+ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
 	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function() {
 		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.getMessagesPopup();
@@ -181,10 +182,49 @@ ActivInfinitev7.step({ validPrincipalInterlocuteur: function(ev, sc, st) {
 	});
 	
 	ActivInfinitev7.pInsuredIdent.wait(function() {
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
 	});
-}});	
+}});
+
+ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - checkInfoPrincipalInterlocutor');
 	
+	var listFieldToCheck = [
+		{ infiniteValue: ActivInfinitev7.pMembershipMainBenef.oName.get(), pivotValue: sc.data.contract.name, elementName: 'Nom' },
+		{ infiniteValue: ActivInfinitev7.pMembershipMainBenef.oPostalCode.get() || ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl.get() , pivotValue: sc.data.contract.postalCode, elementName: 'Code postal' },
+		{ infiniteValue: ActivInfinitev7.pMembershipMainBenef.oLocality.get() || ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl.get() , pivotValue: sc.data.contract.locality, elementName: 'Localité' },
+		{ infiniteValue: ActivInfinitev7.pMembershipMainBenef.oAddress.get(), pivotValue: sc.data.contract.address, elementName: 'Nom de voie' },
+		{ infiniteValue: ActivInfinitev7.pMembershipMainBenef.oAddressNumber.get() || ActivInfinitev7.pMembershipMainBenef.oAddress.get(), pivotValue: sc.data.contract.addressNumber, elementName: 'Numéro de voie' }
+	];
+	
+	for (var i in listFieldToCheck) {
+		var fieldToCheck = listFieldToCheck[i];
+		if (ctx.string.trim(fieldToCheck.infiniteValue).toLowerCase().indexOf(ctx.string.trim(fieldToCheck.pivotValue).toLowerCase()) === -1) {
+			var message = 'Une valeur est différente : ' + fieldToCheck.elementName + ' a pour valeur \'' + fieldToCheck.infiniteValue + '\' dans infinite, mais \'' + fieldToCheck.pivotValue + '\' dans le fichier donné en entrée';
+			ctx.trace.writeInfo(message);
+			sc.data.commentContract = 'Revoir centre : ' + message;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return;
+		}
+	}
+	
+	//Fill payment info
+	ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set(sc.data.contract.paymentFrequency);
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set(sc.data.contract.paymentMethodPresta);
+	ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
+	ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+			ActivInfinitev7.pMembershipMainBenef.btNext.click();
+			ActivInfinitev7.pInsuredIdent.wait(function() {
+				sc.endStep();
+			});
+		});
+	});
+}});
+
 ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
 	
