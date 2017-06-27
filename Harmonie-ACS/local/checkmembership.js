@@ -209,9 +209,22 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 		}
 	}
 	
-	sc.endStep();
+	//Fill payment info
+	ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set(sc.data.contract.paymentFrequency);
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set(sc.data.contract.paymentMethodPresta);
+	ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
+	ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
+	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+			ActivInfinitev7.pMembershipMainBenef.btNext.click();
+			ActivInfinitev7.pInsuredIdent.wait(function() {
+				sc.endStep();
+			});
+		});
+	});
 }});
-	
+
 ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
 	
