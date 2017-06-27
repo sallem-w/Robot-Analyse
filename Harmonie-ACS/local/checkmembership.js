@@ -194,18 +194,18 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	else {
 		ActivInfinitev7.pInsuredIdent.oEntitleROCheck.click();
 	}
-	ActivInfinitev7.pInsuredIdent.oCheckTeletrans.set(sc.data.contract.isTeletransCheck ? 1 : 0)
-	ActivInfinitev7.pInsuredIdent.oNumberRO.set(sc.data.contract.inseeNumber)
-	ActivInfinitev7.pInsuredIdent.oKeyRO.set(sc.data.contract.keyRO)
-	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.familyStatus)
-	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.maidenName)
-	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.insuredType)
-	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.sexe)
-	ActivInfinitev7.pInsuredIdent.oBirthday.set(sc.data.contract.birthDate)
-	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory)
-	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.rankBirthday)
+	ActivInfinitev7.pInsuredIdent.oCheckTeletrans.set(sc.data.contract.isTeletransCheck ? 1 : 0);
+	ActivInfinitev7.pInsuredIdent.oNumberRO.set(sc.data.contract.inseeNumber);
+	ActivInfinitev7.pInsuredIdent.oKeyRO.set(sc.data.contract.keyRO);
+	ActivInfinitev7.pInsuredIdent.oFamilySite.set(sc.data.contract.familyStatus);
+	ActivInfinitev7.pInsuredIdent.oMaidenName.set(sc.data.contract.maidenName);
+	ActivInfinitev7.pInsuredIdent.oInsuredType.set(sc.data.contract.insuredType);
+	ActivInfinitev7.pInsuredIdent.oSexe.set(sc.data.contract.sexe);
+	ActivInfinitev7.pInsuredIdent.oBirthday.set(ctx.date.formatDDMMYYYY(new Date(sc.data.contract.birthDate)));
+	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory);
+	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.rankBirthday);
 	
-	ActivInfinitev7.pInsuredIdent.btNext.click();
+	ActivInfinitev7.pInsuredIdent.btValid.click();
 	
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.endStep();

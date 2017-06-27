@@ -526,6 +526,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btValid">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
