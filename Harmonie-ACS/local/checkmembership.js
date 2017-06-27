@@ -199,7 +199,7 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 	
 	for (var i in listFieldToCheck) {
 		var fieldToCheck = listFieldToCheck[i];
-		if (ctx.string.trim(fieldToCheck.infiniteValue).indexOf(ctx.string.trim(fieldToCheck.pivotValue)) === -1) {
+		if (ctx.string.trim(fieldToCheck.infiniteValue).toLowerCase().indexOf(ctx.string.trim(fieldToCheck.pivotValue).toLowerCase()) === -1) {
 			var message = 'Une valeur est différente : ' + fieldToCheck.elementName + ' a pour valeur \'' + fieldToCheck.infiniteValue + '\' dans infinite, mais \'' + fieldToCheck.pivotValue + '\' dans le fichier donné en entrée';
 			ctx.trace.writeInfo(message);
 			sc.data.commentContract = 'Revoir centre : ' + message;
