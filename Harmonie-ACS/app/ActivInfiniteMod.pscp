@@ -1744,6 +1744,7 @@
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
+				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
