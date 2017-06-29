@@ -112,7 +112,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	if (!isCertificateValid) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference';
-		var coment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
+		var comment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
 		ctx.endScenario(sc, message, comment);
 		return;
 	}

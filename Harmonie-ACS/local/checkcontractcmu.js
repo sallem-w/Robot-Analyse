@@ -4,7 +4,7 @@
 	sc.onError(function(sc, st, ex) {
 		var message = sc.data.contract.individualContract +  ' - Error undefined';
 		var comment = 'Erreur traitement inconnue';
-		ctx.endScenario(sc, message, content);
+		ctx.endScenario(sc, message, comment);
 	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
