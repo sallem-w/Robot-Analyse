@@ -9,6 +9,7 @@
 }});
 
 ActivInfinitev7.step({ startScenarioDA: function(ev, sc, st) {
+	sc.step(ActivInfinitev7.steps.navigateToSynthesis);
 	sc.endStep();
 }});
 

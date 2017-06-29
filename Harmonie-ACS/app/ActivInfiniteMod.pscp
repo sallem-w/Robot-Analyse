@@ -145,7 +145,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage2" MustExist="Y">
+						<OBJET Name="oTitlePage2">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R3R0R0R0">
 									<ATT Name="Text">
@@ -1746,6 +1746,9 @@
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
 				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" Folder="Steps" />
+				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
+				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
+				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
