@@ -1745,6 +1745,7 @@
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
 				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
+				<SCRIPT Name="initPivot" Src="initPivot.js" Folder="Steps" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

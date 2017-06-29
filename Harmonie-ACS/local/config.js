@@ -28,7 +28,13 @@
 	}
 	
 	config.getCheckExtension = function(codeScenario) {
-		return codeScenario === ctx.config.SIRH ? '.json' : '.xls';
+		switch(codeScenario) {
+			case ctx.config.SIRH:
+			case ctx.config.DA:
+				return '.json';
+			default:
+				return '.xls';
+		}
 	}
 	
 	config.getResultFileExtension = function(codeScenario, fileName) {

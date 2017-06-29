@@ -119,6 +119,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configACS = ctx.config.getConfig(ctx.config.ACS);
 	var configCMU = ctx.config.getConfig(ctx.config.CMU);
 	var configSIRH = ctx.config.getConfig(ctx.config.SIRH);
+	var configDA = ctx.config.getConfig(ctx.config.DA);
 
 	if (configACS.showMenu) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
@@ -157,6 +158,16 @@ GLOBAL.events.START.on(function (ev) {
 			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 			
 			ActivInfinitev7.scenarios.scenarioSIRH.start();
+		});	
+	}
+	
+	if (configDA.showMenu) {
+		systray.addMenu('', 'DA', 'DA scenario');
+		systray.addMenu('DA', 'DACompletV7', 'Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configDA.rootPath, ctx.config.DA);
+			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configDA.rootPath, ctx.config.DA);
+			
+			ActivInfinitev7.scenarios.scenarioDA.start();
 		});	
 	}
 });
