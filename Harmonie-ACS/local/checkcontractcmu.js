@@ -2,11 +2,9 @@
 	sc.data.codeScenario = ctx.config.CMU;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) {
-		ctx.trace.writeError(sc.data.contract.individualContract +  ' - Error undefined');
-		sc.data.commentContract = 'Erreur traitement inconnue';
-		sc.data.countCaseFailProcessed += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		sc.endScenario();	
+		var message = sc.data.contract.individualContract +  ' - Error undefined';
+		var comment = 'Erreur traitement inconnue';
+		ctx.endScenario(sc, message, content);
 	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
@@ -30,13 +28,10 @@
 
 ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractCMU');
-	
 	ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
 		sc.endStep();
 	}, function notFoundCb() {
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		ctx.endScenario(sc);
 	});
 }});
 

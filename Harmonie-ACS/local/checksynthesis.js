@@ -19,14 +19,13 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 	
-	if (ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
-		  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau") {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
-		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+	if (
+		ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
+	  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau"
+	) {
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - benef id not found';
+		var comment = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
+		ctx.endScenario(sc, message, comment);
 		return;
 	}
 	
@@ -52,13 +51,10 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	}
 	
 	if (countOpenContractLists > 1) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
-		sc.data.commentContract = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open';
+		var comment = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
+		ctx.endScenario(sc, message, comment);
+		return;
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
 		ctx.scenarioHelper.goHome(function() {
@@ -71,12 +67,8 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 			sc.endStep();
 		});
 	} else {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
-		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases';
+		var comment = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
+		ctx.endScenario(sc, message, comment);
 	}
 }});

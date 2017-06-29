@@ -5,13 +5,10 @@
 	ActivInfinitev7.pSynthesisSearch.btSearch.click();
 	ActivInfinitev7.pSynthesis.wait(function() {
 		if (!ActivInfinitev7.pSynthesis.oTitlePage2.exist()) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t been found');
-			sc.data.commentContract = 'Revoir centre: L\'utilisateur n\'as pas été trouvé.';
-			sc.data.countCaseBackToCenter += 1;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
+			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t been found';
+			var comment = 'Revoir centre: L\'utilisateur n\'as pas été trouvé.';
+			ctx.endScenario(sc, message, comment);
+			return;
 		}
 		sc.endStep();
 	});
