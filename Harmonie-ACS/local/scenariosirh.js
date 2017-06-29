@@ -20,7 +20,10 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	var fileContracts = ctx.fso.file.read(ctx.configFile.getPathFile());
 	var contracts = JSON.parse(fileContracts);
 	var countContracts = contracts.length;
-		
+	
+	ctx.trace.writeInfo('STEP - initialiazeMailCreation');
+	ctx.mail.init(contracts.customerName);
+	
 	ctx.trace.writeInfo('STEP - createOutputFile');
 	ctx.excelHelper.createFile();
 	
