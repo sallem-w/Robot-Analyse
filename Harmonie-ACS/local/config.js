@@ -7,7 +7,6 @@
 	config.CMU = 'CMU';
 	config.ACS = 'ACS';
 	config.SIRH = 'SIRH';
-	config.ERAM = 'ERAM';
 	
 	config.loadConfigFile = function() {
 		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
