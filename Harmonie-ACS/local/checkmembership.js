@@ -12,6 +12,7 @@
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
+	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
@@ -242,9 +243,27 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ActivInfinitev7.pInsuredIdent.events.UNLOAD.once(function() {
 		ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
 			ActivInfinitev7.pInsuredIdent.btNext.click();
-			ActivInfinitev7.pProductList.wait(function() {
-				return sc.endStep();
+			ActivInfinitev7.pProductUpdate.wait(function() {
+				ActivInfinitev7.pProductUpdate.btUpdatePage.click();
+					ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
+						ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+							sc.endStep();
+					});
+				});
 			});
+		});
+	});
+}});
+
+ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
+	
+	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.codeProduct);
+	ActivInfinitev7.pProductUpdate.btAddProduct();
+	
+		ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
+			ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+				sc.endStep();
 		});
 	});
 }});
