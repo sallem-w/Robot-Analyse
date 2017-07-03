@@ -370,6 +370,8 @@ function isCurrentIndividualContractTooltip(idRow, individualContract) {
 
 function GetDataProductPage(nameBenef) {
 	
+	ActivInfinitev7.pProductList.oProductPaging.set('100');
+	
 	var data = [];
 	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
 		var codeProduct = ctx.string.trim(ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get());

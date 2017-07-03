@@ -710,6 +710,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oProductPaging">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R3R0R3">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[TableGaranties_length]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
 				</PAGE>
