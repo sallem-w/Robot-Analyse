@@ -190,27 +190,27 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="DivError">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0">
-									<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0R2R0R0">
-										<ATT Name="innerHTML">
-											<VALUE Scan="Full"><![CDATA[Le numéro de contrat n'existe pas.   ]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="class">
-										<VALUE Scan="like"><![CDATA[toast toast-error]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btCloseError">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="105.R0R1R8R0R0">
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
 									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDIVError" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0">
+									<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0R2">
+										<ATT Name="class">
+											<VALUE Scan="Like"><![CDATA[toast-message]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Like"><![CDATA[toast toast-error]]></VALUE>
+									</ATT>
+									<SET />
 								</TAG>
 							</CRITERE>
 						</OBJET>

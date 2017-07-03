@@ -25,8 +25,8 @@ ActivInfinitev7.pContractIndivNotFoun = ActivInfinitev7.addPage('pContractIndivN
 ActivInfinitev7.pContractIndivNotFoun.oIndividualContract = ActivInfinitev7.pContractIndivNotFoun.addItem('oIndividualContract', {"mustExist":true});
 ActivInfinitev7.pContractIndivNotFoun.btSearch = ActivInfinitev7.pContractIndivNotFoun.addItem('btSearch', {"mustExist":true});
 ActivInfinitev7.pContractIndivNotFoun.btClose = ActivInfinitev7.pContractIndivNotFoun.addItem('btClose');
-ActivInfinitev7.pContractIndivNotFoun.DivError = ActivInfinitev7.pContractIndivNotFoun.addItem('DivError');
 ActivInfinitev7.pContractIndivNotFoun.btCloseError = ActivInfinitev7.pContractIndivNotFoun.addItem('btCloseError');
+ActivInfinitev7.pContractIndivNotFoun.oDIVError = ActivInfinitev7.pContractIndivNotFoun.addItem('oDIVError', {"mustExist":true});
 
 ActivInfinitev7.pSearchContractIndiv = ActivInfinitev7.addPage('pSearchContractIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pSearchContractIndiv.oIndividualContract = ActivInfinitev7.pSearchContractIndiv.addItem('oIndividualContract', {"mustExist":true});
