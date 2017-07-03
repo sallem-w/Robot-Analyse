@@ -16,6 +16,7 @@
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
 	sc.step(ActivInfinitev7.steps.clickIntoBeneficiary);
+	sc.step(ActivInfinitev7.steps.waitForBeneficiarySelection);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductState);
 	sc.step(ActivInfinitev7.steps.goToContribution);
@@ -144,17 +145,26 @@ ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 			sc.endStep(ActivInfinitev7.steps.closeConsultation);
 			return;
 		}
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.navigateToProductList);
 		return;
 	}
 	
 	sc.data.indexBenef += 1;
-	ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef).click();
-	ActivInfinitev7.pInfoRo.events.UNLOAD.on(function() {
-		ActivInfinitev7.pInfoRo.events.LOAD.on(function() {
+	ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).click();
+	
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ waitForBeneficiarySelection: function(ev, sc, st) {
+	try {
+		var classes = ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).getAttribute('className');
+		if (classes.match(/selected/)) {
 			sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
-		});
-	});
+			return;
+		}
+	} catch (error) {}
+	ctx.sleep();
+	sc.endStep(ActivInfinitev7.steps.waitForBeneficiarySelection);
 }});
 
 ActivInfinitev7.step({ navigateToProductList: function(ev, sc, st) {

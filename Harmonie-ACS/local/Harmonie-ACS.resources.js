@@ -152,6 +152,7 @@ ActivInfinitev7.pInfoRo.oRangeInsured = ActivInfinitev7.pInfoRo.addItem('oRangeI
 ActivInfinitev7.pInfoRo.oEndEffectProductDate = ActivInfinitev7.pInfoRo.addItem('oEndEffectProductDate', {"occurs":1});
 ActivInfinitev7.pInfoRo.oCodeProduct = ActivInfinitev7.pInfoRo.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pInfoRo.btNavigateProductList = ActivInfinitev7.pInfoRo.addItem('btNavigateProductList');
+ActivInfinitev7.pInfoRo.oInsuredList = ActivInfinitev7.pInfoRo.addItem('oInsuredList', {"occurs":1});
 
 ActivInfinitev7.pMembershipColSearch = ActivInfinitev7.addPage('pMembershipColSearch', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
 ActivInfinitev7.pMembershipColSearch.oNumberContractCol = ActivInfinitev7.pMembershipColSearch.addItem('oNumberContractCol', {"mustExist":true});
