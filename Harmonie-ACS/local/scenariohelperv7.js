@@ -41,7 +41,24 @@
 		}
 		return message;
 	}
-  
+
+	scenarioHelper.searchContract = function (sc, foundCb, notFoundCb) {
+		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+		ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1)));
+		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
+		var foundListener, notFoundListener;
+		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
+			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			notFoundCb(errorMessage);
+		  ctx.off(foundListener);
+		});
+
+		foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
+			foundCb();
+			 ctx.off(notFoundListener);
+		});
+	}
+
 	scenarioHelper.checkIfContractFound = function(sc, callback) {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
@@ -53,7 +70,7 @@
 			}
 		});
 	}
-	
+
 	scenarioHelper.goHome = function(callback) {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 		ActivInfinitev7.pDashboard.wait(function() {
@@ -71,7 +88,7 @@
 		ActivInfinitev7.currentPage.injectFunction(navigateTo);
 		ActivInfinitev7.currentPage.execScript('navigateTo(\''+ page +'\')');
 	}
-	
+
 	/**
 	 * Function use to find an insured into the list created by the input file.
 	 * type : String 

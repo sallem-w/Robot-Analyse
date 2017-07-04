@@ -30,26 +30,18 @@
 
 ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractCMU');
-	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-	var notFoundListener, foundListener;
-	notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function() {
-		var message = ctx.scenarioHelper.getMessagesPopup();
-		ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + message);
-		sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + message;
+	
+	ctx.scenarioHelper.searchContract(sc, function foundCb() {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found')
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		sc.endStep();
+	}, function notFoundCb(errorMessage) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
+		sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		ctx.scenarioHelper.goHome(function() {
 			sc.endScenario();
 		});
-		ctx.off(foundListener);
-	});
-
-	foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found')
-		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-
-		sc.endStep();
-		ctx.off(notFoundListener);
 	});
 }});
 
