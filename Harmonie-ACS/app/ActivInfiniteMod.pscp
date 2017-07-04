@@ -187,15 +187,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btMembershipCollectiv">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="105.R0R1R8R1R0R0R0R6R3R4">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Adhésions en collectif]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1000036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="111" Techno="WEB" Timestamp="06/07/2017 10:00:14" />
