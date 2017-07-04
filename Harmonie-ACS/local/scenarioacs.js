@@ -104,7 +104,7 @@ function loopStepContractACS(sc, i) {
 }
 
 function startScenarioACS(sc, callback) {
-	ActivInfinitev7.scenarios.checkContract.start(sc.data).onEnd(function(scCheckContract) {
+	ActivInfinitev7.scenarios.checkContractACS.start(sc.data).onEnd(function(scCheckContract) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		

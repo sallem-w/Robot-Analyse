@@ -1,4 +1,4 @@
-﻿ActivInfinitev7.scenario({ checkContract: function(ev, sc) {
+﻿ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.ACS;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
