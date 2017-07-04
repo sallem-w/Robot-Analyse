@@ -22,11 +22,8 @@ ActivInfinitev7.step({ initializeTerminatedInAdvanceContract: function(ev, sc, s
 
 ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchTerminatedInAdvanceContract');
-	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(sc.data.contract.ACSCertificateEndDate), 1)));
-	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-	
-	ctx.scenarioHelper.searchContract(sc, function foundCb() {
+	var date  = ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(sc.data.contract.ACSCertificateEndDate), 1));
+	ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 		sc.endStep();
 	}, function notFoundCb() {
 		ctx.scenarioHelper.goHome(function() {

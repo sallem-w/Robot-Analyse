@@ -23,7 +23,7 @@ ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 
 ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
-	ctx.scenarioHelper.searchContract(sc, function foundCb() {
+	ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
 		sc.endStep();
 	}, function notFoundCb() {
 		ctx.scenarioHelper.goHome(function() {

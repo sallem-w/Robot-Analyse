@@ -42,11 +42,13 @@
 		return message;
 	}
 
-	scenarioHelper.searchContract = function (sc, foundCb, notFoundCb) {
+	scenarioHelper.searchContract = function (sc, date, foundCb, notFoundCb) {
 		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.setFocus();
 		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-		ActivInfinitev7.pSearchContractIndiv.oDateContract.setFocus();
-		ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1)));
+		if (date) {
+			ActivInfinitev7.pSearchContractIndiv.oDateContract.setFocus();
+			ActivInfinitev7.pSearchContractIndiv.oDateContract.set(date);
+		}
 		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 		var foundListener, notFoundListener;
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
