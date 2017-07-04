@@ -118,7 +118,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
 				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
 				if (benefName.indexOf(contractBenefName) !== -1) {
-					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
+					ActivInfinitev7.pMembershipSearchBene.oRowResultNameBenef.i(index).click();
 					isBenefFound = true;
 					break;
 				}
