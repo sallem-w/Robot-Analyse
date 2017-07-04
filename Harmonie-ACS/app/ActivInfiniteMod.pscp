@@ -1745,7 +1745,7 @@
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
 				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
-				<SCRIPT Name="CheckContract" Src="CheckContract.js" Folder="ScenarioDA" />
+				<SCRIPT Name="CheckContractDa" Src="CheckContractDa.js" Folder="ScenarioDA" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" />
 				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
