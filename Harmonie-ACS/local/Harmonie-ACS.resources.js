@@ -19,7 +19,7 @@ ActivInfinitev7.pSynthesis = ActivInfinitev7.addPage('pSynthesis', {"comment":"C
 ActivInfinitev7.pSynthesis.oTitlePage = ActivInfinitev7.pSynthesis.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pSynthesis.oDateEnd = ActivInfinitev7.pSynthesis.addItem('oDateEnd', {"occurs":1});
 ActivInfinitev7.pSynthesis.oIndividualContract = ActivInfinitev7.pSynthesis.addItem('oIndividualContract', {"occurs":1});
-ActivInfinitev7.pSynthesis.oTitlePage2 = ActivInfinitev7.pSynthesis.addItem('oTitlePage2', {"mustExist":true});
+ActivInfinitev7.pSynthesis.oTitlePage2 = ActivInfinitev7.pSynthesis.addItem('oTitlePage2');
 
 ActivInfinitev7.pContractIndivNotFoun = ActivInfinitev7.addPage('pContractIndivNotFoun', {"comment":"Contract indiv - not found - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_74\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pContractIndivNotFoun.oIndividualContract = ActivInfinitev7.pContractIndivNotFoun.addItem('oIndividualContract', {"mustExist":true});

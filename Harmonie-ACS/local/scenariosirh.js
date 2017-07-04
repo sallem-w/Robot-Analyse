@@ -3,48 +3,9 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.step(ActivInfinitev7.steps.initScenarioSIRH);
+	sc.step(ActivInfinitev7.steps.initPivot);
 	sc.step(ActivInfinitev7.steps.startScenarioSIRH);
 	sc.step(ActivInfinitev7.steps.endScenarioSIRH);
-}});
-	
-ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
-	ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
-	if (!ctx.configFile.init(sc.data.scenarioCode)) {
-		sc.endScenario();
-	}
-
-	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
-	
-	ctx.trace.writeInfo('STEP - readFile');
-	var fileContracts = ctx.fso.file.read(ctx.configFile.getPathFile());
-	var json = JSON.parse(fileContracts);
-	var headerNames = json.keyLabel;
-	var contracts = json.data;
-	var countContracts = contracts.length;
-	
-	ctx.trace.writeInfo('STEP - initialiazeMailCreation');
-	ctx.mail.init(contracts.customerName);
-	
-	ctx.trace.writeInfo('STEP - createOutputFile');
-	ctx.excelHelper.createFile();
-	
-	ctx.trace.writeInfo('STEP - saveOutputFile');
-	ctx.excelHelper.saveFile(ctx.configFile.getPathFileOutput()); 
-	
-	ctx.trace.writeInfo('STEP - writeHeaderOutputFile');
-	var names = getObjectValues(headerNames);
-	names.push('Date traitement contrat');
-	names.push('Status contrat');
-	names.push('Commentaire');
-	ctx.excelHelper.writeArray(1, names);
-	
-	sc.data.indexCurrentContract = 0;
-	sc.data.contracts = contracts;
-	sc.data.countContracts = countContracts;
-	sc.data.totalTimeDuration = new Date();
-	sc.data.countCaseProcessed = countContracts;
-	sc.endStep();
 }});
 	
 ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {

@@ -75,6 +75,10 @@ Exemple de template du fichier de configuration :
     "SIRH": {
         "showMenu": true,
         "rootPath": "C:\\deploy\\eram\\"
+    },
+    "DA": {
+        "showMenu": true,
+        "rootPath": "C:\\deploy\\eram\\"
     }
 }
 

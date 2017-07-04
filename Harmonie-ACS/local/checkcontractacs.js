@@ -24,14 +24,6 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 	sc.endStep();
 }});
 
-ActivInfinitev7.step({ navigateToSynthesis : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToSynthesis');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.synthesis);
-	ActivInfinitev7.pSynthesisSearch.wait(function() {
-		sc.endStep();
-	});
-}});
-
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
 	ActivInfinitev7.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
@@ -40,71 +32,6 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ActivInfinitev7.pSynthesis.wait(function() {
 		sc.endStep();
 	});
-}});
-
-ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
-	
-	if (ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
-		  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau") {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - benef id not found');
-		sc.data.commentContract = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
-		return;
-	}
-	
-	var countOpenContractLists = 0;
-	var isOpenCurrentContract = false;
-	var dateEndCurrentContract;
-	
-	for (var index in ActivInfinitev7.pSynthesis.oIndividualContract.getAll()) {
-		var endDate = ActivInfinitev7.pSynthesis.oDateEnd.i(index).get();
-
-		// Get individual contract in tooltip on i (get only number in tooltip, represent mostly individual contract)
-		var idRow = ActivInfinitev7.pSynthesis.oIndividualContract.i(index).scriptItem({ id: null });
-		var isEndDateEmpty = ((endDate === undefined) || (ctx.string.trim(endDate) === '')) 
-
-		if (isEndDateEmpty) {
-			countOpenContractLists += 1;
-		}
-		
-		if (isCurrentIndividualContractTooltip(idRow, sc.data.contract.individualContract)) {
-			isOpenCurrentContract = isEndDateEmpty;
-			dateEndCurrentContract = isEndDateEmpty ? undefined : ctx.date.parseToDate(endDate);
-		}
-	}
-	
-	if (countOpenContractLists > 1) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open');
-		sc.data.commentContract = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
-	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
-		});
-	}
-	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
-		});
-	} else {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases');
-		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
-	}
 }});
 
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
@@ -136,14 +63,10 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	
 	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
-			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract not found');
-			sc.data.commentContract = 'Revoir centre: ' + message;
-			sc.data.countCaseBackToCenter += 1;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
+			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
+			var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			ctx.endScenario(sc, message, comment);
+			return;
 		});
 	});
 }});
@@ -153,13 +76,9 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	
 	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
 	if (ctx.string.trim(contentBlockNote) !== '') {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - block note not empty');
-		sc.data.commentContract = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
+		var comment = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
+		ctx.endScenario(sc, message, comment);
 		return;
 	}
 	
@@ -192,13 +111,9 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	}
 	
 	if (!isCertificateValid) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference');
-		sc.data.commentContract = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference';
+		var comment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
+		ctx.endScenario(sc, message, comment);
 		return;
 	}
 	
@@ -241,13 +156,9 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	}
 	
 	if (!isValidContribution) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date');
-		sc.data.commentContract = 'Revoir centre: Solde comptable non à jour';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date';
+		var comment = 'Revoir centre: Solde comptable non à jour';
+		ctx.endScenario(sc, message, comment);
 		return;
 	}
 	
@@ -333,13 +244,10 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		});
 	}
 	else {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page');
-		sc.data.commentContract = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
-		sc.data.countCaseBackToCenter += 1;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page';
+		var comment = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
+		ctx.endScenario(sc, message, comment);
+		return;
 	}
 }});
 	
@@ -348,25 +256,6 @@ ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
 	sc.endStep();
 }});
-
-function isCurrentIndividualContractTooltip(idRow, individualContract) {
-	
-	function getValueToolTipSynthesis(idRow) {
-		return $('tr[id="' + idRow + '"] td:nth-child(2) i').tooltipster('content');
-	};
-	
-	ActivInfinitev7.pSynthesis.injectFunction(getValueToolTipSynthesis);
-	var content = ActivInfinitev7.pSynthesis.evalScript('getValueToolTipSynthesis(' + idRow + ')');
-	
-	var pattern = /\d+/g;
-	var result = content.match(pattern);
-	for (var index = 0; index < result.length; index++) {
-		if (result[index] === individualContract) {
-			return true;
-		}
-	}
-	return false;
-}
 
 function GetDataProductPage(nameBenef) {
 	

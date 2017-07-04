@@ -7,6 +7,7 @@
 	config.CMU = 'CMU';
 	config.ACS = 'ACS';
 	config.SIRH = 'SIRH';
+	config.DA = 'DA';
 	
 	config.loadConfigFile = function() {
 		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
@@ -27,7 +28,13 @@
 	}
 	
 	config.getCheckExtension = function(codeScenario) {
-		return codeScenario === ctx.config.SIRH ? '.json' : '.xls';
+		switch(codeScenario) {
+			case ctx.config.SIRH:
+			case ctx.config.DA:
+				return '.json';
+			default:
+				return '.xls';
+		}
 	}
 	
 	config.getResultFileExtension = function(codeScenario, fileName) {

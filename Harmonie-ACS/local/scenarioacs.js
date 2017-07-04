@@ -11,7 +11,7 @@
 ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
 	if (!ctx.excelFile.initConfig(sc.data.scenarioCode)) {
-		sc.endScenario();
+		sc.endScenario(sc);
 	}
 	
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);

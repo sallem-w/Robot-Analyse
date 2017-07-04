@@ -73,6 +73,7 @@
 				<SCRIPT Name="Stats" Src="Stats.js" />
 				<SCRIPT Name="PopupHelper" Src="PopupHelper.js" />
 				<SCRIPT Name="Mail" Src="Mail.js" />
+				<SCRIPT Name="endScenario" Src="endScenario.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->

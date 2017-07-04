@@ -128,11 +128,9 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 				return;
 			}
 			
-			sc.data.commentContract = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			ctx.scenarioHelper.goHome(function() {
-				sc.endScenario();
-			});
+			var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
+			var message = sc.data.contract.individualContract + ' - Contractor not found';
+			ctx.endScenario(sc, message, comment);
 		});
 	});
 }});

@@ -26,9 +26,7 @@ ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 		sc.endStep();
 	}, function notFoundCb() {
-		ctx.scenarioHelper.goHome(function() {
-			sc.endScenario();
-		});
+		ctx.endScenario(sc);
 	});
 }});
 
