@@ -61,7 +61,12 @@
 	}
 
 	scenarioHelper.goHome = function(callback) {
-		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+		if(ActivInfinitev7.currentPage.btClose.exist()) {
+			ActivInfinitev7.currentPage.btClose.click();
+		} else {
+			ctx.trace.writeWarning('No close button found on current page: navigating to dashboard directly');
+			ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+		}
 		ActivInfinitev7.pDashboard.wait(function() {
 			callback();
 		});

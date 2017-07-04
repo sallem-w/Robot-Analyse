@@ -8,6 +8,7 @@
 	trace.constants = {
 		typeError: {
 			Info: "INFO",
+			Warning: "WARNING",
 			Error: "ERROR"
 		}
 	}		
@@ -28,6 +29,10 @@
 	
 	trace.writeError = function(str, dateObj, separateur) {
 		trace.write(str, trace.constants.typeError.Error, dateObj, separateur)
+	};
+	
+	trace.writeWarning = function(str, dateObj, separateur) {
+		trace.write(str, trace.constants.typeError.Warning, dateObj, separateur)
 	};
 	
 	trace.write = function(str, typeError, dateObj, separator) {
