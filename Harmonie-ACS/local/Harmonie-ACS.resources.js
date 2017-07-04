@@ -20,11 +20,15 @@ ActivInfinitev7.pDashboard.btCoverageChangeMenu = ActivInfinitev7.pDashboard.add
 ActivInfinitev7.pDashboard.btCoverageChange = ActivInfinitev7.pDashboard.addItem('btCoverageChange');
 ActivInfinitev7.pDashboard.btTerminatedProduct = ActivInfinitev7.pDashboard.addItem('btTerminatedProduct');
 ActivInfinitev7.pDashboard.btMembershipCollectiv = ActivInfinitev7.pDashboard.addItem('btMembershipCollectiv');
+<<<<<<< HEAD
 ActivInfinitev7.pDashboard.btSanteSouscription = ActivInfinitev7.pDashboard.addItem('btSanteSouscription');
 ActivInfinitev7.pDashboard.btTerminatedMenu = ActivInfinitev7.pDashboard.addItem('btTerminatedMenu');
 ActivInfinitev7.pDashboard.btTerminatedCMU = ActivInfinitev7.pDashboard.addItem('btTerminatedCMU');
 ActivInfinitev7.pDashboard.btTerminatedInAdvance = ActivInfinitev7.pDashboard.addItem('btTerminatedInAdvance');
 ActivInfinitev7.pDashboard.btTerminatedContract = ActivInfinitev7.pDashboard.addItem('btTerminatedContract');
+=======
+ActivInfinitev7.pDashboard.oMenuHidden = ActivInfinitev7.pDashboard.addItem('oMenuHidden', {"mustExist":true});
+>>>>>>> fix button search contract
 
 ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});
@@ -187,10 +191,10 @@ ActivInfinitev7.pInfoRo.btClose = ActivInfinitev7.pInfoRo.addItem('btClose');
 ActivInfinitev7.pMembershipColSearch = ActivInfinitev7.addPage('pMembershipColSearch', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
 ActivInfinitev7.pMembershipColSearch.oNumberContractCol = ActivInfinitev7.pMembershipColSearch.addItem('oNumberContractCol', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.oInsureGroup = ActivInfinitev7.pMembershipColSearch.addItem('oInsureGroup', {"mustExist":true});
-ActivInfinitev7.pMembershipColSearch.oContractType = ActivInfinitev7.pMembershipColSearch.addItem('oContractType');
+ActivInfinitev7.pMembershipColSearch.oContractType = ActivInfinitev7.pMembershipColSearch.addItem('oContractType', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.btNext = ActivInfinitev7.pMembershipColSearch.addItem('btNext', {"mustNotExist":true});
 ActivInfinitev7.pMembershipColSearch.btSearch = ActivInfinitev7.pMembershipColSearch.addItem('btSearch');
-ActivInfinitev7.pMembershipColSearch.oStartDateEffect = ActivInfinitev7.pMembershipColSearch.addItem('oStartDateEffect');
+ActivInfinitev7.pMembershipColSearch.oStartDateEffect = ActivInfinitev7.pMembershipColSearch.addItem('oStartDateEffect', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.btClose = ActivInfinitev7.pMembershipColSearch.addItem('btClose');
 
 ActivInfinitev7.pMembershipSearchBene = ActivInfinitev7.addPage('pMembershipSearchBene', {"comment":"Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});

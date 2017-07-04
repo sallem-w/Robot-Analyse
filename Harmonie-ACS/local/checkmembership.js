@@ -6,6 +6,7 @@
 	sc.step(ActivInfinitev7.steps.initializeCheckMembership);
 	sc.step(ActivInfinitev7.steps.navigateToMembership);
 	sc.step(ActivInfinitev7.steps.setListSearchMembership);
+	sc.step(ActivInfinitev7.steps.setMembership);
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
@@ -54,18 +55,24 @@ ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
 	});
 }});
 
+ActivInfinitev7.step({ setMembership : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setMembership');
+	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
+	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
+	ActivInfinitev7.pMembershipColSearch.oInsureGroup.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+	ActivInfinitev7.pMembershipColSearch.btSearch.click();
+	sc.endStep();
+	return;
+}});
+
+
 ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembership');
 	
-	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
-	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
-	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
-	
-	if (ctx.options.isDebug) {
-		ctx.log('Need to click on button');
-	}
-
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
+	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
 		
 		sc.data.commentContract = 'Adhésion trouvé';
@@ -245,9 +252,10 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 			ActivInfinitev7.pInsuredIdent.btNext.click();
 			ActivInfinitev7.pProductUpdate.wait(function() {
 				ActivInfinitev7.pProductUpdate.btUpdatePage.click();
-					ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
-						ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-							sc.endStep();
+				ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
+					ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+						sc.endStep();
+						return;
 					});
 				});
 			});
@@ -264,6 +272,7 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 		ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 			ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
 				sc.endStep();
+				return;
 		});
 	});
 }});
