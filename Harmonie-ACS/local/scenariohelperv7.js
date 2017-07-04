@@ -43,7 +43,9 @@
 	}
 
 	scenarioHelper.searchContract = function (sc, foundCb, notFoundCb) {
+		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.setFocus();
 		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+		ActivInfinitev7.pSearchContractIndiv.oDateContract.setFocus();
 		ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1)));
 		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 		var foundListener, notFoundListener;
