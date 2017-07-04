@@ -67,7 +67,12 @@
 			ctx.trace.writeWarning('No close button found on current page: navigating to dashboard directly');
 			ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 		}
+		var closeConfirmListener = ActivInfinitev7.pCloseConfirmation.wait(function () {
+			ActivInfinitev7.pCloseConfirmation.btNo.click();
+		});
+		
 		ActivInfinitev7.pDashboard.wait(function() {
+			ctx.off(closeConfirmListener);
 			callback();
 		});
 	}
