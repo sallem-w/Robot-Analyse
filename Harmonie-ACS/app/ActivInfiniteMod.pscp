@@ -744,6 +744,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="79.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
@@ -866,6 +875,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="107.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2130_0941441_1" Comment="Consultation - N°21309938 - Résilié - Adhérent : Monsieur HASANI MENTOR - haum0a - Activ Infinite - Module de gestion" CtxtId="107" Techno="WEB" Timestamp="04/07/2017 09:41:47" />
 				</PAGE>
@@ -921,6 +939,15 @@
 									<TAG Name="DIV" Scope="Children" />
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Produits/Garanties]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1058,6 +1085,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="62.R0R1R15R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1054378_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="62" Techno="WEB" Timestamp="30/05/2017 10:54:39" />
 				</PAGE>
@@ -1102,6 +1138,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="91.R0R1R14R1R2R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ResiliationContrat_1411275_1" Comment="Resiliation Contrat - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="02/06/2017 14:11:29" />
 				</PAGE>
@@ -1133,6 +1178,15 @@
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="66.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1189,6 +1243,15 @@
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="69.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1261,6 +1324,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="85.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1732596_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="85" Techno="WEB" Timestamp="31/05/2017 17:33:12" />
 				</PAGE>
@@ -1303,6 +1375,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1206070_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="89" Techno="WEB" Timestamp="01/06/2017 12:06:10" />
 				</PAGE>
@@ -1338,6 +1419,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="90.R0R1R14R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1471,6 +1561,15 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[ListeAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
