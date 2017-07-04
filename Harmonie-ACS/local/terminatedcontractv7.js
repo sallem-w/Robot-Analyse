@@ -15,7 +15,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated contract');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedContract);
+	ActivInfinitev7.pDashboard.btTerminatedContract.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});
