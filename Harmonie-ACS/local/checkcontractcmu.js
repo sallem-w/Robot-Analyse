@@ -19,6 +19,8 @@
 	sc.step(ActivInfinitev7.steps.waitForBeneficiarySelection);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductState);
+	sc.step(ActivInfinitev7.steps.nextProduct);
+	sc.step(ActivInfinitev7.steps.waitForProduct);
 	sc.step(ActivInfinitev7.steps.goToContribution);
 	sc.step(ActivInfinitev7.steps.checkContribution);
 	sc.step(ActivInfinitev7.steps.toTerminated);
@@ -173,57 +175,59 @@ ActivInfinitev7.step({ navigateToProductList: function(ev, sc, st) {
 	ActivInfinitev7.pProductList.wait(function() {
 		sc.data.indexBenef = 0;
 		sc.data.countBenef = ActivInfinitev7.pProductList.oTypeBenef.count();
+		if (sc.data.countBenef === 0) {
+			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
+			sc.data.commentContract = 'Déjà fait';
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+			sc.endStep(ActivInfinitev7.steps.closeConsultation);
+		}
+		
 		sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ checkProductState: function(ev, sc, st) {
-	if (sc.data.indexBenef === 0) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkProductState');
-	}
-	
+	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - checkProductState Number ' + sc.data.indexBenef);
 	var currentBeneficiaryInfinite = ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef);
 	var typeInsured = currentBeneficiaryInfinite.get();
 	var insuredInfoExcel = ctx.scenarioHelper.searchInsuredFromType(typeInsured, sc.data.beneficiaries);
 	if (!insuredInfoExcel) {
-		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkProductState);
+		sc.endStep(ActivInfinitev7.steps.nextProduct);
 		return;
 	}
 	
-	if (sc.data.indexBenef === sc.data.countBenef - 1) {
+	var arrayStateSuscribedProduct = findStateSuscribedProduct(sc.data.contract.suscribedCodeProduct);
+	if (arrayStateSuscribedProduct && containsValidProduct(arrayStateSuscribedProduct)) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - one product or more is valid. Continue verifications');
+		sc.endStep(ActivInfinitev7.steps.goToContribution);	
+		return;
+	}
+	sc.endStep(ActivInfinitev7.steps.nextProduct);
+}});
+
+ActivInfinitev7.step({ nextProduct: function(ev, sc, st) {
+	sc.data.indexBenef += 1;
+	if (sc.data.indexBenef >= sc.data.countBenef) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
 		sc.data.commentContract = 'Déjà fait';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.endStep(ActivInfinitev7.steps.closeConsultation);
 		return;
 	}
-	
-	if (sc.data.indexBenef === 0) {
-		var arrayStateSuscribedProduct = findStateSuscribedProduct(sc.data.contract.suscribedCodeProduct);
-		if (arrayStateSuscribedProduct && containsValidProduct(arrayStateSuscribedProduct)) {
-			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - one product or more is valid. Continue verifications');
-			sc.endStep();	
+	ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).click();
+	sc.endStep();
+}});
+
+ActivInfinitev7.step({ waitForProduct: function(ev, sc, st) {
+	ctx.sleep();
+	try {
+		var classes = ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).getAttribute('className');
+		if (classes.match(/selected/)) {
+			sc.endStep(ActivInfinitev7.steps.checkProductState);
 			return;
 		}
-		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkProductState);
-		return;
-	}
-	
-	ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef).click();
-	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductList.events.LOAD.on(function() {
-			sc.data.indexBenef += 1;
-			var arrayStateSuscribedProduct = findStateSuscribedProduct(sc.data.contract.suscribedCodeProduct);
-			if (arrayStateSuscribedProduct && containsValidProduct(arrayStateSuscribedProduct)) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - one product or more is valid. Continue verifications');
-				sc.endStep();
-				return;
-			}
-			sc.endStep(ActivInfinitev7.steps.checkProductState);
-		});
-	});
+	} catch (error) {}
+	sc.endStep(ActivInfinitev7.steps.waitForProduct);
 }});
 
 ActivInfinitev7.step({ goToContribution: function(ev, sc, st) {

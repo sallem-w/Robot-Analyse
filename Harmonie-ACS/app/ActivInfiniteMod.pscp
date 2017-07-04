@@ -690,6 +690,20 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oInsuredList">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oNameBenef">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
@@ -780,7 +794,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationN0024_1706134_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="83" Techno="WEB" Timestamp="31/05/2017 17:06:16" />
+					<CAPTURE Name="PAGE_ConsultationN2130_0941441_1" Comment="Consultation - N°21309938 - Résilié - Adhérent : Monsieur HASANI MENTOR - haum0a - Activ Infinite - Module de gestion" CtxtId="107" Techno="WEB" Timestamp="04/07/2017 09:41:47" />
 				</PAGE>
 				<PAGE Name="pContribution" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
