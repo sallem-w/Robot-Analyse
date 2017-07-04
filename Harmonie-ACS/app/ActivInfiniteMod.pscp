@@ -1039,6 +1039,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
