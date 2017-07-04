@@ -22,7 +22,10 @@ ActivInfinitev7.step({ initScenarioSIRH : function(ev, sc, st) {
 	var headerNames = json.keyLabel;
 	var contracts = json.data;
 	var countContracts = contracts.length;
-		
+	
+	ctx.trace.writeInfo('STEP - initialiazeMailCreation');
+	ctx.mail.init(contracts.customerName);
+	
 	ctx.trace.writeInfo('STEP - createOutputFile');
 	ctx.excelHelper.createFile();
 	
