@@ -23,22 +23,13 @@ ActivInfinitev7.step({ initializeTerminatedProduct: function(ev, sc, st) {
 
 ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
-	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
-		ctx.scenarioHelper.checkIfContractFound(sc, function() { 
-			ctx.scenarioHelper.goHome(function() {
+	ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
+		sc.endStep();
+	}, function notFoundCb() {
+		ctx.scenarioHelper.goHome(function() {
 				sc.endScenario();
-			}); 
-		});
-		
-		ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found')
-			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			
-			sc.endStep();
-		});		
-	})
+			});
+	});
 }});
 
 

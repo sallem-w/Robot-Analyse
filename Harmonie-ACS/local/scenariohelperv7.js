@@ -41,19 +41,33 @@
 		}
 		return message;
 	}
-  
-	scenarioHelper.checkIfContractFound = function(sc, callback) {
-		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+
+	scenarioHelper.searchContract = function (sc, date, foundCb, notFoundCb) {
+		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.setFocus();
+		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+		if (date) {
+			ActivInfinitev7.pSearchContractIndiv.oDateContract.setFocus();
+			ActivInfinitev7.pSearchContractIndiv.oDateContract.set(date);
+		}
+		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
+		var foundListener, notFoundListener;
+		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			if (callback) {
-				callback();
-			}
+			notFoundCb();
+		  ctx.off(foundListener);
+		});
+
+		foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+			foundCb();
+			ctx.off(notFoundListener);
 		});
 	}
-	
+
 	scenarioHelper.goHome = function(callback) {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 		ActivInfinitev7.pDashboard.wait(function() {
@@ -71,7 +85,7 @@
 		ActivInfinitev7.currentPage.injectFunction(navigateTo);
 		ActivInfinitev7.currentPage.execScript('navigateTo(\''+ page +'\')');
 	}
-	
+
 	/**
 	 * Function use to find an insured into the list created by the input file.
 	 * type : String 
