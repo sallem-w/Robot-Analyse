@@ -4,15 +4,8 @@
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initPivot);
-	sc.step(ActivInfinitev7.steps.initMailCreation);
 	sc.step(ActivInfinitev7.steps.startScenarioSIRH);
 	sc.step(ActivInfinitev7.steps.endScenarioSIRH);
-}});
-	
-ActivInfinitev7.step({ initMailCreation : function(ev, sc, st) {
-	ctx.trace.writeInfo('STEP - initialiazeMailCreation');
-	ctx.mail.init(contracts.customerName);
-	sc.endStep();
 }});
 	
 ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
