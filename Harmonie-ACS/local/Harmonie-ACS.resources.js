@@ -16,6 +16,11 @@ ActivInfinitev7.pDashboard.btTerminatedCMU = ActivInfinitev7.pDashboard.addItem(
 ActivInfinitev7.pDashboard.btSynthesis = ActivInfinitev7.pDashboard.addItem('btSynthesis');
 ActivInfinitev7.pDashboard.btMembershipCollectiv = ActivInfinitev7.pDashboard.addItem('btMembershipCollectiv');
 
+ActivInfinitev7.pCloseConfirmation = ActivInfinitev7.addPage('pCloseConfirmation', {"comment":"Close confirmation- Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACSO01ASOC"});
+ActivInfinitev7.pCloseConfirmation.oModal = ActivInfinitev7.pCloseConfirmation.addItem('oModal', {"mustExist":true});
+ActivInfinitev7.pCloseConfirmation.btNo = ActivInfinitev7.pCloseConfirmation.addItem('btNo');
+ActivInfinitev7.pCloseConfirmation.btYes = ActivInfinitev7.pCloseConfirmation.addItem('btYes');
+
 ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pSynthesisSearch.oTitlePage2 = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage2', {"mustNotExist":true});

@@ -113,6 +113,54 @@
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1457555_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="109" Techno="WEB" Timestamp="04/07/2017 14:57:57" />
 				</PAGE>
+				<PAGE Name="pCloseConfirmation" Comment="Close confirmation- Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="end-with"><![CDATA[ - Module de gestion]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACSO01ASOC]]></PATH>
+					<OBJETS>
+						<OBJET Name="oModal" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="109.R0R1R19">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[bootbox modal fade in]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNo">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="109.R0R1R19R0">
+									<TAG Name="BUTTON" Scope="All" CapturedPos="109.R0R1R19R0R0R2R0">
+										<ATT Name="Text">
+											<VALUE Scan="Full"><![CDATA[Non]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[bootbox modal fade in]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btYes">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All">
+									<TAG Name="BUTTON" Scope="All">
+										<ATT Name="Text">
+											<VALUE Scan="Full"><![CDATA[Oui]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[bootbox modal fade in]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsCMUHaum0_1746521_1" Comment="Close confirmation- Activ Infinite - Module de gestion" CtxtId="109" Techno="WEB" Timestamp="04/07/2017 17:46:55" />
+				</PAGE>
 				<PAGE Name="pSynthesisSearch" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
