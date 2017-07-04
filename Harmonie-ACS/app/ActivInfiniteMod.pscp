@@ -951,6 +951,10 @@
 								<TAG Name="SELECT" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R3R0R3">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[TableGaranties_length]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btUpdatePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R0R0">
