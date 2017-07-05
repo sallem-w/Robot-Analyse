@@ -8,7 +8,7 @@
 	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
-	sc.step(ActivInfinitev7.steps.navigateToConsultation);
+	sc.step(ActivInfinitev7.steps.navigateToConsultationCMU);
 	sc.step(ActivInfinitev7.steps.searchIndividualContractCMU);
 	sc.step(ActivInfinitev7.steps.navigateToInfoRo);
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
@@ -24,6 +24,16 @@
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
+}});
+
+ActivInfinitev7.step({ navigateToConsultationCMU : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
+	ActivInfinitev7.pDashboard.wait(function() {
+		ActivInfinitev7.pDashboard.btConsultation.click();
+		ActivInfinitev7.pSearchContractIndiv.wait(function() {
+			sc.endStep();
+		});
+	});
 }});
 
 ActivInfinitev7.step({ searchIndividualContractCMU: function(ev, sc, st) {
