@@ -102,8 +102,18 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
 	
-	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.once(function() {
-		ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
+	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
+		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
+			
+			// click on btValid reload page
+			var messagePopup = ctx.scenarioHelper.getMessagesPopup();
+			if (messagePopup) {
+				var message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
+				var comment = 'Revoir centre: ' + messagePopup;
+				ctx.endScenario(sc, message, comment);
+				return;
+			}
+					
 			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
 			if (!benefExist) {
 				ActivInfinitev7.pMembershipSearchBene.btCancel.click();
