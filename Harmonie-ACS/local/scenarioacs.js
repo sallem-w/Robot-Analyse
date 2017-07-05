@@ -45,6 +45,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	sc.data.contract = ctx.excelFile.getContractRowACS(i);
 	if (!sc.data.contract) {
 		loopStepContractACS(sc, i);
+		return;
 	}
 	
 	sc.data.countCaseProcessed += 1;

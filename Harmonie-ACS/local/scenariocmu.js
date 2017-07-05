@@ -18,6 +18,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 	sc.data.beneficiaries = ctx.excelFile.getContractRowCMU(i);
 	if (!sc.data.beneficiaries) {
 		loopStepContractCMU(sc, i);
+		return;
 	}
 	
 	sc.data.contract = ctx.scenarioHelper.searchInsuredFromType(ctx.scenarioHelper.constantes.ASSPRI, sc.data.beneficiaries);
