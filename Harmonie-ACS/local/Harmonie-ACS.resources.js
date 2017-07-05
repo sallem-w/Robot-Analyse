@@ -12,8 +12,8 @@ ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {
 ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pSynthesisSearch.oTitlePage2 = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage2', {"mustNotExist":true});
 ActivInfinitev7.pSynthesisSearch.btSearch = ActivInfinitev7.pSynthesisSearch.addItem('btSearch');
-ActivInfinitev7.pSynthesisSearch.oBenefIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oBenefIdentification');
-ActivInfinitev7.pSynthesisSearch.oTypeIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oTypeIdentification');
+ActivInfinitev7.pSynthesisSearch.oBenefIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oBenefIdentification', {"mustExist":true});
+ActivInfinitev7.pSynthesisSearch.oTypeIdentification = ActivInfinitev7.pSynthesisSearch.addItem('oTypeIdentification', {"mustExist":true});
 
 ActivInfinitev7.pSynthesis = ActivInfinitev7.addPage('pSynthesis', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher"});
 ActivInfinitev7.pSynthesis.oTitlePage = ActivInfinitev7.pSynthesis.addItem('oTitlePage', {"mustExist":true});

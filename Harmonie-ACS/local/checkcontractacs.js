@@ -27,6 +27,7 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
 	ActivInfinitev7.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
+	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.setFocus();
 	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
 	ActivInfinitev7.pSynthesisSearch.btSearch.click();
 	ActivInfinitev7.pSynthesis.wait(function() {

@@ -76,7 +76,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBenefIdentification">
+						<OBJET Name="oBenefIdentification" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R1R1">
 									<ATT Name="id">
@@ -88,7 +88,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTypeIdentification">
+						<OBJET Name="oTypeIdentification" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R0R1">
 									<ATT Name="id">
