@@ -61,18 +61,19 @@
 	}
 
 	scenarioHelper.goHome = function(callback) {
-		if(ActivInfinitev7.currentPage.btClose.exist()) {
+		if(ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
+			function cancelSave() {
+				$('.modal-footer > button[data-bb-handler="no"]').click();
+			};
+			ActivInfinitev7.currentPage.injectFunction(cancelSave);
 			ActivInfinitev7.currentPage.btClose.click();
+			ActivInfinitev7.currentPage.evalScript('if (cancelSave) cancelSave();');
 		} else {
 			ctx.trace.writeWarning('No close button found on current page: navigating to dashboard directly');
 			ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 		}
-		var closeConfirmListener = ActivInfinitev7.pCloseConfirmation.wait(function () {
-			ActivInfinitev7.pCloseConfirmation.btNo.click();
-		});
-		
+
 		ActivInfinitev7.pDashboard.wait(function() {
-			ctx.off(closeConfirmListener);
 			callback();
 		});
 	}

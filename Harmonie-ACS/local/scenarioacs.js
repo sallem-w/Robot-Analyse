@@ -3,6 +3,7 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
+	
 	sc.step(ActivInfinitev7.steps.initScenario);
 	sc.step(ActivInfinitev7.steps.startScenarioACS);
 	sc.step(ActivInfinitev7.steps.endScenario);
