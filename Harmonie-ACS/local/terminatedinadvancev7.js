@@ -14,7 +14,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedInAdvance);
+	ActivInfinitev7.pDashboard.btTerminatedInAdvance.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});

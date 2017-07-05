@@ -15,7 +15,7 @@
 
 ActivInfinitev7.step({ initializeTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - product terminated CMU');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.terminatedCMU);
+	ActivInfinitev7.pDashboard.btTerminatedCMU.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		sc.endStep();
 	});

@@ -1,4 +1,4 @@
-﻿ActivInfinitev7.scenario({ checkContract: function(ev, sc) {
+﻿ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.ACS;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
 	sc.onError(function(sc, st, ex) { sc.endScenario();	});
@@ -37,9 +37,11 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.consultation);
-	ActivInfinitev7.pSearchContractIndiv.wait(function() {
-		sc.endStep();
+	ctx.scenarioHelper.goHome(function() {
+		ActivInfinitev7.pDashboard.btConsultation.click();
+		ActivInfinitev7.pSearchContractIndiv.wait(function() {
+			sc.endStep();
+		});
 	});
 }});
 
