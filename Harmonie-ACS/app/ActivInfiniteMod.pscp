@@ -21,22 +21,10 @@
 			<_ECRANS>
 				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="end-with"><![CDATA[- Activ'Infinite - Module de gestion]]></TITRE>
+						<TITRE Scan="like"><![CDATA[^\S* - Activ'Infinite - Module de gestion$]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
 					<OBJETS>
-						<OBJET Name="oMenuHidden" MustExist="Y">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="52.R0R1R2R0R0R0">
-									<ATT Name="style">
-										<VALUE Scan="Full"><![CDATA[display: none;]]></VALUE>
-									</ATT>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[cssmenu]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btConsultation">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="109.R0R1R8R1R0R0R0R6R0">
