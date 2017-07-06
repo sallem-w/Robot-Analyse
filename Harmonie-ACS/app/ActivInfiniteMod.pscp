@@ -959,7 +959,7 @@
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R0R0">
 									<ATT Name="outerHTML">
-										<VALUE Scan="like"><![CDATA[style="display: none;"]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[style="display: none;"]]></VALUE>
 									</ATT>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[modifier]]></VALUE>
@@ -1059,7 +1059,7 @@
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="61.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Couverture des Adhérents]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Couverture des Adhérents]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

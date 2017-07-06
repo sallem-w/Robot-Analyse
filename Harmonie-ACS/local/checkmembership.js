@@ -126,7 +126,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
 				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
 				if (benefName.indexOf(contractBenefName) !== -1) {
-					ActivInfinitev7.pMembershipSearchBene.oRowResultNameBenef.i(index).click();
+					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
 					isBenefFound = true;
 					break;
 				}
@@ -273,7 +273,7 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
 	
-	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.codeProduct[0]);
+	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.productCode[0]);
 	ActivInfinitev7.pProductUpdate.btAddProduct();
 	
 		ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
