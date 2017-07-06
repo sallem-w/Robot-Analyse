@@ -143,7 +143,7 @@ ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 
 ActivInfinitev7.step({ waitForBeneficiarySelection: function(ev, sc, st) {
 	try {
-		var classes = ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).getAttribute('className');
+		var classes = ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).scriptItem({ className: null });
 		if (classes.match(/selected/)) {
 			return sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
 		}
@@ -201,7 +201,7 @@ ActivInfinitev7.step({ nextProduct: function(ev, sc, st) {
 ActivInfinitev7.step({ waitForProduct: function(ev, sc, st) {
 	ctx.sleep();
 	try {
-		var classes = ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).getAttribute('className');
+		var classes = ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).scriptItem({ className: null });
 		if (classes.match(/selected/)) {
 			return sc.endStep(ActivInfinitev7.steps.checkProductState);
 		}
