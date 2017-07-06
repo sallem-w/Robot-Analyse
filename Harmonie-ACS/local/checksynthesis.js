@@ -25,8 +25,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - benef id not found';
 		var comment = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	}
 	
 	var countOpenContractLists = 0;
@@ -53,22 +52,21 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	if (countOpenContractLists > 1) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open';
 		var comment = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
+		return ctx.scenarioHelper.goHome(function() {
+			return sc.endStep();
 		});
 	}
 	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
+		return ctx.scenarioHelper.goHome(function() {
+			return sc.endStep();
 		});
 	} else {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases';
 		var comment = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
-		ctx.endScenario(sc, message, comment);
+		return ctx.endScenario(sc, message, comment);
 	}
 }});

@@ -17,13 +17,13 @@ ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated contract');
 	ActivInfinitev7.pDashboard.btTerminatedContract.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ endTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated contract');
 	ActivInfinitev7.pDashboard.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});

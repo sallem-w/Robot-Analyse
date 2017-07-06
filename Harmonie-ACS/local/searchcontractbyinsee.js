@@ -7,9 +7,8 @@
 		if (!ActivInfinitev7.pSynthesis.oTitlePage2.exist()) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t been found';
 			var comment = 'Revoir centre: L\'utilisateur n\'as pas été trouvé.';
-			ctx.endScenario(sc, message, comment);
-			return;
+			return ctx.endScenario(sc, message, comment);
 		}
-		sc.endStep();
+		return sc.endStep();
 	});
 }});

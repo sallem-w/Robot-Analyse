@@ -23,7 +23,7 @@ ActivInfinitev7.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
 	ActivInfinitev7.pDashboard.btCoverageChange.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -31,9 +31,9 @@ ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchCoverageContract');
 	var date  = ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1));
 	ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
-		sc.endStep();
+		return sc.endStep();
 	}, function notFoundCb() {
-		ctx.endScenario(sc);
+		return ctx.endScenario(sc);
 	});
 }});
 	
@@ -46,7 +46,7 @@ ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
 			ActivInfinitev7.pProductUpdate.btUpdatePage.click();
 			ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 				ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-					sc.endStep();
+					return sc.endStep();
 				});
 			});
 		});
@@ -70,8 +70,7 @@ ActivInfinitev7.step({ removeCurrentProduct: function(ev, sc, st) {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code not found into product page');
 			sc.data.commentContract = 'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-			return;
+			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 		}
 		
 		ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).click();
@@ -80,7 +79,7 @@ ActivInfinitev7.step({ removeCurrentProduct: function(ev, sc, st) {
 			ActivInfinitev7.pChangeStateProduct.oStateProduct.set("Radié");
 			ActivInfinitev7.pChangeStateProduct.btSave.click();
 			ActivInfinitev7.pProductUpdate.wait(function() {
-				sc.endStep();
+				return sc.endStep();
 			});
 		});
 }});
@@ -94,8 +93,7 @@ ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
 		sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct;
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-		sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-		return;
+		return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 	}
 	
 	ActivInfinitev7.pProductUpdate.btAddProduct.click();
@@ -103,7 +101,7 @@ ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
 	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-			sc.endStep();
+			return sc.endStep();
 		})
 	});
 }});
@@ -113,7 +111,7 @@ ActivInfinitev7.step({ saveUpdateProduct: function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-			sc.endStep();
+			return sc.endStep();
 		});
 	});
 }});
@@ -132,7 +130,7 @@ ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function
 		ActivInfinitev7.pContributionHistory.wait(function() {
 			ActivInfinitev7.pContributionHistory.btNext.click();
 			ActivInfinitev7.pContributionVisu.wait(function() {
-				sc.endStep();	
+				return sc.endStep();	
 			});
 		});
 	});
@@ -143,7 +141,7 @@ ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc,
 	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
 		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Différé');
 		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -152,13 +150,13 @@ ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev,
 	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 		ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
 		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');
 	ActivInfinitev7.pDashboard.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});

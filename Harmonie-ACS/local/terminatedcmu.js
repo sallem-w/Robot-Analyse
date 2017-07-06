@@ -17,7 +17,7 @@ ActivInfinitev7.step({ initializeTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - product terminated CMU');
 	ActivInfinitev7.pDashboard.btTerminatedCMU.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -25,13 +25,13 @@ ActivInfinitev7.step({ searchTerminatedContractCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchTerminatedContractCMU');
 	var date = ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1));
 	ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
-		sc.endStep();
+		return sc.endStep();
 	}, function notFoundCb(errorMessage) {
-		ctx.endScenario(sc);
+		return ctx.endScenario(sc);
 	});
 }});
 
 ActivInfinitev7.step({ endTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated CMU');
-	sc.endStep();
+	return sc.endStep();
 }});
