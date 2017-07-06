@@ -25,81 +25,137 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
 					<OBJETS>
+						<OBJET Name="btSynthesisMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Vues de synthèse ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIndividualContract">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Contrat Individuel ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btContractContexte">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R1R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Contexte Contrat]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIndivContractMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R5">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Contrat Indiv ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btConsultation">
 							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="109.R0R1R8R1R0R0R0R6R0">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACCO03STSO]]></VALUE>
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Consultation]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btCoverageChangeMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R4">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Changement couverture ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 						<OBJET Name="btCoverageChange">
 							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="109.R0R1R8R1R0R0R0R6R5R0">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACCC01STD]]></VALUE>
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R5R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Changement couverture - STD]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 						<OBJET Name="btTerminatedProduct">
 							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="109.R0R1R8R1R0R0R0R6R5R5">
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R5R5">
 									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACCC04STD]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btTerminatedContract">
-							<CRITERE>
-								<TAG Name="A" Scope="All">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACRE04RE4S]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btTerminatedInAdvance">
-							<CRITERE>
-								<TAG Name="A" Scope="All">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACRE01REAC]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btTerminatedCMU">
-							<CRITERE>
-								<TAG Name="A" Scope="All">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACRE01RE3F]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btSynthesis">
-							<CRITERE>
-								<TAG Name="A" Scope="All">
-									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACW1&action=afficherContrat]]></VALUE>
+										<VALUE Scan="end-with"><![CDATA[Go.do?id=ACCC04STD]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 						<OBJET Name="btMembershipCollectiv">
 							<CRITERE>
-								<TAG Name="A" Scope="All">
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R3R4">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Adhésions en collectif]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSanteSouscription">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R2">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Souscription Santé ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btTerminatedMenu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R25">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Résiliation courante cours d'année ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btTerminatedCMU">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R1">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Fin CMU]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btTerminatedInAdvance">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R7">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[FIN ACS]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btTerminatedContract">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R11">
 									<ATT Name="href">
-										<VALUE Scan="Full"><![CDATA[/mdg/Go.do?id=ACSO01ASOB]]></VALUE>
+										<VALUE Scan="end-with"><![CDATA[Go.do?id=ACRE04RE4S]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
-					<CAPTURE Name="PAGE_Haum0aActivInfini_1457555_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="109" Techno="WEB" Timestamp="04/07/2017 14:57:57" />
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1000036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="111" Techno="WEB" Timestamp="06/07/2017 10:00:14" />
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1007036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="112" Techno="WEB" Timestamp="06/07/2017 10:07:14" />
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1021165_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="113" Techno="WEB" Timestamp="06/07/2017 10:21:27" />
 				</PAGE>
 				<PAGE Name="pSynthesisSearch" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
