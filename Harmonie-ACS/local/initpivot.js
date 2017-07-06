@@ -27,6 +27,7 @@
 	ctx.excelHelper.writeArray(1, names);
 	
 	sc.data.indexCurrentContract = 0;
+	sc.data.customerName = json.customerName;
 	sc.data.contracts = contracts;
 	sc.data.countContracts = countContracts;
 	sc.data.totalTimeDuration = new Date();

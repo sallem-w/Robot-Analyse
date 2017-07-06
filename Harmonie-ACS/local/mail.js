@@ -53,7 +53,6 @@
 	};
 
 	mail.end = function() {
-		ctx.word.file.close();
 		ctx.word.end();
 	}
 	

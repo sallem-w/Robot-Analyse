@@ -14,8 +14,10 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	sc.data.statusContract = '';
 	sc.data.commentContract = '';
 	sc.data.contract = sc.data.contracts[i];
+	ctx.mail.init(sc.data.customerName);
 	
 	startScenarioSIRH(sc, (function() {
+		ctx.mail.createMail(sc.data.contract);
 		
 		var writeArray = getObjectValues(sc.data.contract);
 		writeArray.push(ctx.date.formatTrace(new Date()));
@@ -35,6 +37,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
+	ctx.mail.end();
 	ctx.trace.writeInfo('STEP - closeFile');
 	ctx.excelHelper.closeFile();
 	
@@ -58,10 +61,10 @@ function getObjectValues(obj) {
 }
 
 function startScenarioSIRH(sc, callback) {
+	return callback();
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
-		
 		callback();
 	});
 }
