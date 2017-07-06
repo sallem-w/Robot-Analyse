@@ -287,7 +287,8 @@ function isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, stateProduct) 
 
 function findStateSuscribedProduct(codeProduct) {
 	var arrayState = [];
-	for (var i in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
+	var productList = ActivInfinitev7.pProductList.oCodeProduct.getAll();
+	for (var i in productList) {
 		if (ActivInfinitev7.pProductList.oCodeProduct.i(i).get() === codeProduct) {
 			arrayState.push(ActivInfinitev7.pProductList.oStateProduct.i(i).get());
 		}
