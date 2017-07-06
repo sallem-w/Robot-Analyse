@@ -6,14 +6,20 @@
 var ActivInfinitev7 = ctx.addApplication('ActivInfinitev7', {"comment":"v7","nature":"WEB3","path":"http://infinite-haum0a/mdg/auth/Login.do"});
 
 ActivInfinitev7.pDashboard = ActivInfinitev7.addPage('pDashboard', {"comment":"haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/"});
+ActivInfinitev7.pDashboard.btSynthesisMenu = ActivInfinitev7.pDashboard.addItem('btSynthesisMenu');
+ActivInfinitev7.pDashboard.btIndividualContract = ActivInfinitev7.pDashboard.addItem('btIndividualContract');
+ActivInfinitev7.pDashboard.btContractContexte = ActivInfinitev7.pDashboard.addItem('btContractContexte');
+ActivInfinitev7.pDashboard.btIndivContractMenu = ActivInfinitev7.pDashboard.addItem('btIndivContractMenu');
 ActivInfinitev7.pDashboard.btConsultation = ActivInfinitev7.pDashboard.addItem('btConsultation');
+ActivInfinitev7.pDashboard.btCoverageChangeMenu = ActivInfinitev7.pDashboard.addItem('btCoverageChangeMenu');
 ActivInfinitev7.pDashboard.btCoverageChange = ActivInfinitev7.pDashboard.addItem('btCoverageChange');
 ActivInfinitev7.pDashboard.btTerminatedProduct = ActivInfinitev7.pDashboard.addItem('btTerminatedProduct');
-ActivInfinitev7.pDashboard.btTerminatedContract = ActivInfinitev7.pDashboard.addItem('btTerminatedContract');
-ActivInfinitev7.pDashboard.btTerminatedInAdvance = ActivInfinitev7.pDashboard.addItem('btTerminatedInAdvance');
-ActivInfinitev7.pDashboard.btTerminatedCMU = ActivInfinitev7.pDashboard.addItem('btTerminatedCMU');
-ActivInfinitev7.pDashboard.btSynthesis = ActivInfinitev7.pDashboard.addItem('btSynthesis');
 ActivInfinitev7.pDashboard.btMembershipCollectiv = ActivInfinitev7.pDashboard.addItem('btMembershipCollectiv');
+ActivInfinitev7.pDashboard.btSanteSouscription = ActivInfinitev7.pDashboard.addItem('btSanteSouscription');
+ActivInfinitev7.pDashboard.btTerminatedMenu = ActivInfinitev7.pDashboard.addItem('btTerminatedMenu');
+ActivInfinitev7.pDashboard.btTerminatedCMU = ActivInfinitev7.pDashboard.addItem('btTerminatedCMU');
+ActivInfinitev7.pDashboard.btTerminatedInAdvance = ActivInfinitev7.pDashboard.addItem('btTerminatedInAdvance');
+ActivInfinitev7.pDashboard.btTerminatedContract = ActivInfinitev7.pDashboard.addItem('btTerminatedContract');
 
 ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});

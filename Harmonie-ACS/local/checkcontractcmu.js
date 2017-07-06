@@ -29,6 +29,7 @@
 ActivInfinitev7.step({ navigateToConsultationCMU : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
 	ActivInfinitev7.pDashboard.wait(function() {
+		ActivInfinitev7.pDashboard.btIndivContractMenu.click();
 		ActivInfinitev7.pDashboard.btConsultation.click();
 		ActivInfinitev7.pSearchContractIndiv.wait(function() {
 			return sc.endStep();
