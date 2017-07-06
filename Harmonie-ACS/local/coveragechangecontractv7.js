@@ -21,8 +21,6 @@
 
 ActivInfinitev7.step({ initializeCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - coverage change');
-	ActivInfinitev7.pDashboard.btIndivContractMenu.click();
-	ActivInfinitev7.pDashboard.btCoverageChangeMenu.click();
 	ActivInfinitev7.pDashboard.btCoverageChange.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		return sc.endStep();
