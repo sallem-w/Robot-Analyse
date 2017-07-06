@@ -273,7 +273,7 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
 	
-	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.codeProduct);
+	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.codeProduct[0]);
 	ActivInfinitev7.pProductUpdate.btAddProduct();
 	
 		ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
