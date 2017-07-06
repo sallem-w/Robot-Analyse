@@ -64,8 +64,7 @@ ActivInfinitev7.step({ setMembership : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.setFocus();
 	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
 	ActivInfinitev7.pMembershipColSearch.btSearch.click();
-	sc.endStep();
-	return;
+	return sc.endStep();
 }});
 
 
@@ -110,8 +109,7 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 			if (messagePopup) {
 				var message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
 				var comment = 'Revoir centre: ' + messagePopup;
-				ctx.endScenario(sc, message, comment);
-				return;
+				return ctx.endScenario(sc, message, comment);
 			}
 					
 			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
@@ -264,8 +262,7 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 				ActivInfinitev7.pProductUpdate.btUpdatePage.click();
 				ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 					ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-						sc.endStep();
-						return;
+						return sc.endStep();
 					});
 				});
 			});
@@ -281,8 +278,7 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	
 		ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 			ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-				sc.endStep();
-				return;
+				return sc.endStep();
 		});
 	});
 }});
