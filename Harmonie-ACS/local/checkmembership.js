@@ -23,8 +23,6 @@ ActivInfinitev7.step({ initializeCheckMembership: function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - navigateToMembership');
-	ActivInfinitev7.pDashboard.btIndivContractMenu.click();
-	ActivInfinitev7.pDashboard.btSanteSouscription.click();
 	ActivInfinitev7.pDashboard.btMembershipCollectiv.click();
 	ActivInfinitev7.pMembershipColSearch.wait(function() {
 		return sc.endStep();
