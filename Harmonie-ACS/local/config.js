@@ -1,6 +1,6 @@
 ﻿ctx.config = (function() {
 	
-	var pathFileConfig = 'C:\\deploy\\config.json';
+	var nameFileConfig = 'config.json';
 	var config = {};
 	var configFile = {};
 	
@@ -10,7 +10,7 @@
 	config.DA = 'DA';
 	
 	config.loadConfigFile = function() {
-		var pathConfigFile = ctx.fso.file.read(pathFileConfig);
+		var pathConfigFile = ctx.fso.file.read(ctx.options.serverURL + '\\' + nameFileConfig);
 		configFile = JSON.parse(pathConfigFile);
 	};
 	

@@ -2,7 +2,7 @@
 
 # Installation
 
-Le fichier de configuration doit se trouver dans `C:\deploy\config.json`.
+Le fichier de configuration se trouve dans `harmonie-contextor\Harmonie-ACS\server`.
 
 Exemple de template du fichier de configuration : 
 
