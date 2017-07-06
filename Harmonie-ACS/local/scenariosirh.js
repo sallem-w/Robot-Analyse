@@ -27,11 +27,10 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 		
 		if (i < sc.data.countContracts - 1) {
 			sc.data.indexCurrentContract += 1;
-			sc.endStep(ActivInfinitev7.steps.startScenarioSIRH);
-			return;
+			return sc.endStep(ActivInfinitev7.steps.startScenarioSIRH);
 		}
 		
-		sc.endStep();
+		return sc.endStep();
 	}));
 }});
 
@@ -46,7 +45,7 @@ ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
 	stats['countCaseProcessed'] = sc.data.countCaseProcessed;
 	ctx.stats.write(stats);
 	
-	sc.endStep();
+	return sc.endStep();
 }});
 
 function getObjectValues(obj) {

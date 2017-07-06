@@ -38,14 +38,13 @@ ActivInfinitev7.step({ startScenarioDA: function(ev, sc, st) {
 		
 		if (i < sc.data.countContracts - 1) {
 			sc.data.indexCurrentContract += 1;
-			sc.endStep(ActivInfinitev7.steps.startScenarioDA);
-			return;
+			return sc.endStep(ActivInfinitev7.steps.startScenarioDA);
 		}
 		
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ endScenarioDA: function(ev, sc, st) {
-	sc.endStep();
+	return sc.endStep();
 }});

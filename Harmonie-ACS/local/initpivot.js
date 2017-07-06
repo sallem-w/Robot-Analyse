@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 	ctx.trace.writeInfo('init pivot file ' + sc.data.scenarioCode);
 	if (!ctx.configFile.init(sc.data.scenarioCode)) {
-		sc.endScenario();
+		return sc.endScenario();
 	}
 
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
@@ -31,5 +31,5 @@
 	sc.data.countContracts = countContracts;
 	sc.data.totalTimeDuration = new Date();
 	sc.data.countCaseProcessed = countContracts;
-	sc.endStep();
+	return sc.endStep();
 }});

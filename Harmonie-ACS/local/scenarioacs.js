@@ -37,7 +37,7 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	sc.data.countCaseContractWithProductACS = 0;
 	sc.data.indexCurrentContract = sc.data.configExcel.startRowIndex;
 	sc.data.indexLastRow = indexLastRow;
-	sc.endStep();
+	return sc.endStep();
 }});
 	
 ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
@@ -93,15 +93,15 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
 
-	sc.endStep();
+	return sc.endStep();
 }});
 
 function loopStepContractACS(sc, i) {
 	if (i < sc.data.indexLastRow) {
 		sc.data.indexCurrentContract += 1;
-		sc.endStep(ActivInfinitev7.steps.startScenarioACS);
+		return sc.endStep(ActivInfinitev7.steps.startScenarioACS);
 	} else {
-		sc.endStep();
+		return sc.endStep();
 	}
 }
 

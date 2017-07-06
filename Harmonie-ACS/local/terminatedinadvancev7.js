@@ -16,7 +16,7 @@ ActivInfinitev7.step({ initializeTerminatedInAdvanceContract: function(ev, sc, s
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP START - terminated in advance');
 	ActivInfinitev7.pDashboard.btTerminatedInAdvance.click();
 	ActivInfinitev7.pSearchContractIndiv.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -24,9 +24,9 @@ ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchTerminatedInAdvanceContract');
 	var date  = ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(sc.data.contract.ACSCertificateEndDate), 1));
 	ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
-		sc.endStep();
+		return sc.endStep();
 	}, function notFoundCb() {
-		ctx.endScenario(sc);
+		return ctx.endScenario(sc);
 	});
 }});
 
@@ -55,7 +55,7 @@ ActivInfinitev7.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc,
 				});
 				
 				ActivInfinitev7.pSaveUpdate.wait(function() {
-					sc.endStep();
+					return sc.endStep();
 				});
 			});
 		});
@@ -65,5 +65,5 @@ ActivInfinitev7.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc,
 
 ActivInfinitev7.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated in advance');
-	sc.endStep();
+	return sc.endStep();
 }});

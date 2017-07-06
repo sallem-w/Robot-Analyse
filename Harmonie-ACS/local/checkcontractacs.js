@@ -21,7 +21,7 @@
 
 ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - checkContract - ' + sc.data.codeScenario);
-	sc.endStep();
+	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
@@ -31,7 +31,7 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
 	ActivInfinitev7.pSynthesisSearch.btSearch.click();
 	ActivInfinitev7.pSynthesis.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -40,7 +40,7 @@ ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.scenarioHelper.goHome(function() {
 		ActivInfinitev7.pDashboard.btConsultation.click();
 		ActivInfinitev7.pSearchContractIndiv.wait(function() {
-			sc.endStep();
+			return sc.endStep();
 		});
 	});
 }});
@@ -60,7 +60,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		
 		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
 		ActivInfinitev7.pBlockNotes.wait(function() {
-			sc.endStep();
+			return sc.endStep();
 		});
 	});
 	
@@ -89,7 +89,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	ActivInfinitev7.pInsuredIdent.wait(function() {
 		ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
 		ActivInfinitev7.pCertificateHelpCS.wait(function() {
-			sc.endStep();
+			return sc.endStep();
 		});
 	});
 }});
@@ -122,18 +122,17 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	
 	ActivInfinitev7.pCertificateHelpCS.btVisuCotisation.click();
 	ActivInfinitev7.pContribution.wait(function() {
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ conditionControlContribution : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - conditionControlContribution');
 	if (sc.data.config.controlContribution) {
-		sc.endStep();
-		return;
+		return sc.endStep();
 	}
 	
-	sc.endStep(ActivInfinitev7.steps.goToProductList);
+	return sc.endStep(ActivInfinitev7.steps.goToProductList);
 }});
 
 ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
@@ -141,8 +140,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	
 	if (ActivInfinitev7.pContribution.oDateEch.count() === 1 &&
 		  ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(0).get()) === "Aucune donnée disponible dans le tableau") {
-		sc.endStep();
-		return;
+		return sc.endStep();
 	}
 
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
@@ -165,7 +163,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 		return;
 	}
 	
-	sc.endStep();
+	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ goToProductList : function(ev, sc, st) {
@@ -174,7 +172,7 @@ ActivInfinitev7.step({ goToProductList : function(ev, sc, st) {
 		sc.data.indexBenef = 0;
 		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
 		sc.data.dataBenef = [];
-		sc.endStep();
+		return sc.endStep();
 	});
 }});
 
@@ -182,8 +180,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
 	
 	if (sc.data.indexBenef === sc.data.countBenef) {
-		sc.endStep();
-		return;
+		return sc.endStep();
 	}
 	
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
@@ -192,8 +189,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	if (sc.data.indexBenef === 0) {
 		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 		sc.data.indexBenef += 1;
-		sc.endStep(ActivInfinitev7.steps.checkProductList);
-		return;
+		return sc.endStep(ActivInfinitev7.steps.checkProductList);
 	}
 	
 	nameBenefElement.click();
@@ -202,7 +198,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 		ActivInfinitev7.pProductList.events.LOAD.on(function() {
 			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 			sc.data.indexBenef += 1;
-			sc.endStep(ActivInfinitev7.steps.checkProductList);
+			return sc.endStep(ActivInfinitev7.steps.checkProductList);
 		});
 	});
 }});
@@ -234,30 +230,29 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		sc.data.commentContract = 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractTerminated = true;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
+		return ctx.scenarioHelper.goHome(function() {
+			return sc.endStep();
 		});
 	}
 	else if (validDateCurrentProduct) {
 		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin --> Faire sans-effet produit + Changement couverture produit + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractWithProductACS = true;
-		ctx.scenarioHelper.goHome(function() {
-			sc.endStep();
+		return ctx.scenarioHelper.goHome(function() {
+			return sc.endStep();
 		});
 	}
 	else {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page';
 		var comment = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	}
 }});
 	
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
-	sc.endStep();
+	return sc.endStep();
 }});
 
 function GetDataProductPage(nameBenef) {

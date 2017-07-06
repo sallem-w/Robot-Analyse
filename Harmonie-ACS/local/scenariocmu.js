@@ -90,8 +90,8 @@ function loopStepContractCMU(sc, i) {
 	if (i < sc.data.indexLastRow) {
 		// We add the number of line occuped by the current contract
 		sc.data.indexCurrentContract += sc.data.beneficiaries.length;
-		sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
+		return sc.endStep(ActivInfinitev7.steps.startScenarioCMU);
 	} else {
-		sc.endStep();
+		return sc.endStep();
 	}
 }
