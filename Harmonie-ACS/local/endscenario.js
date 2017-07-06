@@ -8,6 +8,6 @@
 	}
 	sc.data.countCaseBackToCenter += 1;
 	ctx.scenarioHelper.goHome(function() {
-		sc.endScenario();
+		return sc.endScenario();
 	});
 }

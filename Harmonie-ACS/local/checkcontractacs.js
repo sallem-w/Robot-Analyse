@@ -68,8 +68,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
 			var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.endScenario(sc, message, comment);
-			return;
+			return ctx.endScenario(sc, message, comment);
 		});
 	});
 }});
@@ -81,8 +80,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	if (ctx.string.trim(contentBlockNote) !== '') {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
 		var comment = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	}
 	
 	ActivInfinitev7.pBlockNotes.btInsuredIdentPage.click();
@@ -116,8 +114,7 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	if (!isCertificateValid) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference';
 		var comment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	}
 	
 	ActivInfinitev7.pCertificateHelpCS.btVisuCotisation.click();
@@ -159,8 +156,7 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	if (!isValidContribution) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date';
 		var comment = 'Revoir centre: Solde comptable non à jour';
-		ctx.endScenario(sc, message, comment);
-		return;
+		return ctx.endScenario(sc, message, comment);
 	}
 	
 	return sc.endStep();
