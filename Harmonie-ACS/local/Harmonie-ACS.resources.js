@@ -6,9 +6,9 @@
 var ActivInfinitev7 = ctx.addApplication('ActivInfinitev7', {"comment":"v7","nature":"WEB3","path":"http://infinite-haum0a/mdg/auth/Login.do"});
 
 ActivInfinitev7.pConnection = ActivInfinitev7.addPage('pConnection', {"comment":"Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/auth/Login.do?logout"});
-ActivInfinitev7.pConnection.btLogin = ActivInfinitev7.pConnection.addItem('btLogin', {"mustExist":true});
 ActivInfinitev7.pConnection.oLogin = ActivInfinitev7.pConnection.addItem('oLogin');
 ActivInfinitev7.pConnection.oPassword = ActivInfinitev7.pConnection.addItem('oPassword');
+ActivInfinitev7.pConnection.btLogin = ActivInfinitev7.pConnection.addItem('btLogin', {"mustExist":true});
 
 ActivInfinitev7.pDashboard = ActivInfinitev7.addPage('pDashboard', {"comment":"haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/"});
 ActivInfinitev7.pDashboard.btSynthesisMenu = ActivInfinitev7.pDashboard.addItem('btSynthesisMenu');
