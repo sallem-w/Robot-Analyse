@@ -24,9 +24,11 @@
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
 	names.push('Commentaire');
+	names.push('Courrier');
 	ctx.excelHelper.writeArray(1, names);
 	
 	sc.data.indexCurrentContract = 0;
+	sc.data.customerName = json.customerName;
 	sc.data.contracts = contracts;
 	sc.data.countContracts = countContracts;
 	sc.data.totalTimeDuration = new Date();
