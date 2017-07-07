@@ -48,8 +48,10 @@
 		ctx.word.document.setBookmarkValue('date', ctx.date.formatDDMMYYYY(new Date()));
 		
 		var resultFilename = infoContract.name + '_'+ infoContract.firstName + '_mail.docx';
-		ctx.word.file.saveAs(mailFolderPath + resultFilename);
+		var mailPath = mailFolderPath + resultFilename;
+		ctx.word.file.saveAs(mailPath);
 		ctx.word.file.close();
+		return mailPath;
 	};
 
 	mail.end = function() {
