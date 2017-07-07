@@ -135,7 +135,6 @@ ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 	
 	sc.data.indexBenef += 1;
 	ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef).click();
-	
 	ActivInfinitev7.pInfoRo.events.LOAD.once(function () {
 		return sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
 	});
