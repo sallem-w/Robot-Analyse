@@ -1150,6 +1150,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btNewProduct">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[boutonNouveau]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1749256_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="87" Techno="WEB" Timestamp="31/05/2017 17:49:40" />
 				</PAGE>

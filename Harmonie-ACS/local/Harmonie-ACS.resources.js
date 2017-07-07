@@ -127,6 +127,7 @@ ActivInfinitev7.pProductUpdate.oInputNewCodeProduct = ActivInfinitev7.pProductUp
 ActivInfinitev7.pProductUpdate.oCodeProduct = ActivInfinitev7.pProductUpdate.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct = ActivInfinitev7.pProductUpdate.addItem('btSaveNewCodeProduct');
 ActivInfinitev7.pProductUpdate.btSaveUpdateProduct = ActivInfinitev7.pProductUpdate.addItem('btSaveUpdateProduct');
+ActivInfinitev7.pProductUpdate.btNewProduct = ActivInfinitev7.pProductUpdate.addItem('btNewProduct');
 
 ActivInfinitev7.pDiversParam = ActivInfinitev7.addPage('pDiversParam', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACPD_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACG2_200\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pDiversParam.oTitlePage = ActivInfinitev7.pDiversParam.addItem('oTitlePage', {"mustExist":true});
