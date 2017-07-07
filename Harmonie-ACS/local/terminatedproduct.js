@@ -36,15 +36,15 @@ ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ActivInfinitev7.pTerminatedContractFo.wait(function() {
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
 		//Product update isn't a page of terminated contract scenario
-		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 			ActivInfinitev7.pProductUpdate.btNext.click();
 		});
 		//Divers param isn't a page of terminated contract scenario and it is not in all the terminated product scenario
-		ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
+		ActivInfinitev7.pDiversParam.events.LOAD.once(function() {
 			ActivInfinitev7.pDiversParam.btNext.click();
 		});
 		//Block notes page comes from 'terminatedCMU' scenario
-		ActivInfinitev7.pBlockNotes.events.LOAD.on(function() {
+		ActivInfinitev7.pBlockNotes.events.LOAD.once(function() {
 			ActivInfinitev7.pBlockNotes.btNext.click();
 		});
 		ActivInfinitev7.pCalculParam.wait(function() {
@@ -98,7 +98,7 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ActivInfinitev7.currentPage.injectFunction(cancelSave);
 	ActivInfinitev7.currentPage.execScript('cancelSave()');
 	// if the search contract page is loaded, we redirect to home
-	ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+	ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 	});
 	ActivInfinitev7.pDashboard.wait(function() {

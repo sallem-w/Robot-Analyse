@@ -46,8 +46,8 @@ ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipColSearch.injectFunction(forceOnChange);
 	ActivInfinitev7.pMembershipColSearch.evalScript('forceOnChange()');
 	
-	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
-		ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.once(function() {
+		ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
 			return sc.endStep();
 		});
 	});
@@ -64,7 +64,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		ctx.log('Need to click on button');
 	}
 
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
 		
 		sc.data.commentContract = 'Adhésion trouvé';
@@ -77,8 +77,8 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		});
   });
 	
-  ActivInfinitev7.pMembershipColSearch.events.UNLOAD.on(function() {
-	  ActivInfinitev7.pMembershipColSearch.events.LOAD.on(function() {
+  ActivInfinitev7.pMembershipColSearch.events.UNLOAD.once(function() {
+	  ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
 			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
 			sc.data.commentContract = 'Revoir centre: ' + message;
@@ -94,8 +94,8 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
 	
-	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.on(function() {
-		ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
+	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.once(function() {
+		ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
 			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
 			if (!benefExist) {
 				ActivInfinitev7.pMembershipSearchBene.btCancel.click();
@@ -134,8 +134,8 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function(){
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
 			ActivInfinitev7.pMembershipMainBenef.oCountry.set('FRA'); // Select 'France' into list
 			ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
 			ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
@@ -155,8 +155,8 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 }});
 	
 ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function() {
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function() {
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function() {
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
 			var errorMessage = ctx.scenarioHelper.getMessagesPopup();
 			if (errorMessage.indexOf('La localité est obligatoire') === -1) {
 				ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
@@ -207,8 +207,8 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 	ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
 	ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.on(function(){
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function(){
+	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function(){
+		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
 			ActivInfinitev7.pMembershipMainBenef.btNext.click();
 			ActivInfinitev7.pInsuredIdent.wait(function() {
 				return sc.endStep();
@@ -239,8 +239,8 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	
 	ActivInfinitev7.pInsuredIdent.btValid.click();
 	
-	ActivInfinitev7.pInsuredIdent.events.UNLOAD.on(function() {
-		ActivInfinitev7.pInsuredIdent.events.LOAD.on(function() {
+	ActivInfinitev7.pInsuredIdent.events.UNLOAD.once(function() {
+		ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
 			ActivInfinitev7.pInsuredIdent.btNext.click();
 			ActivInfinitev7.pProductList.wait(function() {
 				return sc.endStep();
