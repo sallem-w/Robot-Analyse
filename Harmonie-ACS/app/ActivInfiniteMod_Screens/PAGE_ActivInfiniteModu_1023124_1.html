@@ -1,0 +1,166 @@
+<html class="login-page"><head>
+		
+		<!-- Head -->
+		
+
+<!-- Force to render in latest render mode (IE) -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Activ'Infinite - Module de gestion</title>
+
+<!-- CSRF token & header -->
+<meta name="_csrf" content="f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9">
+<meta name="_csrf_header" content="X-CSRF-TOKEN">
+
+<!-- Import all static resources (built into mdg-front -->
+
+
+<!-- Third party css files -->
+<link rel="stylesheet" href="/mdg/public/style/vendor.min.css">
+
+<!-- Application Style -->
+<link rel="stylesheet" href="/mdg/public/style/mdg.min.css">
+
+<!-- Third party javascript files -->
+<script charset="UTF-8" src="/mdg/public/js/vendor.min.js"></script>
+
+<!-- Application javascript files -->
+<script charset="UTF-8" src="/mdg/public/js/mdg.min.js"></script>
+
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/mdg/public/img/favicon.ico">
+		
+
+
+
+<script>
+	var contextPath = "/mdg";
+	
+	// Defined variables in form.jss
+	nomFonction = "";
+	scenarioEnregistrement = "";
+	
+	<!-- Gestion des groupes de donnees --> 
+	
+	
+	<!--Code site -->
+	
+	var codeSite = '';
+	var identifiantConnexion = '';
+	var libelleLongFonctionCourante = "";
+	
+	var pew1ModalMode = true;
+</script>
+	</head>
+
+	<body class="login-page">
+	
+		<!-- Spinner -->
+		<div class="modal modal-static" id="spinner-modal" data-keyboard="false" data-backdrop="false">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            	<h3>Chargement...</h3>
+                <h3><i class="fa fa fa-circle-o-notch fa-spin fa-2x"></i></h3>
+            </div>
+        </div>
+    </div>
+</div>
+	
+		<div class="cgd-container">
+			<div>
+				<div class="container login-wrapper">
+					<div class="cgd-login-header">
+						<div class="cgd-cegedim-logo"></div>
+						<div class="cgd-cegedim-slogan"></div>
+					</div>
+	
+					<h1>Bienvenue dans votre espace personnel</h1>
+	
+					<form name="loginForm" role="form" action="/mdg/auth/login" method="POST" class="cgd-login-form form-horizontal">
+						<div class="cgd-infinite-logo"></div>
+	
+						<!--  Site -->
+						<input type="hidden" id="site" name="site" value="01">
+						<div id="codeSite" class="form-inline">
+	            			<label>Site : </label>
+	            			<div class="content" id="siteLabel">01</div>
+							<div class="dropdown right">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-pencil"></i>
+								</a>
+								<ul class="dropdown-menu">
+									
+										<li>
+											  <a data-site="">01</a>
+										</li>
+									
+										<li>
+											  <a data-site="">99</a>
+										</li>
+									
+				                </ul>
+							</div>
+						</div>
+						
+						<div class="cgd-login-container">
+	
+							<!-- Messages -->
+							
+							
+	
+						<div class="input-group margin-b-md">
+							<label for="login">Identifiant</label>
+							<input id="login" placeholder="Login" class="form-control" name="login" type="text" autofocus="autofocus" required="" value="">
+						</div>
+	
+						<div class="input-group margin-b-md">
+							<label for="password">Mot de passe</label>
+							<input id="password" type="password" style="display: none;">
+							<input id="password" placeholder="Mot de Passe" class="form-control" name="password" type="password" required="" value="">
+						</div>
+						<button type="submit" class="btn btn-block cgd-btn-green" id="loginBtn">Se connecter</button>
+					
+	
+					<div class="cgd-login-footer">
+						<div class="cgd-cegedim-slogan"></div>
+					</div>
+				</div><input type="hidden" name="_csrf" value="f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9"></form>
+			</div>
+		</div>
+	
+		<script>
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$('#siteLabel').text($('#site').val());
+	       			
+	    	    	$('li>a[data-site]').click(function() {
+	    	       		var site = $(this).text();
+	    	       		$('#site').val(site);
+	    	       		$('#siteLabel').text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($('#site').val() === '') {
+	    		       	$('li>a[data-site]:first').click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    </script>
+	    
+	
+
+
+</div></body></html>

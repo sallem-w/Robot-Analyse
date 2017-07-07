@@ -125,14 +125,10 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
 		systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
-			if (ActivInfinitev7.pDashboard.exist()) {
+			connectionInfinite(function(login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
-				ActivInfinitev7.scenarios.scenarioACS.start();
-			}
-			else {
-				ctx.trace.writeError('Open Infinite on dashboard page');
-				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter à Infinite, et il faut se trouver sur la page d\'accueil');
-			}
+				ActivInfinitev7.scenarios.scenarioACS.start({ login: login, password: password });
+			});
 		});	
 	}
 	
@@ -140,14 +136,10 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'CMU', 'CMU scenario');
 		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
-			if (ActivInfinitev7.pDashboard.exist()) {
+			connectionInfinite(function(login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
-				ActivInfinitev7.scenarios.scenarioCMU.start();
-			}
-			else {
-				ctx.trace.writeError('Open Infinite on dashboard page');
-				ctx.popupHelper.newPopup('Il faut ouvrir et se connecter à Infinite, et il faut se trouver sur la page d\'accueil');
-			}
+				ActivInfinitev7.scenarios.scenarioCMU.start({ login: login, password: password });
+			});
 		});	
 	}
 	
@@ -187,3 +179,19 @@ GLOBAL.events.UPDATECTX.on(function(ev) {
 		}
 	});
 });
+
+function connectionInfinite(callback) {
+	if (!ActivInfinitev7.pConnection.exist()) {
+		ctx.trace.writeError('Open Infinite on connection page');
+		ctx.popupHelper.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
+		return;
+	}
+
+	var login = ActivInfinitev7.pConnection.oLogin.get();
+	var password = ActivInfinitev7.pConnection.oPassword.get();
+	ActivInfinitev7.pConnection.btLogin.click();
+	
+	ActivInfinitev7.pDashboard.wait(function() {
+		return callback(login, password);
+	});
+}

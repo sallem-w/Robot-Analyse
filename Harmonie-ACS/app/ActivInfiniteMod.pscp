@@ -19,6 +19,42 @@
 				<STRUCTUREDON Name="ActivInfinitev7" />
 			</_DECLAREVAR>
 			<_ECRANS>
+				<PAGE Name="pConnection" Comment="Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do?logout]]></PATH>
+					<OBJETS>
+						<OBJET Name="oLogin">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[login]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPassword">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R1R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[password]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btLogin" MustExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[loginBtn]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ActivInfiniteModu_1023124_1" Comment="Activ Infinite - Module de gestion" CtxtId="115" Techno="WEB" Timestamp="07/07/2017 10:23:15" />
+				</PAGE>
 				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="Like"><![CDATA[^\S* - Activ'Infinite - Module de gestion$]]></TITRE>

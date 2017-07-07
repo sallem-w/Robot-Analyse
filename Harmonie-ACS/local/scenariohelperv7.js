@@ -109,5 +109,21 @@
 		return false;
 	}
 	
+	scenarioHelper.connectionAuto = function(sc) {
+		if (!ActivInfinitev7.pConnection.exist()) {
+			var message = (sc.data.contract.individualContract || sc.data.contract.individualContractCollectif) +  ' - Error undefined';
+			var comment = 'Erreur traitement inconnue';
+			return ctx.endScenario(sc, message, comment);
+		}
+		
+		ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
+		ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
+		ActivInfinitev7.pConnection.btLogin.click();
+	
+		ActivInfinitev7.pDashboard.wait(function() {
+			return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
+		});
+	}
+		
 	return scenarioHelper;
 }) ();

@@ -1,0 +1,3024 @@
+<PAGE Techno="WEB" Name="Activ&#39;Infinite - Module de gestion" ProcessName="CHROME" ParamName="http://infinite-haum0a/mdg/auth/Login.do?logout" ParentTree="">
+    <PROPERTIES>
+        <DOMAIN>infinite-haum0a</DOMAIN>
+        <URL>http://infinite-haum0a/mdg/auth/Login.do?logout</URL>
+        <TITRE>Activ&#39;Infinite - Module de gestion</TITRE>
+        <MAINFRAME>true</MAINFRAME>
+        <CX>1920</CX>
+        <CY>974</CY>
+    </PROPERTIES>
+    <CHILDREN>
+        <ITEM>
+            <PROPERTIES>
+                <TAG>HTML</TAG>
+                <Text>Bienvenue dans votre espace personnel
+Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                <class>login-page</class>
+                <innerHTML>&lt;head&gt;
+		
+		&lt;!-- Head --&gt;
+		
+
+&lt;!-- Force to render in latest render mode (IE) --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+
+&lt;title&gt;Activ&#39;Infinite - Module de gestion&lt;/title&gt;
+
+&lt;!-- CSRF token &amp; header --&gt;
+&lt;meta name=&quot;_csrf&quot; content=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;
+&lt;meta name=&quot;_csrf_header&quot; content=&quot;X-CSRF-TOKEN&quot;&gt;
+
+&lt;!-- Import all static resources (built into mdg-front --&gt;
+
+
+&lt;!-- Third party css files --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/vendor.min.css&quot;&gt;
+
+&lt;!-- Application Style --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/mdg.min.css&quot;&gt;
+
+&lt;!-- Third party javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/vendor.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Application javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/mdg.min.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;!-- Favicon --&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/mdg/public/img/favicon.ico&quot;&gt;
+		
+
+
+
+&lt;script&gt;
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+&lt;/script&gt;
+	&lt;/head&gt;
+
+	&lt;body class=&quot;login-page&quot;&gt;
+	
+		&lt;!-- Spinner --&gt;
+		&lt;div class=&quot;modal modal-static&quot; id=&quot;spinner-modal&quot; data-keyboard=&quot;false&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+	
+		&lt;div class=&quot;cgd-container&quot;&gt;
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+&lt;/div&gt;&lt;/body&gt;</innerHTML>
+                <outerHTML>&lt;html class=&quot;login-page&quot;&gt;&lt;head&gt;
+		
+		&lt;!-- Head --&gt;
+		
+
+&lt;!-- Force to render in latest render mode (IE) --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+
+&lt;title&gt;Activ&#39;Infinite - Module de gestion&lt;/title&gt;
+
+&lt;!-- CSRF token &amp; header --&gt;
+&lt;meta name=&quot;_csrf&quot; content=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;
+&lt;meta name=&quot;_csrf_header&quot; content=&quot;X-CSRF-TOKEN&quot;&gt;
+
+&lt;!-- Import all static resources (built into mdg-front --&gt;
+
+
+&lt;!-- Third party css files --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/vendor.min.css&quot;&gt;
+
+&lt;!-- Application Style --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/mdg.min.css&quot;&gt;
+
+&lt;!-- Third party javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/vendor.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Application javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/mdg.min.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;!-- Favicon --&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/mdg/public/img/favicon.ico&quot;&gt;
+		
+
+
+
+&lt;script&gt;
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+&lt;/script&gt;
+	&lt;/head&gt;
+
+	&lt;body class=&quot;login-page&quot;&gt;
+	
+		&lt;!-- Spinner --&gt;
+		&lt;div class=&quot;modal modal-static&quot; id=&quot;spinner-modal&quot; data-keyboard=&quot;false&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+	
+		&lt;div class=&quot;cgd-container&quot;&gt;
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</outerHTML>
+                <range>0</range>
+            </PROPERTIES>
+            <CTX_PROPS>
+                <BOUNDINGRECT>0|0|1920|974</BOUNDINGRECT>
+                <TITLE>HTML</TITLE>
+                <NAMEKEY>name</NAMEKEY>
+                <CONTROLTYPE>HTML</CONTROLTYPE>
+                <PREFIX></PREFIX>
+                <TEXT></TEXT>
+                <TEXTKEY>Text</TEXTKEY>
+                <PARAMNAME></PARAMNAME>
+                <PARENTTREE></PARENTTREE>
+                <ISVISIBLE>true</ISVISIBLE>
+            </CTX_PROPS>
+            <CHILDREN>
+                <ITEM>
+                    <PROPERTIES>
+                        <TAG>HEAD</TAG>
+                        <Text>
+		
+		
+		
+
+
+
+
+Activ&#39;Infinite - Module de gestion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+
+	</Text>
+                        <innerHTML>
+		
+		&lt;!-- Head --&gt;
+		
+
+&lt;!-- Force to render in latest render mode (IE) --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+
+&lt;title&gt;Activ&#39;Infinite - Module de gestion&lt;/title&gt;
+
+&lt;!-- CSRF token &amp; header --&gt;
+&lt;meta name=&quot;_csrf&quot; content=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;
+&lt;meta name=&quot;_csrf_header&quot; content=&quot;X-CSRF-TOKEN&quot;&gt;
+
+&lt;!-- Import all static resources (built into mdg-front --&gt;
+
+
+&lt;!-- Third party css files --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/vendor.min.css&quot;&gt;
+
+&lt;!-- Application Style --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/mdg.min.css&quot;&gt;
+
+&lt;!-- Third party javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/vendor.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Application javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/mdg.min.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;!-- Favicon --&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/mdg/public/img/favicon.ico&quot;&gt;
+		
+
+
+
+&lt;script&gt;
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+&lt;/script&gt;
+	</innerHTML>
+                        <outerHTML>&lt;head&gt;
+		
+		&lt;!-- Head --&gt;
+		
+
+&lt;!-- Force to render in latest render mode (IE) --&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+
+&lt;title&gt;Activ&#39;Infinite - Module de gestion&lt;/title&gt;
+
+&lt;!-- CSRF token &amp; header --&gt;
+&lt;meta name=&quot;_csrf&quot; content=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;
+&lt;meta name=&quot;_csrf_header&quot; content=&quot;X-CSRF-TOKEN&quot;&gt;
+
+&lt;!-- Import all static resources (built into mdg-front --&gt;
+
+
+&lt;!-- Third party css files --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/vendor.min.css&quot;&gt;
+
+&lt;!-- Application Style --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/mdg.min.css&quot;&gt;
+
+&lt;!-- Third party javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/vendor.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Application javascript files --&gt;
+&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/mdg.min.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;!-- Favicon --&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/mdg/public/img/favicon.ico&quot;&gt;
+		
+
+
+
+&lt;script&gt;
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+&lt;/script&gt;
+	&lt;/head&gt;</outerHTML>
+                        <range>0</range>
+                    </PROPERTIES>
+                    <CTX_PROPS>
+                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                        <TITLE>HEAD</TITLE>
+                        <NAMEKEY>name</NAMEKEY>
+                        <CONTROLTYPE>HEAD</CONTROLTYPE>
+                        <PREFIX></PREFIX>
+                        <TEXT></TEXT>
+                        <TEXTKEY>Text</TEXTKEY>
+                        <PARAMNAME></PARAMNAME>
+                        <PARENTTREE></PARENTTREE>
+                        <ISVISIBLE>true</ISVISIBLE>
+                    </CTX_PROPS>
+                    <CHILDREN>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>META</TAG>
+                                <outerHTML>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</outerHTML>
+                                <range>0</range>
+                                <content>IE=edge</content>
+                                <http-equiv>X-UA-Compatible</http-equiv>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>META</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>META</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>TITLE</TAG>
+                                <Text>Activ&#39;Infinite - Module de gestion</Text>
+                                <innerHTML>Activ&#39;Infinite - Module de gestion</innerHTML>
+                                <outerHTML>&lt;title&gt;Activ&#39;Infinite - Module de gestion&lt;/title&gt;</outerHTML>
+                                <range>0</range>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>TITLE - Activ&#39;Infinite - Module de gestion</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>TITLE</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT>Activ&#39;Infinite - Module de gestion</TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>META</TAG>
+                                <name>_csrf</name>
+                                <outerHTML>&lt;meta name=&quot;_csrf&quot; content=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;</outerHTML>
+                                <range>1</range>
+                                <content>f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9</content>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>META</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>META</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>META</TAG>
+                                <name>_csrf_header</name>
+                                <outerHTML>&lt;meta name=&quot;_csrf_header&quot; content=&quot;X-CSRF-TOKEN&quot;&gt;</outerHTML>
+                                <range>2</range>
+                                <content>X-CSRF-TOKEN</content>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>META</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>META</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>LINK</TAG>
+                                <href>/mdg/public/style/vendor.min.css</href>
+                                <outerHTML>&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/vendor.min.css&quot;&gt;</outerHTML>
+                                <range>0</range>
+                                <rel>stylesheet</rel>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>LINK</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>LINK</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>LINK</TAG>
+                                <href>/mdg/public/style/mdg.min.css</href>
+                                <outerHTML>&lt;link rel=&quot;stylesheet&quot; href=&quot;/mdg/public/style/mdg.min.css&quot;&gt;</outerHTML>
+                                <range>1</range>
+                                <rel>stylesheet</rel>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>LINK</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>LINK</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>SCRIPT</TAG>
+                                <outerHTML>&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/vendor.min.js&quot;&gt;&lt;/script&gt;</outerHTML>
+                                <src>/mdg/public/js/vendor.min.js</src>
+                                <range>0</range>
+                                <charset>UTF-8</charset>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>SCRIPT</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>SCRIPT</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>SCRIPT</TAG>
+                                <outerHTML>&lt;script charset=&quot;UTF-8&quot; src=&quot;/mdg/public/js/mdg.min.js&quot;&gt;&lt;/script&gt;</outerHTML>
+                                <src>/mdg/public/js/mdg.min.js</src>
+                                <range>1</range>
+                                <charset>UTF-8</charset>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>SCRIPT</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>SCRIPT</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>LINK</TAG>
+                                <href>/mdg/public/img/favicon.ico</href>
+                                <outerHTML>&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/mdg/public/img/favicon.ico&quot;&gt;</outerHTML>
+                                <range>2</range>
+                                <rel>icon</rel>
+                                <type>image/png</type>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>LINK</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>LINK</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>SCRIPT</TAG>
+                                <Text>
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+</Text>
+                                <innerHTML>
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+</innerHTML>
+                                <outerHTML>&lt;script&gt;
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+&lt;/script&gt;</outerHTML>
+                                <range>2</range>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>SCRIPT - 
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>SCRIPT</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT>
+	var contextPath = &quot;/mdg&quot;;
+	
+	// Defined variables in form.jss
+	nomFonction = &quot;&quot;;
+	scenarioEnregistrement = &quot;&quot;;
+	
+	&lt;!-- Gestion des groupes de donnees --&gt; 
+	
+	
+	&lt;!--Code site --&gt;
+	
+	var codeSite = &#39;&#39;;
+	var identifiantConnexion = &#39;&#39;;
+	var libelleLongFonctionCourante = &quot;&quot;;
+	
+	var pew1ModalMode = true;
+</TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                            </CHILDREN>
+                        </ITEM>
+                    </CHILDREN>
+                </ITEM>
+                <ITEM>
+                    <PROPERTIES>
+                        <TAG>BODY</TAG>
+                        <Text>Bienvenue dans votre espace personnel
+Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                        <class>login-page</class>
+                        <innerHTML>
+	
+		&lt;!-- Spinner --&gt;
+		&lt;div class=&quot;modal modal-static&quot; id=&quot;spinner-modal&quot; data-keyboard=&quot;false&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+	
+		&lt;div class=&quot;cgd-container&quot;&gt;
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+&lt;/div&gt;</innerHTML>
+                        <outerHTML>&lt;body class=&quot;login-page&quot;&gt;
+	
+		&lt;!-- Spinner --&gt;
+		&lt;div class=&quot;modal modal-static&quot; id=&quot;spinner-modal&quot; data-keyboard=&quot;false&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+	
+		&lt;div class=&quot;cgd-container&quot;&gt;
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+&lt;/div&gt;&lt;/body&gt;</outerHTML>
+                        <range>0</range>
+                    </PROPERTIES>
+                    <CTX_PROPS>
+                        <BOUNDINGRECT>0|0|1920|974</BOUNDINGRECT>
+                        <TITLE>BODY</TITLE>
+                        <NAMEKEY>name</NAMEKEY>
+                        <CONTROLTYPE>BODY</CONTROLTYPE>
+                        <PREFIX></PREFIX>
+                        <TEXT></TEXT>
+                        <TEXTKEY>Text</TEXTKEY>
+                        <PARAMNAME></PARAMNAME>
+                        <PARENTTREE></PARENTTREE>
+                        <ISVISIBLE>true</ISVISIBLE>
+                    </CTX_PROPS>
+                    <CHILDREN>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>DIV</TAG>
+                                <id>spinner-modal</id>
+                                <Text>
+    
+        
+            
+            	Chargement...
+                
+            
+        
+    
+</Text>
+                                <class>modal modal-static</class>
+                                <innerHTML>
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</innerHTML>
+                                <outerHTML>&lt;div class=&quot;modal modal-static&quot; id=&quot;spinner-modal&quot; data-keyboard=&quot;false&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</outerHTML>
+                                <range>0</range>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                <TITLE>DIV</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                                <ITEM>
+                                    <PROPERTIES>
+                                        <TAG>DIV</TAG>
+                                        <Text>
+        
+            
+            	Chargement...
+                
+            
+        
+    </Text>
+                                        <class>modal-dialog modal-sm</class>
+                                        <innerHTML>
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    </innerHTML>
+                                        <outerHTML>&lt;div class=&quot;modal-dialog modal-sm&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</outerHTML>
+                                        <range>0</range>
+                                    </PROPERTIES>
+                                    <CTX_PROPS>
+                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                        <TITLE>DIV</TITLE>
+                                        <NAMEKEY>name</NAMEKEY>
+                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                        <PREFIX></PREFIX>
+                                        <TEXT></TEXT>
+                                        <TEXTKEY>Text</TEXTKEY>
+                                        <PARAMNAME></PARAMNAME>
+                                        <PARENTTREE></PARENTTREE>
+                                        <ISVISIBLE>true</ISVISIBLE>
+                                    </CTX_PROPS>
+                                    <CHILDREN>
+                                        <ITEM>
+                                            <PROPERTIES>
+                                                <TAG>DIV</TAG>
+                                                <Text>
+            
+            	Chargement...
+                
+            
+        </Text>
+                                                <class>modal-content</class>
+                                                <innerHTML>
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        </innerHTML>
+                                                <outerHTML>&lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;</outerHTML>
+                                                <range>0</range>
+                                            </PROPERTIES>
+                                            <CTX_PROPS>
+                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                <TITLE>DIV</TITLE>
+                                                <NAMEKEY>name</NAMEKEY>
+                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                <PREFIX></PREFIX>
+                                                <TEXT></TEXT>
+                                                <TEXTKEY>Text</TEXTKEY>
+                                                <PARAMNAME></PARAMNAME>
+                                                <PARENTTREE></PARENTTREE>
+                                                <ISVISIBLE>true</ISVISIBLE>
+                                            </CTX_PROPS>
+                                            <CHILDREN>
+                                                <ITEM>
+                                                    <PROPERTIES>
+                                                        <TAG>DIV</TAG>
+                                                        <Text>
+            	Chargement...
+                
+            </Text>
+                                                        <class>modal-body text-center</class>
+                                                        <innerHTML>
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            </innerHTML>
+                                                        <outerHTML>&lt;div class=&quot;modal-body text-center&quot;&gt;
+            	&lt;h3&gt;Chargement...&lt;/h3&gt;
+                &lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+            &lt;/div&gt;</outerHTML>
+                                                        <range>0</range>
+                                                    </PROPERTIES>
+                                                    <CTX_PROPS>
+                                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                        <TITLE>DIV</TITLE>
+                                                        <NAMEKEY>name</NAMEKEY>
+                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                        <PREFIX></PREFIX>
+                                                        <TEXT></TEXT>
+                                                        <TEXTKEY>Text</TEXTKEY>
+                                                        <PARAMNAME></PARAMNAME>
+                                                        <PARENTTREE></PARENTTREE>
+                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                    </CTX_PROPS>
+                                                    <CHILDREN>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>H3</TAG>
+                                                                <Text>Chargement...</Text>
+                                                                <innerHTML>Chargement...</innerHTML>
+                                                                <outerHTML>&lt;h3&gt;Chargement...&lt;/h3&gt;</outerHTML>
+                                                                <range>0</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                <TITLE>H3 - Chargement...</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>H3</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT>Chargement...</TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>H3</TAG>
+                                                                <innerHTML>&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;</innerHTML>
+                                                                <outerHTML>&lt;h3&gt;&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;&lt;/h3&gt;</outerHTML>
+                                                                <range>1</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                <TITLE>H3</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>H3</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>I</TAG>
+                                                                        <class>fa fa fa-circle-o-notch fa-spin fa-2x</class>
+                                                                        <outerHTML>&lt;i class=&quot;fa fa fa-circle-o-notch fa-spin fa-2x&quot;&gt;&lt;/i&gt;</outerHTML>
+                                                                        <range>0</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                        <TITLE>I</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>I</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT></TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                    </CHILDREN>
+                                                </ITEM>
+                                            </CHILDREN>
+                                        </ITEM>
+                                    </CHILDREN>
+                                </ITEM>
+                            </CHILDREN>
+                        </ITEM>
+                        <ITEM>
+                            <PROPERTIES>
+                                <TAG>DIV</TAG>
+                                <Text>Bienvenue dans votre espace personnel
+Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                                <class>cgd-container</class>
+                                <innerHTML>
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+</innerHTML>
+                                <outerHTML>&lt;div class=&quot;cgd-container&quot;&gt;
+			&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	
+		&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;
+	    
+	
+
+
+&lt;/div&gt;</outerHTML>
+                                <range>1</range>
+                            </PROPERTIES>
+                            <CTX_PROPS>
+                                <BOUNDINGRECT>0|0|1920|974</BOUNDINGRECT>
+                                <TITLE>DIV</TITLE>
+                                <NAMEKEY>name</NAMEKEY>
+                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                <PREFIX></PREFIX>
+                                <TEXT></TEXT>
+                                <TEXTKEY>Text</TEXTKEY>
+                                <PARAMNAME></PARAMNAME>
+                                <PARENTTREE></PARENTTREE>
+                                <ISVISIBLE>true</ISVISIBLE>
+                            </CTX_PROPS>
+                            <CHILDREN>
+                                <ITEM>
+                                    <PROPERTIES>
+                                        <TAG>DIV</TAG>
+                                        <Text>Bienvenue dans votre espace personnel
+Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                                        <innerHTML>
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		</innerHTML>
+                                        <outerHTML>&lt;div&gt;
+				&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;</outerHTML>
+                                        <range>0</range>
+                                    </PROPERTIES>
+                                    <CTX_PROPS>
+                                        <BOUNDINGRECT>0|0|1920|656</BOUNDINGRECT>
+                                        <TITLE>DIV</TITLE>
+                                        <NAMEKEY>name</NAMEKEY>
+                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                        <PREFIX></PREFIX>
+                                        <TEXT></TEXT>
+                                        <TEXTKEY>Text</TEXTKEY>
+                                        <PARAMNAME></PARAMNAME>
+                                        <PARENTTREE></PARENTTREE>
+                                        <ISVISIBLE>true</ISVISIBLE>
+                                    </CTX_PROPS>
+                                    <CHILDREN>
+                                        <ITEM>
+                                            <PROPERTIES>
+                                                <TAG>DIV</TAG>
+                                                <Text>Bienvenue dans votre espace personnel
+Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                                                <class>container login-wrapper</class>
+                                                <innerHTML>
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			</innerHTML>
+                                                <outerHTML>&lt;div class=&quot;container login-wrapper&quot;&gt;
+					&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+	
+					&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;
+	
+					&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;
+			&lt;/div&gt;</outerHTML>
+                                                <range>0</range>
+                                            </PROPERTIES>
+                                            <CTX_PROPS>
+                                                <BOUNDINGRECT>41|0|1824|656</BOUNDINGRECT>
+                                                <TITLE>DIV</TITLE>
+                                                <NAMEKEY>name</NAMEKEY>
+                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                <PREFIX></PREFIX>
+                                                <TEXT></TEXT>
+                                                <TEXTKEY>Text</TEXTKEY>
+                                                <PARAMNAME></PARAMNAME>
+                                                <PARENTTREE></PARENTTREE>
+                                                <ISVISIBLE>true</ISVISIBLE>
+                                            </CTX_PROPS>
+                                            <CHILDREN>
+                                                <ITEM>
+                                                    <PROPERTIES>
+                                                        <TAG>DIV</TAG>
+                                                        <class>cgd-login-header</class>
+                                                        <innerHTML>
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					</innerHTML>
+                                                        <outerHTML>&lt;div class=&quot;cgd-login-header&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;</outerHTML>
+                                                        <range>0</range>
+                                                    </PROPERTIES>
+                                                    <CTX_PROPS>
+                                                        <BOUNDINGRECT>0|0|1920|100</BOUNDINGRECT>
+                                                        <TITLE>DIV</TITLE>
+                                                        <NAMEKEY>name</NAMEKEY>
+                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                        <PREFIX></PREFIX>
+                                                        <TEXT></TEXT>
+                                                        <TEXTKEY>Text</TEXTKEY>
+                                                        <PARAMNAME></PARAMNAME>
+                                                        <PARENTTREE></PARENTTREE>
+                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                    </CTX_PROPS>
+                                                    <CHILDREN>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>DIV</TAG>
+                                                                <class>cgd-cegedim-logo</class>
+                                                                <outerHTML>&lt;div class=&quot;cgd-cegedim-logo&quot;&gt;&lt;/div&gt;</outerHTML>
+                                                                <range>0</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>40|20|180|50</BOUNDINGRECT>
+                                                                <TITLE>DIV</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>DIV</TAG>
+                                                                <class>cgd-cegedim-slogan</class>
+                                                                <outerHTML>&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;</outerHTML>
+                                                                <range>1</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>735|28|450|50</BOUNDINGRECT>
+                                                                <TITLE>DIV</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                    </CHILDREN>
+                                                </ITEM>
+                                                <ITEM>
+                                                    <PROPERTIES>
+                                                        <TAG>H1</TAG>
+                                                        <Text>Bienvenue dans votre espace personnel</Text>
+                                                        <innerHTML>Bienvenue dans votre espace personnel</innerHTML>
+                                                        <outerHTML>&lt;h1&gt;Bienvenue dans votre espace personnel&lt;/h1&gt;</outerHTML>
+                                                        <range>0</range>
+                                                    </PROPERTIES>
+                                                    <CTX_PROPS>
+                                                        <BOUNDINGRECT>79|140|1770|23</BOUNDINGRECT>
+                                                        <TITLE>H1 - Bienvenue dans votre espace personnel</TITLE>
+                                                        <NAMEKEY>name</NAMEKEY>
+                                                        <CONTROLTYPE>H1</CONTROLTYPE>
+                                                        <PREFIX></PREFIX>
+                                                        <TEXT>Bienvenue dans votre espace personnel</TEXT>
+                                                        <TEXTKEY>Text</TEXTKEY>
+                                                        <PARAMNAME></PARAMNAME>
+                                                        <PARENTTREE></PARENTTREE>
+                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                    </CTX_PROPS>
+                                                    <CHILDREN>
+                                                    </CHILDREN>
+                                                </ITEM>
+                                                <ITEM>
+                                                    <PROPERTIES>
+                                                        <TAG>FORM</TAG>
+                                                        <name>loginForm</name>
+                                                        <Text>Site :  01 
+Identifiant
+Mot de passeSe connecter
+</Text>
+                                                        <class>cgd-login-form form-horizontal</class>
+                                                        <innerHTML>
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;</innerHTML>
+                                                        <outerHTML>&lt;form name=&quot;loginForm&quot; role=&quot;form&quot; action=&quot;/mdg/auth/login&quot; method=&quot;POST&quot; class=&quot;cgd-login-form form-horizontal&quot;&gt;
+						&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;
+	
+						&lt;!--  Site --&gt;
+						&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;
+						&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;
+						
+						&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;&lt;/form&gt;</outerHTML>
+                                                        <range>0</range>
+                                                        <role>form</role>
+                                                        <action>/mdg/auth/login</action>
+                                                        <method>POST</method>
+                                                        <length>undefined</length>
+                                                    </PROPERTIES>
+                                                    <CTX_PROPS>
+                                                        <BOUNDINGRECT>433|263|1062|368</BOUNDINGRECT>
+                                                        <TITLE>FORM</TITLE>
+                                                        <NAMEKEY>name</NAMEKEY>
+                                                        <CONTROLTYPE>FORM</CONTROLTYPE>
+                                                        <PREFIX></PREFIX>
+                                                        <TEXT></TEXT>
+                                                        <TEXTKEY>Text</TEXTKEY>
+                                                        <PARAMNAME></PARAMNAME>
+                                                        <PARENTTREE></PARENTTREE>
+                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                    </CTX_PROPS>
+                                                    <CHILDREN>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>DIV</TAG>
+                                                                <class>cgd-infinite-logo</class>
+                                                                <outerHTML>&lt;div class=&quot;cgd-infinite-logo&quot;&gt;&lt;/div&gt;</outerHTML>
+                                                                <range>0</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>443|278|180|50</BOUNDINGRECT>
+                                                                <TITLE>DIV</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>INPUT</TAG>
+                                                                <id>site</id>
+                                                                <name>site</name>
+                                                                <value>01</value>
+                                                                <outerHTML>&lt;input type=&quot;hidden&quot; id=&quot;site&quot; name=&quot;site&quot; value=&quot;01&quot;&gt;</outerHTML>
+                                                                <range>0</range>
+                                                                <type>hidden</type>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                <TITLE>INPUT</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>INPUT</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>DIV</TAG>
+                                                                <id>codeSite</id>
+                                                                <Text>Site :  01 </Text>
+                                                                <class>form-inline</class>
+                                                                <innerHTML>
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						</innerHTML>
+                                                                <outerHTML>&lt;div id=&quot;codeSite&quot; class=&quot;form-inline&quot;&gt;
+	            			&lt;label&gt;Site : &lt;/label&gt;
+	            			&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;
+							&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/div&gt;</outerHTML>
+                                                                <range>1</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>1403|298|82|29</BOUNDINGRECT>
+                                                                <TITLE>DIV</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>LABEL</TAG>
+                                                                        <Text>Site :</Text>
+                                                                        <innerHTML>Site : </innerHTML>
+                                                                        <outerHTML>&lt;label&gt;Site : &lt;/label&gt;</outerHTML>
+                                                                        <range>0</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>1403|304|33|18</BOUNDINGRECT>
+                                                                        <TITLE>LABEL - Site :</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>LABEL</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT>Site :</TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>DIV</TAG>
+                                                                        <id>siteLabel</id>
+                                                                        <Text>01</Text>
+                                                                        <class>content</class>
+                                                                        <innerHTML>01</innerHTML>
+                                                                        <outerHTML>&lt;div class=&quot;content&quot; id=&quot;siteLabel&quot;&gt;01&lt;/div&gt;</outerHTML>
+                                                                        <range>0</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>1440|298|22|27</BOUNDINGRECT>
+                                                                        <TITLE>DIV - 01</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT>01</TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>DIV</TAG>
+                                                                        <class>dropdown right</class>
+                                                                        <innerHTML>
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							</innerHTML>
+                                                                        <outerHTML>&lt;div class=&quot;dropdown right&quot;&gt;
+								&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;
+								&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;
+							&lt;/div&gt;</outerHTML>
+                                                                        <range>1</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>1466|300|19|26</BOUNDINGRECT>
+                                                                        <TITLE>DIV</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT></TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>A</TAG>
+                                                                                <class>dropdown-toggle</class>
+                                                                                <href></href>
+                                                                                <innerHTML>
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								</innerHTML>
+                                                                                <outerHTML>&lt;a href=&quot;&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+									&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;
+								&lt;/a&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>1470|306|11|13</BOUNDINGRECT>
+                                                                                <TITLE>A</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>A</CONTROLTYPE>
+                                                                                <PREFIX>bt</PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                                <ITEM>
+                                                                                    <PROPERTIES>
+                                                                                        <TAG>I</TAG>
+                                                                                        <class>fa fa-pencil</class>
+                                                                                        <outerHTML>&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;</outerHTML>
+                                                                                        <range>0</range>
+                                                                                    </PROPERTIES>
+                                                                                    <CTX_PROPS>
+                                                                                        <BOUNDINGRECT>1470|305|11|13</BOUNDINGRECT>
+                                                                                        <TITLE>I</TITLE>
+                                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                                        <CONTROLTYPE>I</CONTROLTYPE>
+                                                                                        <PREFIX></PREFIX>
+                                                                                        <TEXT></TEXT>
+                                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                                        <PARAMNAME></PARAMNAME>
+                                                                                        <PARENTTREE></PARENTTREE>
+                                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                                    </CTX_PROPS>
+                                                                                    <CHILDREN>
+                                                                                    </CHILDREN>
+                                                                                </ITEM>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>UL</TAG>
+                                                                                <Text>
+									
+										
+											  01
+										
+									
+										
+											  99
+										
+									
+				                </Text>
+                                                                                <class>dropdown-menu</class>
+                                                                                <innerHTML>
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                </innerHTML>
+                                                                                <outerHTML>&lt;ul class=&quot;dropdown-menu&quot;&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;
+									
+										&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;
+									
+				                &lt;/ul&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                <TITLE>UL</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>UL</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                                <ITEM>
+                                                                                    <PROPERTIES>
+                                                                                        <TAG>LI</TAG>
+                                                                                        <Text>
+											  01
+										</Text>
+                                                                                        <innerHTML>
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										</innerHTML>
+                                                                                        <outerHTML>&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;
+										&lt;/li&gt;</outerHTML>
+                                                                                        <range>0</range>
+                                                                                    </PROPERTIES>
+                                                                                    <CTX_PROPS>
+                                                                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                        <TITLE>LI</TITLE>
+                                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                                        <CONTROLTYPE>LI</CONTROLTYPE>
+                                                                                        <PREFIX></PREFIX>
+                                                                                        <TEXT></TEXT>
+                                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                                        <PARAMNAME></PARAMNAME>
+                                                                                        <PARENTTREE></PARENTTREE>
+                                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                                    </CTX_PROPS>
+                                                                                    <CHILDREN>
+                                                                                        <ITEM>
+                                                                                            <PROPERTIES>
+                                                                                                <TAG>A</TAG>
+                                                                                                <Text>01</Text>
+                                                                                                <innerHTML>01</innerHTML>
+                                                                                                <outerHTML>&lt;a data-site=&quot;&quot;&gt;01&lt;/a&gt;</outerHTML>
+                                                                                                <range>0</range>
+                                                                                            </PROPERTIES>
+                                                                                            <CTX_PROPS>
+                                                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                                <TITLE>A - 01</TITLE>
+                                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                                <CONTROLTYPE>A</CONTROLTYPE>
+                                                                                                <PREFIX>bt</PREFIX>
+                                                                                                <TEXT>01</TEXT>
+                                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                                <PARAMNAME></PARAMNAME>
+                                                                                                <PARENTTREE></PARENTTREE>
+                                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                                            </CTX_PROPS>
+                                                                                            <CHILDREN>
+                                                                                            </CHILDREN>
+                                                                                        </ITEM>
+                                                                                    </CHILDREN>
+                                                                                </ITEM>
+                                                                                <ITEM>
+                                                                                    <PROPERTIES>
+                                                                                        <TAG>LI</TAG>
+                                                                                        <Text>
+											  99
+										</Text>
+                                                                                        <innerHTML>
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										</innerHTML>
+                                                                                        <outerHTML>&lt;li&gt;
+											  &lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;
+										&lt;/li&gt;</outerHTML>
+                                                                                        <range>1</range>
+                                                                                    </PROPERTIES>
+                                                                                    <CTX_PROPS>
+                                                                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                        <TITLE>LI</TITLE>
+                                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                                        <CONTROLTYPE>LI</CONTROLTYPE>
+                                                                                        <PREFIX></PREFIX>
+                                                                                        <TEXT></TEXT>
+                                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                                        <PARAMNAME></PARAMNAME>
+                                                                                        <PARENTTREE></PARENTTREE>
+                                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                                    </CTX_PROPS>
+                                                                                    <CHILDREN>
+                                                                                        <ITEM>
+                                                                                            <PROPERTIES>
+                                                                                                <TAG>A</TAG>
+                                                                                                <Text>99</Text>
+                                                                                                <innerHTML>99</innerHTML>
+                                                                                                <outerHTML>&lt;a data-site=&quot;&quot;&gt;99&lt;/a&gt;</outerHTML>
+                                                                                                <range>0</range>
+                                                                                            </PROPERTIES>
+                                                                                            <CTX_PROPS>
+                                                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                                <TITLE>A - 99</TITLE>
+                                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                                <CONTROLTYPE>A</CONTROLTYPE>
+                                                                                                <PREFIX>bt</PREFIX>
+                                                                                                <TEXT>99</TEXT>
+                                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                                <PARAMNAME></PARAMNAME>
+                                                                                                <PARENTTREE></PARENTTREE>
+                                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                                            </CTX_PROPS>
+                                                                                            <CHILDREN>
+                                                                                            </CHILDREN>
+                                                                                        </ITEM>
+                                                                                    </CHILDREN>
+                                                                                </ITEM>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>DIV</TAG>
+                                                                <Text>Identifiant
+Mot de passeSe connecter
+</Text>
+                                                                <class>cgd-login-container</class>
+                                                                <innerHTML>
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				</innerHTML>
+                                                                <outerHTML>&lt;div class=&quot;cgd-login-container&quot;&gt;
+	
+							&lt;!-- Messages --&gt;
+							
+							
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+	
+						&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;
+						&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;
+					
+	
+					&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;</outerHTML>
+                                                                <range>2</range>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>678|378|573|188</BOUNDINGRECT>
+                                                                <TITLE>DIV</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>DIV</TAG>
+                                                                        <Text>Identifiant</Text>
+                                                                        <class>input-group margin-b-md</class>
+                                                                        <innerHTML>
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						</innerHTML>
+                                                                        <outerHTML>&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;
+							&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;</outerHTML>
+                                                                        <range>0</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>693|393|543|47</BOUNDINGRECT>
+                                                                        <TITLE>DIV</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT></TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>LABEL</TAG>
+                                                                                <Text>Identifiant</Text>
+                                                                                <innerHTML>Identifiant</innerHTML>
+                                                                                <outerHTML>&lt;label for=&quot;login&quot;&gt;Identifiant&lt;/label&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                                <for>login</for>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>693|393|65|18</BOUNDINGRECT>
+                                                                                <TITLE>LABEL - Identifiant</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>LABEL</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT>Identifiant</TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>INPUT</TAG>
+                                                                                <id>login</id>
+                                                                                <name>login</name>
+                                                                                <value></value>
+                                                                                <class>form-control</class>
+                                                                                <outerHTML>&lt;input id=&quot;login&quot; placeholder=&quot;Login&quot; class=&quot;form-control&quot; name=&quot;login&quot; type=&quot;text&quot; autofocus=&quot;autofocus&quot; required=&quot;&quot; value=&quot;&quot;&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                                <type>text</type>
+                                                                                <autofocus>autofocus</autofocus>
+                                                                                <placeholder>Login</placeholder>
+                                                                                <required></required>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>693|416|543|24</BOUNDINGRECT>
+                                                                                <TITLE>INPUT</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>INPUT</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>DIV</TAG>
+                                                                        <Text>Mot de passe</Text>
+                                                                        <class>input-group margin-b-md</class>
+                                                                        <innerHTML>
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						</innerHTML>
+                                                                        <outerHTML>&lt;div class=&quot;input-group margin-b-md&quot;&gt;
+							&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;
+							&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;
+							&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;
+						&lt;/div&gt;</outerHTML>
+                                                                        <range>1</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>693|455|543|47</BOUNDINGRECT>
+                                                                        <TITLE>DIV</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT></TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>LABEL</TAG>
+                                                                                <Text>Mot de passe</Text>
+                                                                                <innerHTML>Mot de passe</innerHTML>
+                                                                                <outerHTML>&lt;label for=&quot;password&quot;&gt;Mot de passe&lt;/label&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                                <for>password</for>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>693|455|84|18</BOUNDINGRECT>
+                                                                                <TITLE>LABEL - Mot de passe</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>LABEL</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT>Mot de passe</TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>INPUT</TAG>
+                                                                                <id>password</id>
+                                                                                <outerHTML>&lt;input id=&quot;password&quot; type=&quot;password&quot; style=&quot;display: none;&quot;&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                                <type>password</type>
+                                                                                <style>display: none;</style>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                                <TITLE>INPUT</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>INPUT</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>INPUT</TAG>
+                                                                                <id>password</id>
+                                                                                <name>password</name>
+                                                                                <value></value>
+                                                                                <class>form-control</class>
+                                                                                <outerHTML>&lt;input id=&quot;password&quot; placeholder=&quot;Mot de Passe&quot; class=&quot;form-control&quot; name=&quot;password&quot; type=&quot;password&quot; required=&quot;&quot; value=&quot;&quot;&gt;</outerHTML>
+                                                                                <range>1</range>
+                                                                                <type>password</type>
+                                                                                <placeholder>Mot de Passe</placeholder>
+                                                                                <required></required>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>693|478|543|24</BOUNDINGRECT>
+                                                                                <TITLE>INPUT</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>INPUT</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>BUTTON</TAG>
+                                                                        <id>loginBtn</id>
+                                                                        <Text>Se connecter</Text>
+                                                                        <class>btn btn-block cgd-btn-green</class>
+                                                                        <innerHTML>Se connecter</innerHTML>
+                                                                        <outerHTML>&lt;button type=&quot;submit&quot; class=&quot;btn btn-block cgd-btn-green&quot; id=&quot;loginBtn&quot;&gt;Se connecter&lt;/button&gt;</outerHTML>
+                                                                        <range>0</range>
+                                                                        <type>submit</type>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>693|517|543|34</BOUNDINGRECT>
+                                                                        <TITLE>BUTTON - Se connecter</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>BUTTON</CONTROLTYPE>
+                                                                        <PREFIX>bt</PREFIX>
+                                                                        <TEXT>Se connecter</TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                                <ITEM>
+                                                                    <PROPERTIES>
+                                                                        <TAG>DIV</TAG>
+                                                                        <class>cgd-login-footer</class>
+                                                                        <innerHTML>
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					</innerHTML>
+                                                                        <outerHTML>&lt;div class=&quot;cgd-login-footer&quot;&gt;
+						&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;
+					&lt;/div&gt;</outerHTML>
+                                                                        <range>2</range>
+                                                                    </PROPERTIES>
+                                                                    <CTX_PROPS>
+                                                                        <BOUNDINGRECT>693|551|543|0</BOUNDINGRECT>
+                                                                        <TITLE>DIV</TITLE>
+                                                                        <NAMEKEY>name</NAMEKEY>
+                                                                        <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                        <PREFIX></PREFIX>
+                                                                        <TEXT></TEXT>
+                                                                        <TEXTKEY>Text</TEXTKEY>
+                                                                        <PARAMNAME></PARAMNAME>
+                                                                        <PARENTTREE></PARENTTREE>
+                                                                        <ISVISIBLE>true</ISVISIBLE>
+                                                                    </CTX_PROPS>
+                                                                    <CHILDREN>
+                                                                        <ITEM>
+                                                                            <PROPERTIES>
+                                                                                <TAG>DIV</TAG>
+                                                                                <class>cgd-cegedim-slogan</class>
+                                                                                <outerHTML>&lt;div class=&quot;cgd-cegedim-slogan&quot;&gt;&lt;/div&gt;</outerHTML>
+                                                                                <range>0</range>
+                                                                            </PROPERTIES>
+                                                                            <CTX_PROPS>
+                                                                                <BOUNDINGRECT>693|551|543|0</BOUNDINGRECT>
+                                                                                <TITLE>DIV</TITLE>
+                                                                                <NAMEKEY>name</NAMEKEY>
+                                                                                <CONTROLTYPE>DIV</CONTROLTYPE>
+                                                                                <PREFIX></PREFIX>
+                                                                                <TEXT></TEXT>
+                                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                                <PARAMNAME></PARAMNAME>
+                                                                                <PARENTTREE></PARENTTREE>
+                                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                                            </CTX_PROPS>
+                                                                            <CHILDREN>
+                                                                            </CHILDREN>
+                                                                        </ITEM>
+                                                                    </CHILDREN>
+                                                                </ITEM>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                        <ITEM>
+                                                            <PROPERTIES>
+                                                                <TAG>INPUT</TAG>
+                                                                <name>_csrf</name>
+                                                                <value>f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9</value>
+                                                                <outerHTML>&lt;input type=&quot;hidden&quot; name=&quot;_csrf&quot; value=&quot;f5a8b302-27fe-4d1d-a401-a15c5d7fb5d9&quot;&gt;</outerHTML>
+                                                                <range>1</range>
+                                                                <type>hidden</type>
+                                                            </PROPERTIES>
+                                                            <CTX_PROPS>
+                                                                <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                                                <TITLE>INPUT</TITLE>
+                                                                <NAMEKEY>name</NAMEKEY>
+                                                                <CONTROLTYPE>INPUT</CONTROLTYPE>
+                                                                <PREFIX></PREFIX>
+                                                                <TEXT></TEXT>
+                                                                <TEXTKEY>Text</TEXTKEY>
+                                                                <PARAMNAME></PARAMNAME>
+                                                                <PARENTTREE></PARENTTREE>
+                                                                <ISVISIBLE>true</ISVISIBLE>
+                                                            </CTX_PROPS>
+                                                            <CHILDREN>
+                                                            </CHILDREN>
+                                                        </ITEM>
+                                                    </CHILDREN>
+                                                </ITEM>
+                                            </CHILDREN>
+                                        </ITEM>
+                                    </CHILDREN>
+                                </ITEM>
+                                <ITEM>
+                                    <PROPERTIES>
+                                        <TAG>SCRIPT</TAG>
+                                        <Text>
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    </Text>
+                                        <innerHTML>
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    </innerHTML>
+                                        <outerHTML>&lt;script&gt;
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    &lt;/script&gt;</outerHTML>
+                                        <range>0</range>
+                                    </PROPERTIES>
+                                    <CTX_PROPS>
+                                        <BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+                                        <TITLE>SCRIPT - 
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    </TITLE>
+                                        <NAMEKEY>name</NAMEKEY>
+                                        <CONTROLTYPE>SCRIPT</CONTROLTYPE>
+                                        <PREFIX></PREFIX>
+                                        <TEXT>
+	       	// Enable 1st level validation
+	       	form.novalidate = false;
+	       	
+	       	var login = {
+	       			
+	       		init: function() {
+	       			
+	       			// Init site
+	    	    	$(&#39;#siteLabel&#39;).text($(&#39;#site&#39;).val());
+	       			
+	    	    	$(&#39;li&gt;a[data-site]&#39;).click(function() {
+	    	       		var site = $(this).text();
+	    	       		$(&#39;#site&#39;).val(site);
+	    	       		$(&#39;#siteLabel&#39;).text(site);
+	    	       	});
+	    	       	
+	    	       	// No value ? select the first one
+	    	       	if ($(&#39;#site&#39;).val() === &#39;&#39;) {
+	    		       	$(&#39;li&gt;a[data-site]:first&#39;).click();
+	    	       	}
+	       		}
+	       	}
+	       	
+	       	$(function() {
+	       		login.init();
+	       	});
+	       	
+	    </TEXT>
+                                        <TEXTKEY>Text</TEXTKEY>
+                                        <PARAMNAME></PARAMNAME>
+                                        <PARENTTREE></PARENTTREE>
+                                        <ISVISIBLE>true</ISVISIBLE>
+                                    </CTX_PROPS>
+                                    <CHILDREN>
+                                    </CHILDREN>
+                                </ITEM>
+                            </CHILDREN>
+                        </ITEM>
+                    </CHILDREN>
+                </ITEM>
+            </CHILDREN>
+        </ITEM>
+    </CHILDREN>
+</PAGE>

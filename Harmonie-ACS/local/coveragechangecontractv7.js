@@ -1,8 +1,8 @@
 ﻿ActivInfinitev7.scenario({ coverageChangeContract: function(ev, sc) {
 	var data = sc.data;
 	sc.data.currentScenario = 'Changement de couverture';
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc);	});
+	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc);	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCoverageChangeContract);
 	sc.step(ActivInfinitev7.steps.searchCoverageContract);

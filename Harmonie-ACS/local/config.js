@@ -24,7 +24,7 @@
 	
 	config.getTimeout = function() {
 		// Time in millisecond 
-		return 1000 * 60 * 5;
+		return 1000 * 60 * 2;
 	}
 	
 	config.getCheckExtension = function(codeScenario) {

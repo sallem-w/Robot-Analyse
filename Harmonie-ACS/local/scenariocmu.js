@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.scenario({ scenarioCMU: function(ev, sc) {
 	sc.data.scenarioCode = ctx.config.CMU;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc); });
+	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc);	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initScenario);
 	sc.step(ActivInfinitev7.steps.startScenarioCMU);
