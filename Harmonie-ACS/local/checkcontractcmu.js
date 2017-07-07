@@ -1,11 +1,7 @@
 ﻿ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.CMU;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
-	sc.onError(function(sc, st, ex) {
-		var message = sc.data.contract.individualContract +  ' - Error undefined';
-		var comment = 'Erreur traitement inconnue';
-		return ctx.endScenario(sc, message, comment);
-	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc); });
+	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc); });
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToConsultationCMU);
