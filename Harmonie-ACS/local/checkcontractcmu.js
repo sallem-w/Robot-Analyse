@@ -14,11 +14,9 @@
 	sc.step(ActivInfinitev7.steps.initializeCheckBeneficiaries);
 	sc.step(ActivInfinitev7.steps.checkBeneficiaries);
 	sc.step(ActivInfinitev7.steps.clickIntoBeneficiary);
-	sc.step(ActivInfinitev7.steps.waitForBeneficiarySelection);
 	sc.step(ActivInfinitev7.steps.navigateToProductList);
 	sc.step(ActivInfinitev7.steps.checkProductState);
 	sc.step(ActivInfinitev7.steps.nextProduct);
-	sc.step(ActivInfinitev7.steps.waitForProduct);
 	sc.step(ActivInfinitev7.steps.goToContribution);
 	sc.step(ActivInfinitev7.steps.checkContribution);
 	sc.step(ActivInfinitev7.steps.toTerminated);
@@ -136,20 +134,11 @@ ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 	}
 	
 	sc.data.indexBenef += 1;
-	ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).click();
+	ActivInfinitev7.pInfoRo.oTypeInsured.i(sc.data.indexBenef).click();
 	
-	return sc.endStep();
-}});
-
-ActivInfinitev7.step({ waitForBeneficiarySelection: function(ev, sc, st) {
-	try {
-		var classes = ActivInfinitev7.pInfoRo.oInsuredList.i(sc.data.indexBenef).scriptItem({ className: null });
-		if (classes.match(/selected/)) {
-			return sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
-		}
-	} catch (error) {}
-	ctx.sleep();
-	return sc.endStep(ActivInfinitev7.steps.waitForBeneficiarySelection);
+	ActivInfinitev7.pInfoRo.events.LOAD.once(function () {
+		return sc.endStep(ActivInfinitev7.steps.checkBeneficiaries);
+	});
 }});
 
 ActivInfinitev7.step({ navigateToProductList: function(ev, sc, st) {
@@ -194,19 +183,10 @@ ActivInfinitev7.step({ nextProduct: function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		return sc.endStep(ActivInfinitev7.steps.closeConsultation);
 	}
-	ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).click();
-	return sc.endStep();
-}});
-
-ActivInfinitev7.step({ waitForProduct: function(ev, sc, st) {
-	ctx.sleep();
-	try {
-		var classes = ActivInfinitev7.pProductList.oInsuredList.i(sc.data.indexBenef).scriptItem({ className: null });
-		if (classes.match(/selected/)) {
-			return sc.endStep(ActivInfinitev7.steps.checkProductState);
-		}
-	} catch (error) {}
-	return sc.endStep(ActivInfinitev7.steps.waitForProduct);
+	ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef).click();
+	ActivInfinitev7.pProductList.events.LOAD.once(function () {
+		return sc.endStep(ActivInfinitev7.steps.checkProductState);
+	});	
 }});
 
 ActivInfinitev7.step({ goToContribution: function(ev, sc, st) {
