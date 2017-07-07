@@ -2,7 +2,7 @@
     "pathTemplate": "C:\\deploy\\template\\",
     "ACS": {
         "showMenu": true,
-        "rootPath": "C:\\deploy\\excel\\",
+        "rootPath": "C:\\deploy\\acs\\",
         "controlOnly": false,
         "controlContribution": false,
         "saveUpdate": false,
@@ -36,7 +36,7 @@
     },
     "CMU":{
         "showMenu": true,
-        "rootPath": "C:\\deploy\\excel\\", 
+        "rootPath": "C:\\deploy\\cmu\\", 
         "controlOnly": false,
         "controlContribution": false,
         "saveUpdate": false,
@@ -65,10 +65,10 @@
     },
     "SIRH": {
         "showMenu": true,
-        "rootPath": "C:\\deploy\\eram\\"
+        "rootPath": "C:\\deploy\\sirh\\"
     },
     "DA": {
         "showMenu": true,
-        "rootPath": "C:\\deploy\\eram\\"
+        "rootPath": "C:\\deploy\\da\\"
     }
 }
