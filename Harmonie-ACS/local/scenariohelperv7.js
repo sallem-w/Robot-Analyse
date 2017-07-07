@@ -59,15 +59,19 @@
 			ctx.off(notFoundListener);
 		});
 	}
+	
+	scenarioHelper.forceClick = function forceClick(btn) {
+		function cancelSave() {
+			$('.modal-footer > button[data-bb-handler="no"]').click();
+		};
+		ActivInfinitev7.currentPage.injectFunction(cancelSave);
+		btn.click();
+		ActivInfinitev7.currentPage.evalScript('if (cancelSave) cancelSave();');
+	}
 
 	scenarioHelper.goHome = function(callback) {
 		if(ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
-			function cancelSave() {
-				$('.modal-footer > button[data-bb-handler="no"]').click();
-			};
-			ActivInfinitev7.currentPage.injectFunction(cancelSave);
-			ActivInfinitev7.currentPage.btClose.click();
-			ActivInfinitev7.currentPage.evalScript('if (cancelSave) cancelSave();');
+			scenarioHelper.forceClick(ActivInfinitev7.currentPage.btClose);
 		} else {
 			ctx.trace.writeWarning('No close button found on current page: navigating to dashboard directly');
 			ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);

@@ -47,7 +47,7 @@ ActivInfinitev7.step({ navigateToInfoRo: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - navigateToInfoRo');
 	ActivInfinitev7.pTerminatedContractFo.btNavigateInsuredIden.click();
 	ActivInfinitev7.pInsuredIdent.wait(function() {
-		ActivInfinitev7.pInsuredIdent.btInfoRo.click();
+		ctx.scenarioHelper.forceClick(ActivInfinitev7.pInsuredIdent.btInfoRo);
 		ActivInfinitev7.pInfoRo.wait(function() {
 			return sc.endStep();
 		});
