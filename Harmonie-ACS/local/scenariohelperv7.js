@@ -66,7 +66,9 @@
 		};
 		ActivInfinitev7.currentPage.injectFunction(cancelSave);
 		btn.click();
-		ActivInfinitev7.currentPage.evalScript('if (cancelSave) cancelSave();');
+		try {
+			ActivInfinitev7.currentPage.evalScript('cancelSave();');
+		} catch (error) {} // if it fail, then the the popup did not show
 	}
 
 	scenarioHelper.goHome = function(callback) {
