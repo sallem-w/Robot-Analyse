@@ -19,8 +19,8 @@
 		return configFile.pathTemplate;
 	}
 	
-	config.getPathTemplate = function() {
-		return configFile.pathTemplate;
+	config.getConfig = function(codeScenario) {
+		return configFile[codeScenario];
 	}
 	
 	config.getPathStartProcessusBat = function() {
