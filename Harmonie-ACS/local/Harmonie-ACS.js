@@ -160,7 +160,7 @@ GLOBAL.events.START.on(function (ev) {
 			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configDA.rootPath, ctx.config.DA);
 			ActivInfinitev7.scenarios.scenarioDA.start();
 		});	
-	}
+	}	
 });
 
 /** Auto-update menu handler */
