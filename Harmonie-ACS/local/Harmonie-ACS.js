@@ -185,8 +185,8 @@ function connectionInfinite(callback) {
 		ctx.popupHelper.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
 		return;
 	}
-
-	var path = ActivInfinitev7.pConnection.getPath();
+	
+	var path = ActivInfinitev7.pConnection.getInfos().location.href;
 	var login = ActivInfinitev7.pConnection.oLogin.get();
 	var password = ActivInfinitev7.pConnection.oPassword.get();
 	ActivInfinitev7.pConnection.btLogin.click();
