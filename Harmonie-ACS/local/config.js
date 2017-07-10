@@ -22,9 +22,10 @@
 		return configFile[codeScenario];
 	}
 	
-	config.getTimeout = function() {
+	config.getTimeout = function(minute) {
+		minute = minute || 2;
 		// Time in millisecond 
-		return 1000 * 60 * 2;
+		return 1000 * 60 * minute;
 	}
 	
 	config.getCheckExtension = function(codeScenario) {
