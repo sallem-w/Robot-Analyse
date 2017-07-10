@@ -1,6 +1,7 @@
 ﻿ctx.config = (function() {
 	
 	var nameFileConfig = 'config.json';
+	var nameFileStartProcessusBat = 'startProcessus.bat';
 	var config = {};
 	var configFile = {};
 	
@@ -18,8 +19,12 @@
 		return configFile.pathTemplate;
 	}
 	
-	config.getConfig = function(codeScenario) {
-		return configFile[codeScenario];
+	config.getPathTemplate = function() {
+		return configFile.pathTemplate;
+	}
+	
+	config.getPathStartProcessusBat = function() {
+		return ctx.options.serverURL + '\\' + nameFileStartProcessusBat;
 	}
 	
 	config.getTimeout = function(minute) {
