@@ -71,7 +71,12 @@
 		} catch (error) {} // if it fail, then the the popup did not show
 	}
 
-	scenarioHelper.goHome = function(callback) {
+	scenarioHelper.goHome = function goHome(callback) {
+		if(!ActivInfinitev7.currentPage) {
+			ctx.trace.writeWarning('Waiting for page to load before going to home');
+			ctx.sleep();
+			return goHome(callback);
+		}
 		if(ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
 			scenarioHelper.forceClick(ActivInfinitev7.currentPage.btClose);
 		} else {
