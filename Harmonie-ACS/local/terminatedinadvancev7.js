@@ -38,18 +38,18 @@ ActivInfinitev7.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc,
 		ActivInfinitev7.pBlockNotes.btNext.click();
 		ActivInfinitev7.pCalculParam.wait(function() {
 			ActivInfinitev7.pCalculParam.btNext.click();
-			ActivInfinitev7.pCalculParam.events.UNLOAD.on(function() {
+			ActivInfinitev7.pCalculParam.events.UNLOAD.once(function() {
 				//If pCalculParam is RELOAD, then an error is occured and we do check the calcul item
-				ActivInfinitev7.pCalculParam.events.LOAD.on(function() {
+				ActivInfinitev7.pCalculParam.events.LOAD.once(function() {
 					ActivInfinitev7.pCalculParam.oCalculCheck.click();
 					ActivInfinitev7.pCalculParam.btNext.click();
 				});
 				
-				ActivInfinitev7.pContributionHistory.events.LOAD.on(function() {
+				ActivInfinitev7.pContributionHistory.events.LOAD.once(function() {
 					ActivInfinitev7.pContributionHistory.btNext.click();
 				});
 				
-				ActivInfinitev7.pContributionVisu.events.LOAD.on(function() {
+				ActivInfinitev7.pContributionVisu.events.LOAD.once(function() {
 					ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
 					ActivInfinitev7.pContributionVisu.btNext.click();
 				});

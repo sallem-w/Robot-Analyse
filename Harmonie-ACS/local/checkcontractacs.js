@@ -52,7 +52,7 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.on(function() {
+	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 		
 		sc.data.commentContract = 'Contrat trouvé';
@@ -64,8 +64,8 @@ ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 		});
 	});
 	
-	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.on(function() {
-		ActivInfinitev7.pSearchContractIndiv.events.LOAD.on(function() {
+	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.once(function() {
+		ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
 			var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			return ctx.endScenario(sc, message, comment);
@@ -190,8 +190,8 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	nameBenefElement.click();
 	
-	ActivInfinitev7.pProductList.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductList.events.LOAD.on(function() {
+	ActivInfinitev7.pProductList.events.UNLOAD.once(function() {
+		ActivInfinitev7.pProductList.events.LOAD.once(function() {
 			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 			sc.data.indexBenef += 1;
 			return sc.endStep(ActivInfinitev7.steps.checkProductList);

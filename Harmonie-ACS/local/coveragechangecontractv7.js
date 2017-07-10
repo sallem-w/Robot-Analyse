@@ -44,8 +44,8 @@ ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
 		ActivInfinitev7.pBlockNotes.btNext.click();
 		ActivInfinitev7.pProductUpdate.wait(function() {
 			ActivInfinitev7.pProductUpdate.btUpdatePage.click();
-			ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
-				ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+			ActivInfinitev7.pProductUpdate.events.UNLOAD.once(function() {
+				ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 					return sc.endStep();
 				});
 			});
@@ -99,8 +99,8 @@ ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.btAddProduct.click();
 	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(newCodeProduct);
 	ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
-	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+	ActivInfinitev7.pProductUpdate.events.UNLOAD.once(function() {
+		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 			return sc.endStep();
 		})
 	});
@@ -109,8 +109,8 @@ ActivInfinitev7.step({ addOutputProduct: function(ev, sc, st) {
 ActivInfinitev7.step({ saveUpdateProduct: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveUpdateProduct');
 	ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
-	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
-		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+	ActivInfinitev7.pProductUpdate.events.UNLOAD.once(function() {
+		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 			return sc.endStep();
 		});
 	});
@@ -121,7 +121,7 @@ ActivInfinitev7.step({ goToVisualizationContributionFromCoverageChange: function
 	ActivInfinitev7.pProductUpdate.btNext.click();
 	
 	//pDiversParam is an optional page, so we check if it is loaded for click on the next button instead of wait this page directly
-	ActivInfinitev7.pDiversParam.events.LOAD.on(function() {
+	ActivInfinitev7.pDiversParam.events.LOAD.once(function() {
 		ActivInfinitev7.pDiversParam.btNext.click();
 	});
 	
