@@ -154,8 +154,6 @@ GLOBAL.events.START.on(function (ev) {
 	}
 	
 	if (configDA.showMenu) {
-		ActivInfinitev7.
-		
 		systray.addMenu('', 'DA', 'DA scenario');
 		systray.addMenu('DA', 'DACompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configDA.rootPath, ctx.config.DA);
