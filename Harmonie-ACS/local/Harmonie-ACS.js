@@ -158,7 +158,6 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('DA', 'DACompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configDA.rootPath, ctx.config.DA);
 			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configDA.rootPath, ctx.config.DA);
-			
 			ActivInfinitev7.scenarios.scenarioDA.start();
 		});	
 	}
@@ -187,7 +186,7 @@ function connectionInfinite(callback) {
 		return;
 	}
 
-	var path = ActivInfinitev7.pConnection.getPath();
+	var path = ActivInfinitev7.pConnection.getInfos().location.href;
 	var login = ActivInfinitev7.pConnection.oLogin.get();
 	var password = ActivInfinitev7.pConnection.oPassword.get();
 	ActivInfinitev7.pConnection.btLogin.click();

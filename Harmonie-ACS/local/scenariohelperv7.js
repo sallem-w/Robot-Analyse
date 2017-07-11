@@ -121,22 +121,20 @@
 	
 	scenarioHelper.connectionAuto = function(sc) {
 		ActivInfinitev7.close();
-		ctx.trace.writeInfo('closing IE');
-		ActivInfinitev7.waitClose(function () {
-			ctx.trace.writeInfo('IE is closed');
-			ActivInfinitev7.start(sc.data.path);
-			ctx.trace.writeInfo('restart IE');
-			ActivInfinitev7.pConnection.wait(function () {
-				ctx.trace.writeInfo('login page found');
-				ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
-				ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
-				ActivInfinitev7.pConnection.btLogin.click();
-			
-				ActivInfinitev7.pDashboard.wait(function() {
-					ctx.trace.writeInfo('endScenario to load next line');
-					return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
-				});
+		ActivInfinitev7.events.END.once(function () {
+			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
+			ActivInfinitev7.events.START.once(function (ev) {
+				sc.setDefaultInst(ev);
+				ActivInfinitev7.pConnection.wait(function () {
+					ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
+					ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
+					ActivInfinitev7.pConnection.btLogin.click();
 				
+					ActivInfinitev7.pDashboard.wait(function() {
+						ctx.trace.writeInfo('endScenario to load next line');
+						return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
+					});
+				});
 			});
 		});
 	}
