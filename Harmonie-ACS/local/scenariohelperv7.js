@@ -121,9 +121,10 @@
 	
 	scenarioHelper.connectionAuto = function(sc) {
 		ActivInfinitev7.close();
-		ActivInfinitev7.events.END.on(function () {
+		ActivInfinitev7.events.END.once(function () {
 			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
-			ActivInfinitev7.events.START.on(function () {
+			ActivInfinitev7.events.START.once(function (ev) {
+				sc.setDefaultInst(ev);
 				ActivInfinitev7.pConnection.wait(function () {
 					ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
 					ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
