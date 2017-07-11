@@ -286,7 +286,9 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	
 	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {
 		ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
-			ActivInfinitev7.pProductUpdate.btNewProduct.click();
+			if (sc.data.indexProductCode < sc.data.countProductCode) {
+				ActivInfinitev7.pProductUpdate.btNewProduct.click();
+			}
 			return sc.endStep(ActivInfinitev7.steps.setProductPage);
 		});
 	});
