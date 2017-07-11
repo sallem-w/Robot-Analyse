@@ -148,7 +148,12 @@ ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc,
 ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkElementDiffereIntoAskThirdPartyPayment');
 	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
-		ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
+		if (sc.scCheckContract.data.isContractWithProductACS) {
+			ActivInfinitev7.pCoverageImmediateCar.oNoEditionCheck.click();
+		} else {
+			ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
+		}
+		
 		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
 		return sc.endStep();
 	});
