@@ -62,13 +62,19 @@
 	
 	scenarioHelper.forceClick = function forceClick(btn) {
 		function cancelSave() {
-			$('.modal-footer > button[data-bb-handler="no"]').click();
+			function loop() {
+				var noBtn = $('.bootbox.modal.fade.in .modal-footer > button[data-bb-handler="no"]');
+				if (noBtn && noBtn.is(':visible')) {
+					noBtn.click();
+					return;
+				}
+				setTimeout(loop, 500);
+			}
+			setTimeout(loop, 500);
 		};
 		ActivInfinitev7.currentPage.injectFunction(cancelSave);
+		ActivInfinitev7.currentPage.evalScript('cancelSave()');
 		btn.click();
-		try {
-			ActivInfinitev7.currentPage.evalScript('cancelSave();');
-		} catch (error) {} // if it fail, then the the popup did not show
 	}
 
 	scenarioHelper.goHome = function goHome(callback) {
