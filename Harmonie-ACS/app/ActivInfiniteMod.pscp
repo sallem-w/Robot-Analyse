@@ -1534,6 +1534,7 @@
 							</CRITERE>
 						</OBJET>
 						<OBJET Name="oNoEditionCheck" MustExist="Y">
+						<OBJET Name="oNoEdit" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R1R0R1R0R1R2R0">
 									<ATT Name="id">

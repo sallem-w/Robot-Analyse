@@ -174,6 +174,8 @@ ActivInfinitev7.pCoverageImmediateCar = ActivInfinitev7.addPage('pCoverageImmedi
 ActivInfinitev7.pCoverageImmediateCar.oEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oEditionCheck', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.oNoEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oNoEditionCheck', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.oTitlePage = ActivInfinitev7.pCoverageImmediateCar.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pCoverageImmediateCar.oEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oEditionCheck', {"mustExist":true});
+ActivInfinitev7.pCoverageImmediateCar.oNoEdit = ActivInfinitev7.pCoverageImmediateCar.addItem('oNoEdit', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.btNext = ActivInfinitev7.pCoverageImmediateCar.addItem('btNext');
 ActivInfinitev7.pCoverageImmediateCar.btClose = ActivInfinitev7.pCoverageImmediateCar.addItem('btClose');
 
