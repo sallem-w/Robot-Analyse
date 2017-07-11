@@ -315,7 +315,7 @@ ActivInfinitev7.step({ navigateToSaveBenef : function(ev, sc, st) {
 					ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
 					ActivInfinitev7.pContributionVisu.btNext.click();
 					ActivInfinitev7.pCoverageImmediateEch.wait(function() {
-						ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('');
+						ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
 						ActivInfinitev7.pCoverageImmediateEch.btNext.click();
 						ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 							ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
