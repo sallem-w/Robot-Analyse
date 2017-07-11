@@ -281,7 +281,7 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	}
 	
 	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.productCode[sc.data.indexProductCode]);
-	ActivInfinitev7.pProductUpdate.btAddProduct.click();
+	ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
 	sc.data.indexProductCode += 1;
 	
 	ActivInfinitev7.pProductUpdate.events.UNLOAD.on(function() {

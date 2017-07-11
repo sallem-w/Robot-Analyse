@@ -17,13 +17,13 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	ctx.mail.init(sc.data.customerName);
 	
 	startScenarioSIRH(sc, (function() {
-		var mailPath = ctx.mail.createMail(sc.data.contract);
+		//var mailPath = ctx.mail.createMail(sc.data.contract);
 		
 		var writeArray = getObjectValues(sc.data.contract);
 		writeArray.push(ctx.date.formatTrace(new Date()));
 		writeArray.push(sc.data.statusContract);
 		writeArray.push(sc.data.commentContract);
-		writeArray.push(mailPath);
+		//writeArray.push(mailPath);
 		
 		ctx.excelHelper.writeArray(i + 2, writeArray);
 		ctx.excelHelper.saveFile();
