@@ -108,6 +108,8 @@ function startScenarioACS(sc, callback) {
 	ActivInfinitev7.scenarios.checkContractACS.start(sc.data).onEnd(function(scCheckContract) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
+		sc.data.isContractWithProductACS = scCheckContract.data.isContractWithProductACS;
+		sc.data.isContractTerminated = scCheckContract.data.isContractTerminated;
 		
 		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly) {
 			callback();
@@ -131,8 +133,7 @@ function startScenarioACS(sc, callback) {
 					});
 				});
 			});
-		}
-		else if (scCheckContract.data.isContractWithProductACS) {
+		} else if (scCheckContract.data.isContractWithProductACS) {
 			
 			ActivInfinitev7.scenarios.terminatedContract.start(sc.data).onEnd(function(scTerminatedContract) {
 				sc.data.commentContract = scTerminatedContract.data.commentContract;
