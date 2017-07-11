@@ -276,7 +276,7 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
 	
 	if (sc.data.indexProductCode >= sc.data.countProductCode) {
-		ActivInfinitev7.pProductUpdate.btNext.click();
+		ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 		return sc.endStep();
 	}
 	
