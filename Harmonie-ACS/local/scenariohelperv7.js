@@ -105,7 +105,6 @@
 		ActivInfinitev7.currentPage.injectFunction(navigateTo);
 		ActivInfinitev7.currentPage.execScript('navigateTo(\''+ page +'\')');
 	}
-
 	/**
 	 * Function use to find an insured into the list created by the input file.
 	 * type : String 
@@ -121,18 +120,24 @@
 	}
 	
 	scenarioHelper.connectionAuto = function(sc) {
-		if (!ActivInfinitev7.pConnection.exist()) {
-			var message = (sc.data.contract.individualContract || sc.data.contract.individualContractCollectif) +  ' - Error undefined';
-			var comment = 'Erreur traitement inconnue';
-			return ctx.endScenario(sc, message, comment);
-		}
-		
-		ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
-		ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
-		ActivInfinitev7.pConnection.btLogin.click();
-	
-		ActivInfinitev7.pDashboard.wait(function() {
-			return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
+		ActivInfinitev7.close();
+		ctx.trace.writeInfo('closing IE');
+		ActivInfinitev7.waitClose(function () {
+			ctx.trace.writeInfo('IE is closed');
+			ActivInfinitev7.start(sc.data.path);
+			ctx.trace.writeInfo('restart IE');
+			ActivInfinitev7.pConnection.wait(function () {
+				ctx.trace.writeInfo('login page found');
+				ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
+				ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
+				ActivInfinitev7.pConnection.btLogin.click();
+			
+				ActivInfinitev7.pDashboard.wait(function() {
+					ctx.trace.writeInfo('endScenario to load next line');
+					return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
+				});
+				
+			});
 		});
 	}
 		

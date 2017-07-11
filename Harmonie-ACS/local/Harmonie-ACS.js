@@ -125,9 +125,9 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
 		systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
-			connectionInfinite(function(login, password) {
+			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
-				ActivInfinitev7.scenarios.scenarioACS.start({ login: login, password: password });
+				ActivInfinitev7.scenarios.scenarioACS.start({ path: path, login: login, password: password });
 			});
 		});	
 	}
@@ -136,9 +136,9 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'CMU', 'CMU scenario');
 		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
-			connectionInfinite(function(login, password) {
+			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
-				ActivInfinitev7.scenarios.scenarioCMU.start({ login: login, password: password });
+				ActivInfinitev7.scenarios.scenarioCMU.start({ path: path, login: login, password: password });
 			});
 		});	
 	}
@@ -187,11 +187,12 @@ function connectionInfinite(callback) {
 		return;
 	}
 
+	var path = ActivInfinitev7.pConnection.getPath();
 	var login = ActivInfinitev7.pConnection.oLogin.get();
 	var password = ActivInfinitev7.pConnection.oPassword.get();
 	ActivInfinitev7.pConnection.btLogin.click();
 	
 	ActivInfinitev7.pDashboard.wait(function() {
-		return callback(login, password);
+		return callback(path, login, password);
 	});
 }
