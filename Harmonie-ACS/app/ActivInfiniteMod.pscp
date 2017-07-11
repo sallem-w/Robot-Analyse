@@ -1229,6 +1229,7 @@
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1283,6 +1284,7 @@
 						<TITRE Scan="start-with"><![CDATA[Sans effet -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1328,6 +1330,7 @@
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1394,6 +1397,7 @@
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=ACVV_700&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1470,6 +1474,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC3U_900&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC36_800&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1521,6 +1526,7 @@
 				<PAGE Name="pCoverageImmediateCar" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=ACEK_1000&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC3U_900&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>

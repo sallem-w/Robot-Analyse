@@ -18,6 +18,7 @@
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.navigateToSaveBenef);
+	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 	sc.step(ActivInfinitev7.steps.abort);
@@ -319,7 +320,9 @@ ActivInfinitev7.step({ navigateToSaveBenef : function(ev, sc, st) {
 						ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 							ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
 							ActivInfinitev7.pCoverageImmediateCar.btNext.click();
-							return sc.endStep();
+							ActivInfinitev7.pSaveUpdate.wait(function() {
+								return sc.endStep();
+							});
 						});
 					});
 				});
