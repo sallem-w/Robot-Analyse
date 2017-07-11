@@ -187,11 +187,21 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btParticularSituation">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="117.R0R1R5R1R0R0R0R6R34R8">
+									<ATT Name="href">
+										<VALUE Scan="end-with"><![CDATA[Go.do?id=ACMA01MASP]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1000036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="111" Techno="WEB" Timestamp="06/07/2017 10:00:14" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1007036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="112" Techno="WEB" Timestamp="06/07/2017 10:07:14" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1021165_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="113" Techno="WEB" Timestamp="06/07/2017 10:21:27" />
+					<CAPTURE Name="PAGE_Haum0aActivInfini_1658239_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="117" Techno="WEB" Timestamp="11/07/2017 16:58:36" />
 				</PAGE>
 				<PAGE Name="pSynthesisSearch" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>

@@ -25,6 +25,7 @@ ActivInfinitev7.pDashboard.btTerminatedMenu = ActivInfinitev7.pDashboard.addItem
 ActivInfinitev7.pDashboard.btTerminatedCMU = ActivInfinitev7.pDashboard.addItem('btTerminatedCMU');
 ActivInfinitev7.pDashboard.btTerminatedInAdvance = ActivInfinitev7.pDashboard.addItem('btTerminatedInAdvance');
 ActivInfinitev7.pDashboard.btTerminatedContract = ActivInfinitev7.pDashboard.addItem('btTerminatedContract');
+ActivInfinitev7.pDashboard.btParticularSituation = ActivInfinitev7.pDashboard.addItem('btParticularSituation');
 
 ActivInfinitev7.pSynthesisSearch = ActivInfinitev7.addPage('pSynthesisSearch', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pSynthesisSearch.oTitlePage = ActivInfinitev7.pSynthesisSearch.addItem('oTitlePage', {"mustExist":true});
