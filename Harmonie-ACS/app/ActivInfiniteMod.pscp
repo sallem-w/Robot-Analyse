@@ -1482,6 +1482,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oNoEditionCheck" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R1R0R1R0R1R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typeEdition3]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oTitlePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R0">

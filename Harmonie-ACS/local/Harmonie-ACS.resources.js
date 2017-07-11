@@ -168,6 +168,7 @@ ActivInfinitev7.pCoverageImmediateEch.btClose = ActivInfinitev7.pCoverageImmedia
 
 ActivInfinitev7.pCoverageImmediateCar = ActivInfinitev7.addPage('pCoverageImmediateCar', {"comment":"Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=ACEK_1000\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14\u0026CONTAINER_NOM_FONCTION=AC3U_900\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCoverageImmediateCar.oEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oEditionCheck', {"mustExist":true});
+ActivInfinitev7.pCoverageImmediateCar.oNoEditionCheck = ActivInfinitev7.pCoverageImmediateCar.addItem('oNoEditionCheck', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.oTitlePage = ActivInfinitev7.pCoverageImmediateCar.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pCoverageImmediateCar.btNext = ActivInfinitev7.pCoverageImmediateCar.addItem('btNext');
 ActivInfinitev7.pCoverageImmediateCar.btClose = ActivInfinitev7.pCoverageImmediateCar.addItem('btClose');
