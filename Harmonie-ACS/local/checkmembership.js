@@ -305,8 +305,8 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ navigateToSaveBenef : function(ev, sc, st) {
-	ActivInfinitev7.pProductList.wait(function() {
-		ActivInfinitev7.pProductList.btNext.click();
+	ActivInfinitev7.pProductUpdate.wait(function() {
+		ActivInfinitev7.pProductUpdate.btNext.click();
 		ActivInfinitev7.pCalculParam.wait(function() {
 			ActivInfinitev7.pCalculParam.btNext.click();
 			ActivInfinitev7.pContributionHistory.wait(function() {
