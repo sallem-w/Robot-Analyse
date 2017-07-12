@@ -2083,6 +2083,7 @@
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
+				<SCRIPT Name="ParticularSituation1S" Src="ParticularSituationSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
 				<SCRIPT Name="CheckContractDa" Src="CheckContractDa.js" Folder="ScenarioDA" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" />
