@@ -96,8 +96,8 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	
 	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
-	
-	ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
+
+	ActivInfinitev7.pMembershipSearchBene.events.LOAD.on(function() {
 			
 		// click on btValid reload page
 		var messagePopup = ctx.scenarioHelper.getMessagesPopup();
@@ -163,7 +163,7 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 }});
 	
 ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
-	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.on(function() {
 		var errorMessage = ctx.scenarioHelper.getMessagesPopup();
 		if (errorMessage.indexOf('La localité est obligatoire') === -1) {
 			ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
