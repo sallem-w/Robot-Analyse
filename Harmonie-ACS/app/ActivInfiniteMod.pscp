@@ -1529,6 +1529,68 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1207204_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="90" Techno="WEB" Timestamp="01/06/2017 12:07:23" />
 				</PAGE>
+				<PAGE Name="pInfoRoEdit" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+						<URL Scan="Part"><![CDATA[method=modifierAssures]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACRO.do?method=modifierAssures&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACMA01MASP_160&CONTAINER_NOM_FONCTION=ACRO_400&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btCreateSituation">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R0R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[creerSituationNouvelle]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btValidate">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R25R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCodeSitPart0">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="125.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R4R1R0R0R1R0R6R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codeSitPart0]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNoSituation">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24">
+									<TAG Name="TD" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R4R1R0R0R1R0R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[dataTables_empty]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[situationsParticulieres]]></VALUE>
+									</ATT>
+									<SET />
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ChangementSituation_0951091_1" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion" CtxtId="124" Techno="WEB" Timestamp="12/07/2017 09:51:12" />
+					<CAPTURE Name="PAGE_ChangementSituation_0957212_1" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion" CtxtId="125" Techno="WEB" Timestamp="12/07/2017 09:57:25" />
+				</PAGE>
 				<PAGE Name="pInfoRo" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation -]]></TITRE>
@@ -1669,8 +1731,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btEdit">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="119.R0R1R7R0R0R2R0R0R0R7R0R0R1R0R0R0R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[modifierAssuresL]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2130_0925520_1" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion" CtxtId="93" Techno="WEB" Timestamp="07/06/2017 09:25:56" />
+					<CAPTURE Name="PAGE_ChangementSituation_0930249_1" Comment="Changement situation particulière - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="119" Techno="WEB" Timestamp="12/07/2017 09:30:41" />
 				</PAGE>
 				<PAGE Name="pMembershipColSearch" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>

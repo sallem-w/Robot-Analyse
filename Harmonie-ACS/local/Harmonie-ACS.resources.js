@@ -173,6 +173,13 @@ ActivInfinitev7.pCoverageImmediateCar.oTitlePage = ActivInfinitev7.pCoverageImme
 ActivInfinitev7.pCoverageImmediateCar.btNext = ActivInfinitev7.pCoverageImmediateCar.addItem('btNext');
 ActivInfinitev7.pCoverageImmediateCar.btClose = ActivInfinitev7.pCoverageImmediateCar.addItem('btClose');
 
+ActivInfinitev7.pInfoRoEdit = ActivInfinitev7.addPage('pInfoRoEdit', {"comment":"Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACRO.do?method=modifierAssures\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACMA01MASP_160\u0026CONTAINER_NOM_FONCTION=ACRO_400\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pInfoRoEdit.btCreateSituation = ActivInfinitev7.pInfoRoEdit.addItem('btCreateSituation');
+ActivInfinitev7.pInfoRoEdit.btValidate = ActivInfinitev7.pInfoRoEdit.addItem('btValidate');
+ActivInfinitev7.pInfoRoEdit.oCodeSitPart0 = ActivInfinitev7.pInfoRoEdit.addItem('oCodeSitPart0');
+ActivInfinitev7.pInfoRoEdit.btClose = ActivInfinitev7.pInfoRoEdit.addItem('btClose');
+ActivInfinitev7.pInfoRoEdit.oNoSituation = ActivInfinitev7.pInfoRoEdit.addItem('oNoSituation');
+
 ActivInfinitev7.pInfoRo = ActivInfinitev7.addPage('pInfoRo', {"comment":"Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACRO_402\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pInfoRo.oTitlePage = ActivInfinitev7.pInfoRo.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pInfoRo.oTitlePage2 = ActivInfinitev7.pInfoRo.addItem('oTitlePage2');
@@ -184,6 +191,7 @@ ActivInfinitev7.pInfoRo.oCodeProduct = ActivInfinitev7.pInfoRo.addItem('oCodePro
 ActivInfinitev7.pInfoRo.btNavigateProductList = ActivInfinitev7.pInfoRo.addItem('btNavigateProductList');
 ActivInfinitev7.pInfoRo.oInsuredList = ActivInfinitev7.pInfoRo.addItem('oInsuredList', {"occurs":1});
 ActivInfinitev7.pInfoRo.btClose = ActivInfinitev7.pInfoRo.addItem('btClose');
+ActivInfinitev7.pInfoRo.btEdit = ActivInfinitev7.pInfoRo.addItem('btEdit');
 
 ActivInfinitev7.pMembershipColSearch = ActivInfinitev7.addPage('pMembershipColSearch', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
 ActivInfinitev7.pMembershipColSearch.oNumberContractCol = ActivInfinitev7.pMembershipColSearch.addItem('oNumberContractCol', {"mustExist":true});
