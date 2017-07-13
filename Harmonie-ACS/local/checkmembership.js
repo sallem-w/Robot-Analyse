@@ -17,7 +17,12 @@
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.setProductPage);
-	sc.step(ActivInfinitev7.steps.navigateToSaveBenef);
+	sc.step(ActivInfinitev7.steps.nextProductUpdate);
+	sc.step(ActivInfinitev7.steps.nextCalculparam);
+	sc.step(ActivInfinitev7.steps.nextContributionHistory);
+	sc.step(ActivInfinitev7.steps.nextContributionVisu);
+	sc.step(ActivInfinitev7.steps.nextCoverageImmediateEch);
+	sc.step(ActivInfinitev7.steps.nextCoverageImmediateCar);
 	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
@@ -304,30 +309,48 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ navigateToSaveBenef : function(ev, sc, st) {
+ActivInfinitev7.step({ nextProductUpdate : function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.wait(function() {
 		ActivInfinitev7.pProductUpdate.btNext.click();
-		ActivInfinitev7.pCalculParam.wait(function() {
-			ActivInfinitev7.pCalculParam.btNext.click();
-			ActivInfinitev7.pContributionHistory.wait(function() {
-				ActivInfinitev7.pContributionHistory.btNext.click();
-				ActivInfinitev7.pContributionVisu.wait(function() {
-					ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
-					ActivInfinitev7.pContributionVisu.btNext.click();
-					ActivInfinitev7.pCoverageImmediateEch.wait(function() {
-						ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
-						ActivInfinitev7.pCoverageImmediateEch.btNext.click();
-						ActivInfinitev7.pCoverageImmediateCar.wait(function() {
-							ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
-							ActivInfinitev7.pCoverageImmediateCar.btNext.click();
-							ActivInfinitev7.pSaveUpdate.wait(function() {
-								return sc.endStep();
-							});
-						});
-					});
-				});
-			});
-		});
+		return sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ nextCalculParam : function(ev, sc, st) {
+	ActivInfinitev7.pCalculParam.wait(function() {
+		ActivInfinitev7.pCalculParam.btNext.click();
+		return sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ nextContributionHistory : function(ev, sc, st) {
+	ActivInfinitev7.pContributionHistory.wait(function() {
+		ActivInfinitev7.pContributionHistory.btNext.click();
+		return sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ nextContributionVisu : function(ev, sc, st) {
+	ActivInfinitev7.pContributionVisu.wait(function() {
+		ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
+		ActivInfinitev7.pContributionVisu.btNext.click();
+		return sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ nextCoverageImmediateEch : function(ev, sc, st) {
+	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
+		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
+		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
+		return sc.endStep();
+	});
+}});
+
+ActivInfinitev7.step({ nextCoverageImmediateCar : function(ev, sc, st) {
+	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
+		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
+		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
+		return sc.endStep();
 	});
 }});
 
