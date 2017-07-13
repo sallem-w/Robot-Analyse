@@ -18,7 +18,7 @@
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
 	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.nextProductUpdate);
-	sc.step(ActivInfinitev7.steps.nextCalculparam);
+	sc.step(ActivInfinitev7.steps.nextCalculParam);
 	sc.step(ActivInfinitev7.steps.nextContributionHistory);
 	sc.step(ActivInfinitev7.steps.nextContributionVisu);
 	sc.step(ActivInfinitev7.steps.nextCoverageImmediateEch);
