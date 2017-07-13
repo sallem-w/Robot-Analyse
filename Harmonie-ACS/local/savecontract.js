@@ -1,32 +1,12 @@
 ﻿ActivInfinitev7.scenario({ saveContract: function(ev, sc) {
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.navigateToSaveUpdate);
-	sc.step(ActivInfinitev7.steps.waitNextPage);
-	sc.step(ActivInfinitev7.steps.checkPageIsSaveUpddate);
 	sc.step(ActivInfinitev7.steps.saveUpdate);
 	sc.step(ActivInfinitev7.steps.saveUpdateEnd);
 } });
 
 ActivInfinitev7.step({ navigateToSaveUpdate : function(ev, sc, st) {
-	ActivInfinitev7.currentPage.btNext.click();
-	ActivInfinitev7.currentPage.events.UNLOAD.once(sc.endStep);
-} });
-
-
-ActivInfinitev7.step({ waitNextPage: function(ev, sc, st) {
-	if (!ActivInfinitev7.currentPage || !ActivInfinitev7.currentPage.exist()) {
-		return ctx.wait(function () {
-			sc.endStep(ActivInfinitev7.steps.waitNextPage);
-		});
-	}
-	return sc.endStep();
-} });
-
-ActivInfinitev7.step({ checkPageIsSaveUpddate: function(ev, sc, st) {
-	if (ActivInfinitev7.currentPage.name !== ActivInfinitev7.pSaveUpdate.name) {
-		return sc.endStep(ActivInfinitev7.steps.navigateToSaveUpdate);
-	}
-	return sc.endStep();
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, sc.endStep);
 } });
 
 ActivInfinitev7.step({ saveUpdate: function(ev, sc, st) {

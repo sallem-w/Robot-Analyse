@@ -7,13 +7,13 @@
 	sc.step(ActivInfinitev7.steps.waitDashboard);
 	sc.step(ActivInfinitev7.steps.navigateToParticularSituation);
 	sc.step(ActivInfinitev7.steps.seachParticularSituationContract);
-	sc.step(ActivInfinitev7.steps.nextBlockQuote);
-	sc.step(ActivInfinitev7.steps.nextInsuredIdent);
-	sc.step(ActivInfinitev7.steps.nextInfoRo);
+	sc.step(ActivInfinitev7.steps.goToInfoRo);
 	sc.step(ActivInfinitev7.steps.editInfoRo);
 	sc.step(ActivInfinitev7.steps.checkNoParticularSituation);
 	sc.step(ActivInfinitev7.steps.addParticularSituation);
 	sc.step(ActivInfinitev7.steps.completeParticularSituation);
+	sc.step(ActivInfinitev7.steps.goToContributionVisu);
+	sc.step(ActivInfinitev7.steps.validateContributionVisu);
 	sc.step(ActivInfinitev7.steps.saveUpdateParticularSituation);
 }});
 
@@ -37,19 +37,8 @@ ActivInfinitev7.step({ seachParticularSituationContract: function(ev, sc, st) {
 	});
 } });
 
-ActivInfinitev7.step({ nextBlockQuote: function(ev, sc, st) {
-	ActivInfinitev7.pTerminatedContractFo.btNext.click();
-	ActivInfinitev7.pBlockNotes.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextInsuredIdent: function(ev, sc, st) {
-	ActivInfinitev7.pBlockNotes.btNext.click();
-	ActivInfinitev7.pInsuredIdent.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextInfoRo: function(ev, sc, st) {
-	ActivInfinitev7.pInsuredIdent.btNext.click();
-	ActivInfinitev7.pInfoRo.wait(sc.endStep);
+ActivInfinitev7.step({ goToInfoRo: function(ev, sc, st) {
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInfoRo, sc.endStep);
 } });
 
 ActivInfinitev7.step({ editInfoRo: function(ev, sc, st) {
@@ -73,6 +62,16 @@ ActivInfinitev7.step({ completeParticularSituation: function(ev, sc, st) {
 	ActivInfinitev7.pInfoRoEdit.oCodeSitPart0.set('SS BA');
 	ActivInfinitev7.pInfoRoEdit.btValidate.click();
 	ActivInfinitev7.pInfoRo.wait(sc.endStep);
+} });
+
+ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, sc.endStep);
+} });
+
+ActivInfinitev7.step({ validateContributionVisu: function(ev, sc, st) {
+	ctx.trace.writeInfo('STEP - validateContributionVisu');
+	ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
+	return sc.endStep();
 } });
 
 ActivInfinitev7.step({ saveUpdateParticularSituation: function(ev, sc, st) {

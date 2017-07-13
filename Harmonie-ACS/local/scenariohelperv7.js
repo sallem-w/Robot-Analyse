@@ -136,7 +136,7 @@
 		});
 	}
 
-	scenarioHelper.nextPageTill = function goNextPageTill(page, callback) {
+	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
 		function loop() {
 			if (!ActivInfinitev7.currentPage || !ActivInfinitev7.currentPage.exist()) {
@@ -145,10 +145,10 @@
 			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
 			if (ActivInfinitev7.currentPage.name !== page.name) {
 				ActivInfinitev7.currentPage.btNext.click();
-				ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
+				return ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
 			}
 			
-			return callback();
+			return page.wait(callback);
 		}
 		
 		loop();
