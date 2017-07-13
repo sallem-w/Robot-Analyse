@@ -150,7 +150,7 @@ ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev,
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkElementDiffereIntoAskThirdPartyPayment');
 	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 		if (sc.data.isContractWithProductACS) {
-			ActivInfinitev7.pCoverageImmediateCar.oNoEditionCheck.click();
+			ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
 		} else {
 			ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
 		}
