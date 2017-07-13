@@ -1,7 +1,5 @@
 ﻿ActivInfinitev7.scenario({ scenarioCMU: function(ev, sc) {
 	sc.data.scenarioCode = ctx.config.CMU;
-	sc.onTimeout(ctx.config.getTimeout(5), function(sc, st) { sc.endScenario(); });
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initScenario);
 	sc.step(ActivInfinitev7.steps.startScenarioCMU);
@@ -59,6 +57,7 @@ ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 
 function startScenarioCMU(sc, callback) {
 	ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(scCheckContract) {
+		ctx.trace.writeInfo('checkContractCMU.onEnd');
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		

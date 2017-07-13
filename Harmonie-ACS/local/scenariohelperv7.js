@@ -120,18 +120,25 @@
 	}
 	
 	scenarioHelper.connectionAuto = function(sc) {
+		ctx.trace.writeInfo('Reconnecting ...');
 		ActivInfinitev7.close();
-		ActivInfinitev7.events.END.once(function () {
+		ctx.exec('taskkill /f /im iexplore.exe');
+		ActivInfinitev7.notify(ActivInfinitev7.events.QUIT);
+		ActivInfinitev7.notify(ActivInfinitev7.events.END);
+		ActivInfinitev7.waitClose(function () {
+			ctx.trace.writeInfo('IE closed');
 			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
 			ActivInfinitev7.events.START.once(function (ev) {
+				ctx.trace.writeInfo('IE restarted');
 				sc.setDefaultInst(ev);
 				ActivInfinitev7.pConnection.wait(function () {
+					ctx.trace.writeInfo('login page loaded');
 					ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
 					ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
 					ActivInfinitev7.pConnection.btLogin.click();
 				
 					ActivInfinitev7.pDashboard.wait(function() {
-						ctx.trace.writeInfo('endScenario to load next line');
+						ctx.trace.writeInfo('relogged loading next line');
 						return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
 					});
 				});

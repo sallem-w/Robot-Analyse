@@ -1,8 +1,8 @@
 ﻿ActivInfinitev7.scenario({ terminatedContract: function(ev, sc) {
 	var data = sc.data;
 	sc.data.currentScenario = 'Sans-effet contrat';
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc);	});
-	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc);	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort);	});
+	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort);	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeTerminatedContract);
 	sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
@@ -11,6 +11,7 @@
 	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endTerminatedContract);
+	sc.step(ActivInfinitev7.steps.abort);
 }});
 
 ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
@@ -24,6 +25,6 @@ ActivInfinitev7.step({ initializeTerminatedContract: function(ev, sc, st) {
 ActivInfinitev7.step({ endTerminatedContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated contract');
 	ActivInfinitev7.pDashboard.wait(function() {
-		return sc.endStep();
+		return sc.endScenario();
 	});
 }});

@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.CMU;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc); });
-	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc); });
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
+	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToConsultationCMU);
@@ -18,6 +18,7 @@
 	sc.step(ActivInfinitev7.steps.toTerminated);
 	sc.step(ActivInfinitev7.steps.closeConsultation);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
+	sc.step(ActivInfinitev7.steps.abort);
 }});
 
 ActivInfinitev7.step({ navigateToConsultationCMU : function(ev, sc, st) {
@@ -208,7 +209,7 @@ ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - closeConsultation');
 	ctx.scenarioHelper.goHome(function() {
-		return sc.endStep();
+		return sc.endScenario();
 	});
 }});
 

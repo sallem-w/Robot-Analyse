@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.ACS;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc);	});
-	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc);	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort)	});
+	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort)	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToSynthesis);
@@ -17,6 +17,7 @@
 	sc.step(ActivInfinitev7.steps.checkProductList);
 	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
+	sc.step(ActivInfinitev7.steps.abort);
 }});
 
 ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
@@ -248,7 +249,7 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
-	return sc.endStep();
+	return sc.endScenario();
 }});
 
 function GetDataProductPage(nameBenef) {

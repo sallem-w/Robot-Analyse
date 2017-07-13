@@ -1,8 +1,8 @@
 ﻿ActivInfinitev7.scenario({ coverageChangeContract: function(ev, sc) {
 	var data = sc.data;
 	sc.data.currentScenario = 'Changement de couverture';
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { ctx.scenarioHelper.connectionAuto(sc);	});
-	sc.onError(function(sc, st, ex) { ctx.scenarioHelper.connectionAuto(sc);	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort);	});
+	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort);	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCoverageChangeContract);
 	sc.step(ActivInfinitev7.steps.searchCoverageContract);
@@ -17,6 +17,7 @@
 	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
+	sc.step(ActivInfinitev7.steps.abort);
 }});
 
 ActivInfinitev7.step({ initializeCoverageChangeContract: function(ev, sc, st) {
@@ -162,6 +163,6 @@ ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev,
 ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');
 	ActivInfinitev7.pDashboard.wait(function() {
-		return sc.endStep();
+		return sc.endScenario();
 	});
 }});
