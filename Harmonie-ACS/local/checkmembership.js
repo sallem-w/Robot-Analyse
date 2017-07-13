@@ -10,6 +10,7 @@
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenefError);
+	sc.step(ActivInfinitev7.steps.searchMembershipBenefErrorPOPUPMessage);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
@@ -128,26 +129,36 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 		}
 		
 		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
-		var message = sc.data.contract.individualContract + ' - Contractor not found';
+		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
 		return ctx.endScenario(sc, message, comment);
 	});
 }});
 
 ActivInfinitev7.step({ searchMembershipBenefError: function(ev, sc, st) {
-		
-	ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
-		// click on btValid reload page
-		var messagePopup = ctx.scenarioHelper.getMessagesPopup();
-		if (messagePopup) {
-			var message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
-			var comment = 'Revoir centre: ' + messagePopup;
-			return ctx.endScenario(sc, message, comment);
-		}
+	var foundListener, notFoundListener;
+	notFoundListener = ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
+		ctx.off(foundListener);
+		return sc.endStep();
 	});
 	
-	ActivInfinitev7.pMembershipMainBenef.wait(function() {
+	foundListener = ActivInfinitev7.pMembershipMainBenef.wait(function() {
+		ctx.off(notFoundListener);
 		return sc.endStep(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	});
+}});
+
+ActivInfinitev7.step({ searchMembershipBenefErrorPOPUPMessage: function(ev, sc, st) {
+	var comment = 'Revoir centre: impossible de trouver l\'adhérent';
+	var message = sc.data.contract.individualContractCollectif + ' - Contract not found';
+	
+	// click on btValid reload page
+	var messagePopup = ctx.scenarioHelper.getMessagesPopup();
+	if (messagePopup) {
+		message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
+		comment = 'Revoir centre: ' + messagePopup;
+	}
+	
+	return ctx.endScenario(sc, message, comment);
 }});
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
@@ -193,7 +204,7 @@ ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 		}
 	});
-			
+
 	ActivInfinitev7.pInsuredIdent.wait(function() {
 		return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
 	});
