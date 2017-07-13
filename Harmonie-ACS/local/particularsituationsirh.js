@@ -30,9 +30,7 @@ ActivInfinitev7.step({ initializeParticularSituation1: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ waitDashboard : function(ev, sc, st) {
-	ActivInfinitev7.pDashboard.wait(function () {
-		sc.endStep() 
-	});
+	ActivInfinitev7.pDashboard.wait(sc.endStep);
 }});
 
 ActivInfinitev7.step({ navigateToParticularSituation : function(ev, sc, st) {
@@ -42,7 +40,7 @@ ActivInfinitev7.step({ navigateToParticularSituation : function(ev, sc, st) {
 
 ActivInfinitev7.step({ seachParticularSituationContract: function(ev, sc, st) {
 	ctx.scenarioHelper.searchContract(sc, null, sc.endStep, function () {
-		sc.endScenario(sc);
+		ctx.endScenario(sc);
 	});
 } });
 

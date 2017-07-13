@@ -69,8 +69,8 @@ function startScenarioSIRH(sc, callback) {
 			return callback();
 		}
 		ActivInfinitev7.scenarios.particularSituation2SIRH.start(sc.data).onEnd(function (scParticularSituation) {
-			sc.data.commentContract = scCheckMembership.data.commentContract;
-			sc.data.statusContract = scCheckMembership.data.statusContract;
+			sc.data.commentContract = scParticularSituation.data.commentContract;
+			sc.data.statusContract = scParticularSituation.data.statusContract;
 			return callback();
 		});
 	});

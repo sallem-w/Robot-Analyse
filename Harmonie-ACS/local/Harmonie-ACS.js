@@ -149,7 +149,7 @@ GLOBAL.events.START.on(function (ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRH);
 			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 			
-			ActivInfinitev7.scenarios.particularSituation1SIRH.start();
+			ActivInfinitev7.scenarios.scenarioSIRH.start();
 		});	
 	}
 	
