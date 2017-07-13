@@ -14,13 +14,6 @@
 	sc.step(ActivInfinitev7.steps.checkNoParticularSituation);
 	sc.step(ActivInfinitev7.steps.addParticularSituation);
 	sc.step(ActivInfinitev7.steps.completeParticularSituation);
-	sc.step(ActivInfinitev7.steps.nextProductList);
-	sc.step(ActivInfinitev7.steps.nextCalculParam);
-	sc.step(ActivInfinitev7.steps.nextContributionHistory);
-	sc.step(ActivInfinitev7.steps.nextContributionVisu);
-	sc.step(ActivInfinitev7.steps.validateContributionVisu);
-	sc.step(ActivInfinitev7.steps.nextpCoverageImmediateEch);
-	sc.step(ActivInfinitev7.steps.nextSaveUpdateParticularSituation);
 	sc.step(ActivInfinitev7.steps.saveUpdateParticularSituation);
 }});
 
@@ -82,45 +75,10 @@ ActivInfinitev7.step({ completeParticularSituation: function(ev, sc, st) {
 	ActivInfinitev7.pInfoRo.wait(sc.endStep);
 } });
 
-ActivInfinitev7.step({ nextProductList: function(ev, sc, st) {
-	ActivInfinitev7.pInfoRo.btNext.click();
-	ActivInfinitev7.pProductList.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextCalculParam: function(ev, sc, st) {
-	ActivInfinitev7.pProductList.btNext.click();
-	ActivInfinitev7.pCalculParam.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextContributionHistory: function(ev, sc, st) {
-	ActivInfinitev7.pCalculParam.btNext.click();
-	ActivInfinitev7.pContributionHistory.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextContributionVisu: function(ev, sc, st) {
-	ActivInfinitev7.pContributionHistory.btNext.click();
-	ActivInfinitev7.pContributionVisu.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ validateContributionVisu: function(ev, sc, st) {
-	ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
-	return sc.endStep();
-} });
-
-ActivInfinitev7.step({ nextpCoverageImmediateEch: function(ev, sc, st) {
-	ActivInfinitev7.pContributionVisu.btNext.click();
-	ActivInfinitev7.pCoverageImmediateEch.wait(sc.endStep);
-} });
-
-ActivInfinitev7.step({ nextSaveUpdateParticularSituation: function(ev, sc, st) {
-	ActivInfinitev7.pCoverageImmediateEch.btNext.click();
-	ActivInfinitev7.pSaveUpdate.wait(sc.endStep);
-} });
-
 ActivInfinitev7.step({ saveUpdateParticularSituation: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-	ActivInfinitev7.pSaveUpdate.btSave.click();
-	sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
-	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-	ActivInfinitev7.pDashboard.wait(sc.endScenario);
+	ActivInfinitev7.scenarios.saveContract.start(sc.data).onEnd(function (scSaveContract) {
+		sc.data.commentContract = scSaveContract.data.commentContract;
+		sc.data.statusContract = scSaveContract.data.statusContract;
+		ctx.endScenario(sc);
+	});
 } });

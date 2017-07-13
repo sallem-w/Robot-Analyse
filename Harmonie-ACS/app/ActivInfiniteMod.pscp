@@ -2115,6 +2115,7 @@
 				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
+				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="saveContract" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
