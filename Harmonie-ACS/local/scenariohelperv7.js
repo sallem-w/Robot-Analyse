@@ -135,6 +135,24 @@
 			return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat");
 		});
 	}
+
+	scenarioHelper.nextPageTill = function goNextPageTill(page, callback) {
+		ctx.trace.writeInfo('Navigating to ' + page.name);
+		function loop() {
+			if (!ActivInfinitev7.currentPage || !ActivInfinitev7.currentPage.exist()) {
+				return ctx.wait(loop);
+			}
+			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
+			if (ActivInfinitev7.currentPage.name !== page.name) {
+				ActivInfinitev7.currentPage.btNext.click();
+				ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
+			}
+			
+			return callback();
+		}
 		
+		loop();
+	}
+
 	return scenarioHelper;
 }) ();
