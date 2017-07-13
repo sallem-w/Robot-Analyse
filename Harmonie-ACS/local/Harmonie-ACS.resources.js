@@ -106,6 +106,7 @@ ActivInfinitev7.pProductList.oEndDateProduct = ActivInfinitev7.pProductList.addI
 ActivInfinitev7.pProductList.oStateProduct = ActivInfinitev7.pProductList.addItem('oStateProduct', {"occurs":1});
 ActivInfinitev7.pProductList.btVisuCotisation = ActivInfinitev7.pProductList.addItem('btVisuCotisation');
 ActivInfinitev7.pProductList.oProductPaging = ActivInfinitev7.pProductList.addItem('oProductPaging');
+ActivInfinitev7.pProductList.btUpdatePage = ActivInfinitev7.pProductList.addItem('btUpdatePage', {"mustExist":true});
 ActivInfinitev7.pProductList.btClose = ActivInfinitev7.pProductList.addItem('btClose');
 
 ActivInfinitev7.pContribution = ActivInfinitev7.addPage('pContribution', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
@@ -117,15 +118,16 @@ ActivInfinitev7.pContribution.btClose = ActivInfinitev7.pContribution.addItem('b
 
 ActivInfinitev7.pProductUpdate = ActivInfinitev7.addPage('pProductUpdate', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACG2_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProductUpdate.oTitlePage = ActivInfinitev7.pProductUpdate.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pProductUpdate.btUpdatePage = ActivInfinitev7.pProductUpdate.addItem('btUpdatePage', {"mustExist":true});
 ActivInfinitev7.pProductUpdate.btNext = ActivInfinitev7.pProductUpdate.addItem('btNext');
 ActivInfinitev7.pProductUpdate.btClose = ActivInfinitev7.pProductUpdate.addItem('btClose');
-ActivInfinitev7.pProductUpdate.btUpdatePage = ActivInfinitev7.pProductUpdate.addItem('btUpdatePage');
 ActivInfinitev7.pProductUpdate.btUpdateProduct = ActivInfinitev7.pProductUpdate.addItem('btUpdateProduct');
 ActivInfinitev7.pProductUpdate.btAddProduct = ActivInfinitev7.pProductUpdate.addItem('btAddProduct');
 ActivInfinitev7.pProductUpdate.oInputNewCodeProduct = ActivInfinitev7.pProductUpdate.addItem('oInputNewCodeProduct');
 ActivInfinitev7.pProductUpdate.oCodeProduct = ActivInfinitev7.pProductUpdate.addItem('oCodeProduct', {"occurs":1});
 ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct = ActivInfinitev7.pProductUpdate.addItem('btSaveNewCodeProduct');
 ActivInfinitev7.pProductUpdate.btSaveUpdateProduct = ActivInfinitev7.pProductUpdate.addItem('btSaveUpdateProduct');
+ActivInfinitev7.pProductUpdate.btNewProduct = ActivInfinitev7.pProductUpdate.addItem('btNewProduct');
 
 ActivInfinitev7.pDiversParam = ActivInfinitev7.addPage('pDiversParam', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACPD_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31\u0026CONTAINER_NOM_FONCTION=ACG2_200\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pDiversParam.oTitlePage = ActivInfinitev7.pDiversParam.addItem('oTitlePage', {"mustExist":true});
@@ -188,32 +190,34 @@ ActivInfinitev7.pInfoRo.btClose = ActivInfinitev7.pInfoRo.addItem('btClose');
 ActivInfinitev7.pMembershipColSearch = ActivInfinitev7.addPage('pMembershipColSearch', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
 ActivInfinitev7.pMembershipColSearch.oNumberContractCol = ActivInfinitev7.pMembershipColSearch.addItem('oNumberContractCol', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.oInsureGroup = ActivInfinitev7.pMembershipColSearch.addItem('oInsureGroup', {"mustExist":true});
-ActivInfinitev7.pMembershipColSearch.oContractType = ActivInfinitev7.pMembershipColSearch.addItem('oContractType');
+ActivInfinitev7.pMembershipColSearch.oContractType = ActivInfinitev7.pMembershipColSearch.addItem('oContractType', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.btNext = ActivInfinitev7.pMembershipColSearch.addItem('btNext', {"mustNotExist":true});
 ActivInfinitev7.pMembershipColSearch.btSearch = ActivInfinitev7.pMembershipColSearch.addItem('btSearch');
-ActivInfinitev7.pMembershipColSearch.oStartDateEffect = ActivInfinitev7.pMembershipColSearch.addItem('oStartDateEffect');
+ActivInfinitev7.pMembershipColSearch.oStartDateEffect = ActivInfinitev7.pMembershipColSearch.addItem('oStartDateEffect', {"mustExist":true});
 ActivInfinitev7.pMembershipColSearch.btClose = ActivInfinitev7.pMembershipColSearch.addItem('btClose');
 
 ActivInfinitev7.pMembershipSearchBene = ActivInfinitev7.addPage('pMembershipSearchBene', {"comment":"Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pMembershipSearchBene.oNumberINSEE = ActivInfinitev7.pMembershipSearchBene.addItem('oNumberINSEE', {"mustExist":true});
+ActivInfinitev7.pMembershipSearchBene.oNumberINSEE = ActivInfinitev7.pMembershipSearchBene.addItem('oNumberINSEE');
 ActivInfinitev7.pMembershipSearchBene.btSearch = ActivInfinitev7.pMembershipSearchBene.addItem('btSearch');
 ActivInfinitev7.pMembershipSearchBene.oSearchValid = ActivInfinitev7.pMembershipSearchBene.addItem('oSearchValid');
 ActivInfinitev7.pMembershipSearchBene.btValid = ActivInfinitev7.pMembershipSearchBene.addItem('btValid');
 ActivInfinitev7.pMembershipSearchBene.btCancel = ActivInfinitev7.pMembershipSearchBene.addItem('btCancel');
 ActivInfinitev7.pMembershipSearchBene.oResultNameBenef = ActivInfinitev7.pMembershipSearchBene.addItem('oResultNameBenef', {"occurs":1});
+ActivInfinitev7.pMembershipSearchBene.oRowResultNameBenef = ActivInfinitev7.pMembershipSearchBene.addItem('oRowResultNameBenef', {"occurs":1});
+ActivInfinitev7.pMembershipSearchBene.oTitlePage = ActivInfinitev7.pMembershipSearchBene.addItem('oTitlePage', {"mustExist":true});
 
 ActivInfinitev7.pMembershipMainBenef = ActivInfinitev7.addPage('pMembershipMainBenef', {"comment":"Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pMembershipMainBenef.oCivility = ActivInfinitev7.pMembershipMainBenef.addItem('oCivility');
-ActivInfinitev7.pMembershipMainBenef.oName = ActivInfinitev7.pMembershipMainBenef.addItem('oName');
-ActivInfinitev7.pMembershipMainBenef.oFirstname = ActivInfinitev7.pMembershipMainBenef.addItem('oFirstname');
-ActivInfinitev7.pMembershipMainBenef.oPostalCode = ActivInfinitev7.pMembershipMainBenef.addItem('oPostalCode');
+ActivInfinitev7.pMembershipMainBenef.oCivility = ActivInfinitev7.pMembershipMainBenef.addItem('oCivility', {"mustExist":true});
+ActivInfinitev7.pMembershipMainBenef.oName = ActivInfinitev7.pMembershipMainBenef.addItem('oName', {"mustExist":true});
+ActivInfinitev7.pMembershipMainBenef.oFirstname = ActivInfinitev7.pMembershipMainBenef.addItem('oFirstname', {"mustExist":true});
+ActivInfinitev7.pMembershipMainBenef.oPostalCode = ActivInfinitev7.pMembershipMainBenef.addItem('oPostalCode', {"mustExist":true});
 ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl = ActivInfinitev7.pMembershipMainBenef.addItem('oPostalCodeNoControl');
 ActivInfinitev7.pMembershipMainBenef.oAddress = ActivInfinitev7.pMembershipMainBenef.addItem('oAddress');
-ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentPrestatio', {"type":"Key"});
-ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentContribut', {"type":"Key"});
-ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency = ActivInfinitev7.pMembershipMainBenef.addItem('oPaymentFrequency', {"type":"Key"});
-ActivInfinitev7.pMembershipMainBenef.oTermeType = ActivInfinitev7.pMembershipMainBenef.addItem('oTermeType', {"type":"Key"});
-ActivInfinitev7.pMembershipMainBenef.oFrequencyEch = ActivInfinitev7.pMembershipMainBenef.addItem('oFrequencyEch', {"type":"Key"});
+ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentPrestatio', {"mustExist":true,"type":"Key"});
+ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut = ActivInfinitev7.pMembershipMainBenef.addItem('oModePaymentContribut', {"mustExist":true,"type":"Key"});
+ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency = ActivInfinitev7.pMembershipMainBenef.addItem('oPaymentFrequency', {"mustExist":true,"type":"Key"});
+ActivInfinitev7.pMembershipMainBenef.oTermeType = ActivInfinitev7.pMembershipMainBenef.addItem('oTermeType', {"mustExist":true,"type":"Key"});
+ActivInfinitev7.pMembershipMainBenef.oFrequencyEch = ActivInfinitev7.pMembershipMainBenef.addItem('oFrequencyEch', {"mustExist":true,"type":"Key"});
 ActivInfinitev7.pMembershipMainBenef.btNext = ActivInfinitev7.pMembershipMainBenef.addItem('btNext');
 ActivInfinitev7.pMembershipMainBenef.oLocality = ActivInfinitev7.pMembershipMainBenef.addItem('oLocality');
 ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl = ActivInfinitev7.pMembershipMainBenef.addItem('oLocalityNoControl');

@@ -6,12 +6,17 @@
 	sc.step(ActivInfinitev7.steps.initializeCheckMembership);
 	sc.step(ActivInfinitev7.steps.navigateToMembership);
 	sc.step(ActivInfinitev7.steps.setListSearchMembership);
+	sc.step(ActivInfinitev7.steps.setMembership);
 	sc.step(ActivInfinitev7.steps.searchMembership);
 	sc.step(ActivInfinitev7.steps.searchMembershipBenef);
+	sc.step(ActivInfinitev7.steps.searchMembershipBenefError);
+	sc.step(ActivInfinitev7.steps.searchMembershipBenefErrorPOPUPMessage);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
+	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
+	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endCheckMembership);
 }});
@@ -46,24 +51,27 @@ ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
 	ActivInfinitev7.pMembershipColSearch.injectFunction(forceOnChange);
 	ActivInfinitev7.pMembershipColSearch.evalScript('forceOnChange()');
 	
-	ActivInfinitev7.pMembershipColSearch.events.UNLOAD.once(function() {
-		ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
-			return sc.endStep();
-		});
+	ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
+		return sc.endStep();
 	});
 }});
+
+ActivInfinitev7.step({ setMembership : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setMembership');
+	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
+	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
+	ActivInfinitev7.pMembershipColSearch.oInsureGroup.setFocus();
+	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+	ActivInfinitev7.pMembershipColSearch.btSearch.click();
+	return sc.endStep();
+}});
+
 
 ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembership');
 	
-	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
-	ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
-	ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(ctx.date.formatDDMMYYYY(new Date(ctx.date.now())));
-	
-	if (ctx.options.isDebug) {
-		ctx.log('Need to click on button');
-	}
-
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
 		
@@ -77,14 +85,12 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 		});
   });
 	
-  ActivInfinitev7.pMembershipColSearch.events.UNLOAD.once(function() {
-	  ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
-			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-			sc.data.commentContract = 'Revoir centre: ' + message;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-		});
+  ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
+		var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
+		sc.data.commentContract = 'Revoir centre: ' + message;
+		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 	});
 }});
 
@@ -93,87 +99,112 @@ ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
 	
 	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
 	ActivInfinitev7.pMembershipSearchBene.btSearch.click();
+
+	ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
 	
-	ActivInfinitev7.pMembershipSearchBene.events.UNLOAD.once(function() {
-		ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
-			var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
-			if (!benefExist) {
-				ActivInfinitev7.pMembershipSearchBene.btCancel.click();
-				sc.data.isNewBenef = true;
-				return ActivInfinitev7.pMembershipMainBenef.wait(function() {
-					return sc.endStep();
-				});
+		var benefExist = ActivInfinitev7.pMembershipSearchBene.oSearchValid.exist();			
+		if (!benefExist) {
+			ActivInfinitev7.pMembershipSearchBene.btCancel.click();
+			sc.data.isNewBenef = true;
+			return ActivInfinitev7.pMembershipMainBenef.wait(function() {
+				return sc.endStep();
+			});
+		}
+    
+		var isBenefFound = false;
+		var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
+		for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
+			var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
+			if (benefName.indexOf(contractBenefName) !== -1) {
+				ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
+				isBenefFound = true;
+				break;
 			}
-      
-			var isBenefFound = false;
-			var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
-			for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
-				var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
-				if (benefName.indexOf(contractBenefName) !== -1) {
-					ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
-					isBenefFound = true;
-					break;
-				}
-			}
-			
-			if (isBenefFound) {
-				ActivInfinitev7.pMembershipSearchBene.btValid.click();
-				sc.data.isUpdateBenef = true;
-				return ActivInfinitev7.pMembershipMainBenef.wait(function() {
-					return sc.endStep(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
-				});
-			}
-			
-			var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
-			var message = sc.data.contract.individualContract + ' - Contractor not found';
-			return ctx.endScenario(sc, message, comment);
-		});
+		}
+		
+		if (isBenefFound) {
+			ActivInfinitev7.pMembershipSearchBene.btValid.click();
+			sc.data.isUpdateBenef = true;
+			return sc.endStep();
+		}
+		
+		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
+		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
+		return ctx.endScenario(sc, message, comment);
 	});
+}});
+
+ActivInfinitev7.step({ searchMembershipBenefError: function(ev, sc, st) {
+	var foundListener, notFoundListener;
+	notFoundListener = ActivInfinitev7.pMembershipSearchBene.events.LOAD.once(function() {
+		ctx.off(foundListener);
+		return sc.endStep();
+	});
+	
+	foundListener = ActivInfinitev7.pMembershipMainBenef.wait(function() {
+		ctx.off(notFoundListener);
+		return sc.endStep(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
+	});
+}});
+
+ActivInfinitev7.step({ searchMembershipBenefErrorPOPUPMessage: function(ev, sc, st) {
+	var comment = 'Revoir centre: impossible de trouver l\'adhérent';
+	var message = sc.data.contract.individualContractCollectif + ' - Contract not found';
+	
+	// click on btValid reload page
+	var messagePopup = ctx.scenarioHelper.getMessagesPopup();
+	if (messagePopup) {
+		message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
+		comment = 'Revoir centre: ' + messagePopup;
+	}
+	
+	return ctx.endScenario(sc, message, comment);
 }});
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function(){
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
-			ActivInfinitev7.pMembershipMainBenef.oCountry.set('FRA'); // Select 'France' into list
-			ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
-			ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
-			ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
-			ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode);
-			ActivInfinitev7.pMembershipMainBenef.oLocality.set(sc.data.contract.locality);
-			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set(sc.data.contract.addressNumber);
-			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.address);
-			ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set(sc.data.contract.paymentFrequency);
-			ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set(sc.data.contract.paymentMethodPresta);
-			ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
-			ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
-			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-			return sc.endStep();
-		});
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
+		ActivInfinitev7.pMembershipMainBenef.oCountry.set('FRA'); // Select 'France' into list
+		ActivInfinitev7.pMembershipMainBenef.oCivility.set(sc.data.contract.civility);
+		ActivInfinitev7.pMembershipMainBenef.oName.set(sc.data.contract.name);
+		ActivInfinitev7.pMembershipMainBenef.oFirstname.set(sc.data.contract.firstName);
+		ActivInfinitev7.pMembershipMainBenef.oPostalCode.set(sc.data.contract.postalCode);
+		ActivInfinitev7.pMembershipMainBenef.oLocality.set(sc.data.contract.locality);
+		ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set(sc.data.contract.addressNumber);
+		ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.address);
+		ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency.set(sc.data.contract.paymentFrequency);
+		ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio.set(sc.data.contract.paymentMethodPresta);
+		ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
+		ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		return sc.endStep();
 	});
 }});
 	
 ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function() {
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
-			var errorMessage = ctx.scenarioHelper.getMessagesPopup();
-			if (errorMessage.indexOf('La localité est obligatoire') === -1) {
-				ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
-				sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
-				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-				return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
-			}
-				
-			ActivInfinitev7.pMembershipMainBenef.oCountry.set('ZZZ'); // Select 'pays inconnu' into list
-			ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl.set(sc.data.contract.postalCode);
-			ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl.set(sc.data.contract.locality);
-			ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
-			ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
-			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		});
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
+		ActivInfinitev7.pMembershipMainBenef.oCountry.set('ZZZ'); // Select 'pays inconnu' into list
+		ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl.set(sc.data.contract.postalCode);
+		ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl.set(sc.data.contract.locality);
+		ActivInfinitev7.pMembershipMainBenef.oAddressNumber.set('');
+		ActivInfinitev7.pMembershipMainBenef.oAddress.set(sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		return sc.endStep();
 	});
-	
+}});
+
+ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
+		var errorMessage = ctx.scenarioHelper.getMessagesPopup();
+		if (errorMessage.indexOf('La localité est obligatoire') === -1) {
+			ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
+			sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+		}
+	});
+
 	ActivInfinitev7.pInsuredIdent.wait(function() {
 		return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
 	});
@@ -207,12 +238,10 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 	ActivInfinitev7.pMembershipMainBenef.oFrequencyEch.set(sc.data.contract.frequencyEch);
 	ActivInfinitev7.pMembershipMainBenef.oTermeType.set(sc.data.contract.termType);
 	ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut.set(sc.data.contract.paymentMethodCoti);
-	ActivInfinitev7.pMembershipMainBenef.events.UNLOAD.once(function(){
-		ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
-			ActivInfinitev7.pMembershipMainBenef.btNext.click();
-			ActivInfinitev7.pInsuredIdent.wait(function() {
-				return sc.endStep();
-			});
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		ActivInfinitev7.pInsuredIdent.wait(function() {
+			return sc.endStep();
 		});
 	});
 }});
@@ -239,13 +268,36 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	
 	ActivInfinitev7.pInsuredIdent.btValid.click();
 	
-	ActivInfinitev7.pInsuredIdent.events.UNLOAD.once(function() {
-		ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
-			ActivInfinitev7.pInsuredIdent.btNext.click();
-			ActivInfinitev7.pProductList.wait(function() {
+	ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
+		ActivInfinitev7.pInsuredIdent.btNext.click();
+		ActivInfinitev7.pProductUpdate.wait(function() {
+			ActivInfinitev7.pProductUpdate.btUpdatePage.click();
+			ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
+				sc.data.countProductCode = sc.data.contract.productCode.length;
+				sc.data.indexProductCode = 0;
 				return sc.endStep();
 			});
 		});
+	});
+}});
+
+ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
+	
+	if (sc.data.indexProductCode >= sc.data.countProductCode) {
+		ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
+		return sc.endStep();
+	}
+	
+	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.productCode[sc.data.indexProductCode]);
+	ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
+	sc.data.indexProductCode += 1;
+	
+	ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
+		if (sc.data.indexProductCode < sc.data.countProductCode) {
+			ActivInfinitev7.pProductUpdate.btNewProduct.click();
+		}
+		return sc.endStep(ActivInfinitev7.steps.setProductPage);
 	});
 }});
 
