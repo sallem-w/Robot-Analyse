@@ -34,7 +34,7 @@ ActivInfinitev7.step({ initializeCheckMembership: function(ev, sc, st) {
 	return sc.endStep();
 }});
 
-ActivInfinitev7.step({ navigateToMembership : function(ev, sc, st) {
+ActivInfinitev7.step({ navigateToMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - navigateToMembership');
 	ActivInfinitev7.pDashboard.btMembershipCollectiv.click();
 	ActivInfinitev7.pMembershipColSearch.wait(function() {
@@ -42,7 +42,7 @@ ActivInfinitev7.step({ navigateToMembership : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
+ActivInfinitev7.step({ setListSearchMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setListSearchMembership');
 	
 	// need to force onchange on list
@@ -64,7 +64,7 @@ ActivInfinitev7.step({ setListSearchMembership : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ setMembership : function(ev, sc, st) {
+ActivInfinitev7.step({ setMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setMembership');
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.setFocus();
 	ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
@@ -77,7 +77,7 @@ ActivInfinitev7.step({ setMembership : function(ev, sc, st) {
 }});
 
 
-ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
+ActivInfinitev7.step({ searchMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembership');
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
@@ -102,7 +102,7 @@ ActivInfinitev7.step({ searchMembership : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ searchMembershipBenef : function(ev, sc, st) {
+ActivInfinitev7.step({ searchMembershipBenef: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembershipBenef');
 	
 	ActivInfinitev7.pMembershipSearchBene.oNumberINSEE.set(sc.data.contract.inseeNumber);
@@ -309,28 +309,28 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ nextProductUpdate : function(ev, sc, st) {
+ActivInfinitev7.step({ nextProductUpdate: function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.wait(function() {
 		ActivInfinitev7.pProductUpdate.btNext.click();
 		return sc.endStep();
 	});
 }});
 
-ActivInfinitev7.step({ nextCalculParam : function(ev, sc, st) {
+ActivInfinitev7.step({ nextCalculParam: function(ev, sc, st) {
 	ActivInfinitev7.pCalculParam.wait(function() {
 		ActivInfinitev7.pCalculParam.btNext.click();
 		return sc.endStep();
 	});
 }});
 
-ActivInfinitev7.step({ nextContributionHistory : function(ev, sc, st) {
+ActivInfinitev7.step({ nextContributionHistory: function(ev, sc, st) {
 	ActivInfinitev7.pContributionHistory.wait(function() {
 		ActivInfinitev7.pContributionHistory.btNext.click();
 		return sc.endStep();
 	});
 }});
 
-ActivInfinitev7.step({ nextContributionVisu : function(ev, sc, st) {
+ActivInfinitev7.step({ nextContributionVisu: function(ev, sc, st) {
 	ActivInfinitev7.pContributionVisu.wait(function() {
 		ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
 		ActivInfinitev7.pContributionVisu.btNext.click();
@@ -338,7 +338,7 @@ ActivInfinitev7.step({ nextContributionVisu : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ nextCoverageImmediateEch : function(ev, sc, st) {
+ActivInfinitev7.step({ nextCoverageImmediateEch: function(ev, sc, st) {
 	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
 		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
 		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
@@ -346,7 +346,7 @@ ActivInfinitev7.step({ nextCoverageImmediateEch : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ nextCoverageImmediateCar : function(ev, sc, st) {
+ActivInfinitev7.step({ nextCoverageImmediateCar: function(ev, sc, st) {
 	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
 		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
@@ -354,7 +354,7 @@ ActivInfinitev7.step({ nextCoverageImmediateCar : function(ev, sc, st) {
 	});
 }});
 
-ActivInfinitev7.step({ endCheckMembership : function(ev, sc, st) {
+ActivInfinitev7.step({ endCheckMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - checkMembership - ' + sc.data.codeScenario);
 	return sc.endScenario();
