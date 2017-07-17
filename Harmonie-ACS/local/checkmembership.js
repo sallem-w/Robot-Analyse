@@ -312,52 +312,52 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 ActivInfinitev7.step({ nextProductUpdate: function(ev, sc, st) {
 	ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
 		ActivInfinitev7.pProductUpdate.btNext.click();
-		return sc.endStep();
+		ActivInfinitev7.pCalculParam.wait(function() {
+			return sc.endStep();
+		});
 	});
 }});
 
 ActivInfinitev7.step({ nextCalculParam: function(ev, sc, st) {
-	ActivInfinitev7.pCalculParam.wait(function() {
-		ActivInfinitev7.pCalculParam.btNext.click();
+	ActivInfinitev7.pCalculParam.btNext.click();
+	ActivInfinitev7.pContributionHistory.wait(function() {
 		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ nextContributionHistory: function(ev, sc, st) {
-	ActivInfinitev7.pContributionHistory.wait(function() {
-		ActivInfinitev7.pContributionHistory.btNext.click();
+	ActivInfinitev7.pContributionHistory.btNext.click();
+	ActivInfinitev7.pContributionVisu.wait(function() {
 		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ nextContributionVisu: function(ev, sc, st) {
-	ActivInfinitev7.pContributionVisu.wait(function() {
-		ActivInfinitev7.pContributionVisu.oValidation.setFocus();
-		ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
-		ActivInfinitev7.pContributionVisu.btNext.setFocus();
-		ActivInfinitev7.pContributionVisu.btNext.click();
+	ActivInfinitev7.pContributionVisu.oValidation.setFocus();
+	ActivInfinitev7.pContributionVisu.oValidation.set('OUI');
+	ActivInfinitev7.pContributionVisu.btNext.setFocus();
+	ActivInfinitev7.pContributionVisu.btNext.click();
+	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
 		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ nextCoverageImmediateEch: function(ev, sc, st) {
-	ActivInfinitev7.pCoverageImmediateEch.wait(function() {
-		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.setFocus();
-		ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
-		ActivInfinitev7.pCoverageImmediateEch.btNext.setFocus();
-		ActivInfinitev7.pCoverageImmediateEch.btNext.click();
+	ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.setFocus();
+	ActivInfinitev7.pCoverageImmediateEch.oEditionSelect.set('Lettrage sans édition');
+	ActivInfinitev7.pCoverageImmediateEch.btNext.setFocus();
+	ActivInfinitev7.pCoverageImmediateEch.btNext.click();
+	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
 		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ nextCoverageImmediateCar: function(ev, sc, st) {
-	ActivInfinitev7.pCoverageImmediateCar.wait(function() {
-		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.setFocus();
-		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
-		ActivInfinitev7.pCoverageImmediateCar.btNext.setFocus();
-		ActivInfinitev7.pCoverageImmediateCar.btNext.click();
-		return sc.endStep();
-	});
+	ActivInfinitev7.pCoverageImmediateCar.oNoEdit.setFocus();
+	ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
+	ActivInfinitev7.pCoverageImmediateCar.btNext.setFocus();
+	ActivInfinitev7.pCoverageImmediateCar.btNext.click();
+	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ endCheckMembership: function(ev, sc, st) {
