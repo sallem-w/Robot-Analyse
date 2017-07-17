@@ -310,7 +310,7 @@ ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ nextProductUpdate: function(ev, sc, st) {
-	ActivInfinitev7.pProductUpdate.events.LOAD.on(function() {
+	ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 		ActivInfinitev7.pProductUpdate.btNext.click();
 		ActivInfinitev7.pCalculParam.wait(function() {
 			return sc.endStep();
