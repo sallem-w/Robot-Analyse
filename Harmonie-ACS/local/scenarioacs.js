@@ -110,8 +110,9 @@ function startScenarioACS(sc, callback) {
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		sc.data.isContractWithProductACS = scCheckContract.data.isContractWithProductACS;
 		sc.data.isContractTerminated = scCheckContract.data.isContractTerminated;
+		sc.data.isAlreadyDone = scCheckContract.data.isAlreadyDone;
 		
-		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly) {
+		if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail || sc.data.config.controlOnly || sc.data.isAlreadyDone) {
 			callback();
 			return;
 		}

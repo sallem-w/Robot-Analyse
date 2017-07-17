@@ -1,4 +1,5 @@
-﻿ctx.endScenario = function endScenario(sc, message, comment) {
+﻿ctx.endScenario = function endScenario(sc, message, comment, status) {
+	status = status || ctx.excelHelper.constants.status.Fail;
 	
 	if (message) {
 		ctx.trace.writeInfo(message);
@@ -6,7 +7,7 @@
 	
 	if (comment) {
 		sc.data.commentContract = comment;
-		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+		sc.data.statusContract = status;
 	}
 	
 	sc.data.countCaseBackToCenter += 1;

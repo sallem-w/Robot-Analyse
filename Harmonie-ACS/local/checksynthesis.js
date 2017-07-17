@@ -58,12 +58,16 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		return ctx.scenarioHelper.goHome(function() {
 			return sc.endStep();
 		});
-	}
-	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
+	}	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
 		return ctx.scenarioHelper.goHome(function() {
 			return sc.endStep();
 		});
+	}	else if (!isOpenCurrentContract && dateEndCurrentContract !== undefined && ctx.date.isOnlyOneYearDifference(new Date(sc.data.contract.ACSCertificateEndDate), dateEndCurrentContract)) {
+		var message = sc.data.contract.individualContract + ' - END SCENARIO - already done';
+		var comment = 'Déjà traité';
+		sc.data.isAlreadyDone = true
+		return ctx.endScenario(sc, message, comment, ctx.excelHelper.constants.status.Success);
 	} else {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases';
 		var comment = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
