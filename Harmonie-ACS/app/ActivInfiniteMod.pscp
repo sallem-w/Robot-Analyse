@@ -2170,6 +2170,7 @@
 				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
 				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="saveContract" />
+				<SCRIPT Name="abort" Src="abort.js" Folder="steps" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
