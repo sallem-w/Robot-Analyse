@@ -65,6 +65,7 @@
     },
     "SIRH": {
         "showMenu": true,
+        "saveUpdate": false,
         "rootPath": "C:\\deploy\\sirh\\"
     },
     "DA": {

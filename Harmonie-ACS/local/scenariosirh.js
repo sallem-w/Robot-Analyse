@@ -65,6 +65,13 @@ function startScenarioSIRH(sc, callback) {
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
-		callback();
+		if (sc.data.statusContract !== ctx.excelHelper.constants.status.Success) {
+			return callback();
+		}
+		ActivInfinitev7.scenarios.particularSituation2SIRH.start(sc.data).onEnd(function (scParticularSituation) {
+			sc.data.commentContract = scParticularSituation.data.commentContract;
+			sc.data.statusContract = scParticularSituation.data.statusContract;
+			return callback();
+		});
 	});
 }
