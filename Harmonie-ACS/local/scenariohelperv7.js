@@ -60,6 +60,34 @@
 		});
 	}
 	
+	scenarioHelper.searchCollectiveContract = function (sc, date, foundCb, notFoundCb) {
+		ActivInfinitev7.pMembershipColSearch.oNumberContractCol.setFocus();
+		ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
+		ActivInfinitev7.pMembershipColSearch.oInsureGroup.setFocus();
+		ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+		if (date) {
+			ActivInfinitev7.pMembershipColSearch.oStartDateEffect.setFocus();
+			ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(date);
+		}
+		ActivInfinitev7.pMembershipColSearch.btSearch.click();
+		var foundListener, notFoundListener;
+		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
+			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
+			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
+			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
+			notFoundCb();
+		  ctx.off(foundListener);
+		});
+
+		foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
+			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+			foundCb();
+			ctx.off(notFoundListener);
+		});
+	}
+	
 	scenarioHelper.forceClick = function forceClick(btn) {
 		function cancelSave() {
 			function loop() {
