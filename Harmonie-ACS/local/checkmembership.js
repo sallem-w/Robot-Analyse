@@ -127,10 +127,14 @@ ActivInfinitev7.step({ isBeneficiaryInList: function(ev, sc, st) {
 		sc.data.isUpdateBenef = true;
 		return sc.endStep();
 	}
-	
+
 	var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
 	var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
-	return ctx.endScenario(sc, message, comment);
+
+	ActivInfinitev7.pMembershipSearchBene.btCancel.click();
+	return ActivInfinitev7.pMembershipMainBenef.wait(function() {
+		return ctx.endScenario(sc, message, comment);
+	});
 } });
 
 ActivInfinitev7.step({ isBenefeciaryFound: function(ev, sc, st) {
