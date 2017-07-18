@@ -18,6 +18,17 @@
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.nextToPInsuredIdent);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
+	sc.step(ActivInfinitev7.steps.toInfoRo);
+
+	// step from particularSituation2SIRH
+	sc.step(ActivInfinitev7.steps.editInfoRo);
+	
+	sc.step(ActivInfinitev7.steps.skipStepIfNoParticularSituation);
+	
+	// step from particularSituation2SIRH
+	sc.step(ActivInfinitev7.steps.addParticularSituation);
+	sc.step(ActivInfinitev7.steps.completeParticularSituation);
+
 	sc.step(ActivInfinitev7.steps.nextToPProductUpdate);
 	sc.step(ActivInfinitev7.steps.editPProductUpdate);
 	sc.step(ActivInfinitev7.steps.setupProductLoop);
@@ -265,7 +276,7 @@ ActivInfinitev7.step({ nextToPInsuredIdent: function(ev, sc, st) {
 
 ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
-	
+
 	if (sc.data.contract.isInsuredRO) {
 		ActivInfinitev7.pInsuredIdent.oInsuredROCheck.click();
 	}
@@ -282,17 +293,35 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ActivInfinitev7.pInsuredIdent.oBirthday.set(ctx.date.formatDDMMYYYY(new Date(sc.data.contract.birthDate)));
 	ActivInfinitev7.pInsuredIdent.oSocialCategorie.set(sc.data.contract.socialCategory);
 	ActivInfinitev7.pInsuredIdent.oRankBirthday.set(sc.data.contract.rankBirthday);
-	
+
 	ActivInfinitev7.pInsuredIdent.btValid.click();
-	
+
 	ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
 		return sc.endStep();
 	});
 }});
 
+ActivInfinitev7.step({ toInfoRo: function(ev, sc, st) {
+	ActivInfinitev7.pInsuredIdent.btInfoRo.click();
+	ActivInfinitev7.pInfoRo.wait(function () {
+		sc.endStep();
+	})
+} });
+
+ActivInfinitev7.step({ skipStepIfNoParticularSituation: function(ev, sc, st) {
+	if (ActivInfinitev7.pInfoRoEdit.oNoSituation.exist()) {
+		return sc.endStep();
+	}
+	
+	ActivInfinitev7.pInfoRoEdit.btCancel.click();
+	return ActivInfinitev7.pInfoRo.wait(function () {
+		return sc.endStep(ActivInfinitev7.steps.nextToPProductUpdate);
+	});
+} });
+
 ActivInfinitev7.step({ nextToPProductUpdate: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToPProductUpdate');
-	ActivInfinitev7.pProductUpdate.btUpdatePage.click();
+	ActivInfinitev7.pInfoRo.btNext.click();
 	ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 		return sc.endStep();
 	});
@@ -315,9 +344,6 @@ ActivInfinitev7.step({ setupProductLoop: function(ev, sc, st) {
 
 ActivInfinitev7.step({ setProductPage: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setProductPage');
-	
-	
-	
 	ActivInfinitev7.pProductUpdate.oInputNewCodeProduct.set(sc.data.contract.productCode[sc.data.indexProductCode]);
 	ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
 	sc.data.indexProductCode += 1;

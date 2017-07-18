@@ -183,6 +183,7 @@ ActivInfinitev7.pInfoRoEdit.btValidate = ActivInfinitev7.pInfoRoEdit.addItem('bt
 ActivInfinitev7.pInfoRoEdit.oCodeSitPart0 = ActivInfinitev7.pInfoRoEdit.addItem('oCodeSitPart0');
 ActivInfinitev7.pInfoRoEdit.btClose = ActivInfinitev7.pInfoRoEdit.addItem('btClose');
 ActivInfinitev7.pInfoRoEdit.oNoSituation = ActivInfinitev7.pInfoRoEdit.addItem('oNoSituation');
+ActivInfinitev7.pInfoRoEdit.btCancel = ActivInfinitev7.pInfoRoEdit.addItem('btCancel');
 
 ActivInfinitev7.pInfoRo = ActivInfinitev7.addPage('pInfoRo', {"comment":"Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACRO_402\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pInfoRo.oTitlePage = ActivInfinitev7.pInfoRo.addItem('oTitlePage', {"mustExist":true});
