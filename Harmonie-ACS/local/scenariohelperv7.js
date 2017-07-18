@@ -87,11 +87,13 @@
 	scenarioHelper.forceClick = function forceClick(btn) {
 		function cancelSave() {
 			function loop() {
-				var noBtn = $('.bootbox.modal.fade.in .modal-footer > button[data-bb-handler="no"]');
-				if (noBtn && noBtn.is(':visible')) {
-					noBtn.click();
-					return;
-				}
+				try {
+					var noBtn = $('.bootbox.modal.fade.in .modal-footer > button[data-bb-handler="no"]');
+					if (noBtn && noBtn.is(':visible')) {
+						noBtn.click();
+						return;
+					}
+				} catch (error) {}
 				setTimeout(loop, 500);
 			}
 			setTimeout(loop, 500);
@@ -159,6 +161,7 @@
 					ctx.trace.writeInfo('login page loaded');
 					ctx.setValue(ActivInfinitev7.pConnection.oLogin, sc.data.login);
 					ctx.setValue(ActivInfinitev7.pConnection.oPassword, sc.data.password);
+					ActivInfinitev7.pConnection.btLogin.setFocus();
 					ActivInfinitev7.pConnection.btLogin.click();
 				
 					ActivInfinitev7.pDashboard.wait(function() {
