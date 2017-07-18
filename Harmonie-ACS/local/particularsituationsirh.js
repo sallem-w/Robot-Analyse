@@ -61,7 +61,9 @@ ActivInfinitev7.step({ checkNoParticularSituation: function(ev, sc, st) {
 
 ActivInfinitev7.step({ addParticularSituation: function(ev, sc, st) {
 	ActivInfinitev7.pInfoRoEdit.btCreateSituation.click();
-	ActivInfinitev7.pInfoRoEdit.events.LOAD.once(sc.endStep);
+	ActivInfinitev7.pInfoRoEdit.events.LOAD.once(function() {
+		return sc.endStep();
+	});
 } });
 
 ActivInfinitev7.step({ completeParticularSituation: function(ev, sc, st) {
