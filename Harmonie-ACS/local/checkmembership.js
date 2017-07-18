@@ -35,6 +35,7 @@
 	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.nextProductLoop);
 	sc.step(ActivInfinitev7.steps.nextProductUpdate);
+	sc.step(ActivInfinitev7.steps.getIndividualContractNumber);
 	sc.step(ActivInfinitev7.steps.nextCalculParam);
 	sc.step(ActivInfinitev7.steps.nextContributionHistory);
 	sc.step(ActivInfinitev7.steps.nextContributionVisu);
@@ -357,6 +358,10 @@ ActivInfinitev7.step({ nextProductUpdate: function(ev, sc, st) {
 		return sc.endStep();
 	});
 }});
+
+ActivInfinitev7.step({ getIndividualContractNumber: function(ev, sc, st) {
+	sc.data.contract.individualContract = ActivInfinitev7.pCalculParam.oIndividualContractNu.get();
+} });
 
 ActivInfinitev7.step({ nextCalculParam: function(ev, sc, st) {
 	ActivInfinitev7.pCalculParam.btNext.click();
