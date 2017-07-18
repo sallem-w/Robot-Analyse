@@ -63,6 +63,7 @@ function getObjectValues(obj) {
 
 function startScenarioSIRH(sc, callback) {
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
+		sc.data.contract = scCheckMembership.data.contract;
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
 		if (sc.data.statusContract !== ctx.excelHelper.constants.status.Success) {

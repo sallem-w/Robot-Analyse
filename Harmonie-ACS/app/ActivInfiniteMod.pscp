@@ -1275,6 +1275,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oIndividualContractNu">
+							<CRITERE>
+								<TAG Name="P" Scope="All" CapturedPos="91.R0R1R14R1R0R2R0R0R2R7R1R0R0R0R4">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[numCttIndiv-static]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ResiliationContrat_1411275_1" Comment="Resiliation Contrat - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="02/06/2017 14:11:29" />
 				</PAGE>
