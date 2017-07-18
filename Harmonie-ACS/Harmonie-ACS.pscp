@@ -74,6 +74,7 @@
 				<SCRIPT Name="PopupHelper" Src="PopupHelper.js" />
 				<SCRIPT Name="Mail" Src="Mail.js" />
 				<SCRIPT Name="endScenario" Src="endScenario.js" />
+				<SCRIPT Name="setValue" Src="setValue.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->
