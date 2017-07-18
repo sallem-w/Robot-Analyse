@@ -15,7 +15,9 @@ ActivInfinitev7.step({ saveUpdate: function(ev, sc, st) {
 	}
 			
 	ActivInfinitev7.pSaveUpdate.btSave.click();
-	ActivInfinitev7.pSaveUpdate.events.UNLOAD.once(sc.endStep);
+	ActivInfinitev7.pSaveUpdate.events.UNLOAD.once(function() {
+		return sc.endStep();
+	});
 } });
 
 ActivInfinitev7.step({ saveUpdateEnd: function(ev, sc, st) {

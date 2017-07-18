@@ -33,6 +33,7 @@
 	sc.step(ActivInfinitev7.steps.editPProductUpdate);
 	sc.step(ActivInfinitev7.steps.setupProductLoop);
 	sc.step(ActivInfinitev7.steps.setProductPage);
+	sc.step(ActivInfinitev7.steps.nextProductLoop);
 	sc.step(ActivInfinitev7.steps.nextProductUpdate);
 	sc.step(ActivInfinitev7.steps.nextCalculParam);
 	sc.step(ActivInfinitev7.steps.nextContributionHistory);
