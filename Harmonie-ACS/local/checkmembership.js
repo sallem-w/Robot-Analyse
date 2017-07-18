@@ -34,6 +34,7 @@
 	sc.step(ActivInfinitev7.steps.setupProductLoop);
 	sc.step(ActivInfinitev7.steps.setProductPage);
 	sc.step(ActivInfinitev7.steps.nextProductUpdate);
+	sc.step(ActivInfinitev7.steps.validProductUpdate);
 	sc.step(ActivInfinitev7.steps.nextCalculParam);
 	sc.step(ActivInfinitev7.steps.nextContributionHistory);
 	sc.step(ActivInfinitev7.steps.nextContributionVisu);
@@ -362,6 +363,13 @@ ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 	}
 	ActivInfinitev7.pProductUpdate.btNewProduct.click();
 	return sc.endStep(ActivInfinitev7.steps.setProductPage);
+} });
+
+ActivInfinitev7.step({ validProductUpdate: function(ev, sc, st) {
+	ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
+	ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
+		return sc.endStep();
+	});
 } });
 
 ActivInfinitev7.step({ nextProductUpdate: function(ev, sc, st) {
