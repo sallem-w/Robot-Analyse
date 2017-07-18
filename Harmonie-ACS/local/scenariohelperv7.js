@@ -181,6 +181,7 @@
 			}
 			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
 			if (ActivInfinitev7.currentPage.name !== page.name) {
+				ActivInfinitev7.currentPage.btNext.setFocus();
 				ActivInfinitev7.currentPage.btNext.click();
 				return ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
 			}
