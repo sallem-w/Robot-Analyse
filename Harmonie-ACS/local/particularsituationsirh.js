@@ -23,12 +23,16 @@ ActivInfinitev7.step({ initializeParticularSituation1: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ waitDashboard : function(ev, sc, st) {
-	ActivInfinitev7.pDashboard.wait(sc.endStep);
+	ActivInfinitev7.pDashboardwait(function() {
+		return sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ navigateToParticularSituation : function(ev, sc, st) {
 	ActivInfinitev7.pDashboard.btParticularSituation.click();
-	ActivInfinitev7.pSearchContractIndiv.wait(sc.endStep);
+	ActivInfinitev7.pSearchContractIndivwait(function() {
+		return sc.endStep();
+	});
 }});
 
 ActivInfinitev7.step({ seachParticularSituationContract: function(ev, sc, st) {
@@ -43,7 +47,9 @@ ActivInfinitev7.step({ goToInfoRo: function(ev, sc, st) {
 
 ActivInfinitev7.step({ editInfoRo: function(ev, sc, st) {
 	ActivInfinitev7.pInfoRo.btEdit.click();
-	ActivInfinitev7.pInfoRoEdit.wait(sc.endStep);
+	ActivInfinitev7.pInfoRoEdit.wait(function() {
+		return sc.endStep();
+	});
 } });
 
 ActivInfinitev7.step({ checkNoParticularSituation: function(ev, sc, st) {
@@ -61,7 +67,9 @@ ActivInfinitev7.step({ addParticularSituation: function(ev, sc, st) {
 ActivInfinitev7.step({ completeParticularSituation: function(ev, sc, st) {
 	ActivInfinitev7.pInfoRoEdit.oCodeSitPart0.set('SS BA');
 	ActivInfinitev7.pInfoRoEdit.btValidate.click();
-	ActivInfinitev7.pInfoRo.wait(sc.endStep);
+	ActivInfinitev7.pInfoRo.wait(function() {
+		return sc.endStep();
+	});
 } });
 
 ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
