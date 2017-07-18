@@ -23,7 +23,7 @@ ActivInfinitev7.step({ initializeParticularSituation1: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ waitDashboard : function(ev, sc, st) {
-	ActivInfinitev7.pDashboardwait(function() {
+	ActivInfinitev7.pDashboard.wait(function() {
 		return sc.endStep();
 	});
 }});
