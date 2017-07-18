@@ -77,7 +77,7 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
 	
 	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
-	if (ctx.string.trim(contentBlockNote) !== '') {
+	if (ctx.string.trim(contentBlockNote) !== '' && sc.data.config.controlBlockNote) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
 		var comment = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
 		return ctx.endScenario(sc, message, comment);
