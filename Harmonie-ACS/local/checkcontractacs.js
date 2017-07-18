@@ -27,9 +27,8 @@ ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchBenefInSynthesis');
-	ActivInfinitev7.pSynthesisSearch.oTypeIdentification.set('PEPE'); // Select "Personne" on list
-	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.setFocus();
-	ActivInfinitev7.pSynthesisSearch.oBenefIdentification.set(sc.data.contract.insuredIdentifiant);
+	ctx.setValue(ActivInfinitev7.pSynthesisSearch.oTypeIdentification, 'PEPE'); // Select "Personne" on list
+	ctx.setValue(ActivInfinitev7.pSynthesisSearch.oBenefIdentification, sc.data.contract.insuredIdentifiant);
 	ActivInfinitev7.pSynthesisSearch.btSearch.click();
 	ActivInfinitev7.pSynthesis.wait(function() {
 		return sc.endStep();
@@ -49,8 +48,8 @@ ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
 	
-	ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
-	ActivInfinitev7.pSearchContractIndiv.oDateContract.set(ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
+	ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oIndividualContract, sc.data.contract.individualContract);
+	ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oDateContract, ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
 	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 	
 	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
@@ -254,7 +253,7 @@ ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 
 function GetDataProductPage(nameBenef) {
 	
-	ActivInfinitev7.pProductList.oProductPaging.set('100');
+	ctx.setValue(ActivInfinitev7.pProductList.oProductPaging, '100');
 	
 	var data = [];
 	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
