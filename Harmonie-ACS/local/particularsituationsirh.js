@@ -67,7 +67,7 @@ ActivInfinitev7.step({ addParticularSituation: function(ev, sc, st) {
 } });
 
 ActivInfinitev7.step({ completeParticularSituation: function(ev, sc, st) {
-	ActivInfinitev7.pInfoRoEdit.oCodeSitPart0.set('SS BA');
+	ctx.setValue(ActivInfinitev7.pInfoRoEdit.oCodeSitPart0, 'SS BA');
 	ActivInfinitev7.pInfoRoEdit.btValidate.click();
 	ActivInfinitev7.pInfoRo.wait(function() {
 		return sc.endStep();
@@ -80,7 +80,7 @@ ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
 
 ActivInfinitev7.step({ validateContributionVisu: function(ev, sc, st) {
 	ctx.trace.writeInfo('STEP - validateContributionVisu');
-	ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
+	ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
 	return sc.endStep();
 } });
 

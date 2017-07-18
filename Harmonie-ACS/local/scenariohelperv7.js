@@ -36,10 +36,9 @@
 
 	scenarioHelper.searchContract = function (sc, date, foundCb, notFoundCb) {
 		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.setFocus();
-		ActivInfinitev7.pSearchContractIndiv.oIndividualContract.set(sc.data.contract.individualContract);
+		ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oIndividualContract, sc.data.contract.individualContract);
 		if (date) {
-			ActivInfinitev7.pSearchContractIndiv.oDateContract.setFocus();
-			ActivInfinitev7.pSearchContractIndiv.oDateContract.set(date);
+			ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oDateContract, date);
 		}
 		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 		var foundListener, notFoundListener;
@@ -61,13 +60,10 @@
 	}
 	
 	scenarioHelper.searchCollectiveContract = function (sc, date, foundCb, notFoundCb) {
-		ActivInfinitev7.pMembershipColSearch.oNumberContractCol.setFocus();
-		ActivInfinitev7.pMembershipColSearch.oNumberContractCol.set(sc.data.contract.individualContractCollectif);
-		ActivInfinitev7.pMembershipColSearch.oInsureGroup.setFocus();
-		ActivInfinitev7.pMembershipColSearch.oInsureGroup.set(sc.data.contract.insureGroup);
+		ctx.setValue(ActivInfinitev7.pMembershipColSearch.oNumberContractCol, sc.data.contract.individualContractCollectif);
+		ctx.setValue(ActivInfinitev7.pMembershipColSearch.oInsureGroup, sc.data.contract.insureGroup);
 		if (date) {
-			ActivInfinitev7.pMembershipColSearch.oStartDateEffect.setFocus();
-			ActivInfinitev7.pMembershipColSearch.oStartDateEffect.set(date);
+			ctx.setValue(ActivInfinitev7.pMembershipColSearch.oStartDateEffect, date);
 		}
 		ActivInfinitev7.pMembershipColSearch.btSearch.click();
 		var foundListener, notFoundListener;
@@ -161,8 +157,8 @@
 				sc.setDefaultInst(ev);
 				ActivInfinitev7.pConnection.wait(function () {
 					ctx.trace.writeInfo('login page loaded');
-					ActivInfinitev7.pConnection.oLogin.set(sc.data.login);
-					ActivInfinitev7.pConnection.oPassword.set(sc.data.password);
+					ctx.setValue(ActivInfinitev7.pConnection.oLogin, sc.data.login);
+					ctx.setValue(ActivInfinitev7.pConnection.oPassword, sc.data.password);
 					ActivInfinitev7.pConnection.btLogin.click();
 				
 					ActivInfinitev7.pDashboard.wait(function() {
@@ -191,6 +187,8 @@
 		
 		loop();
 	}
+	
+
 
 	return scenarioHelper;
 }) ();
