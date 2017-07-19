@@ -168,7 +168,7 @@ ActivInfinitev7.step({ beneficiaryNotFound: function(ev, sc, st) {
 
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
-	ctx.setValue(sc.data.contract.paymentMethodCoti, ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut, sc.data.contract.paymentMethodCoti);
 	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'FRA'); // Select 'France' into list
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCivility, sc.data.contract.civility);
