@@ -34,29 +34,8 @@ ActivInfinitev7.step({ searchIndividualContractEffect: function(ev, sc, st) {
 
 ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
-	ActivInfinitev7.pTerminatedContractFo.wait(function() {
-		ActivInfinitev7.pTerminatedContractFo.btNext.click();
-		//Product update isn't a page of terminated contract scenario
-		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
-			ActivInfinitev7.pProductUpdate.btNext.click();
-		});
-		//Divers param isn't a page of terminated contract scenario and it is not in all the terminated product scenario
-		ActivInfinitev7.pDiversParam.events.LOAD.once(function() {
-			ActivInfinitev7.pDiversParam.btNext.click();
-		});
-		//Block notes page comes from 'terminatedCMU' scenario
-		ActivInfinitev7.pBlockNotes.events.LOAD.once(function() {
-			ActivInfinitev7.pBlockNotes.btNext.click();
-		});
-		ActivInfinitev7.pCalculParam.wait(function() {
-			ActivInfinitev7.pCalculParam.btNext.click();
-			ActivInfinitev7.pContributionHistory.wait(function() {
-				ActivInfinitev7.pContributionHistory.btNext.click();
-				ActivInfinitev7.pContributionVisu.wait(function() {	
-					return sc.endStep();
-				});
-			});		
-		});
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function () {
+		return sc.endStep();
 	});
 }});
 
@@ -85,25 +64,9 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-	if (!ActivInfinitev7.currentPage.btClose.exist()) {
-		return sc.endStep();
-	}
-	
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-	ActivInfinitev7.currentPage.btClose.click();
-	
-	function cancelSave() {
-		$('.modal-footer > button[data-bb-handler="no"]').click();
-	};
-	
-	ActivInfinitev7.currentPage.injectFunction(cancelSave);
-	ActivInfinitev7.currentPage.execScript('cancelSave()');
-	// if the search contract page is loaded, we redirect to home
-	ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
-		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
-	});
-	ActivInfinitev7.pDashboard.wait(function() {
-		return sc.endStep();
+	ctx.scenarioHelper.goHome(function () {
+		sc.endStep();
 	});
 }});
 
