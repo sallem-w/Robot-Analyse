@@ -12,9 +12,9 @@
 	sc.step(ActivInfinitev7.steps.isBenefeciaryFound);
 	sc.step(ActivInfinitev7.steps.beneficiaryNotFound);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
-	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
+	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor)
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.nextToPInsuredIdent);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
@@ -107,7 +107,7 @@ ActivInfinitev7.step({ isBeneficiaryInList: function(ev, sc, st) {
 		ActivInfinitev7.pMembershipSearchBene.btCancel.click();
 		sc.data.isNewBenef = true;
 		return ActivInfinitev7.pMembershipMainBenef.wait(function() {
-			return sc.endStep();
+			return sc.endStep(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 		});
 	}
   
@@ -166,7 +166,6 @@ ActivInfinitev7.step({ beneficiaryNotFound: function(ev, sc, st) {
 	return ctx.endScenario(sc, message, comment);
 }});
 
-// FIXME Following steps are nerver called
 ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
 	ctx.setValue(sc.data.contract.paymentMethodCoti, ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut);
@@ -183,29 +182,17 @@ ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio, sc.data.contract.paymentMethodPresta);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFrequencyEch, sc.data.contract.frequencyEch);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oTermeType, sc.data.contract.termType);
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pMembershipMainBenef, function() {
-			return sc.endStep();
-		});
+		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		return sc.endStep();
 	});
-}});
-	
-ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutor');
-	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'ZZZ'); // Select 'pays inconnu' into list
-	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl, sc.data.contract.postalCode);
-	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
-	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
-	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
-	ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-	ActivInfinitev7.pMembershipMainBenef.btNext.click();
-	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ isPrincipalInterlocutorValid: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - isPrincipalInterlocutorValid');
 	var validListener, invalidListener;
 	invalidListener = ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
-		return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
+		return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutor);
 	});
 	validListener = ActivInfinitev7.pInsuredIdent.wait(function() {
 		return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
@@ -221,9 +208,21 @@ ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 		sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 		return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 	} 
-	// FIXME we do nothing if error message is "La localité est obligatoire"
+	
+	return sc.endStep();
 } });
-// FIXME Previous steps are nerver called
+
+ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutor');
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'ZZZ'); // Select 'pays inconnu' into list
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl, sc.data.contract.postalCode);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
+	ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
+	ActivInfinitev7.pMembershipMainBenef.btNext.click();
+	return sc.endStep();
+}});
 
 ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - checkInfoPrincipalInterlocutor');
