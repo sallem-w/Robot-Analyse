@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.scenario({ checkMembership: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.SIRH;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
+	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckMembership);
 	sc.step(ActivInfinitev7.steps.navigateToMembership);

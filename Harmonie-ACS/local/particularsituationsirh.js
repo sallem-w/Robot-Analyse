@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.scenario({ particularSituation2SIRH: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.SIRH;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario();	});
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
+	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeParticularSituation1);
 	sc.step(ActivInfinitev7.steps.waitDashboard);
@@ -15,6 +15,7 @@
 	sc.step(ActivInfinitev7.steps.goToContributionVisu);
 	sc.step(ActivInfinitev7.steps.validateContributionVisu);
 	sc.step(ActivInfinitev7.steps.saveUpdateParticularSituation);
+	sc.step(ActivInfinitev7.steps.abort);
 }});
 
 ActivInfinitev7.step({ initializeParticularSituation1: function(ev, sc, st) {

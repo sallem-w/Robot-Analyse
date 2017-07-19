@@ -1,7 +1,5 @@
 ﻿ActivInfinitev7.scenario({ scenarioSIRH: function(ev, sc) {
 	sc.data.scenarioCode = ctx.config.SIRH;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endScenario(); });
-	sc.onError(function(sc, st, ex) { sc.endScenario();	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initPivot);
 	sc.step(ActivInfinitev7.steps.startScenarioSIRH);
