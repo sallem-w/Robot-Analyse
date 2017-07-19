@@ -192,7 +192,7 @@ ActivInfinitev7.step({ isPrincipalInterlocutorValid: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - isPrincipalInterlocutorValid');
 	var validListener, invalidListener;
 	invalidListener = ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
-		return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutor);
+		return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
 	});
 	validListener = ActivInfinitev7.pInsuredIdent.wait(function() {
 		return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
@@ -221,7 +221,9 @@ ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
 	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
 	ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
 	ActivInfinitev7.pMembershipMainBenef.btNext.click();
-	return sc.endStep();
+	ActivInfinitev7.pInsuredIdent.wait(function() {
+		return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
+	});
 }});
 
 ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
