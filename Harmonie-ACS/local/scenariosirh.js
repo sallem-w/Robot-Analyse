@@ -7,7 +7,7 @@
 	sc.step(ActivInfinitev7.steps.startScenarioSIRH);
 	sc.step(ActivInfinitev7.steps.endScenarioSIRH);
 }});
-	
+
 ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	

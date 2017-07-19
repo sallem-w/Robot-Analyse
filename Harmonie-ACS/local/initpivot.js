@@ -6,9 +6,16 @@
 
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
 	
+	ctx.trace.writeInfo('STEP - Create Pivot');
+	ctx.trace.writeInfo(ctx.options.serverURL + '\\harmonieCustomer.exe ' + ctx.configFile.getPathDirectory());
+	var result = ctx.execRun(ctx.configFile.getHarmonieCustomerPath() + ' ' + ctx.configFile.getPathDirectory(), 1, true);
+	ctx.trace.writeInfo('result : ' + result);
+	
 	ctx.trace.writeInfo('STEP - readFile');
+	ctx.trace.writeInfo('pathFile : ' + ctx.configFile.getPathFile());
 	var fileContracts = ctx.fso.file.read(ctx.configFile.getPathFile());
 	var json = JSON.parse(fileContracts);
+	
 	var headerNames = json.keyLabel;
 	var contracts = json.data;
 	var countContracts = contracts.length;
