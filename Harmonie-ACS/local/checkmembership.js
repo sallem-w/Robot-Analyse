@@ -11,6 +11,7 @@
 	sc.step(ActivInfinitev7.steps.isBeneficiaryInList);
 	sc.step(ActivInfinitev7.steps.isBenefeciaryFound);
 	sc.step(ActivInfinitev7.steps.beneficiaryNotFound);
+	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorPayment);
 	sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 	sc.step(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
 	sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
@@ -107,7 +108,7 @@ ActivInfinitev7.step({ isBeneficiaryInList: function(ev, sc, st) {
 		ActivInfinitev7.pMembershipSearchBene.btCancel.click();
 		sc.data.isNewBenef = true;
 		return ActivInfinitev7.pMembershipMainBenef.wait(function() {
-			return sc.endStep(ActivInfinitev7.steps.setPrincipalInterlocutorData);
+			return sc.endStep(ActivInfinitev7.steps.setPrincipalInterlocutorPayment);
 		});
 	}
   
@@ -166,26 +167,31 @@ ActivInfinitev7.step({ beneficiaryNotFound: function(ev, sc, st) {
 	return ctx.endScenario(sc, message, comment);
 }});
 
-ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
-	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
+ActivInfinitev7.step({ setPrincipalInterlocutorPayment: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorPayment');
 	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentContribut, sc.data.contract.paymentMethodCoti);
-	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function(){
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'FRA'); // Select 'France' into list
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCivility, sc.data.contract.civility);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oName, sc.data.contract.name);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFirstname, sc.data.contract.firstName);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCode, sc.data.contract.postalCode);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocality, sc.data.contract.locality);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, sc.data.contract.addressNumber);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.address);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency, sc.data.contract.paymentFrequency);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio, sc.data.contract.paymentMethodPresta);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFrequencyEch, sc.data.contract.frequencyEch);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oTermeType, sc.data.contract.termType);
-		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+	ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
 		return sc.endStep();
 	});
+}});
+
+ActivInfinitev7.step({ setPrincipalInterlocutorData: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setPrincipalInterlocutorData');
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'FRA'); // Select 'France' into list
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCivility, sc.data.contract.civility);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oName, sc.data.contract.name);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFirstname, sc.data.contract.firstName);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCode, sc.data.contract.postalCode);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocality, sc.data.contract.locality);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, sc.data.contract.addressNumber);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.address);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPaymentFrequency, sc.data.contract.paymentFrequency);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio, sc.data.contract.paymentMethodPresta);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFrequencyEch, sc.data.contract.frequencyEch);
+	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oTermeType, sc.data.contract.termType);
+	ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
+	ActivInfinitev7.pMembershipMainBenef.btNext.click();
+	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ isPrincipalInterlocutorValid: function(ev, sc, st) {
