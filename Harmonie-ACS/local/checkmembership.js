@@ -114,8 +114,10 @@ ActivInfinitev7.step({ isBeneficiaryInList: function(ev, sc, st) {
   
 	var isBenefFound = false;
 	var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
-	for (var index in ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll()) {
-		var benefName = ctx.string.trim(ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).get());
+	ctx.trace.writeInfo(JSON.stringify(ActivInfinitev7.pMembershipSearchBene.oRowResultNameBenef.getAll()));
+	var allBenefName = ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll();
+	for (var index = 0; index < allBenefName.length; index++) {
+		var benefName = ctx.string.trim(allBenefName[index]);
 		if (benefName.indexOf(contractBenefName) !== -1) {
 			ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.i(index).click();
 			isBenefFound = true;
@@ -268,8 +270,7 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ nextToPInsuredIdent: function(ev, sc, st) {
-	ActivInfinitev7.pMembershipMainBenef.btNext.click();
-	ActivInfinitev7.pInsuredIdent.wait(function() {
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInsuredIdent, function () {
 		return sc.endStep();
 	});
 } });
