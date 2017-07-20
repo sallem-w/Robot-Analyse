@@ -114,7 +114,6 @@ ActivInfinitev7.step({ isBeneficiaryInList: function(ev, sc, st) {
   
 	var isBenefFound = false;
 	var contractBenefName = sc.data.contract.name + ' ' + sc.data.contract.firstName;
-	ctx.trace.writeInfo(JSON.stringify(ActivInfinitev7.pMembershipSearchBene.oRowResultNameBenef.getAll()));
 	var allBenefName = ActivInfinitev7.pMembershipSearchBene.oResultNameBenef.getAll();
 	for (var index = 0; index < allBenefName.length; index++) {
 		var benefName = ctx.string.trim(allBenefName[index]);
