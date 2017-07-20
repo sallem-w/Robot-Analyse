@@ -104,21 +104,39 @@
 	}
 
 	scenarioHelper.goHome = function goHome(callback) {
-		if(!ActivInfinitev7.currentPage) {
-			ctx.trace.writeWarning('Waiting for page to load before going to home');
+		ctx.trace.writeInfo('executing goHome()');
+		ctx.trace.writeInfo('ActivInfinitev7.currentPage : ' + ActivInfinitev7.currentPage);
+		if (ActivInfinitev7.currentPage) {
+			ctx.trace.writeInfo('ActivInfinitev7.currentPage.notExist() : ' + ActivInfinitev7.currentPage.notExist());
+		}
+		ctx.trace.writeInfo('isPageLoaded : ' + !ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist()));
+		if (!ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist())) {
+			ctx.trace.writeInfo('Waiting for page to load before going to home');
 			ctx.sleep();
 			return goHome(callback);
 		}
-		if(ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
+		if (ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
+			ctx.trace.writeInfo('Clicking close button');
 			scenarioHelper.forceClick(ActivInfinitev7.currentPage.btClose);
-		} else {
-			ctx.trace.writeWarning('No close button found on current page: navigating to dashboard directly');
-			ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+			return ActivInfinitev7.pDashboard.wait(function() {
+				callback();
+			});
+		}
+		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
+			ctx.trace.writeInfo('Clicking cancel button');
+			ActivInfinitev7.currentPage.btCancel.click();
+			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+				return ActivInfinitev7.events.LOAD.once(function () {
+					return goHome(callback);
+				});
+			});
 		}
 
-		ActivInfinitev7.pDashboard.wait(function() {
-			callback();
-		});
+	ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
+	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+	return ActivInfinitev7.pDashboard.wait(function() {
+		callback();
+	});
 	}
 
 	scenarioHelper.goTo = function(page) {
