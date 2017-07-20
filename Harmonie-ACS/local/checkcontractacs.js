@@ -3,10 +3,10 @@
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort)	});
 	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort)	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
-	// sc.step(ActivInfinitev7.steps.initializeCheckContract);
-	// sc.step(ActivInfinitev7.steps.navigateToSynthesis);
-	// sc.step(ActivInfinitev7.steps.searchBenefInSynthesis);
-	// sc.step(ActivInfinitev7.steps.checkSynthesis);
+	sc.step(ActivInfinitev7.steps.initializeCheckContract);
+	sc.step(ActivInfinitev7.steps.navigateToSynthesis);
+	sc.step(ActivInfinitev7.steps.searchBenefInSynthesis);
+	sc.step(ActivInfinitev7.steps.checkSynthesis);
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
 	sc.step(ActivInfinitev7.steps.acsIndividualContractNotFound);
