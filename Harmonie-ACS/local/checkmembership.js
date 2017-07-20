@@ -349,6 +349,7 @@ ActivInfinitev7.step({ nextToCalculParam: function(ev, sc, st) {
 ActivInfinitev7.step({ getIndividualContractNumber: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - getIndividualContractNumber');
 	sc.data.contract.individualContract = ActivInfinitev7.pCalculParam.oIndividualContractNu.get();
+	return sc.endStep();
 } });
 
 ActivInfinitev7.step({ nextToContributionVisu: function(ev, sc, st) {

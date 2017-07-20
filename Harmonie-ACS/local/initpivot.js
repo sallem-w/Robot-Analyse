@@ -32,6 +32,7 @@
 	names.push('Status contrat');
 	names.push('Commentaire');
 	names.push('Courrier');
+	names.push('Numéro de contrat individuel');
 	ctx.excelHelper.writeArray(1, names);
 	
 	sc.data.indexCurrentContract = 0;
