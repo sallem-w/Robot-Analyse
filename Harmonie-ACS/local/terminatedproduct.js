@@ -102,7 +102,7 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 	});
-	// if the search membership page is loaded, we redirect to home (SIRH case - checkContractSIRH)
+	// if the search membership page is loaded, we redirect to home (SIRH case - checkMembership)
 	ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 	});
