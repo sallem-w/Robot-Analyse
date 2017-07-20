@@ -98,8 +98,12 @@ ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	
 	ActivInfinitev7.currentPage.injectFunction(cancelSave);
 	ActivInfinitev7.currentPage.execScript('cancelSave()');
-	// if the search contract page is loaded, we redirect to home
+	// if the search contract page is loaded, we redirect to home (ACS case - checkContractACS)
 	ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
+		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+	});
+	// if the search membership page is loaded, we redirect to home (SIRH case - checkContractSIRH)
+	ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
 		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
 	});
 	ActivInfinitev7.pDashboard.wait(function() {
