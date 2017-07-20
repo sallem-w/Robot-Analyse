@@ -10,6 +10,13 @@
 		var config = ctx.config.getConfig(codeScenario);
 		rootPath = config.rootPath;
 		
+		var hasExcel = !!config.excel;
+		
+		if (!hasExcel) {
+			fileName = 'pivot.json';
+			fileNameOutput = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + '_Result.xls';
+			return true;
+		}
 		var extensionCheck = ctx.config.getCheckExtension(codeScenario);
 		var files = ctx.fso.folder.getFileCollection(rootPath);
 		var countFile = 0;
@@ -27,7 +34,7 @@
 			ctx.popupHelper.newPopup(countFile + " fichier(s) Excel trouvé(s) dans " + rootPath + ", il en faut un et un seul.", 'Erreur Excel');
 			return false;	
 		}
-		
+
 		var extension = ctx.config.getResultFileExtension(codeScenario, fileName);
 		var fileNameOutputComplete = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + "_" + ctx.string.left(fileName, fileName.length - extension.length - 1)  + "_Result." + extension;
 
@@ -40,6 +47,10 @@
 		fileNameOutput = fileNameOutputComplete;
 		return true;	
 	};
+
+	configFile.getPathDirectory = function() {
+		return rootPath;
+	}
 	
 	configFile.getPathFile = function() {
 		return rootPath + fileName;
@@ -56,6 +67,10 @@
 	configFile.getCodeProductCorrespond = function(codeProduct) {
 		var config = ctx.config.getConfig(ctx.config.ACS);
 		return config.productAccesSante[codeProduct];
+	}
+
+	configFile.getHarmonieCustomerPath = function() {
+		return ctx.options.serverURL + '\\harmonieCustomer.exe';
 	}
 
 	return configFile;
