@@ -41,11 +41,9 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
-	ctx.scenarioHelper.goHome(function() {
-		ActivInfinitev7.pDashboard.btConsultation.click();
-		ActivInfinitev7.pSearchContractIndiv.wait(function() {
-			return sc.endStep();
-		});
+	ActivInfinitev7.pDashboard.btConsultation.click();
+	ActivInfinitev7.pSearchContractIndiv.wait(function() {
+		return sc.endStep();
 	});
 }});
 
