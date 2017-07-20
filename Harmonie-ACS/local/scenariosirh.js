@@ -22,7 +22,6 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 		writeArray.push(sc.data.statusContract);
 		writeArray.push(sc.data.commentContract);
 		writeArray.push(mailPath);
-		writeArray.push(sc.data.contract.individualContract);
 		
 		ctx.excelHelper.writeArray(i + 2, writeArray);
 		ctx.excelHelper.saveFile();
