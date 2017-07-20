@@ -86,6 +86,7 @@ ActivInfinitev7.step({ validateContributionVisu: function(ev, sc, st) {
 } });
 
 ActivInfinitev7.step({ saveUpdateParticularSituation: function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - Particular Situation 1 - ' + sc.data.codeScenario);
 	ActivInfinitev7.scenarios.saveContract.start(sc.data).onEnd(function (scSaveContract) {
 		sc.data.commentContract = scSaveContract.data.commentContract;
 		sc.data.statusContract = scSaveContract.data.statusContract;
