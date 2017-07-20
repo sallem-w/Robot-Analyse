@@ -23,7 +23,7 @@
 		}
 		
 		ActivInfinitev7.currentPage.injectFunction(getMessages);
-		var message = ActivInfinitev7.currentPage.evalScript('getMessages()');
+		var message = ctx.string.trim(ActivInfinitev7.currentPage.evalScript('getMessages()'));
 		return message;
 	}
 
