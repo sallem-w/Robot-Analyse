@@ -1,5 +1,6 @@
 ﻿ActivInfinitev7.scenario({ particularSituation2SIRH: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.SIRH;
+	sc.data.currentScenario = 'Changement situation particulère - SIRH';
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
 	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
 	sc.setMode(e.scenario.mode.noStartIfRunning);
@@ -31,7 +32,7 @@ ActivInfinitev7.step({ waitDashboard : function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToParticularSituation : function(ev, sc, st) {
 	ActivInfinitev7.pDashboard.btParticularSituation.click();
-	ActivInfinitev7.pSearchContractIndivwait(function() {
+	ActivInfinitev7.pSearchContractIndiv.wait(function() {
 		return sc.endStep();
 	});
 }});
