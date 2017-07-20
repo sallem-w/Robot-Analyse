@@ -14,7 +14,7 @@
 		
 		if (!hasExcel) {
 			fileName = 'pivot.json';
-			fileNameOutput = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + '_Result.json';
+			fileNameOutput = ctx.date.formatYYYMMDD(new Date()) + "_" + codeScenario + '_Result.xls';
 			return true;
 		}
 		var extensionCheck = ctx.config.getCheckExtension(codeScenario);
