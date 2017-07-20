@@ -103,28 +103,15 @@ ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 
 	var isCertificateValid = false;
-	try {
-		var allTypes = ActivInfinitev7.pCertificateHelpCS.oType.getAll(true) || [];
-	} catch (error) {
-		ctx.trace.writeInfo('allTypes error : ' + error.message);
-		var allTypes = [];
-	}
-	ctx.trace.writeInfo('allTypes : ' + allTypes);
+	var allTypes = ActivInfinitev7.pCertificateHelpCS.oType.getAll(true) || [];
 	var isCertificateValid = ctx.reduce(function (acc, type, index) {
-		ctx.trace.writeInfo('acc ' + acc);
-		ctx.trace.writeInfo('type |' + type + '|');
-		ctx.trace.writeInfo('index ' + index);
 		if (ctx.string.trim(type) !== 'Attestat° CPAM' || acc) {
-			ctx.trace.writeInfo('acc is true or type is not Attestat° CPAM');
-
 			return acc;
 		}
 
 		var startDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oStartDate.i(index).get()));
 		var endDate = ctx.date.addDay(ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oEndDate.i(index).get())), 1);
 
-		ctx.trace.writeInfo('startDate' + startDate);
-		ctx.trace.writeInfo('endDate' + endDate);
 		return ctx.date.isOnlyOneYearDifference(startDate, endDate);
 	}, false, allTypes);
 
@@ -211,9 +198,7 @@ ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	
 	nameBenefElement.click();
 	
-	ActivInfinitev7.pProductList.events.LOAD.once(function() {
-		return sc.endStep(ActivInfinitev7.steps.checkProductList);
-	});
+	return sc.endStep(ActivInfinitev7.steps.checkProductList);
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
@@ -271,13 +256,15 @@ ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 function GetDataProductPage(nameBenef) {
 	ctx.setValue(ActivInfinitev7.pProductList.oProductPaging, '100');
 
-	var allProductCode = ctx.map(ActivInfinitev7.pProductList.oCodeProduct.getAll(), ctx.string.trim);
-	var allEndDate = ctx.map(ActivInfinitev7.pProductList.oEndDateProduct.getAll(), ctx.string.trim);
+	var allProductCode = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oCodeProduct.getAll());
+	var allEndDate = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oEndDateProduct.getAll());
+	allEndDate = ctx.map(function (date) {
+		return date !== '' ? ctx.date.parseToDate(date) : undefined;
+	}, allEndDate);
 	
-	return ctx.map(allProductCode, function (codeProduct, index) {
+	return ctx.map(function (codeProduct, index) {
 		var endDateProduct = allEndDate[index];
-		endDateProduct = (endDateProduct !== '' ? ctx.date.parseToDate(endDateProduct) : undefined)
 		
 		return { nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct };
-	});		
+	}, allProductCode);		
 }
