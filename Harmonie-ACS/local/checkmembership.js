@@ -19,17 +19,6 @@
 	sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 	sc.step(ActivInfinitev7.steps.nextToPInsuredIdent);
 	sc.step(ActivInfinitev7.steps.setInsuredIndent);
-	sc.step(ActivInfinitev7.steps.toInfoRo);
-
-	// step from particularSituation2SIRH
-	sc.step(ActivInfinitev7.steps.editInfoRo);
-	
-	sc.step(ActivInfinitev7.steps.skipStepIfNoParticularSituation);
-	
-	// step from particularSituation2SIRH
-	sc.step(ActivInfinitev7.steps.addParticularSituation);
-	sc.step(ActivInfinitev7.steps.completeParticularSituation);
-
 	sc.step(ActivInfinitev7.steps.nextToPProductUpdate);
 	sc.step(ActivInfinitev7.steps.editPProductUpdate);
 	sc.step(ActivInfinitev7.steps.setupProductLoop);
@@ -300,24 +289,6 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 		return sc.endStep();
 	});
 }});
-
-ActivInfinitev7.step({ toInfoRo: function(ev, sc, st) {
-	ActivInfinitev7.pInsuredIdent.btInfoRo.click();
-	ActivInfinitev7.pInfoRo.wait(function () {
-		sc.endStep();
-	})
-} });
-
-ActivInfinitev7.step({ skipStepIfNoParticularSituation: function(ev, sc, st) {
-	if (ActivInfinitev7.pInfoRoEdit.oNoSituation.exist()) {
-		return sc.endStep();
-	}
-	
-	ActivInfinitev7.pInfoRoEdit.btCancel.click();
-	return ActivInfinitev7.pInfoRo.wait(function () {
-		return sc.endStep(ActivInfinitev7.steps.nextToPProductUpdate);
-	});
-} });
 
 ActivInfinitev7.step({ nextToPProductUpdate: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToPProductUpdate');
