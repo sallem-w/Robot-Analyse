@@ -59,13 +59,13 @@ ActivInfinitev7.step({ setListSearchMembership: function(ev, sc, st) {
 
 ActivInfinitev7.step({ searchMembership: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - searchMembership');
-	ctx.scenarioHelper.searchCollectiveContract(sc, ctx.date.formatDDMMYYYY(new Date(ctx.date.now())), function () {
+	ctx.scenarioHelper.searchCollectiveContract(sc, ctx.date.monthStart, function () {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - membership found');
 		
 		sc.data.commentContract = 'Adhésion trouvé';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		
-		ctx.setValue(ActivInfinitev7.pTerminatedContractFo.oDemandDate, ctx.date.formatDDMMYYYY(ctx.date.setDate(ctx.date.now(), 1)));
+		ctx.setValue(ActivInfinitev7.pTerminatedContractFo.oDemandDate, ctx.date.monthStart);
 		ActivInfinitev7.pTerminatedContractFo.btNext.click();
 		ActivInfinitev7.pMembershipSearchBene.wait(function() {
 			return sc.endStep();
@@ -279,7 +279,7 @@ ActivInfinitev7.step({ setInsuredIndent: function(ev, sc, st) {
 	ctx.setValue(ActivInfinitev7.pInsuredIdent.oMaidenName, sc.data.contract.maidenName);
 	ctx.setValue(ActivInfinitev7.pInsuredIdent.oInsuredType, sc.data.contract.insuredType);
 	ctx.setValue(ActivInfinitev7.pInsuredIdent.oSexe, sc.data.contract.sexe);
-	ctx.setValue(ActivInfinitev7.pInsuredIdent.oBirthday, ctx.date.formatDDMMYYYY(new Date(sc.data.contract.birthDate)));
+	ctx.setValue(ActivInfinitev7.pInsuredIdent.oBirthday, ctx.date.formatDDMMYYYY(sc.data.contract.birthDate));
 	ctx.setValue(ActivInfinitev7.pInsuredIdent.oSocialCategorie, sc.data.contract.socialCategory);
 	ctx.setValue(ActivInfinitev7.pInsuredIdent.oRankBirthday, sc.data.contract.rankBirthday);
 
