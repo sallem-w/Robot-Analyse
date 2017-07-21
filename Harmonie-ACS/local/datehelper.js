@@ -10,6 +10,9 @@
 	};
 	
 	date.formatDDMMYYYY = function(dateObj, separator) {
+		if (typeof dateObj !== 'object') {
+			dateObj = new Date(dateObj);
+		}
 		separator = separator || '/';
 		var month = date.padLeft(dateObj.getMonth() + 1);
 		var day = date.padLeft(dateObj.getDate());
@@ -100,6 +103,9 @@
 		result.setDate(day);
 		return result;
 	}
+	
+	date.today = date.formatDDMMYYYY(date.now());
+	date.monthStart = date.formatDDMMYYYY(date.setDate(date.now(), 1));
 
 	return date;
 }) ();
