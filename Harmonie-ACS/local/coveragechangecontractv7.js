@@ -139,9 +139,8 @@ ActivInfinitev7.step({ checkElementDiffereIntoAskThirdPartyPayment: function(ev,
 	} else {
 		ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
 	}
-	
-	ActivInfinitev7.pCoverageImmediateCar.btNext.click();
-	ActivInfinitev7.pDashboard.wait(function() {
+
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function () {
 		return sc.endStep();
 	});
 }});

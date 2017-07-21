@@ -65,8 +65,8 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-	ctx.scenarioHelper.goHome(function () {
-		sc.endStep();
+	return ctx.scenarioHelper.goHome(function () {
+		return sc.endStep();
 	});
 }});
 
