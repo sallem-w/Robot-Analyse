@@ -85,32 +85,8 @@ ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-	if (!ActivInfinitev7.currentPage.btClose.exist()) {
-		return sc.endStep();
-	}
-	
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-	ActivInfinitev7.currentPage.btClose.click();
-	
-	function cancelSave() {
-		$('.modal-footer > button[data-bb-handler="no"]').click();
-	};
-	
-	ActivInfinitev7.currentPage.injectFunction(cancelSave);
-	ActivInfinitev7.currentPage.execScript('cancelSave()');
-	// if the search contract page is loaded, we redirect to home (ACS case - checkContractACS)
-	ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
-		ctx.scenarioHelper.goHome(function() {
-			return sc.endStep();
-		});
-	});
-	// if the search membership page is loaded, we redirect to home (SIRH case - checkMembership)
-	ActivInfinitev7.pMembershipColSearch.events.LOAD.once(function() {
-		ctx.scenarioHelper.goHome(function() {
-			return sc.endStep();
-		});
-	});
-	ActivInfinitev7.pDashboard.wait(function() {
+	ctx.scenarioHelper.goHome(function() {
 		return sc.endStep();
 	});
 }});
