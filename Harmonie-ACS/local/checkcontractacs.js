@@ -1,7 +1,10 @@
 ﻿ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.ACS;
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort)	});
-	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort)	});
+	sc.onError(function(sc, st, ex) { 
+		ctx.trace.writeError(ex);
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToSynthesis);
@@ -185,20 +188,22 @@ ActivInfinitev7.step({ initProductLoop : function(ev, sc, st) {
 
 ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
-	
-	if (sc.data.indexBenef >= sc.data.countBenef) {
-		return sc.endStep();
-	}
-	
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
 	var nameBenef = nameBenefElement.get();
 	
 	sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
 	sc.data.indexBenef += 1;
-	
-	nameBenefElement.click();
-	
-	return sc.endStep(ActivInfinitev7.steps.checkProductList);
+
+	if (sc.data.indexBenef >= sc.data.countBenef) {
+		return sc.endStep();
+	}
+	var nextBenef = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
+	nextBenef.setFocus();
+	nextBenef.click();
+
+	return ActivInfinitev7.pProductList.events.LOAD.once(function () {
+		return sc.endStep(ActivInfinitev7.steps.checkProductList);
+	});
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
@@ -214,8 +219,8 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 
 		// Need to add one day, Infinite have one day early
 		if (benef.codeProduct === sc.data.contract.subscribedCodeProduct &&
-			  benef.endDateProduct !== undefined && 
-			  ctx.date.isEqual(benef.endDateProduct, ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1))) {	
+		  benef.endDateProduct !== undefined && 
+		  ctx.date.isEqual(benef.endDateProduct, ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1))) {	
 			validDateCurrentProduct = true;
 		}
 		
@@ -228,21 +233,22 @@ ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
 		sc.data.commentContract = 'Cas d\'un contrat résilié, tous les produits ont la même date de fin --> Faire sans-effet contrat + Changement de couverture + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractTerminated = true;
+		ctx.trace.writeInfo('All contracts are terminated: going home');
 		return ctx.scenarioHelper.goHome(function() {
 			return sc.endStep();
 		});
-	}
-	else if (validDateCurrentProduct) {
+	} else if (validDateCurrentProduct) {
 		sc.data.commentContract = 'Cas d\'un contrat non résilié mais avec le produit Accès Santé radié, tous les produits ne sont pas fermé et le produit courant à la bonne date de fin --> Faire sans-effet produit + Changement couverture produit + Résiliation programmée'
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.isContractWithProductACS = true;
+		ctx.trace.writeInfo('contract not terminated but health access aborted : going home');
 		return ctx.scenarioHelper.goHome(function() {
 			return sc.endStep();
 		});
-	}
-	else {
+	} else {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page';
 		var comment = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
+		ctx.trace.writeInfo('contract not in handled case : ending scenario');
 		return ctx.endScenario(sc, message, comment);
 	}
 }});

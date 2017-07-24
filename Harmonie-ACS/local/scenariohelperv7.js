@@ -126,17 +126,17 @@
 			ctx.trace.writeInfo('Clicking cancel button');
 			ActivInfinitev7.currentPage.btCancel.click();
 			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-				return ActivInfinitev7.events.LOAD.once(function () {
-					return goHome(callback);
-				});
+				// return ActivInfinitev7.events.LOAD.once(function () {
+				return goHome(callback);
+				// });
 			});
 		}
 
-	ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
-	ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
-	return ActivInfinitev7.pDashboard.wait(function() {
-		callback();
-	});
+		ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
+		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+		return ActivInfinitev7.pDashboard.wait(function() {
+			callback();
+		});
 	}
 
 	scenarioHelper.goTo = function(page) {
