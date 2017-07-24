@@ -1,5 +1,6 @@
 ﻿ActivInfinitev7.scenario({ checkMembership: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.SIRH;
+	sc.data.currentScenario = 'Pré-adhésion - SIRH';
 	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
 	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
 	sc.setMode(e.scenario.mode.noStartIfRunning);
@@ -349,6 +350,7 @@ ActivInfinitev7.step({ nextToCalculParam: function(ev, sc, st) {
 ActivInfinitev7.step({ getIndividualContractNumber: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - getIndividualContractNumber');
 	sc.data.contract.individualContract = ActivInfinitev7.pCalculParam.oIndividualContractNu.get();
+	return sc.endStep();
 } });
 
 ActivInfinitev7.step({ nextToContributionVisu: function(ev, sc, st) {

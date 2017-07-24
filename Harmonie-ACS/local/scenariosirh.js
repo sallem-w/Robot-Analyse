@@ -12,6 +12,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	sc.data.statusContract = '';
 	sc.data.commentContract = '';
 	sc.data.contract = sc.data.contracts[i];
+	sc.data.contract.individualContract = '';
 	ctx.mail.init(sc.data.customerName);
 	
 	startScenarioSIRH(sc, (function() {
