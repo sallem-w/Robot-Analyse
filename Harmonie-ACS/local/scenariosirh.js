@@ -66,12 +66,14 @@ function startScenarioSIRH(sc, callback) {
 		sc.data.contract = scCheckMembership.data.contract;
 		sc.data.commentContract = scCheckMembership.data.commentContract;
 		sc.data.statusContract = scCheckMembership.data.statusContract;
+		sc.data.noteContract = scCheckMembership.data.noteContract;
 		if (sc.data.statusContract !== ctx.excelHelper.constants.status.Success) {
 			return callback();
 		}
 		ActivInfinitev7.scenarios.particularSituation2SIRH.start(sc.data).onEnd(function (scParticularSituation) {
 			sc.data.commentContract = scParticularSituation.data.commentContract;
 			sc.data.statusContract = scParticularSituation.data.statusContract;
+			sc.data.noteContract = scParticularSituation.data.noteContract;
 			return callback();
 		});
 	});
