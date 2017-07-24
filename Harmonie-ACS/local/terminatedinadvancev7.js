@@ -7,6 +7,8 @@
 	sc.step(ActivInfinitev7.steps.initializeTerminatedInAdvanceContract);
 	sc.step(ActivInfinitev7.steps.searchTerminatedInAdvanceContract);
 	sc.step(ActivInfinitev7.steps.goToSavePageTerminatedInAdvanceContract);
+	sc.step(ActivInfinitev7.steps.checkCalculIfNeeded);
+	sc.step(ActivInfinitev7.steps.validateContribution);
 	sc.step(ActivInfinitev7.steps.saveContract);
 	sc.step(ActivInfinitev7.steps.closeContractUpdate);
 	sc.step(ActivInfinitev7.steps.endTerminatedInAdvanceContract);
@@ -33,35 +35,26 @@ ActivInfinitev7.step({ searchTerminatedInAdvanceContract: function(ev, sc, st) {
 
 ActivInfinitev7.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToSavePageTerminatedInAdvanceContract');
-	
-	ActivInfinitev7.pTerminatedContractFo.btNext.click();
-	ActivInfinitev7.pBlockNotes.wait(function() {
-		ActivInfinitev7.pBlockNotes.btNext.click();
-		ActivInfinitev7.pCalculParam.wait(function() {
-			ActivInfinitev7.pCalculParam.btNext.click();
-			ActivInfinitev7.pCalculParam.events.UNLOAD.once(function() {
-				//If pCalculParam is RELOAD, then an error is occured and we do check the calcul item
-				ActivInfinitev7.pCalculParam.events.LOAD.once(function() {
-					ActivInfinitev7.pCalculParam.oCalculCheck.click();
-					ActivInfinitev7.pCalculParam.btNext.click();
-				});
-				
-				ActivInfinitev7.pContributionHistory.events.LOAD.once(function() {
-					ActivInfinitev7.pContributionHistory.btNext.click();
-				});
-				
-				ActivInfinitev7.pContributionVisu.events.LOAD.once(function() {
-					ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
-					ActivInfinitev7.pContributionVisu.btNext.click();
-				});
-				
-				ActivInfinitev7.pSaveUpdate.wait(function() {
-					return sc.endStep();
-				});
-			});
-		});
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCalculParam, function () {
+		return sc.endStep();
 	});
 }});
+
+ActivInfinitev7.step({ checkCalculIfNeeded: function () {
+	if(!ActivInfinitev7.pCalculParam.oNoCalculStatic.exist()) {
+		ActivInfinitev7.pCalculParam.oCalculCheck.click();
+	}
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function () {
+		return sc.endStep();
+	});
+} });
+
+ActivInfinitev7.step({ validateContribution: function (ev) {
+	ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
+	ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function () {
+		return sc.endStep();
+	});
+} });
 
 
 ActivInfinitev7.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {

@@ -9,11 +9,15 @@
 	sc.step(ActivInfinitev7.steps.checkSynthesis);
 	sc.step(ActivInfinitev7.steps.navigateToConsultation);
 	sc.step(ActivInfinitev7.steps.searchIndividualContract);
+	sc.step(ActivInfinitev7.steps.acsIndividualContractNotFound);
+	sc.step(ActivInfinitev7.steps.acsIndividualContractFound);
 	sc.step(ActivInfinitev7.steps.checkBlockNote);
+	sc.step(ActivInfinitev7.steps.gotToHelpCsCertificate);
 	sc.step(ActivInfinitev7.steps.checkCertificateHelpCS);
 	sc.step(ActivInfinitev7.steps.conditionControlContribution);
 	sc.step(ActivInfinitev7.steps.checkContribution);
 	sc.step(ActivInfinitev7.steps.goToProductList);
+	sc.step(ActivInfinitev7.steps.initProductLoop);
 	sc.step(ActivInfinitev7.steps.checkProductList);
 	sc.step(ActivInfinitev7.steps.manageDataProductList);
 	sc.step(ActivInfinitev7.steps.endCheckContract);
@@ -37,46 +41,45 @@ ActivInfinitev7.step({ searchBenefInSynthesis : function(ev, sc, st) {
 
 ActivInfinitev7.step({ navigateToConsultation : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - navigateToConsultation');
-	ctx.scenarioHelper.goHome(function() {
-		ActivInfinitev7.pDashboard.btConsultation.click();
-		ActivInfinitev7.pSearchContractIndiv.wait(function() {
-			return sc.endStep();
-		});
+	ActivInfinitev7.pDashboard.btConsultation.click();
+	ActivInfinitev7.pSearchContractIndiv.wait(function() {
+		return sc.endStep();
 	});
 }});
 
 ActivInfinitev7.step({ searchIndividualContract : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContract');
 	
-	ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oIndividualContract, sc.data.contract.individualContract);
-	ctx.setValue(ActivInfinitev7.pSearchContractIndiv.oDateContract, ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)));
-	ActivInfinitev7.pSearchContractIndiv.btSearch.click();
-	
-	ActivInfinitev7.pTerminatedContractFo.events.LOAD.once(function() {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
-		
-		sc.data.commentContract = 'Contrat trouvé';
-		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-		
-		ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
-		ActivInfinitev7.pBlockNotes.wait(function() {
-			return sc.endStep();
-		});
-	});
-	
-	ActivInfinitev7.pSearchContractIndiv.events.UNLOAD.once(function() {
-		ActivInfinitev7.pSearchContractIndiv.events.LOAD.once(function() {
-			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
-			var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-			return ctx.endScenario(sc, message, comment);
-		});
+	ctx.scenarioHelper.searchContract(sc, ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)), function () {
+		sc.endStep(ActivInfinitev7.steps.acsIndividualContractFound);
+	}, function () {
+		sc.endStep(ActivInfinitev7.steps.acsIndividualContractNotFound);
 	});
 }});
+
+ActivInfinitev7.step({ acsIndividualContractNotFound : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract not found');
+	var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
+ 	var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+ 	return ctx.endScenario(sc, message, comment);
+} });
+
+ActivInfinitev7.step({ acsIndividualContractFound : function(ev, sc, st) {
+	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
+	
+	sc.data.commentContract = 'Contrat trouvé';
+	sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+	
+	ActivInfinitev7.pTerminatedContractFo.btNavigateBlockNote.click();
+	ActivInfinitev7.pBlockNotes.wait(function() {
+		return sc.endStep();
+	});
+} });
 
 ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkBlockNote');
 	
-	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
+	var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.exist() && ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
 	if (ctx.string.trim(contentBlockNote) !== '' && sc.data.config.controlBlockNote) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
 		var comment = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
@@ -85,38 +88,39 @@ ActivInfinitev7.step({ checkBlockNote: function(ev, sc, st) {
 	
 	ActivInfinitev7.pBlockNotes.btInsuredIdentPage.click();
 	ActivInfinitev7.pInsuredIdent.wait(function() {
-		ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
-		ActivInfinitev7.pCertificateHelpCS.wait(function() {
-			return sc.endStep();
-		});
+		return sc.endStep();
 	});
 }});
 
+ActivInfinitev7.step({ gotToHelpCsCertificate: function(ev, sc, st) {
+	ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
+	ActivInfinitev7.pCertificateHelpCS.wait(function() {
+		return sc.endStep();
+	});
+} });
+
 ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
-	
+
 	var isCertificateValid = false;
-	
-	for (var index in ActivInfinitev7.pCertificateHelpCS.oType.getAll()) {
-		var type = ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oType.i(index).get());
-		
-		if (type !== 'Attestat° CPAM') {
-			continue;
+	var allTypes = ActivInfinitev7.pCertificateHelpCS.oType.getAll(true) || [];
+	var isCertificateValid = ctx.reduce(function (acc, type, index) {
+		if (ctx.string.trim(type) !== 'Attestat° CPAM' || acc) {
+			return acc;
 		}
-		
+
 		var startDate = ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oStartDate.i(index).get()));
 		var endDate = ctx.date.addDay(ctx.date.parseToDate(ctx.string.trim(ActivInfinitev7.pCertificateHelpCS.oEndDate.i(index).get())), 1);
 
-		isCertificateValid = ctx.date.isOnlyOneYearDifference(startDate, endDate);
-		break;
-	}
-	
+		return ctx.date.isOnlyOneYearDifference(startDate, endDate);
+	}, false, allTypes);
+
 	if (!isCertificateValid) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference';
 		var comment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
 		return ctx.endScenario(sc, message, comment);
 	}
-	
+
 	ActivInfinitev7.pCertificateHelpCS.btVisuCotisation.click();
 	ActivInfinitev7.pContribution.wait(function() {
 		return sc.endStep();
@@ -141,62 +145,60 @@ ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
 	}
 
 	var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
-	var isValidContribution = false;
 	
-	for (var index in ActivInfinitev7.pContribution.oDateEch.getAll()) {
-		var dateEch = ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(index).get());
-		var balanceEch = ctx.string.trim(ActivInfinitev7.pContribution.oBalanceEch.i(index).get());
-		
+	var allDate = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
+	var allBalance = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
+				
+	var isValidContribution = allDate.reduce(function (acc, dateEch, index) {
+		if (acc) return acc;
+
+		var balanceEch = allBalance[index];
 		if (ctx.date.parseToDate(dateEch) <= compareDate) {
-			isValidContribution = (parseFloat(balanceEch) < 1)
-			break;
+			return (parseFloat(balanceEch) < 1);
 		}
-	}
-	
+
+		return acc;
+	}, false, allDate);
+
 	if (!isValidContribution) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date';
 		var comment = 'Revoir centre: Solde comptable non à jour';
 		return ctx.endScenario(sc, message, comment);
 	}
-	
+
 	return sc.endStep();
 }});
 
 ActivInfinitev7.step({ goToProductList : function(ev, sc, st) {
 	ActivInfinitev7.pContribution.btProductList.click();
 	ActivInfinitev7.pProductList.wait(function() {
-		sc.data.indexBenef = 0;
-		sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
-		sc.data.dataBenef = [];
 		return sc.endStep();
 	});
 }});
 
+ActivInfinitev7.step({ initProductLoop : function(ev, sc, st) {
+	sc.data.indexBenef = 0;
+	sc.data.countBenef = ActivInfinitev7.pProductList.oNameBenef.count();
+	sc.data.dataBenef = [];
+	return sc.endStep();
+} });
+
 ActivInfinitev7.step({ checkProductList : function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkProductList');
 	
-	if (sc.data.indexBenef === sc.data.countBenef) {
+	if (sc.data.indexBenef >= sc.data.countBenef) {
 		return sc.endStep();
 	}
 	
 	var nameBenefElement = ActivInfinitev7.pProductList.oNameBenef.i(sc.data.indexBenef);
 	var nameBenef = nameBenefElement.get();
 	
-	if (sc.data.indexBenef === 0) {
-		sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
-		sc.data.indexBenef += 1;
-		return sc.endStep(ActivInfinitev7.steps.checkProductList);
-	}
+	sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
+	sc.data.indexBenef += 1;
 	
 	nameBenefElement.click();
 	
-	ActivInfinitev7.pProductList.events.UNLOAD.once(function() {
-		ActivInfinitev7.pProductList.events.LOAD.once(function() {
-			sc.data.dataBenef = sc.data.dataBenef.concat(GetDataProductPage(nameBenef));
-			sc.data.indexBenef += 1;
-			return sc.endStep(ActivInfinitev7.steps.checkProductList);
-		});
-	});
+	return sc.endStep(ActivInfinitev7.steps.checkProductList);
 }});
 
 ActivInfinitev7.step({ manageDataProductList : function(ev, sc, st) {
@@ -252,17 +254,17 @@ ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 }});
 
 function GetDataProductPage(nameBenef) {
-	
 	ctx.setValue(ActivInfinitev7.pProductList.oProductPaging, '100');
+
+	var allProductCode = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oCodeProduct.getAll());
+	var allEndDate = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oEndDateProduct.getAll());
+	allEndDate = ctx.map(function (date) {
+		return date !== '' ? ctx.date.parseToDate(date) : undefined;
+	}, allEndDate);
 	
-	var data = [];
-	for (var indexProduct in ActivInfinitev7.pProductList.oCodeProduct.getAll()) {
-		var codeProduct = ctx.string.trim(ActivInfinitev7.pProductList.oCodeProduct.i(indexProduct).get());
-		var endDateProduct = ctx.string.trim(ActivInfinitev7.pProductList.oEndDateProduct.i(indexProduct).get());
-		endDateProduct = (endDateProduct !== '' ? ctx.date.parseToDate(endDateProduct) : undefined)
+	return ctx.map(function (codeProduct, index) {
+		var endDateProduct = allEndDate[index];
 		
-		data.push({nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct });
-	}
-		
-	return data;
+		return { nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct };
+	}, allProductCode);		
 }

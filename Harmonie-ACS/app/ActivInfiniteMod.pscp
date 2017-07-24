@@ -1284,8 +1284,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oNoCalculStatic">
+							<CRITERE>
+								<TAG Name="P" Scope="All" CapturedPos="128.R0R1R14R1R0R2R0R0R2R9R1R0R1R2R3">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[pasCalcul-static]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ResiliationContrat_1411275_1" Comment="Resiliation Contrat - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="02/06/2017 14:11:29" />
+					<CAPTURE Name="PAGE_ResiliationContrat_1024224_1" Comment="Resiliation Contrat - N°21999694 - Valide - Adhérent : Mademoiselle BELACEL NOELLE - haum0a - Activ Infinite - Module de gestion" CtxtId="128" Techno="WEB" Timestamp="20/07/2017 10:24:24" />
 				</PAGE>
 				<PAGE Name="pContributionHistory" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -2175,7 +2185,7 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="ScenarioACS" Folder="ScenarioACS" Src="ScenarioACS.js" />
+				<SCRIPT Name="ScenarioACS" Src="ScenarioACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFile" Src="ExcelFile.js" />
 				<SCRIPT Name="TerminatedProduct" Folder="ScenarioACS" Src="TerminatedProduct.js" />
 				<SCRIPT Name="CheckContractACS" Folder="ScenarioACS" Src="CheckContractACS.js" />
