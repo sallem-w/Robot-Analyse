@@ -32,6 +32,7 @@
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
 	names.push('Commentaire');
+	names.push('Remarque');
 	names.push('Courrier');
 	ctx.excelHelper.writeArray(1, names);
 	

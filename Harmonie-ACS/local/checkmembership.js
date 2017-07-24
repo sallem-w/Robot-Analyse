@@ -213,6 +213,7 @@ ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 
 ActivInfinitev7.step({ validPrincipalInterlocutor: function(ev, sc, st) {
 	ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutor');
+	sc.data.noteContract = 'France sans contôle a séléctionné comme pays';
 	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'ZZZ'); // Select 'pays inconnu' into list
 	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl, sc.data.contract.postalCode);
 	ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
@@ -241,9 +242,7 @@ ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
 		if (ctx.string.trim(fieldToCheck.infiniteValue).toLowerCase().indexOf(ctx.string.trim(fieldToCheck.pivotValue).toLowerCase()) === -1) {
 			var message = 'Une valeur est différente : ' + fieldToCheck.elementName + ' a pour valeur \'' + fieldToCheck.infiniteValue + '\' dans infinite, mais \'' + fieldToCheck.pivotValue + '\' dans le fichier donné en entrée';
 			ctx.trace.writeInfo(message);
-			sc.data.commentContract = 'Revoir centre : ' + message;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			sc.data.noteContract = message;
 		}
 	}
 	
