@@ -12,16 +12,17 @@
 		
 		sc.data.statusContract = '';
 		sc.data.commentContract = '';
+		sc.data.noteContract = '';
 		sc.data.contract = sc.data.contracts[i];
 		sc.data.contract.individualContract = '';
-		
-		startScenarioSIRHUpdate(sc, (function() {
+
+		return startScenarioSIRHUpdate(sc.data.contract.type, sc, (function() {
 			var writeArray = _.getObjectValues(sc.data.contract);
 			writeArray.push(ctx.date.formatTrace(new Date()));
 			writeArray.push(sc.data.statusContract);
 			writeArray.push(sc.data.commentContract);
 			writeArray.push(sc.data.noteContract);
-			
+
 			ctx.excelHelper.writeArray(i + 2, writeArray);
 			ctx.excelHelper.saveFile();
 			
@@ -48,7 +49,16 @@
 		return sc.endStep();
 	}});
 
-	function startScenarioSIRHUpdate(sc, callback) {
+	var scenarios = {
+		MUTATION: 'ActivInfinitev7.steps.SIRH_MUT'
+	};
+
+	function startScenarioSIRHUpdate(type, sc, callback) {
+		var scenario = scenarios[type];
+		if(!scenario) {
+			sc.data.statusContract = 'Non traité';
+			sc.data.commentContract = 'Type de traitement non géré : ' + type;
+		}
 		return callback();
 	}
 }
