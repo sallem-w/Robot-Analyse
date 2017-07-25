@@ -1,7 +1,13 @@
 ﻿ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.CMU;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort) });
-	sc.onError(function(sc, st, ex) {  sc.endStep(ActivInfinitev7.steps.abort)  });
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ' Timeout aborting current scenario');
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
+	sc.onError(function(sc, st, ex) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ex + ' aborting current scenario');
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeCheckContract);
 	sc.step(ActivInfinitev7.steps.navigateToConsultationCMU);
