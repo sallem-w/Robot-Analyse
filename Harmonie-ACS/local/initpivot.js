@@ -27,7 +27,7 @@
 	ctx.excelHelper.saveFile(ctx.configFile.getPathFileOutput()); 
 	
 	ctx.trace.writeInfo('STEP - writeHeaderOutputFile');
-	var names = getObjectValues(headerNames);
+	var names = _.getObjectValues(headerNames);
 	names.push('Numéro de contrat individuel');
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
