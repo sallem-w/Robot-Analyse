@@ -117,6 +117,7 @@
 		}
 		if (ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
 			ctx.trace.writeInfo('Clicking close button');
+			ActivInfinitev7.currentPage.btClose.setFocus();
 			scenarioHelper.forceClick(ActivInfinitev7.currentPage.btClose);
 			return ActivInfinitev7.pDashboard.wait(function() {
 				callback();
@@ -124,6 +125,7 @@
 		}
 		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
 			ctx.trace.writeInfo('Clicking cancel button');
+			ActivInfinitev7.currentPage.btCancel.setFocus();
 			ActivInfinitev7.currentPage.btCancel.click();
 			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
 				return goHome(callback);
