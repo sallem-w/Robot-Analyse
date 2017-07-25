@@ -8,6 +8,7 @@
 	config.CMU = 'CMU';
 	config.ACS = 'ACS';
 	config.SIRH = 'SIRH';
+	config.SIRHUpdate = 'SIRHUpdate';
 	config.DA = 'DA';
 	
 	config.loadConfigFile = function() {

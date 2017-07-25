@@ -120,6 +120,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configCMU = ctx.config.getConfig(ctx.config.CMU);
 	var configSIRH = ctx.config.getConfig(ctx.config.SIRH);
 	var configDA = ctx.config.getConfig(ctx.config.DA);
+	var configSIRHUpdate = ctx.config.getConfig(ctx.config.SIRHUpdate);
 
 	if (configACS.showMenu) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
@@ -150,6 +151,18 @@ GLOBAL.events.START.on(function (ev) {
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 				ActivInfinitev7.scenarios.scenarioSIRH.start({ path: path, login: login, password: password });
+			});
+		});	
+	}
+	
+	if (configSIRHUpdate.showMenu) {
+		setupScenarioSIRHUpdate();
+		systray.addMenu('', 'SIRHUpdate', 'SIRH update scenario');
+		systray.addMenu('SIRHUpdate', 'SIRHUpdateCompletV7', 'Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRHUpdate);
+			connectionInfinite(function(path, login, password) {
+				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRHUpdate.rootPath, ctx.config.SIRHUpdate);
+				ActivInfinitev7.scenarios.scenarioSIRHUpdate.start({ path: path, login: login, password: password });
 			});
 		});	
 	}

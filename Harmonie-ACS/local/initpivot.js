@@ -5,7 +5,7 @@
 	}
 
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
-	
+ctx.trace.writeInfo(JSON.stringify(sc.data.config));
 	ctx.trace.writeInfo('STEP - Create Pivot');
 	ctx.trace.writeInfo(ctx.options.serverURL + '\\harmonieCustomer.exe ' + ctx.configFile.getPathDirectory());
 	var result = ctx.execRun(ctx.configFile.getHarmonieCustomerPath() + ' ' + ctx.configFile.getPathDirectory(), 1, true);
