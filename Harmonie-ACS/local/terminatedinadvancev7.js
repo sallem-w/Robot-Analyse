@@ -1,8 +1,14 @@
 ﻿ActivInfinitev7.scenario({ terminatedInAdvanceContract: function(ev, sc) {
 	var data = sc.data;
 	sc.data.currentScenario = 'Contrat résilié en avance';
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort);	});
-	sc.onError(function(sc, st, ex) { sc.endStep(ActivInfinitev7.steps.abort);	});
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ' Timeout aborting current scenario');
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
+	sc.onError(function(sc, st, ex) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ex + ' aborting current scenario');
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.initializeTerminatedInAdvanceContract);
 	sc.step(ActivInfinitev7.steps.searchTerminatedInAdvanceContract);

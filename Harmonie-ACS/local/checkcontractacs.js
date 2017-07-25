@@ -1,8 +1,11 @@
 ﻿ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 	sc.data.codeScenario = ctx.config.ACS;
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) { sc.endStep(ActivInfinitev7.steps.abort)	});
-	sc.onError(function(sc, st, ex) { 
-		ctx.trace.writeError(ex);
+	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ' Timeout aborting current scenario');
+		sc.endStep(ActivInfinitev7.steps.abort);
+	});
+	sc.onError(function(sc, st, ex) {
+		ctx.trace.writeError(sc.data.contract.individualContract + ex + ' aborting current scenario');
 		sc.endStep(ActivInfinitev7.steps.abort);
 	});
 	sc.setMode(e.scenario.mode.noStartIfRunning);

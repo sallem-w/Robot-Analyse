@@ -126,9 +126,7 @@
 			ctx.trace.writeInfo('Clicking cancel button');
 			ActivInfinitev7.currentPage.btCancel.click();
 			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-				// return ActivInfinitev7.events.LOAD.once(function () {
 				return goHome(callback);
-				// });
 			});
 		}
 
