@@ -130,10 +130,8 @@
 		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
 			ctx.trace.writeInfo('Clicking cancel button');
 			scenarioHelper.focusClick(ActivInfinitev7.currentPage.btCancel);
-			return ActivInfinitev7.currentPage.events.UNLOAD.once(function() {
-				return ActivInfinitev7.currentPage.events.LOAD.once(function() {
-					return goHome(callback);
-				});
+			return ActivInfinitev7.events.LOAD.once(function() {
+				return goHome(callback);
 			});
 		}
 
