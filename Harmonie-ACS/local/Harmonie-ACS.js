@@ -5,6 +5,8 @@ GLOBAL.labels.setLanguage('fr');
 // Global Systray object
 var systray = ctx.systray();
 
+var setupScenario = {};
+
 /** String table (English/French/German) */
 GLOBAL.labels.set({
 	menu: {
@@ -128,6 +130,7 @@ GLOBAL.events.START.on(function (ev) {
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+				setupScenario.ACS();
 				ActivInfinitev7.scenarios.scenarioACS.start({ path: path, login: login, password: password });
 			});
 		});	
