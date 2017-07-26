@@ -153,6 +153,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('SIRH', 'SIRHCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRH);
 			connectionInfinite(function(path, login, password) {
+				setupScenario.SIRH();
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 				ActivInfinitev7.scenarios.scenarioSIRH.start({ path: path, login: login, password: password });
 			});
