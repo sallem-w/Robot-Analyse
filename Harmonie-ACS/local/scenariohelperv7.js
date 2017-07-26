@@ -169,9 +169,7 @@
 	
 	scenarioHelper.connectionAuto = function(sc) {
 		ctx.trace.writeInfo('Reconnecting ...');
-		ctx.exec('taskkill /f /im iexplore.exe');
-		ActivInfinitev7.notify(ActivInfinitev7.events.QUIT);
-		ActivInfinitev7.notify(ActivInfinitev7.events.END);
+		ActivInfinitev7.close();
 		ActivInfinitev7.waitClose(function () {
 			ctx.trace.writeInfo('IE closed');
 			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
