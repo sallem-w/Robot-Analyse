@@ -60,6 +60,7 @@
 		}
 		catch (error) { 
 			// Try catch empty, sometimes ctx.word.file.close close all word instance and ctx.word.end throw error because I found 0 instance
+			ctx.trace.writeWarning('Exception, when we try to close word (ctx.word.end())');
 		}
 	}
 	
