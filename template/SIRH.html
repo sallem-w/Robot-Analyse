@@ -13,8 +13,20 @@
     <td>{{ totalTimeDuration }}</td>
   </tr>
   <tr>
-    <td>Nombre de contrats trouvés</td>
+    <td>Nombre d'adhésions trouvés</td>
+    <td>{{ countCaseFindIntoPivot }}</td>
+  </tr>
+  <tr>
+    <td>Nombre d'adhésions traités</td>
     <td>{{ countCaseProcessed }}</td>
+  </tr>
+  <tr>
+    <td>Nombre d'adhésions traités avec Warnings</td>
+    <td>{{ countCaseProcessedWithWarning }}</td>
+  </tr>
+  <tr>
+    <td>Nombre de contrats non traités</td>
+    <td>{{ countCaseFailProcessed }}</td>
   </tr>
 </table>
 

@@ -47,7 +47,10 @@
 		var stats = {};
 		stats['fileName'] = ctx.configFile.getFileNameOutput();
 		stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
+		stats['countCaseFindIntoPivot'] = sc.data.countCaseFindIntoPivot;
 		stats['countCaseProcessed'] = sc.data.countCaseProcessed;
+		stats['countCaseProcessedWithWarning'] = sc.data.countCaseProcessedWithWarning;
+		stats['countCaseFailProcessed'] = sc.data.countCaseFailProcessed;
 		ctx.stats.write(stats);
 
 		return sc.endStep();
