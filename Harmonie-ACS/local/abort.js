@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
 	ActivInfinitev7.step({ abort: function(ev, sc, st) {
 		st.disableTimeout();
 		st.onError(function (sc, st, ex) {
@@ -6,6 +6,8 @@
 			ctx.popupHelper.newPopup('Erreur durant la tentative de reconnexion : Annulation du scénario.');
 			GLOBAL.close();
 		});
-		ctx.scenarioHelper.connectionAuto(sc); 
+		ctx.scenarioHelper.goHome(function () {
+			ctx.scenarioHelper.connectionAuto(sc); 
+		});
 	}});
 })();
