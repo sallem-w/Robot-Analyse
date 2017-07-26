@@ -141,6 +141,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
 			connectionInfinite(function(path, login, password) {
+				setupScenario.CMU();
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
 				ActivInfinitev7.scenarios.scenarioCMU.start({ path: path, login: login, password: password });
 			});

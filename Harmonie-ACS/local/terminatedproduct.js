@@ -1,4 +1,6 @@
-﻿setupScenario = setupScenario || {};
+﻿// TODO see to merge with TerminatedCMU in a single scenario
+
+setupScenario = setupScenario || {};
 
 setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 
@@ -40,7 +42,6 @@ setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 			return ctx.endScenario(sc);
 		});
 	}});
-
 
 	ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
