@@ -28,7 +28,7 @@ ActivInfinitev7.step({ startScenarioDA: function(ev, sc, st) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
-		var writeArray = getObjectValues(sc.data.contract);
+		var writeArray = _.getObjectValues(sc.data.contract);
 		writeArray.push(ctx.date.formatTrace(new Date()));
 		writeArray.push(sc.data.statusContract);
 		writeArray.push(sc.data.commentContract);

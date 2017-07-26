@@ -18,7 +18,7 @@ ActivInfinitev7.step({ startScenarioSIRH : function(ev, sc, st) {
 	startScenarioSIRH(sc, (function() {
 		var mailPath = ctx.mail.createMail(sc.data.contract);
 		
-		var writeArray = getObjectValues(sc.data.contract);
+		var writeArray = _.getObjectValues(sc.data.contract);
 		writeArray.push(ctx.date.formatTrace(new Date()));
 		writeArray.push(sc.data.statusContract);
 		writeArray.push(sc.data.commentContract);
@@ -51,15 +51,6 @@ ActivInfinitev7.step({ endScenarioSIRH : function(ev, sc, st) {
 	
 	return sc.endStep();
 }});
-
-function getObjectValues(obj) {
-	var array = [];
-	var keys = Object.keys(obj);
-	for (var cellIndex in keys) {
-		array.push(String(obj[keys[cellIndex]]));
-	}
-	return array;
-}
 
 function startScenarioSIRH(sc, callback) {
 	ActivInfinitev7.scenarios.checkMembership.start(sc.data).onEnd(function(scCheckMembership) {
