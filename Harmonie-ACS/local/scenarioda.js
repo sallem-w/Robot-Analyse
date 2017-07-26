@@ -1,5 +1,5 @@
 ﻿function startScenarioDA(sc, callback) {
-	ActivInfinitev7.scenarios.checkContract.start(sc.data).onEnd(function(scCheckContract) {
+	ActivInfinitev7.scenarios.checkContractDA.start(sc.data).onEnd(function(scCheckContract) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
@@ -24,7 +24,7 @@ ActivInfinitev7.step({ startScenarioDA: function(ev, sc, st) {
 	sc.data.commentContract = '';
 	sc.data.contract = sc.data.contracts[i];
 	
-	ActivInfinitev7.scenarios.checkContractDA.start(sc.data).onEnd(function(scCheckContract) {
+	startScenarioDA(sc, (function(scCheckContract) {
 		sc.data.commentContract = scCheckContract.data.commentContract;
 		sc.data.statusContract = scCheckContract.data.statusContract;
 		
@@ -42,7 +42,7 @@ ActivInfinitev7.step({ startScenarioDA: function(ev, sc, st) {
 		}
 		
 		return sc.endStep();
-	});
+	}));
 }});
 
 ActivInfinitev7.step({ endScenarioDA: function(ev, sc, st) {

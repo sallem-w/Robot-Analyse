@@ -112,7 +112,6 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 	ActivInfinitev7.step({ checkCertificateHelpCS: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 
-		var isCertificateValid = false;
 		var allTypes = ActivInfinitev7.pCertificateHelpCS.oType.getAll(true) || [];
 		var isCertificateValid = ctx.reduce(function (acc, type, index) {
 			if (ctx.string.trim(type) !== 'Attestat° CPAM' || acc) {
