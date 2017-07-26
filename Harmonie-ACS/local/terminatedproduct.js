@@ -82,8 +82,8 @@ setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
 		return ctx.scenarioHelper.goHome(function () {
-				return sc.endStep();
-			});
+			return sc.endStep();
+		});
 	}});
 
 	ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
