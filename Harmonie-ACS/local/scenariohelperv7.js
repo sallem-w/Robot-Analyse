@@ -100,10 +100,10 @@
 		};
 		ActivInfinitev7.currentPage.injectFunction(cancelSave);
 		ActivInfinitev7.currentPage.evalScript('cancelSave()');
-		scenarioHelper.focusClick(btn);
+		scenarioHelper.click(btn);
 	}
 	
-	scenarioHelper.focusClick = function focusClick(btn) {
+	scenarioHelper.click = function click(btn) {
 		btn.setFocus();
 		btn.click();
 	}
@@ -129,7 +129,7 @@
 		}
 		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
 			ctx.trace.writeInfo('Clicking cancel button');
-			scenarioHelper.focusClick(ActivInfinitev7.currentPage.btCancel);
+			scenarioHelper.click(ActivInfinitev7.currentPage.btCancel);
 			return ActivInfinitev7.events.LOAD.once(function() {
 				return goHome(callback);
 			});
