@@ -221,8 +221,8 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 
 		var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
 
-		var allDate = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
-		var allBalance = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
+		var allDate = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
+		var allBalance = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
 
 		var isValidContribution = allDate.reduce(function (acc, dateEch, index) {
 			if (acc) return acc;

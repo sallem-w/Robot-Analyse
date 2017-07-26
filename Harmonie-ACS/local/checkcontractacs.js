@@ -113,7 +113,7 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkCertificateHelpCS');
 
 		var allTypes = ActivInfinitev7.pCertificateHelpCS.oType.getAll(true) || [];
-		var isCertificateValid = ctx.reduce(function (acc, type, index) {
+		var isCertificateValid = _.reduce(function (acc, type, index) {
 			if (ctx.string.trim(type) !== 'Attestat° CPAM' || acc) {
 				return acc;
 			}
@@ -155,8 +155,8 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 
 		var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
 		
-		var allDate = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
-		var allBalance = ctx.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
+		var allDate = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
+		var allBalance = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
 					
 		var isValidContribution = allDate.reduce(function (acc, dateEch, index) {
 			if (acc) return acc;
@@ -268,13 +268,13 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 	function GetDataProductPage(nameBenef) {
 		ctx.setValue(ActivInfinitev7.pProductList.oProductPaging, '100');
 
-		var allProductCode = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oCodeProduct.getAll());
-		var allEndDate = ctx.map(ctx.string.trim, ActivInfinitev7.pProductList.oEndDateProduct.getAll());
-		allEndDate = ctx.map(function (date) {
+		var allProductCode = _.map(ctx.string.trim, ActivInfinitev7.pProductList.oCodeProduct.getAll());
+		var allEndDate = _.map(ctx.string.trim, ActivInfinitev7.pProductList.oEndDateProduct.getAll());
+		allEndDate = _.map(function (date) {
 			return date !== '' ? ctx.date.parseToDate(date) : undefined;
 		}, allEndDate);
 		
-		return ctx.map(function (codeProduct, index) {
+		return _.map(function (codeProduct, index) {
 			var endDateProduct = allEndDate[index];
 			
 			return { nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct };

@@ -5,6 +5,7 @@ GLOBAL.labels.setLanguage('fr');
 // Global Systray object
 var systray = ctx.systray();
 
+var _ = {};
 var setupScenario = {};
 
 /** String table (English/French/German) */
