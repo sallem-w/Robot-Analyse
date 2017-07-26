@@ -5,6 +5,8 @@ GLOBAL.labels.setLanguage('fr');
 // Global Systray object
 var systray = ctx.systray();
 
+var setupScenario = {};
+
 /** String table (English/French/German) */
 GLOBAL.labels.set({
 	menu: {
@@ -128,6 +130,7 @@ GLOBAL.events.START.on(function (ev) {
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+				setupScenario.ACS();
 				ActivInfinitev7.scenarios.scenarioACS.start({ path: path, login: login, password: password });
 			});
 		});	
@@ -138,6 +141,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
 			connectionInfinite(function(path, login, password) {
+				setupScenario.CMU();
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
 				ActivInfinitev7.scenarios.scenarioCMU.start({ path: path, login: login, password: password });
 			});
@@ -149,6 +153,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('SIRH', 'SIRHCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRH);
 			connectionInfinite(function(path, login, password) {
+				setupScenario.SIRH();
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 				ActivInfinitev7.scenarios.scenarioSIRH.start({ path: path, login: login, password: password });
 			});
@@ -156,11 +161,11 @@ GLOBAL.events.START.on(function (ev) {
 	}
 	
 	if (configSIRHUpdate.showMenu) {
-		setupScenarioSIRHUpdate();
 		systray.addMenu('', 'SIRHUpdate', 'SIRH update scenario');
 		systray.addMenu('SIRHUpdate', 'SIRHUpdateCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRHUpdate);
 			connectionInfinite(function(path, login, password) {
+			setupScenario.SIRHUpdate();
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRHUpdate.rootPath, ctx.config.SIRHUpdate);
 				ActivInfinitev7.scenarios.scenarioSIRHUpdate.start({ path: path, login: login, password: password });
 			});
