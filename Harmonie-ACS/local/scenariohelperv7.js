@@ -110,15 +110,14 @@
 
 	scenarioHelper.goHome = function goHome(callback) {
 		ctx.trace.writeInfo('executing goHome()');
-		ctx.trace.writeInfo('ActivInfinitev7.currentPage : ' + ActivInfinitev7.currentPage);
-		if (ActivInfinitev7.currentPage) {
-			ctx.trace.writeInfo('ActivInfinitev7.currentPage.notExist() : ' + ActivInfinitev7.currentPage.notExist());
-		}
-		ctx.trace.writeInfo('isPageLoaded : ' + !ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist()));
 		if (!ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist())) {
 			ctx.trace.writeInfo('Waiting for page to load before going to home');
-			ctx.sleep();
-			return goHome(callback);
+			return ctx.wait(function () {
+				return goHome(callback);
+			});
+		}
+		if(ActivInfinitev7.currentPage.name === ActivInfinitev7.pDashboard.name || ActivInfinitev7.currentPage.name === ActivInfinitev7.pConnection.name) {
+			return callback();
 		}
 		if (ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
 			ctx.trace.writeInfo('Clicking close button');
@@ -130,8 +129,10 @@
 		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
 			ctx.trace.writeInfo('Clicking cancel button');
 			scenarioHelper.click(ActivInfinitev7.currentPage.btCancel);
-			return ActivInfinitev7.events.LOAD.once(function() {
-				return goHome(callback);
+			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+				return ActivInfinitev7.events.LOAD.once(function () {
+					return goHome(callback);
+				});
 			});
 		}
 
