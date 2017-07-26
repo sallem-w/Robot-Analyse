@@ -1,4 +1,6 @@
-﻿function setupScenarioSIRHUpdate() {
+﻿setupScenario = setupScenario || {};
+
+setupScenario.SIRHUpdate = function setupScenarioSIRHUpdate() {
 	ActivInfinitev7.scenario({ scenarioSIRHUpdate: function(ev, sc) {
 		sc.data.scenarioCode = ctx.config.SIRHUpdate;
 		sc.setMode(e.scenario.mode.clearIfRunning);
@@ -9,7 +11,7 @@
 
 	ActivInfinitev7.step({ startScenarioSIRHUpdate : function(ev, sc, st) {
 		var i = sc.data.indexCurrentContract;
-		
+
 		sc.data.statusContract = '';
 		sc.data.commentContract = '';
 		sc.data.noteContract = '';
@@ -25,12 +27,12 @@
 
 			ctx.excelHelper.writeArray(i + 2, writeArray);
 			ctx.excelHelper.saveFile();
-			
+
 			if (i < sc.data.countContracts - 1) {
 				sc.data.indexCurrentContract += 1;
 				return sc.endStep(ActivInfinitev7.steps.startScenarioSIRHUpdate);
 			}
-			
+
 			return sc.endStep();
 		}));
 	}});
@@ -38,7 +40,7 @@
 	ActivInfinitev7.step({ endScenarioSIRHUpdate : function(ev, sc, st) {
 		ctx.trace.writeInfo('STEP - closeFile');
 		ctx.excelHelper.closeFile();
-		
+
 		ctx.trace.writeInfo('STEP - writeStats');
 		var stats = {};
 		stats['fileName'] = ctx.configFile.getFileNameOutput();
