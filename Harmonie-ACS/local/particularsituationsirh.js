@@ -47,13 +47,17 @@ setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituati
 	}});
 
 	ActivInfinitev7.step({ seachParticularSituationContract: function(ev, sc, st) {
-		ctx.scenarioHelper.searchContract(sc, null, sc.endStep, function () {
-			ctx.endScenario(sc);
+		ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
+			return sc.endStep();
+		}, function notFoundCb() {
+			return ctx.endScenario(sc);
 		});
 	} });
 
 	ActivInfinitev7.step({ goToInfoRo: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInfoRo, sc.endStep);
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInfoRo, function() {
+			return sc.endStep();
+		});
 	} });
 
 	ActivInfinitev7.step({ editInfoRo: function(ev, sc, st) {
@@ -67,7 +71,7 @@ setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituati
 		if (ActivInfinitev7.pInfoRoEdit.oNoSituation.exist()) {
 			return sc.endStep();
 		}
-		ctx.endScenario(sc, 'Particular situation already exists');
+		return ctx.endScenario(sc, 'Particular situation already exists');
 	} });
 
 	ActivInfinitev7.step({ addParticularSituation: function(ev, sc, st) {
@@ -86,7 +90,9 @@ setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituati
 	} });
 
 	ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, sc.endStep);
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function() {
+			return sc.endStep();
+		});
 	} });
 
 	ActivInfinitev7.step({ validateContributionVisu: function(ev, sc, st) {
@@ -100,7 +106,7 @@ setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituati
 			sc.data.commentContract = scSaveContract.data.commentContract;
 			sc.data.statusContract = scSaveContract.data.statusContract;
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - Particular Situation 1 - ' + sc.data.codeScenario);
-			ctx.endScenario(sc);
+			return ctx.endScenario(sc);
 		});
 	} });
 }

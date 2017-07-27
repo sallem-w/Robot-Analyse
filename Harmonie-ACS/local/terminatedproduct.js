@@ -56,6 +56,7 @@ setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 		if (ActivInfinitev7.pContributionVisu.oValidation.exist()) {
 			ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
 		}
+
 		ActivInfinitev7.pContributionVisu.btNext.click();
 		return sc.endStep();
 	}});
@@ -70,7 +71,11 @@ setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 			ActivInfinitev7.pSaveUpdate.btSave.click();
 			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			return sc.endStep();
+			
+			// Multiple page can be load here : Dashboard / MembershipSearch / SearchContractIndiv
+			ActivInfinitev7.events.LOAD.once(function() {
+				return sc.endStep();
+			});
 		});
 	}});
 
