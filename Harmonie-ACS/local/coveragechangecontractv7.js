@@ -128,13 +128,12 @@
 	}});
 
 	// step goToVisualizationContribution from TerminatedProduct
-	
+
 	ActivInfinitev7.step({ validationCalculCoverageChange: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
 		if (ActivInfinitev7.pContributionVisu.oValidation.exist()) {
 			ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
 		}
-
 		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateEch, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance" , merci de remonter les logs au service technique', 'Erreur');
