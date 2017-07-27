@@ -402,7 +402,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToSaveUpdate');
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.setFocus();
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function (error) {{
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation Acte", merci de remonter les logs au service technique', 'Erreur');
 			}
