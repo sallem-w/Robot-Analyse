@@ -56,7 +56,10 @@
 	} });
 
 	ActivInfinitev7.step({ goToInfoRo: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInfoRo, function() {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInfoRo, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Produits\Garanties", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	} });
@@ -91,7 +94,10 @@
 	} });
 
 	ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function() {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	} });

@@ -50,7 +50,10 @@
 
 	ActivInfinitev7.step({ goToProductUpdatePage: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToProductUpdatePage');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pProductUpdate, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pProductUpdate, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Produits/Garanties", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});
@@ -132,7 +135,10 @@
 			ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
 		}
 
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateEch, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateEch, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance" , merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});
@@ -154,7 +160,10 @@
 			ActivInfinitev7.pCoverageImmediateCar.oEditionCheck.click();
 		}
 
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation acte", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});

@@ -195,23 +195,22 @@
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
 		function loop() {
-			if (!ActivInfinitev7.currentPage || !ActivInfinitev7.currentPage.exist()) {
-				return ctx.wait(loop);
-			}
 			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
-			if (ActivInfinitev7.currentPage.name !== page.name) {
-				ActivInfinitev7.currentPage.btNext.setFocus();
-				ActivInfinitev7.currentPage.btNext.click();
-				return ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
+			if(ActivInfinitev7.currentPage.name === page.name) {
+				return callback();
 			}
-			
-			return page.wait(callback);
+			if (!ActivInfinitev7.currentPage.btNext || !ActivInfinitev7.currentPage.btNext.exist()) {
+				callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + ActivInfinitev7.currentPage.name));
+			}
+			ActivInfinitev7.currentPage.btNext.setFocus();
+			ActivInfinitev7.currentPage.btNext.click();
+			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+				ActivInfinitev7.events.LOAD.once(loop);
+			});
 		}
-		
+
 		loop();
 	}
-	
-
 
 	return scenarioHelper;
 }) ();
