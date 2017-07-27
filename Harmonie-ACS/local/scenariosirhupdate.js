@@ -1,6 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.SIRHUpdate = function setupScenarioSIRHUpdate() {
+﻿(function () {
 	ActivInfinitev7.scenario({ scenarioSIRHUpdate: function(ev, sc) {
 		sc.data.scenarioCode = ctx.config.SIRHUpdate;
 		sc.setMode(e.scenario.mode.clearIfRunning);
@@ -63,4 +61,4 @@ setupScenario.SIRHUpdate = function setupScenarioSIRHUpdate() {
 		}
 		return callback();
 	}
-}
+})();

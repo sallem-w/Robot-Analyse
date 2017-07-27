@@ -1,6 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.coverageChangeContract = function setupScenarioCoverageChangeContract() {	
+﻿(function () {	
 	ActivInfinitev7.scenario({ coverageChangeContract: function(ev, sc) {
 		var data = sc.data;
 		sc.data.currentScenario = 'Changement de couverture';
@@ -22,11 +20,11 @@ setupScenario.coverageChangeContract = function setupScenarioCoverageChangeContr
 		sc.step(ActivInfinitev7.steps.addOutputProduct);
 		sc.step(ActivInfinitev7.steps.saveUpdateProduct);
 		sc.step(ActivInfinitev7.steps.goToVisualizationContributionFromCoverageChange);
-		sc.step(ActivInfinitev7.steps.validationCalcul); 
+		sc.step(ActivInfinitev7.steps.validationCalcul); // from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 		sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
-		sc.step(ActivInfinitev7.steps.saveContract);
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -131,6 +129,8 @@ setupScenario.coverageChangeContract = function setupScenarioCoverageChangeContr
 			return sc.endStep();
 		});
 	}});
+	
+	// step validationCalcul from TerminatedProduct
 
 	ActivInfinitev7.step({ selectElementDiffereIntoImmediateNotice: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - selectElementDiffereIntoImmediateNotice');
@@ -154,8 +154,11 @@ setupScenario.coverageChangeContract = function setupScenarioCoverageChangeContr
 		});
 	}});
 
+	// step saveContract from TerminatedProduct
+	// step closeContractUpdate from TerminatedProduct
+
 	ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');
 		return sc.endScenario();
 	}});
-}
+})();

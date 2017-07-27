@@ -1,6 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.terminatedInAdvanceContract = function setUpScenarioTerminatedInAdvanceContract() {
+﻿(function () {
 	ActivInfinitev7.scenario({ terminatedInAdvanceContract: function(ev, sc) {
 		var data = sc.data;
 		sc.data.currentScenario = 'Contrat résilié en avance';
@@ -18,8 +16,8 @@ setupScenario.terminatedInAdvanceContract = function setUpScenarioTerminatedInAd
 		sc.step(ActivInfinitev7.steps.goToSavePageTerminatedInAdvanceContract);
 		sc.step(ActivInfinitev7.steps.checkCalculIfNeeded);
 		sc.step(ActivInfinitev7.steps.validateContribution);
-		sc.step(ActivInfinitev7.steps.saveContract);
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.endTerminatedInAdvanceContract);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -64,10 +62,12 @@ setupScenario.terminatedInAdvanceContract = function setUpScenarioTerminatedInAd
 			return sc.endStep();
 		});
 	} });
-
+	
+	// step saveContract from TerminatedProduct
+	// step closeContractUpdate from TerminatedProduct
 
 	ActivInfinitev7.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated in advance');
 		return sc.endScenario();
 	}});
-}
+})();

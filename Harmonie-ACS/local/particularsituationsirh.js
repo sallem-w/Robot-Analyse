@@ -1,6 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituation2SIRH() {
+﻿(function () {
 	ActivInfinitev7.scenario({ particularSituation2SIRH: function(ev, sc) {
 		sc.data.codeScenario = ctx.config.SIRH;
 		sc.data.currentScenario = 'Changement situation particulère - SIRH';
@@ -109,4 +107,4 @@ setupScenario.particularSituation2SIRH = function setUpScenarioParticularSituati
 			return ctx.endScenario(sc);
 		});
 	} });
-}
+})();

@@ -1,7 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
-	
+﻿(function () {	
 	ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 		sc.data.codeScenario = ctx.config.ACS;
 		sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
@@ -280,4 +277,4 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 			return { nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct };
 		}, allProductCode);		
 	}
-}
+})();

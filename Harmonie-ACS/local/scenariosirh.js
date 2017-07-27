@@ -1,9 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.SIRH = function setUpScenarioSIRH() {
-	setupScenario.checkMembership();
-	setupScenario.particularSituation2SIRH();
-
+﻿(function setUpScenarioSIRH() {
 	ActivInfinitev7.scenario({ scenarioSIRH: function(ev, sc) {
 		sc.data.scenarioCode = ctx.config.SIRH;
 		sc.setMode(e.scenario.mode.clearIfRunning);
@@ -75,4 +70,4 @@ setupScenario.SIRH = function setUpScenarioSIRH() {
 			});
 		});
 	}
-}
+})();
