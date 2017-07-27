@@ -194,16 +194,22 @@
 
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
+		var currentPageName = null;
 		function loop() {
 			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
-			if(ActivInfinitev7.currentPage.name === page.name) {
+			if(ActivInfinitev7.currentPage.name === currentPageName) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + currentPage.name));
+			}
+			currentPageName = ActivInfinitev7.currentPage.name;
+			if(currentPageName === page.name) {
 				return callback();
 			}
 			if (!ActivInfinitev7.currentPage.btNext || !ActivInfinitev7.currentPage.btNext.exist()) {
-				callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + ActivInfinitev7.currentPage.name));
+				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + ActivInfinitev7.currentPage.name));
 			}
 			ActivInfinitev7.currentPage.btNext.setFocus();
 			ActivInfinitev7.currentPage.btNext.click();
+
 			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
 				ActivInfinitev7.events.LOAD.once(loop);
 			});
