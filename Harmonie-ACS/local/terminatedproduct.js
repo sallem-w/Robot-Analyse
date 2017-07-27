@@ -53,21 +53,23 @@
 		}
 
 		ActivInfinitev7.pContributionVisu.btNext.click();
-		return sc.endStep();
+		ActivInfinitev7.pSaveUpdate.wait(function() {
+			return sc.endStep();
+		});
 	}});
 
 	ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
-		ActivInfinitev7.pSaveUpdate.wait(function() {
-			if (!sc.data.config.saveUpdate) {
-				return sc.endStep();
-			}
-				
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-			ActivInfinitev7.pSaveUpdate.btSave.click();
-			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		if (!sc.data.config.saveUpdate) {
+			return sc.endStep();
+		}
 			
-			// Multiple page can be load here : Dashboard / MembershipSearch / SearchContractIndiv
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
+		ActivInfinitev7.pSaveUpdate.btSave.click();
+		sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
+		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
+		
+		// Multiple page can be load here : Dashboard / MembershipSearch / SearchContractIndiv
+		ActivInfinitev7.pSaveUpdate.events.UNLOAD.once(function() {
 			ActivInfinitev7.events.LOAD.once(function() {
 				return sc.endStep();
 			});
