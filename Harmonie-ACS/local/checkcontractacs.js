@@ -1,7 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
-	
+﻿(function () {	
 	ActivInfinitev7.scenario({ checkContractACS: function(ev, sc) {
 		sc.data.codeScenario = ctx.config.ACS;
 		sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
@@ -261,7 +258,7 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 		
 	ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + sc.data.codeScenario);
 		return sc.endScenario();
 	}});
 
@@ -280,4 +277,4 @@ setupScenario.checkContractACS = function setUpScenarioCheckContractACS() {
 			return { nameBenef: nameBenef, codeProduct: codeProduct, endDateProduct: endDateProduct };
 		}, allProductCode);		
 	}
-}
+})();

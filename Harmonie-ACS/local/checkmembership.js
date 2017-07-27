@@ -1,7 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.checkMembership = function setUpScenarioCheckMembership() {
-
+﻿(function () {
 	ActivInfinitev7.scenario({ checkMembership: function(ev, sc) {
 		sc.data.codeScenario = ctx.config.SIRH;
 		sc.data.currentScenario = 'Pré-adhésion - SIRH';
@@ -26,7 +23,7 @@ setupScenario.checkMembership = function setUpScenarioCheckMembership() {
 		sc.step(ActivInfinitev7.steps.setPrincipalInterlocutorData);
 		sc.step(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
 		sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
-		sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor)
+		sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
 		sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
 		sc.step(ActivInfinitev7.steps.nextToPInsuredIdent);
 		sc.step(ActivInfinitev7.steps.setInsuredIndent);
@@ -41,8 +38,8 @@ setupScenario.checkMembership = function setUpScenarioCheckMembership() {
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateEch);
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateCar);
 		sc.step(ActivInfinitev7.steps.nextToSaveUpdate);
-		sc.step(ActivInfinitev7.steps.saveContract);
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.endCheckMembership);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -394,30 +391,12 @@ setupScenario.checkMembership = function setUpScenarioCheckMembership() {
 		});
 	}});
 
-	ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
-		ActivInfinitev7.pSaveUpdate.wait(function() {
-			if (!sc.data.config.saveUpdate) {
-				return sc.endStep();
-			}
-				
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-			ActivInfinitev7.pSaveUpdate.btSave.click();
-			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			return sc.endStep();
-		});
-	}});
-
-	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-		return ctx.scenarioHelper.goHome(function () {
-			return sc.endStep();
-		});
-	}});
+	// step saveContract from TerminatedProduct
+	// step closeContractUpdate from TerminatedProduct
 
 	ActivInfinitev7.step({ endCheckMembership: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - checkMembership - ' + sc.data.codeScenario);
 		return sc.endScenario();
 	}});
-}
+})();

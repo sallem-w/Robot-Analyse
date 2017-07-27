@@ -1,6 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
+﻿(function() {
 	ActivInfinitev7.scenario({ checkContractCMU: function(ev, sc) {
 		sc.data.codeScenario = ctx.config.CMU;
 		sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
@@ -12,7 +10,7 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 			sc.endStep(ActivInfinitev7.steps.abort);
 		});
 		sc.setMode(e.scenario.mode.clearIfRunning);
-		sc.step(ActivInfinitev7.steps.initializeCheckContract);
+		sc.step(ActivInfinitev7.steps.initializeCheckContract); // from CheckContractACS
 		sc.step(ActivInfinitev7.steps.navigateToConsultationCMU);
 		sc.step(ActivInfinitev7.steps.searchIndividualContractCMU);
 		sc.step(ActivInfinitev7.steps.navigateToInfoRo);
@@ -23,16 +21,11 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 		sc.step(ActivInfinitev7.steps.checkProductState);
 		sc.step(ActivInfinitev7.steps.nextProduct);
 		sc.step(ActivInfinitev7.steps.goToContribution);
-		sc.step(ActivInfinitev7.steps.checkContribution);
+		sc.step(ActivInfinitev7.steps.checkContribution); // from checkContractACS
 		sc.step(ActivInfinitev7.steps.toTerminated);
 		sc.step(ActivInfinitev7.steps.closeConsultation);
-		sc.step(ActivInfinitev7.steps.endCheckContract);
+		sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
 		sc.step(ActivInfinitev7.steps.abort);
-	}});
-
-	ActivInfinitev7.step({ initializeCheckContract: function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - START - checkContract - ' + sc.data.codeScenario);
-		return sc.endStep();
 	}});
 
 	ActivInfinitev7.step({ navigateToConsultationCMU : function(ev, sc, st) {
@@ -211,38 +204,7 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 		});
 	}});
 
-	ActivInfinitev7.step({ checkContribution : function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkContribution');
-
-		if (ActivInfinitev7.pContribution.oDateEch.count() === 1 &&
-			  ctx.string.trim(ActivInfinitev7.pContribution.oDateEch.i(0).get()) === "Aucune donnée disponible dans le tableau") {
-			return sc.endStep();
-		}
-
-		var compareDate = ctx.date.addMonth(ctx.date.now(), -1);
-
-		var allDate = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
-		var allBalance = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
-
-		var isValidContribution = allDate.reduce(function (acc, dateEch, index) {
-			if (acc) return acc;
-
-			var balanceEch = allBalance[index];
-			if (ctx.date.parseToDate(dateEch) <= compareDate) {
-				return (parseFloat(balanceEch) < 1);
-			}
-
-			return acc;
-		}, false, allDate);
-
-		if (!isValidContribution) {
-			var message = sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date';
-			var comment = 'Revoir centre: Solde comptable non à jour';
-			return ctx.endScenario(sc, message, comment);
-		}
-
-		return sc.endStep();
-	}});
+		// step checkContribution from checkContractACS
 
 	ActivInfinitev7.step({ toTerminated: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - Contract ready for terminated');
@@ -259,12 +221,10 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 			return sc.endScenario();
 		});
 	}});
+	
+	sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
 
-	ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + ctx.config.ACS);
-		return sc.endScenario();
-	}});
+	// step endCheckContract from CheckContractACS
 
 	/**
 	 **
@@ -332,4 +292,4 @@ setupScenario.checkContractCMU = function setupScenarioCheckContractCMU() {
 		}
 		return true;
 	}
-}
+})();

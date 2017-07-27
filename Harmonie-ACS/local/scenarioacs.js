@@ -1,11 +1,4 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.ACS = function setUpScenarioACS() {
-	setupScenario.terminatedProduct();
-	setupScenario.checkContractACS();
-	setupScenario.terminatedContract();
-	setupScenario.coverageChangeContract();
-
+﻿(function () {
 	ActivInfinitev7.scenario({ scenarioACS: function(ev, sc) {
 		sc.data.scenarioCode = ctx.config.ACS;
 		sc.setMode(e.scenario.mode.clearIfRunning);
@@ -188,4 +181,4 @@ setupScenario.ACS = function setUpScenarioACS() {
 			callbackSuccess();
 		});
 	}
-}
+})();

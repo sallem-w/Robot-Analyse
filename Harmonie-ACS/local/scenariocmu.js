@@ -1,47 +1,13 @@
-﻿setupScenario = setupScenario || {};
-
-setupScenario.CMU = function setUpScenarioCMU() {
-	setupScenario.checkContractCMU();
-	setupScenario.terminatedCMU();
-
+﻿(function () {
 	ActivInfinitev7.scenario({ scenarioCMU: function(ev, sc) {
 		sc.data.scenarioCode = ctx.config.CMU;
 		sc.setMode(e.scenario.mode.clearIfRunning);
 		sc.step(ActivInfinitev7.steps.initScenario);
 		sc.step(ActivInfinitev7.steps.startScenarioCMU);
-		sc.step(ActivInfinitev7.steps.endScenario);
+		sc.step(ActivInfinitev7.steps.endScenario); // from ScenarioACS
 	}});
 
-	ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
-		ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
-		if (!ctx.excelFile.initConfig(sc.data.scenarioCode)) {
-			return sc.endScenario(sc);
-		}
-
-		sc.data.config = ctx.config.getConfig(sc.data.scenarioCode);
-		sc.data.configExcel = sc.data.config.excel;
-
-		ctx.trace.writeInfo('STEP - openFile');
-		ctx.excelHelper.openFile(ctx.configFile.getPathFile());
-
-		ctx.trace.writeInfo('STEP - copyFile');
-		ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile());
-
-		var indexLastRow = ctx.excelFile.getLastIndexRow();
-
-		sc.data.countCaseFindIntoExcel = indexLastRow - sc.data.configExcel.startRowIndex + 1;
-		sc.data.totalTimeDuration = new Date();
-		sc.data.countCaseProcessed = 0;
-		sc.data.countCaseSuccessProcessed = 0;
-		sc.data.countCaseFailProcessed = 0;
-		sc.data.countCaseBackToCenter = 0;
-		sc.data.countCaseReadyToRemove = 0;
-		sc.data.countCaseProductTerminated = 0;
-		sc.data.countCaseContractWithProductACS = 0;
-		sc.data.indexCurrentContract = sc.data.configExcel.startRowIndex;
-		sc.data.indexLastRow = indexLastRow;
-		return sc.endStep();
-	}});
+	// initScenario step from ScenarioACS
 
 	ActivInfinitev7.step({ startScenarioCMU : function(ev, sc, st) {
 		sc.data.statusContract = '';
@@ -92,26 +58,7 @@ setupScenario.CMU = function setUpScenarioCMU() {
 		}));
 	}});
 
-	ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
-		ctx.trace.writeInfo('STEP - closeFile');
-		ctx.excelHelper.closeFile();
-
-		ctx.trace.writeInfo('STEP - writeStats');
-		var stats = {};
-		stats['fileName'] = ctx.configFile.getFileNameOutput();
-		stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
-		stats['countCaseProcessed'] = sc.data.countCaseProcessed;
-		stats['countCaseFindIntoExcel'] = sc.data.countCaseFindIntoExcel;
-		stats['countCaseReadyToRemove'] = sc.data.countCaseReadyToRemove;
-		stats['countCaseSuccessProcessed'] = sc.data.countCaseSuccessProcessed;
-		stats['countCaseFailProcessed'] = sc.data.countCaseFailProcessed;
-		stats['countCaseBackToCenter'] = sc.data.countCaseBackToCenter;
-		stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
-		stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
-		ctx.excelFile.writeStats(stats);
-
-		return sc.endStep();
-	}});
+	// step endScenarion from ScenarioACS
 
 	function startScenarioCMU(sc, callback) {
 		ActivInfinitev7.scenarios.checkContractCMU.start(sc.data).onEnd(function(scCheckContract) {
@@ -152,4 +99,4 @@ setupScenario.CMU = function setUpScenarioCMU() {
 			return sc.endStep();
 		}
 	}
-}
+})();

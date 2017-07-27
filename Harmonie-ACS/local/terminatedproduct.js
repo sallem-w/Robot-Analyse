@@ -1,9 +1,4 @@
-﻿// TODO see to merge with TerminatedCMU in a single scenario
-
-setupScenario = setupScenario || {};
-
-setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
-
+﻿(function () {
 	ActivInfinitev7.scenario({ terminatedProduct: function(ev, sc) {
 		var data = sc.data;
 		sc.data.currentScenario = 'Sans-effet produit';
@@ -90,4 +85,4 @@ setupScenario.terminatedProduct = function setupScenarioTerminatedProduct() {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated');
 		return sc.endScenario();
 	}});
-}
+})();
