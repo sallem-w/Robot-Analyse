@@ -22,7 +22,10 @@
 		sc.step(ActivInfinitev7.steps.completeParticularSituation);
 		sc.step(ActivInfinitev7.steps.goToContributionVisu);
 		sc.step(ActivInfinitev7.steps.validateContributionVisu);
-		sc.step(ActivInfinitev7.steps.saveUpdateParticularSituation);
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
+		sc.step(ActivInfinitev7.steps.endTerminatedSIRH);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
 
@@ -99,12 +102,12 @@
 		return sc.endStep();
 	} });
 
-	ActivInfinitev7.step({ saveUpdateParticularSituation: function(ev, sc, st) {
-		ActivInfinitev7.scenarios.saveContract.start(sc.data).onEnd(function (scSaveContract) {
-			sc.data.commentContract = scSaveContract.data.commentContract;
-			sc.data.statusContract = scSaveContract.data.statusContract;
-			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END - Particular Situation 1 - ' + sc.data.codeScenario);
-			return ctx.endScenario(sc);
-		});
-	} });
+	// step saveContract from saveContract
+	// step saveContractWaitMembershipColSearch from saveContract
+	// step closeContractUpdate from saveContract
+	
+	ActivInfinitev7.step({ endTerminatedSIRH: function(ev, sc, st) {
+		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP END - Particular Situation 1');
+		return sc.endScenario();
+	}});
 })();

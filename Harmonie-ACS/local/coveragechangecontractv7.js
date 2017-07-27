@@ -23,8 +23,9 @@
 		sc.step(ActivInfinitev7.steps.validationCalcul); // from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 		sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
-		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
-		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -154,8 +155,9 @@
 		});
 	}});
 
-	// step saveContract from TerminatedProduct
-	// step closeContractUpdate from TerminatedProduct
+	// step saveContract from saveContract
+	// step saveContractWaitSearchContractIndiv from saveContract
+	// step closeContractUpdate from saveContract
 
 	ActivInfinitev7.step({ endCoverageChangeContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - coverage change');

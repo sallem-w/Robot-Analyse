@@ -38,8 +38,9 @@
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateEch);
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateCar);
 		sc.step(ActivInfinitev7.steps.nextToSaveUpdate);
-		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
-		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCheckMembership);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -391,8 +392,9 @@
 		});
 	}});
 
-	// step saveContract from TerminatedProduct
-	// step closeContractUpdate from TerminatedProduct
+	// step saveContract from saveContract
+	// step saveContractWaitMembershipColSearch from saveContract
+	// step closeContractUpdate from saveContract
 
 	ActivInfinitev7.step({ endCheckMembership: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - endCheckMembership');
