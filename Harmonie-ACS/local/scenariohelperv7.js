@@ -208,11 +208,21 @@
 				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + ActivInfinitev7.currentPage.name));
 			}
 			ActivInfinitev7.currentPage.btNext.setFocus();
-			ActivInfinitev7.currentPage.btNext.click();
+			// ActivInfinitev7.currentPage.btNext.click();
+			var loadListener, unLoadListener, timeoutListener;
 
-			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-				ActivInfinitev7.events.LOAD.once(loop);
+			unloadListener = ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+				loadListener = ActivInfinitev7.events.LOAD.once(function () {
+					ctx.off(timeoutListener);
+					loop();
+				});
 			});
+			
+			timeoutListener = ctx.wait(function () {
+				ctx.off(loadListener);
+				ctx.off(unloadListener);
+				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + currentPage.name));
+			}, 2000);
 		}
 
 		loop();
