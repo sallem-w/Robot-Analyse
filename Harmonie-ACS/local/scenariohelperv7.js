@@ -194,38 +194,70 @@
 
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
-		var currentPageName = null;
-		function loop() {
-			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
-			if(ActivInfinitev7.currentPage.name === currentPageName) {
-				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + currentPage.name));
+		var previousPageName = null;
+		function loop(currentPage) {
+			ctx.trace.writeInfo('Now on page : ' + currentPage.name);
+			if(currentPage.name === previousPageName) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + previousPageName));
 			}
-			currentPageName = ActivInfinitev7.currentPage.name;
-			if(currentPageName === page.name) {
+			previousPageName = currentPage.name;
+			if(currentPage.name === page.name) {
 				return callback();
 			}
-			if (!ActivInfinitev7.currentPage.btNext || !ActivInfinitev7.currentPage.btNext.exist()) {
-				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + ActivInfinitev7.currentPage.name));
+			if (!currentPage.btNext || !currentPage.btNext.exist()) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + currentPage.name));
 			}
-			ActivInfinitev7.currentPage.btNext.setFocus();
-			// ActivInfinitev7.currentPage.btNext.click();
-			var loadListener, unLoadListener, timeoutListener;
+			try {
+				currentPage.btNext.setFocus();
+				currentPage.btNext.click();
+			} catch (error) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' Error when trying to click btNext on page : ' + currentPage.name));
+			}
 
-			unloadListener = ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-				loadListener = ActivInfinitev7.events.LOAD.once(function () {
-					ctx.off(timeoutListener);
-					loop();
-				});
+			return scenarioHelper.waitPageChange(function (error, newPage) {
+				if (error) {
+					return callback(new Error('Error while trying to go to ' + page.name + ' : ' + error.message));
+				}
+				return loop(newPage);
 			});
-			
-			timeoutListener = ctx.wait(function () {
-				ctx.off(loadListener);
-				ctx.off(unloadListener);
-				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + currentPage.name));
-			}, 2000);
 		}
 
-		loop();
+		return loop(ActivInfinitev7.getCurrentPage());
+	}
+
+	scenarioHelper.waitPageChange = function (callback) {
+		var resolved = false;
+		var listeners = null;
+		var callbackWrapper = function (page) {
+			if (listeners) { // a listener can be triggered before the listeners array has finished being initialised
+				_.map(ctx.off, listeners);
+				delete listeners;
+			}
+			if (resolved) {
+				return;
+			}
+			resolved = true;
+			return callback(null, page);
+		}
+		var timeoutListener, unloadListener;
+		timeoutListener = ctx.wait(function () {
+			resolved = true;
+			callback(new Error('Timeout of 10s reached while trying for a page to load.'));
+			ctx.off(unloadListener);
+		}, 10000);
+		
+		unloadListener = ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+			ctx.off(timeoutListener);
+			listeners = _.map(function (pageName) {
+				return ActivInfinitev7.pages[pageName].events.LOAD.once(function () {
+					ctx.trace.writeInfo('detected : ' + pageName);
+					if (pageName === '_Undefined_') {
+						return;
+					}
+					callbackWrapper(ActivInfinitev7.pages[pageName]);
+				});
+			}, Object.keys(ActivInfinitev7.pages));
+		});
 	}
 
 	return scenarioHelper;

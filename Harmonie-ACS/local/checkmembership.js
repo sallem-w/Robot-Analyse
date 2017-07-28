@@ -75,8 +75,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 
 			ctx.setValue(ActivInfinitev7.pTerminatedContractFo.oDemandDate, ctx.date.monthStart);
-			ActivInfinitev7.pTerminatedContractFo.btNext.click();
-			ActivInfinitev7.pMembershipSearchBene.wait(function() {
+			ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pMembershipSearchBene, function (error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Identification Contrat Recherche", merci de remonter les logs au service technique', 'Erreur');
+				}
 				return sc.endStep();
 			});
 		}, function () {
