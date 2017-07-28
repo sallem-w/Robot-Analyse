@@ -49,11 +49,24 @@
 	}});
 
 	ActivInfinitev7.step({ checkCalculIfNeeded: function () {
-		if(!ActivInfinitev7.pCalculParam.oNoCalculStatic.exist()) {
+		if(ActivInfinitev7.pCalculParam.oCalculCheck.exist()) {
 			ActivInfinitev7.pCalculParam.oCalculCheck.click();
 		}
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function () {
-			return sc.endStep();
+		
+		ActivInfinitev7.pCalculParam.btNext.click();
+		
+		var saveUpdateListener, contributionHistoryListener;
+		saveUpdateListener = ActivInfinitev7.pSaveUpdate.wait(function() {
+			ctx.off(contributionHistoryListener);
+			return sc.endStep(ActivInfinitev7.steps.saveContract);
+		});c
+		
+		contributionHistoryListener = ActivInfinitev7.pContributionHistory.wait(function() {
+			ctx.off(saveUpdateListener);
+			ActivInfinitev7.pContributionHistory.btNext.click();
+			ActivInfinitev7.pContributionVisu.wait(function() {
+				return sc.endStep();
+			});
 		});
 	} });
 
