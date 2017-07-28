@@ -59,7 +59,7 @@
 		saveUpdateListener = ActivInfinitev7.pSaveUpdate.wait(function() {
 			ctx.off(contributionHistoryListener);
 			return sc.endStep(ActivInfinitev7.steps.saveContract);
-		});c
+		});
 		
 		contributionHistoryListener = ActivInfinitev7.pContributionHistory.wait(function() {
 			ctx.off(saveUpdateListener);
