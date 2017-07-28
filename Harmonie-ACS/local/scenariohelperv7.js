@@ -110,36 +110,52 @@
 
 	scenarioHelper.goHome = function goHome(callback) {
 		ctx.trace.writeInfo('executing goHome()');
-		if (!ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist())) {
-			ctx.trace.writeInfo('Waiting for page to load before going to home');
-			return ctx.wait(function () {
-				return goHome(callback);
-			});
-		}
-		if(ActivInfinitev7.currentPage.name === ActivInfinitev7.pDashboard.name || ActivInfinitev7.currentPage.name === ActivInfinitev7.pConnection.name) {
-			return callback();
-		}
-		if (ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
-			ctx.trace.writeInfo('Clicking close button');
-			scenarioHelper.forceClick(ActivInfinitev7.currentPage.btClose);
-			return ActivInfinitev7.pDashboard.wait(function() {
-				callback();
-			});
-		}
-		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
-			ctx.trace.writeInfo('Clicking cancel button');
-			scenarioHelper.click(ActivInfinitev7.currentPage.btCancel);
-			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-				return ActivInfinitev7.events.LOAD.once(function () {
-					return goHome(callback);
+		function loop(currentPage) {
+			try {
+				ctx.trace.writeInfo('executing goHome loop(), page : ' + currentPage && currentPage.name);
+
+				if (!currentPage || currentPage.notExist()) {
+					ctx.trace.writeInfo('Waiting for page to load before going to home');
+					return ctx.scenarioHelper.waitPageChange(currentPage, function (error, page) {
+						if (error) {
+							return callback(error);
+						}
+						return loop(page);
+					});
+				}
+				if(currentPage.name === ActivInfinitev7.pDashboard.name || currentPage.name === ActivInfinitev7.pConnection.name) {
+					return callback();
+				}
+				if (currentPage.btClose && currentPage.btClose.exist()) {
+					ctx.trace.writeInfo('Clicking close button');
+					scenarioHelper.forceClick(currentPage.btClose);
+					return ActivInfinitev7.pDashboard.wait(function() {
+						callback();
+					});
+				}
+				if (currentPage.btCancel && currentPage.btCancel.exist()) {
+					ctx.trace.writeInfo('Clicking cancel button');
+					scenarioHelper.click(currentPage.btCancel);
+					return scenarioHelper.waitPageChange(currentPage, function (error, newPage) {
+						if (error) {
+							return callback(error);
+						}
+						return loop(newPage);
+					});
+				}
+
+				ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
+				ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+				return ActivInfinitev7.pDashboard.wait(function() {
+					callback();
 				});
-			});
+			} catch (error) {
+				callback(error);
+			}
 		}
 
-		ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
-		ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
-		return ActivInfinitev7.pDashboard.wait(function() {
-			callback();
+		scenarioHelper.getCurrentPage(function (error, currentPage) {
+			loop(currentPage);
 		});
 	}
 
@@ -195,6 +211,7 @@
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
 		var previousPageName = null;
+
 		function loop(currentPage) {
 			ctx.trace.writeInfo('Now on page : ' + currentPage.name);
 			if(currentPage.name === previousPageName) {
@@ -214,7 +231,7 @@
 				return callback(new Error('Error while trying to go to ' + page.name + ' Error when trying to click btNext on page : ' + currentPage.name));
 			}
 
-			return scenarioHelper.waitPageChange(function (error, newPage) {
+			return scenarioHelper.waitPageChange(currentPage, function (error, newPage) {
 				if (error) {
 					return callback(new Error('Error while trying to go to ' + page.name + ' : ' + error.message));
 				}
@@ -222,12 +239,36 @@
 			});
 		}
 
-		return loop(ActivInfinitev7.getCurrentPage());
+		return scenarioHelper.getCurrentPage(function (error, currentPage) {
+			if (error) {
+				return callback(new Error('Error while trying to determine current page ' + error.message));
+			}
+			return loop(currentPage);
+		});
 	}
 
-	scenarioHelper.waitPageChange = function (callback) {
+	scenarioHelper.waitPageChange = function (currentPage, callback, targetPages) {
+		ctx.trace.writeInfo('waiting for page to change');
+		var unloadListener, timeoutListener;
+		unloadListener = currentPage.events.UNLOAD.once(function () {
+			ctx.off(timeoutListener);
+			ctx.trace.writeInfo('page : ' + currentPage.name + ' has unloaded');
+			scenarioHelper.waitPageLoad(callback, targetPages);
+		});
+		timeoutListener = ctx.wait(function () {
+			callback(new Error('Timeout of 10s reached while waiting for page ' + currentPage.name + ' to unload.'));
+			ctx.off(unloadListener);
+		}, 10000);
+	}
+
+	scenarioHelper.waitPageLoad = function (callback, targetPages) {
+		ctx.trace.writeInfo('waiting for a page to load');
+		targetPages = targetPages || _.map(function (pageName) {
+			return ActivInfinitev7.pages[pageName];
+		}, Object.keys(ActivInfinitev7.pages));
 		var resolved = false;
 		var listeners = null;
+		var timeoutListener;
 		var callbackWrapper = function (page) {
 			if (listeners) { // a listener can be triggered before the listeners array has finished being initialised
 				_.map(ctx.off, listeners);
@@ -237,28 +278,43 @@
 				return;
 			}
 			resolved = true;
+			ctx.off(timeoutListener);
+			ctx.trace.writeInfo('page loaded : ' + page.name);
 			return callback(null, page);
 		}
-		var timeoutListener, unloadListener;
+
+		listeners = _.map(function (page) {
+			return page.events.LOAD.once(function () {
+				ctx.trace.writeInfo('detected : ' + page.name);
+				if (page.name === '_Undefined_') {
+					return;
+				}
+				callbackWrapper(page);
+			});
+		}, targetPages);
 		timeoutListener = ctx.wait(function () {
 			resolved = true;
-			callback(new Error('Timeout of 10s reached while trying for a page to load.'));
-			ctx.off(unloadListener);
+			_.map(ctx.off, listeners);
+			callback(new Error('Timeout of 10s reached while waiting for a page to load.'));
 		}, 10000);
-		
-		unloadListener = ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
-			ctx.off(timeoutListener);
-			listeners = _.map(function (pageName) {
-				return ActivInfinitev7.pages[pageName].events.LOAD.once(function () {
-					ctx.trace.writeInfo('detected : ' + pageName);
-					if (pageName === '_Undefined_') {
-						return;
-					}
-					callbackWrapper(ActivInfinitev7.pages[pageName]);
-				});
-			}, Object.keys(ActivInfinitev7.pages));
-		});
-	}
+	};
+	
+	scenarioHelper.getCurrentPage  = function (callback) {
+		try {
+			ctx.trace.writeInfo('Determining current page');
+			if(ActivInfinitev7.notExist()) {
+				return callback(new Error('IE is currently closed'));
+			}
+			var currentPage = ActivInfinitev7.currentPage || ActivInfinitev7.getCurrentPage();
+			if (currentPage && currentPage.name !== '_Undefined_') {
+				return callback(null, currentPage);
+			}
+			
+			return scenarioHelper.waitPageLoad(callback);
+		} catch(error) {
+			callback(error);
+		}
+	};
 
 	return scenarioHelper;
 }) ();
