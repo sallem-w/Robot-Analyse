@@ -55,12 +55,18 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		return ctx.endScenario(sc, message, comment);
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
-		return ctx.scenarioHelper.goHome(function() {
+		return ctx.scenarioHelper.goHome(function(error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
+			}
 			return sc.endStep();
 		});
 	}	else if (countOpenContractLists === 0 && dateEndCurrentContract !== undefined && String(sc.data.contract.ACSCertificateEndDate) === String(dateEndCurrentContract)) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
-		return ctx.scenarioHelper.goHome(function() {
+		return ctx.scenarioHelper.goHome(function(error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
+			}
 			return sc.endStep();
 		});
 	}	else if (!isOpenCurrentContract && dateEndCurrentContract !== undefined && ctx.date.isOnlyOneYearDifference(new Date(sc.data.contract.ACSCertificateEndDate), dateEndCurrentContract)) {

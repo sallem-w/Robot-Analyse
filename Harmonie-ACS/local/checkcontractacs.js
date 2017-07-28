@@ -238,7 +238,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractTerminated = true;
 			ctx.trace.writeInfo('All contracts are terminated: going home');
-			return ctx.scenarioHelper.goHome(function() {
+			return ctx.scenarioHelper.goHome(function(error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+				}
 				return sc.endStep();
 			});
 		} else if (validDateCurrentProduct) {
@@ -246,7 +249,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractWithProductACS = true;
 			ctx.trace.writeInfo('contract not terminated but health access aborted : going home');
-			return ctx.scenarioHelper.goHome(function() {
+			return ctx.scenarioHelper.goHome(function(error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+				}
 				return sc.endStep();
 			});
 		} else {
