@@ -49,19 +49,19 @@
 	}});
 
 	ActivInfinitev7.step({ checkCalculIfNeeded: function () {
-		if(ActivInfinitev7.pCalculParam.oCalculCheck.exist()) {
+		if (ActivInfinitev7.pCalculParam.oCalculCheck.exist()) {
 			ActivInfinitev7.pCalculParam.oCalculCheck.click();
 		}
 		
 		ActivInfinitev7.pCalculParam.btNext.click();
 		
 		var saveUpdateListener, contributionHistoryListener;
-		saveUpdateListener = ActivInfinitev7.pSaveUpdate.wait(function() {
+		saveUpdateListener = ActivInfinitev7.pSaveUpdate.events.LOAD.once(function() {
 			ctx.off(contributionHistoryListener);
 			return sc.endStep(ActivInfinitev7.steps.saveContract);
 		});
 		
-		contributionHistoryListener = ActivInfinitev7.pContributionHistory.wait(function() {
+		contributionHistoryListener = ActivInfinitev7.pContributionHistory.events.LOAD.once(function() {
 			ctx.off(saveUpdateListener);
 			ActivInfinitev7.pContributionHistory.btNext.click();
 			ActivInfinitev7.pContributionVisu.wait(function() {
