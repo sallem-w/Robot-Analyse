@@ -5,8 +5,8 @@
         "rootPath": "C:\\deploy\\acs\\",
         "controlOnly": false,
         "controlContribution": false,
-        "controlBlockNote": false,
-        "saveUpdate": true,
+        "controlBlockNote": true,
+        "saveUpdate": false,
         "addYearSearchContract": 30,
         "excel": {
             "startColumnIndex": 1,
