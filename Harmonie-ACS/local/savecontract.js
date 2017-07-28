@@ -16,7 +16,7 @@
 
 ActivInfinitev7.step({ saveContractWaitDashboard: function(ev, sc, st) {
 	ActivInfinitev7.pDashboard.wait(function() {
-		return sc.endStep(ActivInfinitev7.steps.endTerminatedProduct);
+		return sc.endStep();
 	});
 }});
 
