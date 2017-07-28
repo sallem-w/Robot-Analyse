@@ -183,10 +183,7 @@
 		return false;
 	}
 	
-	scenarioHelper.connectionAuto = function(sc) {
-		ctx.trace.writeInfo('Reconnecting ...');
-		ActivInfinitev7.close();
-		ActivInfinitev7.waitClose(function () {
+	function restartApplicationAndReconnect(sc) {
 			ctx.trace.writeInfo('IE closed');
 			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
 			ActivInfinitev7.events.START.once(function (ev) {
@@ -205,7 +202,19 @@
 					});
 				});
 			});
-		});
+		}
+	
+	scenarioHelper.connectionAuto = function(sc) {
+		ctx.trace.writeInfo('Reconnecting ...');
+		try {
+			ActivInfinitev7.close();
+			return ActivInfinitev7.waitClose(function () {
+				restartApplicationAndReconnect(sc);
+			});
+		} catch (error) {
+			ctx.trace.writeWarning('Error while trying to close IE : ' + error.message + ' supposing it is already closed');
+			restartApplicationAndReconnect(sc);			
+		}
 	}
 
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
