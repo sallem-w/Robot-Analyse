@@ -1,6 +1,6 @@
 ﻿ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 	if (!sc.data.config.saveUpdate) {
-		return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+		return ctx.endScenario(sc);
 	}
 		
 	ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
