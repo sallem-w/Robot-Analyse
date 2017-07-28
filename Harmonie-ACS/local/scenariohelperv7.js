@@ -17,13 +17,13 @@
 		dashboard: '/mdg/'
 	};
 	
-	scenarioHelper.getMessagesPopup = function() {
+	scenarioHelper.getMessagesPopup = function(currentPage) {
 		function getMessages() {
 			return $('#cgd-toast-container-right .toast-message > .row:first-child').text();
 		}
 		
-		ActivInfinitev7.currentPage.injectFunction(getMessages);
-		var message = ctx.string.trim(ActivInfinitev7.currentPage.evalScript('getMessages()'));
+		currentPage.injectFunction(getMessages);
+		var message = ctx.string.trim(currentPage.evalScript('getMessages()'));
 		return message;
 	}
 
@@ -43,7 +43,7 @@
 		ActivInfinitev7.pSearchContractIndiv.btSearch.click();
 		var foundListener, notFoundListener;
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
-			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -68,7 +68,7 @@
 		ActivInfinitev7.pMembershipColSearch.btSearch.click();
 		var foundListener, notFoundListener;
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
-			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
+			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
@@ -98,8 +98,8 @@
 			}
 			setTimeout(loop, 500);
 		};
-		ActivInfinitev7.currentPage.injectFunction(cancelSave);
-		ActivInfinitev7.currentPage.evalScript('cancelSave()');
+		btn.page.injectFunction(cancelSave);
+		btn.page.evalScript('cancelSave()');
 		scenarioHelper.click(btn);
 	}
 	
@@ -145,7 +145,7 @@
 				}
 
 				ctx.trace.writeInfo('No close button found on current page: navigating to dashboard directly');
-				ctx.scenarioHelper.goTo(ctx.scenarioHelper.pageLinks.dashboard);
+				ctx.scenarioHelper.goTo(currentPage, ctx.scenarioHelper.pageLinks.dashboard);
 				return ActivInfinitev7.pDashboard.wait(function() {
 					callback();
 				});
@@ -159,15 +159,15 @@
 		});
 	}
 
-	scenarioHelper.goTo = function(page) {
+	scenarioHelper.goTo = function(currentPage, link) {
 		function navigateTo(pageToGo) {
 			setTimeout(function() {
 				window.location.href = pageToGo;
 			}, 1500);
 		}
 		
-		ActivInfinitev7.currentPage.injectFunction(navigateTo);
-		ActivInfinitev7.currentPage.execScript('navigateTo(\''+ page +'\')');
+		currentPage.injectFunction(navigateTo);
+		currentPage.execScript('navigateTo(\''+ link +'\')');
 	}
 	/**
 	 * Function use to find an insured into the list created by the input file.

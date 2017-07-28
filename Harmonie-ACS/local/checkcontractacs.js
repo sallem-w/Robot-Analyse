@@ -67,8 +67,7 @@
 	ActivInfinitev7.step({ acsIndividualContractNotFound : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract not found');
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
-	 	var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-	 	return ctx.endScenario(sc, message, comment);
+	 	return ctx.endScenario(sc, message);
 	} });
 
 	ActivInfinitev7.step({ acsIndividualContractFound : function(ev, sc, st) {
