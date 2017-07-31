@@ -6,7 +6,7 @@
 			ctx.popupHelper.newPopup('Erreur durant la tentative de reconnexion : Annulation du scénario.');
 			GLOBAL.close();
 		});
-		ctx.scenarioHelper.goHome(function (error) {
+		ctx.scenarioHelper.goHomeFromUnknowPage(function (error) {
 			if (error) {
 				ctx.trace.writeError('Error while trying going home before reconnecting : ' + error.message);
 			}
