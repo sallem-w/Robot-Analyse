@@ -18,6 +18,18 @@
 		ctx.mail.init(sc.data.customerName);
 
 		startScenarioSIRH(sc, (function() {
+			if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
+				sc.data.countCaseProcessed += 1;
+				
+				if (ctx.string.trim(sc.data.noteContract) !== '') {
+					sc.data.countCaseProcessedWithWarning += 1;
+				}
+			}
+			
+			if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+				sc.data.countCaseFailProcessed += 1;
+			}
+						
 			var mailPath = ctx.mail.createMail(sc.data.contract);
 
 			var writeArray = _.getObjectValues(sc.data.contract);
