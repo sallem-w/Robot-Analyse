@@ -43,7 +43,7 @@
 
 	ActivInfinitev7.step({ goToSavePageTerminatedInAdvanceContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToSavePageTerminatedInAdvanceContract');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCalculParam, function (error) {
+		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pCalculParam, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
 			}
@@ -75,7 +75,7 @@
 
 	ActivInfinitev7.step({ validateContribution: function(ev, sc, st) {
 		ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function (error) {
+		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pContributionVisu, ActivInfinitev7.pSaveUpdate, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Validation acte", merci de remonter les logs au service technique', 'Erreur');
 			}

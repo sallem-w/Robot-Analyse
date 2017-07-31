@@ -217,43 +217,42 @@
 		}
 	}
 
-	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
-		ctx.trace.writeInfo('Navigating to ' + page.name);
+	scenarioHelper.goNextFromPageToPage = function goNextFromPageToPage(startPage, endPage, callback) {
+		ctx.trace.writeInfo('Navigating to ' + endPage.name + ' from ' + startPage.name);
 		var previousPageName = null;
 
 		function loop(currentPage) {
-			ctx.trace.writeInfo('Now on page : ' + currentPage.name);
-			if(currentPage.name === previousPageName) {
-				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + previousPageName));
-			}
-			previousPageName = currentPage.name;
-			if(currentPage.name === page.name) {
-				return callback();
-			}
-			if (!currentPage.btNext || !currentPage.btNext.exist()) {
-				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + currentPage.name));
-			}
 			try {
-				currentPage.btNext.setFocus();
-				currentPage.btNext.click();
-			} catch (error) {
-				return callback(new Error('Error while trying to go to ' + page.name + ' Error when trying to click btNext on page : ' + currentPage.name));
-			}
-
-			return scenarioHelper.waitPageChange(currentPage, function (error, newPage) {
-				if (error) {
-					return callback(new Error('Error while trying to go to ' + page.name + ' : ' + error.message));
+				ctx.trace.writeInfo('Now on page : ' + currentPage.name);
+				if(currentPage.name === previousPageName) {
+					return callback(new Error('Error while trying to go to ' + endPage.name + ' Blocked on page : ' + previousPageName));
 				}
-				return loop(newPage);
-			});
+				previousPageName = currentPage.name;
+				if(currentPage.name === endPage.name) {
+					return callback();
+				}
+				if (!currentPage.btNext || !currentPage.btNext.exist()) {
+					return callback(new Error('Error while trying to go to ' + endPage.name + ' No btNext on page : ' + currentPage.name));
+				}
+				try {
+					currentPage.btNext.setFocus();
+					currentPage.btNext.click();
+				} catch (error) {
+					return callback(new Error('Error while trying to go to ' + endPage.name + ' Error when trying to click btNext on page : ' + currentPage.name));
+				}
+
+				return scenarioHelper.waitPageChange(currentPage, function (error, newPage) {
+					if (error) {
+						return callback(new Error('Error while trying to go to ' + endPage.name + ' : ' + error.message));
+					}
+					return loop(newPage);
+				});
+			} catch (error) {
+				return callback('Error while trying to go to ' + endPage.name + ' : ' + error.message);
+			}
 		}
 
-		return scenarioHelper.getCurrentPage(function (error, currentPage) {
-			if (error) {
-				return callback(new Error('Error while trying to determine current page ' + error.message));
-			}
-			return loop(currentPage);
-		});
+		return loop(startPage);
 	}
 
 	scenarioHelper.waitPageChange = function (currentPage, callback, targetPages) {
