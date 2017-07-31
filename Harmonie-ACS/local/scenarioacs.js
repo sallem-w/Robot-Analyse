@@ -8,6 +8,8 @@
 	}});
 
 	ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
+		//Impression dans le log du numéro de version
+		ctx.trace.writeInfo('Version du projet : '+ GLOBAL.data.projectVersion +" - Date de la Version : "+GLOBAL.data.projectDate );
 		ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode);
 		if (!ctx.excelFile.initConfig(sc.data.scenarioCode)) {
 			return sc.endScenario(sc);
