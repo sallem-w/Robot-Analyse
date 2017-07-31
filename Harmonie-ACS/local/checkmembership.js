@@ -32,6 +32,7 @@
 		sc.step(ActivInfinitev7.steps.editPProductUpdate);
 		sc.step(ActivInfinitev7.steps.setupProductLoop);
 		sc.step(ActivInfinitev7.steps.setProductPage);
+		sc.step(ActivInfinitev7.steps.checkProductError);
 		sc.step(ActivInfinitev7.steps.nextProductLoop);
 		sc.step(ActivInfinitev7.steps.nextToCalculParam);
 		sc.step(ActivInfinitev7.steps.getIndividualContractNumber);
@@ -346,15 +347,29 @@
 
 		ctx.setValue(ActivInfinitev7.pProductUpdate.oInputNewCodeProduct, sc.data.contract.productCode[sc.data.indexProductCode]);
 		ActivInfinitev7.pProductUpdate.btSaveNewCodeProduct.click();
-		sc.data.indexProductCode += 1;
 
 		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 			return sc.endStep();
 		});
 	}});
 
+	ActivInfinitev7.step({ checkProductError: function(ev, sc, st) {
+		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipMainBenef);
+		if (errorMessage) {
+			var product = sc.data.contract.productCode[sc.data.indexProductCode];
+			return ctx.endScenario(
+				sc, 
+				'Could not add product : ' + product + ', error : ' + errorMessage, 
+				'Erreur sur l\'ajout du produit "' + product + '" : ' + errorMessage, 'Non traité'
+			);
+		}
+		
+		return sc.endStep();
+	} });
+
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
+		sc.data.indexProductCode += 1;
 		if (sc.data.indexProductCode >= sc.data.countProductCode) {
 			ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 			return ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
