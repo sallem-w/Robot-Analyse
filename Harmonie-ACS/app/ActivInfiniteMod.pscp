@@ -654,88 +654,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRankBirthday">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R1R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[rangNaiss]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oNumberRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oKeyRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R1R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[cleRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oFamilySite">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R2R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[sitFam]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oMaidenName">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[nomJF]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oInsuredType">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R0R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[typAss]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oSexe">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[sexe]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oBirthday">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R1R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[dateNaiss]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oSocialCategorie">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R57R1R1R0R0R1R2">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[catSoc]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btNext" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="81.R0R1R7R0R1R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -744,16 +663,150 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
+				</PAGE>
+				<PAGE Name="pInsuredIdentEdition" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oTitlePage" MustExist="Y">
+							<CRITERE>
+								<TAG Name="LABEL" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[txtAssRo]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClose">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInsuredROCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssRO1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oEntitleROCheck">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typAssAyd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRankBirthday">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[rangNaiss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumberRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oKeyRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[cleRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oFamilySite">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sitFam]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oMaidenName">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nomJF]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInsuredType">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSexe">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sexe]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oBirthday">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateNaiss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSocialCategorie">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[catSoc]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oCheckTeletrans">
 							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R3R0R1">
+								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[indTeletrans]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btValid">
+						<OBJET Name="btValid" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -763,7 +816,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
+					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1320568_1" Comment="Adhésions en collectif - N°22591305 - EN COURS - - CHAUSSURES RENE ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="130" Techno="WEB" Timestamp="31/07/2017 13:21:14" />
 				</PAGE>
 				<PAGE Name="pCertificateHelpCS" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
