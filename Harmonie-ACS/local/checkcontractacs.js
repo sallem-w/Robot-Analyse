@@ -237,7 +237,7 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractTerminated = true;
 			ctx.trace.writeInfo('All contracts are terminated: going home');
-			return ctx.scenarioHelper.goHome(function(error) {
+			return ctx.scenarioHelper.goHome(ActivInfinitev7.pProductList, function(error) {
 				if (error) {
 					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
 				}
@@ -248,7 +248,7 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractWithProductACS = true;
 			ctx.trace.writeInfo('contract not terminated but health access aborted : going home');
-			return ctx.scenarioHelper.goHome(function(error) {
+			return ctx.scenarioHelper.goHome(ActivInfinitev7.pProductList, function(error) {
 				if (error) {
 					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
 				}

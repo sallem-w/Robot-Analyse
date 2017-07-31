@@ -108,7 +108,7 @@
 		btn.click();
 	}
 
-	scenarioHelper.goHome = function goHome(callback) {
+	scenarioHelper.goHome = function goHome(startPage, callback) {
 		ctx.trace.writeInfo('executing goHome()');
 		function loop(currentPage) {
 			try {
@@ -154,7 +154,14 @@
 			}
 		}
 
+		loop(startPage);
+	}
+
+	scenarioHelper.goHomeFromUnknowPage = function goHome(callback) {
+		ctx.trace.writeInfo('executing goHomeFromUnknowPage()');
+
 		scenarioHelper.getCurrentPage(function (error, currentPage) {
+			ctx.trace.writeInfo('detected currentPage : ' + currentPage.name);
 			loop(currentPage);
 		});
 	}
