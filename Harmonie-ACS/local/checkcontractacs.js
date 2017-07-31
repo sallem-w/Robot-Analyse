@@ -100,7 +100,8 @@
 	}});
 
 	ActivInfinitev7.step({ gotToHelpCsCertificate: function(ev, sc, st) {
-		ActivInfinitev7.pInsuredIdent.btHelpCSCertificate.click();
+		// Sometimes we have a "Confirmation" POPUP, but we are in consultation mode... (bug Infinite)
+		ctx.scenarioHelper.forceClick(ActivInfinitev7.pInsuredIdent.btHelpCSCertificate);
 		ActivInfinitev7.pCertificateHelpCS.wait(function() {
 			return sc.endStep();
 		});

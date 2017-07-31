@@ -50,7 +50,8 @@
 		sc.data.countCaseProcessed += 1;
 		sc.data.statusContract = '';
 		sc.data.commentContract = '';
-
+		sc.data.isAlreadyDone = false;
+		
 		startScenarioACS(sc, (function() {
 			if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
 				sc.data.countCaseSuccessProcessed += 1;

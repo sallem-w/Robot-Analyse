@@ -16,8 +16,9 @@
 		// start step from Terminated product
 		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 		sc.step(ActivInfinitev7.steps.validationCalcul);
-		sc.step(ActivInfinitev7.steps.saveContract);
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		// end step from Terminated product
 		
 		sc.step(ActivInfinitev7.steps.endTerminatedCMU);
@@ -44,8 +45,9 @@
 
 	// step goToVisualizationContribution from Terminated product
 	// step validationCalcul from Terminated product
-	// step saveContract from Terminated product
-	// step closeContractUpdate from Terminated product
+	// step saveContract from saveContract
+	// step saveContractWaitSearchContractIndiv from saveContract
+	// step closeContractUpdate from saveContract
 
 	ActivInfinitev7.step({ endTerminatedCMU: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated CMU');

@@ -16,8 +16,9 @@
 		sc.step(ActivInfinitev7.steps.goToSavePageTerminatedInAdvanceContract);
 		sc.step(ActivInfinitev7.steps.checkCalculIfNeeded);
 		sc.step(ActivInfinitev7.steps.validateContribution);
-		sc.step(ActivInfinitev7.steps.saveContract); // from TerminatedProduct
-		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
+		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedInAdvanceContract);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -47,24 +48,38 @@
 		});
 	}});
 
-	ActivInfinitev7.step({ checkCalculIfNeeded: function () {
-		if(!ActivInfinitev7.pCalculParam.oNoCalculStatic.exist()) {
+	ActivInfinitev7.step({ checkCalculIfNeeded: function (ev, sc, st) {
+		if (ActivInfinitev7.pCalculParam.oCalculCheck.exist()) {
 			ActivInfinitev7.pCalculParam.oCalculCheck.click();
 		}
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function () {
-			return sc.endStep();
+		
+		ActivInfinitev7.pCalculParam.btNext.click();
+		
+		var saveUpdateListener, contributionHistoryListener;
+		saveUpdateListener = ActivInfinitev7.pSaveUpdate.wait(function() {
+			ctx.off(contributionHistoryListener);
+			return sc.endStep(ActivInfinitev7.steps.saveContract);
+		});
+		
+		contributionHistoryListener = ActivInfinitev7.pContributionHistory.wait(function() {
+			ctx.off(saveUpdateListener);
+			ctx.scenarioHelper.click(ActivInfinitev7.pContributionHistory.btNext);
+			ActivInfinitev7.pContributionVisu.wait(function() {
+				return sc.endStep();
+			});
 		});
 	} });
 
-	ActivInfinitev7.step({ validateContribution: function (ev) {
+	ActivInfinitev7.step({ validateContribution: function(ev, sc, st) {
 		ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
 		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function () {
 			return sc.endStep();
 		});
 	} });
 	
-	// step saveContract from TerminatedProduct
-	// step closeContractUpdate from TerminatedProduct
+	// step saveContract from saveContract
+	// step saveContractWaitSearchContractIndiv from saveContract
+	// step closeContractUpdate from saveContract
 
 	ActivInfinitev7.step({ endTerminatedInAdvanceContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated in advance');

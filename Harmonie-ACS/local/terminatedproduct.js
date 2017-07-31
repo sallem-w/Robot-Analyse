@@ -15,8 +15,8 @@
 		sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
 		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 		sc.step(ActivInfinitev7.steps.validationCalcul);
-		sc.step(ActivInfinitev7.steps.saveContract);
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitDashboard); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -53,34 +53,14 @@
 		}
 
 		ActivInfinitev7.pContributionVisu.btNext.click();
-		return sc.endStep();
-	}});
-
-	ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
 		ActivInfinitev7.pSaveUpdate.wait(function() {
-			if (!sc.data.config.saveUpdate) {
-				return sc.endStep();
-			}
-				
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-			ActivInfinitev7.pSaveUpdate.btSave.click();
-			sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
-			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			
-			// Multiple page can be load here : Dashboard / MembershipSearch / SearchContractIndiv
-			ActivInfinitev7.events.LOAD.once(function() {
-				return sc.endStep();
-			});
-		});
-	}});
-
-	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-		return ctx.scenarioHelper.goHome(function () {
 			return sc.endStep();
 		});
 	}});
-
+	
+	// step saveContract from saveContract
+	// step saveContractWaitDashboard from saveContract
+	
 	ActivInfinitev7.step({ endTerminatedProduct: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - product terminated');
 		return sc.endScenario();

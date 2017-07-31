@@ -2205,7 +2205,7 @@
 				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
-				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="saveContract" />
+				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="steps" />
 				<SCRIPT Name="abort" Src="abort.js" Folder="steps" />
 				<SCRIPT Name="ScenarioSIRHUpdate" Src="ScenarioSIRHUpdate.js" Folder="ScenarioSIRHUpdate" />
 			</SCRIPTS>

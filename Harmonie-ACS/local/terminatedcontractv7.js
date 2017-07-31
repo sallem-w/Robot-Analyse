@@ -16,8 +16,8 @@
 		sc.step(ActivInfinitev7.steps.searchIndividualContractEffect);
 		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 		sc.step(ActivInfinitev7.steps.validationCalcul);
-		sc.step(ActivInfinitev7.steps.saveContract); // from terminated product
-		sc.step(ActivInfinitev7.steps.closeContractUpdate);
+		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
+		sc.step(ActivInfinitev7.steps.saveContractWaitDashboard); // from saveContract
 		// end steps from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.endTerminatedContract);
 		sc.step(ActivInfinitev7.steps.abort);
@@ -34,13 +34,11 @@
 	// step searchIndividualContractEffect from TerminatedProduct
 	// step goToVisualizationContribution from TerminatedProduct
 	// step validationCalcul from TerminatedProduct
-	// step saveContract from TerminatedProduct
-	// step closeContractUpdate from TerminatedProduct
-
+	// step saveContract from saveContract
+	// step saveContractWaitDashboard from saveContract
+	
 	ActivInfinitev7.step({ endTerminatedContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP END - terminated contract');
-		ActivInfinitev7.pDashboard.wait(function() {
-			return sc.endScenario();
-		});
+		return sc.endScenario();
 	}});
 })();
