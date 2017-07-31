@@ -12,11 +12,24 @@
 
 		sc.data.statusContract = '';
 		sc.data.commentContract = '';
+		sc.data.noteContract = '';
 		sc.data.contract = sc.data.contracts[i];
 		sc.data.contract.individualContract = '';
 		ctx.mail.init(sc.data.customerName);
 
 		startScenarioSIRH(sc, (function() {
+			if (sc.data.statusContract === ctx.excelHelper.constants.status.Success) {
+				sc.data.countCaseProcessed += 1;
+				
+				if (ctx.string.trim(sc.data.noteContract) !== '') {
+					sc.data.countCaseProcessedWithWarning += 1;
+				}
+			}
+			
+			if (sc.data.statusContract === ctx.excelHelper.constants.status.Fail) {
+				sc.data.countCaseFailProcessed += 1;
+			}
+						
 			var mailPath = ctx.mail.createMail(sc.data.contract);
 
 			var writeArray = _.getObjectValues(sc.data.contract);
@@ -47,7 +60,10 @@
 		var stats = {};
 		stats['fileName'] = ctx.configFile.getFileNameOutput();
 		stats['totalTimeDuration'] = ctx.date.getTimeElapsedSince(ctx.date.diffTime(sc.data.totalTimeDuration, new Date()));
+		stats['countCaseFindIntoPivot'] = sc.data.countCaseFindIntoPivot;
 		stats['countCaseProcessed'] = sc.data.countCaseProcessed;
+		stats['countCaseProcessedWithWarning'] = sc.data.countCaseProcessedWithWarning;
+		stats['countCaseFailProcessed'] = sc.data.countCaseFailProcessed;
 		ctx.stats.write(stats);
 
 		return sc.endStep();
