@@ -161,8 +161,11 @@
 		ctx.trace.writeInfo('executing goHomeFromUnknowPage()');
 
 		scenarioHelper.getCurrentPage(function (error, currentPage) {
+			if (error) {
+				return callback(error);
+			}
 			ctx.trace.writeInfo('detected currentPage : ' + currentPage.name);
-			scenarioHelper.goHome(currentPage);
+			return scenarioHelper.goHome(currentPage, callback);
 		});
 	}
 
