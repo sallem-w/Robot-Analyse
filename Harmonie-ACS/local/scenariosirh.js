@@ -12,6 +12,7 @@
 
 		sc.data.statusContract = '';
 		sc.data.commentContract = '';
+		sc.data.noteContract = '';
 		sc.data.contract = sc.data.contracts[i];
 		sc.data.contract.individualContract = '';
 		ctx.mail.init(sc.data.customerName);
