@@ -25,8 +25,9 @@
 		sc.step(ActivInfinitev7.steps.validPrincipalInterlocutorError);
 		sc.step(ActivInfinitev7.steps.validPrincipalInterlocutor);
 		sc.step(ActivInfinitev7.steps.checkInfoPrincipalInterlocutor);
-		sc.step(ActivInfinitev7.steps.nextToPInsuredIdent);
+		sc.step(ActivInfinitev7.steps.nextToPInsuredIdentEdition);
 		sc.step(ActivInfinitev7.steps.setInsuredIndent);
+		sc.step(ActivInfinitev7.steps.invalidInsuredIdent);
 		sc.step(ActivInfinitev7.steps.nextToPProductUpdate);
 		sc.step(ActivInfinitev7.steps.editPProductUpdate);
 		sc.step(ActivInfinitev7.steps.setupProductLoop);
@@ -228,7 +229,7 @@
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
 		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
 		ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		ActivInfinitev7.pInsuredIdent.wait(function() {
+		ActivInfinitev7.pInsuredIdentEdition.wait(function() {
 			return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
 		});
 	}});
@@ -264,8 +265,8 @@
 		});
 	}});
 
-	ActivInfinitev7.step({ nextToPInsuredIdent: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pMembershipMainBenef, ActivInfinitev7.pInsuredIdent, function (error) {
+	ActivInfinitev7.step({ nextToPInsuredIdentEdition: function(ev, sc, st) {
+		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pMembershipMainBenef, ActivInfinitev7.pInsuredIdentEdition, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
 			}
@@ -277,28 +278,43 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setInsuredIndent');
 
 		if (sc.data.contract.isInsuredRO) {
-			ActivInfinitev7.pInsuredIdent.oInsuredROCheck.click();
+			ActivInfinitev7.pInsuredIdentEdition.oInsuredROCheck.click();
 		}
 		else {
-			ActivInfinitev7.pInsuredIdent.oEntitleROCheck.click();
+			ActivInfinitev7.pInsuredIdentEdition.oEntitleROCheck.click();
 		}
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oCheckTeletrans, sc.data.contract.isTeletransCheck ? 1 : 0);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oNumberRO, sc.data.contract.inseeNumber);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oKeyRO, sc.data.contract.keyRO);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oFamilySite, sc.data.contract.familyStatus);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oMaidenName, sc.data.contract.maidenName);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oInsuredType, sc.data.contract.insuredType);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oSexe, sc.data.contract.sexe);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oBirthday, ctx.date.formatDDMMYYYY(sc.data.contract.birthDate));
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oSocialCategorie, sc.data.contract.socialCategory);
-		ctx.setValue(ActivInfinitev7.pInsuredIdent.oRankBirthday, sc.data.contract.rankBirthday);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oCheckTeletrans, sc.data.contract.isTeletransCheck ? 1 : 0);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oNumberRO, sc.data.contract.inseeNumber);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oKeyRO, sc.data.contract.keyRO);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oFamilySite, sc.data.contract.familyStatus);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oMaidenName, sc.data.contract.maidenName);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oInsuredType, sc.data.contract.insuredType);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oSexe, sc.data.contract.sexe);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oBirthday, ctx.date.formatDDMMYYYY(sc.data.contract.birthDate));
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oSocialCategorie, sc.data.contract.socialCategory);
+		ctx.setValue(ActivInfinitev7.pInsuredIdentEdition.oRankBirthday, sc.data.contract.rankBirthday);
 
-		ActivInfinitev7.pInsuredIdent.btValid.click();
-
-		ActivInfinitev7.pInsuredIdent.events.LOAD.once(function() {
-			return sc.endStep();
-		});
+		ActivInfinitev7.pInsuredIdentEdition.btValid.click();
+		
+		ctx.scenarioHelper.waitPageChange(ActivInfinitev7.pInsuredIdentEdition, function (error, page) {
+			if (error) {
+				throw error;
+			}
+			switch(page.name) {
+				case ActivInfinitev7.pInsuredIdent.name :
+					return sc.endStep(ActivInfinitev7.steps.nextToPProductUpdate);
+				case ActivInfinitev7.pInsuredIdentEdition.name :
+					return sc.endStep(ActivInfinitev7.steps.invalidInsuredIdent);
+				default: 
+					throw new Error('Unexpected page : waited for ' + ActivInfinitev7.pInsuredIdent.name + ' or ' + ActivInfinitev7.pInsuredIdentEdition.name + ' but got : ' + page.name);
+			}
+		}, [ActivInfinitev7.pInsuredIdent, ActivInfinitev7.pInsuredIdentEdition]);
 	}});
+
+	ActivInfinitev7.step({ invalidInsuredIdent: function(ev, sc, st) {
+		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pInsuredIdentEdition) || 'unknow error';
+		return ctx.endScenario(sc, 'Wrong insured info : ' + errorMessage, 'Impossible de valider les information assuré dans "Identification assurés" : ' + errorMessage, 'Erreur');
+	} });
 
 	ActivInfinitev7.step({ nextToPProductUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToPProductUpdate');

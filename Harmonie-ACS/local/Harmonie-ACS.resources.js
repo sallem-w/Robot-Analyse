@@ -70,24 +70,30 @@ ActivInfinitev7.pBlockNotes.btNext = ActivInfinitev7.pBlockNotes.addItem('btNext
 ActivInfinitev7.pBlockNotes.btClose = ActivInfinitev7.pBlockNotes.addItem('btClose');
 
 ActivInfinitev7.pInsuredIdent = ActivInfinitev7.addPage('pInsuredIdent', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIdent.addItem('btHelpCSCertificate');
 ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pInsuredIdent.btNext = ActivInfinitev7.pInsuredIdent.addItem('btNext', {"mustExist":true});
+ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIdent.addItem('btHelpCSCertificate');
 ActivInfinitev7.pInsuredIdent.btInfoRo = ActivInfinitev7.pInsuredIdent.addItem('btInfoRo');
 ActivInfinitev7.pInsuredIdent.btClose = ActivInfinitev7.pInsuredIdent.addItem('btClose');
 ActivInfinitev7.pInsuredIdent.oInsuredROCheck = ActivInfinitev7.pInsuredIdent.addItem('oInsuredROCheck');
 ActivInfinitev7.pInsuredIdent.oEntitleROCheck = ActivInfinitev7.pInsuredIdent.addItem('oEntitleROCheck');
-ActivInfinitev7.pInsuredIdent.oRankBirthday = ActivInfinitev7.pInsuredIdent.addItem('oRankBirthday');
-ActivInfinitev7.pInsuredIdent.oNumberRO = ActivInfinitev7.pInsuredIdent.addItem('oNumberRO');
-ActivInfinitev7.pInsuredIdent.oKeyRO = ActivInfinitev7.pInsuredIdent.addItem('oKeyRO');
-ActivInfinitev7.pInsuredIdent.oFamilySite = ActivInfinitev7.pInsuredIdent.addItem('oFamilySite');
-ActivInfinitev7.pInsuredIdent.oMaidenName = ActivInfinitev7.pInsuredIdent.addItem('oMaidenName');
-ActivInfinitev7.pInsuredIdent.oInsuredType = ActivInfinitev7.pInsuredIdent.addItem('oInsuredType');
-ActivInfinitev7.pInsuredIdent.oSexe = ActivInfinitev7.pInsuredIdent.addItem('oSexe');
-ActivInfinitev7.pInsuredIdent.oBirthday = ActivInfinitev7.pInsuredIdent.addItem('oBirthday');
-ActivInfinitev7.pInsuredIdent.oSocialCategorie = ActivInfinitev7.pInsuredIdent.addItem('oSocialCategorie');
-ActivInfinitev7.pInsuredIdent.btNext = ActivInfinitev7.pInsuredIdent.addItem('btNext');
-ActivInfinitev7.pInsuredIdent.oCheckTeletrans = ActivInfinitev7.pInsuredIdent.addItem('oCheckTeletrans');
-ActivInfinitev7.pInsuredIdent.btValid = ActivInfinitev7.pInsuredIdent.addItem('btValid');
+
+ActivInfinitev7.pInsuredIdentEdition = ActivInfinitev7.addPage('pInsuredIdentEdition', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pInsuredIdentEdition.oTitlePage = ActivInfinitev7.pInsuredIdentEdition.addItem('oTitlePage', {"mustExist":true});
+ActivInfinitev7.pInsuredIdentEdition.btValid = ActivInfinitev7.pInsuredIdentEdition.addItem('btValid', {"mustExist":true});
+ActivInfinitev7.pInsuredIdentEdition.btClose = ActivInfinitev7.pInsuredIdentEdition.addItem('btClose');
+ActivInfinitev7.pInsuredIdentEdition.oInsuredROCheck = ActivInfinitev7.pInsuredIdentEdition.addItem('oInsuredROCheck');
+ActivInfinitev7.pInsuredIdentEdition.oEntitleROCheck = ActivInfinitev7.pInsuredIdentEdition.addItem('oEntitleROCheck');
+ActivInfinitev7.pInsuredIdentEdition.oRankBirthday = ActivInfinitev7.pInsuredIdentEdition.addItem('oRankBirthday');
+ActivInfinitev7.pInsuredIdentEdition.oNumberRO = ActivInfinitev7.pInsuredIdentEdition.addItem('oNumberRO');
+ActivInfinitev7.pInsuredIdentEdition.oKeyRO = ActivInfinitev7.pInsuredIdentEdition.addItem('oKeyRO');
+ActivInfinitev7.pInsuredIdentEdition.oFamilySite = ActivInfinitev7.pInsuredIdentEdition.addItem('oFamilySite');
+ActivInfinitev7.pInsuredIdentEdition.oMaidenName = ActivInfinitev7.pInsuredIdentEdition.addItem('oMaidenName');
+ActivInfinitev7.pInsuredIdentEdition.oInsuredType = ActivInfinitev7.pInsuredIdentEdition.addItem('oInsuredType');
+ActivInfinitev7.pInsuredIdentEdition.oSexe = ActivInfinitev7.pInsuredIdentEdition.addItem('oSexe');
+ActivInfinitev7.pInsuredIdentEdition.oBirthday = ActivInfinitev7.pInsuredIdentEdition.addItem('oBirthday');
+ActivInfinitev7.pInsuredIdentEdition.oSocialCategorie = ActivInfinitev7.pInsuredIdentEdition.addItem('oSocialCategorie');
+ActivInfinitev7.pInsuredIdentEdition.oCheckTeletrans = ActivInfinitev7.pInsuredIdentEdition.addItem('oCheckTeletrans');
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
