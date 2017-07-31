@@ -63,7 +63,7 @@
 		
 		contributionHistoryListener = ActivInfinitev7.pContributionHistory.wait(function() {
 			ctx.off(saveUpdateListener);
-			ActivInfinitev7.pContributionHistory.btNext.click();
+			ctx.scenarioHelper.click(ActivInfinitev7.pContributionHistory.btNext);
 			ActivInfinitev7.pContributionVisu.wait(function() {
 				return sc.endStep();
 			});
