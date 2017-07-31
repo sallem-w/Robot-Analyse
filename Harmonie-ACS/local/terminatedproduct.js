@@ -40,7 +40,7 @@
 
 	ActivInfinitev7.step({ goToVisualizationContribution: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function (error) {
+		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pContributionVisu, function (error) {
 			if (error) {
 				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
 			}
