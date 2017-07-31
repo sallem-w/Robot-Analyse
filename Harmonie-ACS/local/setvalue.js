@@ -5,6 +5,5 @@
 		input.set(value);
 		return;
 	}
-
 	input.page.evalScript('$(\'#' + input.scriptItem({ id: null }) + '\').change();');
 }
