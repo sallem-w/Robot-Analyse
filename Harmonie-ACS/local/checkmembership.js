@@ -354,7 +354,8 @@
 	}});
 
 	ActivInfinitev7.step({ checkProductError: function(ev, sc, st) {
-		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipMainBenef);
+		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - checkProductError');
+		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pProductUpdate);
 		if (errorMessage) {
 			var product = sc.data.contract.productCode[sc.data.indexProductCode];
 			return ctx.endScenario(
@@ -370,7 +371,7 @@
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
 		sc.data.indexProductCode += 1;
-		if (sc.data.indexProductCode >= sc.data.countProductCode) {
+		if (sc.data.indexProductCode + 1 >= sc.data.countProductCode) {
 			ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 			return ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 				return sc.endStep();
