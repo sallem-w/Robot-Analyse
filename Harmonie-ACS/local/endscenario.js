@@ -16,7 +16,10 @@
 		return sc.endScenario();
 	}
 	
-	ctx.scenarioHelper.goHome(function() {
+	ctx.scenarioHelper.goHome(function(error) {
+		if (error) {
+			throw new Error('Error while trying to go home at scenario end ' + error.message);
+		}
 		return sc.endScenario();
 	});
 }

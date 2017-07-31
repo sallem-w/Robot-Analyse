@@ -67,8 +67,7 @@
 	ActivInfinitev7.step({ acsIndividualContractNotFound : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract not found');
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
-	 	var comment = 'Revoir centre : ' +  ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
-	 	return ctx.endScenario(sc, message, comment);
+	 	return ctx.endScenario(sc, message);
 	} });
 
 	ActivInfinitev7.step({ acsIndividualContractFound : function(ev, sc, st) {
@@ -238,7 +237,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractTerminated = true;
 			ctx.trace.writeInfo('All contracts are terminated: going home');
-			return ctx.scenarioHelper.goHome(function() {
+			return ctx.scenarioHelper.goHome(function(error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+				}
 				return sc.endStep();
 			});
 		} else if (validDateCurrentProduct) {
@@ -246,7 +248,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 			sc.data.isContractWithProductACS = true;
 			ctx.trace.writeInfo('contract not terminated but health access aborted : going home');
-			return ctx.scenarioHelper.goHome(function() {
+			return ctx.scenarioHelper.goHome(function(error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+				}
 				return sc.endStep();
 			});
 		} else {

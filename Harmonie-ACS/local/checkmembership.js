@@ -82,10 +82,7 @@
 				return sc.endStep();
 			});
 		}, function () {
-			var message = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup());
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-			sc.data.commentContract = 'Revoir centre: ' + message;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
 		});
 	}});
@@ -159,7 +156,7 @@
 		var message = sc.data.contract.individualContractCollectif + ' - Contract not found';
 
 		// click on btValid reload page
-		var messagePopup = ctx.scenarioHelper.getMessagesPopup();
+		var messagePopup = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipSearchBene);
 		if (messagePopup) {
 			message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
 			comment = 'Revoir centre: ' + messagePopup;
@@ -210,7 +207,7 @@
 
 	ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutorError');
-		var errorMessage = ctx.scenarioHelper.getMessagesPopup();
+		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipMainBenef);
 		if (errorMessage.indexOf('La localité est obligatoire') === -1) {
 			ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
 			sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;

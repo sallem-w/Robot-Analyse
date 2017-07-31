@@ -35,7 +35,10 @@
 		
 	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-		return ctx.scenarioHelper.goHome(function () {
+		return ctx.scenarioHelper.goHome(function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Erreur durant la fermeture du contrat, merci de communiquer les logs au service technique', 'erreur');
+			}
 			return sc.endStep();
 		});
 	}});
