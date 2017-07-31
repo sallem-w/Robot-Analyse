@@ -155,7 +155,7 @@
 		var allDate = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oDateEch.getAll());
 		var allBalance = _.map(ctx.string.trim, ActivInfinitev7.pContribution.oBalanceEch.getAll())
 					
-		var isValidContribution = allDate.reduce(function (acc, dateEch, index) {
+		var isValidContribution = _.reduce(function (acc, dateEch, index) {
 			if (acc) return acc;
 
 			var balanceEch = allBalance[index];

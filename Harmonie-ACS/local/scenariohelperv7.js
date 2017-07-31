@@ -157,12 +157,15 @@
 		loop(startPage);
 	}
 
-	scenarioHelper.goHomeFromUnknowPage = function goHome(callback) {
+	scenarioHelper.goHomeFromUnknowPage = function goHomeFromUnknowPage(callback) {
 		ctx.trace.writeInfo('executing goHomeFromUnknowPage()');
 
 		scenarioHelper.getCurrentPage(function (error, currentPage) {
+			if (error) {
+				return callback(error);
+			}
 			ctx.trace.writeInfo('detected currentPage : ' + currentPage.name);
-			loop(currentPage);
+			return scenarioHelper.goHome(currentPage, callback);
 		});
 	}
 
