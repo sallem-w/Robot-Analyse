@@ -176,7 +176,8 @@
 	}});
 
 	ActivInfinitev7.step({ goToProductList : function(ev, sc, st) {
-		ActivInfinitev7.pContribution.btProductList.click();
+		// Sometimes we have a "Confirmation" POPUP, but we are in consultation mode... (bug Infinite)
+		ctx.scenarioHelper.forceClick(ActivInfinitev7.pContribution.btProductList);
 		ActivInfinitev7.pProductList.wait(function() {
 			return sc.endStep();
 		});
