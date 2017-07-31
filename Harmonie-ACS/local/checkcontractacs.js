@@ -3,11 +3,11 @@
 		sc.data.codeScenario = ctx.config.ACS;
 		sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
 			ctx.trace.writeError(sc.data.contract.individualContract + ' Timeout aborting current scenario');
-			sc.endStep(ActivInfinitev7.steps.abort);
+			st.endStep(ActivInfinitev7.steps.abort);
 		});
 		sc.onError(function(sc, st, ex) {
 			ctx.trace.writeError(sc.data.contract.individualContract + ex + ' aborting current scenario');
-			sc.endStep(ActivInfinitev7.steps.abort);
+			st.endStep(ActivInfinitev7.steps.abort);
 		});
 		sc.setMode(e.scenario.mode.noStartIfRunning);
 		sc.step(ActivInfinitev7.steps.initializeCheckContract);

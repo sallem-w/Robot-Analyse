@@ -75,8 +75,10 @@
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 
 			ctx.setValue(ActivInfinitev7.pTerminatedContractFo.oDemandDate, ctx.date.monthStart);
-			ActivInfinitev7.pTerminatedContractFo.btNext.click();
-			ActivInfinitev7.pMembershipSearchBene.wait(function() {
+			ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pMembershipSearchBene, function (error) {
+				if (error) {
+					return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Identification Contrat Recherche", merci de remonter les logs au service technique', 'Erreur');
+				}
 				return sc.endStep();
 			});
 		}, function () {
@@ -266,7 +268,10 @@
 	}});
 
 	ActivInfinitev7.step({ nextToPInsuredIdent: function(ev, sc, st) {
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInsuredIdent, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pInsuredIdent, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	} });
@@ -349,7 +354,10 @@
 
 	ActivInfinitev7.step({ nextToCalculParam: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToCalculParam');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCalculParam, function ()  {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCalculParam, function (error)  {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramètres de calcul", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});
@@ -362,7 +370,10 @@
 
 	ActivInfinitev7.step({ nextToContributionVisu: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToContributionVisu');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pContributionVisu, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	} });
@@ -370,7 +381,10 @@
 	ActivInfinitev7.step({ nextToCoverageImmediateEch: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToCoverageImmediateEch');
 		ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateEch, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateEch, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});
@@ -378,7 +392,10 @@
 	ActivInfinitev7.step({ nextToCoverageImmediateCar: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToCoverageImmediateCar');
 		ctx.setValue(ActivInfinitev7.pCoverageImmediateEch.oEditionSelect, 'Lettrage sans édition');
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateCar, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pCoverageImmediateCar, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Demande de carte tiers", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});
@@ -387,7 +404,10 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToSaveUpdate');
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.setFocus();
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
-		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function () {
+		ctx.scenarioHelper.goNextPageTill(ActivInfinitev7.pSaveUpdate, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation Acte", merci de remonter les logs au service technique', 'Erreur');
+			}
 			return sc.endStep();
 		});
 	}});

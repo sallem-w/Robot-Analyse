@@ -110,15 +110,14 @@
 
 	scenarioHelper.goHome = function goHome(callback) {
 		ctx.trace.writeInfo('executing goHome()');
-		ctx.trace.writeInfo('ActivInfinitev7.currentPage : ' + ActivInfinitev7.currentPage);
-		if (ActivInfinitev7.currentPage) {
-			ctx.trace.writeInfo('ActivInfinitev7.currentPage.notExist() : ' + ActivInfinitev7.currentPage.notExist());
-		}
-		ctx.trace.writeInfo('isPageLoaded : ' + !ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist()));
 		if (!ActivInfinitev7.currentPage || (ActivInfinitev7.currentPage && ActivInfinitev7.currentPage.notExist())) {
 			ctx.trace.writeInfo('Waiting for page to load before going to home');
-			ctx.sleep();
-			return goHome(callback);
+			return ctx.wait(function () {
+				return goHome(callback);
+			});
+		}
+		if(ActivInfinitev7.currentPage.name === ActivInfinitev7.pDashboard.name || ActivInfinitev7.currentPage.name === ActivInfinitev7.pConnection.name) {
+			return callback();
 		}
 		if (ActivInfinitev7.currentPage.btClose && ActivInfinitev7.currentPage.btClose.exist()) {
 			ctx.trace.writeInfo('Clicking close button');
@@ -130,8 +129,10 @@
 		if (ActivInfinitev7.currentPage.btCancel && ActivInfinitev7.currentPage.btCancel.exist()) {
 			ctx.trace.writeInfo('Clicking cancel button');
 			scenarioHelper.click(ActivInfinitev7.currentPage.btCancel);
-			return ActivInfinitev7.events.LOAD.once(function() {
-				return goHome(callback);
+			return ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+				return ActivInfinitev7.events.LOAD.once(function () {
+					return goHome(callback);
+				});
 			});
 		}
 
@@ -168,9 +169,7 @@
 	
 	scenarioHelper.connectionAuto = function(sc) {
 		ctx.trace.writeInfo('Reconnecting ...');
-		ctx.exec('taskkill /f /im iexplore.exe');
-		ActivInfinitev7.notify(ActivInfinitev7.events.QUIT);
-		ActivInfinitev7.notify(ActivInfinitev7.events.END);
+		ActivInfinitev7.close();
 		ActivInfinitev7.waitClose(function () {
 			ctx.trace.writeInfo('IE closed');
 			ctx.shellexec(ctx.config.getPathStartProcessusBat(), sc.data.path);
@@ -195,24 +194,71 @@
 
 	scenarioHelper.goNextPageTill = function goNextPageTill(page, callback) {
 		ctx.trace.writeInfo('Navigating to ' + page.name);
-		function loop() {
-			if (!ActivInfinitev7.currentPage || !ActivInfinitev7.currentPage.exist()) {
-				return ctx.wait(loop);
+		var previousPageName = null;
+		function loop(currentPage) {
+			ctx.trace.writeInfo('Now on page : ' + currentPage.name);
+			if(currentPage.name === previousPageName) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' Blocked on page : ' + previousPageName));
 			}
-			ctx.trace.writeInfo('Page : ' + ActivInfinitev7.currentPage.name);
-			if (ActivInfinitev7.currentPage.name !== page.name) {
-				ActivInfinitev7.currentPage.btNext.setFocus();
-				ActivInfinitev7.currentPage.btNext.click();
-				return ActivInfinitev7.currentPage.events.UNLOAD.once(loop);
+			previousPageName = currentPage.name;
+			if(currentPage.name === page.name) {
+				return callback();
 			}
-			
-			return page.wait(callback);
-		}
-		
-		loop();
-	}
-	
+			if (!currentPage.btNext || !currentPage.btNext.exist()) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' No btNext on page : ' + currentPage.name));
+			}
+			try {
+				currentPage.btNext.setFocus();
+				currentPage.btNext.click();
+			} catch (error) {
+				return callback(new Error('Error while trying to go to ' + page.name + ' Error when trying to click btNext on page : ' + currentPage.name));
+			}
 
+			return scenarioHelper.waitPageChange(function (error, newPage) {
+				if (error) {
+					return callback(new Error('Error while trying to go to ' + page.name + ' : ' + error.message));
+				}
+				return loop(newPage);
+			});
+		}
+
+		return loop(ActivInfinitev7.getCurrentPage());
+	}
+
+	scenarioHelper.waitPageChange = function (callback) {
+		var resolved = false;
+		var listeners = null;
+		var callbackWrapper = function (page) {
+			if (listeners) { // a listener can be triggered before the listeners array has finished being initialised
+				_.map(ctx.off, listeners);
+				delete listeners;
+			}
+			if (resolved) {
+				return;
+			}
+			resolved = true;
+			return callback(null, page);
+		}
+		var timeoutListener, unloadListener;
+		timeoutListener = ctx.wait(function () {
+			resolved = true;
+			callback(new Error('Timeout of 10s reached while trying for a page to load.'));
+			ctx.off(unloadListener);
+		}, 10000);
+		
+		unloadListener = ActivInfinitev7.currentPage.events.UNLOAD.once(function () {
+			ctx.off(timeoutListener);
+			listeners = _.map(function (pageName) {
+				return ActivInfinitev7.pages[pageName].events.LOAD.once(function () {
+					ctx.trace.writeInfo('detected : ' + pageName);
+					if (pageName === '_Undefined_') {
+						return;
+					}
+					callbackWrapper(ActivInfinitev7.pages[pageName]);
+				});
+			}, Object.keys(ActivInfinitev7.pages));
+		});
+	}
 
 	return scenarioHelper;
 }) ();
