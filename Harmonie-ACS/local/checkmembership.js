@@ -302,7 +302,7 @@
 
 	ActivInfinitev7.step({ nextToPProductUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToPProductUpdate');
-		ActivInfinitev7.pInfoRo.btNext.click();
+		ActivInfinitev7.pInsuredIdent.btNext.click();
 		ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 			return sc.endStep();
 		});
