@@ -26,7 +26,8 @@
 	}
 	
 	excelFile.startRowIndex = function() {
-		return configExcel.startRowIndex - 1;
+		//return configExcel.startRowIndex - 1;
+		return configExcel.startRowIndex ;
 	}
 	
 	excelFile.getLastIndexRow = function() {

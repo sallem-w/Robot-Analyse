@@ -3,6 +3,7 @@
     "ACS": {
         "showMenu": true,
         "rootPath": "C:\\deploy\\acs\\",
+        "pathResults" : "C:\\deploy\\acs\\results\\",
         "controlOnly": false,
         "controlContribution": false,
         "controlBlockNote": true,
@@ -68,11 +69,6 @@
         "showMenu": true,
         "saveUpdate": false,
         "rootPath": "C:\\deploy\\sirh\\"
-    },
-    "SIRHUpdate": {
-        "showMenu": true,
-        "saveUpdate": false,
-        "rootPath": "C:\\deploy\\sirh-update\\"
     },
     "DA": {
         "showMenu": true,
