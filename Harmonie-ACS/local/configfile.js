@@ -3,11 +3,13 @@
 	var codeScenario;
 	var fileName;
 	var fileNameOutput;
+	
 	var configFile = {};
 	
 	configFile.init = function(codeScenario) {
 		var config = ctx.config.getConfig(codeScenario);
 		rootPath = config.rootPath;
+		
 		var hasExcel = !!config.excel;
 		
 		if (!hasExcel) {
@@ -61,7 +63,7 @@
 	configFile.getPathFileOutput = function() {
 		return rootPath + fileNameOutput;
 	}
-
+	
 	configFile.getCodeProductCorrespond = function(codeProduct) {
 		var config = ctx.config.getConfig(ctx.config.ACS);
 		return config.productAccesSante[codeProduct];

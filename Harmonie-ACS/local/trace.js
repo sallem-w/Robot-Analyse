@@ -5,7 +5,6 @@
 	var pathFileTrace;
 	var txtTrace;
 	
-	
 	trace.constants = {
 		typeError: {
 			Info: "INFO",
@@ -27,7 +26,6 @@
 	trace.writeInfo = function(str, dateObj, separateur) {
 		trace.write(str, trace.constants.typeError.Info, dateObj, separateur)
 	};
-	
 	
 	trace.writeError = function(str, dateObj, separateur) {
 		trace.write(str, trace.constants.typeError.Error, dateObj, separateur)
