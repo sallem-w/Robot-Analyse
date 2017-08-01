@@ -121,7 +121,7 @@ function startScenarioCMU(sc, callback) {
 }
 
 function loopStepContractCMU(sc, i) {
-	if (i < sc.data.indexLastRow) {
+	if (i+sc.data.beneficiaries.length < sc.data.indexLastRow) {
 		// We add the number of line occuped by the current contract
 		sc.data.indexCurrentContract += sc.data.beneficiaries.length;
 		return sc.endStep(ActivInfinitev7.steps.startScenarioCMU);

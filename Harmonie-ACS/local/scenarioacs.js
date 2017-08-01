@@ -53,7 +53,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
 	sc.data.contract = ctx.excelFile.getContractRowACS(i); // récupère les infos contenues dans les colonnes pour chaque ligne et selon le config.json
-	if (!sc.data.contract) { /// quand sc.data.contract retourne undefined  on boucle sur la ligne suivante lorsqie le contrat a déja été traité
+	if (!sc.data.contract) { /// quand sc.data.contract retourne undefined  on boucle sur la ligne suivante lorsque le contrat a déja été traité
 		loopStepContractACS(sc, i);
 		return;
 	}
@@ -101,9 +101,21 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
-
+	
+	/// debut modif
+  var WshShell = new ActiveXObject("WScript.Shell");
+	var oExec = WshShell.Exec("taskkill /F /IM EXCEL.exe"); 
 	ctx.log("Count case processed : "+sc.data.countCaseProcessed);
-	return sc.endStep();
+	var myPopup = ctx.popup('pMyPopup', e.popup.template.Ok) ;
+	// display the Popup, setting title and message
+	myPopup.open({ title:  'Fin', message: '<H4>Fin du scénario</H4>'});
+	myPopup.waitResult(function(res) 
+	{
+		var WshShell = new ActiveXObject("WScript.Shell");
+		var oExec = WshShell.Exec("taskkill /F /IM CtxtStudio3.exe");
+		// end modif
+		return sc.endStep();
+  })
 }});
 
 function loopStepContractACS(sc, i) {
