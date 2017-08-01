@@ -17,7 +17,6 @@
 		sc.step(ActivInfinitev7.steps.checkCalculIfNeeded);
 		sc.step(ActivInfinitev7.steps.validateContribution);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedInAdvanceContract);
 		sc.step(ActivInfinitev7.steps.abort);

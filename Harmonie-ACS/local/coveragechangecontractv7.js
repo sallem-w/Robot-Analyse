@@ -24,7 +24,6 @@
 		sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 		sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 		sc.step(ActivInfinitev7.steps.abort);

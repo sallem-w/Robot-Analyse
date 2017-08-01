@@ -23,7 +23,8 @@
 		}
 		
 		currentPage.injectFunction(getMessages);
-		var message = ctx.string.trim(currentPage.evalScript('getMessages()'));
+		var rawMessage = currentPage.evalScript('getMessages()');
+		var message = ctx.string.trim(rawMessage);
 		return message;
 	}
 

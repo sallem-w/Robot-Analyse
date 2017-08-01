@@ -41,7 +41,6 @@
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateCar);
 		sc.step(ActivInfinitev7.steps.nextToSaveUpdate);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCheckMembership);
 		sc.step(ActivInfinitev7.steps.abort);
@@ -189,32 +188,33 @@
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio, sc.data.contract.paymentMethodPresta);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFrequencyEch, sc.data.contract.frequencyEch);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oTermeType, sc.data.contract.termType);
-		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-		ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		return sc.endStep();
+		sc.endStep();
 	}});
 
 	ActivInfinitev7.step({ isPrincipalInterlocutorValid: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - isPrincipalInterlocutorValid');
-		var validListener, invalidListener;
-		invalidListener = ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
-			ctx.off(validListener);
-			return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
-		});
-		validListener = ActivInfinitev7.pInsuredIdent.wait(function() {
-			ctx.off(invalidListener);
-			return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
-		});
+		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		ctx.scenarioHelper.waitPageChange(ActivInfinitev7.pMembershipMainBenef, function (error, page)  {
+			if (error) {
+				throw error;
+			}
+			switch(page.name) {
+				case ActivInfinitev7.pInsuredIdent.name:
+					return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
+				case ActivInfinitev7.pMembershipMainBenef.name:
+					return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
+				default:
+					throw new Error('Unexpected page : waited for ' + ActivInfinitev7.pInsuredIdent.name + ' or ' + ActivInfinitev7.pMembershipMainBenef.name + ' but got : ' + page.name);
+			}
+		}, [ActivInfinitev7.pInsuredIdent, ActivInfinitev7.pMembershipMainBenef]);
 	} });
 
 	ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutorError');
 		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipMainBenef);
 		if (errorMessage.indexOf('La localité est obligatoire') === -1) {
-			ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
-			sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(sc, sc.data.contract.individualContractCollectif + errorMessage, 'Erreur inconnue : ' + errorMessage, ctx.excelHelper.constants.status.Fail);
 		}
 
 		return sc.endStep();
@@ -228,11 +228,7 @@
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
-		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-		ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		ActivInfinitev7.pInsuredIdentEdition.wait(function() {
-			return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
-		});
+		return sc.endStep(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
 	}});
 
 	ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
@@ -336,6 +332,7 @@
 	ActivInfinitev7.step({ setupProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setupProductLoop');
 		sc.data.countProductCode = sc.data.contract.productCode.length;
+		ctx.trace.writeInfo('sc.data.contract.productCode ' + JSON.stringify(sc.data.contract.productCode));
 		sc.data.indexProductCode = 0;
 		return sc.endStep();
 	} });
@@ -371,7 +368,7 @@
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
 		sc.data.indexProductCode += 1;
-		if (sc.data.indexProductCode + 1 >= sc.data.countProductCode) {
+		if (sc.data.indexProductCode < sc.data.productCode.length) {
 			ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 			return ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 				return sc.endStep();

@@ -16,7 +16,6 @@
 		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 		sc.step(ActivInfinitev7.steps.validationCalcul);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitDashboard); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedProduct);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});

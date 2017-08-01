@@ -23,7 +23,6 @@
 		sc.step(ActivInfinitev7.steps.goToContributionVisu);
 		sc.step(ActivInfinitev7.steps.validateContributionVisu);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedSIRH);
 		sc.step(ActivInfinitev7.steps.abort);
