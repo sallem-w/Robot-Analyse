@@ -1,23 +1,13 @@
 ﻿ctx.configFile = (function() {
 	var rootPath;
-	var pathResults;
 	var codeScenario;
 	var fileName;
 	var fileNameOutput;
-	
-	var rowHeaderIndex;
-	
 	var configFile = {};
 	
 	configFile.init = function(codeScenario) {
 		var config = ctx.config.getConfig(codeScenario);
 		rootPath = config.rootPath;
-		///// Modif 
-		pathResults=config.pathResults;
-		
-
-		
-		///// end Modif
 		var hasExcel = !!config.excel;
 		
 		if (!hasExcel) {
@@ -68,14 +58,10 @@
 		return fileNameOutput;
 	}
 	
-configFile.getPathFileOutput = function() {
+	configFile.getPathFileOutput = function() {
 		return rootPath + fileNameOutput;
-}
+	}
 
-//configFile.getPathFileOutput = function() {
-//	return pathResults + fileNameOutput;
-//}
-	
 	configFile.getCodeProductCorrespond = function(codeProduct) {
 		var config = ctx.config.getConfig(ctx.config.ACS);
 		return config.productAccesSante[codeProduct];

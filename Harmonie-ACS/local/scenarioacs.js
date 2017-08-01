@@ -19,18 +19,14 @@ ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
 	
 	sc.data.config = ctx.config.getConfig(sc.data.scenarioCode); ///Récupère le config.json selon le code scénario
 	sc.data.configExcel = sc.data.config.excel; /// Récupère la config Excel du config.json selon le code scénario
-var pathLog=ctx.configFile.rootPath;
-	//ctx.log("Root path : "+pathLog);
 	ctx.trace.writeInfo('STEP - openFile'); //Ecriture dans le log
 	ctx.excelHelper.openFile(ctx.configFile.getPathFile()); // Ouverture d'un fichier Excel unique accessible via l'adresse contenue dans config.rootPath
 	
 	ctx.trace.writeInfo('STEP - copyFile'); //Ecriture dans le log
-	//ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile()); /// Enregistre le fichier Excel d'entrée sous un autre nom  et initialise les headers des colonnes de commentaires
-  ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(),  ctx.excelFile.startRowIndex()-1, ctx.excelFile.getHeaderFile()); /// Enregistre le fichier Excel d'entrée sous un autre nom  et initialise les headers des colonnes de commentaires
-//ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(), ctx.configFile.rowHeaderIndex, ctx.excelFile.getHeaderFile()); /// Enregistre le fichier Excel d'entrée sous un autre nom  et initialise les headers des colonnes de commentaires
+	ctx.excelHelper.copyFile(ctx.configFile.getPathFileOutput(), ctx.excelFile.startRowIndex(), ctx.excelFile.getHeaderFile()); /// Enregistre le fichier Excel d'entrée sous un autre nom  et initialise les headers des colonnes de commentaires
 
 	
-	var indexLastRow = ctx.excelFile.getLastIndexRow(); // Recupre l'indice de la dernière ligne
+	var indexLastRow = ctx.excelFile.getLastIndexRow(); // Recupère l'indice de la dernière ligne
 	
 	sc.data.countCaseFindIntoExcel = indexLastRow - sc.data.configExcel.startRowIndex + 1; // Calcul le nombre de lignes
 	sc.data.totalTimeDuration = new Date();  // renseigne la date du jour

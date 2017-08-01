@@ -1,13 +1,8 @@
 ﻿ActivInfinitev7.scenario({ scenarioCMU: function(ev, sc) {
 	///Modifications
 	sc.onError(function(sc,st,ex){
-		
 		//L'erreur peut etre due à une fermeture du server en fin de journée
-		sc.step(ActivInfinitev7.steps.stServerClosed);
-		///etc...
-		sc.endScenario();
-		
-		
+		return sc.endStep(ActivInfinitev7.steps.stServerClosed)
 	});
 	//////
 	sc.data.scenarioCode = ctx.config.CMU;
@@ -19,20 +14,14 @@
 	
 ///Steps onError
 
-
-/** Description */
 ActivInfinitev7.step({ stServerClosed: function(ev, sc, st) {
 	var data = sc.data;
-	
-		if(ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA.exist()){
-			//L'erreur est due à la fermeture du serveur en fin de journée
-			// on imprime une trace dans le log
-			ctx.trace.writeError('Fermeture journalière du Serveur Infinite');
-			sc.endStep();
-			return;
-		}
-	sc.endStep();
-	return;
+	if(ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA.exist()){
+	//L'erreur est due à la fermeture du serveur en fin de journée
+		ctx.trace.writeError('Fermeture journalière du Serveur Infinite');
+		sc.endScenario();
+	}
+	sc.endScenario();
 }});
 
 

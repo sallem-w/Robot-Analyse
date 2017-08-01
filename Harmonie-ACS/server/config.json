@@ -3,7 +3,6 @@
     "ACS": {
         "showMenu": true,
         "rootPath": "C:\\deploy\\acs\\",
-        "pathResults" : "C:\\deploy\\acs\\results\\",
         "controlOnly": false,
         "controlContribution": false,
         "controlBlockNote": true,
