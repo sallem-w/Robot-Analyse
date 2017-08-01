@@ -84,7 +84,7 @@
 			});
 		}, function () {
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(sc);
 		});
 	}});
 

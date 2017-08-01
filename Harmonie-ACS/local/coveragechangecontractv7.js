@@ -78,10 +78,12 @@
 			}
 			
 			if (!found) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code not found into product page');
-				sc.data.commentContract = 'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit';
-				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-				return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+				return ctx.endScenario(
+					sc,
+					sc.data.contract.individualContract + ' - END SCENARIO - product code not found into product page',
+					'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit', 
+					ctx.excelHelper.constants.status.Fail
+				);
 			}
 			
 			ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).click();
@@ -104,10 +106,12 @@
 		var newCodeProduct = ctx.configFile.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 
 		if (newCodeProduct === undefined || newCodeProduct === '') {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
-			sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(
+				sc,
+				sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found',
+				'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct,
+				ctx.excelHelper.constants.status.Fail
+			);
 		}
 		
 		ActivInfinitev7.pProductUpdate.btAddProduct.click();
