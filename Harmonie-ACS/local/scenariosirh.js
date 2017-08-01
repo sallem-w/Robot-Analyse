@@ -32,7 +32,13 @@
 						
 			var mailPath = ctx.mail.createMail(sc.data.contract);
 
-			var writeArray = _.getObjectValues(sc.data.contract);
+			var contract = _.clone(sc.data.contract);
+			contract.birthDate = ctx.date.formatDDMMYYYY(contract.birthDate);
+			contract.startDateGuarantee = ctx.date.formatDDMMYYYY(contract.startDateGuarantee);
+			contract.startDateContract = ctx.date.formatDDMMYYYY(contract.startDateContract);
+			contract.productCode = contract.productCode ? _.join(_.toArray(contract.productCode), ', ') : '';
+			
+			var writeArray = _.getObjectValues(contract);
 			writeArray.push(ctx.date.formatTrace(new Date()));
 			writeArray.push(sc.data.statusContract);
 			writeArray.push(sc.data.commentContract);

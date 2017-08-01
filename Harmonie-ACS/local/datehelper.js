@@ -21,6 +21,9 @@
 	};
 	
 	date.formatTrace = function(dateObj) {
+		if (typeof dateObj === 'number') {
+			dateObj = new Date(dateObj);
+		}
 		return dateObj.getFullYear() + "-" + date.padLeft(dateObj.getMonth()+1) + "-" + date.padLeft(dateObj.getDate()) + " " 
 				   + date.padLeft(dateObj.getHours()) + ":" + date.padLeft(dateObj.getMinutes()) + ":" + date.padLeft(dateObj.getSeconds());
 	};
