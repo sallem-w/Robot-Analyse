@@ -10,7 +10,7 @@ ActivInfinitev7.scenario({ scenarioACS: function(ev, sc) {
 
 //Initialisation
 ActivInfinitev7.step({ initScenario : function(ev, sc, st) {
-		//Impression dans le log du numéro de version
+	//Impression dans le log du numéro de version
 	ctx.trace.writeInfo('Version du projet : '+ GLOBAL.data.projectVersion +" - Date de la Version : "+GLOBAL.data.projectDate );
 	ctx.trace.writeInfo('Start scenario ' + sc.data.scenarioCode); //Ecriture dans le log
 	if (!ctx.excelFile.initConfig(sc.data.scenarioCode)) { ///Charge la configuration Excel à partir du fichier "server/config.json"
@@ -102,6 +102,7 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
 
+	ctx.log("Count case processed : "+sc.data.countCaseProcessed);
 	return sc.endStep();
 }});
 
