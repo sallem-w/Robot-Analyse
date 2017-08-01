@@ -37,8 +37,8 @@
 		var date = ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.particularSituationEndDate), 1));
 		ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb(errorMessage) {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 

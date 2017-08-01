@@ -25,7 +25,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - benef id not found';
 		var comment = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
-		return ctx.endScenario(sc, message, comment);
+		return ctx.endScenario(sc, ActivInfinitev7.pSynthesis, message, comment);
 	}
 	
 	var countOpenContractLists = 0;
@@ -52,12 +52,12 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 	if (countOpenContractLists > 1) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - multiple contract open';
 		var comment = 'Revoir centre: Plusieurs contrats sont ouverts pour la personne - page synthèse';
-		return ctx.endScenario(sc, message, comment);
+		return ctx.endScenario(sc, ActivInfinitev7.pSynthesis, message, comment);
 	} else if (countOpenContractLists === 1 && isOpenCurrentContract) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - One contract open and it\'s current contract');
 		return ctx.scenarioHelper.goHome(ActivInfinitev7.pSynthesis, function(error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
+				return ctx.endScenario(sc, null, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
 			}
 			return sc.endStep();
 		});
@@ -65,7 +65,7 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis - All contract close and current contract correspond with date (outputDate: ' + sc.data.contract.ACSCertificateEndDate + ' / WebsiteDate: ' + dateEndCurrentContract + ' )');
 		return ctx.scenarioHelper.goHome(ActivInfinitev7.pSynthesis, function(error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
+				return ctx.endScenario(sc, null, error.message, 'Erreur En essayant de refermer le contrat aprés vérification de la synthése, merci de communiquer les logs au service technique', 'erreur');
 			}
 			return sc.endStep();
 		});
@@ -73,10 +73,10 @@ ActivInfinitev7.step({ checkSynthesis : function(ev, sc, st) {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - already done';
 		var comment = 'Déjà traité';
 		sc.data.isAlreadyDone = true
-		return ctx.endScenario(sc, message, comment, ctx.excelHelper.constants.status.Success);
+		return ctx.endScenario(sc, ActivInfinitev7.pSynthesis, message, comment, ctx.excelHelper.constants.status.Success);
 	} else {
 		var message = sc.data.contract.individualContract + ' - END SCENARIO - does not under any cases';
 		var comment = 'Revoir centre: Ne rentre dans aucun cas - page synthèse';
-		return ctx.endScenario(sc, message, comment);
+		return ctx.endScenario(sc, ActivInfinitev7.pSynthesis, message, comment);
 	}
 }});

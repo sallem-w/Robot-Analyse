@@ -35,8 +35,8 @@
 		var date  = ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(sc.data.contract.ACSCertificateEndDate), 1));
 		ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb() {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 
@@ -44,7 +44,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToSavePageTerminatedInAdvanceContract');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pCalculParam, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -76,7 +76,7 @@
 		ActivInfinitev7.pContributionVisu.oValidation.set("OUI");
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pContributionVisu, ActivInfinitev7.pSaveUpdate, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Validation acte", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page de "Validation acte", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});

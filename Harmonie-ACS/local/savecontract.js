@@ -38,7 +38,7 @@
 
 		return ctx.scenarioHelper.goHome(currentPage, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Erreur durant la fermeture du contrat, merci de communiquer les logs au service technique', 'erreur');
+				return ctx.endScenario(sc, currentPage, error.message, 'Erreur durant la fermeture du contrat, merci de communiquer les logs au service technique', 'erreur');
 			}
 			return sc.endStep();
 		});

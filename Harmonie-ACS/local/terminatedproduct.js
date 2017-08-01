@@ -32,8 +32,8 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractEffect');
 		ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb() {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 
@@ -41,7 +41,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pContributionVisu, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
