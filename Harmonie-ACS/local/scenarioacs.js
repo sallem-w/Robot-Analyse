@@ -101,8 +101,19 @@ ActivInfinitev7.step({ endScenario : function(ev, sc, st) {
 	stats['countCaseProductTerminated'] = sc.data.countCaseProductTerminated;
 	stats['countCaseContractWithProductACS'] = sc.data.countCaseContractWithProductACS;
 	ctx.excelFile.writeStats(stats);
+  var WshShell = new ActiveXObject("WScript.Shell");
+	var oExec = WshShell.Exec("taskkill /F /IM EXCEL.exe"); 
 
-	return sc.endStep();
+	var myPopup = ctx.popup('pMyPopup', e.popup.template.Ok) ;
+	// display the Popup, setting title and message
+	myPopup.open({ title:  'Fin', message: '<H4>Fin du scénario</H4>'});
+	myPopup.waitResult(function(res) 
+	{
+		var WshShell = new ActiveXObject("WScript.Shell");
+		var oExec = WshShell.Exec("taskkill /F /IM CtxtStudio3.exe"); 
+		return sc.endStep();
+  })
+	
 }});
 
 function loopStepContractACS(sc, i) {
