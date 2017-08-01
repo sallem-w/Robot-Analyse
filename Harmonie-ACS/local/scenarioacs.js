@@ -53,7 +53,7 @@ ActivInfinitev7.step({ startScenarioACS : function(ev, sc, st) {
 	var i = sc.data.indexCurrentContract;
 	
 	sc.data.contract = ctx.excelFile.getContractRowACS(i); // récupère les infos contenues dans les colonnes pour chaque ligne et selon le config.json
-	if (!sc.data.contract) { /// quand sc.data.contract retourne undefined  on boucle sur la ligne suivante lorsqie le contrat a déja été traité
+	if (!sc.data.contract) { /// quand sc.data.contract retourne undefined  on boucle sur la ligne suivante lorsque le contrat a déja été traité
 		loopStepContractACS(sc, i);
 		return;
 	}
