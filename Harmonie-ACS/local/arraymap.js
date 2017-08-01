@@ -29,8 +29,6 @@ _.toArray = function (data) {
 		return data;
 	}
 	return _.map(function (key, index) {
-		ctx.trace.writeInfo('key ' + key);
-		ctx.trace.writeInfo('index ' + index);
 		if (isNaN(parseInt(key))) {
 			throw new Error(JSON.stringify(data) + ' : Cannot be converted to array, key : ' + key + ' is not a number');
 		}
