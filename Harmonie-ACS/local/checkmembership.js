@@ -131,7 +131,7 @@
 		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
 		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
 
-		return ctx.endScenario(sc, ActivInfinitev7.pMembershipMainBenef, message, comment);
+		return ctx.endScenario(sc, ActivInfinitev7.pMembershipSearchBene, message, comment);
 	} });
 
 	ActivInfinitev7.step({ isBenefeciaryFound: function(ev, sc, st) {

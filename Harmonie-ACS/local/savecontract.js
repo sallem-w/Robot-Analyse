@@ -15,8 +15,6 @@
 			if (error) {
 				throw error;
 			}
-			ctx.trace.writeInfo('waitPageChange result : ' + page);
-			ctx.trace.writeInfo('waitPageChange result name : ' + page.name);
 			switch(page.name) {
 				case ActivInfinitev7.pDashboard.name:
 				case ActivInfinitev7.pSearchContractIndiv.name:
@@ -32,7 +30,6 @@
 
 	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-		ctx.trace.writeInfo('sc.data.page ' + sc.data.page);
 		var currentPage = ActivInfinitev7.pages[sc.data.page];
 		delete sc.data.page;
 
