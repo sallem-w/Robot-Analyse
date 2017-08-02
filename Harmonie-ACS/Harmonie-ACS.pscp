@@ -76,7 +76,6 @@
 				<SCRIPT Name="endScenario" Src="endScenario.js" />
 				<SCRIPT Name="setValue" Src="setValue.js" />
 				<SCRIPT Name="arrayMap" Src="arrayMap.js" />
-				<SCRIPT Name="objectHelper" Src="objectHelper.js" />
 			</SCRIPTS>
 			<RESOURCES>
 				<!-- html resources -->

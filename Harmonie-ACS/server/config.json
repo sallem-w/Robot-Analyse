@@ -69,11 +69,6 @@
         "saveUpdate": false,
         "rootPath": "C:\\deploy\\sirh\\"
     },
-    "SIRHUpdate": {
-        "showMenu": true,
-        "saveUpdate": false,
-        "rootPath": "C:\\deploy\\sirh-update\\"
-    },
     "DA": {
         "showMenu": true,
         "rootPath": "C:\\deploy\\da\\"

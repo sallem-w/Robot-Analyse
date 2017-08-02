@@ -2235,6 +2235,24 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1420036_1" Comment="Adhésions en collectif - N°22468408 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion" CtxtId="103" Techno="WEB" Timestamp="20/06/2017 14:20:07" />
 				</PAGE>
+				<PAGE Name="pWebServerClosed" Comment="Weblogic Bridge Message">
+					<CRITERE>
+						<TITRE Scan="Full"><![CDATA[Weblogic Bridge Message]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum04/mdg/auth/login]]></PATH>
+					<OBJETS>
+						<OBJET Name="oFailureOfServerAPA">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="130.R0R1R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Failure of server APACHE bridge:]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WeblogicBridgeMessa_1804012_1" Comment="Weblogic Bridge Message" CtxtId="130" Techno="WEB" Timestamp="27/07/2017 18:04:01" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
@@ -2251,16 +2269,15 @@
 				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
 				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
-				<SCRIPT Name="ParticularSituation2SIRH" Src="ParticularSituationSIRH.js" Folder="ScenarioSIRH" />
+				<SCRIPT Name="ParticularSituationSIRH" Src="ParticularSituationSIRH.js" Folder="ScenarioSIRH" />
 				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
 				<SCRIPT Name="CheckContractDa" Src="CheckContractDa.js" Folder="ScenarioDA" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" />
 				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="checkSynthesis" Src="checkSynthesis.js" Folder="pSynthesis" />
 				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
-				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="steps" />
+				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="saveContract" />
 				<SCRIPT Name="abort" Src="abort.js" Folder="steps" />
-				<SCRIPT Name="ScenarioSIRHUpdate" Src="ScenarioSIRHUpdate.js" Folder="ScenarioSIRHUpdate" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
