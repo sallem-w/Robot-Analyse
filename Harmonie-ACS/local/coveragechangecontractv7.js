@@ -19,7 +19,7 @@
 		sc.step(ActivInfinitev7.steps.setProductStateToRemoved);
 		sc.step(ActivInfinitev7.steps.addOutputProduct);
 		sc.step(ActivInfinitev7.steps.saveUpdateProduct);
-		sc.step(ActivInfinitev7.steps.goToVisualizationContribution); // from TerminatedProduct
+		sc.step(ActivInfinitev7.steps.goToVisualizationContributionFromPProductUpdate);
 		sc.step(ActivInfinitev7.steps.validationCalculCoverageChange);
 		sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 		sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
@@ -132,7 +132,15 @@
 		});
 	}});
 
-	// step goToVisualizationContribution from TerminatedProduct
+	ActivInfinitev7.step({ goToVisualizationContributionFromPProductUpdate: function(ev, sc, st) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToVisualizationContribution');
+		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pProductUpdate, ActivInfinitev7.pContributionVisu, function (error) {
+			if (error) {
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+			}
+			return sc.endStep();
+		});
+	}});
 
 	ActivInfinitev7.step({ validationCalculCoverageChange: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - validationCalcul');
