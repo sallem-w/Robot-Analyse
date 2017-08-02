@@ -244,6 +244,3 @@ ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl = ActivInfinitev7.pMembe
 ActivInfinitev7.pMembershipMainBenef.oAddressNumber = ActivInfinitev7.pMembershipMainBenef.addItem('oAddressNumber');
 ActivInfinitev7.pMembershipMainBenef.oCountry = ActivInfinitev7.pMembershipMainBenef.addItem('oCountry');
 ActivInfinitev7.pMembershipMainBenef.btClose = ActivInfinitev7.pMembershipMainBenef.addItem('btClose');
-
-ActivInfinitev7.pWebServerClosed = ActivInfinitev7.addPage('pWebServerClosed', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
-ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA = ActivInfinitev7.pWebServerClosed.addItem('oFailureOfServerAPA');
