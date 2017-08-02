@@ -70,17 +70,16 @@ ActivInfinitev7.pBlockNotes.btNext = ActivInfinitev7.pBlockNotes.addItem('btNext
 ActivInfinitev7.pBlockNotes.btClose = ActivInfinitev7.pBlockNotes.addItem('btClose');
 
 ActivInfinitev7.pInsuredIdent = ActivInfinitev7.addPage('pInsuredIdent', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem('oTitlePage', {"mustExist":true});
-ActivInfinitev7.pInsuredIdent.btNext = ActivInfinitev7.pInsuredIdent.addItem('btNext', {"mustExist":true});
 ActivInfinitev7.pInsuredIdent.btHelpCSCertificate = ActivInfinitev7.pInsuredIdent.addItem('btHelpCSCertificate');
+ActivInfinitev7.pInsuredIdent.oTitlePage = ActivInfinitev7.pInsuredIdent.addItem('oTitlePage', {"mustExist":true});
 ActivInfinitev7.pInsuredIdent.btInfoRo = ActivInfinitev7.pInsuredIdent.addItem('btInfoRo');
 ActivInfinitev7.pInsuredIdent.btClose = ActivInfinitev7.pInsuredIdent.addItem('btClose');
 ActivInfinitev7.pInsuredIdent.oInsuredROCheck = ActivInfinitev7.pInsuredIdent.addItem('oInsuredROCheck');
 ActivInfinitev7.pInsuredIdent.oEntitleROCheck = ActivInfinitev7.pInsuredIdent.addItem('oEntitleROCheck');
+ActivInfinitev7.pInsuredIdent.btNext = ActivInfinitev7.pInsuredIdent.addItem('btNext', {"mustExist":true});
 
 ActivInfinitev7.pInsuredIdentEdition = ActivInfinitev7.addPage('pInsuredIdentEdition', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pInsuredIdentEdition.oTitlePage = ActivInfinitev7.pInsuredIdentEdition.addItem('oTitlePage', {"mustExist":true});
-ActivInfinitev7.pInsuredIdentEdition.btValid = ActivInfinitev7.pInsuredIdentEdition.addItem('btValid', {"mustExist":true});
 ActivInfinitev7.pInsuredIdentEdition.btClose = ActivInfinitev7.pInsuredIdentEdition.addItem('btClose');
 ActivInfinitev7.pInsuredIdentEdition.oInsuredROCheck = ActivInfinitev7.pInsuredIdentEdition.addItem('oInsuredROCheck');
 ActivInfinitev7.pInsuredIdentEdition.oEntitleROCheck = ActivInfinitev7.pInsuredIdentEdition.addItem('oEntitleROCheck');
@@ -94,6 +93,7 @@ ActivInfinitev7.pInsuredIdentEdition.oSexe = ActivInfinitev7.pInsuredIdentEditio
 ActivInfinitev7.pInsuredIdentEdition.oBirthday = ActivInfinitev7.pInsuredIdentEdition.addItem('oBirthday');
 ActivInfinitev7.pInsuredIdentEdition.oSocialCategorie = ActivInfinitev7.pInsuredIdentEdition.addItem('oSocialCategorie');
 ActivInfinitev7.pInsuredIdentEdition.oCheckTeletrans = ActivInfinitev7.pInsuredIdentEdition.addItem('oCheckTeletrans');
+ActivInfinitev7.pInsuredIdentEdition.btValid = ActivInfinitev7.pInsuredIdentEdition.addItem('btValid', {"mustExist":true});
 
 ActivInfinitev7.pCertificateHelpCS = ActivInfinitev7.addPage('pCertificateHelpCS', {"comment":"Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACAC_403\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pCertificateHelpCS.oType = ActivInfinitev7.pCertificateHelpCS.addItem('oType', {"occurs":1});
@@ -244,3 +244,6 @@ ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl = ActivInfinitev7.pMembe
 ActivInfinitev7.pMembershipMainBenef.oAddressNumber = ActivInfinitev7.pMembershipMainBenef.addItem('oAddressNumber');
 ActivInfinitev7.pMembershipMainBenef.oCountry = ActivInfinitev7.pMembershipMainBenef.addItem('oCountry');
 ActivInfinitev7.pMembershipMainBenef.btClose = ActivInfinitev7.pMembershipMainBenef.addItem('btClose');
+
+ActivInfinitev7.pWebServerClosed = ActivInfinitev7.addPage('pWebServerClosed', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
+ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA = ActivInfinitev7.pWebServerClosed.addItem('oFailureOfServerAPA');
