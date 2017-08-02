@@ -23,7 +23,6 @@
 		sc.step(ActivInfinitev7.steps.goToContribution);
 		sc.step(ActivInfinitev7.steps.checkContribution); // from checkContractACS
 		sc.step(ActivInfinitev7.steps.toTerminated);
-		sc.step(ActivInfinitev7.steps.closeConsultation);
 		sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
@@ -89,7 +88,7 @@
 			sc.data.commentContract = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
 			sc.data.countCaseBackToCenter += 1;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 		}
 
 		if (isASSPRITerminatedAndOtherNotTerminated(sc, typeInsured, currentState)) {
@@ -97,7 +96,7 @@
 			sc.data.commentContract = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
 			sc.data.countCaseBackToCenter += 1;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 		}
 
 		var dateEndEffectInfinite = getEndEffectInfiniteDate();
@@ -106,7 +105,7 @@
 			sc.data.commentContract = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
 			sc.data.countCaseBackToCenter += 1;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 		}
 
 		//Check if the infinite date is after the input file date
@@ -123,7 +122,7 @@
 			sc.data.commentContract = 'Revoir centre: problème sur les dates de fin d\'effet des bénéficiaires';
 			sc.data.countCaseBackToCenter += 1;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 		}
 
 		return sc.endStep();
@@ -132,7 +131,7 @@
 	ActivInfinitev7.step({ clickIntoBeneficiary: function(ev, sc, st) {
 		if (sc.data.indexBenef === sc.data.countBenef - 1) {
 			if (sc.data.contractIsProlonged) {
-				return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+				return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 			}
 			return sc.endStep(ActivInfinitev7.steps.navigateToProductList);
 		}
@@ -154,7 +153,7 @@
 				ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
 				sc.data.commentContract = 'Déjà fait';
 				sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-				return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+				return ctx.endScenario(sc, ActivInfinitev7.pInfoRo);
 			}
 
 			return sc.endStep();
@@ -184,7 +183,7 @@
 			ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - All product are already terminated');
 			sc.data.commentContract = 'Déjà fait';
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			return sc.endStep(ActivInfinitev7.steps.closeConsultation);
+			return ctx.endScenario(sc, ActivInfinitev7.pProductList);
 		}
 		ActivInfinitev7.pProductList.oTypeBenef.i(sc.data.indexBenef).click();
 		ActivInfinitev7.pProductList.events.LOAD.once(function () {
@@ -213,16 +212,6 @@
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 		sc.data.countCaseReadyToRemove += 1;
 		return sc.endStep();
-	}});
-
-	ActivInfinitev7.step({ closeConsultation: function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - closeConsultation');
-		ctx.scenarioHelper.goHomeFromUnknowPage(function(error) {
-			if (error) {
-				return ctx.endScenario(sc, null, error.message, 'Erreur En essayant de refermer lla consultation, merci de communiquer les logs au service technique', 'erreur');
-			}
-			return sc.endScenario();
-		});
 	}});
 	
 	sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
