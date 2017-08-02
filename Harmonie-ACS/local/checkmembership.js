@@ -365,9 +365,6 @@
 
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
-		ctx.trace.writeInfo('sc.data.indexProductCode : ' + sc.data.indexProductCode);
-		ctx.trace.writeInfo('sc.data.contract.productCode : ' + JSON.stringify(sc.data.contract.productCode));
-		ctx.trace.writeInfo('sc.data.contract.productCode.length : ' + sc.data.productCodeCount);
 		sc.data.indexProductCode += 1;
 		ctx.trace.writeInfo(sc.data.indexProductCode + ' >= ' + sc.data.productCodeCount - 1 + ' : ' + sc.data.indexProductCode >= sc.data.productCodeCount - 1);
 		if (sc.data.indexProductCode >= sc.data.productCodeCount - 1) {
