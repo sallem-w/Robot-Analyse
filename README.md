@@ -2,87 +2,7 @@
 
 # Installation
 
-Le fichier de configuration se trouve dans `harmonie-contextor\Harmonie-ACS\server`.
-
-Exemple de template du fichier de configuration : 
-
-```json
-{
-    "pathTemplate": "C:\\Users\\excel\\template\\",
-    "ACS": {
-        "showMenu": true,
-        "rootPath": "C:\\Users\\excel\\ACS-20170420-1\\",
-        "controlOnly": true,
-        "controlContribution": true,
-        "saveUpdate": true,
-        "addYearSearchContract": 30,
-        "excel": {
-            "startColumnIndex": 1,
-            "startRowIndex": 2,
-            "columnIndex": {
-                "individualContract": 1,
-                "insuredIdentifiant": 6,
-                "insuredName": 7,
-                "insuredSurName": 8,
-                "subscribedCodeProduct": 9,
-                "ACSCertificateStartDate": 14,
-                "ACSCertificateEndDate": 15,
-                "scheduleCode": 16,
-                "paymentTypeLabel": 17,
-                "dateProceedContract": 18,
-                "statusContract": 19,
-                "commentContract": 20
-            }
-        },
-         "productAccesSante": {
-            "TPSAACSA": "TPSASACSA",
-            "TPSAACSB": "TPSASACSB",
-            "TPSAACSC": "TPSASACSC",
-            "TPSARLACSA": "TPSARLSACA",
-            "TPSARLACSB": "TPSARLSACB",
-            "TPSARLACSC": "TPSARLSACC"
-        }
-    },
-    "CMU":{
-        "showMenu": false,
-        "rootPath": "C:\\Users\\excel\\CMU-1\\", 
-        "controlOnly": false,
-        "controlContribution": false,
-        "saveUpdate": false,
-        "excel": {
-            "startRowIndex": 5,
-            "startColumnIndex": 1,
-            "columnIndex":{
-                "name": 1,
-                "firstName": 2,
-                "individualContract": 3,
-                "type": 4,
-                "icStartDate": 5,
-                "icEndDate": 6,
-                "suscribedCodeProduct": 7,
-                "subscribedProductStartDate": 8,
-                "subscribedProductEndDate": 9,
-                "nbDayCMUCover": 10,
-                "particularSituationStartDate": 11,
-                "particularSituationEndDate": 12,
-                "managementCenterCode": 13,
-                "dateProceedContract": 14,
-                "statusContract": 15,
-                "commentContract": 16
-            }
-        }
-    },
-    "SIRH": {
-        "showMenu": true,
-        "rootPath": "C:\\deploy\\eram\\"
-    },
-    "DA": {
-        "showMenu": true,
-        "rootPath": "C:\\deploy\\eram\\"
-    }
-}
-
-```
+Le fichier de configuration se trouve dans le dossier [harmonie-contextor/Harmonie-ACS/server](Harmonie-ACS/server/config.json).
 
 - `showMenu` : Permet d'afficher ou non le menu permettant de lancer le scenario
 - `pathTemplate`: Chemin du dossier des différents template HTML
@@ -90,6 +10,7 @@ Exemple de template du fichier de configuration :
 - `addYearSearchContrac`: Représente le nombre d'années que l'on rajoute lors de la recherche d'un contrat
 - `productAccesSante`: Représente le produits ACS et son correspondant le produit de sortie ACS. (Partie 2.1.2 Etape 2)
 - `saveUpdate`: Permet d'activer ou non la sauvegarde des différentes modifications. Si il est à `true`, les modifications vont être sauvegardées. Si il est à `false`, les modification ne seront pas sauvegardées.
+
 # Utilisation ACS / CMU
 
 Il est possbile de relancer facilement un fichier excel déjà traité, il suffit de vider les champs date, statut et commentaire. Contextor ne vas pas passer sur les lignes qui contiennent ces informations.
@@ -123,7 +44,7 @@ Vous pouvez retrouver des exemples de fichier html dans le dossier template qui 
 
 Pour commencer, on va créer un dossier `deploy` dans `C:` qui va contenir tout ce qu'il faut pour que l'utilisateur lance simplement le projet.
 
-On va mettre le dossier template et le fichier `config.json` dans le dossier `deploy`.
+On va mettre le dossier template dans le dossier `deploy`.
 
 Dans contextor Studio, il faut faire `File -> Export project`, il va générer un dossier `export` qui contient un dossier et un fichier zip. 
 On va copier/coller le dossier dans notre dossier `deploy`.
@@ -146,7 +67,7 @@ Il suffit de zipper le dossier `deploy` et de le fournir aux utilisateurs.
 # Lancement utilisateur
 
 - Avoir installé Contextor Interactive sur la machine (Vérifier que l’éxécutable « C:\Program Files\Contextor\Interactive\CtxtRun.exe » existe)
-- Se connecter à  Infinite
+- Lancer Infinite et rentre ces identifiants
 - Extraire le zip dans « C : »
 - Aller dans le fichier config.json pour mettre le chemin vers le dossier qui contient votre fichier Excel
 - Lancer le raccourci Contextor
