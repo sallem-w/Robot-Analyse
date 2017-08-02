@@ -41,7 +41,6 @@
 		sc.step(ActivInfinitev7.steps.nextToCoverageImmediateCar);
 		sc.step(ActivInfinitev7.steps.nextToSaveUpdate);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCheckMembership);
 		sc.step(ActivInfinitev7.steps.abort);
@@ -79,13 +78,13 @@
 			ctx.setValue(ActivInfinitev7.pTerminatedContractFo.oDemandDate, ctx.date.monthStart);
 			ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pMembershipSearchBene, function (error) {
 				if (error) {
-					return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Identification Contrat Recherche", merci de remonter les logs au service technique', 'Erreur');
+					return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Identification Contrat Recherche", merci de remonter les logs au service technique', 'Erreur');
 				}
 				return sc.endStep();
 			});
-		}, function () {
+		}, function (currentPage) {
 			ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership not found');
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 
@@ -132,10 +131,7 @@
 		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
 		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
 
-		ActivInfinitev7.pMembershipSearchBene.btCancel.click();
-		return ActivInfinitev7.pMembershipMainBenef.wait(function() {
-			return ctx.endScenario(sc, message, comment);
-		});
+		return ctx.endScenario(sc, ActivInfinitev7.pMembershipSearchBene, message, comment);
 	} });
 
 	ActivInfinitev7.step({ isBenefeciaryFound: function(ev, sc, st) {
@@ -164,7 +160,7 @@
 			comment = 'Revoir centre: ' + messagePopup;
 		}
 
-		return ctx.endScenario(sc, message, comment);
+		return ctx.endScenario(sc, ActivInfinitev7.pMembershipSearchBene, message, comment);
 	}});
 
 	ActivInfinitev7.step({ setPrincipalInterlocutorPayment: function(ev, sc, st) {
@@ -189,32 +185,33 @@
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oModePaymentPrestatio, sc.data.contract.paymentMethodPresta);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oFrequencyEch, sc.data.contract.frequencyEch);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oTermeType, sc.data.contract.termType);
-		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-		ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		return sc.endStep();
+		sc.endStep();
 	}});
 
 	ActivInfinitev7.step({ isPrincipalInterlocutorValid: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - isPrincipalInterlocutorValid');
-		var validListener, invalidListener;
-		invalidListener = ActivInfinitev7.pMembershipMainBenef.events.LOAD.once(function() {
-			ctx.off(validListener);
-			return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
-		});
-		validListener = ActivInfinitev7.pInsuredIdent.wait(function() {
-			ctx.off(invalidListener);
-			return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
-		});
+		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
+		ActivInfinitev7.pMembershipMainBenef.btNext.click();
+		ctx.scenarioHelper.waitPageChange(ActivInfinitev7.pMembershipMainBenef, function (error, page)  {
+			if (error) {
+				throw error;
+			}
+			switch(page.name) {
+				case ActivInfinitev7.pInsuredIdent.name:
+					return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
+				case ActivInfinitev7.pMembershipMainBenef.name:
+					return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
+				default:
+					throw new Error('Unexpected page : waited for ' + ActivInfinitev7.pInsuredIdent.name + ' or ' + ActivInfinitev7.pMembershipMainBenef.name + ' but got : ' + page.name);
+			}
+		}, [ActivInfinitev7.pInsuredIdent, ActivInfinitev7.pMembershipMainBenef]);
 	} });
 
 	ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutorError');
 		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipMainBenef);
 		if (errorMessage.indexOf('La localité est obligatoire') === -1) {
-			ctx.trace.writeError(sc.data.contract.individualContractCollectif + errorMessage);
-			sc.data.commentContract = 'Erreur inconnue : ' + errorMessage;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(sc, ActivInfinitev7.pMembershipMainBenef, sc.data.contract.individualContractCollectif + errorMessage, 'Erreur inconnue : ' + errorMessage, ctx.excelHelper.constants.status.Fail);
 		}
 
 		return sc.endStep();
@@ -228,11 +225,7 @@
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
-		ActivInfinitev7.pMembershipMainBenef.btNext.setFocus();
-		ActivInfinitev7.pMembershipMainBenef.btNext.click();
-		ActivInfinitev7.pInsuredIdentEdition.wait(function() {
-			return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
-		});
+		return sc.endStep(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
 	}});
 
 	ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
@@ -269,7 +262,7 @@
 	ActivInfinitev7.step({ nextToPInsuredIdentEdition: function(ev, sc, st) {
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pMembershipMainBenef, ActivInfinitev7.pInsuredIdentEdition, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page de "Paramétres de calcul", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -314,7 +307,7 @@
 
 	ActivInfinitev7.step({ invalidInsuredIdent: function(ev, sc, st) {
 		var errorMessage = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pInsuredIdentEdition) || 'unknow error';
-		return ctx.endScenario(sc, 'Wrong insured info : ' + errorMessage, 'Impossible de valider les information assuré dans "Identification assurés" : ' + errorMessage, 'Erreur');
+		return ctx.endScenario(sc, ActivInfinitev7.pInsuredIdentEdition, 'Wrong insured info : ' + errorMessage, 'Impossible de valider les information assuré dans "Identification assurés" : ' + errorMessage, 'Erreur');
 	} });
 
 	ActivInfinitev7.step({ nextToPProductUpdate: function(ev, sc, st) {
@@ -335,8 +328,9 @@
 
 	ActivInfinitev7.step({ setupProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setupProductLoop');
-		sc.data.countProductCode = sc.data.contract.productCode.length;
+		ctx.trace.writeInfo('sc.data.contract.productCode ' + JSON.stringify(sc.data.contract.productCode));
 		sc.data.indexProductCode = 0;
+		sc.data.productCodeCount = Object.keys(sc.data.contract.productCode).length; // Why? Because sc.data convert array it receive to object
 		return sc.endStep();
 	} });
 
@@ -359,8 +353,9 @@
 		if (errorMessage) {
 			var product = sc.data.contract.productCode[sc.data.indexProductCode];
 			return ctx.endScenario(
-				sc, 
-				'Could not add product : ' + product + ', error : ' + errorMessage, 
+				sc,
+				ActivInfinitev7.pProductUpdate,
+				'Could not add product : ' + product + ', error : ' + errorMessage,
 				'Erreur sur l\'ajout du produit "' + product + '" : ' + errorMessage, 'Non traité'
 			);
 		}
@@ -371,7 +366,8 @@
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
 		sc.data.indexProductCode += 1;
-		if (sc.data.indexProductCode + 1 >= sc.data.countProductCode) {
+		ctx.trace.writeInfo(sc.data.indexProductCode + ' >= ' + sc.data.productCodeCount - 1 + ' : ' + sc.data.indexProductCode >= sc.data.productCodeCount - 1);
+		if (sc.data.indexProductCode >= sc.data.productCodeCount - 1) {
 			ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 			return ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 				return sc.endStep();
@@ -385,7 +381,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToCalculParam');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pProductUpdate, ActivInfinitev7.pCalculParam, function (error)  {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Paramètres de calcul", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page de "Paramètres de calcul", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -401,7 +397,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextToContributionVisu');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pCalculParam, ActivInfinitev7.pContributionVisu, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page de "Visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page de "Visualisation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -412,7 +408,7 @@
 		ctx.setValue(ActivInfinitev7.pContributionVisu.oValidation, 'OUI');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pContributionVisu, ActivInfinitev7.pCoverageImmediateEch, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -423,7 +419,7 @@
 		ctx.setValue(ActivInfinitev7.pCoverageImmediateEch.oEditionSelect, 'Lettrage sans édition');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pCoverageImmediateEch, ActivInfinitev7.pCoverageImmediateCar, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Demande de carte tiers", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Demande de carte tiers", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -435,7 +431,7 @@
 		ActivInfinitev7.pCoverageImmediateCar.oNoEdit.click();
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pCoverageImmediateCar, ActivInfinitev7.pSaveUpdate, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation Acte", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Validation Acte", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});

@@ -16,7 +16,6 @@
 		sc.step(ActivInfinitev7.steps.checkSynthesis);
 		sc.step(ActivInfinitev7.steps.navigateToConsultation);
 		sc.step(ActivInfinitev7.steps.searchIndividualContract);
-		sc.step(ActivInfinitev7.steps.acsIndividualContractNotFound);
 		sc.step(ActivInfinitev7.steps.acsIndividualContractFound);
 		sc.step(ActivInfinitev7.steps.checkBlockNote);
 		sc.step(ActivInfinitev7.steps.gotToHelpCsCertificate);
@@ -59,16 +58,10 @@
 		
 		ctx.scenarioHelper.searchContract(sc, ctx.date.formatDDMMYYYY(ctx.date.addYear(new Date(), sc.data.config.addYearSearchContract)), function () {
 			sc.endStep(ActivInfinitev7.steps.acsIndividualContractFound);
-		}, function () {
-			sc.endStep(ActivInfinitev7.steps.acsIndividualContractNotFound);
+		}, function (currentPage) {
+	 		return ctx.endScenario(sc, currentPage);
 		});
 	}});
-
-	ActivInfinitev7.step({ acsIndividualContractNotFound : function(ev, sc, st) {
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract not found');
-		var message = sc.data.contract.individualContract + ' - END SCENARIO - contract not found';
-	 	return ctx.endScenario(sc, message);
-	} });
 
 	ActivInfinitev7.step({ acsIndividualContractFound : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
@@ -89,7 +82,7 @@
 		if (ctx.string.trim(contentBlockNote) !== '' && sc.data.config.controlBlockNote) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
 			var comment = 'Revoir centre: Bloc note non vide, contenu : ' + contentBlockNote;
-			return ctx.endScenario(sc, message, comment);
+			return ctx.endScenario(sc, ActivInfinitev7.pBlockNotes, message, comment);
 		}
 		
 		ActivInfinitev7.pBlockNotes.btInsuredIdentPage.click();
@@ -124,7 +117,7 @@
 		if (!isCertificateValid) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - contract hasn\'t year difference';
 			var comment = 'Revoir centre: La durée du contrat n\'est pas d\'un an';
-			return ctx.endScenario(sc, message, comment);
+			return ctx.endScenario(sc, ActivInfinitev7.pCertificateHelpCS, message, comment);
 		}
 
 		ActivInfinitev7.pCertificateHelpCS.btVisuCotisation.click();
@@ -169,7 +162,7 @@
 		if (!isValidContribution) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - balance not up to date';
 			var comment = 'Revoir centre: Solde comptable non à jour';
-			return ctx.endScenario(sc, message, comment);
+			return ctx.endScenario(sc, ActivInfinitev7.pContribution, message, comment);
 		}
 
 		return sc.endStep();
@@ -240,7 +233,7 @@
 			ctx.trace.writeInfo('All contracts are terminated: going home');
 			return ctx.scenarioHelper.goHome(ActivInfinitev7.pProductList, function(error) {
 				if (error) {
-					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+					return ctx.endScenario(sc, null, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
 				}
 				return sc.endStep();
 			});
@@ -251,7 +244,7 @@
 			ctx.trace.writeInfo('contract not terminated but health access aborted : going home');
 			return ctx.scenarioHelper.goHome(ActivInfinitev7.pProductList, function(error) {
 				if (error) {
-					return ctx.endScenario(sc, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
+					return ctx.endScenario(sc, null, error.message, 'Erreur en essayant de refermer le contrat aprés vérification, merci de communiquer les logs au service technique', 'erreur');
 				}
 				return sc.endStep();
 			});
@@ -259,7 +252,7 @@
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - Contract is in no case - product page';
 			var comment = 'Revoir centre: Ne rentre dans aucun cas lors de la vérification de de la page produit';
 			ctx.trace.writeInfo('contract not in handled case : ending scenario');
-			return ctx.endScenario(sc, message, comment);
+			return ctx.endScenario(sc, ActivInfinitev7.pProductList, message, comment);
 		}
 	}});
 		

@@ -1,5 +1,6 @@
 ﻿(function () {
 	ActivInfinitev7.step({ saveContract: function(ev, sc, st) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
 		if (!sc.data.config.saveUpdate) {
 			return ctx.endScenario(sc);
 		}
@@ -8,36 +9,33 @@
 		ActivInfinitev7.pSaveUpdate.btSave.click();
 		sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-		
+
 		// Next step possible load multiple page : Dashboard / MembershipSearch / SearchContractIndiv
-		ActivInfinitev7.pSaveUpdate.events.UNLOAD.once(function() {
-			return sc.endStep();
-		});
+		ctx.scenarioHelper.waitPageChange(ActivInfinitev7.pSaveUpdate, function (error, page) {
+			if (error) {
+				throw error;
+			}
+			switch(page.name) {
+				case ActivInfinitev7.pDashboard.name:
+				case ActivInfinitev7.pSearchContractIndiv.name:
+				case ActivInfinitev7.pMembershipColSearch.name:
+					sc.data.page = page.name;
+					return sc.endStep();
+				default:
+					throw new Error('Error during save contract, waited for either ' + ActivInfinitev7.pDashboard.name + ', ' + ActivInfinitev7.pSearchContractIndiv.name + ' or ' + ActivInfinitev7.pMembershipColSearch.name + ' to load ' + 'but got ' + page.name);
+			}
+			
+		}, [ActivInfinitev7.pDashboard, ActivInfinitev7.pSearchContractIndiv, ActivInfinitev7.pMembershipColSearch]);
 	}});
 
-	ActivInfinitev7.step({ saveContractWaitDashboard: function(ev, sc, st) {
-		ActivInfinitev7.pDashboard.wait(function() {
-			return sc.endStep();
-		});
-	}});
-
-	ActivInfinitev7.step({ saveContractWaitSearchContractIndiv: function(ev, sc, st) {
-		ActivInfinitev7.pSearchContractIndiv.wait(function() {
-			return sc.endStep();
-		});
-	}});
-
-	ActivInfinitev7.step({ saveContractWaitMembershipColSearch: function(ev, sc, st) {
-		ActivInfinitev7.pMembershipColSearch.wait(function() {
-			return sc.endStep();
-		});
-	}});
-		
 	ActivInfinitev7.step({ closeContractUpdate: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - closeContractUpdate');
-		return ctx.scenarioHelper.goHome(ActivInfinitev7.pMembershipColSearch, function (error) {
+		var currentPage = ActivInfinitev7.pages[sc.data.page];
+		delete sc.data.page;
+
+		return ctx.scenarioHelper.goHome(currentPage, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Erreur durant la fermeture du contrat, merci de communiquer les logs au service technique', 'erreur');
+				return ctx.endScenario(sc, currentPage, error.message, 'Erreur durant la fermeture du contrat, merci de communiquer les logs au service technique', 'erreur');
 			}
 			return sc.endStep();
 		});

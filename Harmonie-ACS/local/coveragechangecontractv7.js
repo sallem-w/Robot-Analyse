@@ -24,7 +24,6 @@
 		sc.step(ActivInfinitev7.steps.selectElementDiffereIntoImmediateNotice);
 		sc.step(ActivInfinitev7.steps.checkElementDiffereIntoAskThirdPartyPayment);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitSearchContractIndiv); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endCoverageChangeContract);
 		sc.step(ActivInfinitev7.steps.abort);
@@ -43,8 +42,8 @@
 		var date  = ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1));
 		ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb() {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 
@@ -52,7 +51,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - goToProductUpdatePage');
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pProductUpdate, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Produits/Garanties", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Produits/Garanties", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -79,10 +78,13 @@
 			}
 			
 			if (!found) {
-				ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code not found into product page');
-				sc.data.commentContract = 'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit';
-				sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-				return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+				return ctx.endScenario(
+					sc,
+					ActivInfinitev7.pProductUpdate,
+					sc.data.contract.individualContract + ' - END SCENARIO - product code not found into product page',
+					'Impossible de trouver le code produit "' + sc.data.contract.subscribedCodeProduct + '" dans la page produit', 
+					ctx.excelHelper.constants.status.Fail
+				);
 			}
 			
 			ActivInfinitev7.pProductUpdate.oCodeProduct.i(index).click();
@@ -105,10 +107,13 @@
 		var newCodeProduct = ctx.configFile.getCodeProductCorrespond(sc.data.contract.subscribedCodeProduct);
 
 		if (newCodeProduct === undefined || newCodeProduct === '') {
-			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found');
-			sc.data.commentContract = 'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct;
-			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			return sc.endStep(ActivInfinitev7.steps.closeContractUpdate);
+			return ctx.endScenario(
+				sc,
+				ActivInfinitev7.pProductUpdate,
+				sc.data.contract.individualContract + ' - END SCENARIO - product code correspond not found',
+				'Impossible de trouver le code produit correspondant à ' + sc.data.contract.subscribedCodeProduct,
+				ctx.excelHelper.constants.status.Fail
+			);
 		}
 		
 		ActivInfinitev7.pProductUpdate.btAddProduct.click();
@@ -136,7 +141,7 @@
 		}
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pContributionVisu, ActivInfinitev7.pCoverageImmediateEch, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance" , merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Avis d\'échéance" , merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -161,7 +166,7 @@
 
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pCoverageImmediateCar, ActivInfinitev7.pSaveUpdate, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation acte", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Validation acte", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});

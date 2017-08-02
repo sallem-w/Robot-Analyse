@@ -17,7 +17,6 @@
 		sc.step(ActivInfinitev7.steps.goToVisualizationContribution);
 		sc.step(ActivInfinitev7.steps.validationCalcul);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitDashboard); // from saveContract
 		// end steps from TerminatedProduct
 		sc.step(ActivInfinitev7.steps.endTerminatedContract);
 		sc.step(ActivInfinitev7.steps.abort);

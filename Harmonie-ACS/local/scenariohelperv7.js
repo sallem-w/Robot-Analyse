@@ -23,7 +23,8 @@
 		}
 		
 		currentPage.injectFunction(getMessages);
-		var message = ctx.string.trim(currentPage.evalScript('getMessages()'));
+		var rawMessage = currentPage.evalScript('getMessages()');
+		var message = ctx.string.trim(rawMessage);
 		return message;
 	}
 
@@ -47,14 +48,14 @@
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			notFoundCb();
+			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);
 		  ctx.off(foundListener);
 		});
 
 		foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			foundCb();
+			foundCb(ActivInfinitev7.pTerminatedContractFo);
 			ctx.off(notFoundListener);
 		});
 	}
@@ -72,14 +73,14 @@
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
-			notFoundCb();
+			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);
 		  ctx.off(foundListener);
 		});
 
 		foundListener = ActivInfinitev7.pTerminatedContractFo.wait(function() {
 			ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - contract found');
 			sc.data.statusContract = ctx.excelHelper.constants.status.Success;
-			foundCb();
+			foundCb(ActivInfinitev7.pTerminatedContractFo);
 			ctx.off(notFoundListener);
 		});
 	}
@@ -250,7 +251,7 @@
 			
 				ActivInfinitev7.pDashboard.wait(function() {
 					ctx.trace.writeInfo('relogged loading next line');
-					return ctx.endScenario(sc, "Connection auto Infinite", "Déconnexion lors du traitement du contrat"); // ending current scenario, thus allowing the next one to start
+					return ctx.endScenario(sc, ActivInfinitev7.pDashboard, "Connection auto Infinite", "Déconnexion lors du traitement du contrat"); // ending current scenario, thus allowing the next one to start
 				});
 			});
 		});

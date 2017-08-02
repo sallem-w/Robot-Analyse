@@ -23,7 +23,6 @@
 		sc.step(ActivInfinitev7.steps.goToContributionVisu);
 		sc.step(ActivInfinitev7.steps.validateContributionVisu);
 		sc.step(ActivInfinitev7.steps.saveContract); // from saveContract
-		sc.step(ActivInfinitev7.steps.saveContractWaitMembershipColSearch); // from saveContract
 		sc.step(ActivInfinitev7.steps.closeContractUpdate); // from saveContract
 		sc.step(ActivInfinitev7.steps.endTerminatedSIRH);
 		sc.step(ActivInfinitev7.steps.abort);
@@ -50,15 +49,15 @@
 	ActivInfinitev7.step({ seachParticularSituationContract: function(ev, sc, st) {
 		ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb() {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	} });
 
 	ActivInfinitev7.step({ goToInfoRo: function(ev, sc, st) {
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pTerminatedContractFo, ActivInfinitev7.pInfoRo, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Produits\Garanties", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Produits\Garanties", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});
@@ -75,7 +74,7 @@
 		if (ActivInfinitev7.pInfoRoEdit.oNoSituation.exist()) {
 			return sc.endStep();
 		}
-		return ctx.endScenario(sc, 'Particular situation already exists');
+		return ctx.endScenario(sc, ActivInfinitev7.pInfoRoEdit, 'Particular situation already exists');
 	} });
 
 	ActivInfinitev7.step({ addParticularSituation: function(ev, sc, st) {
@@ -96,7 +95,7 @@
 	ActivInfinitev7.step({ goToContributionVisu: function(ev, sc, st) {
 		ctx.scenarioHelper.goNextFromPageToPage(ActivInfinitev7.pInfoRo, ActivInfinitev7.pContributionVisu, function (error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Probléme lors de la navigation vers la page "Validation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
+				return ctx.endScenario(sc, null, error.message, 'Probléme lors de la navigation vers la page "Validation du compte cotisant", merci de remonter les logs au service technique', 'Erreur');
 			}
 			return sc.endStep();
 		});

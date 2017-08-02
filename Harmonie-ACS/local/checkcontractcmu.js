@@ -42,8 +42,8 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchIndividualContractCMU');
 		ctx.scenarioHelper.searchContract(sc, null, function foundCb() {
 			return sc.endStep();
-		}, function notFoundCb() {
-			return ctx.endScenario(sc);
+		}, function notFoundCb(currentPage) {
+			return ctx.endScenario(sc, currentPage);
 		});
 	}});
 
@@ -219,7 +219,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract +  ' - STEP - closeConsultation');
 		ctx.scenarioHelper.goHomeFromUnknowPage(function(error) {
 			if (error) {
-				return ctx.endScenario(sc, error.message, 'Erreur En essayant de refermer lla consultation, merci de communiquer les logs au service technique', 'erreur');
+				return ctx.endScenario(sc, null, error.message, 'Erreur En essayant de refermer lla consultation, merci de communiquer les logs au service technique', 'erreur');
 			}
 			return sc.endScenario();
 		});
