@@ -333,9 +333,9 @@
 			scenarioHelper.waitPageLoad(callback, targetPages);
 		});
 		timeoutListener = ctx.wait(function () {
-			callback(new Error('Timeout of 10s reached while waiting for page ' + currentPage.name + ' to unload.'));
+			callback(new Error('Timeout of 30s reached while waiting for page ' + currentPage.name + ' to unload.'));
 			ctx.off(unloadListener);
-		}, 10000);
+		}, 30000);
 	}
 
 	/*
@@ -381,8 +381,8 @@
 		timeoutListener = ctx.wait(function () { // Wait for ten seconds and if no page has loaded abort with an error
 			resolved = true;
 			_.map(ctx.off, listeners); // disable all o LOAD listener
-			callback(new Error('Timeout of 10s reached while waiting for a page to load.'));
-		}, 10000);
+			callback(new Error('Timeout of 30s reached while waiting for a page to load.'));
+		}, 30000);
 	};
 	
 	/*
