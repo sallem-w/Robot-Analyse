@@ -328,9 +328,9 @@
 
 	ActivInfinitev7.step({ setupProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - setupProductLoop');
-		sc.data.countProductCode = sc.data.contract.productCode.length;
 		ctx.trace.writeInfo('sc.data.contract.productCode ' + JSON.stringify(sc.data.contract.productCode));
 		sc.data.indexProductCode = 0;
+		sc.data.productCodeCount = Object.keys(sc.data.contract.productCode).length; // Why? Because sc.data convert array it receive to object
 		return sc.endStep();
 	} });
 
@@ -365,8 +365,12 @@
 
 	ActivInfinitev7.step({ nextProductLoop: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - nextProductLoop');
+		ctx.trace.writeInfo('sc.data.indexProductCode : ' + sc.data.indexProductCode);
+		ctx.trace.writeInfo('sc.data.contract.productCode : ' + JSON.stringify(sc.data.contract.productCode));
+		ctx.trace.writeInfo('sc.data.contract.productCode.length : ' + sc.data.productCodeCount);
 		sc.data.indexProductCode += 1;
-		if (sc.data.indexProductCode < sc.data.productCode.length) {
+		ctx.trace.writeInfo(sc.data.indexProductCode + ' >= ' + sc.data.productCodeCount - 1 + ' : ' + sc.data.indexProductCode >= sc.data.productCodeCount - 1);
+		if (sc.data.indexProductCode >= sc.data.productCodeCount - 1) {
 			ActivInfinitev7.pProductUpdate.btSaveUpdateProduct.click();
 			return ActivInfinitev7.pProductUpdate.events.LOAD.once(function() {
 				return sc.endStep();

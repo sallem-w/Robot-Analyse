@@ -31,7 +31,6 @@
 			}
 						
 			var mailPath = ctx.mail.createMail(sc.data.contract);
-
 			var contract = _.clone(sc.data.contract);
 			contract.birthDate = ctx.date.formatDDMMYYYY(contract.birthDate);
 			contract.startDateGuarantee = ctx.date.formatDDMMYYYY(contract.startDateGuarantee);
