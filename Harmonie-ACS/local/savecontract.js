@@ -4,9 +4,7 @@
 		if (!sc.data.config.saveUpdate) {
 			return ctx.endScenario(sc);
 		}
-			
-		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - saveContract');
-		ActivInfinitev7.pSaveUpdate.btSave.click();
+		ctx.scenarioHelper.click(ActivInfinitev7.pSaveUpdate.btSave);
 		sc.data.commentContract += ' | ' + sc.data.currentScenario + ' effectuée';
 		sc.data.statusContract = ctx.excelHelper.constants.status.Success;
 
