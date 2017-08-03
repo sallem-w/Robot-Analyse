@@ -320,7 +320,7 @@
 			return ctx.endScenario(sc, ActivInfinitev7.pProductList, message, comment);
 		}
 	}});
-		
+
 	ActivInfinitev7.step({ endCheckContract : function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + sc.data.codeScenario);
