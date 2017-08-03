@@ -1,4 +1,5 @@
 ﻿ctx.endScenario = function endScenario(sc, currentPage, message, comment, status) {
+	ctx.trace.writeInfo('Ending scenario');
 	status = status || ctx.excelHelper.constants.status.Fail;
 
 	if (message) {
