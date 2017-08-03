@@ -49,7 +49,7 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - checkSynthesis');
 		if (
 			ActivInfinitev7.pSynthesis.oIndividualContract.count() === 1 &&
-		  ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau"
+			ctx.string.trim(ActivInfinitev7.pSynthesis.oIndividualContract.i(0).get()) === "Aucune donnée disponible dans le tableau"
 		) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - benef id not found';
 			var comment = 'Le numéro de personne assuré n\'existe pas (' + sc.data.contract.insuredIdentifiant + ') - page synthèse';
