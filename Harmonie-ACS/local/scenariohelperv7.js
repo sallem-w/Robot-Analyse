@@ -46,6 +46,7 @@
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
+			errorMessage = errorMessage.replace(/\n|\r/g,' ');
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);
@@ -71,6 +72,7 @@
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
+			errorMessage=errorMessage.replace(/\n|\r/g,' ');
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);
