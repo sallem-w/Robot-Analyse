@@ -23,7 +23,7 @@
 		sc.step(ActivInfinitev7.steps.goToContribution);
 		sc.step(ActivInfinitev7.steps.checkContribution); // from checkContractACS
 		sc.step(ActivInfinitev7.steps.toTerminated);
-		sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
+		sc.step(ActivInfinitev7.steps.endCheckContractCMU);
 		sc.step(ActivInfinitev7.steps.abort);
 	}});
 
@@ -213,10 +213,12 @@
 		sc.data.countCaseReadyToRemove += 1;
 		return sc.endStep();
 	}});
-	
-	sc.step(ActivInfinitev7.steps.endCheckContract); // from checkContractACS
-
-	// step endCheckContract from CheckContractACS
+		
+	ActivInfinitev7.step({ endCheckContractCMU : function(ev, sc, st) {
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - endSearchContract');
+		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - END - searchContract - ' + sc.data.codeScenario);
+		return ctx.endScenario(sc, ActivInfinitev7.pContribution);
+	}});
 
 	/**
 	 **
