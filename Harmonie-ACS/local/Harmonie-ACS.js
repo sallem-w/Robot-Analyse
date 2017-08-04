@@ -60,7 +60,7 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 
 /** main process start handler */
 GLOBAL.events.START.on(function (ev) {
-	
+	ctx.trace.writeInfo('Version du projet : '+ GLOBAL.data.projectVersion +" - Date de la Version : "+GLOBAL.data.projectDate );
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');
 	systray.loadImage('restart', 'FILE', ctx.options.resourceURL + '/bmp/repeat.png');
