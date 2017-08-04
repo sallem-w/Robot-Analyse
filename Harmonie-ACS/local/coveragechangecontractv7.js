@@ -39,7 +39,7 @@
 
 	ActivInfinitev7.step({ searchCoverageContract: function(ev, sc, st) {
 		ctx.trace.writeInfo(sc.data.contract.individualContract + ' - STEP - searchCoverageContract');
-		var date  = ctx.date.formatDDMMYYYY(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1));
+		var date  = ctx.date.formatDDMMYYYY(ctx.date.addYear(ctx.date.addDay(new Date(sc.data.contract.ACSCertificateEndDate), 1), 1));
 		ctx.scenarioHelper.searchContract(sc, date, function foundCb() {
 			return sc.endStep();
 		}, function notFoundCb(currentPage) {
