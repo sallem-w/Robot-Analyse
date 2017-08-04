@@ -3,9 +3,9 @@
     "ACS": {
         "showMenu": true,
         "rootPath": "C:\\deploy\\acs\\",
-        "controlOnly": true,
-        "controlContribution": true,
-        "controlBlockNote": false,
+        "controlOnly": false,
+        "controlContribution": false,
+        "controlBlockNote": true,
         "saveUpdate": false,
         "addYearSearchContract": 30,
         "excel": {
