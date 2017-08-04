@@ -127,7 +127,6 @@
 			sc.data.isUpdateBenef = true;
 			return sc.endStep();
 		}
-
 		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
 		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
 
