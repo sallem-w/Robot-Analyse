@@ -197,14 +197,14 @@
 				throw error;
 			}
 			switch(page.name) {
-				case ActivInfinitev7.pInsuredIdent.name:
+				case ActivInfinitev7.pInsuredIdentEdition.name:
 					return sc.endStep(ActivInfinitev7.steps.setInsuredIndent);
 				case ActivInfinitev7.pMembershipMainBenef.name:
 					return sc.endStep(ActivInfinitev7.steps.validPrincipalInterlocutorError);
 				default:
-					throw new Error('Unexpected page : waited for ' + ActivInfinitev7.pInsuredIdent.name + ' or ' + ActivInfinitev7.pMembershipMainBenef.name + ' but got : ' + page.name);
+					throw new Error('Unexpected page : waited for ' + ActivInfinitev7.pInsuredIdentEdition.name + ' or ' + ActivInfinitev7.pMembershipMainBenef.name + ' but got : ' + page.name);
 			}
-		}, [ActivInfinitev7.pInsuredIdent, ActivInfinitev7.pMembershipMainBenef]);
+		}, [ActivInfinitev7.pInsuredIdentEdition, ActivInfinitev7.pMembershipMainBenef]);
 	} });
 
 	ActivInfinitev7.step({ validPrincipalInterlocutorError: function(ev, sc, st) {
