@@ -60,7 +60,6 @@ GLOBAL.addOn({ evShowDiagRecorder: function(ev) {
 
 /** main process start handler */
 GLOBAL.events.START.on(function (ev) {
-	ctx.trace.writeInfo('Version du projet : ' +GLOBAL.data.projectVersion+ ' - Date de la Version : ' +GLOBAL.data.projectDate);
 	// *** Create Systray ***
 	systray.loadImage('stop', 'FILE', ctx.options.resourceURL + '/bmp/stop.png');
 	systray.loadImage('restart', 'FILE', ctx.options.resourceURL + '/bmp/repeat.png');
@@ -128,6 +127,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'ACS', 'ACS scenario');
 		systray.addMenu('ACS', 'ACSCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configACS.rootPath, ctx.config.ACS);
+			ctx.trace.writeInfo('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
 				ActivInfinitev7.scenarios.scenarioACS.start({ path: path, login: login, password: password });
@@ -139,6 +139,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'CMU', 'CMU scenario');
 		systray.addMenu('CMU', 'CMUCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configCMU.rootPath, ctx.config.CMU);
+			ctx.trace.writeInfo('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configCMU.rootPath, ctx.config.CMU);
 				ActivInfinitev7.scenarios.scenarioCMU.start({ path: path, login: login, password: password });
@@ -150,6 +151,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'SIRH', 'SIRH scenario');
 		systray.addMenu('SIRH', 'SIRHCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRH);
+			ctx.trace.writeInfo('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRH.rootPath, ctx.config.SIRH);
 				ActivInfinitev7.scenarios.scenarioSIRH.start({ path: path, login: login, password: password });
@@ -161,6 +163,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'SIRHUpdate', 'SIRH update scenario');
 		systray.addMenu('SIRHUpdate', 'SIRHUpdateCompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configSIRH.rootPath, ctx.config.SIRHUpdate);
+			ctx.trace.writeInfo('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			connectionInfinite(function(path, login, password) {
 				ctx.stats.initFileStats(ctx.config.getPathTemplate(), configSIRHUpdate.rootPath, ctx.config.SIRHUpdate);
 				ActivInfinitev7.scenarios.scenarioSIRHUpdate.start({ path: path, login: login, password: password });
@@ -172,6 +175,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('', 'DA', 'DA scenario');
 		systray.addMenu('DA', 'DACompletV7', 'Complet V7', '', function(ev) {
 			ctx.trace.initFileTrace(configDA.rootPath, ctx.config.DA);
+			ctx.trace.writeInfo('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configDA.rootPath, ctx.config.DA);
 			ActivInfinitev7.scenarios.scenarioDA.start();
 		});	
