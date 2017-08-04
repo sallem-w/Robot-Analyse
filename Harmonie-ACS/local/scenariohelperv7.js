@@ -32,6 +32,7 @@
 		if (ctx.string.trim(message) === '' || message === undefined) {
 			message = 'Problème inconnu, impossible de récupérer le message de la POPUP d\'erreur \n';
 		}
+		message = ctx.stringHelper.removeReturnAndTab(message);
 		return message;
 	}
 
@@ -46,7 +47,7 @@
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
-			errorMessage = errorMessage.replace(/\n|\r/g,' ');
+			errorMessage = ctx.stringHelper.removeReturnAndTab(errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);
@@ -72,7 +73,7 @@
 		notFoundListener = ActivInfinitev7.pContractIndivNotFoun.wait(function () {
 			var errorMessage = ctx.scenarioHelper.withEmptyMessagesPopup(ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pContractIndivNotFoun));
 			ctx.trace.writeError(sc.data.contract.individualContract + ' - error search contract : ' + errorMessage);
-			errorMessage=errorMessage.replace(/\n|\r/g,' ');
+			errorMessage = ctx.stringHelper.removeReturnAndTab(errorMessage);
 			sc.data.commentContract = 'Revoir centre: Erreur recherche contrat : ' + errorMessage;
 			sc.data.statusContract = ctx.excelHelper.constants.status.Fail;
 			notFoundCb(ActivInfinitev7.pContractIndivNotFoun);

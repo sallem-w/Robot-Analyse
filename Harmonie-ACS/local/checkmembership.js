@@ -127,7 +127,6 @@
 			sc.data.isUpdateBenef = true;
 			return sc.endStep();
 		}
-		contractBenefName=contractBenefName.replace(/\n|\r/g,' ');
 		var comment = 'Revoir centre: impossible de trouver l\'adhérent ' + contractBenefName;
 		var message = sc.data.contract.individualContractCollectif + ' - Contractor not found';
 
@@ -157,7 +156,6 @@
 		var messagePopup = ctx.scenarioHelper.getMessagesPopup(ActivInfinitev7.pMembershipSearchBene);
 		if (messagePopup) {
 			message = sc.data.contract.individualContractCollectif + ' - END SCENARIO - membership block';
-			messagePopup=  messagePopup.replace(/\n|\r/g,' ');
 			comment = 'Revoir centre: ' + messagePopup;
 		}
 

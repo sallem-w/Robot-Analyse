@@ -145,7 +145,7 @@
 		var contentBlockNote = ActivInfinitev7.pBlockNotes.oContentBlockNote.exist() && ActivInfinitev7.pBlockNotes.oContentBlockNote.get();
 		if (ctx.string.trim(contentBlockNote) !== '' && sc.data.config.controlBlockNote) {
 			var message = sc.data.contract.individualContract + ' - END SCENARIO - block note not empty';
-			contentBlockNote = contentBlockNote.replace(/\n|\r/g,' ');
+			contentBlockNote = ctx.stringHelper.removeReturnAndTab(contentBlockNote);
 			var comment = 'Revoir centre: Bloc note non vide, contenu :'+contentBlockNote;
 			return ctx.endScenario(sc, ActivInfinitev7.pBlockNotes, message, comment);
 		}
