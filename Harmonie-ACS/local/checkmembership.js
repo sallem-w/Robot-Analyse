@@ -220,11 +220,13 @@
 		ctx.trace.writeInfo(sc.data.contract.individualContractCollectif + ' - STEP - validPrincipalInterlocutor');
 		sc.data.noteContract = 'France sans contôle a séléctionné comme pays';
 		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oCountry, 'ZZZ'); // Select 'pays inconnu' into list
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl, sc.data.contract.postalCode);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
-		ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
-		return sc.endStep(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
+		ctx.wait(function () { // waiting for *NoControl input to load
+			ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oPostalCodeNoControl, sc.data.contract.postalCode);
+			ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oLocalityNoControl, sc.data.contract.locality);
+			ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddressNumber, '');
+			ctx.setValue(ActivInfinitev7.pMembershipMainBenef.oAddress, sc.data.contract.addressNumber + ' ' + sc.data.contract.address);
+			return sc.endStep(ActivInfinitev7.steps.isPrincipalInterlocutorValid);
+		}, 100);
 	}});
 
 	ActivInfinitev7.step({ checkInfoPrincipalInterlocutor: function(ev, sc, st) {
