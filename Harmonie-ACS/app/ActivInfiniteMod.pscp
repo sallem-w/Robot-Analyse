@@ -124,7 +124,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedProduct">
+						<OBJET Name="btTerminatedContract">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R5R5">
 									<ATT Name="href">
@@ -178,7 +178,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedContract">
+						<OBJET Name="btTerminatedProduct">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R11">
 									<ATT Name="href">
