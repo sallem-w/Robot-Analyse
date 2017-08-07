@@ -2238,6 +2238,7 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
+				<SCRIPT Name="CMU_ContractClass" Src="CMU_ContractClass.js" Folder="ScenarioCMUscripts" />
 				<SCRIPT Name="ScenarioACS" Src="ScenarioACS.js" Folder="ScenarioACS" />
 				<SCRIPT Name="ExcelFile" Src="ExcelFile.js" />
 				<SCRIPT Name="TerminatedProduct" Folder="ScenarioACS" Src="TerminatedProduct.js" />
@@ -2259,6 +2260,7 @@
 				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
 				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="steps" />
 				<SCRIPT Name="abort" Src="abort.js" Folder="steps" />
+				<SCRIPT Name="CMUsteps" Src="CMUsteps.js" Folder="ScenarioCMUscripts" />
 				<SCRIPT Name="ScenarioSIRHUpdate" Src="ScenarioSIRHUpdate.js" Folder="ScenarioSIRHUpdate" />
 			</SCRIPTS>
 			<ACTIONS />
