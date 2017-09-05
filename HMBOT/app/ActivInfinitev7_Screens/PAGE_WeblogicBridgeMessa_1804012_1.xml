@@ -1,0 +1,241 @@
+﻿<PAGE Techno="WEB" Name="PAGE_WeblogicBridgeMessa_1804012_1" ProcessName="IEXPLORE" ParamName="Weblogic Bridge Message" ParentTree="">
+	<PROPERTIES>
+		<TITRE>Weblogic Bridge Message</TITRE>
+		<DOMAIN>infinite-haum04</DOMAIN>
+		<URL>http://infinite-haum04/mdg/auth/login</URL>
+		<REFERRER>http://infinite-haum04/mdg/auth/Login.do</REFERRER>
+		<CX>1440</CX>
+		<CY>771</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+	<CHILDREN>
+		<ITEM>
+			<PROPERTIES>
+				<TAG>HTML</TAG>
+				<Text>Weblogic Bridge Message   
+Failure of server APACHE bridge:
+
+
+
+No backend server available for connection: timed out after 10 seconds or idempotent set to OFF. </Text>
+				<InnerHTML>&lt;head&gt;
+&lt;title&gt;Weblogic Bridge Message
+&lt;/title&gt;
+&lt;/head&gt;
+ &lt;body&gt;
+&lt;h2&gt;Failure of server APACHE bridge:&lt;/h2&gt;&lt;p&gt;
+&lt;hr&gt;No backend server available for connection: timed out after 10 seconds or idempotent set to OFF.
+&lt;hr&gt; 
+
+&lt;/body&gt;</InnerHTML>
+				<OuterHTML>&lt;html&gt;&lt;head&gt;
+&lt;title&gt;Weblogic Bridge Message
+&lt;/title&gt;
+&lt;/head&gt;
+ &lt;body&gt;
+&lt;h2&gt;Failure of server APACHE bridge:&lt;/h2&gt;&lt;p&gt;
+&lt;hr&gt;No backend server available for connection: timed out after 10 seconds or idempotent set to OFF.
+&lt;hr&gt; 
+
+&lt;/body&gt;&lt;/html&gt;</OuterHTML>
+				<range>0</range>
+				<contentEditable>inherit</contentEditable>
+			</PROPERTIES>
+			<CTX_PROPS>
+				<BOUNDINGRECT>0|0|1440|771</BOUNDINGRECT>
+				<TITLE>HTML</TITLE>
+				<NAMEKEY>id</NAMEKEY>
+				<CONTROLTYPE>HTML</CONTROLTYPE>
+				<PREFIX />
+				<TEXT />
+				<TEXTKEY>Text</TEXTKEY>
+				<PARAMNAME />
+				<PARENTTREE />
+				<ISVISIBLE>True</ISVISIBLE>
+			</CTX_PROPS>
+			<CHILDREN>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>HEAD</TAG>
+						<Text>Weblogic Bridge Message  </Text>
+						<InnerHTML>
+&lt;title&gt;Weblogic Bridge Message
+&lt;/title&gt;
+</InnerHTML>
+						<OuterHTML>&lt;head&gt;
+&lt;title&gt;Weblogic Bridge Message
+&lt;/title&gt;
+&lt;/head&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+						<TITLE>HEAD</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>HEAD</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TITLE</TAG>
+								<Text>Weblogic Bridge Message </Text>
+								<InnerHTML>Weblogic Bridge Message
+</InnerHTML>
+								<OuterHTML>&lt;title&gt;Weblogic Bridge Message
+&lt;/title&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+								<TITLE>TITLE - Weblogic Bridge Message </TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TITLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Weblogic Bridge Message </TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>BODY</TAG>
+						<Text>Failure of server APACHE bridge:
+
+
+
+No backend server available for connection: timed out after 10 seconds or idempotent set to OFF. </Text>
+						<InnerHTML>
+&lt;h2&gt;Failure of server APACHE bridge:&lt;/h2&gt;&lt;p&gt;
+&lt;hr&gt;No backend server available for connection: timed out after 10 seconds or idempotent set to OFF.
+&lt;hr&gt; 
+
+</InnerHTML>
+						<OuterHTML>&lt;body&gt;
+&lt;h2&gt;Failure of server APACHE bridge:&lt;/h2&gt;&lt;p&gt;
+&lt;hr&gt;No backend server available for connection: timed out after 10 seconds or idempotent set to OFF.
+&lt;hr&gt; 
+
+&lt;/body&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+						<topMargin>15</topMargin>
+						<rightMargin>10</rightMargin>
+						<bottomMargin>15</bottomMargin>
+						<leftMargin>10</leftMargin>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>8|8|1424|755</BOUNDINGRECT>
+						<TITLE>BODY</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>BODY</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>H2</TAG>
+								<Text>Failure of server APACHE bridge:</Text>
+								<InnerHTML>Failure of server APACHE bridge:</InnerHTML>
+								<OuterHTML>&lt;h2&gt;Failure of server APACHE bridge:&lt;/h2&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>8|8|1424|28</BOUNDINGRECT>
+								<TITLE>H2 - Failure of server APACHE bridge:</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>H2</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Failure of server APACHE bridge:</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>P</TAG>
+								<InnerHTML>
+</InnerHTML>
+								<OuterHTML>&lt;p&gt;
+</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>8|56|1424|0</BOUNDINGRECT>
+								<TITLE>P</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>P</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>HR</TAG>
+								<OuterHTML>&lt;hr&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>8|56|1424|2</BOUNDINGRECT>
+								<TITLE>HR</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>HR</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>HR</TAG>
+								<OuterHTML>&lt;hr&gt;</OuterHTML>
+								<range>1</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>8|92|1424|2</BOUNDINGRECT>
+								<TITLE>HR</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>HR</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+			</CHILDREN>
+		</ITEM>
+	</CHILDREN>
+</PAGE>
