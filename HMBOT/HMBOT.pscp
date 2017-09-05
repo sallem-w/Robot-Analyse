@@ -90,5 +90,7 @@
 			</RESOURCES>
 		</PROCESS>
 	</PROCESSUS>
-	<APPLICATIONS />
+	<APPLICATIONS>
+		<include href="app/ActivInfinitev7.pscp" xpointer="xpointer(//APPLI)" />
+	</APPLICATIONS>
 </ConteXtorStudio>
