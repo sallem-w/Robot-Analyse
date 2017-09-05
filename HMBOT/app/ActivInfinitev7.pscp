@@ -2278,36 +2278,7 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="ScenarioACS" Src="ScenarioACS.js" Folder="ScenarioACS" />
-				<SCRIPT Name="ExcelFile" Src="ExcelFile.js" />
-				<SCRIPT Name="TerminatedProduct" Folder="ScenarioACS" Src="TerminatedProduct.js" />
-				<SCRIPT Name="CheckContractACS" Folder="ScenarioACS" Src="CheckContractACS.js" />
-				<SCRIPT Name="TerminatedContractV7" Src="TerminatedContractV7.js" Folder="ScenarioACS" />
-				<SCRIPT Name="ScenarioHelperV7" Src="ScenarioHelperV7.js" />
-				<SCRIPT Name="CoverageChangeContractV7" Src="CoverageChangeContractV7.js" Folder="ScenarioACS" />
-				<SCRIPT Name="TerminatedInAdvanceV7" Folder="ScenarioACS" Src="TerminatedInAdvanceV7.js" />
-				<SCRIPT Name="ScenarioCMU" Folder="ScenarioCMU" Src="ScenarioCMU.js" />
-				<SCRIPT Name="CheckContractCMU" Folder="ScenarioCMU" Src="CheckContractCMU.js" />
-				<SCRIPT Name="terminatedCMU" Folder="ScenarioCMU" Src="terminatedCMU.js" />
-				<SCRIPT Name="ScenarioSIRH" Src="ScenarioSIRH.js" Folder="ScenarioSIRH" />
-				<SCRIPT Name="CheckMembership" Folder="ScenarioSIRH" Src="CheckMembership.js" />
-				<SCRIPT Name="ParticularSituation2SIRH" Src="ParticularSituationSIRH.js" Folder="ScenarioSIRH" />
-				<SCRIPT Name="ScenarioDA" Src="ScenarioDA.js" Folder="ScenarioDA" />
-				<SCRIPT Name="CheckContractDa" Src="CheckContractDa.js" Folder="ScenarioDA" />
-				<SCRIPT Name="initPivot" Src="initPivot.js" />
-				<SCRIPT Name="navigateToSynthesis" Src="navigateToSynthesis.js" Folder="pSynthesis" />
-				<SCRIPT Name="searchContractByINSEE" Src="searchContractByINSEE.js" Folder="pSynthesis" />
-				<SCRIPT Name="saveContract" Src="savecontract.js" Folder="steps" />
-				<SCRIPT Name="abort" Src="abort.js" Folder="steps" />
-				<SCRIPT Name="ScenarioSIRHUpdate" Src="ScenarioSIRHUpdate.js" Folder="ScenarioSIRHUpdate" />
-				<SCRIPT Name="onError" Src="onError.js" />
-				<SCRIPT Name="ACSMainProcess" Src="ACSMainProcess.js" Folder="ACSProcess" />
-				<SCRIPT Name="ACSContractProcess" Src="acscontractprocess.js" Folder="ACSProcess" />
-				<SCRIPT Name="GenericStepACSProcess" Src="genericstepsacsprocess.js" Folder="ACSProcess" />
-				<SCRIPT Name="ACSReadDataOnlineProcess" Folder="ACSProcess" Src="ACSReadDataOnlineProcess.js" />
-				<SCRIPT Name="ACSCoverageChangeContractV7" Folder="ACSProcess" Src="ACSCoverageChangeContractV7.js" />
-				<SCRIPT Name="ACSTerminatedInAdvance" Folder="ACSProcess" Src="ACSTerminatedInAdvance.js" />
-				<SCRIPT Name="CMUMainScenario" Src="CMUMainScenario.js" />
+				<SCRIPT Name="CMU Scenario principal" Src="cmu_scenario_principal.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
