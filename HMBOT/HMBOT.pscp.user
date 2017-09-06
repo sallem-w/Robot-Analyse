@@ -5,11 +5,11 @@
 	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="3" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU verification contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="12" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS" Offset="0" Length="0" />
-		<OPENDOC LineNumber="16" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="13" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU Scenario principal']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="4" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS" Offset="0" Length="0" />
+		<OPENDOC LineNumber="26" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU Scenario principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="16" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="12" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS" Offset="0" Length="0" />
+		<OPENDOC LineNumber="24" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU verification contrat']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
