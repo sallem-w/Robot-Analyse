@@ -58,7 +58,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ActivInfiniteModu_1023124_1" Comment="Activ Infinite - Module de gestion" CtxtId="115" Techno="WEB" Timestamp="07/07/2017 10:23:15" />
 				</PAGE>
-				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pTabDeBord" Comment="haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="Like"><![CDATA[^\S* - Activ'Infinite - Module de gestion$]]></TITRE>
 					</CRITERE>
