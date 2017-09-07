@@ -88,6 +88,11 @@
 				<RESOURCE Name="hello 128px" Src="%sdk%\templates\resources\bmp64\hello128.png" Dest="bmp64" />
 				<RESOURCE Name="gif" Src="%sdk%\templates\resources\gif\" Dest="gif" />
 			</RESOURCES>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
 		</PROCESS>
 	</PROCESSUS>
 	<APPLICATIONS>

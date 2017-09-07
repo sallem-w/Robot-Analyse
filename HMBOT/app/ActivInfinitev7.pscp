@@ -19,13 +19,13 @@
 				<STRUCTUREDON Name="ActivInfinitev7" />
 			</_DECLAREVAR>
 			<_ECRANS>
-				<PAGE Name="pConnection" Comment="Activ Infinite - Module de gestion">
+				<PAGE Name="pConnexion" Comment="Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="Full"><![CDATA[Activ'Infinite - Module de gestion]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do?logout]]></PATH>
 					<OBJETS>
-						<OBJET Name="oLogin" MustExist="Y">
+						<OBJET Name="oIdentifiant" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R0R1">
 									<ATT Name="name">
@@ -34,7 +34,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPassword">
+						<OBJET Name="oPwd">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R1R2">
 									<ATT Name="name">
@@ -43,7 +43,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btLogin" MustExist="Y">
+						<OBJET Name="btConnexion" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="115.R0R1R1R0R0R2R3R2">
 									<ATT Name="id">
@@ -58,13 +58,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ActivInfiniteModu_1023124_1" Comment="Activ Infinite - Module de gestion" CtxtId="115" Techno="WEB" Timestamp="07/07/2017 10:23:15" />
 				</PAGE>
-				<PAGE Name="pDashboard" Comment="haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pTabDeBord" Comment="haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="Like"><![CDATA[^\S* - Activ'Infinite - Module de gestion$]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/]]></PATH>
 					<OBJETS>
-						<OBJET Name="btSynthesisMenu" MustExist="Y">
+						<OBJET Name="btMenuSynthese" MustExist="Y">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R0">
 									<ATT Name="Text">
@@ -73,7 +73,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btIndividualContract">
+						<OBJET Name="btContratIndiv">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R1R0">
 									<ATT Name="Text">
@@ -82,7 +82,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btContractContexte">
+						<OBJET Name="btContexteContrat">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="111.R0R1R5R1R0R0R0R1R1R0">
 									<ATT Name="Text">
@@ -91,7 +91,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btIndivContractMenu">
+						<OBJET Name="btMenuContratIndiv">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R5">
 									<ATT Name="Text">
@@ -109,7 +109,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCoverageChangeMenu">
+						<OBJET Name="btMenuChangeCouver">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R4">
 									<ATT Name="Text">
@@ -118,7 +118,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCoverageChange">
+						<OBJET Name="btCangeCouverSTD">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R5R0">
 									<ATT Name="Text">
@@ -127,7 +127,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedContract">
+						<OBJET Name="btSansEffetChangC">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R5R5">
 									<ATT Name="href">
@@ -136,7 +136,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btMembershipCollectiv">
+						<OBJET Name="btAdhesionCollect">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R3R4">
 									<ATT Name="Text">
@@ -145,7 +145,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSanteSouscription">
+						<OBJET Name="btSouscriptionSante">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R2">
 									<ATT Name="Text">
@@ -154,7 +154,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedMenu">
+						<OBJET Name="btMenuResiCourante">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R25">
 									<ATT Name="Text">
@@ -163,7 +163,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedCMU">
+						<OBJET Name="btFinCMU">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R1">
 									<ATT Name="Text">
@@ -172,7 +172,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedInAdvance">
+						<OBJET Name="btFinACS">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R7">
 									<ATT Name="Text">
@@ -181,7 +181,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btTerminatedProduct">
+						<OBJET Name="btSansEffetResiC">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="113.R0R1R5R1R0R0R0R6R26R11">
 									<ATT Name="href">
@@ -190,7 +190,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btParticularSituation">
+						<OBJET Name="btCagSituatPart">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="117.R0R1R5R1R0R0R0R6R34R8">
 									<ATT Name="href">
@@ -206,13 +206,13 @@
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1021165_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="113" Techno="WEB" Timestamp="06/07/2017 10:21:27" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1658239_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="117" Techno="WEB" Timestamp="11/07/2017 16:58:36" />
 				</PAGE>
-				<PAGE Name="pSynthesisSearch" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pRecherSynthese" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACW1&action=afficherContrat]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage2" MustNotExist="Y">
+						<OBJET Name="oTitrePage2" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All">
 									<ATT Name="Text">
@@ -221,7 +221,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch">
+						<OBJET Name="btRecherche">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R1R1R0">
 									<ATT Name="id">
@@ -230,7 +230,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBenefIdentification" MustExist="Y">
+						<OBJET Name="onIdentificationBenef" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R1R1">
 									<ATT Name="id">
@@ -257,13 +257,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1543058_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="94" Techno="WEB" Timestamp="07/06/2017 15:43:16" />
 				</PAGE>
-				<PAGE Name="pSynthesis" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pSynthese" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R0">
 									<ATT Name="Text">
@@ -275,7 +275,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateEnd">
+						<OBJET Name="oDateFinEffet">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1R0" Occurs="Y">
@@ -287,7 +287,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oIndividualContract">
+						<OBJET Name="oContratIndiv">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0">
 									<TAG Name="TBODY" Scope="Children" CapturedPos="56.R0R1R14R1R4R1R6R0R5R0R1R0R0R0R3R1R0R0R1">
@@ -299,7 +299,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage2">
+						<OBJET Name="oTitrePage2">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R3R0R0R0">
 									<ATT Name="Text">
@@ -311,13 +311,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1717568_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="56" Techno="WEB" Timestamp="29/05/2017 17:18:02" />
 				</PAGE>
-				<PAGE Name="pContractIndivNotFoun" Comment="Contract indiv - not found - Activ Infinite - Module de gestion">
+				<PAGE Name="pContratIndivNonTrouv" Comment="Contract indiv - not found - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<URL Scan="Part"><![CDATA[/mdg/contrat/ACIC.do?method=rechercher]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_74&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oIndividualContract" MustExist="Y">
+						<OBJET Name="oContratIndiv" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -326,7 +326,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch" MustExist="Y">
+						<OBJET Name="btRecherche" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -335,7 +335,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -344,7 +344,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCloseError">
+						<OBJET Name="btFermAvecErreur">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="105.R0R1R8R0R0">
 									<ATT Name="class">
@@ -353,7 +353,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDIVError" MustExist="Y">
+						<OBJET Name="oDIVErreur" MustExist="Y">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0">
 									<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0R2">
@@ -371,7 +371,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1219318_1" Comment="Contract indiv - not found - Activ Infinite - Module de gestion" CtxtId="105" Techno="WEB" Timestamp="03/07/2017 12:19:35" />
 				</PAGE>
-				<PAGE Name="pSearchContractIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pRecherContratIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
@@ -381,7 +381,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
-						<OBJET Name="oIndividualContract" MustExist="Y">
+						<OBJET Name="oContratIndiv" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="59.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R1R0R0R2">
 									<ATT Name="name">
@@ -390,7 +390,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateContract">
+						<OBJET Name="oDateDebEffet">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R3R0R1">
 									<ATT Name="name">
@@ -402,7 +402,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext" MustNotExist="Y">
+						<OBJET Name="btSuivant" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -411,7 +411,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch" MustExist="Y">
+						<OBJET Name="btRecherche" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
 									<ATT Name="id">
@@ -420,7 +420,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="73.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -432,7 +432,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
 				</PAGE>
-				<PAGE Name="pTerminatedContractFo" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pContratTrouve" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
@@ -443,7 +443,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="57.R0R1R15R1R2R0R0R0R1R0R0R1R0">
 									<ATT Name="id">
@@ -452,7 +452,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNavigateBlockNote">
+						<OBJET Name="btNavigBlockNote">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R1R0R0R1R1">
 									<ATT Name="Text">
@@ -461,7 +461,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -470,7 +470,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch" MustExist="Y">
+						<OBJET Name="btRecherche" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="74.R0R1R15R1R0R2R0R0R3R27R0R0R1R1R0R0">
 									<ATT Name="id">
@@ -482,7 +482,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNavigateInsuredIden">
+						<OBJET Name="btIdentAssures">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="74.R0R1R15R1R0R0R2R0R3">
 									<TAG Name="DIV" Scope="Children" CapturedPos="74.R0R1R15R1R0R0R2R0R3R0">
@@ -515,7 +515,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oContentBlockNote">
+						<OBJET Name="oContenuBlockNote">
 							<CRITERE>
 								<TAG Name="TEXTAREA" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R1R0R8R0R2R0R1">
 									<ATT Name="id">
@@ -524,7 +524,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R0">
 									<ATT Name="Text">
@@ -536,7 +536,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btInsuredIdentPage">
+						<OBJET Name="btIdentAssures">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="75.R0R1R15R1R0R0R2R0R3">
 									<TAG Name="DIV" Scope="Children" CapturedPos="75.R0R1R15R1R0R0R2R0R3R0">
@@ -551,7 +551,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="75.R0R1R15R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -560,7 +560,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="75.R0R1R15R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -572,7 +572,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2199_1721051_1" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion" CtxtId="75" Techno="WEB" Timestamp="30/05/2017 17:21:08" />
 				</PAGE>
-				<PAGE Name="pInsuredIdent" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentAssures" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -580,7 +580,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="btHelpCSCertificate">
+						<OBJET Name="btAttestAideCompl">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R1R0R0R1R2">
 									<ATT Name="Text">
@@ -589,7 +589,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="LABEL" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R2">
 									<ATT Name="id">
@@ -612,7 +612,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -621,7 +621,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsuredROCheck">
+						<OBJET Name="oAssureRO">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R1">
 									<ATT Name="name">
@@ -633,7 +633,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEntitleROCheck">
+						<OBJET Name="oDroitROAdherent">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R1R0R1">
 									<ATT Name="name">
@@ -645,7 +645,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext" MustExist="Y">
+						<OBJET Name="btSuivant" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="81.R0R1R7R0R1R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -657,7 +657,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
-				<PAGE Name="pInsuredIdentEdition" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pEditIdentAssures" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -665,7 +665,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="LABEL" Scope="All">
 									<ATT Name="id">
@@ -674,7 +674,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -683,7 +683,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsuredROCheck">
+						<OBJET Name="oAssureRO">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -695,7 +695,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEntitleROCheck">
+						<OBJET Name="oDroitROAdherent">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -707,7 +707,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRankBirthday">
+						<OBJET Name="oRgNaissance">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -716,7 +716,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNumberRO">
+						<OBJET Name="oNumRO">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -725,7 +725,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oKeyRO">
+						<OBJET Name="oCleRO">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -734,7 +734,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oFamilySite">
+						<OBJET Name="oSituationFamil">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All">
 									<ATT Name="name">
@@ -743,7 +743,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oMaidenName">
+						<OBJET Name="oNomNaissance">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -752,7 +752,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsuredType">
+						<OBJET Name="oTypeAssure">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All">
 									<ATT Name="name">
@@ -770,7 +770,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBirthday">
+						<OBJET Name="DateDeNaiss">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -779,7 +779,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oSocialCategorie">
+						<OBJET Name="oCategSociale">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -788,7 +788,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCheckTeletrans">
+						<OBJET Name="oTeletrans">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -797,7 +797,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btValid" MustExist="Y">
+						<OBJET Name="btValider" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -809,7 +809,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1320568_1" Comment="Adhésions en collectif - N°22591305 - EN COURS - - CHAUSSURES RENE ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="130" Techno="WEB" Timestamp="31/07/2017 13:21:14" />
 				</PAGE>
-				<PAGE Name="pCertificateHelpCS" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pAttestationsAssures" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
@@ -831,7 +831,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStartDate">
+						<OBJET Name="oDateDeb">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TBODY" Scope="Children">
@@ -847,7 +847,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEndDate">
+						<OBJET Name="oDateFin">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TBODY" Scope="Children">
@@ -863,7 +863,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="79.R0R1R7R0R0R2R0R0R0R0R8R0">
 									<ATT Name="Text">
@@ -882,7 +882,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="79.R0R1R7R0R1R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -894,7 +894,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
-				<PAGE Name="pProductList" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pListeProduits" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -902,7 +902,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
@@ -911,7 +911,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsuredList">
+						<OBJET Name="oListeAssures">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TBODY" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1">
@@ -925,7 +925,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNameBenef">
+						<OBJET Name="oNomPrenomBenef">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
@@ -953,7 +953,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCodeProduct">
+						<OBJET Name="oCodeProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
@@ -967,7 +967,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEndDateProduct">
+						<OBJET Name="oDateRadProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
@@ -981,7 +981,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStateProduct">
+						<OBJET Name="oEtatProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TR" Scope="All" Occurs="Y">
@@ -1005,7 +1005,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oProductPaging">
+						<OBJET Name="oLongTableGaranties">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R1R0R1R0R3R0R3">
 									<ATT Name="name">
@@ -1014,7 +1014,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btUpdatePage" MustExist="Y">
+						<OBJET Name="btMajPage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R0R0">
 									<ATT Name="outerHTML">
@@ -1026,7 +1026,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="107.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1035,7 +1035,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="107.R0R1R14R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -1053,7 +1053,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC36_900&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC3Q_800&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R0">
 									<ATT Name="Text">
@@ -1079,7 +1079,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBalanceEch">
+						<OBJET Name="oSoldeCompt">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TR" Scope="All" Occurs="Y">
@@ -1093,7 +1093,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btProductList">
+						<OBJET Name="oListeProduits">
 							<CRITERE>
 								<TAG Name="LI" Scope="All">
 									<TAG Name="DIV" Scope="Children" />
@@ -1103,7 +1103,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1115,7 +1115,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1743355_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="01/06/2017 17:43:40" />
 				</PAGE>
-				<PAGE Name="pProductUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pMajProduits" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
@@ -1123,7 +1123,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="61.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
@@ -1132,7 +1132,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btUpdatePage" MustExist="Y">
+						<OBJET Name="btMajPage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1141,7 +1141,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="61.R0R1R14R1R2R0R0R0R1R0R0R1R0">
 									<ATT Name="id">
@@ -1150,7 +1150,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="61.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1159,7 +1159,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btUpdateProduct">
+						<OBJET Name="btMajProduit">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="84.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R0R1">
 									<ATT Name="id">
@@ -1168,7 +1168,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btAddProduct">
+						<OBJET Name="btAjoutProduit">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="84.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R0R2">
 									<ATT Name="id">
@@ -1177,7 +1177,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInputNewCodeProduct">
+						<OBJET Name="oNouvCodeProduit">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R2">
 									<ATT Name="name">
@@ -1186,7 +1186,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCodeProduct">
+						<OBJET Name="oCodeProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
@@ -1200,7 +1200,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSaveNewCodeProduct">
+						<OBJET Name="btSauvNouvCodeProd">
 							<CRITERE>
 								<TAG Name="SPAN" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R1">
 									<ATT Name="id">
@@ -1209,7 +1209,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSaveUpdateProduct">
+						<OBJET Name="btSauvMajProduit">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="87.R0R1R7R0R0R2R0R0R0R14R0R0R1R1R0R1">
 									<ATT Name="name">
@@ -1218,7 +1218,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNewProduct">
+						<OBJET Name="btNouvProduit">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1227,7 +1227,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPopUpTitle">
+						<OBJET Name="oTitrePopUp">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="136.R0R1R4R0R0R0">
 									<ATT Name="Text">
@@ -1236,7 +1236,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btBtnContinuer">
+						<OBJET Name="btContinuer">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="136.R0R1R4R0R0R2R0">
 									<ATT Name="id">
@@ -1250,14 +1250,14 @@
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1611174_1" Comment="Changement de couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="134" Techno="WEB" Timestamp="28/08/2017 16:11:32" />
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1621483_1" Comment="Changement de couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="136" Techno="WEB" Timestamp="28/08/2017 16:22:01" />
 				</PAGE>
-				<PAGE Name="pDiversParam" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pParamDivers" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACG2_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="62.R0R1R15R1R0R2R0R0R3R7R0">
 									<ATT Name="Text">
@@ -1266,7 +1266,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1275,7 +1275,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="62.R0R1R15R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1287,7 +1287,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1054378_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="62" Techno="WEB" Timestamp="30/05/2017 10:54:39" />
 				</PAGE>
-				<PAGE Name="pCalculParam" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pParamDeCalcul" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
@@ -1297,7 +1297,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_31&CONTAINER_NOM_FONCTION=ACPD_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="63.R0R1R15R1R0R2R0R0R2R9R0">
 									<ATT Name="Text">
@@ -1306,7 +1306,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1315,7 +1315,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCalculCheck">
+						<OBJET Name="oPasDeCalcul">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="91.R0R1R14R1R0R2R0R0R2R9R1R0R1R2R0">
 									<ATT Name="name">
@@ -1330,7 +1330,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="91.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1339,7 +1339,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oIndividualContractNu">
+						<OBJET Name="oContratIndiv">
 							<CRITERE>
 								<TAG Name="P" Scope="All" CapturedPos="91.R0R1R14R1R0R2R0R0R2R7R1R0R0R0R4">
 									<ATT Name="id">
@@ -1348,7 +1348,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNoCalculStatic">
+						<OBJET Name="oPasCalculStat">
 							<CRITERE>
 								<TAG Name="P" Scope="All" CapturedPos="128.R0R1R14R1R0R2R0R0R2R9R1R0R1R2R3">
 									<ATT Name="id">
@@ -1357,7 +1357,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCalculCotisNonAutorise">
+						<OBJET Name="oCalculCotisNonAutori">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="137.R0R1R3R0R1">
 									<ATT Name="Text">
@@ -1371,7 +1371,7 @@
 					<CAPTURE Name="PAGE_ResiliationContrat_1024224_1" Comment="Resiliation Contrat - N°21999694 - Valide - Adhérent : Mademoiselle BELACEL NOELLE - haum0a - Activ Infinite - Module de gestion" CtxtId="128" Techno="WEB" Timestamp="20/07/2017 10:24:24" />
 					<CAPTURE Name="PAGE_ResiliationContrat_1736329_1" Comment="Resiliation Contrat - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="137" Techno="WEB" Timestamp="28/08/2017 17:36:43" />
 				</PAGE>
-				<PAGE Name="pContributionHistory" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pHistoContribution" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet -]]></TITRE>
@@ -1381,7 +1381,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC32_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="LI" Scope="All" CapturedPos="66.R0R1R7R0R0R0R2R0R4">
 									<TAG Name="DIV" Scope="Children" CapturedPos="66.R0R1R7R0R0R0R2R0R4R0">
@@ -1396,7 +1396,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1405,7 +1405,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="66.R0R1R7R0R1R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1417,7 +1417,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1114331_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="66" Techno="WEB" Timestamp="30/05/2017 11:15:00" />
 				</PAGE>
-				<PAGE Name="pContributionVisu" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pVisuContribution" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
@@ -1427,7 +1427,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32&CONTAINER_NOM_FONCTION=AC3Q_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="69.R0R1R7R0R0R2R0R0R0R12R0R0R0">
 									<ATT Name="Text">
@@ -1439,7 +1439,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage2" MustExist="Y">
+						<OBJET Name="oTitrePage2" MustExist="Y">
 							<CRITERE>
 								<TAG Name="LI" Scope="All">
 									<TAG Name="DIV" Scope="Children">
@@ -1463,7 +1463,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1472,7 +1472,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="69.R0R1R7R0R1R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1485,7 +1485,7 @@
 					<CAPTURE Name="PAGE_SansEffetChangeme_1550075_1" Comment="Sans effet - Changement couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="132" Techno="WEB" Timestamp="28/08/2017 15:50:24" />
 					<CAPTURE Name="PAGE_SansEffetChangeme_1552029_1" Comment="Sans effet - Changement couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="133" Techno="WEB" Timestamp="28/08/2017 15:52:19" />
 				</PAGE>
-				<PAGE Name="pSaveUpdate" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pSauvegardeMaj" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
@@ -1495,7 +1495,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=ACVV_700&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52&CONTAINER_NOM_FONCTION=AC36_600&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="71.R0R1R7R0R0R2R0R0R0R7R0">
 									<ATT Name="Text">
@@ -1507,7 +1507,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSave" MustExist="Y">
+						<OBJET Name="btSauvegarde" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="71.R0R1R7R0R1R0R0R0R1R0R0R1R0">
 									<ATT Name="id">
@@ -1516,7 +1516,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="71.R0R1R7R0R1R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1528,13 +1528,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
 				</PAGE>
-				<PAGE Name="pChangeStateProduct" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pChangEtatProduit" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/contrat/ACG2.do?method=doModifierCouverture&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67&CONTAINER_NOM_FONCTION=ACG2_300&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oStateProduct" MustExist="Y" TypObj="Key">
+						<OBJET Name="oEtatProduit" MustExist="Y" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="85.R0R1R7R0R0R2R0R0R0R1R0R0R1R0R0R0R1">
 									<ATT Name="name">
@@ -1543,7 +1543,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSave" MustExist="Y">
+						<OBJET Name="btSauvegarde" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="85.R0R1R7R0R0R2R0R0R0R2R1R0R1">
 									<ATT Name="name">
@@ -1552,7 +1552,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="85.R0R1R7R0R1R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1564,7 +1564,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1732596_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="85" Techno="WEB" Timestamp="31/05/2017 17:33:12" />
 				</PAGE>
-				<PAGE Name="pCoverageImmediateEch" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pCouvertureImmedEche" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
@@ -1572,7 +1572,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC3U_900&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC36_800&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="89.R0R1R14R1R0R2R0R0R3R5R1R0">
 									<ATT Name="Text">
@@ -1584,7 +1584,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEditionSelect" MustExist="Y" TypObj="Key">
+						<OBJET Name="oSelectEdition" MustExist="Y" TypObj="Key">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="89.R0R1R14R1R0R2R0R0R3R5R1R1R0R0R1">
 									<ATT Name="name">
@@ -1596,7 +1596,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="89.R0R1R14R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -1605,7 +1605,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1617,14 +1617,14 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1206070_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="89" Techno="WEB" Timestamp="01/06/2017 12:06:10" />
 				</PAGE>
-				<PAGE Name="pCoverageImmediateCar" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pCouvertureImmediateC" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=ACEK_1000&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_14&CONTAINER_NOM_FONCTION=AC3U_900&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oEditionCheck" MustExist="Y">
+						<OBJET Name="oTypeEditionDiff" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R1R0R1R0R1R1R0">
 									<ATT Name="id">
@@ -1633,7 +1633,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNoEdit" MustExist="Y">
+						<OBJET Name="oNonTypeEdition" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R1R0R1R0R1R2R0">
 									<ATT Name="id">
@@ -1642,7 +1642,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="90.R0R1R14R1R0R2R0R0R3R0R9R0R0R0">
 									<ATT Name="Text">
@@ -1654,7 +1654,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="90.R0R1R14R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -1663,7 +1663,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1675,7 +1675,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1207204_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="90" Techno="WEB" Timestamp="01/06/2017 12:07:23" />
 				</PAGE>
-				<PAGE Name="pInfoRoEdit" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pEditInfoRo" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
 						<URL Scan="Part"><![CDATA[method=modifierAssures]]></URL>
@@ -1684,7 +1684,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACRO.do?method=modifierAssures&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACMA01MASP_160&CONTAINER_NOM_FONCTION=ACRO_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="btCreateSituation">
+						<OBJET Name="btCreationNouvSituati">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R0R0">
 									<ATT Name="name">
@@ -1693,7 +1693,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btValidate">
+						<OBJET Name="btValider">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R25R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1711,7 +1711,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1720,7 +1720,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNoSituation">
+						<OBJET Name="oSituationParti">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24">
 									<TAG Name="TD" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R4R1R0R0R1R0R0">
@@ -1735,7 +1735,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCancel">
+						<OBJET Name="btAnnuler">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="124.R0R1R15R1R0R2R0R0R3R25R0R0R0R0R1R0">
 									<ATT Name="id">
@@ -1756,7 +1756,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACRO_402&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R18R0R0R0">
 									<ATT Name="Text">
@@ -1768,7 +1768,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage2">
+						<OBJET Name="oTitrePage2">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R0">
 									<ATT Name="Text">
@@ -1780,7 +1780,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTypeInsured">
+						<OBJET Name="oTypeAssure">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0R1R0" Occurs="Y">
@@ -1794,7 +1794,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStateProduct">
+						<OBJET Name="oEtatProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TR" Scope="All" Occurs="Y">
@@ -1808,7 +1808,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRangeInsured">
+						<OBJET Name="oRangeAssure">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TR" Scope="All" Occurs="Y">
@@ -1822,7 +1822,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oEndEffectProductDate">
+						<OBJET Name="oDateFinEffetProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R24R0R0R1R0R0R0R1R3R1R0R0R1R0" Occurs="Y">
@@ -1838,7 +1838,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCodeProduct">
+						<OBJET Name="oCodeProduit">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All">
 									<TAG Name="TR" Scope="All" Occurs="Y">
@@ -1854,7 +1854,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNavigateProductList">
+						<OBJET Name="btNavigListeProduits">
 							<CRITERE>
 								<TAG Name="LI" Scope="All">
 									<TAG Name="DIV" Scope="Children">
@@ -1866,7 +1866,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsuredList">
+						<OBJET Name="oListeAssures">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0">
 									<TAG Name="TBODY" Scope="All" CapturedPos="93.R0R1R15R1R0R2R0R0R3R10R0R0R1R0R0R0R1R5R1R0R0R1">
@@ -1880,7 +1880,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1889,7 +1889,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btEdit">
+						<OBJET Name="btModifListeAssures">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="119.R0R1R7R0R0R2R0R0R0R7R0R0R1R0R0R0R1R0R0">
 									<ATT Name="id">
@@ -1898,7 +1898,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1911,13 +1911,13 @@
 					<CAPTURE Name="PAGE_ConsultationN2130_0925520_1" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion" CtxtId="93" Techno="WEB" Timestamp="07/06/2017 09:25:56" />
 					<CAPTURE Name="PAGE_ChangementSituation_0930249_1" Comment="Changement situation particulière - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="119" Techno="WEB" Timestamp="12/07/2017 09:30:41" />
 				</PAGE>
-				<PAGE Name="pMembershipColSearch" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pRecherContratAdhesio" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB]]></PATH>
 					<OBJETS>
-						<OBJET Name="oNumberContractCol" MustExist="Y">
+						<OBJET Name="oNumContratCollec" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R1R0R1">
 									<ATT Name="name">
@@ -1926,7 +1926,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oInsureGroup" MustExist="Y">
+						<OBJET Name="oGroupAssures" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R2R0R2">
 									<ATT Name="name">
@@ -1935,7 +1935,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oContractType" MustExist="Y">
+						<OBJET Name="oTypeContrat" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R0R0R0R1">
 									<ATT Name="name">
@@ -1944,7 +1944,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext" MustNotExist="Y">
+						<OBJET Name="btSuivant" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -1953,7 +1953,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch">
+						<OBJET Name="btRecherche">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
 									<ATT Name="id">
@@ -1962,7 +1962,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStartDateEffect" MustExist="Y">
+						<OBJET Name="oDateDebEffet" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="96.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R2R3R0R1">
 									<ATT Name="name">
@@ -1971,7 +1971,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="96.R0R1R14R1R2R0R0R0R0R0R0">
 									<ATT Name="id">
@@ -1983,13 +1983,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1144039_1" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion" CtxtId="96" Techno="WEB" Timestamp="19/06/2017 11:44:07" />
 				</PAGE>
-				<PAGE Name="pMembershipSearchBene" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pAdhesionRecherBenef" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oNumberINSEE">
+						<OBJET Name="oNumINSEE">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="98.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R1R0R2R1R0R1R1R0R1">
 									<ATT Name="name">
@@ -1998,7 +1998,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSearch">
+						<OBJET Name="btRecherche">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="98.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R3R0R1">
 									<ATT Name="name">
@@ -2007,7 +2007,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oSearchValid">
+						<OBJET Name="oResParPersonne">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R0">
 									<ATT Name="Text">
@@ -2016,7 +2016,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btValid">
+						<OBJET Name="btValider">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R0R0">
 									<ATT Name="id">
@@ -2025,7 +2025,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCancel">
+						<OBJET Name="btAnnuler">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R2R0R0">
 									<ATT Name="id">
@@ -2034,7 +2034,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oResultNameBenef">
+						<OBJET Name="oResNomBenef">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
@@ -2048,7 +2048,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oRowResultNameBenef">
+						<OBJET Name="oLigneResNomBenef">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
 									<TAG Name="TBODY" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1">
@@ -2062,7 +2062,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTitlePage" MustExist="Y">
+						<OBJET Name="oTitrePage" MustExist="Y">
 							<CRITERE>
 								<TAG Name="H3" Scope="All" CapturedPos="99.R0R1R14R1R0R2R0R0R4R0R0R0R28R0R0R1R1R0R2R0">
 									<ATT Name="Text">
@@ -2074,13 +2074,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1206374_1" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="99" Techno="WEB" Timestamp="19/06/2017 12:06:41" />
 				</PAGE>
-				<PAGE Name="pMembershipMainBenef" Comment="Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pPrincipalAdhesionBen" Comment="Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_18&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oCivility" MustExist="Y">
+						<OBJET Name="oCivilite" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R1R1">
 									<ATT Name="name">
@@ -2089,7 +2089,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oName" MustExist="Y">
+						<OBJET Name="oNom" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R2R0R1">
 									<ATT Name="name">
@@ -2098,7 +2098,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oFirstname" MustExist="Y">
+						<OBJET Name="oPrenom" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R36R0R0R1R0R0R3R1">
 									<ATT Name="name">
@@ -2107,7 +2107,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPostalCode" MustExist="Y">
+						<OBJET Name="oCodePostal" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R1R0R3R1">
 									<ATT Name="name">
@@ -2119,7 +2119,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPostalCodeNoControl">
+						<OBJET Name="oCodePostalAdresse">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -2131,7 +2131,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oAddress">
+						<OBJET Name="oAdresse">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R2R1">
 									<ATT Name="name">
@@ -2143,7 +2143,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oModePaymentPrestatio" TypObj="Key" MustExist="Y">
+						<OBJET Name="oModePaiementPrest" TypObj="Key" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R43R0R1R1R0R0R0R1">
 									<ATT Name="name">
@@ -2152,7 +2152,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oModePaymentContribut" TypObj="Key" MustExist="Y">
+						<OBJET Name="oModeReglmetCotis" TypObj="Key" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R0R0R1">
 									<ATT Name="name">
@@ -2161,7 +2161,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPaymentFrequency" TypObj="Key" MustExist="Y">
+						<OBJET Name="oFrequenceDeregl" TypObj="Key" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R0R1R1">
 									<ATT Name="name">
@@ -2170,7 +2170,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTermeType" TypObj="Key" MustExist="Y">
+						<OBJET Name="oTypeTerme" TypObj="Key" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R1R1">
 									<ATT Name="name">
@@ -2179,7 +2179,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oFrequencyEch" TypObj="Key" MustExist="Y">
+						<OBJET Name="oFrequenceAvisEch" TypObj="Key" MustExist="Y">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R44R0R0R1R0R1R0R1">
 									<ATT Name="name">
@@ -2188,7 +2188,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNext">
+						<OBJET Name="btSuivant">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="103.R0R1R15R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -2197,7 +2197,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oLocality">
+						<OBJET Name="oLocaliteAdresse">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R1R2R3R1">
 									<ATT Name="name">
@@ -2209,7 +2209,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oLocalityNoControl">
+						<OBJET Name="oLocaliteAdrNonContro">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All">
 									<ATT Name="name">
@@ -2221,7 +2221,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oAddressNumber">
+						<OBJET Name="oNumAdresse">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R4R0R1">
 									<ATT Name="name">
@@ -2233,7 +2233,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oCountry">
+						<OBJET Name="oPays">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="103.R0R1R15R1R0R2R0R0R5R42R0R0R1R0R0R0R1R1">
 									<ATT Name="name">
@@ -2245,7 +2245,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClose">
+						<OBJET Name="btFermeture">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All">
 									<ATT Name="id">
@@ -2257,13 +2257,13 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1420036_1" Comment="Adhésions en collectif - N°22468408 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion" CtxtId="103" Techno="WEB" Timestamp="20/06/2017 14:20:07" />
 				</PAGE>
-				<PAGE Name="pWebServerClosed" Comment="Weblogic Bridge Message">
+				<PAGE Name="pServerWebFerme" Comment="Weblogic Bridge Message">
 					<CRITERE>
 						<TITRE Scan="Full"><![CDATA[Weblogic Bridge Message]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/auth/login]]></PATH>
 					<OBJETS>
-						<OBJET Name="oFailureOfServerAPA">
+						<OBJET Name="TitrePage">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="130.R0R1R0">
 									<ATT Name="Text">
@@ -2279,6 +2279,7 @@
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
 				<SCRIPT Name="CMU Scenario principal" Src="cmu_scenario_principal.js" />
+				<SCRIPT Name="CMU verification contrat" Src="scCheckContratCMU.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
