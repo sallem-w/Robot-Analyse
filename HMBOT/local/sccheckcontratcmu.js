@@ -1,7 +1,7 @@
 ﻿
 /** Description */
 ActivInfinitev7.scenario( {
-	scVerifContrat: function (ev, sc) {
+	scVerifContratCMU: function (ev, sc) {
 		var data = sc.data;
 		sc.onTimeout(30000, function (sc, st) {
 			sc.endScenario();
@@ -13,17 +13,18 @@ ActivInfinitev7.scenario( {
 		// add steps here...
 
 		sc.step(ActivInfinitev7.steps.stInitScVerifContratCMU);
-		sc.step(ActivInfinitev7.steps.stNavigationAContributionCMU);
+		sc.step(ActivInfinitev7.steps.stNavigationConsultationCMU);
 		sc.step(ActivInfinitev7.steps.stRecherContratIndivCMU);
-		sc.step(ActivInfinitev7.steps.);
+		sc.step(ActivInfinitev7.steps.stNavigationInfoRo);
+		sc.step(ActivInfinitev7.steps.stInitVerifBenef);
 		sc.step(ActivInfinitev7.steps.stVerifBenefCMU);
-		sc.step(ActivInfinitev7.steps.stProchainBenefCMU);
-		//	sc.step(ActivInfinitev7.steps.stNavigVersListProduitCMU);
+		sc.step(ActivInfinitev7.steps.stBenefCMUSuivant);
+		//	sc.step(ActivInfinitev7.steps.stNavigationListeProduitCMU);
 		//	sc.step(ActivInfinitev7.steps.stVerifEtatProduitCMU);
-		//	sc.step(ActivInfinitev7.steps.stProchainProduitCMU);
-		//	sc.step(ActivInfinitev7.steps.stContributionCMU);
+		//	sc.step(ActivInfinitev7.steps.stProduitCMUSuivant);
+		//	sc.step(ActivInfinitev7.steps.stVisuaContributionCMU);
 		//	sc.step(ActivInfinitev7.steps.stVerifContributionCMU);
-
+		//  sc.step(ActivInfinitev7.steps.stContratCMUTermine);
 		sc.step(ActivInfinitev7.steps.stFinScVerifContratCMU);
 
 	}
@@ -41,9 +42,9 @@ ActivInfinitev7.step( {
 });
 
 
-/** Choisir menu consultation */
+/** navigation au ab de bord Choisir menu consultation */
 ActivInfinitev7.step( {
-	stNavigationAContributionCMU : function (ev, sc, st) {
+	stNavigationConsultationCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace
 		ActivInfinitev7.pTabDeBord.wait(function () {
@@ -54,18 +55,63 @@ ActivInfinitev7.step( {
 	}
 });
 
-
 /** recherche du contrat cmu */
 ActivInfinitev7.step( {
 	stRecherContratIndivCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace
+
+		st.onTimeout(10000, function (sc, st) {
+			ctx.trace.writeError(data.currentContractACS.localData.individualContractNumber + 'TimeOut -  search contract ');
+			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
+			data.currentContractACS.notes.statusContract = ctx.excelHelper.constants.status.Fail;
+			data.currentContractACS.states.exitACSProcess = true;
+			ActivInfinitev7.pDashboard.start(data.webData.dashboardURL);
+			ActivInfinitev7.pDashboard.wait(function (ev) {
+				sc.endScenario();
+			});
+
+		});
+		st.onError(function (sc, st, ex) {
+			ctx.trace.writeError(data.currentContractACS.localData.individualContractNumber + 'OnError - error search contract ');
+			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : ';
+			data.currentContractACS.notes.statusContract = ctx.excelHelper.constants.status.Fail;
+			data.currentContractACS.states.exitACSProcess = true;
+			ActivInfinitev7.pDashboard.start(data.webData.dashboardURL);
+			ActivInfinitev7.pDashboard.wait(function (ev) {
+				sc.endScenario();
+			});
+
+		});
+
 		ActivInfinitev7.pRecherContratIndiv.wait(function () {
-			ActivInfinitev7.pRecherContratIndiv.oIndividualContract.set(/*numero de contrat de l'objet data*/);
-			ActivInfinitev7.pRecherContratIndiv.btSearch.click();
+			ActivInfinitev7.pRecherContratIndiv.oContratIndiv.set(/*numero de contrat de l'objet data*/);
+			ActivInfinitev7.pRecherContratIndiv.btRecherche.click();
 			sc.endStep();
 			return ;
 		});
+	}
+});
+
+
+/** click sur le bouton info RO */
+ActivInfinitev7.step( {
+	stNavigationInfoRo : function (ev, sc, st) {
+		var data = sc.data;
+ActivInfinitev7.pContratTrouve
+		sc.endStep();
+		return ;
+	}
+});
+
+
+/** Description */
+ActivInfinitev7.step( {
+	stInitVerifBenef : function (ev, sc, st) {
+		var data = sc.data;
+
+		sc.endStep();
+		return ;
 	}
 });
 

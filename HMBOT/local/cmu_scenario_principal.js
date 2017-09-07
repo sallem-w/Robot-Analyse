@@ -14,16 +14,15 @@ ActivInfinitev7.scenario( {
 		// add steps here...
 		sc.step(ActivInfinitev7.steps.stInitScenarioCMU);
 		sc.step(ActivInfinitev7.steps.stServerConnexionCMU);
-		sc.step(ActivInfinitev7.steps.stInitSelectCMUContractFromExcel);
-		sc.step(ActivInfinitev7.steps.stSelectCMUContractFromExcel);
-		sc.step(ActivInfinitev7.steps.stReadCMUDataFromExcel);
-	//ajouter un step qui vérifie dans le dictionnaire l'existance de l'assuré principale avant de lancer le sous scénario checkCotratCMU
-		//sc.step(ActivInfinitev7.steps.stReadCMUDataOnLine);
-//		sc.step(ActivInfinitev7.steps.stScenarioCheckBenefCMU);
-//		sc.step(ActivInfinitev7.steps.stScenarioTerminatedCMU);
-//		sc.step(ActivInfinitev7.steps.stInsertCMUDataInExcel);
-//		sc.step(ActivInfinitev7.steps.stNextCMUContrat);
-		sc.step(ActivInfinitev7.steps.stEndScenarioCMU);
+		sc.step(ActivInfinitev7.steps.stInitSelectContratCMUExcel);
+		sc.step(ActivInfinitev7.steps.stSelectCMUContratCMUExcel);
+		sc.step(ActivInfinitev7.steps.stLireDonneesCMUExcel);
+		sc.step(ActivInfinitev7.steps.stVerifExistanceAssurePrincipal);
+		sc.step(ActivInfinitev7.steps.stConsultationContratCMU);
+		sc.step(ActivInfinitev7.steps.stFinScenarioCMU);
+		sc.step(ActivInfinitev7.steps.stInsertDonneesCMUExcel);
+		sc.step(ActivInfinitev7.steps.stContratCMUSuivant);
+		sc.step(ActivInfinitev7.steps.stFinScenarioCMU);
 
 	}
 });
@@ -151,7 +150,7 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stInitSelectCMUContractFromExcel : function(ev, sc, st) {
+ActivInfinitev7.step({ stInitSelectContratCMUExcel : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.trace.writeInfo('Début étape - stInitSelectCMUContractFromExcel');
 	
@@ -175,7 +174,7 @@ ActivInfinitev7.step({ stInitSelectCMUContractFromExcel : function(ev, sc, st) {
 
 
 /** ce step consiste à parcurir le fichier excel et récupérer les lignes qui ont le meme numéro du contrat (dictionaire) */
-ActivInfinitev7.step({ stSelectCMUContractFromExcel : function(ev, sc, st) {
+ActivInfinitev7.step({ stSelectCMUContratCMUExcel : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.trace.writeInfo('Début étape - stSelectCMUContract');
 	ctx.trace.writeInfo('Sélection du contrat numéro: '+ data.globalVariables.currentRow);
@@ -186,10 +185,11 @@ ActivInfinitev7.step({ stSelectCMUContractFromExcel : function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stReadCMUDataFromExcel : function(ev, sc, st) {
+ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.trace.writeInfo('Début étape - stReadCMUDataFromExcel');
-
+	 
+	var temp=ctx.tempContratF;
 	/** numéro du contrat */
 	data.contratCourantCMU.localData.individualContractNumber = ctx.stringHelper.padLeft(ctx.string.trim(String(ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.individualContract))), '00000000');
 	/** dans une boucle on récupère l'assuré principale et les bénéficiaires */
@@ -201,7 +201,7 @@ ActivInfinitev7.step({ stReadCMUDataFromExcel : function(ev, sc, st) {
 	data.temp_contract = {};
 	while (newIndividualContractNumber !== undefined && individualContractNumber === newIndividualContractNumber) {
 			//récupération des champs (type, .....)
-		 // contrat.typeAssure = ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.type);
+		  // contrat.typeAssure = ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.type);
 		  data.temp_contract.codeProduit = ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.suscribedCodeProduct);
 		  data.temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.icStartDate);
 			data.temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(data.globalVariables.currentRow, data.configExcel.columnIndex.icEndDate);
@@ -226,16 +226,27 @@ ActivInfinitev7.step({ stReadCMUDataFromExcel : function(ev, sc, st) {
 }});
 
 
-/** Description */
-ActivInfinitev7.step({ stReadCMUDataOnLine : function(ev, sc, st) {
+
+/** ce step permet de vérifier dans le dictionnaire l'existance de l'assuré principal, sil existe on lance le sous scénario scVerifContratCMU sinon on exécute le sous sc finCMU  */
+ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
 	var data = sc.data;
-	
-	ctx.trace.writeInfo('Début étape - stReadCMUDataOnLine');
+	//ctx.trace
+	//vérifier si le cotrat est vide ou non et insérer date, statu, comme dans le fichier excel resultat puis passer au contrat suivant.
 	
 	sc.endStep();
 	return;
 }});
 
+
+
+/** step qui lance le sous scénario de vérification des données cmu */
+ActivInfinitev7.step({ stConsultationContratCMU : function(ev, sc, st) {
+	var data = sc.data;
+	//ctx.trace
+	//appeler le sous scénario : scVerifContratCMU
+	sc.endStep();
+	return;
+}});
 
 
 /** Description */
