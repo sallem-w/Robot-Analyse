@@ -1,6 +1,7 @@
 ﻿
 // *** Choose language (en|fr|de) ***
-GLOBAL.labels.setLanguage(e.language.English);
+//GLOBAL.labels.setLanguage(e.language.English);
+GLOBAL.labels.setLanguage('fr');
 
 // Global Systray object
 var systray = ctx.systray();
@@ -112,6 +113,43 @@ GLOBAL.events.START.on(function (ev) {
 	systray.addMenu('', 'evRecordTraces', GLOBAL.labels.menu.recordTraces + ' (Ctrl+Shift+R)', 'ICON2', function(ev) {
 		GLOBAL.notify(GLOBAL.events.evShowDiagRecorder);
 	});
+	
+	
+	ctx.configF.chargementFichierConfig();
+	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
+	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
+	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
+	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
+	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+	
+	
+		if (configACS.afficherMenu) {
+		systray.addMenu('', 'ACS', 'Scenario ACS ');
+		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
+			ctx.trace.initFileTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
+			ctx.trace.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+				var data = {};
+				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
+		});	
+	}
+
+	
+	
+		if (configCMU.afficherMenu) {
+		systray.addMenu('', 'CMU', 'Scenario CMU ');
+		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
+			ctx.trace.initFichierTrace(configCMU.cheminRacine, ctx.configF.scenario.CMU);
+			ctx.trace.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+			ctx.stats.initFileStats(ctx.configF.cheminVersTemplate, configCMU.cheminRacine, ctx.configF.scenario.CMU);
+			var data = {};
+			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
+			
+			
+		});	
+	}
+	
+	
 });
 
 /** Auto-update menu handler */

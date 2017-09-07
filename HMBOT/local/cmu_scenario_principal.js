@@ -1,7 +1,6 @@
 ﻿
 /** Description */
-ActivInfinitev7.scenario( {
-	scCMUMainScenario: function (ev, sc) {
+ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 		var data = sc.data;
 		sc.onTimeout(30000, function (sc, st) {
 			sc.endScenario();
@@ -31,86 +30,8 @@ ActivInfinitev7.scenario( {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.trace.writeInfo('Début étape - stInitScenarioCMU');
-		/** Les informations concernant le serveur infinite */
-		var webData = {
-			url:'',
-			dashboardURL:'',
-			login:'',
-			password:''
-		};
-
-		/** Les informations globales utilisée dans le scénario */
-		var globalVariables = {
-			currentRow:0,
-			indexLastRow:0,
-			controlOnly:false
-		};
-		
-		
-		
-		/** contrat(s) en cours (dict) */
-		var dictContratsCourantCMU = [];
-		
-		/** informations Locales */
-		var localData = {
-			individualContractNumber:''
-//			typeAssure:'',
-//			dateDebEffContrat:'',
-//			dateFinEffContrat:'',
-//			codeProduit:'',
-//			dateDebEffProduit:'',
-//			dateFinEffProduit:'',
-//			dateDebEffSituatParti:'',
-//			dateFinEffSituatParti:''
-		};
-		
-		localData.dictContratsCourantCMU = dictContratsCourantCMU;
-		var onLineData = {};
-		
-		/** informations des stats */
-		var stats = {
-			timeBeginning : ctx.date.convertTimeSeconds(new Date()),
-			countCaseProcessed : 0,
-			countCaseFindIntoExcel : 0,
-			countCaseReadyToRemove : 0,
-			countCaseSuccessProcessed : 0,
-			countCaseFailProcessed : 0,
-			countCaseBackToCenter : 0,
-			countCaseProductTerminated : 0,
-			countCaseContractWithProductACS : 0
-		};
-		
-		/** Notes sur le contrat */
-		var notes = {
-			dateProceedContract:'',
-			statusContract: '',
-			commentContract: ''
-		};
-		
-		var contratCourantCMU = {};
-		contratCourantCMU.localData=localData;		
-		contratCourantCMU.onLineData=onLineData;
-		contratCourantCMU.notes=notes;
-
-		data.webData = webData;
-		data.globalVariables = globalVariables;
-  	data.contratCourantCMU=contratCourantCMU;
-		data.stats=stats;
-		
-		var temp_contract={
-			typeAssure:'',
-			dateDebEffContrat:'',
-			dateFinEffContrat:'',
-			codeProduit:'',
-			dateDebEffProduit:'',
-			dateFinEffProduit:'',
-			dateDebEffSituatParti:'',
-			dateFinEffSituatParti:''
-		};
-		data.temp_contract=temp_contract;
-//		data.contratCourantCMU.onlineData.dictContratsCourantCMU.push(temp_contract);
-		
+	ctx.trace.infoTxt('Début étape - stInitScenarioCMU');
+	data=ctx.dataF.initialisationScenarioCMU();//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	sc.endStep();
 	return;
 }});
@@ -119,7 +40,7 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.trace.writeInfo('Début étape - stServerConnexionCMU');
+	ctx.trace.infoTxt('Début étape - stServerConnexionCMU');
 		if (ActivInfinitev7.pWebServerClosed.exist() && ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA.exist()) {
 			ctx.trace.writeInfo('Le serveur Infinite est fermé');
 			ctx.popupHelper.newPopup('Le serveur Infinite est fermé');
@@ -156,7 +77,7 @@ ActivInfinitev7.step({ stInitSelectContratCMUExcel : function(ev, sc, st) {
 	
 	data.scenarioCode = ctx.config.CMU;
   ctx.log('Récupération des données du config');
-	ctx.configFile.init(data.scenarioCode);
+	ctx.configF.init(data.scenarioCode);
 	ctx.excelFile.initConfig(data.scenarioCode);
 	data.config = ctx.config.getConfig(data.scenarioCode);
 	data.configExcel = data.config.excel;

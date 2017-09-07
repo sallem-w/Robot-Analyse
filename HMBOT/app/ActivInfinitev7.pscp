@@ -2278,8 +2278,18 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="CMU Scenario principal" Src="cmu_scenario_principal.js" />
 				<SCRIPT Name="CMU verification contrat" Src="scCheckContratCMU.js" />
+				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
+				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
+				<SCRIPT Name="libDate" Src="libdate.js" Folder="Complements" />
+				<SCRIPT Name="libTrace" Folder="Complements" Src="libtrace.js" />
+				<SCRIPT Name="libPopup" Folder="Complements" Src="libpopup.js" />
+				<SCRIPT Name="testDate" Folder="Tests" Src="testdate.js" />
+				<SCRIPT Name="ACS_scenario_principal" Src="ACS_scenario_principal.js" Folder="Processus_ACS" />
+				<SCRIPT Name="libData" Src="libData.js" Folder="Complements" />
+				<SCRIPT Name="libDateObj" Src="libDateObj.js" Folder="Complements" />
+				<SCRIPT Name="declarationsGlobales" Src="declarationsGlobales.js" Folder="Complements" />
+				<SCRIPT Name="libexcel" Src="libexcel.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
