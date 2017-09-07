@@ -1,0 +1,89 @@
+{
+    "cheminTemplate": "C:\\deploy\\template\\",
+    "ACS": {
+        "afficherMenu": true,
+        "cheminRacine": "C:\\deploy\\acs\\",
+        "controlOnly": false,
+        "controlContribution": false,
+        "controlBlockNote": false,
+        "saveUpdate": false,
+        "addYearSearchContract": 30,
+        "excel": {
+            "startColumnIndex": 1,
+            "startRowIndex": 2,
+            "columnIndex": {
+                "individualContractNumber": 1,
+                "startIndividualContractDate":2,
+                "endIndividualContractDate":3,
+                "managementCenterCode":4,
+                "collectiveContractReference":5,
+                "insuredPersonnNumber": 6,
+                "name": 7,
+                "surname": 8,
+                "subscribedProductCode": 9,
+                "subscribedProduct":10,
+                "startSubscribedProductDate":11,
+                "endSubscribedProductDate":12,
+                "descriptionACS":13,
+                "ACSCertificateStartDate": 14,
+                "ACSCertificateEndDate": 15,
+                "scheduleCode": 16,
+                "paymentTypeLabel": 17,
+                "dateProceedContract": 18,
+                "statusContract": 19,
+                "commentContract": 20
+            }
+        },
+         "produitAccesSante": {
+            "TPSAACSA": "TPSASACSA",
+            "TPSAACSB": "TPSASACSB",
+            "TPSAACSC": "TPSASACSC",
+            "TPSARLACSA": "TPSARLSACA",
+            "TPSARLACSB": "TPSARLSACB",
+            "TPSARLACSC": "TPSARLSACC"
+        }
+    },
+    "CMU":{
+        "afficherMenu": true,
+        "rootPath": "C:\\deploy\\cmu\\", 
+        "controlOnly": false,
+        "controlContribution": false,
+        "saveUpdate": false,
+        "excel": {
+            "startRowIndex": 5,
+            "startColumnIndex": 1,
+            "columnIndex":{
+                "name": 1,
+                "firstName": 2,
+                "individualContract": 3,
+                "type": 4,
+                "icStartDate": 5,
+                "icEndDate": 6,
+                "suscribedCodeProduct": 7,
+                "subscribedProductStartDate": 8,
+                "subscribedProductEndDate": 9,
+                "nbDayCMUCover": 10,
+                "particularSituationStartDate": 11,
+                "particularSituationEndDate": 12,
+                "managementCenterCode": 13,
+                "dateProceedContract": 14,
+                "statusContract": 15,
+                "commentContract": 16
+            }
+        }
+    },
+    "SIRH": {
+        "afficherMenu": true,
+        "saveUpdate": false,
+        "rootPath": "C:\\deploy\\sirh\\"
+    },
+    "SIRHUpdate": {
+        "afficherMenu": true,
+        "saveUpdate": false,
+        "rootPath": "C:\\deploy\\sirh-update\\"
+    },
+    "DA": {
+        "afficherMenu": true,
+        "rootPath": "C:\\deploy\\da\\"
+    }
+}
