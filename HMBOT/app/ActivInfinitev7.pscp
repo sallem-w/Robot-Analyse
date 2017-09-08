@@ -368,8 +368,18 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="titreErreur">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="138.R0R1R3R0R1">
+									<ATT Name="class">
+										<VALUE Scan="Like"><![CDATA[toast-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1219318_1" Comment="Contract indiv - not found - Activ Infinite - Module de gestion" CtxtId="105" Techno="WEB" Timestamp="03/07/2017 12:19:35" />
+					<CAPTURE Name="PAGE_SansEffetChangeme_1442130_1" Comment="Sans effet - Changement couverture - haum03 - Activ Infinite - Module de gestion" CtxtId="138" Techno="WEB" Timestamp="05/09/2017 14:42:27" />
 				</PAGE>
 				<PAGE Name="pRecherContratIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
