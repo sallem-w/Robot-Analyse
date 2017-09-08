@@ -148,7 +148,7 @@
 		}
 		
 		if (n_fichiers !== 1) {
-			ctx.trace.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
+			ctx.traceF.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
 			ctx.popupF.newPopup(n_fichiers + " fichier(s) Excel de données trouvé(s) dans " + configF.cheminRacine + ", il en faut un et un seul.", 'Erreur Excel');
 			return false;	
 		}
@@ -158,11 +158,11 @@
 		
 		configF.cheminFichier=configF.cheminRacine + configF.nomFichier;
 		if (!ctx.fso.file.exist(configF.cheminFichier)) {
-			ctx.trace.errorTxt("Ouverture Impossible : aucune fichier à l'addresse : "+configF.cheminFichier);
+			ctx.traceF.errorTxt("Ouverture Impossible : aucune fichier à l'addresse : "+configF.cheminFichier);
 			return false;	
 		}
 
-		ctx.trace.infoTxt("Ouverture réussie : fichier trouvé");
+		ctx.traceF.infoTxt("Ouverture réussie : fichier trouvé");
 		configF.nomFichierResultat = nomFichierResultatComplet;
 		configF.cheminFichierResultat = configF.cheminRacine+configF.nomFichierResultat;
 		return true;	

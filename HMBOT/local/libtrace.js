@@ -1,13 +1,13 @@
-﻿ctx.trace = (function() {
+﻿ctx.traceF = (function() {
 	
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Logs.log';
-	var trace = {};
+	var traceF = {};
 	var cheminFichierTrace;
 	var txtTrace;
 	
 	
 	
-	trace.constants = {
+	traceF.constantes = {
 		typeM: { //typeM
 			Info: "INFO",
 			Warning: "WARNING",
@@ -16,7 +16,7 @@
 	}		
 	
 	//initFileTrace
-	trace.initFichierTrace = function(cheminDossier, nomScenario) {
+	traceF.initFichierTrace = function(cheminDossier, nomScenario) {
 		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScenario);
 		if (!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
@@ -27,26 +27,26 @@
 	};
 	
 //	trace.writeInfo
-	trace.infoTxt = function(str, dateObj, separateur) {
-		trace.tracer(str, trace.constants.typeM.Info, dateObj, separateur)
+	traceF.infoTxt = function(str, dateObj, separateur) {
+		traceF.tracer(str, traceF.constantes.typeM.Info, dateObj, separateur)
 	};
 	//trace.writeError
-	trace.errorTxt = function(str, dateObj, separateur) {
-		trace.tracer(str, trace.constants.typeM.Error, dateObj, separateur)
+	traceF.errorTxt = function(str, dateObj, separateur) {
+		traceF.tracer(str, traceF.constantes.typeM.Error, dateObj, separateur)
 	};
 	//trace.writeWarning
-	trace.warningTxt = function(str, dateObj, separateur) {
-		trace.tracer(str, trace.constants.typeM.Warning, dateObj, separateur)
+	traceF.warningTxt = function(str, dateObj, separateur) {
+		traceF.tracer(str, traceF.constantes.typeM.Warning, dateObj, separateur)
 	};
 	
-	trace.tracer = function(str, typeM, dateObj, separateur) {
+	traceF.tracer = function(str, typeM, dateObj, separateur) {
 		if (!str || str.length === 0) {
 			return;
 		}
 
 		separateur = separateur || '    ';
 		dateObj = dateObj || new Date();
-		typeM = typeM || trace.constants.typeM.Info;
+		typeM = typeM || traceF.constantes.typeM.Info;
 		
 		txtTrace = txtTrace + ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
 		ctx.fso.file.write(cheminFichierTrace, txtTrace);
@@ -56,5 +56,5 @@
 		}
 	};
 	
-	return trace;
+	return traceF;
 }) ();

@@ -32,8 +32,7 @@ ActivInfinitev7.scenario( {
 
 
 /** Description */
-ActivInfinitev7.step( {
-	stInitScVerifContratCMU : function (ev, sc, st) {
+ActivInfinitev7.step( { stInitScVerifContratCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace.writeInfo(sc.data.contract.individualContract + ' - Début - scénario scVerifContrat - ' + sc.data.codeScenario);
 		sc.endStep();
@@ -43,8 +42,7 @@ ActivInfinitev7.step( {
 
 
 /** navigation au ab de bord Choisir menu consultation */
-ActivInfinitev7.step( {
-	stNavigationConsultationCMU : function (ev, sc, st) {
+ActivInfinitev7.step( { stNavigationConsultationCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace
 		ActivInfinitev7.pTabDeBord.wait(function () {
@@ -56,29 +54,28 @@ ActivInfinitev7.step( {
 });
 
 /** recherche du contrat cmu */
-ActivInfinitev7.step( {
-	stRecherContratIndivCMU : function (ev, sc, st) {
+ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace
 
 		st.onTimeout(10000, function (sc, st) {
-			ctx.trace.writeError(data.currentContractACS.localData.individualContractNumber + 'TimeOut -  search contract ');
+			ctx.traceF.errorTxt(data.currentContractACS.localData.individualContractNumber + 'TimeOut -  search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
-			data.currentContractACS.notes.statusContract = ctx.excelHelper.constants.status.Fail;
+			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
 			data.currentContractACS.states.exitACSProcess = true;
-			ActivInfinitev7.pDashboard.start(data.webData.dashboardURL);
-			ActivInfinitev7.pDashboard.wait(function (ev) {
+			ActivInfinitev7.pTabDeBord.start(data.webData.dashboardURL);
+			ActivInfinitev7.pTabDeBord.wait(function (ev) {
 				sc.endScenario();
 			});
 
 		});
 		st.onError(function (sc, st, ex) {
-			ctx.trace.writeError(data.currentContractACS.localData.individualContractNumber + 'OnError - error search contract ');
+			ctx.traceF.errorTxt(data.currentContractACS.localData.individualContractNumber + 'OnError - error search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : ';
-			data.currentContractACS.notes.statusContract = ctx.excelHelper.constants.status.Fail;
+			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
 			data.currentContractACS.states.exitACSProcess = true;
-			ActivInfinitev7.pDashboard.start(data.webData.dashboardURL);
-			ActivInfinitev7.pDashboard.wait(function (ev) {
+			ActivInfinitev7.pTabDeBord.start(data.webData.dashboardURL);
+			ActivInfinitev7.pTabDeBord.wait(function (ev) {
 				sc.endScenario();
 			});
 
@@ -95,10 +92,8 @@ ActivInfinitev7.step( {
 
 
 /** click sur le bouton info RO */
-ActivInfinitev7.step( {
-	stNavigationInfoRo : function (ev, sc, st) {
+ActivInfinitev7.step( { stNavigationInfoRo : function (ev, sc, st) {
 		var data = sc.data;
-ActivInfinitev7.pContratTrouve
 		sc.endStep();
 		return ;
 	}
@@ -106,8 +101,7 @@ ActivInfinitev7.pContratTrouve
 
 
 /** Description */
-ActivInfinitev7.step( {
-	stInitVerifBenef : function (ev, sc, st) {
+ActivInfinitev7.step( {stInitVerifBenef : function (ev, sc, st) {
 		var data = sc.data;
 
 		sc.endStep();
@@ -116,8 +110,7 @@ ActivInfinitev7.step( {
 });
 
 /** Choisir menu consultation */
-ActivInfinitev7.step( {
-	stVerifBenefCMU : function (ev, sc, st) {
+ActivInfinitev7.step( {stVerifBenefCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//ctx.trace
 		sc.endStep();
@@ -127,8 +120,7 @@ ActivInfinitev7.step( {
 
 
 /** Description */
-ActivInfinitev7.step( {
-	stProchainBenefCMU : function (ev, sc, st) {
+ActivInfinitev7.step( { stProchainBenefCMU : function (ev, sc, st) {
 		var data = sc.data;
 
 		sc.endStep();
@@ -139,8 +131,7 @@ ActivInfinitev7.step( {
 
 
 /** Description */
-ActivInfinitev7.step( {
-	stFinScVerifContratCMU : function (ev, sc, st) {
+ActivInfinitev7.step( { stFinScVerifContratCMU : function (ev, sc, st) {
 		var data = sc.data;
 
 		sc.endScenario();
