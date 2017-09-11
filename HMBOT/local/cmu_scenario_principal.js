@@ -28,6 +28,7 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
+
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	
