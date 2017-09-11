@@ -1,4 +1,4 @@
-﻿ctx.dataF = (function () {
+﻿data = (function () {
 
     var dataF = {
 				scenarioConfig :{} ,
