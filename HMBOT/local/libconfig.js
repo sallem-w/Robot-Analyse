@@ -13,7 +13,11 @@
 	configF.cheminFichierConfig='';
 	configF.cheminVersTemplate='';
 
-	
+	configF.constantes = {
+					ASSPRI: 'ASSPRI',
+					produitValide: 'VA',
+					produitTermine : 'RA'
+				}; 
 	configF.nomFichierStartProcessusBat = 'startProcessus.bat';
 	/// Declaration des élements présents dans le config.json
 	configF.nomFichierConfig = 'config.json';
@@ -30,6 +34,7 @@
 	var fichierConfig = {};
 	
 	configF.chargementFichierConfig = function() {
+		ctx.log('-->configF.chargementFichierConfig()');
 		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + configF.nomFichierConfig);
 		configF.fichierConfig = JSON.parse(chemin);
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
@@ -64,7 +69,7 @@
 	
 //	configF.getResultFileExtension
 	configF.extensionFichierResultat = function(codeScenario, nomFichier) {  // à voir où la  fonction est utile
-		return codeScenario === ctx.config.SIRH ? 'xls' : ctx.fso.file.getExtensionName(nomFichier);
+		return codeScenario === ctx.configF.scenario.SIRH ? 'xls' : ctx.fso.file.getExtensionName(nomFichier);
 	}
 	
 	
@@ -119,7 +124,7 @@
 	
 	
 	configF.init = function(codeScenario) {
-		
+		ctx.log('---> configF.init('+codeScenario+')');
 		configF.chargementFichierConfig();
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
 		var config = configF.fichierConfig[codeScenario];
@@ -154,6 +159,8 @@
 		}
 
 		var extension = ctx.configF.extensionFichierResultat(codeScenario, configF.nomFichier);
+		var test = ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1);
+		ctx.log('test : '+test);
 		var nomFichierResultatComplet = ctx.dateF.formatAAAAMMJJ(new Date()) + "_" + codeScenario + "_" + ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1)  + finTitreResultat + extension;
 		
 		configF.cheminFichier=configF.cheminRacine + configF.nomFichier;

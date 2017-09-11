@@ -1,6 +1,9 @@
 ﻿ctx.dataF = (function () {
 
     var dataF = {
+				
+				
+			
 			
 				scenarioConfig :{} ,
 				codeScenario : '',
@@ -46,7 +49,9 @@
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
-            controlSeulement:false //controlOnly
+            controlSeulement:false, //controlOnly
+						indiceBenef:0,
+						nbBenef: 0
         },
         CMUtemp_contractF : {
             typeAssure:'',
