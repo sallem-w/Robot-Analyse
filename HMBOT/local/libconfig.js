@@ -1,26 +1,31 @@
 ﻿ctx.configF = (function() {
 	
 	
-	var configF = {};
-	configF.cheminRacine=''; //var rootPath;
-	configF.codeScenario='';
-	configF.nomFichier=''; //var fileName;
-	configF.cheminFichier=''; //var getPathFile();
-	configF.nomFichierResultat=''; //var fileNameOutput;
-	configF.cheminFichierResultat=''; //getPathFileOutput()
-	configF.nomFichierStartProcessusBat='';
-	configF.nomFichierConfig='';
-	configF.cheminFichierConfig='';
-	configF.cheminVersTemplate='';
+	var configF = {
+		cheminRacine:'', //var rootPath;
+		codeScenario:'',
+		nomFichier:'', //var fileName;
+		cheminFichier:'', //var getPathFile();
+		nomFichierResultat:'', //var fileNameOutput;
+		cheminFichierResultat:'', //getPathFileOutput()
+		nomFichierStartProcessusBat:'',
+		nomFichierConfig:'',
+		cheminFichierConfig:'',
+		cheminVersTemplate:'',
+		nomFichierStartProcessusBat : 'startProcessus.bat',
+		/// Declaration des élements présents dans le config.json
+		nomFichierConfig : 'config.json',
+		constantes : {
+			ASSPRI: 'ASSPRI',
+			produitValide: 'VA',
+			produitTermine : 'RA'
+		} ,
+		fichierConfig : {}
+		
+	};
+	
 
-	configF.constantes = {
-					ASSPRI: 'ASSPRI',
-					produitValide: 'VA',
-					produitTermine : 'RA'
-				}; 
-	configF.nomFichierStartProcessusBat = 'startProcessus.bat';
-	/// Declaration des élements présents dans le config.json
-	configF.nomFichierConfig = 'config.json';
+
 	
 	var scenario = {};
 	scenario.CMU = 'CMU';
@@ -31,7 +36,6 @@
 	
 	configF.scenario=scenario;
 	
-	var fichierConfig = {};
 	
 	configF.chargementFichierConfig = function() {
 		ctx.log('-->configF.chargementFichierConfig()');
@@ -173,7 +177,7 @@
 		configF.nomFichierResultat = nomFichierResultatComplet;
 		configF.cheminFichierResultat = configF.cheminRacine+configF.nomFichierResultat;
 		return true;	
-	};
+	}
 
 //	getCodeProductCorrespond
 	configF.codeProduitACSCorrespondant = function(codeProduit) {

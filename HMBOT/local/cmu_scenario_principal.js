@@ -34,10 +34,12 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	data=ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	ctx.log('--> config.json :  Excel Debut');
+	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
 	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le config.JSON
+	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
  	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+	
 	ctx.traceF.infoTxt('Création du fichier résultat');	
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
@@ -49,8 +51,8 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.trace.infoTxt('Début étape - stServerConnexionCMU');
-		if (ActivInfinitev7.pWebServerClosed.exist() && ActivInfinitev7.pWebServerClosed.oFailureOfServerAPA.exist()) {
+	ctx.traceF.infoTxt('Début étape - stServerConnexionCMU');
+		if (ActivInfinitev7.pServerWebFerme.exist() && ActivInfinitev7.pServerWebFerme.TitrePage.exist()) {
 			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
 			ctx.popupF.newPopup('Le serveur Infinite est fermé');
 			return ;
@@ -211,8 +213,7 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	
 	 // Réinitialisation du dictionnaire
 	
-	data.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
-	
+	data.resetContratCourantCMU(data);
 	sc.endStep();
 	return;
 }});

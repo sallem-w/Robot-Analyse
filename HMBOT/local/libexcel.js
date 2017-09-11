@@ -18,14 +18,10 @@
 	//
 	
 	
-	excelF.initConfig = function(codeScenario) {
-		if (!ctx.configF.init(codeScenario)) {
-			return false;
-		}
+	excelF.configExcel = function(codeScenario) {
 			
-		config = ctx.config.recupConfigScenario(codeScenario);
+		config = ctx.configF.recupConfigScenario(codeScenario);
 		configExcel = config.excel;
-		return true;
 	}
 //	getHeaderFile
 	excelF.modifierEntete = function() {

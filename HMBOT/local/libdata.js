@@ -68,18 +68,27 @@
     };
 		
 		 dataF.initialisationScenarioCMU = function(dat,scenario){
-				dat.webData=dataF.webdata;
-				dat.contratCourantCMU=dataF.contratCourantCMU;
-				dat.varGlobales=dataF.varGlobales;
-				dat.statistiquesF=dataF.statistiquesF;
-				dat.scenarioConfig=dataF.scenarioConfig;
+				dat.webData=ctx.dataF.webdata;
+				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
+				dat.varGlobales=ctx.dataF.varGlobales;
+				dat.statistiquesF=ctx.dataF.statistiquesF;
+				
 				dat.codeScenario=scenario;
-				ctx.log('Récupération des données du config');
+				ctx.log('Init configF');
 				ctx.configF.init(scenario);
-				ctx.excelF.initConfig(scenario);
+			 	dat.scenarioConfig=ctx.configF.fichierConfig;
+			 	ctx.log('Init excelF');
+		//		ctx.excelF.configExcel(scenario);
 				dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 				//data.configExcel = data.config.excel;
 				
+			 	return dat;
+			 }
+		 
+		 	dataF.resetContratCourantCMU = function(dat,scenario){
+				ctx.log('resetContratCourant');
+				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
+				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 	return dat;
 			 }
 		
