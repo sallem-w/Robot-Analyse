@@ -32,23 +32,15 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-	data=ctx.dataF.initialisationScenarioCMU();//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
-	data.scenarioCode = ctx.configF.scenario.CMU;
-  ctx.log('Récupération des données du config');
-	ctx.configF.init(data.scenarioCode);
-	ctx.excelF.initConfig(data.scenarioCode);
-	data.scenarioConfig = ctx.configF.recupConfigScenario(data.scenarioCode);
-	//data.configExcel = data.config.excel;
-	ctx.log("--> config.json :  Excel Debut)
+	data=ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	ctx.log('--> config.json :  Excel Debut');
 	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le config.JSON
-	
+ 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.excelHelper.openFile(ctx.configF.cheminFichier);
-	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
 	ctx.traceF.infoTxt('Création du fichier résultat');	
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
-	
 	sc.endStep();
 	return;
 }});
@@ -112,32 +104,31 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Début étape - stReadCMUDataFromExcel');
 	 
-	var temp=ctx.tempContratF;
+	var temp_contract=ctx.dataF.CMUtemp_contractF;
 	/** numéro du contrat */
 	data.contratCourantCMU.dataLocale.numeroContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.numeroContratIndiv))), '00000000');
 	/** dans une boucle on récupère l'assuré principale et les bénéficiaires */
-	var individualContractNumber = data.contratCourantCMU.dataLocale.numeroContratIndiv;
-	var newIndividualContractNumber = individualContractNumber;
+	var numContratIndiv = data.contratCourantCMU.dataLocale.numeroContratIndiv;
+	var tempNumContratIndiv = numContratIndiv;
 	ctx.log('current row: '+data.varGlobales.ligneCourante);
-  // Réinitialisation du dictionnaire
-	data.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
-	data.temp_contract = {};
-	while (newIndividualContractNumber !== undefined && individualContractNumber === newIndividualContractNumber) {
+ 
+//	data.temp_contract = {};
+	while (tempNumContratIndiv !== undefined && numContratIndiv === tempNumContratIndiv) {
 			//récupération des champs (type, .....)
 		  // contrat.typeAssure = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.type);
-		  data.temp_contract.codeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.suscribedCodeProduct);
-		  data.temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.icStartDate);
-			data.temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.icEndDate);
-	    data.temp_contract.typeAssure = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.type);
+		  temp_contract.codeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.codeProduitSouscrit);
+		  temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante,data.scenarioConfig.excel.indexColonne.dateDebutEffetProduitSouscrit);
+			temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante,data.scenarioConfig.excel.indexColonne.dateFinEffetProduitSouscrit);
+	    temp_contract.typeAssure = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.type);
 		
-			ctx.log('type contrat: '+data.temp_contract.typeAssure);
+			ctx.log('type contrat: '+temp_contract.typeAssure);
 		
-		  data.contratCourantCMU.dataLocale.dictContratsCourantCMU.push(data.temp_contract);
+		  data.contratCourantCMU.dataLocale.dictContratsCourantCMU.push(temp_contract);
 			
 		  data.varGlobales.ligneCourante+=1;
-			newIndividualContractNumber = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.individualContract))), '00000000');
+			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante,data.scenarioConfig.excel.indexColonne.numeroContratIndiv))), '00000000');
 	}
-	ctx.log('numéro courant: '+individualContractNumber);
+	ctx.log('numéro courant: '+ tempNumContratIndiv);
 //	if(data.varGlobales.ligneCourante < data.varGlobales.indexLastRow){
 //		sc.endStep(ActivInfinitev7.steps.stSelectCMUContractFromExcel);
 //		return;
@@ -176,23 +167,23 @@ ActivInfinitev7.step({ stConsultationContratCMU : function(ev, sc, st) {
 /** Step : Mise à jour des données globales ( stats ) */
 ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 		var data = sc.data;
-		ctx.trace.writeInfo(data.currentContractACS.localData.numeroContratIndiv  + ' stUpdatesACSGlobalInfos ');
-		data.stats. nbCasTraite +=1;
-		data.stats.nbCasTrouveDsExcel = data.varGlobales.indexLastRow  - data.configExcel.startRowIndex + 1;
+		ctx.traceF.infoTxt(data.currentContractACS.localData.numeroContratIndiv  + ' stUpdatesACSGlobalInfos ');
+		data.statistiquesF.nbCasTraite +=1;
+		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
 		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
 		
 		
-		if (data.currentContractACS.notes.statusContract === ctx.excelHelper.constants.status.Success) {
-				data.stats.nbCasTraitementSucces += 1;
+		if (data.contratCourantCMU.notes.statusContract === ctx.excelF.constantes.status.Succes) {
+				data.statistiquesF.nbCasTraitementSucces += 1;
 		}
 
-		if (data.currentContractACS.notes.statusContract === ctx.excelHelper.constants.status.Fail) {
-				data.stats.nbCasTraitementEchec += 1;
+		if (data.contratCourantCMU.notes.statusContract === ctx.excelF.constantes.status.Echec) {
+				data.statistiquesF.nbCasTraitementEchec += 1;
 		}
 		
-		if (data.currentContractACS.notes.commentContract.indexOf('centre')!==-1)
+		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1)
 		{
-			data.stats.nbCasRevoirCentre +=1;
+			data.statistiquesF.nbCasRevoirCentre +=1;
 		}
 
 
@@ -216,6 +207,11 @@ ActivInfinitev7.step({ stInsertDonneesCMUExcel: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	var data = sc.data;
+	
+	
+	 // Réinitialisation du dictionnaire
+	
+	data.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
 	
 	sc.endStep();
 	return;

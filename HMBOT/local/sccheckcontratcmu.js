@@ -59,7 +59,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		//ctx.trace
 
 		st.onTimeout(10000, function (sc, st) {
-			ctx.traceF.errorTxt(data.currentContractACS.localData.individualContractNumber + 'TimeOut -  search contract ');
+			ctx.traceF.errorTxt(data.currentContractACS.localData.numContratIndiv + 'TimeOut -  search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
 			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
 			data.currentContractACS.states.exitACSProcess = true;

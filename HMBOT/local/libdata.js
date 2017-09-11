@@ -2,8 +2,8 @@
 
     var dataF = {
 			
-				scenarioConfig :{};
-			
+				scenarioConfig :{} ,
+				codeScenario : '',
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
@@ -27,7 +27,7 @@
             }
         },
         statistiquesF : {
-            Beginning : 0,
+            debutTpsTraitement : 0,
 						tpsTraitement : 0,
             nbCasTraite : 0, //countCaseProcessed
             nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
@@ -57,8 +57,27 @@
             dateFinEffProduit:'',
             dateDebEffSituatParti:'',
             dateFinEffSituatParti:''
-        },
-       
+        }
+				
+   
     };
+		
+		 dataF.initialisationScenarioCMU = function(dat,scenario){
+				dat.webData=dataF.webdata;
+				dat.contratCourantCMU=dataF.contratCourantCMU;
+				dat.varGlobales=dataF.varGlobales;
+				dat.statistiquesF=dataF.statistiquesF;
+				dat.scenarioConfig=dataF.scenarioConfig;
+				dat.codeScenario=scenario;
+				ctx.log('Récupération des données du config');
+				ctx.configF.init(scenario);
+				ctx.excelF.initConfig(scenario);
+				dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
+				//data.configExcel = data.config.excel;
+				
+			 	return dat;
+			 }
+		
+		
     return dataF;
 }) ();

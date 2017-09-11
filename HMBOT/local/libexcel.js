@@ -83,7 +83,7 @@
 //			insured.push(contract)
 			
 //			indexRow += 1;
-//			newIndividualContractNumber = getIndividualContractNumber(indexRow);
+//			newnumeroContratIndiv = getIndividualContractNumber(indexRow);
 //		}
 //		return insured;
 //	}
