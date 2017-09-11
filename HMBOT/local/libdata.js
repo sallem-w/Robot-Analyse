@@ -1,6 +1,9 @@
 ﻿ctx.dataF = (function () {
 
     var dataF = {
+			
+				scenarioConfig :{};
+			
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
@@ -18,25 +21,25 @@
             statusCMU: {
                 isContractWithProductACS:false,
                 isContractTerminated:false,
-                exitACSProcess:true,
+                FinCMUProcessus : false,
                 changeCoverage:false,
                 terminatedInAdvance:false
             }
         },
         statistiquesF : {
-            timeBeginning : 0,
-            countCaseProcessed : 0,
-            countCaseFindIntoExcel : 0,
-            countCaseReadyToRemove : 0,
-            countCaseSuccessProcessed : 0,
-            countCaseFailProcessed : 0,
-            countCaseBackToCenter : 0,
-            countCaseProductTerminated : 0,
-            countCaseContractWithProductACS : 0
+            Beginning : 0,
+						tpsTraitement : 0,
+            nbCasTraite : 0, //countCaseProcessed
+            nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
+            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
+            nbCasTraitementEchec : 0, //countCaseFailProcessed
+            nbCasRevoirCentre : 0, //countCaseBackToCenter
+            nbContratsPretsPrResiliation : 0, //sc.data.countCaseReadyToRemove
+            nbContratsResilies : 0
         },
         webData : {
             url:'',
-            tableauDeBordURL:'', //dashboardURL:'', 
+            tabDeBordURL:'', //dashboardURL:'', 
             identifiant:'', //login
             motDePasse:'' //password
         },
@@ -55,7 +58,7 @@
             dateDebEffSituatParti:'',
             dateFinEffSituatParti:''
         },
-        FinCMUProcessus : false
+       
     };
     return dataF;
 }) ();

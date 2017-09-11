@@ -70,7 +70,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 
 		});
 		st.onError(function (sc, st, ex) {
-			ctx.traceF.errorTxt(data.currentContractACS.localData.individualContractNumber + 'OnError - error search contract ');
+			ctx.traceF.errorTxt(data.currentContractACS.localData.numeroContratIndiv + 'OnError - error search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : ';
 			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
 			data.currentContractACS.states.exitACSProcess = true;
