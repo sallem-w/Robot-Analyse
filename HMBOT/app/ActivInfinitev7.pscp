@@ -2290,6 +2290,7 @@
 				<SCRIPT Name="libDateObj" Src="libDateObj.js" Folder="Complements" />
 				<SCRIPT Name="declarationsGlobales" Src="declarationsGlobales.js" Folder="Complements" />
 				<SCRIPT Name="libexcel" Src="libexcel.js" />
+				<SCRIPT Name="finCMU" Src="finCMU.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
