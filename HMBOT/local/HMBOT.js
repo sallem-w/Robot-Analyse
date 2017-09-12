@@ -114,6 +114,8 @@ GLOBAL.events.START.on(function (ev) {
 		GLOBAL.notify(GLOBAL.events.evShowDiagRecorder);
 	});
 	
+	// Déclatation des types perso de contextor;
+	ctx.string.init(); // Afin d'utiliser la librairie string
 	
 	ctx.configF.chargementFichierConfig();
 	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
@@ -126,9 +128,9 @@ GLOBAL.events.START.on(function (ev) {
 		if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
-			ctx.trace.initFileTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
-			ctx.trace.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			ctx.stats.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
+			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+			ctx.statsF.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
 				var data = {};
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
@@ -139,9 +141,9 @@ GLOBAL.events.START.on(function (ev) {
 		if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
 		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
-			ctx.trace.initFichierTrace(configCMU.cheminRacine, ctx.configF.scenario.CMU);
-			ctx.trace.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			ctx.stats.initFileStats(ctx.configF.cheminVersTemplate, configCMU.cheminRacine, ctx.configF.scenario.CMU);
+			ctx.traceF.initFichierTrace(configCMU.cheminRacine, ctx.configF.scenario.CMU);
+			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configCMU.cheminRacine, ctx.configF.scenario.CMU);
 			var data = {};
 			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 			

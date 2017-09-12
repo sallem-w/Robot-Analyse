@@ -3,35 +3,35 @@
     "ACS": {
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\acs\\",
-        "controlOnly": false,
+        "controlSeulement": false,
         "controlContribution": false,
-        "controlBlockNote": false,
-        "saveUpdate": false,
-        "addYearSearchContract": 30,
+        "controlBlocNote": false,
+        "sauverMiseAJour": false,
+        "ajouterAnneeRechercheContrat": 30,
         "excel": {
-            "startColumnIndex": 1,
-            "startRowIndex": 2,
-            "columnIndex": {
-                "individualContractNumber": 1,
-                "startIndividualContractDate":2,
-                "endIndividualContractDate":3,
-                "managementCenterCode":4,
-                "collectiveContractReference":5,
-                "insuredPersonnNumber": 6,
-                "name": 7,
-                "surname": 8,
-                "subscribedProductCode": 9,
-                "subscribedProduct":10,
-                "startSubscribedProductDate":11,
-                "endSubscribedProductDate":12,
+            "debutIndexCol": 1,
+            "debutIndexLigne": 2,
+            "indexColonne": {
+                "numeroContratIndiv": 1,
+                "dateDebutEffetContratIndiv":2,
+                "dateFinEffetContratIndiv":3,
+                "codeCentreGestion":4,
+                "refContratColl":5,
+                "numeroPersonneAssure": 6,
+                "nom": 7,
+                "prenom": 8,
+                "codeProduitSouscrit": 9,
+                "ProduitSouscrit":10,
+                "dateDebutEffetProduitSouscrit":11,
+                "dateFinEffetProduitSouscrit":12,
                 "descriptionACS":13,
-                "ACSCertificateStartDate": 14,
-                "ACSCertificateEndDate": 15,
-                "scheduleCode": 16,
-                "paymentTypeLabel": 17,
-                "dateProceedContract": 18,
-                "statusContract": 19,
-                "commentContract": 20
+                "dateDebutAttestationACS": 14,
+                "dateFinAttestationACS": 15,
+                "codeEcheancier": 16,
+                "modeReglement": 17,
+                "dateTraitementContrat": 18,
+                "statusContrat": 19,
+                "commentaireContrat": 20
             }
         },
          "produitAccesSante": {
@@ -45,45 +45,45 @@
     },
     "CMU":{
         "afficherMenu": true,
-        "rootPath": "C:\\deploy\\cmu\\", 
-        "controlOnly": false,
+        "cheminRacine": "C:\\deploy\\cmu\\", 
+        "controlSeulement": false,
         "controlContribution": false,
-        "saveUpdate": false,
+        "sauverMiseAJour": false,
         "excel": {
-            "startRowIndex": 5,
-            "startColumnIndex": 1,
-            "columnIndex":{
-                "name": 1,
-                "firstName": 2,
-                "individualContract": 3,
+            "debutIndexCol": 1,
+            "debutIndexLigne": 5,
+            "indexColonne":{
+                "nom": 1,
+                "prenom": 2,
+                "numeroContratIndiv": 3,
                 "type": 4,
-                "icStartDate": 5,
-                "icEndDate": 6,
-                "suscribedCodeProduct": 7,
-                "subscribedProductStartDate": 8,
-                "subscribedProductEndDate": 9,
-                "nbDayCMUCover": 10,
-                "particularSituationStartDate": 11,
-                "particularSituationEndDate": 12,
-                "managementCenterCode": 13,
-                "dateProceedContract": 14,
-                "statusContract": 15,
-                "commentContract": 16
+                "dateDebutEffetContratIndiv": 5,
+                "dateFinEffetContratIndiv": 6,
+                "codeProduitSouscrit": 7,
+                "dateDebutEffetProduitSouscrit": 8,
+                "dateFinEffetProduitSouscrit": 9,
+                "nbJourCouvCMU": 10,
+                "dateDebutSituationParticuliere": 11,
+                "dateFinSituationParticuliere": 12,
+                "codeCentreGestion": 13,
+                "dateTraitementContrat": 14,
+                "statusContrat": 15,
+                "commentaireContrat": 16
             }
         }
     },
     "SIRH": {
         "afficherMenu": true,
-        "saveUpdate": false,
-        "rootPath": "C:\\deploy\\sirh\\"
+        "sauverMiseAJour": false,
+        "cheminRacine": "C:\\deploy\\sirh\\"
     },
     "SIRHUpdate": {
         "afficherMenu": true,
-        "saveUpdate": false,
-        "rootPath": "C:\\deploy\\sirh-update\\"
+        "sauverMiseAJour": false,
+        "cheminRacine": "C:\\deploy\\sirh-update\\"
     },
     "DA": {
         "afficherMenu": true,
-        "rootPath": "C:\\deploy\\da\\"
+        "cheminRacine": "C:\\deploy\\da\\"
     }
 }
