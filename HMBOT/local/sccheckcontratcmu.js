@@ -62,6 +62,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		ctx.trace.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stRecherContratIndivCMU ');
 
 		st.onTimeout(10000, function (sc, st) {
+
 			ctx.traceF.errorTxt(data.currentContractACS.localData.numContratIndiv + 'TimeOut -  search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
 			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
@@ -72,6 +73,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 			});
 		});
 		st.onError(function (sc, st, ex) {
+
 			ctx.traceF.errorTxt(data.currentContractACS.localData.numeroContratIndiv + 'OnError - error search contract ');
 			data.currentContractACS.notes.commentContract = 'Revoir centre: Erreur recherche contrat : ';
 			data.currentContractACS.notes.statusContract = ctx.excelF.constantes.status.Echec;
@@ -167,6 +169,7 @@ ActivInfinitev7.step( {
 			produitValide: 'VA',
 			produitTermine : 'RA'
 		};
+
 
 		ctx.trace.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitAffichageInforRO');
 		ActivInfinitev7.pIdentAssures.wait(function (ev) {
