@@ -50,7 +50,6 @@
 				<SCRIPT Name="Ctx Application" Src="%sdk%\lib\ctx\ctx.application.js" Folder="Framework" />
 				<SCRIPT Name="Ctx Systray" Src="%sdk%\lib\ctx\ctx.systray.js" Folder="Framework" />
 				<SCRIPT Name="Ctx Popup" Src="%sdk%\lib\ctx\ctx.popup.js" Folder="Framework" />
-				<SCRIPT Name="ctx.customTypes" Comment="Ctx Custom Types" Folder="Framework" Src="%sdk%\lib\ctx\ctx.customTypes.js" />
 				<SCRIPT Name="Ctx Popup Bootbox" Src="%sdk%\lib\ctx\ctx.popup.bootbox.js" Folder="Framework" />
 				<!-- framework extensions -->
 				<SCRIPT Name="FSO library" Src="%sdk%\lib\utils\fso.js" Folder="Libraries" />

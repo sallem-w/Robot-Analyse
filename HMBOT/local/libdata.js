@@ -1,10 +1,6 @@
 ﻿ctx.dataF = (function () {
 
     var dataF = {
-				
-				
-			
-			
 				scenarioConfig :{} ,
 				codeScenario : '',
         contratCourantCMU: {
@@ -17,16 +13,12 @@
                 dictContratsCourantCMU : []
             },
             notes: {
-                dateProceedContract:'',
-                statusContract: '',
-                commentContract: ''
+                dateTraitementContrat:'',
+                statusContrat: '',
+                commentaireContrat: ''
             },
             statusCMU: {
-                isContractWithProductACS:false,
-                isContractTerminated:false,
-                FinCMUProcessus : false,
-                changeCoverage:false,
-                terminatedInAdvance:false
+                FinCMUProcessus : false
             }
         },
         statistiquesF : {
@@ -41,10 +33,10 @@
             nbContratsResilies : 0
         },
         webData : {
-            url:'',
-            tabDeBordURL:'', //dashboardURL:'', 
-            identifiant:'', //login
-            motDePasse:'' //password
+            url:'htt://exemple.com',
+            tabDeBordURL:'', 
+            identifiant:'', 
+            motDePasse:'' 
         },
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
@@ -67,29 +59,29 @@
    
     };
 		
-		 dataF.initialisationScenarioCMU = function(dat,scenario){
-				dat.webData=ctx.dataF.webdata;
-				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
-				dat.varGlobales=ctx.dataF.varGlobales;
-				dat.statistiquesF=ctx.dataF.statistiquesF;
+		dataF.initialisationScenarioCMU = function(dat,scenario){
+	
+			dat.webData=ctx.dataF.webData;
+			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
+			dat.varGlobales=ctx.dataF.varGlobales;
+			dat.statistiquesF=ctx.dataF.statistiquesF;
 				
-				dat.codeScenario=scenario;
-				ctx.log('Init configF');
-				ctx.configF.init(scenario);
-			 	dat.scenarioConfig=ctx.configF.fichierConfig;
-			 	ctx.log('Init excelF');
+			dat.codeScenario=scenario;
+			ctx.log('Init configF');
+			ctx.configF.init(scenario);
+			dat.scenarioConfig=ctx.configF.fichierConfig;
+			ctx.log('Init excelF');
 		//		ctx.excelF.configExcel(scenario);
-				dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
+			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 				//data.configExcel = data.config.excel;
-				
-			 	return dat;
-			 }
+			ctx.log(" Test URL : "+ dat.webData.url);	
+
+		}
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
 				ctx.log('resetContratCourant');
 				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
-			 	return dat;
 			 }
 		
 		

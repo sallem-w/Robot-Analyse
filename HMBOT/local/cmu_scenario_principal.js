@@ -10,15 +10,12 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 		}); // default error handler
 		sc.setMode(e.scenario.mode.clearIfRunning);
 		
-		// add steps here...
 		sc.step(ActivInfinitev7.steps.stInitScenarioCMU);
 		sc.step(ActivInfinitev7.steps.stServerConnexionCMU);
-		sc.step(ActivInfinitev7.steps.stInitSelectContratCMUExcel);
-		sc.step(ActivInfinitev7.steps.stSelectCMUContratCMUExcel);
+		sc.step(ActivInfinitev7.steps.stDebutBoucleContratCMU);
 		sc.step(ActivInfinitev7.steps.stLireDonneesCMUExcel);
 		sc.step(ActivInfinitev7.steps.stVerifExistanceAssurePrincipal);
 		sc.step(ActivInfinitev7.steps.stConsultationContratCMU);
-//		sc.step(ActivInfinitev7.steps.stFinScenarioCMU);
 		sc.step(ActivInfinitev7.steps.stMiseAjourVarGloblales);
 		sc.step(ActivInfinitev7.steps.stInsertDonneesCMUExcel);
 		sc.step(ActivInfinitev7.steps.stContratCMUSuivant);
@@ -32,14 +29,16 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-	data=ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	
 	ctx.log('--> config.json :  Excel Debut');
 	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
 	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le config.JSON
 	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
  	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
 	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	
+	ctx.log(" Test URL : "+ data.webData.url);
 	ctx.traceF.infoTxt('Création du fichier résultat');	
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
@@ -63,17 +62,18 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 			ctx.popupF.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
 			return ;
 		}
-
-//		data.webData.url = ActivInfinitev7.pConnexion.getInfos().location.href;
-//		data.webData.login = ActivInfinitev7.pConnexion.oIdentifiant.get();
-//		data.webData.password = ActivInfinitev7.pConnexion.oPwd.get();
+	ctx.log(" Test URL : "+ data.webData.url);
+	data.webData.url = ActivInfinitev7.pConnexion.getInfos().location.href;
+	data.webData.identifiant = ActivInfinitev7.pConnexion.oIdentifiant.get();
+	data.webData.motDePasse = ActivInfinitev7.pConnexion.oPwd.get();
 		
 		//on entre dans Infinite
 //		ActivInfinitev7.pConnexion.btLogin.click();
 //		ActivInfinitev7.pTabDeBord.wait(function(ev) {
-		var infos = ActivInfinitev7.pTabDeBord.getInfos();
-		data.webData.tabDeBordURL=infos.document.URL;
-		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+//		var infos = ActivInfinitev7.pTabDeBord.getInfos();
+		
+//		data.webData.tabDeBordURL=infos.document.URL;
+//		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
 			sc.endStep();
 			return;
 //		});
@@ -82,21 +82,12 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stInitSelectContratCMUExcel : function(ev, sc, st) {
+ActivInfinitev7.step({ stDebutBoucleContratCMU: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Début étape - stInitSelectCMUContractFromExcel');
+	ctx.traceF.infoTxt('Début étape - stDebutBoucleContratCMU');
+	ctx.traceF.infoTxt('-->Ligne Excel: '+ data.varGlobales.ligneCourante);
 	sc.endStep();
 	return;
-}});
-
-
-/** ce step consiste à parcurir le fichier excel et récupérer les lignes qui ont le meme numéro du contrat (dictionaire) */
-ActivInfinitev7.step({ stSelectCMUContratCMUExcel : function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Début étape - stSelectCMUContract');
-	ctx.traceF.infoTxt('Sélection du contrat numéro: '+ data.varGlobales.ligneCourante);
-	sc.endStep();
-  return;
 }});
 
 
@@ -131,6 +122,7 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante,data.scenarioConfig.excel.indexColonne.numeroContratIndiv))), '00000000');
 	}
 	ctx.log('numéro courant: '+ tempNumContratIndiv);
+	ctx.log('ligne Courante: '+ data.varGlobales.ligneCourante);
 //	if(data.varGlobales.ligneCourante < data.varGlobales.indexLastRow){
 //		sc.endStep(ActivInfinitev7.steps.stSelectCMUContractFromExcel);
 //		return;
@@ -169,7 +161,7 @@ ActivInfinitev7.step({ stConsultationContratCMU : function(ev, sc, st) {
 /** Step : Mise à jour des données globales ( stats ) */
 ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt(data.currentContractACS.localData.numeroContratIndiv  + ' stUpdatesACSGlobalInfos ');
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + ' stUpdatesACSGlobalInfos ');
 		data.statistiquesF.nbCasTraite +=1;
 		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
 		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
@@ -206,23 +198,39 @@ ActivInfinitev7.step({ stInsertDonneesCMUExcel: function(ev, sc, st) {
 
 
 
-/** Description */
+/** stContratCMUSuivant */
 ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	var data = sc.data;
-	
-	
-	 // Réinitialisation du dictionnaire
-	
-	data.resetContratCourantCMU(data);
-	sc.endStep();
-	return;
+	ctx.traceF.infoTxt(' stContratCMUSuivant - Initialisations pour un changement de contrat');
+		if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
+//			ctx.dataF.resetContratCourantCMU(data);
+			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
+			return;
+		}
+		else{
+			sc.endStep();
+			return;
+		}
 }});
 
 
-/** Description */
+/** stFinScenarioCMU */
 ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
+//	ctx.traceF.infoTxt(' stFinScenarioCMU -Fin du scénario principal - Fermeture d\'Excel');
+//	ctx.excelF.fermerFichier();
+//	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
+////	data.statsF.fileName = ctx.configFile.getFileNameOutput(); 
+////	data.stats.timeEnd = ctx.date.convertTimeSeconds(new Date());
+////	data.stats.totalTimeDuration = ctx.date.getTimeElapsed(data.stats.timeEnd - data.stats.timeBeginning);
 	
+////	ctx.excelFile.writeStats(data.stats);
+
+//	ctx.popupF.newPopup("Fin du traitement",'Fin', function() {
+//			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
+//			return sc.endStep();
+//		});
+//	ctx.log('Fin du scenario CMU');
 	sc.endScenario();
 	return;
 }});

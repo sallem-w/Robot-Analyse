@@ -50,8 +50,8 @@
         "controlContribution": false,
         "sauverMiseAJour": false,
         "excel": {
-            "debutIndexCol": 5,
-            "debutIndexLigne": 1,
+            "debutIndexCol": 1,
+            "debutIndexLigne": 5,
             "indexColonne":{
                 "nom": 1,
                 "prenom": 2,
