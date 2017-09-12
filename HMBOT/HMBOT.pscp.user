@@ -3,6 +3,7 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+
 		<FINDWHAT><![CDATA[controlConfig]]></FINDWHAT>
 		<FINDWHAT><![CDATA[scenarioConfig]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.webData.dashboardURL]]></FINDWHAT>
@@ -42,7 +43,6 @@
 		<REPLACEWITH><![CDATA[codeProduitSouscrit]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[.data.scenarioConfig.excel.indexColonne.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[tempNumContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[numeroContratIndiv]]></REPLACEWITH>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
