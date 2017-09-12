@@ -9,6 +9,7 @@
 		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' aborting current scenario');
 		sc.endScenario();
 	});
+	
 	sc.setMode(e.scenario.mode.noStartIfRunning);
 	sc.step(ActivInfinitev7.steps.stInitTerminatedCMU);
 	sc.step(ActivInfinitev7.steps.stSearchTerminatedContractCMU);
@@ -63,6 +64,7 @@ ActivInfinitev7.step({ stSearchTerminatedContractCMU: function(ev, sc, st) {
 		return;
 	});
 }});
+
 
 
 /** Description */
@@ -123,6 +125,7 @@ ActivInfinitev7.step({ stValidationCalcul: function(ev, sc, st) {
 	});
 }});
 
+
 /** Description */
 ActivInfinitev7.step({ stSaveContractCMU: function(ev, sc, st) {
 	var data = sc.data;
@@ -138,6 +141,7 @@ ActivInfinitev7.step({ stSaveContractCMU: function(ev, sc, st) {
   });
 
 }});
+
 
 ActivInfinitev7.step({ stEndTerminatedCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP END - stEndTerminatedCMU');

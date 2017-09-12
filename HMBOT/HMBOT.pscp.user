@@ -2,58 +2,13 @@
 <USER>
 	<BREAKPOINTS />
 	<BOOKMARKS />
-	<FINDHISTORY>
-		<FINDWHAT><![CDATA[data.contratCourantCMU.localData.individualContractNumber]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.trace.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.config]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.stats.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.excelHelper.constants.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[commentContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[currentContractACS.notes.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[icEndDate]]></FINDWHAT>
-		<FINDWHAT><![CDATA[icStartDate]]></FINDWHAT>
-		<FINDWHAT><![CDATA[suscribedCodeProduct]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.configExcel.columnIndex.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[newnumContratIndiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[individualContractNumber]]></FINDWHAT>
-		<FINDWHAT><![CDATA[beginning]]></FINDWHAT>
-		<FINDWHAT><![CDATA[timeBeginning]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.currentRow]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.varGlobales..]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.globalVariables]]></FINDWHAT>
-		<FINDWHAT><![CDATA[countCaseProductTerminated]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statistiquesF.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.excelF.constantes.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[contratCourantCMU.notes.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateFinEffetProduitSouscrit]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateDebutEffetProduitSouscrit]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[codeProduitSouscrit]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.data.scenarioConfig.excel.indexColonne.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[tempNumContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[numContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.ligneCourante]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.varGlobales.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbContratsResilies]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbCasRevoirCentre]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbCasTraitementEchec]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbCasTraitementSucces]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbCasPretAEcraser]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nbCasTrouveDsExcel]]></REPLACEWITH>
-	</FINDHISTORY>
+	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="96" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="83" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="10" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
-		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />
