@@ -5,10 +5,11 @@
 	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="10" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="123" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
+		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />
