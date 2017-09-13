@@ -24,6 +24,7 @@
 }});
 
 ActivInfinitev7.step({ stInitFinCMU: function(ev, sc, st) {
+	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitFinCMU');
 	ActivInfinitev7.pTabDeBord.btFinCMU.click();
 	sc.endStep();
@@ -31,6 +32,7 @@ ActivInfinitev7.step({ stInitFinCMU: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
+	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stRechercheContratCMU');
 
 	st.onTimeout(30000,function(sc,st){
@@ -62,6 +64,7 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
+	var data = sc.data;
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers le bloc-notes ';
@@ -80,7 +83,6 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	
 	ActivInfinitev7.pContratTrouve.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
-		var data = sc.data;
 		ActivInfinitev7.pContratTrouve.btSuivant.click();
 		sc.endStep();
 		return;
@@ -90,6 +92,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
+	var data = sc.data;
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Paramètre de calcul ';
@@ -107,7 +110,6 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 	});
 	ActivInfinitev7.pBlockNotes.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersCalculParam');
-		var data = sc.data;
 		ActivInfinitev7.pBlockNotes.btSuivant.click();
 		sc.endStep();
 		return;
@@ -116,6 +118,7 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
+	var data = sc.data;
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers l\'Historique des cotisations';
@@ -133,7 +136,6 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 	});
 	ActivInfinitev7.pParamDeCalcul.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersHistoCotisations');
-		var data = sc.data;
 		ActivInfinitev7.pParamDeCalcul.btSuivant.click();
 		sc.endStep();
 		return;
@@ -142,6 +144,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
+	var data = sc.data;
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Visualisation du compte cotisant';
@@ -159,7 +162,6 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 	});
 	ActivInfinitev7.pHistoContribution.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersVisuCompteCotisant');
-		var data = sc.data;
 		ActivInfinitev7.pHistoContribution.btSuivant.click();
 		sc.endStep();
 		return;
@@ -167,6 +169,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ stValidationCalcul: function(ev, sc, st) {
+	var data = sc.data;
 	ActivInfinitev7.pVisuContribution.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stValidationCalcul');
 		// Into CMU, the contribution array is empty (message "aucune donnée") so the validation button doesn't exist
@@ -195,6 +198,7 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 }});
 
 ActivInfinitev7.step({ stFinResiliationCMU: function(ev, sc, st) {
+	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP END - stFinResiliationCMU');
 	return sc.endScenario();
 }});
