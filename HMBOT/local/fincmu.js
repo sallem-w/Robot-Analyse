@@ -1,9 +1,12 @@
-﻿ActivInfinitev7.scenario({ terminatedCMU: function(ev, sc) {
+﻿ActivInfinitev7.scenario({ finCMU: function(ev, sc) {
 	var data = sc.data;
 	sc.data.currentScenario = 'Fin CMU';
-	sc.onTimeout(ctx.config.getTimeout(), function(sc, st) {
+	sc.onTimeout(30000, function(sc, st) {
 		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout aborting current scenario');
-		sc.endScenario();
+		ActivInfinitev7.pTabDeBord.start(data.webData.dashboardURL);
+  	ActivInfinitev7.pTabDeBord.wait(function(ev) {
+    	sc.endScenario();
+  	});
 	});
 	sc.onError(function(sc, st, ex) {
 		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' aborting current scenario');
