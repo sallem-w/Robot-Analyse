@@ -49,7 +49,7 @@
 		}
 
 		try {
-			ctx.fso.file.write(cheminFichierStats + '.html', tempContent, e.fileEncoding.UTF8);
+			ctx.fso.file.write(cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
 		}
 		catch(ex) {
 			ctx.traceF.errorTxt('Can not write stats template, ' + cheminFichierStats + '.html');

@@ -130,7 +130,7 @@ GLOBAL.events.START.on(function (ev) {
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
 			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			ctx.statsF.initFileStats(ctx.config.getPathTemplate(), configACS.rootPath, ctx.config.ACS);
+			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configACS.cheminRacine, ctx.configF.scenario.ACS);
 				var data = {};
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	

@@ -18,6 +18,7 @@ ctx.dataF = (function () {
                 commentaireContrat: ''
             },
             statusCMU: {
+								existanceASSPRI : false,
                 FinCMUProcessus : false
             }
         },
@@ -41,7 +42,7 @@ ctx.dataF = (function () {
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
-            controlSeulement:false, //controlOnly
+            controlSeul:false, //controlSeul
 						indiceBenef:0,
 						nbBenef: 0
         },
