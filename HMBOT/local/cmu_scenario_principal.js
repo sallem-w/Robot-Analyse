@@ -203,9 +203,12 @@ ActivInfinitev7.step({ stResilationCMUCondition: function(ev, sc, st) {
 ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stResiliationContratCMU ');
-	
-	sc.endStep();
-	return;
+	st.disableTimeout();
+	var scCMU = ActivInfinitev7.scenarios.scResiliationCMU.start(data).onEnd(function(sc4){
+		sc.data = sc4.data;
+		ctx.traceF.infoTxt(' Fin du sous-scenario - scResiliationCMU');
+		sc.endStep();
+	});
 }});
 
 
