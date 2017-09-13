@@ -2313,7 +2313,7 @@
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
-				<SCRIPT Name="CMU verification contrat" Src="scCheckContratCMU.js" Folder="Processus_CMU" />
+				<SCRIPT Name="CMU_verification_contrat" Src="cmu_verification_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
 				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
 				<SCRIPT Name="libDate" Src="libdate.js" Folder="Complements" />
@@ -2327,7 +2327,7 @@
 				<SCRIPT Name="libexcel" Src="libexcel.js" Folder="Complements" />
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
-				<SCRIPT Name="CMU_resiliation_contrat" Src="CMU_resiliation_contrat.js" Folder="Processus_CMU" />
+				<SCRIPT Name="CMU_resiliation_contrat" Src="cmu_resiliation_contrat.js" Folder="Processus_CMU" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
