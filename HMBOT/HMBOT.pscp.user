@@ -47,6 +47,7 @@
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
 
+
 		<OPENDOC LineNumber="799" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Word']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1388" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS" Offset="0" Length="0" />
@@ -66,6 +67,8 @@
 		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ACS_scenario_principal']" Offset="0" Length="0" />
 
 		<OPENDOC LineNumber="123" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
+
+		<OPENDOC LineNumber="60" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
