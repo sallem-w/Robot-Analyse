@@ -1,25 +1,29 @@
 ﻿
 /** Description */
 ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
-		var data = sc.data;
-		sc.onTimeout(30000, function (sc, st) {
-			sc.endScenario();
-		}); // default timeout handler for each step
-		sc.onError(function (sc, st, ex) {
-			sc.endScenario();
-		}); // default error handler
-		sc.setMode(e.scenario.mode.clearIfRunning);
+	var data = sc.data;
+	sc.onTimeout(30000, function (sc, st) {
+		sc.endScenario();
+	}); // default timeout handler for each step
+	sc.onError(function (sc, st, ex) {
+		sc.endScenario();
+	}); // default error handler
+	sc.setMode(e.scenario.mode.clearIfRunning);
 		
-		sc.step(ActivInfinitev7.steps.stInitScenarioCMU);
-		sc.step(ActivInfinitev7.steps.stServerConnexionCMU);
-		sc.step(ActivInfinitev7.steps.stDebutBoucleContratCMU);
-		sc.step(ActivInfinitev7.steps.stLireDonneesCMUExcel);
-		sc.step(ActivInfinitev7.steps.stVerifExistanceAssurePrincipal);
-		sc.step(ActivInfinitev7.steps.stConsultationContratCMU);
-		sc.step(ActivInfinitev7.steps.stMiseAjourVarGloblales);
-		sc.step(ActivInfinitev7.steps.stInsertDonneesCMUExcel);
-		sc.step(ActivInfinitev7.steps.stContratCMUSuivant);
-		sc.step(ActivInfinitev7.steps.stFinScenarioCMU);
+	sc.step(ActivInfinitev7.steps.stInitScenarioCMU);
+	sc.step(ActivInfinitev7.steps.stServerConnexionCMU);
+	sc.step(ActivInfinitev7.steps.stDebutBoucleContratCMU);
+	sc.step(ActivInfinitev7.steps.stLireDonneesCMUExcel);
+	sc.step(ActivInfinitev7.steps.stVerifExistanceAssurePrincipal);
+	sc.step(ActivInfinitev7.steps.stVerifContratCMUCondition);
+	sc.step(ActivInfinitev7.steps.stVerifContratCMU);
+	sc.step(ActivInfinitev7.steps.stResilationCMUCondition);
+	sc.step(ActivInfinitev7.steps.stResiliationContratCMU);	
+	sc.step(ActivInfinitev7.steps.stVerifContratCMU);
+	sc.step(ActivInfinitev7.steps.stMiseAjourVarGloblales);
+	sc.step(ActivInfinitev7.steps.stInsertDonneesCMUExcel);
+	sc.step(ActivInfinitev7.steps.stContratCMUSuivant);
+	sc.step(ActivInfinitev7.steps.stFinScenarioCMU);
 
 	}
 });
@@ -28,6 +32,7 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
+
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	
@@ -95,7 +100,7 @@ ActivInfinitev7.step({ stDebutBoucleContratCMU: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Début étape - stReadCMUDataFromExcel');
+	ctx.traceF.infoTxt('Etape - stLireDonneesCMUExcel');
 	 
 	var temp_contract=ctx.dataF.CMUtemp_contractF;
 	/** numéro du contrat */
@@ -136,42 +141,88 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 /** ce step permet de vérifier dans le dictionnaire l'existance de l'assuré principal, sil existe on lance le sous scénario scVerifContratCMU sinon on exécute le sous sc finCMU  */
 ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
 	var data = sc.data;
-	//ctx.trace
-	//vérifier si le cotrat est vide ou non et insérer date, statu, comme dans le fichier excel resultat puis passer au contrat suivant.
+	ctx.traceF.infoTxt('Etape - stVerifExistanceAssurePrincipal');
+	var listeAssures = data.contratCourantCMU.dataLocale.dictContratsCourantCMU;
+	for (var i in listeAssures){
+		if(listeAssures[i]==ctx.configF.constantes.ASSPRI){
+			data.contratCourantCMU.statusCMU.existanceASSPRI=true;
+		}
+	}
+	sc.endStep();
+	return;
+}});
+
+/** Condition d'embranchement de scenario */
+ActivInfinitev7.step({ stVerifContratCMUCondition: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
+	if(data.contratCourantCMU.statusCMU.existanceASSPRI == false){
+		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
+		return;
+	}
+	else{ // on lance le scenario de traitement
+			sc.endStep(ActivInfinitev7.steps.stVerifContratCMU);
+			return;
+	}
+}});
+
+/** step qui lance le sous scénario de vérification des données cmu */
+ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape - stVerifContratCMU - Lancement du sous-scenario de verification des données en lignes : scVerifContratCMU');
+	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
+	st.disableTimeout();	
+	var scASC = ActivInfinitev7.scenarios.scVerifContratCMU.start(data).onEnd(function(sc2){
+		sc.data=sc2.data;
+		ctx.traceF.infoTxt(' Fin du sous-scenario - scVerifContratCMU');
+		if(data.scenarioConfig.controlSeul){
+			ctx.traceF.infoTxt(' controlSeul - Aucune mise à jour du contrat est effectuée');
+			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+		}
+		sc.endStep();
+	});
+}});
+
+
+/** Condition d'embranchement de scenario */
+ActivInfinitev7.step({ stResilationCMUCondition: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
+	if(data.contratCourantCMU.statusCMU.FinCMUProcessus == true){
+		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
+		return;
+	}
+	else{ // on lance le scenario de traitement
+			sc.endStep(ActivInfinitev7.steps.stResiliationContratCMU);
+			return;
+	}
+}});
+
+
+/** Etape qui lance le scenario de Résiliation  */
+ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape - stResiliationContratCMU ');
 	
 	sc.endStep();
 	return;
 }});
 
 
-
-/** step qui lance le sous scénario de vérification des données cmu */
-ActivInfinitev7.step({ stConsultationContratCMU : function(ev, sc, st) {
-	var data = sc.data;
-	//ctx.trace
-	//appeler le sous scénario : scVerifContratCMU
-	sc.endStep();
-	return;
-}});
-
-
-
-
-
 /** Step : Mise à jour des données globales ( stats ) */
 ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + ' stUpdatesACSGlobalInfos ');
+		ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
 		data.statistiquesF.nbCasTraite +=1;
 		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
 		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
 		
 		
-		if (data.contratCourantCMU.notes.statusContract === ctx.excelF.constantes.status.Succes) {
+		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
 				data.statistiquesF.nbCasTraitementSucces += 1;
 		}
 
-		if (data.contratCourantCMU.notes.statusContract === ctx.excelF.constantes.status.Echec) {
+		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
 				data.statistiquesF.nbCasTraitementEchec += 1;
 		}
 		
@@ -191,7 +242,7 @@ ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stInsertDonneesCMUExcel: function(ev, sc, st) {
 	var data = sc.data;
-	
+	ctx.traceF.infoTxt('Etape - stInsertDonneesCMUExcel ');
 	sc.endStep();
 	return;
 }});
@@ -201,7 +252,7 @@ ActivInfinitev7.step({ stInsertDonneesCMUExcel: function(ev, sc, st) {
 /** stContratCMUSuivant */
 ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(' stContratCMUSuivant - Initialisations pour un changement de contrat');
+	ctx.traceF.infoTxt('Etape - stContratCMUSuivant - Initialisations pour un changement de contrat');
 		if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
 //			ctx.dataF.resetContratCourantCMU(data);
 			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
@@ -217,7 +268,7 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 /** stFinScenarioCMU */
 ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
-//	ctx.traceF.infoTxt(' stFinScenarioCMU -Fin du scénario principal - Fermeture d\'Excel');
+	ctx.traceF.infoTxt('Etape - stFinScenarioCMU -Fin du scénario principal - Fermeture d\'Excel');
 //	ctx.excelF.fermerFichier();
 //	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
 ////	data.statsF.fileName = ctx.configFile.getFileNameOutput(); 

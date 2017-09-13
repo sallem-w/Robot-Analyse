@@ -45,6 +45,7 @@ ActivInfinitev7.pContratIndivNonTrouv.btRecherche = ActivInfinitev7.pContratIndi
 ActivInfinitev7.pContratIndivNonTrouv.btFermeture = ActivInfinitev7.pContratIndivNonTrouv.addItem('btFermeture');
 ActivInfinitev7.pContratIndivNonTrouv.btFermAvecErreur = ActivInfinitev7.pContratIndivNonTrouv.addItem('btFermAvecErreur');
 ActivInfinitev7.pContratIndivNonTrouv.oDIVErreur = ActivInfinitev7.pContratIndivNonTrouv.addItem('oDIVErreur', {"mustExist":true});
+ActivInfinitev7.pContratIndivNonTrouv.titreErreur = ActivInfinitev7.pContratIndivNonTrouv.addItem('titreErreur');
 
 ActivInfinitev7.pRecherContratIndiv = ActivInfinitev7.addPage('pRecherContratIndiv', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pRecherContratIndiv.oContratIndiv = ActivInfinitev7.pRecherContratIndiv.addItem('oContratIndiv', {"mustExist":true});

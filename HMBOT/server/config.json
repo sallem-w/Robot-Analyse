@@ -3,8 +3,8 @@
     "ACS": {
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\acs\\",
-        "controlSeulement": false,
-        "controlContribution": false,
+        "controlSeul": true,
+        "controlSolde": false,
         "controlBlocNote": false,
         "sauverMiseAJour": false,
         "ajouterAnneeRechercheContrat": 30,
@@ -46,8 +46,8 @@
     "CMU":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 
-        "controlSeulement": false,
-        "controlContribution": false,
+        "controlSeul": false,
+        "controlSolde": false,
         "sauverMiseAJour": false,
         "excel": {
             "debutIndexCol": 1,

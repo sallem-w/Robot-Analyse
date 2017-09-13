@@ -1,4 +1,4 @@
-﻿ctx.dataF = (function () {
+ctx.dataF = (function () {
 
     var dataF = {
 				scenarioConfig :{} ,
@@ -18,6 +18,7 @@
                 commentaireContrat: ''
             },
             statusCMU: {
+								existanceASSPRI : false,
                 FinCMUProcessus : false
             }
         },
@@ -41,7 +42,7 @@
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
-            controlSeulement:false, //controlOnly
+            controlSeul:false, //controlSeul
 						indiceBenef:0,
 						nbBenef: 0
         },
@@ -87,3 +88,4 @@
 		
     return dataF;
 }) ();
+

@@ -8,8 +8,6 @@
 		cheminFichier:'', //var getPathFile();
 		nomFichierResultat:'', //var fileNameOutput;
 		cheminFichierResultat:'', //getPathFileOutput()
-		nomFichierStartProcessusBat:'',
-		nomFichierConfig:'',
 		cheminFichierConfig:'',
 		cheminVersTemplate:'',
 		nomFichierStartProcessusBat : 'startProcessus.bat',
@@ -43,12 +41,9 @@
 		configF.fichierConfig = JSON.parse(chemin);
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
 		ctx.log('Initialisation : Chargement du fichier config.json');
-	};
+	}
 	
 	
-//	configF.cheminVersTemplate = function() {
-//		return configF.fichierConfig.cheminTemplate;
-//	}
 	
 	configF.recupConfigScenario = function(codeScenario) {
 		ctx.log('--> config '+codeScenario);
@@ -58,8 +53,6 @@
 	configF.cheminVersStartProcessusBat = function() {
 		return ctx.options.serverURL + '\\' + configF.nomFichierStartProcessusBat;
 	}
-	
-	//configF.getCheckExtension
 	
 	configF.fichierExtension = function(codeScenario) {  // à voir où la fonction est utile
 		switch(codeScenario) {
@@ -75,55 +68,6 @@
 	configF.extensionFichierResultat = function(codeScenario, nomFichier) {  // à voir où la  fonction est utile
 		return codeScenario === ctx.configF.scenario.SIRH ? 'xls' : ctx.fso.file.getExtensionName(nomFichier);
 	}
-	
-	
-//	var config = {};
-//	var configFile = {};
-	
-//	config.CMU = 'CMU';
-//	config.ACS = 'ACS';
-//	config.SIRH = 'SIRH';
-//	config.SIRHUpdate = 'SIRHUpdate';
-//	config.DA = 'DA';
-	
-//	config.loadConfigFile = function() {
-//		var pathConfigFile = ctx.fso.file.read(ctx.options.serverURL + '\\' + nameFileConfig);
-//		configFile = JSON.parse(pathConfigFile);
-//	};
-	
-//	config.getPathTemplate = function() {
-//		return configFile.pathTemplate;
-//	}
-	
-//	config.getConfig = function(codeScenario) {
-//		return configFile[codeScenario];
-//	}
-	
-//	config.getPathStartProcessusBat = function() {
-//		return ctx.options.serverURL + '\\' + nameFileStartProcessusBat;
-//	}
-	
-//	config.getTimeout = function(minute) {
-//		minute = minute || 2;
-//		// Time in millisecond 
-//		return 1000 * 60 * minute;
-//	}
-	
-//	config.getCheckExtension = function(codeScenario) {
-//		switch(codeScenario) {
-//			case ctx.config.SIRH:
-//			case ctx.config.DA:
-//				return '.json';
-//			default:
-//				return '.xls';
-//		}
-//	}
-	
-//	config.getResultFileExtension = function(codeScenario, fileName) {
-//		return codeScenario === ctx.config.SIRH ? 'xls' : ctx.fso.file.getExtensionName(fileName);
-//	}
-	
-	
 	
 	
 	
@@ -182,38 +126,13 @@
 //	getCodeProductCorrespond
 	configF.codeProduitACSCorrespondant = function(codeProduit) {
 		var config = configF.fichierConfig[configF.scenario.ACS];
-		return config.produitAccesSante[codeProduit];
+		return configF.produitAccesSante[codeProduit];
 	}
 
 //	configFile.getHarmonieCustomerPath
 	configF.cheminVersAppliHarmonieCustomer = function() {
 		return ctx.options.serverURL + '\\harmonieCustomer.exe';
 	}
-	
-//	configFile.getPathDirectory = function() {
-//		return rootPath;
-//	}
-	
-//	configFile.getPathFile = function() {
-//		return rootPath + configF.nomFichier;
-//	}
-		
-//	configFile.getFileNameOutput = function() {
-//		return fileNameOutput;
-//	}
-	
-//	configFile.getPathFileOutput = function() {
-//		return rootPath + fileNameOutput;
-//	}
-	
-//	configFile.getCodeProductCorrespond = function(codeProduct) {
-//		var config = ctx.config.getConfig(ctx.config.ACS);
-//		return config.productAccesSante[codeProduct];
-//	}
-
-//	configFile.getHarmonieCustomerPath = function() {
-//		return ctx.options.serverURL + '\\harmonieCustomer.exe';
-//	}
 
 	return configF;
 }) ();
