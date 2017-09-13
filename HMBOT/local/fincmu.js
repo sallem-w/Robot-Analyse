@@ -2,37 +2,40 @@
 	var data = sc.data;
 	sc.data.currentScenario = 'Fin CMU';
 	sc.onTimeout(30000, function(sc, st) {
-		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout aborting current scenario');
+		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout le scénario courant a été arrêté');
 		ActivInfinitev7.pTabDeBord.start(data.webData.dashboardURL);
   	ActivInfinitev7.pTabDeBord.wait(function(ev) {
     	sc.endScenario();
   	});
 	});
 	sc.onError(function(sc, st, ex) {
-		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' aborting current scenario');
-		sc.endScenario();
+		ctx.trace.writeError(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' le scénario courant a été arrêté');
+		ActivInfinitev7.pTabDeBord.start(data.webData.dashboardURL);
+  	ActivInfinitev7.pTabDeBord.wait(function(ev) {
+    	sc.endScenario();
+  	});
 	});
 	
 	sc.setMode(e.scenario.mode.noStartIfRunning);
-	sc.step(ActivInfinitev7.steps.stInitTerminatedCMU);
-	sc.step(ActivInfinitev7.steps.stSearchTerminatedContractCMU);
-	sc.step(ActivInfinitev7.steps.stGoToBlockNotes);
-	sc.step(ActivInfinitev7.steps.stGoToCalculParam);
-	sc.step(ActivInfinitev7.steps.stGoToContributionHistory);
-	sc.step(ActivInfinitev7.steps.stGoToContributionVisu);
+	sc.step(ActivInfinitev7.steps.stInitFinCMU);
+	sc.step(ActivInfinitev7.steps.stRechercheContratCMU);
+	sc.step(ActivInfinitev7.steps.stNaviguerVersBlocNotes);
+	sc.step(ActivInfinitev7.steps.stNaviguerVersCalculParam);
+	sc.step(ActivInfinitev7.steps.stNaviguerVersHistoCotisations);
+	sc.step(ActivInfinitev7.steps.stNaviguerVersVisuCompteCotisant);
 	sc.step(ActivInfinitev7.steps.stValidationCalcul);
-	sc.step(ActivInfinitev7.steps.stSaveContractCMU); 
-	sc.step(ActivInfinitev7.steps.stEndTerminatedCMU);
+	sc.step(ActivInfinitev7.steps.stSauvegardeCMU); 
+	sc.step(ActivInfinitev7.steps.stFinResiliationCMU);
 }});
 
-ActivInfinitev7.step({ stInitTerminatedCMU: function(ev, sc, st) {
+ActivInfinitev7.step({ stInitFinCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitTerminatedCMU');
 	ActivInfinitev7.pTabDeBord.btFinCMU.click();
 	sc.endStep();
 	return;
 }});
 
-ActivInfinitev7.step({ stSearchTerminatedContractCMU: function(ev, sc, st) {
+ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stSearchTerminatedContractCMU');
 
 	st.onTimeout(30000,function(sc,st){
@@ -70,7 +73,7 @@ ActivInfinitev7.step({ stSearchTerminatedContractCMU: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stGoToBlockNotes: function(ev, sc, st) {
+ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	ActivInfinitev7.pContratTrouve.wait(function(ev){
 		ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stGoToBlockNotes');
 		var data = sc.data;
@@ -82,7 +85,7 @@ ActivInfinitev7.step({ stGoToBlockNotes: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stGoToCalculParam: function(ev, sc, st) {
+ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 	ActivInfinitev7.pBlockNotes.wait(function(ev){
 		ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stGoToCalculParam');
 		var data = sc.data;
@@ -93,7 +96,7 @@ ActivInfinitev7.step({ stGoToCalculParam: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stGoToContributionHistory: function(ev, sc, st) {
+ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 	ActivInfinitev7.pParamDeCalcul.wait(function(ev){
 		ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stGoToContributionHistory');
 		var data = sc.data;
@@ -104,7 +107,7 @@ ActivInfinitev7.step({ stGoToContributionHistory: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stGoToContributionVisu: function(ev, sc, st) {
+ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 	ActivInfinitev7.pHistoContribution.wait(function(ev){
 		ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stGoToContributionVisu');
 		var data = sc.data;
@@ -129,7 +132,7 @@ ActivInfinitev7.step({ stValidationCalcul: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stSaveContractCMU: function(ev, sc, st) {
+ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 	ActivInfinitev7.pSauvegardeMaj.wait(function() {
 		var data = sc.data;
 		ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stSaveContractCMU');
@@ -146,7 +149,7 @@ ActivInfinitev7.step({ stSaveContractCMU: function(ev, sc, st) {
 }});
 
 
-ActivInfinitev7.step({ stEndTerminatedCMU: function(ev, sc, st) {
+ActivInfinitev7.step({ stFinResiliationCMU: function(ev, sc, st) {
 	ctx.trace.writeInfo(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP END - stEndTerminatedCMU');
 	return sc.endScenario();
 }});
