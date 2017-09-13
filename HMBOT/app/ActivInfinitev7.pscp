@@ -206,7 +206,7 @@
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1021165_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="113" Techno="WEB" Timestamp="06/07/2017 10:21:27" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1658239_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="117" Techno="WEB" Timestamp="11/07/2017 16:58:36" />
 				</PAGE>
-				<PAGE Name="pRecherSynthese" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pContexteContratRech" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
@@ -257,7 +257,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1543058_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="94" Techno="WEB" Timestamp="07/06/2017 15:43:16" />
 				</PAGE>
-				<PAGE Name="pSynthese" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pContexteContratOuvert" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
@@ -311,83 +311,14 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1717568_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="56" Techno="WEB" Timestamp="29/05/2017 17:18:02" />
 				</PAGE>
-				<PAGE Name="pContratIndivNonTrouv" Comment="Contract indiv - not found - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<URL Scan="Part"><![CDATA[/mdg/contrat/ACIC.do?method=rechercher]]></URL>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_74&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS>
-						<OBJET Name="oContratIndiv" MustExist="Y">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numeroContrat]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btRecherche" MustExist="Y">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btFermeture">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btFermAvecErreur">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="105.R0R1R8R0R0">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oDIVErreur" MustExist="Y">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0">
-									<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0R2">
-										<ATT Name="class">
-											<VALUE Scan="Like"><![CDATA[toast-message]]></VALUE>
-										</ATT>
-									</TAG>
-									<ATT Name="class">
-										<VALUE Scan="Like"><![CDATA[toast toast-error]]></VALUE>
-									</ATT>
-									<SET />
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="titreErreur">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="138.R0R1R3R0R1">
-									<ATT Name="class">
-										<VALUE Scan="Like"><![CDATA[toast-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ConsultationHaum0a_1219318_1" Comment="Contract indiv - not found - Activ Infinite - Module de gestion" CtxtId="105" Techno="WEB" Timestamp="03/07/2017 12:19:35" />
-					<CAPTURE Name="PAGE_SansEffetChangeme_1442130_1" Comment="Sans effet - Changement couverture - haum03 - Activ Infinite - Module de gestion" CtxtId="138" Techno="WEB" Timestamp="05/09/2017 14:42:27" />
-				</PAGE>
-				<PAGE Name="pRecherContratIndiv" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentContratRechConsul" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière]]></TITRE>
+						<URL Scan="Part"><![CDATA[/mdg/Go.do?id]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
@@ -412,15 +343,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSuivant" MustNotExist="Y">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btRecherche" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R1R0R0">
@@ -439,10 +361,22 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oBtnPageCourante" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="73.R0R1R14R1R0R0R2R0R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid cgd-step-active disable tooltipstered]]></VALUE>
+									</ATT>
+									<ATT Name="outerHTML">
+										<VALUE Scan="Full"><![CDATA[<div class="cgd-step-circle cgd-step-valid cgd-step-active disable tooltipstered" onclick="return false;" data-toggle="tooltip" data-placement="bottom"></div>]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
 				</PAGE>
-				<PAGE Name="pContratTrouve" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentContratTrouve " Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
@@ -516,7 +450,98 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0006_1538399_1" Comment="Consultation - N°00061366 - Résilié - Adhérent : Madame MUHLMANN M LOUISE - haum0a - Activ Infinite - Module de gestion" CtxtId="74" Techno="WEB" Timestamp="30/05/2017 15:38:44" />
 				</PAGE>
-				<PAGE Name="pBlockNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentContratNonTrouve" Comment="Contract indiv - not found - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="Part"><![CDATA[/mdg/contrat/ACIC.do?method=rechercher]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_74&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oContratIndiv">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRecherche">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btFermeture">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btFermAvecErreur">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="105.R0R1R8R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDIVErreur" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0">
+									<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R8R0R2">
+										<ATT Name="class">
+											<VALUE Scan="Like"><![CDATA[toast-message]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Like"><![CDATA[toast toast-error]]></VALUE>
+									</ATT>
+									<SET />
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="titreErreur">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="138.R0R1R3R0R1">
+									<ATT Name="class">
+										<VALUE Scan="Like"><![CDATA[toast-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPageCourante" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="105.R0R1R14R1R0R0R2R0R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid cgd-step-active disable tooltipstered]]></VALUE>
+									</ATT>
+									<ATT Name="outerHTML">
+										<VALUE Scan="Full"><![CDATA[<div class="cgd-step-circle cgd-step-valid cgd-step-active disable tooltipstered" onclick="return false;" data-toggle="tooltip" data-placement="bottom"></div>]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btDETAIL" MustExist="Y">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="105.R0R1R8R0R2R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[DETAIL]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationHaum0a_1219318_1" Comment="Contract indiv - not found - Activ Infinite - Module de gestion" CtxtId="105" Techno="WEB" Timestamp="03/07/2017 12:19:35" />
+					<CAPTURE Name="PAGE_SansEffetChangeme_1442130_1" Comment="Sans effet - Changement couverture - haum03 - Activ Infinite - Module de gestion" CtxtId="138" Techno="WEB" Timestamp="05/09/2017 14:42:27" />
+				</PAGE>
+				<PAGE Name="pBlocNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
@@ -525,7 +550,7 @@
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACBN_102&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oContenuBlockNote">
+						<OBJET Name="oContenuBlocNote">
 							<CRITERE>
 								<TAG Name="TEXTAREA" Scope="All" CapturedPos="75.R0R1R15R1R0R2R0R0R2R6R0R0R1R0R8R0R2R0R1">
 									<ATT Name="id">
@@ -667,7 +692,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 				</PAGE>
-				<PAGE Name="pEditIdentAssures" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentAssuresEdit" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -819,7 +844,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1320568_1" Comment="Adhésions en collectif - N°22591305 - EN COURS - - CHAUSSURES RENE ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="130" Techno="WEB" Timestamp="31/07/2017 13:21:14" />
 				</PAGE>
-				<PAGE Name="pAttestationsAssures" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentAssuresAttest" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
@@ -904,7 +929,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationAdhere_1009020_1" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion" CtxtId="79" Techno="WEB" Timestamp="31/05/2017 10:09:17" />
 				</PAGE>
-				<PAGE Name="pListeProduits" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pProdGaranConsul" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -1057,7 +1082,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2130_0941441_1" Comment="Consultation - N°21309938 - Résilié - Adhérent : Monsieur HASANI MENTOR - haum0a - Activ Infinite - Module de gestion" CtxtId="107" Techno="WEB" Timestamp="04/07/2017 09:41:47" />
 				</PAGE>
-				<PAGE Name="pContribution" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pVisuCptCotisConsul" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
 					</CRITERE>
@@ -1125,7 +1150,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1743355_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="01/06/2017 17:43:40" />
 				</PAGE>
-				<PAGE Name="pMajProduits" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pProdGaranChgtCouv" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - Changement couverture]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture]]></TITRE>
@@ -1381,7 +1406,7 @@
 					<CAPTURE Name="PAGE_ResiliationContrat_1024224_1" Comment="Resiliation Contrat - N°21999694 - Valide - Adhérent : Mademoiselle BELACEL NOELLE - haum0a - Activ Infinite - Module de gestion" CtxtId="128" Techno="WEB" Timestamp="20/07/2017 10:24:24" />
 					<CAPTURE Name="PAGE_ResiliationContrat_1736329_1" Comment="Resiliation Contrat - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="137" Techno="WEB" Timestamp="28/08/2017 17:36:43" />
 				</PAGE>
-				<PAGE Name="pHistoContribution" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pHistoCotisation" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet -]]></TITRE>
@@ -1427,7 +1452,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1114331_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="66" Techno="WEB" Timestamp="30/05/2017 11:15:00" />
 				</PAGE>
-				<PAGE Name="pVisuContribution" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pVisuCptCotisChgtCouv" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
@@ -1495,7 +1520,7 @@
 					<CAPTURE Name="PAGE_SansEffetChangeme_1550075_1" Comment="Sans effet - Changement couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="132" Techno="WEB" Timestamp="28/08/2017 15:50:24" />
 					<CAPTURE Name="PAGE_SansEffetChangeme_1552029_1" Comment="Sans effet - Changement couverture - N°21336787 - Valide - Adhérent : Monsieur COURTY JEAN PIERRE - haum03 - Activ Infinite - Module de gestion" CtxtId="133" Techno="WEB" Timestamp="28/08/2017 15:52:19" />
 				</PAGE>
-				<PAGE Name="pSauvegardeMaj" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pValidationActeChgtCouv" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Sans effet - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
@@ -1538,7 +1563,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_SansEffetChangeme_1427115_1" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion" CtxtId="71" Techno="WEB" Timestamp="30/05/2017 14:27:23" />
 				</PAGE>
-				<PAGE Name="pChangEtatProduit" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pProdGaranChgtCouvEtat" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 					</CRITERE>
@@ -1574,7 +1599,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1732596_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="85" Techno="WEB" Timestamp="31/05/2017 17:33:12" />
 				</PAGE>
-				<PAGE Name="pCouvertureImmedEche" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pAvisEcheanceChgtCouv" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
@@ -1627,7 +1652,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1206070_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="89" Techno="WEB" Timestamp="01/06/2017 12:06:10" />
 				</PAGE>
-				<PAGE Name="pCouvertureImmediateC" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pDemandeCartesChgtCouv" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif - ]]></TITRE>
@@ -1685,7 +1710,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1207204_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="90" Techno="WEB" Timestamp="01/06/2017 12:07:23" />
 				</PAGE>
-				<PAGE Name="pEditInfoRo" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pInformationRO" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
 						<URL Scan="Part"><![CDATA[method=modifierAssures]]></URL>
@@ -1758,7 +1783,7 @@
 					<CAPTURE Name="PAGE_ChangementSituation_0951091_1" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion" CtxtId="124" Techno="WEB" Timestamp="12/07/2017 09:51:12" />
 					<CAPTURE Name="PAGE_ChangementSituation_0957212_1" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion" CtxtId="125" Techno="WEB" Timestamp="12/07/2017 09:57:25" />
 				</PAGE>
-				<PAGE Name="pInfoRo" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentAssuresInfoRO" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Consultation -]]></TITRE>
 						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
@@ -1921,7 +1946,7 @@
 					<CAPTURE Name="PAGE_ConsultationN2130_0925520_1" Comment="Consultation - N°21309938 - Valide - Adhérent : Monsieur HASANI MENTOR - haum04 - Activ Infinite - Module de gestion" CtxtId="93" Techno="WEB" Timestamp="07/06/2017 09:25:56" />
 					<CAPTURE Name="PAGE_ChangementSituation_0930249_1" Comment="Changement situation particulière - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="119" Techno="WEB" Timestamp="12/07/2017 09:30:41" />
 				</PAGE>
-				<PAGE Name="pRecherContratAdhesio" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentContRechContratColl" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
@@ -1993,7 +2018,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1144039_1" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion" CtxtId="96" Techno="WEB" Timestamp="19/06/2017 11:44:07" />
 				</PAGE>
-				<PAGE Name="pAdhesionRecherBenef" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion">
+				<PAGE Name="pIntervPrinRechBenef" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
@@ -2084,7 +2109,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1206374_1" Comment="Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion" CtxtId="99" Techno="WEB" Timestamp="19/06/2017 12:06:41" />
 				</PAGE>
-				<PAGE Name="pPrincipalAdhesionBen" Comment="Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIntervenantPrincipal" Comment="Adhésions en collectif - N°22468406 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Adhésions en collectif -]]></TITRE>
 					</CRITERE>
@@ -2267,7 +2292,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsEnCollecti_1420036_1" Comment="Adhésions en collectif - N°22468408 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum0a - Activ Infinite - Module de gestion" CtxtId="103" Techno="WEB" Timestamp="20/06/2017 14:20:07" />
 				</PAGE>
-				<PAGE Name="pServerWebFerme" Comment="Weblogic Bridge Message">
+				<PAGE Name="pServeurWebFerme" Comment="Weblogic Bridge Message">
 					<CRITERE>
 						<TITRE Scan="Full"><![CDATA[Weblogic Bridge Message]]></TITRE>
 					</CRITERE>
@@ -2302,9 +2327,7 @@
 				<SCRIPT Name="libexcel" Src="libexcel.js" Folder="Complements" />
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
-				<SCRIPT Name="libexcel" Src="libexcel.js" />
 				<SCRIPT Name="CMU_resiliation_contrat" Src="CMU_resiliation_contrat.js" Folder="Processus_CMU" />
-				<SCRIPT Name="finCMU" Src="finCMU.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

@@ -2,60 +2,11 @@
 <USER>
 	<BREAKPOINTS />
 	<BOOKMARKS />
-	<FINDHISTORY>
-		<FINDWHAT><![CDATA[stResiliationContratCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.trace.writeInfo]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.trace.writeError]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.currentContractACS.notes.statusContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.currentContractACS.notes.commentContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[controlConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[scenarioConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.webData.dashboardURL]]></FINDWHAT>
-		<FINDWHAT><![CDATA[controlOnly]]></FINDWHAT>
-		<FINDWHAT><![CDATA[controlSeulement]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.currentContractACS.localData.numeroContratIndiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.currentContractACS.localData.numContratIndiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ActivInfinitev7.pDashboard.start(data.webData.dashboardURL);]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.contratCourantCMU.notes.commentContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.excelHelper.constants.status.Success]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.excelHelper.constants.status.Fail]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.currentContractACS.notes.statusContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.currentContractACS.notes.commentContract]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.trace.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[trace.]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[ctx.traceF.infoTxt]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ctx.traceF.errorTxt]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.webData.tabDeBordURL]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[controlSeul]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ctx.excelF.constantes.status.Succes]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ctx.excelF.constantes.status.Echec]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.contratCourantCMU.notes.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ctx.traceF.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statistiquesF.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.excelF.constantes.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[contratCourantCMU.notes.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateFinEffetProduitSouscrit]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateDebutEffetProduitSouscrit]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[codeProduitSouscrit]]></REPLACEWITH>
-	</FINDHISTORY>
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-		<OPENDOC LineNumber="205" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="53" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="9" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU verification contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="73" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-
 	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="60" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='finCMU']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="126" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU verification contrat']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
