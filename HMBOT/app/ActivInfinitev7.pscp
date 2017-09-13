@@ -2303,7 +2303,7 @@
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
 				<SCRIPT Name="libexcel" Src="libexcel.js" />
-				<SCRIPT Name="finCMU" Src="finCMU.js" />
+				<SCRIPT Name="CMU_resiliation_contrat" Src="CMU_resiliation_contrat.js" Folder="Processus_CMU" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
