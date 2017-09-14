@@ -51,11 +51,11 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
     sc.endScenario();
 	});
 	
-	ActivInfinitev7.pRecherContratIndiv.wait(function() {
+	ActivInfinitev7.pIdentContratRechConsul.wait(function() {
 		var date  = ctx.dateF.ajouterJour(ctx.dateF.dateEnString(data.scenarioConfig.excel.indexColonne.dateFinSituationParticuliere), 1,0, 0);
-		ActivInfinitev7.pRecherContratIndiv.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
-		ActivInfinitev7.pRecherContratIndiv.oDateDebEffet.set(date);
-		ActivInfinitev7.pRecherContratIndiv.btRecherche.click();
+		ActivInfinitev7.pIdentContratRechConsul.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
+		ActivInfinitev7.pIdentContratRechConsul.oDateDebEffet.set(date);
+		ActivInfinitev7.pIdentContratRechConsul.btRecherche.click();
 		sc.endStep();
 		return;
 	});
@@ -81,9 +81,9 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
     sc.endScenario();
 	});
 	
-	ActivInfinitev7.pContratTrouve.wait(function(ev){
+	ActivInfinitev7.pIdentContratTrouve.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
-		ActivInfinitev7.pContratTrouve.btSuivant.click();
+		ActivInfinitev7.pIdentContratTrouve.btSuivant.click();
 		sc.endStep();
 		return;
 	});
@@ -108,9 +108,9 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
-	ActivInfinitev7.pBlockNotes.wait(function(ev){
+	ActivInfinitev7.pBlocNotes.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersCalculParam');
-		ActivInfinitev7.pBlockNotes.btSuivant.click();
+		ActivInfinitev7.pBlocNotes.btSuivant.click();
 		sc.endStep();
 		return;
 	});
@@ -160,9 +160,9 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
-	ActivInfinitev7.pHistoContribution.wait(function(ev){
+	ActivInfinitev7.pHistoCotisation.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersVisuCompteCotisant');
-		ActivInfinitev7.pHistoContribution.btSuivant.click();
+		ActivInfinitev7.pHistoCotisation.btSuivant.click();
 		sc.endStep();
 		return;
 	});
@@ -170,13 +170,13 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stValidationCalcul: function(ev, sc, st) {
 	var data = sc.data;
-	ActivInfinitev7.pVisuContribution.wait(function(ev){
+	ActivInfinitev7.pVisuCptCotisChgtCouv.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stValidationCalcul');
 		// Into CMU, the contribution array is empty (message "aucune donnée") so the validation button doesn't exist
-		if (ActivInfinitev7.pVisuContribution.oValidation.exist()) {
-			ActivInfinitev7.pVisuContribution.oValidation.set('OUI');
+		if (ActivInfinitev7.pVisuCptCotisChgtCouv.oValidation.exist()) {
+			ActivInfinitev7.pVisuCptCotisChgtCouv.oValidation.set('OUI');
 		}
-		ActivInfinitev7.pVisuContribution.btSuivant.click();
+		ActivInfinitev7.pVisuCptCotisChgtCouv.btSuivant.click();
 		sc.endStep();
 		return;
 	});
@@ -184,10 +184,10 @@ ActivInfinitev7.step({ stValidationCalcul: function(ev, sc, st) {
 
 /** Description */
 ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
-	ActivInfinitev7.pSauvegardeMaj.wait(function() {
+	ActivInfinitev7.pValidationActeChgtCouv.wait(function() {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stSauvegardeCMU');
-		ActivInfinitev7.pSauvegardeMaj.btSauvegarde.click();
+		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
 	
 		data.contratCourantCMU.notes.commentaireContrat += ' | ' + sc.data.currentScenario + ' effectuée';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;

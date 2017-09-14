@@ -56,7 +56,7 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Début étape - stServerConnexionCMU');
-		if (ActivInfinitev7.pServerWebFerme.exist() && ActivInfinitev7.pServerWebFerme.TitrePage.exist()) {
+		if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.TitrePage.exist()) {
 			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
 			ctx.popupF.newPopup('Le serveur Infinite est fermé');
 			return ;

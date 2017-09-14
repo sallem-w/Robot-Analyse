@@ -116,6 +116,19 @@
 		return stTps;
 	}
 	
+	dateF.enObjet = function(dateString, separator) {
+		separator = separator || '/';
+		var parts = dateString.split(separator);
+		return new Date(parts[2], parts[1]-1, parts[0]); 
+	}
+	
+	//isBefore
+	dateF.estAvant = function(date1, date2) {
+		return (date1.getTime() < date2.getTime());
+	}
+	
+	
+	
 	//padLeft
 	dateF.format2c = function(nombre) {
 	    return String("00" + nombre).slice(-2);

@@ -2323,7 +2323,6 @@
 				<SCRIPT Name="ACS_scenario_principal" Src="ACS_scenario_principal.js" Folder="Processus_ACS" />
 				<SCRIPT Name="libData" Src="libData.js" Folder="Complements" />
 				<SCRIPT Name="libDateObj" Src="libDateObj.js" Folder="Complements" />
-				<SCRIPT Name="declarationsGlobales" Src="declarationsGlobales.js" Folder="Complements" />
 				<SCRIPT Name="libexcel" Src="libexcel.js" Folder="Complements" />
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
