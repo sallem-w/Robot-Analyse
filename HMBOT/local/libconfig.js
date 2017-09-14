@@ -16,7 +16,12 @@
 		constantes : {
 			ASSPRI: 'ASSPRI',
 			produitValide: 'VA',
-			produitTermine : 'RA'
+			produitTermine : 'RA',
+			correspondanceRang : {
+				ASSPRI: ['1'],
+				CONJOI: ['11'],
+				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
+			}
 		} ,
 		fichierConfig : {}
 		
