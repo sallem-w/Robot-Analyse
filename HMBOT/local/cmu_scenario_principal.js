@@ -73,15 +73,15 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 	data.webData.motDePasse = ActivInfinitev7.pConnexion.oPwd.get();
 		
 		//on entre dans Infinite
-//		ActivInfinitev7.pConnexion.btLogin.click();
-//		ActivInfinitev7.pTabDeBord.wait(function(ev) {
-//		var infos = ActivInfinitev7.pTabDeBord.getInfos();
+		ActivInfinitev7.pConnexion.btConnexion.click();
+		ActivInfinitev7.pTabDeBord.wait(function(ev) {
+		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		
-//		data.webData.tabDeBordURL=infos.document.URL;
-//		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
-			sc.endStep();
-			return;
-//		});
+		data.webData.tabDeBordURL=infos.document.URL;
+		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+		sc.endStep();
+		return;
+		});
 }
 });
 
@@ -142,9 +142,10 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stVerifExistanceAssurePrincipal');
-	var listeAssures = data.contratCourantCMU.dataLocale.dictContratsCourantCMU;
-	for (var i in listeAssures){
-		if(listeAssures[i]==ctx.configF.constantes.ASSPRI){
+	
+	for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
+		var tmp_Assure = data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i];
+		if(tmp_Assure.typeAssure==ctx.configF.constantes.ASSPRI){
 			data.contratCourantCMU.statusCMU.existanceASSPRI=true;
 		}
 	}
@@ -187,6 +188,7 @@ ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
 /** Condition d'embranchement de scenario */
 ActivInfinitev7.step({ stResilationCMUCondition: function(ev, sc, st) {
 	var data = sc.data;
+	data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
 	if(data.contratCourantCMU.statusCMU.FinCMUProcessus == true){
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
