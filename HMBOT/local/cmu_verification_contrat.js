@@ -95,25 +95,21 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 	ActivInfinitev7.pIdentContratRechConsul.wait(function () {
 		ActivInfinitev7.pIdentContratRechConsul.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
 		ActivInfinitev7.pIdentContratRechConsul.btRecherche.click();
-		sc.endStep();
-		return ;
 	});
 	
 	// Ecoute sur la page attendue
-	var contratTrouveListener, contratNonTrouveListener;
-	contratNonTrouveListener = ActivInfinitev7.pIdentContratNonTrouve.wait(function () {
+	 ActivInfinitev7.pIdentContratNonTrouve.wait(function () {
 		var msgErreur = ActivInfinitev7.pIdentContratNonTrouve.titreErreur.get().trim();
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		ctx.off(contratTrouveListener);
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-		sc.endScenario();
+		sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+		return ;
 	});
-	contratTrouveListener = ActivInfinitev7.pIdentContratTrouve.wait(function () {
+	ActivInfinitev7.pIdentContratTrouve.wait(function () {
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - contract trouve');
 		data.contratCourantCMU.notes.statusContrat = // ctx.excelF.constantes.status.Succes;
-		ctx.off(contratNonTrouveListener);
 		sc.endStep();
 		return ;
 	});
