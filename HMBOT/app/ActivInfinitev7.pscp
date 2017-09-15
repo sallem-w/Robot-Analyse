@@ -425,7 +425,7 @@
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Identification des assurés]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Identification des assurés]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -2215,11 +2215,11 @@
 				<SCRIPT Name="testDate" Folder="Tests" Src="testdate.js" />
 				<SCRIPT Name="ACS_scenario_principal" Src="ACS_scenario_principal.js" Folder="Processus_ACS" />
 				<SCRIPT Name="libData" Src="libData.js" Folder="Complements" />
-				<SCRIPT Name="libDateObj" Src="libDateObj.js" Folder="Complements" />
 				<SCRIPT Name="libexcel" Src="libexcel.js" Folder="Complements" />
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
 				<SCRIPT Name="CMU_resiliation_contrat" Src="cmu_resiliation_contrat.js" Folder="Processus_CMU" />
+				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

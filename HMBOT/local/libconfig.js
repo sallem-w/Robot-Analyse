@@ -23,7 +23,7 @@
 				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
 			}
 		} ,
-		fichierConfig : {}
+		fichierConfig : new confFileClass()
 		
 	};
 	
@@ -131,7 +131,7 @@
 //	getCodeProductCorrespond
 	configF.codeProduitACSCorrespondant = function(codeProduit) {
 		var config = configF.fichierConfig[configF.scenario.ACS];
-		return configF.produitAccesSante[codeProduit];
+		return config.produitAccesSante[codeProduit];
 	}
 
 //	configFile.getHarmonieCustomerPath

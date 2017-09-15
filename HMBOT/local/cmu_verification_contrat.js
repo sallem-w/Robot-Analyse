@@ -147,11 +147,11 @@ ActivInfinitev7.step( { stInitVerifBenef : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitVerifBenef');
 		ActivInfinitev7.pIdentAssuresInfoRO.wait(function (ev) {
-			data.indiceBenef = 0;
-			data.somBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
-			data.contratProlonge = false;
-			data.ASSPRITermine = false;
-			data.assureValid = false;
+			data.dataEnLigne.variables.indiceBenef = 0;
+			data.dataEnLigne.variables.nbBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
+			data.contratCourantCMU.status.contratProlonge = false;
+			data.contratCourantCMU.status.ASSPRITermine = false;
+			data.contratCourantCMU.status.assureValid = false;
 			sc.endStep();
 			return ;
 		});
@@ -161,7 +161,7 @@ ActivInfinitev7.step( { stInitVerifBenef : function (ev, sc, st) {
 ActivInfinitev7.step( { stVerifBenefCMU : function (ev, sc, st) {
 		var data = sc.data;
 		//début du step
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifBenefCMU - beneficiaire numéro: ' + data.indiceBenef);
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifBenefCMU - beneficiaire numéro: ' + data.dataEnLigne.variables.indiceBenef);
 		sc.endStep();
 		return ;
 	}
@@ -171,10 +171,9 @@ ActivInfinitev7.step( { stVerifBenefCMU : function (ev, sc, st) {
 ActivInfinitev7.step( { stLireBenefInfinite : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stLireBenefInfinite');
-		data.benefCourantInfinite = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.i(data.indiceBenef);
-		data.typeAssure = data.benefCourantInfinite.get();
-		data.etatCourant = ActivInfinitev7.pIdentAssuresInfoRO.oEtatProduit.i(data.indiceBenef).get();
-		data.rangeAssure = ActivInfinitev7.pIdentAssuresInfoRO.oRangeAssure.i(data.indiceBenef).get();
+		data.dataEnLigne.variables.typeAssure = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.i(data.dataEnLigne.variables.indiceBenef).get();
+		data.etatCourant = ActivInfinitev7.pIdentAssuresInfoRO.oEtatProduit.i(data.dataEnLigne.variables.indiceBenef).get();
+		data.rangeAssure = ActivInfinitev7.pIdentAssuresInfoRO.oRangeAssure.i(data.dataEnLigne.variables.indiceBenef).get();
 		sc.endStep();
 		return ;
 	}
@@ -187,7 +186,7 @@ ActivInfinitev7.step( { stLireBenefLocal: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stLireBenefLocal');
 		for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU) {
-			if (data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i].type === data.typeAssure) {
+			if (data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i].typeAssure === data.dataEnLigne.variables.typeAssure) {
 				//return beneficiaries[i];
 				data.CMUtemp_contractF = data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i];
 			}
@@ -207,7 +206,7 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(ctx.dataF.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifValiditeRange');
 		//déclaration du tableau de correspondance
-		var tabRange = ctx.configF.constantes.correspondanceRang[data.typeAssure];
+		var tabRange = ctx.configF.constantes.correspondanceRang[data.dataEnLigne.variables.typeAssure];
 		if (tabRange) {
 			for (var i in tabRange) {
 				if (tabRange[i] === data.rangeAssure) {
@@ -235,7 +234,7 @@ ActivInfinitev7.step( { stBenefPrinciTermineAutresBenefNonTermines : function (e
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stBenefPrinciTermineAutresBenefNonTermines');
 
-		if (data.typeAssure === ctx.configF.constantes.ASSPRI) {
+		if (data.dataEnLigne.variables.typeAssure === ctx.configF.constantes.ASSPRI) {
 			data.ASSPRITermine = (data.etatCourant === ctx.configF.constantes.produitTermine);
 		}else if (data.etatCourant === ctx.configF.constantes.produitValide) {
 			data.assureValid = true;
@@ -306,7 +305,7 @@ ActivInfinitev7.step( { stVerifDateFinEffetInfinite : function (ev, sc, st) {
 ActivInfinitev7.step( { stVerifOrdreSurDateInfiniteEtDateExcel: function (ev, sc, st) {
 		var data = sc.data;
 		//début du step
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifOrdreSurDateInfiniteEtDateExcel - beneficiaire numéro: ' + data.indiceBenef);
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifOrdreSurDateInfiniteEtDateExcel - beneficiaire numéro: ' + data.dataEnLigne.variables.indiceBenef);
 		sc.endStep();
 		return ;
 	}
@@ -326,23 +325,26 @@ ActivInfinitev7.step( { stVerfiIOrdreSurDateBenefEtDateASSPRI: function (ev, sc,
 ActivInfinitev7.step( { stBenefCMUSuivant : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stBenefCMUSuivant');
-		if (data.indiceBenef === data.somBenef - 1) {
-			if (data.contratProlonge) {
-				//				return ctx.endScenario(sc, ActivInfinitev7.pIdentAssuresInfoRO);  ==> a voir
+		if (data.dataEnLigne.variables.indiceBenef === data.dataEnLigne.variables.nbBenef - 1) {
+			if (data.contratCourantCMU.status.contratProlonge) {
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+				return ;
 			}
-			sc.endStep(ActivInfinitev7.steps.stNavigationListeProduitCMU);
-			return ;
+			else{
+				sc.endStep(ActivInfinitev7.steps.stNavigationListeProduitCMU);
+				return ;
+			}
+			
 		}
-
-		data.indiceBenef += 1;
-		ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.i(data.indiceBenef).click();
-		ActivInfinitev7.pIdentAssuresInfoRO.events.LOAD.wait(function () {
-			sc.endStep(ActivInfinitev7.steps.stVerifBenefCMU);
-			return ;
-		});
-
-	}
-});
+		else{
+			data.dataEnLigne.variables.indiceBenef += 1;
+			ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.i(data.dataEnLigne.variables.indiceBenef).click();
+			ActivInfinitev7.pIdentAssuresInfoRO.events.LOAD.wait(function () {
+				sc.endStep(ActivInfinitev7.steps.stVerifBenefCMU);
+				return ;
+			});
+		}
+}});
 
 /** Description */
 ActivInfinitev7.step( { stNavigationListeProduitCMU : function (ev, sc, st) {
@@ -359,9 +361,9 @@ ActivInfinitev7.step( { stListeProduitCMU : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stListeProduitCMU');
 		ActivInfinitev7.pProdGaranConsul.wait(function () {
-			data.indiceBenef = 0;
-			data.somBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
-			if (data.somBenef === 0) {
+			data.dataEnLigne.variables.indiceBenef = 0;
+			data.dataEnLigne.variables.nbBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
+			if (data.dataEnLigne.variables.nbBenef === 0) {
 				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Tous les produits sont terminés');
 				data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
@@ -380,12 +382,12 @@ ActivInfinitev7.step( { stListeProduitCMU : function (ev, sc, st) {
 ActivInfinitev7.step( { stInitVerifEtatProduitCMU: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitVerifEtatProduitCMU');
-		var benefInfiniteCourant = ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.indiceBenef);
+		var benefInfiniteCourant = ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.dataEnLigne.variables.indiceBenef);
 		var typeAssure = benefInfiniteCourant.get();
 		//var 
 		//rechercher le beneficiareCourat dans le contrat Excel
 		for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU) {
-			if (data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i].type === data.typeAssure) {
+			if (data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i].type === data.dataEnLigne.variables.typeAssure) {
 				//return beneficiaries[i];
 				data.CMUtemp_contractF = data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i];
 			}
@@ -409,20 +411,21 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 		var verif = false;
 		var tabStatus = [];
 		var listeProduit = ActivInfinitev7.pProdGaranConsul.oCodeProduit.getAll();
-		for (var i in listeProduit) {
+		for (var i = 0; i<listeProduit.length;i++) {
+			ctx.log('i :'+i);
 			if (ActivInfinitev7.pProdGaranConsul.oCodeProduit.i(i).get() === data.CMUtemp_contractF.codeProduit) {
 				tabStatus.push(ActivInfinitev7.pProdGaranConsul.oEtatProduit.i(i).get());
 			}
 		}
-		for (var i in tabStatus) {
-			if (tabStatus[i] === ctx.configF.constantes.produitValide) {
+		for (var j=0;j<tabStatus.length;j++) {
+			if (tabStatus[j] === ctx.configF.constantes.produitValide) {
 				verif = true;
 			}
 		}
 		if (tabStatus.length> 0 && verif) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'un ou plusieurs produits sont valides, on continue la vérification');
 			//goToContribution
-			sc.step(ActivInfinitev7.steps.stContribution);
+			sc.step(ActivInfinitev7.steps.stInitContributionCMU);
 			return ;
 		}else {
 			sc.endStep(ActivInfinitev7.steps.stProduitCMUSuivant);
@@ -477,7 +480,6 @@ ActivInfinitev7.step( { stVerifContributionCMU : function (ev, sc, st) {
 					ctx.traceF.infoTxt(message);
 					data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Solde comptable non à jour';
 				  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-					data.currentContractACS.states.exitACSProcess = true;
 					ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 						sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 						return ;
@@ -506,12 +508,11 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step( {
-	stProduitCMUSuivant : function (ev, sc, st) {
+ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape stProduitCMUSuivant');
-		data.indiceBenef += 1;
-		if (data.indiceBenef >= data.somBenef) {
+		data.dataEnLigne.variables.indiceBenef += 1;
+		if (data.dataEnLigne.variables.indiceBenef >= data.nbBenef) {
 
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'tous les produits sont terminés');
 			data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
@@ -519,7 +520,7 @@ ActivInfinitev7.step( {
 			//sc.endStep(ActivInfinitev7.steps.stInitVerifEtatProduit); //reveir sur la page pProductList  ############################################################## à revoir
 			return ;
 		}else {
-			ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(sc.data.indexBenef).click();
+			ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.dataEnLigne.variables.indiceBenef).click();
 			ActivInfinitev7.pProdGaranConsul.events.LOAD.once(function () {
 				sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
 				return ;
