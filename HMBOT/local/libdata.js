@@ -1,7 +1,7 @@
 ctx.dataF = (function () {
 
     var dataF = {
-				scenarioConfig :{} ,
+				scenarioConfig : new confFileClass(),
 				codeScenario : '',
         contratCourantCMU: {
             dataLocale: {
@@ -9,8 +9,16 @@ ctx.dataF = (function () {
                 dictContratsCourantCMU : []
             },
             dataEnLigne: {
-                numeroContratIndiv : '',
-                dictContratsCourantCMU : []
+              numeroContratIndiv : '',
+              dictContratsCourantCMU : [],
+							variables :{
+								indiceBenef : '',
+								nbBenef: '',
+								typeAssure : '',
+								etatCourant : '',
+								rangAssure : '' 	
+							}
+							
             },
             notes: {
                 dateTraitementContrat:'',
@@ -19,7 +27,10 @@ ctx.dataF = (function () {
             },
             statusCMU: {
 								existanceASSPRI : false,
-                FinCMUProcessus : false
+                FinCMUProcessus : false,
+								contratProlonge : false,
+								ASSPRITermine : false,
+								assureValid : false
             }
         },
         statistiquesF : {
@@ -42,9 +53,7 @@ ctx.dataF = (function () {
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
-            controlSeul:false, //controlSeul
-						indiceBenef:0,
-						nbBenef: 0
+            controlSeul:false //controlSeul
         },
         CMUtemp_contractF : {
             typeAssure:'',

@@ -59,7 +59,6 @@
 				<SCRIPT Name="Ctx Diagnostic" Src="%sdk%\lib\ctx\ctx.diagnostic.js" Folder="Framework" />
 				<SCRIPT Name="Ctx Discovery" Src="%sdk%\lib\ctx\ctx.discovery.js" Folder="Framework" />
 				<SCRIPT Name="Excel" Comment="Excel Integration" Folder="Framework" Src="%sdk%\lib\office\excel.js" />
-				<SCRIPT Name="Word" Comment="Word Integration" Folder="Framework" Src="%sdk%\lib\office\word.js" />
 				<SCRIPT Name="Outlook" Comment="Outlook Integration" Folder="Framework" Src="%sdk%\lib\office\outlook.js" />
 				<!-- generated definition file -->
 				<SCRIPT Name="Declarations" Src="HMBOT.resources.js" ReadOnly="Y" />
