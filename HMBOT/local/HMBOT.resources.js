@@ -46,23 +46,12 @@ ActivInfinitev7.pIdentContratRechConsul.btRecherche = ActivInfinitev7.pIdentCont
 ActivInfinitev7.pIdentContratRechConsul.btFermeture = ActivInfinitev7.pIdentContratRechConsul.addItem('btFermeture');
 ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIdentContratRechConsul.addItem('oBtnPageCourante', {"mustExist":true});
 
-ActivInfinitev7.pIdentContratTrouve  = ActivInfinitev7.addPage('pIdentContratTrouve ', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pIdentContratTrouve .btSuivant = ActivInfinitev7.pIdentContratTrouve .addItem('btSuivant');
-ActivInfinitev7.pIdentContratTrouve .btNavigBlockNote = ActivInfinitev7.pIdentContratTrouve .addItem('btNavigBlockNote');
-ActivInfinitev7.pIdentContratTrouve .btFermeture = ActivInfinitev7.pIdentContratTrouve .addItem('btFermeture');
-ActivInfinitev7.pIdentContratTrouve .btRecherche = ActivInfinitev7.pIdentContratTrouve .addItem('btRecherche', {"mustExist":true});
-ActivInfinitev7.pIdentContratTrouve .btIdentAssures = ActivInfinitev7.pIdentContratTrouve .addItem('btIdentAssures');
-ActivInfinitev7.pIdentContratTrouve .oDemandDate = ActivInfinitev7.pIdentContratTrouve .addItem('oDemandDate');
-
-ActivInfinitev7.pIdentContratNonTrouve = ActivInfinitev7.addPage('pIdentContratNonTrouve', {"comment":"Contract indiv - not found - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_74\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pIdentContratNonTrouve.oContratIndiv = ActivInfinitev7.pIdentContratNonTrouve.addItem('oContratIndiv');
-ActivInfinitev7.pIdentContratNonTrouve.btRecherche = ActivInfinitev7.pIdentContratNonTrouve.addItem('btRecherche');
-ActivInfinitev7.pIdentContratNonTrouve.btFermeture = ActivInfinitev7.pIdentContratNonTrouve.addItem('btFermeture');
-ActivInfinitev7.pIdentContratNonTrouve.btFermAvecErreur = ActivInfinitev7.pIdentContratNonTrouve.addItem('btFermAvecErreur');
-ActivInfinitev7.pIdentContratNonTrouve.oDIVErreur = ActivInfinitev7.pIdentContratNonTrouve.addItem('oDIVErreur', {"mustExist":true});
-ActivInfinitev7.pIdentContratNonTrouve.titreErreur = ActivInfinitev7.pIdentContratNonTrouve.addItem('titreErreur');
-ActivInfinitev7.pIdentContratNonTrouve.oPageCourante = ActivInfinitev7.pIdentContratNonTrouve.addItem('oPageCourante', {"mustExist":true});
-ActivInfinitev7.pIdentContratNonTrouve.btDETAIL = ActivInfinitev7.pIdentContratNonTrouve.addItem('btDETAIL', {"mustExist":true});
+ActivInfinitev7.pIdentContratRechResu = ActivInfinitev7.addPage('pIdentContratRechResu', {"comment":"Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
+ActivInfinitev7.pIdentContratRechResu.btBtnFooterSuivant = ActivInfinitev7.pIdentContratRechResu.addItem('btBtnFooterSuivant');
+ActivInfinitev7.pIdentContratRechResu.btDETAIL = ActivInfinitev7.pIdentContratRechResu.addItem('btDETAIL');
+ActivInfinitev7.pIdentContratRechResu.oTitreErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTitreErreur');
+ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures = ActivInfinitev7.pIdentContratRechResu.addItem('oBtIdentAssures');
 
 ActivInfinitev7.pBlocNotes = ActivInfinitev7.addPage('pBlocNotes', {"comment":"Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlocNotes.oContenuBlocNote = ActivInfinitev7.pBlocNotes.addItem('oContenuBlocNote');

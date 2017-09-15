@@ -81,9 +81,9 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
     sc.endScenario();
 	});
 	
-	ActivInfinitev7.pIdentContratTrouve.wait(function(ev){
+	ActivInfinitev7.pIdentContratRechResu.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
-		ActivInfinitev7.pIdentContratTrouve.btSuivant.click();
+		ActivInfinitev7.pIdentContratRechResu.btSuivant.click();
 		sc.endStep();
 		return;
 	});
