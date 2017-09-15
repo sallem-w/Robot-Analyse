@@ -23,7 +23,7 @@
 				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
 			}
 		} ,
-		fichierConfig : new confFileClass()
+		fichierConfig : ''
 		
 	};
 	
@@ -43,6 +43,7 @@
 	configF.chargementFichierConfig = function() {
 		ctx.log('-->configF.chargementFichierConfig()');
 		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + configF.nomFichierConfig);
+		configF.fichierConfig = new confFileClass();
 		configF.fichierConfig = JSON.parse(chemin);
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
 		ctx.log('Initialisation : Chargement du fichier config.json');

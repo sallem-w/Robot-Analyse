@@ -1,7 +1,7 @@
 ctx.dataF = (function () {
 
     var dataF = {
-				scenarioConfig : new confFileClass(),
+				scenarioConfig : '',
 				codeScenario : '',
         contratCourantCMU: {
             dataLocale: {
@@ -79,6 +79,7 @@ ctx.dataF = (function () {
 			dat.codeScenario=scenario;
 			ctx.log('Init configF');
 			ctx.configF.init(scenario);
+			dat.scenarioConfig = new confFileClass();
 			dat.scenarioConfig=ctx.configF.fichierConfig;
 			ctx.log('Init excelF');
 		//		ctx.excelF.configExcel(scenario);
