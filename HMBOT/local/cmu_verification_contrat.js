@@ -97,32 +97,33 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		ActivInfinitev7.pIdentContratRechConsul.btRecherche.click();
 	});
 	
-	// Ecoute sur la page attendue
-	 ActivInfinitev7.pIdentContratNonTrouve.wait(function () {
-		var msgErreur = ActivInfinitev7.pIdentContratNonTrouve.titreErreur.get().trim();
-		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
-		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-		sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
-		return ;
-	});
-	ActivInfinitev7.pIdentContratTrouve.wait(function () {
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - contract trouve');
-		data.contratCourantCMU.notes.statusContrat = // ctx.excelF.constantes.status.Succes;
-		sc.endStep();
-		return ;
-	});
-	
-}});
 
+	 ActivInfinitev7.pIdentContratRechResu.wait(function () {
+		 if(ActivInfinitev7.pIdentContratRechResu.btDETAIL.exist()){
+		 		var msgErreur = ActivInfinitev7.pIdentContratRechResu.oTitreErreur.get().trim();
+				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
+				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
+				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+				ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+				return ;
+		 }
+		 else{
+		 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - contract trouve');
+			data.contratCourantCMU.notes.statusContrat = // ctx.excelF.constantes.status.Succes;
+			sc.endStep();
+			return ;
+		}
+		
+	});	
+}});
 
 
 /** click sur le bouton info RO */
 ActivInfinitev7.step( { stNavigationInfoRO : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stNavigationInfoRO ');
-		ActivInfinitev7.pIdentContratTrouve.btIdentAssures.click();
+		ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures.click();
 		sc.endStep();
 		return ;
 	}
