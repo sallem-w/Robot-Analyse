@@ -44,14 +44,26 @@ ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentCo
 ActivInfinitev7.pIdentContratRechConsul.oDateDebEffet = ActivInfinitev7.pIdentContratRechConsul.addItem('oDateDebEffet');
 ActivInfinitev7.pIdentContratRechConsul.btRecherche = ActivInfinitev7.pIdentContratRechConsul.addItem('btRecherche', {"mustExist":true});
 ActivInfinitev7.pIdentContratRechConsul.btFermeture = ActivInfinitev7.pIdentContratRechConsul.addItem('btFermeture');
-ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIdentContratRechConsul.addItem('oBtnPageCourante', {"mustExist":true});
+ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIdentContratRechConsul.addItem('oBtnPageCourante');
 
 ActivInfinitev7.pIdentContratRechResu = ActivInfinitev7.addPage('pIdentContratRechResu', {"comment":"Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
-ActivInfinitev7.pIdentContratRechResu.btBtnFooterSuivant = ActivInfinitev7.pIdentContratRechResu.addItem('btBtnFooterSuivant');
+ActivInfinitev7.pIdentContratRechResu.btBtnFooterSuivant = ActivInfinitev7.pIdentContratRechResu.addItem('btBtnFooterSuivant', {"mustExist":true});
 ActivInfinitev7.pIdentContratRechResu.btDETAIL = ActivInfinitev7.pIdentContratRechResu.addItem('btDETAIL');
 ActivInfinitev7.pIdentContratRechResu.oTitreErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTitreErreur');
 ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures = ActivInfinitev7.pIdentContratRechResu.addItem('oBtIdentAssures');
+
+ActivInfinitev7.pIdentContResilRech = ActivInfinitev7.addPage('pIdentContResilRech', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pIdentContResilRech.btBtRecherche = ActivInfinitev7.pIdentContResilRech.addItem('btBtRecherche', {"mustExist":true});
+ActivInfinitev7.pIdentContResilRech.oNumeroContrat = ActivInfinitev7.pIdentContResilRech.addItem('oNumeroContrat');
+ActivInfinitev7.pIdentContResilRech.oDateDebutEffet = ActivInfinitev7.pIdentContResilRech.addItem('oDateDebutEffet');
+ActivInfinitev7.pIdentContResilRech.oBtnPageCourante = ActivInfinitev7.pIdentContResilRech.addItem('oBtnPageCourante');
+ActivInfinitev7.pIdentContResilRech.btBtnFooterSuivant = ActivInfinitev7.pIdentContResilRech.addItem('btBtnFooterSuivant');
+
+ActivInfinitev7.pBlocNotesResil = ActivInfinitev7.addPage('pBlocNotesResil', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACBN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pBlocNotesResil.oBtnPageCourante = ActivInfinitev7.pBlocNotesResil.addItem('oBtnPageCourante');
+ActivInfinitev7.pBlocNotesResil.btBtnFooterSuivant = ActivInfinitev7.pBlocNotesResil.addItem('btBtnFooterSuivant');
+ActivInfinitev7.pBlocNotesResil.oContenuBlocNote = ActivInfinitev7.pBlocNotesResil.addItem('oContenuBlocNote');
 
 ActivInfinitev7.pBlocNotes = ActivInfinitev7.addPage('pBlocNotes', {"comment":"Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACBN_102\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_25\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlocNotes.oContenuBlocNote = ActivInfinitev7.pBlocNotes.addItem('oContenuBlocNote');

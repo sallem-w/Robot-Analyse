@@ -6,7 +6,8 @@ ctx.dataF = (function () {
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
-                dictContratsCourantCMU : []
+                dictContratsCourantCMU : [],
+								dateFinEffSituatParti : ''
             },
             dataEnLigne: {
               numeroContratIndiv : '',
@@ -31,7 +32,8 @@ ctx.dataF = (function () {
                 FinCMUProcessus : false,
 								contratProlonge : false,
 								ASSPRITermine : false,
-								assureValid : false
+								assureValid : false,
+								contratTermine : false
             }
         },
         statistiquesF : {
@@ -92,7 +94,12 @@ ctx.dataF = (function () {
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
 				ctx.log('resetContratCourant');
-				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
+				dat.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
+				dat.contratCourantCMU.dataEnLigne.dictContratsCourantCMU = [];
+				dat.contratCourantCMU.statusCMU.existanceASSPRI=false;
+				dat.contratCourantCMU.statusCMU.FinCMUProcessus=false;
+				dat.contratCourantCMU.statusCMU.contratTermine=false;
+//				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }
 		

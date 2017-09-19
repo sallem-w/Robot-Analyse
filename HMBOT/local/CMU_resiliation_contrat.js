@@ -26,9 +26,12 @@
 ActivInfinitev7.step({ stInitFinCMU: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitFinCMU');
-	ActivInfinitev7.pTabDeBord.btFinCMU.click();
-	sc.endStep();
-	return;
+	ActivInfinitev7.pTabDeBord.wait(function(){
+			ActivInfinitev7.pTabDeBord.btFinCMU.click();
+	    sc.endStep();
+	    return;
+	});
+
 }});
 
 ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
@@ -50,12 +53,12 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
-	
-	ActivInfinitev7.pIdentContratRechConsul.wait(function() {
-		var date  = ctx.dateF.ajouterJour(ctx.dateF.dateEnString(data.scenarioConfig.excel.indexColonne.dateFinSituationParticuliere), 1,0, 0);
-		ActivInfinitev7.pIdentContratRechConsul.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
-		ActivInfinitev7.pIdentContratRechConsul.oDateDebEffet.set(date);
-		ActivInfinitev7.pIdentContratRechConsul.btRecherche.click();
+
+	ActivInfinitev7.pIdentContResilRech.wait(function() {
+		var date  = ctx.dateF.ajouterJour(ctx.dateF.dateEnString(data.contratCourantCMU.dataLocale.dateFinEffSituatParti), 1,0, 0);
+		ActivInfinitev7.pIdentContResilRech.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
+		ActivInfinitev7.pIdentContResilRech.oDateDebEffet.set(date);
+		ActivInfinitev7.pIdentContResilRech.btRecherche.click();
 		sc.endStep();
 		return;
 	});
@@ -81,9 +84,9 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
     sc.endScenario();
 	});
 	
-	ActivInfinitev7.pIdentContratRechResu.wait(function(ev){
+	ActivInfinitev7.pIdentContResilRech.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
-		ActivInfinitev7.pIdentContratRechResu.btSuivant.click();
+		ActivInfinitev7.pIdentContResilRech.btSuivant.click();
 		sc.endStep();
 		return;
 	});
