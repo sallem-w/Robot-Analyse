@@ -7,7 +7,7 @@ GLOBAL.scenario({ scOperationsDate: function(ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	
 	sc.step(GLOBAL.steps.testDate);
-	
+
 	
 }});
 
