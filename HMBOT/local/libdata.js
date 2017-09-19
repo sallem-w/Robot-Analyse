@@ -16,7 +16,8 @@ ctx.dataF = (function () {
 								nbBenef: '',
 								typeAssure : '',
 								etatCourant : '',
-								rangAssure : '' 	
+								rangAssure : '',
+								dateFinEffetInfinite : ''
 							}
 							
             },
