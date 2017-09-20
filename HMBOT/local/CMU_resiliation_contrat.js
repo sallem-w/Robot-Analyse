@@ -62,12 +62,14 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	});
+	
 }});
 
 
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers le bloc-notes ';
@@ -85,11 +87,28 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	});
 	
 	ActivInfinitev7.pIdentContResilRech.wait(function(ev){
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
+		 	if(ActivInfinitev7.pIdentContResilRech.btBtnContinuer.exist()){
+				ActivInfinitev7.pIdentContResilRech.btBtnContinuer.click();
+			}
+			 ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
 		ActivInfinitev7.pIdentContResilRech.btSuivant.click();
 		sc.endStep();
 		return;
-	});
+		
+		});
+	
+	
+	ActivInfinitev7.pIdentContResilRechRe.wait(function(ev){
+		if(ActivInfinitev7.pIdentContResilRech.oDivErreur.exist()){
+		 		var msgErreur = ActivInfinitev7.pIdentContResilRech.oDivErreur.get().trim();
+				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);
+				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: ' + msgErreur;
+				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+				sc.endStep(ActivInfinitev7.steps.stFinResiliationCMU);
+				return ;
+		 }
+		});
+		
 	
 }});
 
@@ -111,9 +130,9 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
-	ActivInfinitev7.pBlocNotes.wait(function(ev){
+	ActivInfinitev7.pBlocNotesResil.wait(function(ev){
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersCalculParam');
-		ActivInfinitev7.pBlocNotes.btSuivant.click();
+		ActivInfinitev7.pBlocNotesResil.btSuivant.click();
 		sc.endStep();
 		return;
 	});
@@ -148,6 +167,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersVisuCompteCotisant');
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Visualisation du compte cotisant';
@@ -164,7 +184,6 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
     sc.endScenario();
 	});
 	ActivInfinitev7.pHistoCotisation.wait(function(ev){
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersVisuCompteCotisant');
 		ActivInfinitev7.pHistoCotisation.btSuivant.click();
 		sc.endStep();
 		return;
@@ -194,7 +213,7 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 	
 		data.contratCourantCMU.notes.commentaireContrat += ' | ' + sc.data.currentScenario + ' effectuée';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		
     sc.endStep();
 		return;
 	});
@@ -203,5 +222,7 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinResiliationCMU: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP END - stFinResiliationCMU');
-	return sc.endScenario();
+	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+	sc.endStep();
+	return ;
 }});

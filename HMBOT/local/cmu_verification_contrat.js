@@ -7,6 +7,7 @@ ActivInfinitev7.scenario( {
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut :  On quitte le sous scenario scVerifContratCMU');
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario(); 
 	}); 
@@ -15,6 +16,7 @@ ActivInfinitev7.scenario( {
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError :  On quitte le sous scenario scVerifContratCMU');
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	}); 
@@ -82,6 +84,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut - Etape stRecherContratIndivCMU ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	});
@@ -89,6 +92,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - Etape stRecherContratIndivCMU ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	});
@@ -105,6 +109,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+			 	sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 		 }
@@ -238,7 +243,7 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
 				data.statistiquesF.nbCasRevoirCentre += 1;
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-				data.FinCMUProcessus = true;
+				sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 				sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
 				return ;
 			}
@@ -263,7 +268,7 @@ ActivInfinitev7.step( { stBenefPrinciTermineAutresBenefNonTermines : function (e
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
 			data.statistiquesF.nbCasRevoirCentre += 1;
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			data.FinCMUProcessus = true;
+			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
 			return ;
 		}else {
@@ -307,7 +312,7 @@ ActivInfinitev7.step( { stVerifDateFinEffetInfinite : function (ev, sc, st) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Date fin effet CMU non trouvé');
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			data.FinCMUProcessus = true;
+			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
 			return ;
 		}else {
