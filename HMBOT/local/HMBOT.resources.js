@@ -48,7 +48,7 @@ ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIden
 ActivInfinitev7.pIdentContratRechConsul.oTypeCttStatic = ActivInfinitev7.pIdentContratRechConsul.addItem('oTypeCttStatic');
 
 ActivInfinitev7.pIdentContratRechResu = ActivInfinitev7.addPage('pIdentContratRechResu', {"comment":"Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante', {"mustExist":true});
+ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentContratRechResu.btBtnFooterSuivant = ActivInfinitev7.pIdentContratRechResu.addItem('btBtnFooterSuivant');
 ActivInfinitev7.pIdentContratRechResu.btDETAIL = ActivInfinitev7.pIdentContratRechResu.addItem('btDETAIL');
 ActivInfinitev7.pIdentContratRechResu.oTitreErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTitreErreur');
@@ -173,18 +173,18 @@ ActivInfinitev7.pHistoCotisation.oBtnPageCourante = ActivInfinitev7.pHistoCotisa
 ActivInfinitev7.pHistoCotisation.btSuivant = ActivInfinitev7.pHistoCotisation.addItem('btSuivant');
 ActivInfinitev7.pHistoCotisation.btFermeture = ActivInfinitev7.pHistoCotisation.addItem('btFermeture');
 
-ActivInfinitev7.pVisuCptCotisChgtCouv = ActivInfinitev7.addPage('pVisuCptCotisChgtCouv', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC36_600\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC3Q_500\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pVisuCptCotisChgtCouv.oTitrePage = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oTitrePage', {"mustExist":true});
-ActivInfinitev7.pVisuCptCotisChgtCouv.oBtnPageCourante = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oBtnPageCourante', {"mustExist":true});
-ActivInfinitev7.pVisuCptCotisChgtCouv.oValidation = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oValidation', {"type":"Key"});
-ActivInfinitev7.pVisuCptCotisChgtCouv.btSuivant = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('btSuivant');
-ActivInfinitev7.pVisuCptCotisChgtCouv.btFermeture = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('btFermeture');
-
 ActivInfinitev7.pValidationActeChgtCouv = ActivInfinitev7.addPage('pValidationActeChgtCouv', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52\u0026CONTAINER_NOM_FONCTION=ACVV_700\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_52\u0026CONTAINER_NOM_FONCTION=AC36_600\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pValidationActeChgtCouv.oTitrePage = ActivInfinitev7.pValidationActeChgtCouv.addItem('oTitrePage', {"mustExist":true});
 ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde = ActivInfinitev7.pValidationActeChgtCouv.addItem('btSauvegarde', {"mustExist":true});
 ActivInfinitev7.pValidationActeChgtCouv.btFermeture = ActivInfinitev7.pValidationActeChgtCouv.addItem('btFermeture');
 ActivInfinitev7.pValidationActeChgtCouv.oBtnPageCourante = ActivInfinitev7.pValidationActeChgtCouv.addItem('oBtnPageCourante', {"mustExist":true});
+
+ActivInfinitev7.pVisuCptCotisChgtCouv = ActivInfinitev7.addPage('pVisuCptCotisChgtCouv', {"comment":"Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC36_600\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC04STD_32\u0026CONTAINER_NOM_FONCTION=AC3Q_500\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pVisuCptCotisChgtCouv.oTitrePage = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oTitrePage');
+ActivInfinitev7.pVisuCptCotisChgtCouv.oBtnPageCourante = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oBtnPageCourante', {"mustExist":true});
+ActivInfinitev7.pVisuCptCotisChgtCouv.oValidation = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('oValidation', {"type":"Key"});
+ActivInfinitev7.pVisuCptCotisChgtCouv.btSuivant = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('btSuivant');
+ActivInfinitev7.pVisuCptCotisChgtCouv.btFermeture = ActivInfinitev7.pVisuCptCotisChgtCouv.addItem('btFermeture');
 
 ActivInfinitev7.pProdGaranChgtCouvEtat = ActivInfinitev7.addPage('pProdGaranChgtCouvEtat', {"comment":"Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/contrat/ACG2.do?method=doModifierCouverture\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCC01STD_67\u0026CONTAINER_NOM_FONCTION=ACG2_300\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProdGaranChgtCouvEtat.oEtatProduit = ActivInfinitev7.pProdGaranChgtCouvEtat.addItem('oEtatProduit', {"mustExist":true,"type":"Key"});

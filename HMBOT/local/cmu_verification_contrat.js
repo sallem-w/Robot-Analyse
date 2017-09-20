@@ -105,7 +105,6 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-				//ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 		 }
@@ -566,7 +565,7 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 /** Description */
 ActivInfinitev7.step( { stFinScVerifContratCMU : function (ev, sc, st) {
 		var data = sc.data;
-    ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape - stFinScVerifContratCMU');		
+    ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape - stFinScVerifContratCMU');
 		//retour au dashboard
     ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endStep();
