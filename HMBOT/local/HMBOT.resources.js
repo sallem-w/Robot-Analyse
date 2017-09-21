@@ -53,6 +53,7 @@ ActivInfinitev7.pIdentContratRechConsul.btRecherche = ActivInfinitev7.pIdentCont
 ActivInfinitev7.pIdentContratRechConsul.btFermeture = ActivInfinitev7.pIdentContratRechConsul.addItem('btFermeture');
 ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIdentContratRechConsul.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentContratRechConsul.oTypeCttStatic = ActivInfinitev7.pIdentContratRechConsul.addItem('oTypeCttStatic');
+ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche = ActivInfinitev7.pIdentContratRechConsul.addItem('oBonHommeRecherche');
 
 ActivInfinitev7.pIdentContratRechResu = ActivInfinitev7.addPage('pIdentContratRechResu', {"comment":"Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
@@ -306,3 +307,19 @@ ActivInfinitev7.pResiliationConcu.oNumeroContratCol = ActivInfinitev7.pResiliati
 ActivInfinitev7.pResiliationConcu.oGroupeAssure = ActivInfinitev7.pResiliationConcu.addItem('oGroupeAssure');
 ActivInfinitev7.pResiliationConcu.btRecherche = ActivInfinitev7.pResiliationConcu.addItem('btRecherche');
 ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.addItem('btFermer');
+
+ActivInfinitev7.pRecherchePPRefGRC = ActivInfinitev7.addPage('pRecherchePPRefGRC', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercheContrat\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRC.addItem('oSystemeExterne');
+ActivInfinitev7.pRecherchePPRefGRC.oDateDebutEffet = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateDebutEffet');
+ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC = ActivInfinitev7.pRecherchePPRefGRC.addItem('oIdentifiantGRC');
+ActivInfinitev7.pRecherchePPRefGRC.oNumeroContratCol = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroContratCol');
+ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP = ActivInfinitev7.pRecherchePPRefGRC.addItem('btRecherchePP');
+ActivInfinitev7.pRecherchePPRefGRC.oGroupeAssure = ActivInfinitev7.pRecherchePPRefGRC.addItem('oGroupeAssure');
+
+ActivInfinitev7.pRecherchePPRefGRCRes = ActivInfinitev7.addPage('pRecherchePPRefGRCRes', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oResultatParRelation');
+ActivInfinitev7.pRecherchePPRefGRCRes.oListeContrats = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oListeContrats', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.btRecherche = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btRecherche');
+ActivInfinitev7.pRecherchePPRefGRCRes.btValider = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btValider');
+ActivInfinitev7.pRecherchePPRefGRCRes.btFermer = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btFermer');
+ActivInfinitev7.pRecherchePPRefGRCRes.oContratIndiv = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oContratIndiv');

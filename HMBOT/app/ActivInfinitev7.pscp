@@ -458,6 +458,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oBonHommeRecherche">
+							<CRITERE>
+								<TAG Name="SPAN" Scope="All" CapturedPos="73.R0R1R14R1R0R2R0R0R3R27R0R0R1R0R0R1R0R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[boutonRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
 					<CAPTURE Name="PAGE_ConsultationN2121_1027005_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="144" Techno="WEB" Timestamp="20/09/2017 10:27:13" />
@@ -2893,9 +2902,145 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
 				</PAGE>
+				<PAGE Name="pRecherchePPRefGRC" Comment="Consultation - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/contrat\/ACIC\.do\?method=rechercheContrat&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=([A-Z-0-9]+)_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercheContrat&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oSystemeExterne">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="168.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R4R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[systemeExterne]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateDebutEffet">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oIdentifiantGRC">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="168.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R4R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[identifiantExterne1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumeroContratCol">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContratCol]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRecherchePP">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="168.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechPE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oGroupeAssure">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R2R0R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ConsultationHaum03_1702400_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="168" Techno="WEB" Timestamp="21/09/2017 17:03:06" />
+				</PAGE>
+				<PAGE Name="pRecherchePPRefGRCRes" Comment="Consultation - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/personne\/RecherchePersonne\.do\?method=doRecherchePersonne&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=([A-Z-0-9]+)_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oResultatParRelation">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Résultat par relation ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oListeContrats">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TBODY" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[resultListPew1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRecherche">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btValider">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btFermer">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oContratIndiv">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TD" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0R1R0R4">
+										<SET />
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[resultListPew1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
+					<CAPTURE Name="PAGE_ConsultationHaum03_1746388_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="169" Techno="WEB" Timestamp="21/09/2017 17:46:59" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
+				<SCRIPT Name="analyse_situation" Src="analyse_situation.js" Folder="Analyse Situation" />
 				<SCRIPT Name="CMU_verification_contrat" Src="cmu_verification_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
 				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
