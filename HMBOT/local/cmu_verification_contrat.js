@@ -244,7 +244,7 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 				data.statistiquesF.nbCasRevoirCentre += 1;
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
 				sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-				sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}
 
@@ -268,8 +268,8 @@ ActivInfinitev7.step( { stBenefPrinciTermineAutresBenefNonTermines : function (e
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
 			data.statistiquesF.nbCasRevoirCentre += 1;
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
 			sc.endStep();
@@ -313,7 +313,7 @@ ActivInfinitev7.step( { stVerifDateFinEffetInfinite : function (ev, sc, st) {
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
 			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
 			sc.endStep();
@@ -329,11 +329,17 @@ ActivInfinitev7.step( { stVerifOrdreSurDateInfiniteEtDateExcel: function (ev, sc
 		var data = sc.data;
 		//début du step
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifOrdreSurDateInfiniteEtDateExcel - beneficiaire numéro: ' + data.contratCourantCMU.dataEnLigne.variables.indiceBenef);
-		 if(ctx.dateF.estAvant(new Date(data.CMUtemp_contractF.dateFinEffSituatParti),data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite)){
+		var date1=new Date(data.CMUtemp_contractF.dateFinEffSituatParti);
+		var date2 = data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite;
+	ctx.log(' dateFinEffSituatParti : ' + date1.getTime());
+	ctx.log(' dateFinEffetInfinite : ' + date2.getTime());
+		 if(ctx.dateF.estAvant(date1,date2)){
 		  data.contratCourantCMU.notes.commentaireContrat = 'Contrat prolonge';
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
 			data.contratCourantCMU.statusCMU.contratProlonge = true;
-			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+//			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+			 sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return;
 		}else{
 			sc.endStep();
@@ -350,6 +356,7 @@ ActivInfinitev7.step( { stVerfiIOrdreSurDateBenefEtDateASSPRI: function (ev, sc,
 	if(	data.contratCourantCMU.dataEnLigne.variables.typeAssure !== ctx.configF.constantes.ASSPRI && ctx.dateF.estAvant(new Date(data.contratCourantCMU.dataLocale.dateFinEffSituatParti),data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite)){
 		  data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: probleme sur les dates de fin d\'effet des beneficiaires';
 			data.statistiquesF.nbCasRevoirCentre += 1;
+			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
 		  sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 		  return;
@@ -405,8 +412,9 @@ ActivInfinitev7.step( { stListeProduitCMU : function (ev, sc, st) {
 			if (data.contratCourantCMU.dataEnLigne.variables.nbBenef === 0) {
 				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Tous les produits sont terminés');
 				data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
+				data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-				sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}else {
 				sc.endStep();
@@ -519,6 +527,7 @@ ActivInfinitev7.step( { stVerifContributionCMU : function (ev, sc, st) {
 					ctx.traceF.infoTxt(message);
 					data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Solde comptable non à jour';
 				  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+					data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 					ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 						sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 						return ;
@@ -537,15 +546,16 @@ ActivInfinitev7.step( { stVerifContributionCMU : function (ev, sc, st) {
 ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape stProduitCMUSuivant');
-		data.dataEnLigne.variables.indiceBenef += 1;
-		if (data.dataEnLigne.variables.indiceBenef >= data.nbBenef) {
+		data.contratCourantCMU.dataEnLigne.variables.indiceBenef += 1;
+		if (data.contratCourantCMU.dataEnLigne.variables.indiceBenef >= data.contratCourantCMU.dataEnLigne.variables.nbBenef) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'tous les produits sont terminés');
 			data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
+			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
 			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
-			ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.dataEnLigne.variables.indiceBenef).click();
+			ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.contratCourantCMU.dataEnLigne.variables.indiceBenef).click();
 			ActivInfinitev7.pProdGaranConsul.events.LOAD.once(function () {
 				sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
 				return ;

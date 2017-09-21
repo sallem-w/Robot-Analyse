@@ -86,30 +86,28 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
     sc.endScenario();
 	});
 	
-	ActivInfinitev7.pIdentContResilRech.wait(function(ev){
-		 	if(ActivInfinitev7.pIdentContResilRech.btBtnContinuer.exist()){
-				ActivInfinitev7.pIdentContResilRech.btBtnContinuer.click();
+	
+	
+	ActivInfinitev7.pIdentContResilRechRe.wait(function () {
+		if(ActivInfinitev7.pIdentContResilRechRe.oDivErreur.exist()){
+			var msgErreur = ActivInfinitev7.pIdentContResilRechRe.oDivErreur.get().trim();
+			msgErreur=ctx.stringF.suppressionRetourEtTab(msgErreur);
+			ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);
+			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: ' + msgErreur;
+			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+			sc.endStep(ActivInfinitev7.steps.stFinResiliationCMU);
+			return ;
+		}
+		else{
+			if(ActivInfinitev7.pIdentContResilRechRe.btBtnContinuer.exist()){
+				ActivInfinitev7.pIdentContResilRechRe.btBtnContinuer.click();
 			}
-			 ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
-		ActivInfinitev7.pIdentContResilRech.btSuivant.click();
-		sc.endStep();
-		return;
-		
-		});
-	
-	
-	ActivInfinitev7.pIdentContResilRechRe.wait(function(ev){
-		if(ActivInfinitev7.pIdentContResilRech.oDivErreur.exist()){
-		 		var msgErreur = ActivInfinitev7.pIdentContResilRech.oDivErreur.get().trim();
-				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);
-				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: ' + msgErreur;
-				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-				sc.endStep(ActivInfinitev7.steps.stFinResiliationCMU);
-				return ;
-		 }
-		});
-		
-	
+			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');
+			ActivInfinitev7.pIdentContResilRechRe.btSuivant.click();
+			sc.endStep();
+			return;
+		}
+   });
 }});
 
 /** Description */
