@@ -46,8 +46,8 @@
     "CMU":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 
-        "controlSeul": false,
-        "controlSolde": false,
+        "controlSeul": true,
+        "controlSolde": true,
         "sauverMiseAJour": false,
         "excel": {
             "debutIndexCol": 1,
