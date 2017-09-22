@@ -152,22 +152,6 @@ ActivInfinitev7.step( { stInitVerifBenef : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitVerifBenef');
 	
-//	st.onTimeout(10000, function (sc, st) {
-//		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' TimeOut - Etape stInitVerifBenef ');
-////		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
-////		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-//		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-//		sc.endScenario();
-//	});
-//	st.onError(function (sc, st, ex) {
-//		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' OnError - Etape stInitVerifBenef ');
-////		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ';
-////		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-//		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-//		sc.endScenario();
-//	});
-	
-	
 		ActivInfinitev7.pIdentAssuresInfoRO.wait(function (ev) {
 			data.contratCourantCMU.dataEnLigne.variables.indiceBenef = 0;
 			data.contratCourantCMU.dataEnLigne.variables.nbBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
