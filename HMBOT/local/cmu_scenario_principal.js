@@ -298,19 +298,19 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stFinScenarioCMU -Fin du scénario principal - Fermeture d\'Excel');
-//	ctx.excelF.fermerFichier();
-//	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
-////	data.statsF.fileName = ctx.configFile.getFileNameOutput(); 
-////	data.stats.timeEnd = ctx.date.convertTimeSeconds(new Date());
-////	data.stats.totalTimeDuration = ctx.date.getTimeElapsed(data.stats.timeEnd - data.stats.timeBeginning);
+	ctx.excelF.fermerFichier();
+	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
+////	data.statistiquesF.fileName = ctx.configFile.getFileNameOutput(); 
+////	data.statistiquesF.timeEnd = ctx.date.convertTimeSeconds(new Date());
+////	data.statistiquesF.totalTimeDuration = ctx.date.getTimeElapsed(data.statistiquesF.timeEnd - data.statistiquesF.timeBeginning);
 	
-////	ctx.excelFile.writeStats(data.stats);
+	ctx.statsF.remplir(data.statistiquesF);
 
-//	ctx.popupF.newPopup("Fin du traitement",'Fin', function() {
-//			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
-//			return sc.endStep();
-//		});
-//	ctx.log('Fin du scenario CMU');
+	ctx.popupF.newPopup("Fin du traitement",'Fin', function() {
+			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
+			return sc.endStep();
+		});
+	ctx.log('Fin du traitement CMU');
 	sc.endScenario();
 	return;
 }});
