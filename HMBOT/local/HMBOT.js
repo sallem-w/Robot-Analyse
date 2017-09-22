@@ -7,6 +7,8 @@ GLOBAL.labels.setLanguage('fr');
 var systray = ctx.systray();
 var _ = {};
 
+
+
 /** String table (English/French/German) */
 GLOBAL.labels.set({
 	menu: {
@@ -119,14 +121,15 @@ GLOBAL.events.START.on(function (ev) {
 	ctx.string.init(); // Afin d'utiliser la librairie string
 	
 	ctx.configF.chargementFichierConfig();
-	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
-	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
-	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
-	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
-	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+	//var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
+	//var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
+	//var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
+	//var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
+	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
+	//var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	
 	
-		if (configACS.afficherMenu) {
+		/*if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -135,11 +138,11 @@ GLOBAL.events.START.on(function (ev) {
 				var data = {};
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
-	}
+	}*/
 
 	
 	
-		if (configCMU.afficherMenu) {
+		/*if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
 		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
 			
@@ -149,10 +152,22 @@ GLOBAL.events.START.on(function (ev) {
 			
 			
 		});	
+	}*/
+		
+		
+		if (configSuspension.afficherMenu) {
+			systray.addMenu('', 'Suspension', 'Scenario Suspension ');
+			systray.addMenu('Suspension', 'SuspensionCompletV7', 'Suspension Complet V7', '', function(ev) {
+				ctx.traceF.initFichierTrace(configSuspension.cheminRacine, ctx.configF.scenario.Suspension);
+				ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+				ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configSuspension.cheminRacine, ctx.configF.scenario.Suspension);
+				var data = {};
+				ActivInfinitev7.scenarios.SuspensionScenarioPrincipal.start(data).onEnd(function(){});
+		});	
 	}
 	
 		
-	if (configDA.afficherMenu) {
+	/*if (configDA.afficherMenu) {
 		systray.addMenu('', 'DA', 'Scenario DA ');
 		systray.addMenu('DA', 'DACompletV7', 'DA Complet V7', '', function(ev) {
 			ctx.traceF.initFichierTrace(configDA.cheminRacine, ctx.configF.scenario.DA);
@@ -162,7 +177,7 @@ GLOBAL.events.START.on(function (ev) {
 			ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
 		});	
-	}
+	}*/
 });
 
 /** Auto-update menu handler */

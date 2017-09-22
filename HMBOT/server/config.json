@@ -15,5 +15,9 @@
     "DA": {
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\da\\"
+    },
+    "Suspension":{
+        "afficherMenu": true,
+        "cheminRacine": "C:\\deploy\\Suspension\\"
     }
 }
