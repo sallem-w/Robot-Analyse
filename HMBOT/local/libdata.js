@@ -3,6 +3,7 @@ ctx.dataF = (function () {
     var dataF = {
 				scenarioConfig : '',
 				codeScenario : '',
+				nomScenario:'',
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
@@ -38,6 +39,7 @@ ctx.dataF = (function () {
             }
         },
         statistiquesF : {
+						nomFichier : '',
             debutTpsTraitement : 0,
 						finTpsTraitement : 0,
 						dureeTraitement : 0,
@@ -84,6 +86,7 @@ ctx.dataF = (function () {
 			ctx.configF.init(scenario);
 			dat.scenarioConfig = new confFileClass();
 			dat.scenarioConfig=ctx.configF.fichierConfig;
+			dat.nomScenario='Résiliation CMU';
 			ctx.log('Init excelF');
 			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 			ctx.log('Init statsF');

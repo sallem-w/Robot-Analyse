@@ -8,15 +8,15 @@
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Stats';
 	statsF.nomFichier=nomFichier;
 
-	statsF.initFileStats = function(cheminDossierTemplate, cheminDossierResultat, nomScenario) {
-		var cheminFichierTemplate = cheminDossierTemplate + nomScenario + '.html';
+	statsF.initFileStats = function(cheminDossierTemplate, cheminDossierResultat, nomScen) {
+		var cheminFichierTemplate = cheminDossierTemplate + nomScen + '.html';
 			
 		if (!ctx.fso.file.exist(cheminFichierTemplate)) {
-			ctx.traceF.errorTxt(' Le fichier de template n\'est pas trouvé pour ' + nomScenario + ' scenario');
+			ctx.traceF.errorTxt(' Le fichier de template n\'est pas trouvé pour ' + nomScen + ' scenario');
 			return;
 		}
 		
-		var cheminFichier = cheminDossierResultat + nomFichier.replace('{0}', nomScenario);
+		var cheminFichier = cheminDossierResultat + nomFichier.replace('{0}', nomScen);
 		try {
 			ctx.fso.file.copy(cheminFichierTemplate, cheminFichier + '.html', true);
 		}
@@ -71,9 +71,10 @@
 	
 	
 	statsF.debuterStats = function (dat) {
-		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+//		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
 		dat.statistiquesF=ctx.dataF.statistiquesF;
 		dat.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
+		dat.statistiquesF.nomFichier=ctx.configF.nomFichier;
 	}
 	
 

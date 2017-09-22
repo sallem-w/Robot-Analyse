@@ -1,6 +1,5 @@
 ﻿ActivInfinitev7.scenario({ scResiliationCMU: function(ev, sc) {
 	var data = sc.data;
-	sc.data.currentScenario = 'Fin CMU';
   sc.onTimeout(30000, function(sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout le scénario courant a été arrêté');
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
@@ -209,7 +208,7 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stSauvegardeCMU');
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
 	
-		data.contratCourantCMU.notes.commentaireContrat += ' | ' + sc.data.currentScenario + ' effectuée';
+		data.contratCourantCMU.notes.commentaireContrat = data.nomScenario + ' effectuée';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
 		data.contratCourantCMU.statusCMU.contratResilie = true;
 		
