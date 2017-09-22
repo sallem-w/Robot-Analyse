@@ -31,21 +31,11 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
-
-	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	
-	ctx.log('--> config.json :  Excel Debut');
-	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
-	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le config.JSON
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
- 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
-	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.log(" Test URL : "+ data.webData.url);
-	ctx.traceF.infoTxt('Création du fichier résultat');	
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-	ctx.log('fichier résultat créé');
+	
+ 
 	sc.endStep();
 	return;
 }});
@@ -103,7 +93,7 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	 
 	var temp_contract=ctx.dataF.CMUtemp_contractF;
 	/** numéro du contrat */
-	data.contratCourantCMU.dataLocale.numeroContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.numeroContratIndiv))), '00000000');
+	data.contratCourantCMU.dataLocale.numeroContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.CMU.excel.indexColonne.numeroContratIndiv))), '00000000');
 	/** dans une boucle on récupère l'assuré principale et les bénéficiaires */
 	var numContratIndiv = data.contratCourantCMU.dataLocale.numeroContratIndiv;
 	var tempNumContratIndiv = numContratIndiv;
@@ -113,11 +103,11 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	while (tempNumContratIndiv !== undefined && numContratIndiv === tempNumContratIndiv) {
 			//récupération des champs (type, .....)
 		  // contrat.typeAssure = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.type);
-		  temp_contract.codeProduit = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.excel.indexColonne.codeProduitSouscrit);
-		  temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.excel.indexColonne.dateDebutEffetProduitSouscrit);
-			temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.excel.indexColonne.dateFinEffetProduitSouscrit);
-	    temp_contract.typeAssure = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.excel.indexColonne.type);
-		  temp_contract.dateFinEffSituatParti = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.excel.indexColonne.dateFinSituationParticuliere);
+		  temp_contract.codeProduit = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.CMU.excel.indexColonne.codeProduitSouscrit);
+		  temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.CMU.excel.indexColonne.dateDebutEffetProduitSouscrit);
+			temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.CMU.excel.indexColonne.dateFinEffetProduitSouscrit);
+	    temp_contract.typeAssure = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.CMU.excel.indexColonne.type);
+		  temp_contract.dateFinEffSituatParti = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.CMU.excel.indexColonne.dateFinSituationParticuliere);
 		
 		  //
 			ctx.log('type contrat: '+temp_contract.typeAssure);
@@ -126,7 +116,7 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 			}
 		  data.contratCourantCMU.dataLocale.dictContratsCourantCMU.push(temp_contract);
 		  temp_ligne+=1;
-			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.excel.indexColonne.numeroContratIndiv))), '00000000');
+			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.CMU.excel.indexColonne.numeroContratIndiv))), '00000000');
 	}
 //	ctx.log('numéro courant: '+ numContratIndiv);
 	ctx.log('ligne Courante: '+ data.varGlobales.ligneCourante);
@@ -148,7 +138,7 @@ ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
 	for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
 		var tmp_Assure = data.contratCourantCMU.dataLocale.dictContratsCourantCMU[i];
 		if(tmp_Assure.typeAssure==ctx.configF.constantes.ASSPRI){
-			data.contratCourantCMU.statusCMU.existanceASSPRI=true;
+			data.contratCourantCMU.statutsCMU.existanceASSPRI=true;
 		}
 	}
 	sc.endStep();
@@ -159,7 +149,7 @@ ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
 ActivInfinitev7.step({ stVerifContratCMUCondition: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
-	if(data.contratCourantCMU.statusCMU.existanceASSPRI == false){
+	if(data.contratCourantCMU.statutsCMU.existanceASSPRI == false){
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
 		return;
 	}
@@ -178,9 +168,9 @@ ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
 	var scASC = ActivInfinitev7.scenarios.scVerifContratCMU.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt(' Fin du sous-scenario - scVerifContratCMU');
-		if(data.scenarioConfig.controlSeul){
+		if(data.scenarioConfig.CMU.controlSeul){
 			ctx.traceF.infoTxt(' controlSeul - Aucune mise à jour du contrat est effectuée');
-			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+			sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		}
 		sc.endStep();
 	});
@@ -191,7 +181,7 @@ ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
 ActivInfinitev7.step({ stResilationCMUCondition: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
-	if(data.contratCourantCMU.statusCMU.FinCMUProcessus == true){
+	if(data.contratCourantCMU.statutsCMU.FinCMUProcessus == true){
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
 		return;
 	}
@@ -219,23 +209,6 @@ ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
 ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
-//		data.statistiquesF.nbCasTraite +=1;
-//		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
-//		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
-		
-		
-//		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
-//				data.statistiquesF.nbCasTraitementSucces += 1;
-//		}
-
-//		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
-//				data.statistiquesF.nbCasTraitementEchec += 1;
-//		}
-		
-//		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1)
-//		{
-//			data.statistiquesF.nbCasRevoirCentre +=1;
-//		}
 		ctx.statsF.miseAJourCMU(data);
 		sc.endStep();
 		return ;
@@ -251,11 +224,11 @@ ActivInfinitev7.step({ stInsertDonneesCMUExcel: function(ev, sc, st) {
    data.contratCourantCMU.notes.dateTraitementContrat = ctx.getDate();
             
   var arrayMessage = [ {
-       columnIndex: data.scenarioConfig.excel.indexColonne.dateTraitementContrat, value: data.contratCourantCMU.notes.dateTraitementContrat
+       columnIndex: data.scenarioConfig.CMU.excel.indexColonne.dateTraitementContrat, value: data.contratCourantCMU.notes.dateTraitementContrat
       }, {
-       columnIndex: data.scenarioConfig.excel.indexColonne.statusContrat, value: data.contratCourantCMU.notes.statusContrat
+       columnIndex: data.scenarioConfig.CMU.excel.indexColonne.statutsContrat, value: data.contratCourantCMU.notes.statutsContrat
       }, {
-      columnIndex: data.scenarioConfig.excel.indexColonne.commentaireContrat, value: data.contratCourantCMU.notes.commentaireContrat
+      columnIndex: data.scenarioConfig.CMU.excel.indexColonne.commentaireContrat, value: data.contratCourantCMU.notes.commentaireContrat
       }
   ];
             

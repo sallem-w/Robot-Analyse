@@ -1,89 +1,18 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
     "ACS": {
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\acs\\",
-        "controlSeul": true,
-        "controlSolde": false,
-        "controlBlocNote": false,
-        "sauverMiseAJour": false,
-        "ajouterAnneeRechercheContrat": 30,
-        "excel": {
-            "debutIndexCol": 1,
-            "debutIndexLigne": 2,
-            "indexColonne": {
-                "numeroContratIndiv": 1,
-                "dateDebutEffetContratIndiv":2,
-                "dateFinEffetContratIndiv":3,
-                "codeCentreGestion":4,
-                "refContratColl":5,
-                "numeroPersonneAssure": 6,
-                "nom": 7,
-                "prenom": 8,
-                "codeProduitSouscrit": 9,
-                "ProduitSouscrit":10,
-                "dateDebutEffetProduitSouscrit":11,
-                "dateFinEffetProduitSouscrit":12,
-                "descriptionACS":13,
-                "dateDebutAttestationACS": 14,
-                "dateFinAttestationACS": 15,
-                "codeEcheancier": 16,
-                "modeReglement": 17,
-                "dateTraitementContrat": 18,
-                "statusContrat": 19,
-                "commentaireContrat": 20
-            }
-        },
-         "produitAccesSante": {
-            "TPSAACSA": "TPSASACSA",
-            "TPSAACSB": "TPSASACSB",
-            "TPSAACSC": "TPSASACSC",
-            "TPSARLACSA": "TPSARLSACA",
-            "TPSARLACSB": "TPSARLSACB",
-            "TPSARLACSC": "TPSARLSACC"
-        }
-    },
+        "afficherMenu": true
+            },
     "CMU":{
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\cmu\\", 
-        "controlSeul": true,
-        "controlSolde": true,
-        "sauverMiseAJour": false,
-        "excel": {
-            "debutIndexCol": 1,
-            "debutIndexLigne": 5,
-            "indexColonne":{
-                "nom": 1,
-                "prenom": 2,
-                "numeroContratIndiv": 3,
-                "type": 4,
-                "dateDebutEffetContratIndiv": 5,
-                "dateFinEffetContratIndiv": 6,
-                "codeProduitSouscrit": 7,
-                "dateDebutEffetProduitSouscrit": 8,
-                "dateFinEffetProduitSouscrit": 9,
-                "nbJourCouvCMU": 10,
-                "dateDebutSituationParticuliere": 11,
-                "dateFinSituationParticuliere": 12,
-                "codeCentreGestion": 13,
-                "dateTraitementContrat": 14,
-                "statusContrat": 15,
-                "commentaireContrat": 16
-            }
-        }
+        "afficherMenu": true
     },
     "SIRH": {
-        "afficherMenu": true,
-        "sauverMiseAJour": false,
-        "cheminRacine": "C:\\deploy\\sirh\\"
+        "afficherMenu": true
     },
     "SIRHUpdate": {
-        "afficherMenu": true,
-        "sauverMiseAJour": false,
-        "cheminRacine": "C:\\deploy\\sirh-update\\"
+        "afficherMenu": true
     },
     "DA": {
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\da\\"
+        "afficherMenu": true
     }
 }

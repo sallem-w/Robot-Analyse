@@ -23,7 +23,8 @@
 				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
 			}
 		} ,
-		fichierConfig : ''
+		fichierConfig : '',
+		fichierConfigScenario:''
 		
 	};
 	
@@ -47,6 +48,15 @@
 		configF.fichierConfig = JSON.parse(chemin);
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
 		ctx.log('Initialisation : Chargement du fichier config.json');
+	}
+	
+		configF.chargementFichierConfigScenarioCMU = function() {
+			var cheminConfigScenario = 'configCMU.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileCMUClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configCMU.json');
 	}
 	
 	
@@ -77,11 +87,12 @@
 	
 	
 	
-	configF.init = function(codeScenario) {
+	configF.init = function(dat) {
+		var codeScenario=dat.codeScenario;
 		ctx.log('---> configF.init('+codeScenario+')');
-		configF.chargementFichierConfig();
+//		configF.chargementFichierConfig();
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
-		var config = configF.fichierConfig[codeScenario];
+		var config = dat.scenarioConfig[codeScenario];
 		configF.cheminRacine = config.cheminRacine;
 		var finTitreResultat='_Resultats.';
 		var avecExcel = !!config.excel;
@@ -123,7 +134,7 @@
 			return false;	
 		}
 
-		ctx.traceF.infoTxt("Ouverture réussie : fichier trouvé");
+		ctx.log("Ouverture réussie : fichier trouvé");
 		configF.nomFichierResultat = nomFichierResultatComplet;
 		configF.cheminFichierResultat = configF.cheminRacine+configF.nomFichierResultat;
 		return true;	
@@ -131,7 +142,7 @@
 
 //	getCodeProductCorrespond
 	configF.codeProduitACSCorrespondant = function(codeProduit) {
-		var config = configF.fichierConfig[configF.scenario.ACS];
+		var config = configF.fichierConfigScenario;
 		return config.produitAccesSante[codeProduit];
 	}
 

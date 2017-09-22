@@ -6,8 +6,8 @@ ActivInfinitev7.scenario( {
 		sc.onTimeout(40000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut :  On quitte le sous scenario scVerifContratCMU');
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario(); 
 	}); 
@@ -15,8 +15,8 @@ ActivInfinitev7.scenario( {
 	sc.onError(function(sc, st, ex) { 
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError :  On quitte le sous scenario scVerifContratCMU');
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	}); 
@@ -83,16 +83,16 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 	st.onTimeout(10000, function (sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut - Etape stRecherContratIndivCMU ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : Contrat non Accessible ';
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	});
 	st.onError(function (sc, st, ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - Etape stRecherContratIndivCMU ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ';
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	});
@@ -108,14 +108,14 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 		 		var msgErreur = ActivInfinitev7.pIdentContratRechResu.oTitreErreur.get().trim();
 				ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat : ' + msgErreur);
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ' + msgErreur;
-				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			 	sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+				data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			 	sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 		 }
 		 else{
 		 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - contract trouve');
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 			sc.endStep();
 			return ;
 		}
@@ -155,9 +155,9 @@ ActivInfinitev7.step( { stInitVerifBenef : function (ev, sc, st) {
 		ActivInfinitev7.pIdentAssuresInfoRO.wait(function (ev) {
 			data.contratCourantCMU.dataEnLigne.variables.indiceBenef = 0;
 			data.contratCourantCMU.dataEnLigne.variables.nbBenef = ActivInfinitev7.pIdentAssuresInfoRO.oTypeAssure.count();
-			data.contratCourantCMU.statusCMU.contratProlonge = false;
-			data.contratCourantCMU.statusCMU.ASSPRITermine = false;
-			data.contratCourantCMU.statusCMU.assureValid = false;
+			data.contratCourantCMU.statutsCMU.contratProlonge = false;
+			data.contratCourantCMU.statutsCMU.ASSPRITermine = false;
+			data.contratCourantCMU.statutsCMU.assureValid = false;
 			sc.endStep();
 			return ;
 		});
@@ -226,8 +226,8 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - incohérece entre les rangs');
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
 				data.statistiquesF.nbCasRevoirCentre += 1;
-				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-				sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+				data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}
@@ -242,17 +242,17 @@ ActivInfinitev7.step( { stBenefPrinciTermineAutresBenefNonTermines : function (e
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stBenefPrinciTermineAutresBenefNonTermines');
 
 		if (data.contratCourantCMU.dataEnLigne.variables.typeAssure === ctx.configF.constantes.ASSPRI) {
-			data.contratCourantCMU.statusCMU.ASSPRITermine = (data.contratCourantCMU.dataEnLigne.variables.etatCourant === ctx.configF.constantes.produitTermine);
+			data.contratCourantCMU.statutsCMU.ASSPRITermine = (data.contratCourantCMU.dataEnLigne.variables.etatCourant === ctx.configF.constantes.produitTermine);
 		}else if (data.contratCourantCMU.dataEnLigne.variables.etatCourant === ctx.configF.constantes.produitValide) {
-			data.contratCourantCMU.statusCMU.assureValid = true;
+			data.contratCourantCMU.statutsCMU.assureValid = true;
 		}
 
-		if (data.contratCourantCMU.statusCMU.ASSPRITermine && data.contratCourantCMU.statusCMU.assureValid) {
+		if (data.contratCourantCMU.statutsCMU.ASSPRITermine && data.contratCourantCMU.statutsCMU.assureValid) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - ASSPRI est terminé mais un ou plusieurs autres beneficiaries e sont pas terminé(s)');
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
 			data.statistiquesF.nbCasRevoirCentre += 1;
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
@@ -295,8 +295,8 @@ ActivInfinitev7.step( { stVerifDateFinEffetInfinite : function (ev, sc, st) {
 		if (!data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Date fin effet CMU non trouvé');
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Aucune date de fin d\'effet n\'a été trouvé pour le produit CMU';
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
@@ -319,9 +319,9 @@ ActivInfinitev7.step( { stVerifOrdreSurDateInfiniteEtDateExcel: function (ev, sc
 	ctx.log(' dateFinEffetInfinite : ' + date2.getTime());
 		 if(ctx.dateF.estAvant(date1,date2)){
 		  data.contratCourantCMU.notes.commentaireContrat = 'Contrat prolongé';
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-			data.contratCourantCMU.statusCMU.contratProlonge = true;
-			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
+			data.contratCourantCMU.statutsCMU.contratProlonge = true;
+			sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 //			sc.endStep(ActivInfinitev7.steps.stBenefCMUSuivant);
 			 sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return;
@@ -340,8 +340,8 @@ ActivInfinitev7.step( { stVerfiIOrdreSurDateBenefEtDateASSPRI: function (ev, sc,
 	if(	data.contratCourantCMU.dataEnLigne.variables.typeAssure !== ctx.configF.constantes.ASSPRI && ctx.dateF.estAvant(new Date(data.contratCourantCMU.dataLocale.dateFinEffSituatParti),data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite)){
 		  data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: probleme sur les dates de fin d\'effet des beneficiaires';
 			data.statistiquesF.nbCasRevoirCentre += 1;
-			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		  sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 		  return;
 	}else{
@@ -357,7 +357,7 @@ ActivInfinitev7.step( { stBenefCMUSuivant : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stBenefCMUSuivant *******');
 		if (data.contratCourantCMU.dataEnLigne.variables.indiceBenef === data.contratCourantCMU.dataEnLigne.variables.nbBenef - 1) {
-			if (data.contratCourantCMU.statusCMU.contratProlonge) {
+			if (data.contratCourantCMU.statutsCMU.contratProlonge) {
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}
@@ -396,8 +396,8 @@ ActivInfinitev7.step( { stListeProduitCMU : function (ev, sc, st) {
 			if (data.contratCourantCMU.dataEnLigne.variables.nbBenef === 0) {
 				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Tous les produits sont terminés');
 				data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
-				data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-				data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
+				data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+				data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}else {
@@ -440,20 +440,20 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifEtatProduitCMU');
 		var verif = false;
-		var tabStatus = [];
+		var tabstatuts = [];
 		var listeProduit = ActivInfinitev7.pProdGaranConsul.oCodeProduit.getAll();
 		for (var i = 0; i<listeProduit.length;i++) {
 			ctx.log('i :'+i);
 			if (ActivInfinitev7.pProdGaranConsul.oCodeProduit.i(i).get() === data.CMUtemp_contractF.codeProduit) {
-				tabStatus.push(ActivInfinitev7.pProdGaranConsul.oEtatProduit.i(i).get());
+				tabstatuts.push(ActivInfinitev7.pProdGaranConsul.oEtatProduit.i(i).get());
 			}
 		}
-		for (var j=0;j<tabStatus.length;j++) {
-			if (tabStatus[j] === ctx.configF.constantes.produitValide) {
+		for (var j=0;j<tabstatuts.length;j++) {
+			if (tabstatuts[j] === ctx.configF.constantes.produitValide) {
 				verif = true;
 			}
 		}
-		if (tabStatus.length> 0 && verif) {
+		if (tabstatuts.length> 0 && verif) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'un ou plusieurs produits sont valides, on continue la vérification');
 			//goToContribution
 			sc.endStep(ActivInfinitev7.steps.stInitContributionCMU);
@@ -471,7 +471,7 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 ActivInfinitev7.step( { stInitContributionCMU : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitContributionCMU');
-		if (!data.scenarioConfig.controlSolde) {
+		if (!data.scenarioConfig.CMU.controlSolde) {
 			sc.endStep(ActivInfinitev7.steps.stContratCMUtermine);
 			return ;
 		}else {
@@ -510,8 +510,8 @@ ActivInfinitev7.step( { stVerifContributionCMU : function (ev, sc, st) {
 					var message = data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - END SCENARIO - balance not up to date';
 					ctx.traceF.infoTxt(message);
 					data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Solde comptable non à jour';
-				  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-					data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
+				  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 					ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 						sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 						return ;
@@ -534,8 +534,8 @@ ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 		if (data.contratCourantCMU.dataEnLigne.variables.indiceBenef >= data.contratCourantCMU.dataEnLigne.variables.nbBenef) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'tous les produits sont terminés');
 			data.contratCourantCMU.notes.commentaireContrat = 'Déjà fait';
-			data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
+			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 			return ;
 		}else {
@@ -553,8 +553,8 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape stContratCMUtermine');
 		data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
-	  data.contratCourantCMU.statusCMU.contratTermine = true; //nécessaire pour les stats
-	  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
+	  data.contratCourantCMU.statutsCMU.contratTermine = true; //nécessaire pour les stats
+	  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 		
 		sc.endStep();
 		return ;

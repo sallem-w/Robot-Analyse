@@ -40,7 +40,7 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : Sortie du Scenario car temps de recherche trop long ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -48,7 +48,7 @@ ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - error search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -72,7 +72,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers le bloc-notes ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -80,7 +80,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - error search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers le bloc-notes';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -93,7 +93,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotes: function(ev, sc, st) {
 			msgErreur=ctx.stringF.suppressionRetourEtTab(msgErreur);
 			ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: ' + msgErreur;
-			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 			sc.endStep(ActivInfinitev7.steps.stFinResiliationCMU);
 			return ;
 		}
@@ -115,7 +115,7 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Paramètre de calcul ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -123,7 +123,7 @@ ActivInfinitev7.step({ stNaviguerVersCalculParam: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - error search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: erreur lors de la navigation vers le paramètre de calcul : ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -141,7 +141,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers l\'Historique des cotisations';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -149,7 +149,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisations: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - error search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers l\'Historique des cotisations ';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -168,7 +168,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 	st.onTimeout(30000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'TimeOut -  search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Visualisation du compte cotisant';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -176,7 +176,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'OnError - error search contract ');
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers Visualisation du compte cotisant';
-		data.contratCourantCMU.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -209,8 +209,8 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
 	
 		data.contratCourantCMU.notes.commentaireContrat = data.nomScenario + ' effectuée';
-		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		data.contratCourantCMU.statusCMU.contratResilie = true;
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
+		data.contratCourantCMU.statutsCMU.contratResilie = true;
 		
     sc.endStep();
 		return;

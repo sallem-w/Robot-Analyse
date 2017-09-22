@@ -128,9 +128,9 @@ GLOBAL.events.START.on(function (ev) {
 		if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
-			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
-			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configACS.cheminRacine, ctx.configF.scenario.ACS);
+//			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
+//			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+//			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configACS.cheminRacine, ctx.configF.scenario.ACS);
 				var data = {};
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
@@ -141,9 +141,8 @@ GLOBAL.events.START.on(function (ev) {
 		if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
 		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
-			ctx.traceF.initFichierTrace(configCMU.cheminRacine, ctx.configF.scenario.CMU);
-			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configCMU.cheminRacine, ctx.configF.scenario.CMU);
+			
+			
 			var data = {};
 			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 			
