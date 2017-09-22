@@ -72,6 +72,35 @@ ctx.dataF = (function () {
    
     };
 		
+		var ppCouranteAnalyse = {
+			dataLocale: {
+				referenceGRC : '',
+			  typeAssure : '',
+			},
+			dataEnLigne: {
+				nbContratRadie : 0,
+				indexContrat : 0,
+				typeRelation : '',
+				identiteRelation : '' 
+			},
+			notes: {
+				dateTraitementContrat: '',
+			  commentaireContrat:''
+			}	
+		};
+		
+		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
+		dataF.initialisationScenarioAnalyse = function(dat, scenario){
+			dat.webData=ctx.dataF.webData;
+			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
+			dat.varGlobales=ctx.dataF.varGlobales;
+			dat.codeScenario=scenario;
+			ctx.configF.init(scenario);
+			dat.scenarioConfig = new confFileClass(); //initialisation des objets
+			dat.scenarioConfig=ctx.configF.fichierConfig;
+			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //récupération config json
+		}
+		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 	
 			dat.webData=ctx.dataF.webData;

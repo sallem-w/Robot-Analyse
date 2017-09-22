@@ -1,0 +1,19 @@
+{
+    "pathTemplate": "C:\\deploy\\template\\",
+    "ANALYSE":{
+       "afficherMenu" : true,
+       "cheminRacine": "C:\\deploy\\analyse\\",
+       "excel" : {
+            "debutIndexLigne" : 2,
+            "indexColonne" : {
+      	        "nom" : 16,
+                "prenom" : 17,
+                "dateDeNaissance" : 11, 
+                "referenceGRC" : 89,
+                "type" : 8,
+                "dateTraitementContrat": 126,
+                "commentaireContrat": 127
+            }
+        }
+    }
+}

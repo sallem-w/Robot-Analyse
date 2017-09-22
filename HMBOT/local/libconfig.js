@@ -36,6 +36,7 @@
 	scenario.SIRH = 'SIRH';
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
+	scenario.Analyse = 'ANALYSE'
 	
 	configF.scenario=scenario;
 	
