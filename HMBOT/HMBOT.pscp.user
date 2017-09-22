@@ -3,6 +3,7 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+<<<<<<< HEAD
 		<FINDWHAT><![CDATA[events.load]]></FINDWHAT>
 		<FINDWHAT><![CDATA[event.load]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stProduitCMUSuivant]]></FINDWHAT>
@@ -60,11 +61,21 @@
 		<OPENDOC LineNumber="35" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='testDate']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="10" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigCMUClass']" Offset="0" Length="0" />
+=======
+		<FINDWHAT><![CDATA[var confFileClass ]]></FINDWHAT>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="177" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="77" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="57" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="53" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='arrayMap']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="15" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='objectHelper']" Offset="0" Length="0" />
+>>>>>>> 'ConfigurationSuspension2201'
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
-		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[ctx.log('etat'+ctx.traceF.constantes.touteTraceActive)]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />

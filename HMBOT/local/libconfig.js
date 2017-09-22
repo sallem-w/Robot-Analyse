@@ -11,7 +11,7 @@
 		cheminFichierConfig:'',
 		cheminVersTemplate:'',
 		nomFichierStartProcessusBat : 'startProcessus.bat',
-		/// Declaration des élements présents dans le config.json
+		/// Declaration des élements présents dans le vonfig.json
 		nomFichierConfig : 'config.json',
 		nomFichierConfigDA : 'configDA.json',
 		constantes : {
@@ -36,6 +36,7 @@
 	scenario.SIRH = 'SIRH';
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
+	scenario.Suspension ='Suspension';
 	
 	configF.scenario=scenario;
 	configF.fichierConfig = fichierConfig;
@@ -158,6 +159,28 @@
 	configF.cheminVersAppliHarmonieCustomer = function() {
 		return ctx.options.serverURL + '\\harmonieCustomer.exe';
 	}
+	
+	
+	//getPathDirectory
+   configF.recupererCheminRacine = function(){
+      return configF.cheminRacine;
+   }
+            
+            //getPathFile
+   configF.recupererCheminFichier = function() {
+     return configF.cheminRacine + configF.nomFichier;
+   }
+            
+            //getFilenameOutput
+   configF.recupererNomFichierDeSortie = function() {
+     return configF.nomFichierResultat;
+   }
+            
+            //getPathFileOutput
+   configF.recupererCheminFichierDeSortie = function() {
+     return configF.cheminRacine + configF.nomFichierResultat;
+    }
+
 
 	//getPathDirectory
 	configF.recupererCheminRacine = function(){

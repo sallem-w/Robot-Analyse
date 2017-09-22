@@ -3045,6 +3045,11 @@
 				<SCRIPT Name="setValue" Src="setValue.js" Folder="ProcessusDA" />
 				<SCRIPT Name="dataDA" Src="dataDA.js" Folder="ProcessusDA" />
 				<SCRIPT Name="AnnulAdhesion" Folder="ProcessusDA" Src="AnnulAdhesion.js" />
+				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
+				<SCRIPT Name="SuspScenPrincipal" Folder="ProcessusSuspension" Src="Suspension_scenario_principal.js" />
+				<SCRIPT Name="initPivot" Folder="ProcessusSuspension" Src="initPivot.js" />
+				<SCRIPT Name="objectHelper" Folder="Complements" Src="objectHelper.js" />
+				<SCRIPT Name="arrayMap" Folder="Complements" Src="arrayMap.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

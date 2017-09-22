@@ -29,7 +29,11 @@ _.toArray = function (data) {
 		return data;
 	}
 	return _.map(function (key, index) {
+<<<<<<< HEAD
 		if (isNaN(parseInt(key,10))) {
+=======
+		if (isNaN(parseInt(key))) {
+>>>>>>> 'ConfigurationSuspension2201'
 			throw new Error(JSON.stringify(data) + ' : Cannot be converted to array, key : ' + key + ' is not a number');
 		}
 		return data[key];

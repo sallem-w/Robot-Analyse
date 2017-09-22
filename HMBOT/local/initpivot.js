@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
+=======
+ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
+>>>>>>> 'ConfigurationSuspension2201'
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
 	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
@@ -41,6 +45,8 @@
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
 	names.push('Commentaire');
+	names.push('Remarque');
+  names.push('Courrier');
 	ctx.excelF.remplirTableau(1, names);
 	
 	data.globalVariables.indexContratCourant = 0;
@@ -51,5 +57,21 @@
 	ctx.traceF.infoTxt(" le nombre de contrats est : " + data.stats.nombreDeContrats);
 	ctx.traceF.infoTxt(" premier jour du mois courant " + ctx.dateF.premierJourDuMoisCourant(ctx.dateF.formatJJMMAAAA(new Date())));
 	
-	return sc.endStep();
+	
+                        
+   
+
+    ctx.excelF.remplirTableau(1, names);
+            
+    sc.data.indexCurrentContract = 0;
+    sc.data.customerName = json.customerName;
+    sc.data.contracts = contracts;
+    sc.data.countContracts = countContracts;
+    sc.data.totalTimeDuration = new Date();
+    sc.data.countCaseFindIntoPivot = countContracts;
+    sc.data.countCaseProcessed = 0;
+    sc.data.countCaseProcessedWithWarning = 0;
+    sc.data.countCaseFailProcessed = 0;
+     return sc.endStep();
+
 }});
