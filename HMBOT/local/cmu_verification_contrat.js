@@ -334,7 +334,7 @@ ActivInfinitev7.step( { stVerifOrdreSurDateInfiniteEtDateExcel: function (ev, sc
 	ctx.log(' dateFinEffSituatParti : ' + date1.getTime());
 	ctx.log(' dateFinEffetInfinite : ' + date2.getTime());
 		 if(ctx.dateF.estAvant(date1,date2)){
-		  data.contratCourantCMU.notes.commentaireContrat = 'Contrat prolonge';
+		  data.contratCourantCMU.notes.commentaireContrat = 'Contrat prolongé';
 			data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
 			data.contratCourantCMU.statusCMU.contratProlonge = true;
 			sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;
@@ -571,7 +571,7 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 		data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
 	  data.contratCourantCMU.statusCMU.contratTermine = true; //nécessaire pour les stats
 	  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		data.statistiquesF.nbContratsPretsPrResiliation += 1;
+		
 		sc.endStep();
 		return ;
 	}

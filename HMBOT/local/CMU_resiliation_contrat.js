@@ -211,6 +211,7 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 	
 		data.contratCourantCMU.notes.commentaireContrat += ' | ' + sc.data.currentScenario + ' effectuée';
 		data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
+		data.contratCourantCMU.statusCMU.contratResilie = true;
 		
     sc.endStep();
 		return;
