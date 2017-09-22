@@ -1,15 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="28" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1259" Length="106"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitFinCMU');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="128" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="6020" Length="68"><![CDATA[ActivInfinitev7.step( { stNavigationInfoRO : function (ev, sc, st) {]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="135" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="6323" Length="3"><![CDATA[});]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="128" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="6020" Length="68"><![CDATA[ActivInfinitev7.step( { stNavigationInfoRO : function (ev, sc, st) {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="28" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1259" Length="106"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitFinCMU');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2594" Length="135"><![CDATA[var date  = ctx.dateF.ajouterJour(ctx.dateF.dateEnString(data.scenarioConfig.excel.indexColonne.dateFinSituationParticuliere), 1,0, 0);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1533" Length="109"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stRechercheContratCMU');]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[contratTermine]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nbContratsResilies]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nbContratsPretsPrResiliation]]></FINDWHAT>
+		<FINDWHAT><![CDATA[tpsTraitement]]></FINDWHAT>
 		<FINDWHAT><![CDATA[status]]></FINDWHAT>
 		<FINDWHAT><![CDATA[prolonge]]></FINDWHAT>
 		<FINDWHAT><![CDATA[contrat]]></FINDWHAT>
@@ -26,10 +30,7 @@
 		<FINDWHAT><![CDATA[trim]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.varGlobales.ligneCourante]]></FINDWHAT>
 		<FINDWHAT><![CDATA[modifierEntete]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stVerifBenefCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.FinCMUProcessus = true;]]></FINDWHAT>
-		<FINDWHAT><![CDATA[true]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Etape stBenefCMUSuivant]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[dureeTraitement]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statistiquesF]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
@@ -49,7 +50,6 @@
 		<REPLACEWITH><![CDATA[pBlocNotes]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[traceF.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[stFinScVerifContratCMU]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);]]></REPLACEWITH>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>

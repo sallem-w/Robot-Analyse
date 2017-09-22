@@ -166,6 +166,32 @@
 		return dateObj.getFullYear() + "-" + dateF.format2c(dateObj.getMonth()+1) + "-" + dateF.format2c(dateObj.getDate()) + " " 
 				   + dateF.format2c(dateObj.getHours()) + ":" + dateF.format2c(dateObj.getMinutes()) + ":" + dateF.format2c(dateObj.getSeconds());
 	};
+	
+	dateF.afficherDuree = function(time) {
+		var hour = Math.floor(time/(60*60));
+		var min = Math.floor((time/60)-(hour*60));
+		var sec = Math.floor(time-(hour*60*60)-(min*60));
+		var message = sec + " seconde" + (sec > 1 ? 's' : '') + ".";
+			if (min > 0) {
+				message = min + " minute" + (min > 1 ? 's' : '') + " et " + message;
+				if (hour > 0) {
+					message = hour + " heure" + (hour > 1 ? 's' : '') + ", " + message;
+				}
+			}	
+		return message;
+	}
+	
+		dateF.conversionEnSecondes  = function(time) {
+		var SECONDE = 1000;
+		var MINUTE = 60 * SECONDE;
+		var HOUR = 60 * MINUTE;
+		var hour = Math.floor(time / HOUR);
+		var min = Math.floor((time % HOUR) / MINUTE);
+		var sec = Math.floor(((time % HOUR) % MINUTE) / SECONDE);
+		var result = hour * 60 * 60 + min * 60 + sec; 
+		return result;
+	}
+	
 		
 	
 	return dateF;

@@ -219,25 +219,24 @@ ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
 ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
-		data.statistiquesF.nbCasTraite +=1;
-		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
-		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
+//		data.statistiquesF.nbCasTraite +=1;
+//		data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.excel.debutIndexLigne + 1;
+//		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
 		
 		
-		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
-				data.statistiquesF.nbCasTraitementSucces += 1;
-		}
+//		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
+//				data.statistiquesF.nbCasTraitementSucces += 1;
+//		}
 
-		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
-				data.statistiquesF.nbCasTraitementEchec += 1;
-		}
+//		if (data.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
+//				data.statistiquesF.nbCasTraitementEchec += 1;
+//		}
 		
-		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1)
-		{
-			data.statistiquesF.nbCasRevoirCentre +=1;
-		}
-
-
+//		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1)
+//		{
+//			data.statistiquesF.nbCasRevoirCentre +=1;
+//		}
+		ctx.statsF.miseAJourCMU(data);
 		sc.endStep();
 		return ;
 	}
@@ -300,17 +299,14 @@ ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape - stFinScenarioCMU -Fin du scénario principal - Fermeture d\'Excel');
 	ctx.excelF.fermerFichier();
 	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
-////	data.statistiquesF.fileName = ctx.configFile.getFileNameOutput(); 
-////	data.statistiquesF.timeEnd = ctx.date.convertTimeSeconds(new Date());
-////	data.statistiquesF.totalTimeDuration = ctx.date.getTimeElapsed(data.statistiquesF.timeEnd - data.statistiquesF.timeBeginning);
-	
-	ctx.statsF.remplir(data.statistiquesF);
+	ctx.statsF.calculerStats(data);
 
-	ctx.popupF.newPopup("Fin du traitement",'Fin', function() {
-			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
-			return sc.endStep();
-		});
+//	ctx.popupF.newPopup("Fin du traitement CMU ",'Fin', function() {
+//			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
+////			return sc.endStep();
+//		});
 	ctx.log('Fin du traitement CMU');
+	ctx.popupF.finTraitement();
 	sc.endScenario();
 	return;
 }});

@@ -33,12 +33,14 @@ ctx.dataF = (function () {
 								contratProlonge : false,
 								ASSPRITermine : false,
 								assureValid : false,
-								contratTermine : false
+								contratTermine : false,
+								contratResilie : false
             }
         },
         statistiquesF : {
             debutTpsTraitement : 0,
-						tpsTraitement : 0,
+						finTpsTraitement : 0,
+						dureeTraitement : 0,
             nbCasTraite : 0, //countCaseProcessed
             nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
             nbCasTraitementSucces : 0, // countCaseSuccessProcessed
@@ -76,20 +78,16 @@ ctx.dataF = (function () {
 	
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
-			dat.varGlobales=ctx.dataF.varGlobales;
-			dat.statistiquesF=ctx.dataF.statistiquesF;
-				
+			dat.varGlobales=ctx.dataF.varGlobales;	
 			dat.codeScenario=scenario;
 			ctx.log('Init configF');
 			ctx.configF.init(scenario);
 			dat.scenarioConfig = new confFileClass();
 			dat.scenarioConfig=ctx.configF.fichierConfig;
 			ctx.log('Init excelF');
-		//		ctx.excelF.configExcel(scenario);
 			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
-				//data.configExcel = data.config.excel;
-			ctx.log(" Test URL : "+ dat.webData.url);	
-
+			ctx.log('Init statsF');
+			ctx.statsF.debuterStats(dat);
 		}
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
@@ -99,6 +97,8 @@ ctx.dataF = (function () {
 				dat.contratCourantCMU.statusCMU.existanceASSPRI=false;
 				dat.contratCourantCMU.statusCMU.FinCMUProcessus=false;
 				dat.contratCourantCMU.statusCMU.contratTermine=false;
+				dat.contratCourantCMU.statusCMU.contratResilie=false;
+				dat.contratCourantCMU.statusCMU.contratProlonge=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }

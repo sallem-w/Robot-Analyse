@@ -1,0 +1,46 @@
+{
+    "cheminTemplate": "C:\\deploy\\template\\",
+    "ACS": {
+        "afficherMenu": true,
+        "cheminRacine": "C:\\deploy\\acs\\",
+        "controlSeul": true,
+        "controlSolde": false,
+        "controlBlocNote": false,
+        "sauverMiseAJour": false,
+        "ajouterAnneeRechercheContrat": 30,
+        "excel": {
+            "debutIndexCol": 1,
+            "debutIndexLigne": 2,
+            "indexColonne": {
+                "numeroContratIndiv": 1,
+                "dateDebutEffetContratIndiv":2,
+                "dateFinEffetContratIndiv":3,
+                "codeCentreGestion":4,
+                "refContratColl":5,
+                "numeroPersonneAssure": 6,
+                "nom": 7,
+                "prenom": 8,
+                "codeProduitSouscrit": 9,
+                "ProduitSouscrit":10,
+                "dateDebutEffetProduitSouscrit":11,
+                "dateFinEffetProduitSouscrit":12,
+                "descriptionACS":13,
+                "dateDebutAttestationACS": 14,
+                "dateFinAttestationACS": 15,
+                "codeEcheancier": 16,
+                "modeReglement": 17,
+                "dateTraitementContrat": 18,
+                "statusContrat": 19,
+                "commentaireContrat": 20
+            }
+        },
+         "produitAccesSante": {
+            "TPSAACSA": "TPSASACSA",
+            "TPSAACSB": "TPSASACSB",
+            "TPSAACSC": "TPSASACSC",
+            "TPSARLACSA": "TPSARLSACA",
+            "TPSARLACSB": "TPSARLSACB",
+            "TPSARLACSC": "TPSARLSACC"
+        }
+    }
+}

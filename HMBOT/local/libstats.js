@@ -1,9 +1,12 @@
 ﻿ctx.statsF = (function() {
 	
-	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Stats';
+	
 	var statsF = {};
 	var cheminFichierStats;
 	var contenuTemplate;
+	
+	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Stats';
+	statsF.nomFichier=nomFichier;
 
 	statsF.initFileStats = function(cheminDossierTemplate, cheminDossierResultat, nomScenario) {
 		var cheminFichierTemplate = cheminDossierTemplate + nomScenario + '.html';
@@ -32,8 +35,9 @@
 
 //	.write
 	statsF.remplir = function(obj) {
-		statsF.remplirTemplate(obj);
-		statsF.remplirJson(obj);
+		var objStats = obj.statistiquesF;
+		statsF.remplirTemplate(objStats);
+		statsF.remplirJson(objStats);
 	}
 	
 	statsF.remplirTemplate = function(obj) {
@@ -52,7 +56,7 @@
 			ctx.fso.file.write(cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Can not write stats template, ' + cheminFichierStats + '.html');
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique HTML, ' + cheminFichierStats + '.html');
 		}
 	};
 	
@@ -61,8 +65,53 @@
 			ctx.fso.file.write(cheminFichierStats + '.json', JSON.stringify(obj));
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Can not write stats json, ' + cheminFichierStats + '.json');
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique JSON, ' + cheminFichierStats + '.json');
 		}
+	}
+	
+	
+	statsF.debuterStats = function (dat) {
+		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+		dat.statistiquesF=ctx.dataF.statistiquesF;
+		dat.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
+	}
+	
+
+	
+	statsF.miseAJourCMU = function(dat){
+		dat.statistiquesF.nbCasTraite +=1;
+		dat.statistiquesF.nbCasTrouveDsExcel = dat.varGlobales.indexDerniereLigne - dat.scenarioConfig.excel.debutIndexLigne + 1;
+		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
+		
+		
+		if (dat.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
+				dat.statistiquesF.nbCasTraitementSucces += 1;
+		}
+
+		if (dat.contratCourantCMU.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
+				dat.statistiquesF.nbCasTraitementEchec += 1;
+		}
+		
+		if (dat.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1){
+			dat.statistiquesF.nbCasRevoirCentre +=1;
+		}
+		
+		if ( dat.contratCourantCMU.statusCMU.contratTermine == true){
+			dat.statistiquesF.nbContratsPretsPrResiliation += 1;
+		}
+		
+		if ( dat.contratCourantCMU.statusCMU.contratResilie == true){
+			dat.statistiquesF.nbContratsResilies += 1;
+		}
+		
+	}
+	
+	
+	
+	statsF.calculerStats = function (dat) {
+		dat.statistiquesF.FinTpsTraitement = ctx.dateF.conversionEnSecondes(new Date());
+  	dat.statistiquesF.dureeTraitement = ctx.dateF.afficherDuree(dat.statistiquesF.FinTpsTraitement - dat.statistiquesF.debutTpsTraitement);
+		ctx.statsF.remplir(dat);
 	}
 	
 	return statsF;

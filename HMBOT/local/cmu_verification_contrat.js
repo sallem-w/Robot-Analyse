@@ -571,7 +571,7 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 		data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
 	  data.contratCourantCMU.statusCMU.contratTermine = true; //nécessaire pour les stats
 	  data.contratCourantCMU.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		data.statistiquesF.nbContratsPretsPrResiliation += 1;
+		
 		sc.endStep();
 		return ;
 	}

@@ -5,36 +5,36 @@
 </head>
 <body>
 
-<h1>{{ fileName }}</h1>
+<h1>{{ nomFichier }}</h1>
 
 <table>
   <tr>
     <td>Temps total de traitement</td>
-    <td>{{ totalTimeDuration }}</td>
+    <td>{{ dureeTraitement }}</td>
   </tr>
   <tr>
-    <td>Nombre de contrats trouvés</td>
-    <td>{{ countCaseFindIntoExcel }}</td>
+    <td>Nombre de lignes du fichier en entrée trouvées</td>
+    <td>{{ nbCasTrouveDsExcel }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats traités</td>
-    <td>{{ countCaseSuccessProcessed }}</td>
+    <td>{{ nbCasTraitementSucces }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats non traités</td>
-    <td>{{ countCaseFailProcessed }}</td>
+    <td>{{ nbCasTraitementEchec }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats renvoyés en centre</td>
-    <td>{{ countCaseBackToCenter }}</td>
+    <td>{{ nbCasRevoirCentre }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats prêts à être résiliés</td>
-    <td>{{ countCaseReadyToRemove }}</td>
+    <td>{{ nbContratsPretsPrResiliation }}</td>
   </tr>
   <tr>
     <td>Nombre de contrats résiliés</td>
-    <td>{{ countCaseProductTerminated }}</td>
+    <td>{{ nbContratsResilies }}</td>
   </tr>
 </table>
 
