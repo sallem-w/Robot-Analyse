@@ -16,8 +16,8 @@
 	}		
 	
 	//initFileTrace
-	traceF.initFichierTrace = function(cheminDossier, nomScenario) {
-		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScenario);
+	traceF.initFichierTrace = function(cheminDossier, nomScen) {
+		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScen);
 		if (!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
 		}
