@@ -542,6 +542,27 @@
 					<CAPTURE Name="PAGE_ResiliationContrat_1732559_1" Comment="Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion" CtxtId="149" Techno="WEB" Timestamp="19/09/2017 17:33:08" />
 					<CAPTURE Name="PAGE_ResiliationContrat_1733287_1" Comment="Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion" CtxtId="150" Techno="WEB" Timestamp="19/09/2017 17:33:41" />
 					<CAPTURE Name="PAGE_ResiliationContrat_1523362_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="168" Techno="WEB" Timestamp="21/09/2017 15:23:51" />
+					<CAPTURE Name="PAGE_ResiliationContrat_1753464_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="166" Techno="WEB" Timestamp="20/09/2017 17:53:59" />
+				</PAGE>
+				<PAGE Name="pIdentContResilRechRe" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat]]></TITRE>
+						<URL Scan="Like"><![CDATA[rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=AC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&]]></URL>
+						<URL Scan="Like"><![CDATA[/mdg/Go.do\?id=ACRE01RE3F]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_403&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oDivErreur" MustExist="Y">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="167.R0R1R3R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast toast-error ui-resizable cgd-collapsable-toast]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ResiliationContrat_1823428_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="167" Techno="WEB" Timestamp="20/09/2017 18:23:54" />
 				</PAGE>
 				<PAGE Name="pBlocNotesResil" Comment="Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -2654,6 +2675,15 @@
 				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
+				<SCRIPT Name="initPivot" Src="initPivot.js" Folder="ProcessusDA" />
+				<SCRIPT Name="scenarioPrincipalDA" Folder="ProcessusDA" Src="scenarioPrincipalDA.js" />
+				<SCRIPT Name="verificationContratDA" Folder="ProcessusDA" Src="verificationContratDA.js" />
+				<SCRIPT Name="resiliationConcuDA" Folder="ProcessusDA" Src="resiliationConcuDA.js" />
+				<SCRIPT Name="arrayMap" Src="arrayMap.js" />
+				<SCRIPT Name="objectHelper" Src="objectHelper.js" />
+				<SCRIPT Name="setValue" Src="setValue.js" />
+				<SCRIPT Name="dataDA" Src="dataDA.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
