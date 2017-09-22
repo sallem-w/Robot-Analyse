@@ -65,6 +65,9 @@ ActivInfinitev7.pIdentContResilRechRe.btSuivant = ActivInfinitev7.pIdentContResi
 ActivInfinitev7.pIdentContResilRechRe.btBtnContinuer = ActivInfinitev7.pIdentContResilRechRe.addItem('btBtnContinuer');
 ActivInfinitev7.pIdentContResilRechRe.oDivErreur = ActivInfinitev7.pIdentContResilRechRe.addItem('oDivErreur');
 
+ActivInfinitev7.pIdentContResilRechRe = ActivInfinitev7.addPage('pIdentContResilRechRe', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_403\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pIdentContResilRechRe.oDivErreur = ActivInfinitev7.pIdentContResilRechRe.addItem('oDivErreur', {"mustExist":true});
+
 ActivInfinitev7.pBlocNotesResil = ActivInfinitev7.addPage('pBlocNotesResil', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACBN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlocNotesResil.oBtnPageCourante = ActivInfinitev7.pBlocNotesResil.addItem('oBtnPageCourante');
 ActivInfinitev7.pBlocNotesResil.btSuivant = ActivInfinitev7.pBlocNotesResil.addItem('btSuivant');
