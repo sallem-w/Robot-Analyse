@@ -92,11 +92,39 @@ ctx.dataF = (function () {
 		
 		dataF.contratCourantCMU=contratCourantCMU;
 		
-			
+		var ppCouranteAnalyse = {
+			dataLocale: {
+				referenceGRC : '',
+			  typeAssure : '',
+			},
+			dataEnLigne: {
+				nbContratRadie : 0,
+				indexContrat : 0,
+				typeRelation : '',
+				identiteRelation : '' 
+			},
+			notes: {
+				dateTraitementContrat: '',
+			  commentaireContrat:''
+			}	
+		};
+		
+		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
+		dataF.initialisationScenarioAnalyse = function(dat, scenario){
+			dat.webData=ctx.dataF.webData;
+			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
+			dat.varGlobales=ctx.dataF.varGlobales;
+			dat.codeScenario=scenario;
+			ctx.configF.init(scenario);
+			dat.scenarioConfig = new confFileClass(); //initialisation des objets
+			dat.scenarioConfig=ctx.configF.fichierConfig;
+			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //rï¿½cupï¿½ration config json
+		}
+		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 				
 			dat.codeScenario=scenario;
-			dat.nomScenario='Résiliation CMU';
+			dat.nomScenario='Rï¿½siliation CMU';
 			ctx.log('Init configF');
 			ctx.configF.chargementFichierConfigScenarioCMU();
 			dat.scenarioConfig = new confFileCMUClass();
@@ -114,10 +142,10 @@ ctx.dataF = (function () {
 			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
 			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
-			ctx.traceF.infoTxt('Création du fichier résultat');	
+			ctx.log(' Index derniï¿½re ligne :'+dat.varGlobales.indexDerniereLigne);
+			ctx.traceF.infoTxt('Crï¿½ation du fichier rï¿½sultat');	
 			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.CMU.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-			ctx.log('fichier résultat créé');
+			ctx.log('fichier rï¿½sultat crï¿½ï¿½');
 //			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 			ctx.log('Init statsF');
 			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);

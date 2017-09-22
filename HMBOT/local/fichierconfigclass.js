@@ -88,6 +88,22 @@ var confFileClass = function() {
 	this.DA = {
 		afficherMenu : '',
 		sauverMiseAJour : ''
+	};
+	this.ANALYSE ={
+       afficherMenu : '',
+       cheminRacine: '',
+       excel : {
+            debutIndexLigne : '',
+            indexColonne : {
+      	        nom : '',
+                prenom : '',
+                dateDeNaissance : '', 
+                referenceGRC : '',
+                type : '',
+								dateTraitementContrat : '',
+								commentaireContrat : ''
+            }
+        }
 	}
 };
 
