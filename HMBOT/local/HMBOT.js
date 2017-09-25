@@ -124,8 +124,10 @@ GLOBAL.events.START.on(function (ev) {
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	
+	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 	
-		if (configACS.afficherMenu) {
+	
+	if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -138,16 +140,21 @@ GLOBAL.events.START.on(function (ev) {
 
 	
 	
-		if (configCMU.afficherMenu) {
+	if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
-		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
-			
-			
-			var data = {};
-			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
-			
-			
+		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {	
+		var data = {};
+		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
+	}
+	
+	if(configAdhesion.afficherMenu){
+		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
+		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
+		var data = {};
+		ActivInfinitev7.scenarios.scAdhesionPrincipal.start(data).onEnd(function(){});
+		});
+		
 	}
 	
 	

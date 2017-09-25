@@ -115,5 +115,12 @@
 		ctx.statsF.remplir(dat);
 	}
 	
+	statsF.miseAJourAdhesion = function(dat){
+	
+		
+	}
+	
+	
+	
 	return statsF;
 }) ();

@@ -2656,6 +2656,8 @@
 				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
+				<SCRIPT Name="scAdhesionPrincipal" Src="scAdhesionPrincipal.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="ConfigAdhesionClass" Src="ConfigAdhesionClass.js" Folder="Complements" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
