@@ -136,6 +136,9 @@ ctx.dataF = (function () {
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
 				ctx.log('resetContratCourant');
+				dat.contratCourantCMU.notes.dateTraitementContrat='';
+				dat.contratCourantCMU.notes.statutsContrat='';
+				dat.contratCourantCMU.notes.commentaireContrat='';
 				dat.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
 				dat.contratCourantCMU.dataEnLigne.dictContratsCourantCMU = [];
 				dat.contratCourantCMU.statutsCMU.existanceASSPRI=false;

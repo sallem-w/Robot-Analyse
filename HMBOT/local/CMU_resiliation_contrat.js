@@ -2,11 +2,13 @@
 	var data = sc.data;
   sc.onTimeout(30000, function(sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout le scénario courant a été arrêté');
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' le scénario courant a été arrêté');
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});

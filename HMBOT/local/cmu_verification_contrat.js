@@ -5,6 +5,8 @@ ActivInfinitev7.scenario( {
 	var data = sc.data;
 		sc.onTimeout(40000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut :  On quitte le sous scenario scVerifContratCMU');
+		var nomPage = ev.pageName;
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut : depuis la page :'+nomPage);
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
@@ -13,7 +15,7 @@ ActivInfinitev7.scenario( {
 	}); 
 	
 	sc.onError(function(sc, st, ex) { 
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError :  On quitte le sous scenario scVerifContratCMU');
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError :  On quitte le sous scenario scVerifContratCMU : '+ ex);
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
@@ -127,7 +129,7 @@ ActivInfinitev7.step( { stRecherContratIndivCMU : function (ev, sc, st) {
 /** click sur le bouton info RO */
 ActivInfinitev7.step( { stNavigationInfoRO : function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stNavigationInfoRO ');
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Etape - stNavigationInfoRO ');
 		ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures.click();
 		sc.endStep();
 		return ;
@@ -137,7 +139,7 @@ ActivInfinitev7.step( { stNavigationInfoRO : function (ev, sc, st) {
 /** choisir option btInfoRO */
 ActivInfinitev7.step( { stInitAffichageInforRO : function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitAffichageInforRO');
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Etape stInitAffichageInforRO');
 		ActivInfinitev7.pIdentAssures.wait(function (ev) {
 			ActivInfinitev7.pIdentAssures.btInfoRo.click();
 			sc.endStep();
@@ -150,7 +152,7 @@ ActivInfinitev7.step( { stInitAffichageInforRO : function (ev, sc, st) {
 /** initialisation des paramètres utilisés pour la vérification */
 ActivInfinitev7.step( { stInitVerifBenef : function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stInitVerifBenef');
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Etape stInitVerifBenef');
 	
 		ActivInfinitev7.pIdentAssuresInfoRO.wait(function (ev) {
 			data.contratCourantCMU.dataEnLigne.variables.indiceBenef = 0;
@@ -267,10 +269,11 @@ ActivInfinitev7.step( { stLireDateFinEffetInfinite: function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stLireDateFinEffetInfinite');
 		var infiniteLignesSituationParticuliere = ActivInfinitev7.pIdentAssuresInfoRO.oCodeProduit.getAll();
+		var tabSituationParticuliereDateFinEffet = ActivInfinitev7.pIdentAssuresInfoRO.oDateFinEffetProduit.getAll();
 		var dateFinEffet;
 		for (var i in infiniteLignesSituationParticuliere) {
 			if (infiniteLignesSituationParticuliere[i] === ctx.configF.scenario.CMU) {
-				var dateCourante = ctx.string.trim(ActivInfinitev7.pIdentAssuresInfoRO.oDateFinEffetProduit.i(i).get());
+				var dateCourante = ctx.string.trim(tabSituationParticuliereDateFinEffet[i]);
 				if (dateCourante === '') {
 					continue ;
 				}
@@ -280,12 +283,12 @@ ActivInfinitev7.step( { stLireDateFinEffetInfinite: function (ev, sc, st) {
 					dateFinEffet = dateCourante;
 				}
 			}
-			data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite = dateFinEffet;
-			sc.endStep();
-			return ;
+			
 		}
-	}
-});
+		data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite = dateFinEffet;
+		sc.endStep();
+		return ;
+}});
 
 /** Description */ //ok
 ActivInfinitev7.step( { stVerifDateFinEffetInfinite : function (ev, sc, st) {

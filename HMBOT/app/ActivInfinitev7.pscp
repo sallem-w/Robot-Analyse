@@ -589,9 +589,6 @@
 				</PAGE>
 				<PAGE Name="pBlocNotes" Comment="Consultation - N°21998269 - Résilié - Adhérent : Madame RUIZ SANDRINE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Consultation - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Changement de couverture - ]]></TITRE>
-						<TITRE Scan="start-with"><![CDATA[Changement situation particulière - ]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/LancementFonction\.do\?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACBN_([0-9]+)&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/LancementFonction\.do\?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACBN_([0-9]+)&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
 					</CRITERE>
@@ -2223,6 +2220,7 @@
 					<CAPTURE Name="PAGE_ChangementSituation_0930249_1" Comment="Changement situation particulière - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="119" Techno="WEB" Timestamp="12/07/2017 09:30:41" />
 					<CAPTURE Name="PAGE_ConsultationN2112_1417093_1" Comment="Consultation - N°21125430 - Valide - Adhérent : Monsieur MPOUKOU MADZOU ROLPH - haum03 - Activ Infinite - Module de gestion" CtxtId="154" Techno="WEB" Timestamp="20/09/2017 14:17:25" />
 					<CAPTURE Name="PAGE_ConsultationN2112_1435139_1" Comment="Consultation - N°21125430 - Valide - Adhérent : Monsieur MPOUKOU MADZOU ROLPH - haum03 - Activ Infinite - Module de gestion" CtxtId="156" Techno="WEB" Timestamp="20/09/2017 14:35:30" />
+					<CAPTURE Name="PAGE_ConsultationN2217_1602386_1" Comment="Consultation - N°22179216 - Valide - Adhérent : Monsieur RODRIGUEZ KEVIN - haum03 - Activ Infinite - Module de gestion" CtxtId="176" Techno="WEB" Timestamp="25/09/2017 16:02:57" />
 				</PAGE>
 				<PAGE Name="pIdentContRechContratColl" Comment="Adhésions en collectif - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
