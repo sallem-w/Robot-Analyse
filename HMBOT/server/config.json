@@ -85,5 +85,21 @@
     "DA": {
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\da\\"
+    },
+    "ANALYSE":{
+       "afficherMenu" : true,
+       "cheminRacine": "C:\\deploy\\analyse\\",
+       "excel" : {
+            "debutIndexLigne" : 2,
+            "debutIndexCol" : 1,
+            "indexColonne" : {
+      	        "nom" : 16,
+                "prenom" : 17,
+                "dateDeNaissance" : 11, 
+                "referenceGRC" : 89,
+                "type" : 8,
+                "contexteAnalyseStoppee": 126
+            }
+        }
     }
 }

@@ -75,7 +75,7 @@ ctx.dataF = (function () {
 		var ppCouranteAnalyse = {
 			dataLocale: {
 				referenceGRC : '',
-			  typeAssure : '',
+			  typeAssure : ''
 			},
 			dataEnLigne: {
 				nbContratRadie : 0,
@@ -84,8 +84,7 @@ ctx.dataF = (function () {
 				identiteRelation : '' 
 			},
 			notes: {
-				dateTraitementContrat: '',
-			  commentaireContrat:''
+				contexteAnalyseStoppee : ''
 			}	
 		};
 		
