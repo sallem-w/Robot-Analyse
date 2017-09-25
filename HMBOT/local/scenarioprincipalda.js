@@ -113,8 +113,8 @@ ActivInfinitev7.step({ stServerConnexionDA : function(ev, sc, st) {
 		writeArray.push('Date traitement contrat');
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
-		writeArray.push('Remarque');
-		writeArray.push('Courrier');
+		//writeArray.push('Remarque');
+		//writeArray.push('Courrier');
 		ctx.excelF.remplirTableau(data.globalVariables.indexContratCourant + 2, writeArray);
 		ctx.excelF.sauverFichier();
 
