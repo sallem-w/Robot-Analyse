@@ -1,0 +1,32 @@
+{
+    "cheminTemplate": "C:\\deploy\\template\\",
+    "CMU":{
+        "afficherMenu": true,
+        "cheminRacine": "C:\\deploy\\cmu\\", 
+        "controlSeul": true,
+        "controlSolde": true,
+        "sauverMiseAJour": false,
+        "excel": {
+            "debutIndexCol": 1,
+            "debutIndexLigne": 5,
+            "indexColonne":{
+                "nom": 1,
+                "prenom": 2,
+                "numeroContratIndiv": 3,
+                "type": 4,
+                "dateDebutEffetContratIndiv": 5,
+                "dateFinEffetContratIndiv": 6,
+                "codeProduitSouscrit": 7,
+                "dateDebutEffetProduitSouscrit": 8,
+                "dateFinEffetProduitSouscrit": 9,
+                "nbJourCouvCMU": 10,
+                "dateDebutSituationParticuliere": 11,
+                "dateFinSituationParticuliere": 12,
+                "codeCentreGestion": 13,
+                "dateTraitementContrat": 14,
+                "statutsContrat": 15,
+                "commentaireContrat": 16
+            }
+        }
+    }
+}

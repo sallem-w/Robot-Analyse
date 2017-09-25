@@ -1,7 +1,7 @@
 ﻿//Délaration d'une classe pour le fichier config.json permettant ainsi de reconnaitre les attributs chargés
 
 /** @constructor */
-var confFileClass = function() {
+var confFileACSClass = function() {
   this.cheminTemplate = ''; 
   this.ACS = {
     afficherMenu : '',
@@ -45,49 +45,6 @@ var confFileClass = function() {
       TPSARLACSB : '',
       TPSARLACSC : ''
 		}	
-  }; 
-  this.CMU = {
-		afficherMenu : '',
-    cheminRacine : '',
-    controlSeul : '',
-    controlSolde : '',
-    sauverMiseAJour : '',
-    excel : {
-      debutIndexCol : '',
-      debutIndexLigne : '',
-      indexColonne : {
-      	nom : '',
-        prenom : '',
-        numeroContratIndiv : '',
-        type : '',
-        dateDebutEffetContratIndiv : '',
-        dateFinEffetContratIndiv : '',
-        codeProduitSouscrit : '',
-        dateDebutEffetProduitSouscrit : '',
-        dateFinEffetProduitSouscrit : '',
-        nbJourCouvCMU : '',
-        dateDebutSituationParticuliere : '',
-        dateFinSituationParticuliere : '',
-        codeCentreGestion : '',
-        dateTraitementContrat : '',
-        statutsContrat : '',
-        commentaireContrat : ''
-      }
-    }
-	}; 
-  this.SIRH = {
-		afficherMenu : '',
-		sauverMiseAJour : '',
-		cheminRacine : ''
-	}; 
-	this.SIRHUpdate = {
-		afficherMenu : '',
-		sauverMiseAJour : '',
-		cheminRacine : ''
-	};
-	this.DA = {
-		afficherMenu : '',
-		sauverMiseAJour : ''
-	}
+  }
 };
 

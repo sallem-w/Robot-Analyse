@@ -5,7 +5,7 @@ ctx.dataF = (function () {
 				codeScenario : '',
 				nomScenario:'',
         webData : {
-            url:'htt://exemple.com',
+            url:'',
             tabDeBordURL:'', 
             identifiant:'', 
             motDePasse:'' 
@@ -76,10 +76,10 @@ ctx.dataF = (function () {
             },
             notes: {
                 dateTraitementContrat:'',
-                statusContrat: '',
+                statutsContrat: '',
                 commentaireContrat: ''
             },
-            statusCMU: {
+            statutsCMU: {
 								existanceASSPRI : false,
                 FinCMUProcessus : false,
 								contratProlonge : false,
@@ -94,31 +94,55 @@ ctx.dataF = (function () {
 		
 			
 		dataF.initialisationScenarioCMU = function(dat,scenario){
-	
+				
+			dat.codeScenario=scenario;
+			dat.nomScenario='Résiliation CMU';
+			ctx.log('Init configF');
+			ctx.configF.chargementFichierConfigScenarioCMU();
+			dat.scenarioConfig = new confFileCMUClass();
+			dat.scenarioConfig=ctx.configF.fichierConfigScenario;
+			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 			dat.varGlobales=ctx.dataF.varGlobales;	
-			dat.codeScenario=scenario;
-			ctx.log('Init configF');
-			ctx.configF.init(scenario);
-			dat.scenarioConfig = new confFileClass();
-			dat.scenarioConfig=ctx.configF.fichierConfig;
-			dat.nomScenario='Résiliation CMU';
+			ctx.log('Init Trace : '+dat.scenarioConfig.CMU.cheminRacine);
+			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
+			ctx.traceF.infoTxt('Version du projet : ' + dat.scenarioConfig.Version + ' - Date de la Version : ' + ctx.getDate());
+			
 			ctx.log('Init excelF');
-			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
+			ctx.excelF.configExcel(dat);
+			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
+			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
+			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
+			ctx.traceF.infoTxt('Création du fichier résultat');	
+			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.CMU.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+			ctx.log('fichier résultat créé');
+//			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 			ctx.log('Init statsF');
+			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 			ctx.statsF.debuterStats(dat);
+			
+			
+				
+	
+	
+	
+			
+			
+			
 		}
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
 				ctx.log('resetContratCourant');
 				dat.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
 				dat.contratCourantCMU.dataEnLigne.dictContratsCourantCMU = [];
-				dat.contratCourantCMU.statusCMU.existanceASSPRI=false;
-				dat.contratCourantCMU.statusCMU.FinCMUProcessus=false;
-				dat.contratCourantCMU.statusCMU.contratTermine=false;
-				dat.contratCourantCMU.statusCMU.contratResilie=false;
-				dat.contratCourantCMU.statusCMU.contratProlonge=false;
+				dat.contratCourantCMU.statutsCMU.existanceASSPRI=false;
+				dat.contratCourantCMU.statutsCMU.FinCMUProcessus=false;
+				dat.contratCourantCMU.statutsCMU.contratTermine=false;
+				dat.contratCourantCMU.statutsCMU.contratResilie=false;
+				dat.contratCourantCMU.statutsCMU.contratProlonge=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }

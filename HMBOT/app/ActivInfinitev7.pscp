@@ -2653,7 +2653,9 @@
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
 				<SCRIPT Name="CMU_resiliation_contrat" Src="cmu_resiliation_contrat.js" Folder="Processus_CMU" />
-				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />
