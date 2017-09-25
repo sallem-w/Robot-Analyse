@@ -83,47 +83,6 @@ ActivInfinitev7.step({ stDebutBoucleContratAdhesion: function(ev, sc, st) {
 
 
 
-/** Description */
-ActivInfinitev7.step({ stLireDonneesAdhesionExcel : function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stLireDonneesAdhesionExcel');
-	 
-	var temp_contract=ctx.dataF.AdhesionContratTemp;
-	/** numéro du contrat */
-	data.contratCourantAdhesion.dataLocale.numeroContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.Adhesion.excel.indexColonne.numeroContratIndiv))), '00000000');
-	/** dans une boucle on récupère l'assuré principale et les bénéficiaires */
-	var numContratIndiv = data.contratCourantAdhesion.dataLocale.numeroContratIndiv;
-	var tempNumContratIndiv = numContratIndiv;
-	ctx.log('current row: '+data.varGlobales.ligneCourante);
- var temp_ligne=data.varGlobales.ligneCourante;
-//	data.temp_contract = {};
-	while (tempNumContratIndiv !== undefined && numContratIndiv === tempNumContratIndiv) {
-			//récupération des champs (type, .....)
-		  // contrat.typeAssure = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.configExcel.columnIndex.type);
-		  temp_contract.codeProduit = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.codeProduitSouscrit);
-		  temp_contract.dateDebEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.Adhesion.excel.indexColonne.dateDebutEffetProduitSouscrit);
-			temp_contract.dateFinEffContrat = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.Adhesion.excel.indexColonne.dateFinEffetProduitSouscrit);
-	    temp_contract.typeAssure = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.type);
-		  temp_contract.dateFinEffSituatParti = ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.Adhesion.excel.indexColonne.dateFinSituationParticuliere);
-		
-		  //
-			ctx.log('type contrat: '+temp_contract.typeAssure);
-		  if(temp_contract.typeAssure === ctx.configF.constantes.ASSPRI){
-				data.contratCourantAdhesion.dataLocale.dateFinEffSituatParti = temp_contract.dateFinEffSituatParti;
-			}
-		  data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion.push(temp_contract);
-		  temp_ligne+=1;
-			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.Adhesion.excel.indexColonne.numeroContratIndiv))), '00000000');
-	}
-//	ctx.log('numéro courant: '+ numContratIndiv);
-	ctx.log('ligne Courante: '+ data.varGlobales.ligneCourante);
-//	if(data.varGlobales.ligneCourante < data.varGlobales.indexLastRow){
-//		sc.endStep(ActivInfinitev7.steps.stSelectAdhesionContractFromExcel);
-//		return;
-//	}
-	sc.endStep();
-	return;
-}});
 
 
 

@@ -155,9 +155,10 @@ ctx.dataF = (function () {
 		
 		dataF.contratCourantAdhesion=contratCourantAdhesion;
 		
-			
-			
-			
+		dataF.configAdhesionClass = new confFileAdhesionClass();
+		
+		dataF.contratAdhesionAttributs = dataF.configAdhesionClass.ADHESION.excel.indexColonne;
+		
 		dataF.initialisationScenarioAdhesion = function(dat,scenario){	
 			dat.codeScenario=scenario;
 			dat.nomScenario='Adhesion';
@@ -168,6 +169,7 @@ ctx.dataF = (function () {
 			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantAdhesion=ctx.dataF.contratCourantAdhesion;
+			dat.contratCourantAdhesion.dataLocale.contratAdhesionAttributs=ctx.dataF.contratAdhesionAttributs;
 			dat.varGlobales=ctx.dataF.varGlobales;	
 			ctx.log('Init Trace : '+dat.scenarioConfig.Adhesion.cheminRacine);
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.Adhesion.cheminRacine, ctx.configF.scenario.Adhesion);
