@@ -33,8 +33,8 @@
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
 	names.push('Commentaire');
-	names.push('Remarque');
-	names.push('Courrier');
+	//names.push('Remarque');
+	// names.push('Courrier');
 	ctx.excelF.remplirTableau(1, names);
 	
 	data.globalVariables.indexContratCourant = 0;
