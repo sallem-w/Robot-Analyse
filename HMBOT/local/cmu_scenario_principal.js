@@ -56,7 +56,6 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 			ctx.popupF.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
 			return ;
 		}
-	ctx.log(" Test URL : "+ data.webData.url);
 	data.webData.url = ActivInfinitev7.pConnexion.getInfos().location.href;
 	data.webData.identifiant = ActivInfinitev7.pConnexion.oIdentifiant.get();
 	data.webData.motDePasse = ActivInfinitev7.pConnexion.oPwd.get();
@@ -150,6 +149,9 @@ ActivInfinitev7.step({ stVerifContratCMUCondition: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
 	if(data.contratCourantCMU.statutsCMU.existanceASSPRI == false){
+		ctx.traceF.infoTxt('existanceASSPRI == false - Pas d\'ASSPRI, on ne traite pas le contrat ');
+		data.contratCourantCMU.notes.commentaireContrat = 'Pas d\'ASSPRI, on ne traite pas le contrat';
+		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
 		return;
 	}
@@ -182,6 +184,7 @@ ActivInfinitev7.step({ stResilationCMUCondition: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stResilationCMUCondition ');
 	if(data.contratCourantCMU.statutsCMU.FinCMUProcessus == true){
+		ctx.traceF.infoTxt('FinCMUProcessus == true : on n\'effectue pas de résiliation ');
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
 		return;
 	}
