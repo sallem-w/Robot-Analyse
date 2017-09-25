@@ -62,7 +62,7 @@
 		<OPENDOC LineNumber="158" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
-		<CurPerspective><![CDATA[1]]></CurPerspective>
+		<CurPerspective><![CDATA[0]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 		<DebugTester><![CDATA[ctx.log('etat'+ctx.traceF.constantes.touteTraceActive)]]></DebugTester>
 	</PROPERTIES>

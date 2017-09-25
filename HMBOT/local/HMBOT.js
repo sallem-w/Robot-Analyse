@@ -124,6 +124,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+	var configANALYSE = ctx.configF.recupConfigScenario(ctx.configF.scenario.Analyse);
 	
 	
 		if (configACS.afficherMenu) {
@@ -150,6 +151,17 @@ GLOBAL.events.START.on(function (ev) {
 			
 		});	
 	}
+		
+		if(configANALYSE.afficherMenu){
+			systray.addMenu('', 'Analyse situation', 'Scenario ANALYSE ');
+		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'ANALYSE Complet V7', '', function(ev) {
+			  ctx.traceF.initFichierTrace(configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+			  ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+			  ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+			  var data = {};
+			  ActivInfinitev7.scenarios.scAnalyseSituation.start(data).onEnd(function(){});
+		});	
+		}
 	
 		
 	if (configDA.afficherMenu) {
