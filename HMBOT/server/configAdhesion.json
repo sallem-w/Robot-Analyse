@@ -1,0 +1,155 @@
+{
+    "cheminTemplate": "C:\\deploy\\template\\",
+    "ADHESION":{
+        "afficherMenu": true,
+        "cheminRacine": "C:\\deploy\\adhesion\\", 
+        "controlSeul": true,
+        "controlSolde": true,
+        "excel": {
+            "debutIndexCol": 1,
+            "debutIndexLigne": 2,
+            "indexColonne":{
+                "DISCRIMINANT": 4,
+                "DATE_DEBUT_EFFET": 7,
+                "TYPE_ASSURE": 8,
+                "CONTACT_SEX":9,
+                "BRTH_DAY_GREG": 11,
+                "SITUATION_FAMILLE": 12,
+                "CAT_SOCIALE": 13,
+                "CONTACT_NOM": 16,
+                "CONTACT_PRENOM": 17,
+                "NOM_JEUNE_FILLE":18,
+                "COMP_IDENT_DEST":19,
+                "COMP_IDENTIF_GEO":20,
+                "NUMERO_VOIE":21,
+                "COMP_NUM_VOIE":22,
+                "ADRESSE_NAT_VOIE":23,
+                "LIBELLE_VOIE":24,
+                "LIBELLE_LIEU_DIT":25,
+                "CODE_POSTAL":26,
+                "LIBELLE_LOCALITE":27,
+                "CODE_CEDEX": 28,
+                "NOM_BUREAU_CEDEX":29,
+                "DEPARTEMENT":30,
+                "CODE_PAYS":31,
+                "CODE_RNVP":32,
+                "TEL_DOM":33,
+                "TEL_PRO":34,
+                "TEL_POR":35,
+                "ADDR_MAIL":36,
+                "FAX":37,
+                "TITU_COMPTE":38,
+                "CODE_BANQUE":39,
+                "CODE_GUICHET":40,
+                "NUM_COMPTE":41,
+                "CLE_RIB":42,
+                "CLE_IBAN":43,
+                "BIC":44,
+                "DATE_SIGN_MANDAT":45,
+                "CODE_PAYS_RIB":46,
+                "CODE_GR":47,
+                "CAISSE_RO":48,
+                "CENTRE_PAIEMENT":49,
+                "NUM_RO":50,
+                "CLE_NUM_RO":51,
+                "RANG_GEM_RO":52,
+                "ASSURE_RO":53,
+                "GAMME":55,
+                "NUM_PROD_1":56,
+                "NUM_PROD_2":57,
+                "NUM_PROD_3":58,
+                "NUM_PROD_4":59,
+                "NUM_PROD_5":60,
+                "NUM_PROD_6":61,
+                "NUM_PROD_7":62,
+                "NUM_PROD_8":63,
+                "NUM_PROD_9":64,
+                "NUM_PROD_10":65,
+                "NUM_EXT_CTT":66,
+                "MADELIN":67,
+                "ANCIEN_CT":69,
+                "TITU_COMTPE_PREST":73,
+                "BANQUE_PREST":74,
+                "GUICHE_BANQUE_PREST":75,
+                "COMPTE_BANQUE_PREST":76,
+                "CLE_RIB_PREST":77,
+                "CLE_IBAN_PREST":78,
+                "BIC_PREST":79,
+                "CODE_PAYS_PREST":80,
+                "MODE_PAIE":81,
+                "PERIODICITE":82,
+                "JOUR_PRELEV":83,
+                "FREQ_AVIS_ECH":84,
+                "TYPE_TERME":85,
+                "IND_TLT":87,
+                "ANCIEN_ASSURE":88,
+                "REF_EXT":89,
+                "contexteAnalyseStoppee":126,
+                "dateTraitementContrat" : 127,
+                "statutsContrat" : 128,
+                "commentaireContrat" : 129
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                "numeroContratIndiv": 3,
+                
+                "dateFinEffetContratIndiv": 6,
+                "codeProduitSouscrit": 7,
+                "dateDebutEffetProduitSouscrit": 8,
+                "dateFinEffetProduitSouscrit": 9,
+                "nbJourCouvCMU": 10,
+                "dateDebutSituationParticuliere": 11,
+                "dateFinSituationParticuliere": 12,
+                "codeCentreGestion": 13,
+                "dateTraitementContrat": 14,
+                "statutsContrat": 15,
+                "commentaireContrat": 16
+            }
+        }
+    }
+}

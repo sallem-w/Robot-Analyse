@@ -37,6 +37,7 @@
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
 	scenario.Suspension ='Suspension';
+	scenario.Adhesion = 'Adhesion';
 	
 	configF.scenario=scenario;
 	
@@ -50,6 +51,23 @@
 		ctx.log('Initialisation : Chargement du fichier config.json');
 	}
 	
+	configF.chargementFichierConfigScenarioCMU = function() {
+		var cheminConfigScenario = 'configCMU.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileCMUClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configCMU.json');
+	}
+		
+	configF.chargementFichierConfigScenarioAdhesion = function() {
+		var cheminConfigScenario = 'configAdhesion.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileAdhesionClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configCMU.json');
+		}
 	
 	
 	configF.recupConfigScenario = function(codeScenario) {

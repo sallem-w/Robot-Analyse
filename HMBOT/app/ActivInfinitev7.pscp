@@ -2839,6 +2839,11 @@
 				<SCRIPT Name="Suspension_verification_contrat" Folder="ProcessusSuspension" Src="Suspension_verification_contrat.js" />
 				<SCRIPT Name="Suspension_resiliation" Folder="ProcessusSuspension" Src="Suspension_resiliation.js" />
 				<SCRIPT Name="Suspension_solde" Src="Suspension_solde.js" Folder="ProcessusSuspension" />
+				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
+				<SCRIPT Name="scAdhesionPrincipal" Src="scAdhesionPrincipal.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="ConfigAdhesionClass" Src="ConfigAdhesionClass.js" Folder="Complements" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

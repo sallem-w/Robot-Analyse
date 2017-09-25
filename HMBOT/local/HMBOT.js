@@ -135,7 +135,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
-	
+	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 
 		if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
@@ -150,15 +150,11 @@ GLOBAL.events.START.on(function (ev) {
 
 	
 	
-		if (configCMU.afficherMenu) {
+	if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
-		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
-			
-			
-			var data = {};
-			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
-			
-			
+		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {	
+		var data = {};
+		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
 		
@@ -174,7 +170,7 @@ GLOBAL.events.START.on(function (ev) {
 		});	
 	}
 	
-		
+
 	if (configDA.afficherMenu) {
 		systray.addMenu('', 'DA', 'Scenario DA ');
 		systray.addMenu('DA', 'DACompletV7', 'DA Complet V7', '', function(ev) {
@@ -185,6 +181,14 @@ GLOBAL.events.START.on(function (ev) {
 			//ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
 		});	
+	}
+
+	if(configAdhesion.afficherMenu){
+		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
+		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
+		var data = {};
+		ActivInfinitev7.scenarios.scAdhesionPrincipal.start(data).onEnd(function(){});
+		});
 	}
 });
 
