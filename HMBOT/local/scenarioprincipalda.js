@@ -16,50 +16,69 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stServerConnexionDA);
 	sc.step(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 	sc.step(ActivInfinitev7.steps.stVersVerif);
+	// début de vérification 
+	sc.step(ActivInfinitev7.steps.stInitialisationVerifContractDA);
+	sc.step(ActivInfinitev7.steps.stAllerVersPageSynthèse);
+	sc.step(ActivInfinitev7.steps.stVerifPageSynthese);
+	sc.step(ActivInfinitev7.steps.stSelectionnerInsee);
+	sc.step(ActivInfinitev7.steps.stCherchercherBenefViaInsee);
+	sc.step(ActivInfinitev7.steps.stPageDeSynthese);
+	sc.step(ActivInfinitev7.steps.stVerifierEtatContrat);
+	sc.step(ActivInfinitev7.steps.stSelectionnerAdhesion);
+	sc.step(ActivInfinitev7.steps.stRechercherViaNumeroContratIndiv);
+	sc.step(ActivInfinitev7.steps.stVerifierNomAdresse);
+	sc.step(ActivInfinitev7.steps.stFinDeVerification);
+	// Fin vérification
+	sc.step(ActivInfinitev7.steps.stResiliationOuPassageAuContratSuivant);
+	sc.step(ActivInfinitev7.steps.stVersResiliation);
+	// début résiliation
+	sc.step(ActivInfinitev7.steps.stInitialisationResiliationConcu);
+	sc.step(ActivInfinitev7.steps.stAllerAlaPageDeResiliation);
+	sc.step(ActivInfinitev7.steps.stRechercherContratAResilier);
+	// fin résiliation
 	sc.step(ActivInfinitev7.steps.stEcritureDesDonnées);
+	sc.step(ActivInfinitev7.steps.stPasserAuProchainContrat);
 	sc.step(ActivInfinitev7.steps.stFinScenarioPrincipal);
 	
 }});
 
 	
 	
-/** Description */
-ActivInfinitev7.step({ stServerConnexionDA : function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Début étape - stServerConnexionDA');
-	if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
-		ctx.traceF.infoTxt('Le serveur Infinite est fermé');
-		ctx.popupF.newPopup('Le serveur Infinite est fermé');
-		return ;
-	}
+ 	/** Description */
+  ActivInfinitev7.step({ stServerConnexionDA : function(ev, sc, st) {
+		var data = sc.data;
+		ctx.traceF.infoTxt('Début étape - stServerConnexionDA');
+		if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
+			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
+			ctx.popupF.newPopup('Le serveur Infinite est fermé');
+			return ;
+		}
 
-	if (!ActivInfinitev7.pConnexion.exist()) {
-		ctx.traceF.infoTxt('Open Infinite on connection page');
-		ctx.popupF.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
-		return ;
-	}
+		if (!ActivInfinitev7.pConnexion.exist()) {
+			ctx.traceF.infoTxt('Open Infinite on connection page');
+			ctx.popupF.newPopup('Il faut ouvrir et rentrer ces identifiants dans Infinite');
+			return ;
+		}
 
-	//sc.data.webData.url = ActivInfinitev7.pConnexion.getInfos().location.href;
+		data.webData.url = ActivInfinitev7.pConnexion.getInfos().location.href;
 
-		
-	//on entre dans Infinite
-	ActivInfinitev7.pConnexion.btConnexion.click();
-	ActivInfinitev7.pTabDeBord.wait(function(ev) {
-	var infos = ActivInfinitev7.pTabDeBord.getInfos();
-		
-	//sc.data.webData.tabDeBordURL=infos.document.URL;
-	//ctx.log('URL de Tableau de bord : ' + sc.data.webData.tabDeBordURL);
-	sc.endStep();
-	return;
-	});
-}});
+		ActivInfinitev7.pConnexion.btConnexion.click();
+		ActivInfinitev7.pTabDeBord.wait(function(ev) {
+			var infos = ActivInfinitev7.pTabDeBord.getInfos();
+			data.webData.tabDeBordURL = infos.document.URL;
+			ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+			sc.endStep();
+		  return;
+	 	});
+  }});
 	
 	/** Description */
 	ActivInfinitev7.step({ stDebutScenarioPrincipalDA: function(ev, sc, st) {
 		var data = sc.data;
 		var i = data.globalVariables.indexContratCourant;
-		
+		ctx.traceF.infoTxt( " index du contrat courant " + i);
 		data.contratCourant = data.contrat[i];
+		ctx.traceF.infoTxt( ' le type de contrat est : ' + data.contrat[i].type);
 		if(data.contratCourant.type == 'DISPENSE AFFILIATION' )
 		{
 			ctx.traceF.infoTxt('cas trouvé');
@@ -68,7 +87,8 @@ ActivInfinitev7.step({ stServerConnexionDA : function(ev, sc, st) {
 		}
 		else 
 		{
-			sc.endStep(ActivInfinitev7.steps.stFinScenarioPrincipal);
+			ctx.traceF.infoTxt('cas non trouvé');
+			sc.endStep(ActivInfinitev7.steps.stPasserAuProchainContrat);
 			return;
 		}
 		
@@ -79,47 +99,90 @@ ActivInfinitev7.step({ stServerConnexionDA : function(ev, sc, st) {
 	ActivInfinitev7.step({ stVersVerif: function(ev, sc, st) {
 		ctx.traceF.infoTxt(' STEP - stVersVerif');
 		var data = sc.data;
-		st.disableTimeout();
-		
-		var scVerif = ActivInfinitev7.scenarios.scVerifContratDA.start(data).onEnd(function(scDataVerif){
+		//st.disableTimeout();
+		/*var scVerification = ActivInfinitev7.scenarios.scVerifContratDA.start(data).onEnd(function(sc5){
 			ctx.traceF.infoTxt(' STEP - dans le sous-scénario de vérification');
-			sc.data = scDataVerif.data;
+			sc.data = sc5.data;
 			sc.endStep();
 			return;
-		});
+		});*/
+		sc.endStep();
+	}});
+  
+	/** Description */
+	ActivInfinitev7.step({ stResiliationOuPassageAuContratSuivant: function(ev, sc, st) {
+		ctx.traceF.infoTxt(' STEP - stResiliationOuPassageAuContratSuivant');
+		var data = sc.data;
+		if(data.sortieProcessusDA == true){
+			sc.endStep(ActivInfinitev7.steps.stEcritureDesDonnées);
+		}
+		else{
+			sc.endStep();
+			return;
+		}
+	}});
+
+	
+	/** Description */
+	ActivInfinitev7.step({ stVersResiliation: function(ev, sc, st) {
+		ctx.traceF.infoTxt(' STEP - stVersResiliation');
+		var data = sc.data;
+		
+		sc.endStep();
+		return;
 	}});
 	
-// test sur data.sortieProcessusDA à faire
+	
 	
 	/** Description */
 	ActivInfinitev7.step({ stEcritureDesDonnées: function(ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(' -------------- INFOS CONTRAT ------------------- ');
 		
+		data.dataFichier.type = data.contratCourant.type;
 		data.dataFichier.numRO = data.contratCourant.RONumber;
-		data.dataFichier.nom = data.contratCourant.Nom
+		data.dataFichier.nom = data.contratCourant.Nom;
 		data.dataFichier.prenom = data.contratCourant.Prenom;
 		data.dataFichier.adresse = data.contratCourant.Adresse;
 		data.dataFichier.localite = data.contratCourant.Localite;
+		data.dataFichier.dateExtraction = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction);
+		data.dataFichier.dateNaissance = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateNaissance);
+		data.dataFichier.dateDispense = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension);
 		
-		ctx.traceF.infoTxt( 'le nom du client est :' + data.dataFichier.nomClient );
+		ctx.traceF.infoTxt( 'le nom du client est :' + data.globalVariables.nomClient );
 		ctx.traceF.infoTxt( 'Numéro Sécu :' + data.dataFichier.numRO );
 		ctx.traceF.infoTxt( 'Prénom :' + data.dataFichier.prenom );
 		ctx.traceF.infoTxt( 'Nom :' + data.dataFichier.nom );
 		ctx.traceF.infoTxt( 'Adresse :' + data.dataFichier.adresse + ' ' + data.dataFichier.localite );
 	
-		var writeArray = _.getObjectValues(data.contratCourant);
-		writeArray.push('Numéro de contrat individuel');
-		writeArray.push('Date traitement contrat');
+		var writeArray = _.getObjectValues(data.dataFichier);
+		writeArray.push(data.notes.numContratIndiv);
+		writeArray.push(ctx.dateF.formatJJMMAAAA(new Date()));
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
-		//writeArray.push('Remarque');
-		//writeArray.push('Courrier');
 		ctx.excelF.remplirTableau(data.globalVariables.indexContratCourant + 2, writeArray);
 		ctx.excelF.sauverFichier();
 
 		sc.endStep();
 		return;
+	}});
+	
+	
+	/** Description */
+	ActivInfinitev7.step({ stPasserAuProchainContrat: function(ev, sc, st) {
+		var data = sc.data;
+		
+		if(data.globalVariables.indexContratCourant < data.stats.nombreDeContrats - 1)
+		{
+			
+			data.globalVariables.indexContratCourant += 1 ;
+			data.sortieProcessusDA = false;
+			sc.endStep(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
+		}
+		else {
+			sc.endStep();
+			return;
+		}
 	}});
 	
 	

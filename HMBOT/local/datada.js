@@ -4,17 +4,17 @@
 	
 		var webData = {
 			url:'',
-			dashboardURL:'',
+			tabDeBordURL:'',
 			login:'',
 			password:''
 		};
 
 		var globalVariables = {
-			indexContratCourant:0
+			indexContratCourant:0,
+			nomClient: ''
 		};
 		
 		var dataFichier = {
-			nomClient: '',
 			type :'',
 			numRO:'',
 			dateExtraction:'',
@@ -22,7 +22,7 @@
 			nom:'',
 			adresse:'',
 			localite:'',
-			dateDentreeFiliale:'',
+			dateNaissance:'',
 			dateDispense:''
 		};
 
@@ -39,7 +39,7 @@
 			dureeTraitement : new Date(),
 			nombreCasTrouvesDansPivot : 0,
 			nombreCasTraites : 0,
-			nombreCasTraitesAvceAvertissement : 0,
+			nombreCasTraitesAvecAvertissement : 0,
 			nombreCasNonTraites : 0,
 			nombreDeContrats : 0
 		};
@@ -56,6 +56,11 @@
 		data.contrat = contrat;
 		data.contratCourant = contratCourant;
 		data.sortieProcessusDA = sortieProcessusDA;
+		
+		ctx.configF.chargementFichierConfigDA();
+		ctx.traceF.initFichierTrace(ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
+		ctx.traceF.infoTxt(' template path ' + ctx.configF.recupererCheminTemplate() + ' '+ ctx.configF.recupererCheminRacine() + ' ' + ctx.configF.scenario.DA);
+		ctx.statsF.initFileStats(ctx.configF.recupererCheminTemplate(), ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
 		
 		sc.endStep();
 		return ;
