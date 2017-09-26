@@ -95,7 +95,11 @@ ctx.dataF = (function () {
 		var ppCouranteAnalyse = {
 			dataLocale: {
 				referenceGRC : '',
-			  typeAssure : ''
+			  typeAssure : '',
+				numeroRO : '',
+				nom : '',
+				prenom : '',
+				dateDeNaissance : ''
 			},
 			dataEnLigne: {
 				nbContratRadie : 0,

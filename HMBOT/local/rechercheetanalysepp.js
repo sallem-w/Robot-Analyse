@@ -18,13 +18,22 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitConsultationPP);
 	sc.step(ActivInfinitev7.steps.stConsultationPP);
 	sc.step(ActivInfinitev7.steps.stResultRecherchePP);
+	sc.step(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
+	sc.step(ActivInfinitev7.steps.stInitRecherchePPParRO);
+	sc.step(ActivInfinitev7.steps.stRecherchePPParRO);
+	sc.step(ActivInfinitev7.steps.stResultRecherchePPParRO);
 	sc.step(ActivInfinitev7.steps.stVerifRadiationContrats); //calculer le nombre de contrats radiés dans la liste des contrats associés à la pp
-	sc.step(ActivInfinitev7.steps.stInitAnalyseContratsRadies);
+	sc.step(ActivInfinitev7.steps.stInitAnalyseContratsRadies); //initialisation de la phase d'analyse des contrats radiés (si tous les contrats sont I) 
 	sc.step(ActivInfinitev7.steps.stOuvertureContratRadie);
 	sc.step(ActivInfinitev7.steps.stResOuvertureContratRadie);
-	
 	sc.step(ActivInfinitev7.steps.stAnalyseContratsRadies);
-	sc.step(ActivInfinitev7.steps.stContratRadieSuivant);
+	sc.step(ActivInfinitev7.steps.stContratRadieSuivant); //rebouclage sur le contrat radié suivant
+	
+	sc.step(ActivInfinitev7.steps.stAnalyseContratsEnCours); //le cas ou on a entre 1 et n-1 contrats A ==> analyse les contrats e cours
+	
+	
+	
+	
 	
 	sc.step(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 
@@ -74,33 +83,99 @@ ActivInfinitev7.step({ stConsultationPP : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stResultRecherchePP : function(ev, sc, st) {
 	var data = sc.data;
-	
 	ctx.traceF.infoTxt('Etape stResultRecherchePP: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
-	
 	ActivInfinitev7.pRecherchePPRefGRCRes.wait(function(){
 		if(ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo.exist()){
-	  	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création - aucun contrat associé à la PP';
-			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+	  	ctx.traceF.infoTxt('La PP n existe selon la recherche par Ref GRC, on lance la recherche par numéro RO');
+			ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler.click();
+			sc.endStep(ActivInfinitev7.steps.stInitRecherchePPParRO);
 	  	return;
-		}else if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
-			//vérifier si le type et l'identité est vide ou non
-			data.ppCouranteAnalyse.dataEnLigne.typeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation.i(0).get();
-			data.ppCouranteAnalyse.dataEnLigne.identiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation.i(0).get();
-			if(data.ppCouranteAnalyse.dataEnLigne.typeRelation === '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation === ''){
-	    	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création - type relation / identité relation vides';
-		  	sc.endStep(ActivInfinitev7.steps.stInsertionDonneesAnalyseExcel);
-	    	return;
-			}else if(data.ppCouranteAnalyse.dataEnLigne.typeRelation !== '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation !== ''){
-				ctx.traceF.infoTxt('un ou plusieurs contrats sont associe(s) à la pp courante --------------> déterminer le nombre des contrats radiés');
-				sc.endStep();
-				return;
-			}
+		}else {
+			sc.endStep();
+			return;
 		}
 	});
 }});
 
 
-/** cet etape permet de déterminer e nombre des contrats radiés: si tous les contrats sont radiés on cherche la cause de radiation */
+
+/** Description */
+ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
+	var data = sc.data;
+	
+	if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
+			//vérifier si le type et l'identité est vide ou non
+			data.ppCouranteAnalyse.dataEnLigne.typeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation.i(0).get();
+			data.ppCouranteAnalyse.dataEnLigne.identiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation.i(0).get();
+			if(data.ppCouranteAnalyse.dataEnLigne.typeRelation === '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation === ''){
+	    	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création - type relation / identité relation vides';
+				//passer à l'étape d'insertion des données dans le fichier résultat
+		  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+	    	return;
+			}else if(data.ppCouranteAnalyse.dataEnLigne.typeRelation !== '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation !== ''){
+				ctx.traceF.infoTxt('un ou plusieurs contrats sont associe(s) à la pp courante --------------> déterminer le nombre des contrats radiés');
+				//tous les contrats associés à la PP sont radiés ==> déterminer la cause de radiation
+				sc.endStep(ActivInfinitev7.steps.stVerifRadiationContrats);
+				return;
+			}	
+	}
+}});
+
+
+/** cet étape initialise la recherche de la PP par num RO */
+ActivInfinitev7.step({ stInitRecherchePPParRO: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stInitRecherchePPParRO: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	
+	ActivInfinitev7.pIdentContratRechConsul.wait(function(){
+		//récupérer le nom, le prenom, la date de naissance, et le num RO
+	  data.ppCouranteAnalyse.dataLocale.numeroRO = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.numeroRO);
+	  data.ppCouranteAnalyse.dataLocale.nom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.nom);
+	  data.ppCouranteAnalyse.dataLocale.prenom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.prenom);
+	  data.ppCouranteAnalyse.dataLocale.dateDeNaissance = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.dateDeNaissance);
+		ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stRecherchePPParRO: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);	
+	ActivInfinitev7.pRecherchePPRefGRC.wait(function(){
+			ActivInfinitev7.pRecherchePPRefGRC.oNom.set(data.ppCouranteAnalyse.dataLocale.nom);
+		  ActivInfinitev7.pRecherchePPRefGRC.oPrenom.set(data.ppCouranteAnalyse.dataLocale.prenom);
+		  ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance.set(ctx.dateF.formatDateIAE(data.ppCouranteAnalyse.dataLocale.dateDeNaissance+''));
+			ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.set(data.ppCouranteAnalyse.dataLocale.numeroRO);
+			ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP.click();
+			sc.endStep();
+	    return;
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stResultRecherchePPParRO : function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stResultRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);
+	ActivInfinitev7.pRecherchePPRefGRCRes.wait(function(){
+		if(ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo.exist()){
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'création contrat';
+			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+			return;
+		}else{
+			sc.endStep(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
+			return;
+		}
+	});
+
+}});
+
+
+/** cet etape permet de déterminer le nombre des contrats radiés: si tous les contrats sont radiés on cherche la cause de radiation */
 ActivInfinitev7.step({ stVerifRadiationContrats: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stVerifRadiationContrats: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
@@ -112,11 +187,13 @@ ActivInfinitev7.step({ stVerifRadiationContrats: function(ev, sc, st) {
 	}
 	if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie === ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.count()){
 		ctx.traceF.infoTxt('Tous les contrats sont radiés - parcourir la liste des contrats et déterminer la cause de radiation');
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Tous les contrats radiés --> créations';
 		sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsRadies);
 		return;
 	}else{
-		ctx.traceF.infoTxt('n-1 ou 0 contrats radié - cas par défaut');
-	  sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		ctx.traceF.infoTxt('n-1 ou 0 contrats radié - cas par défaut'); //cas 3.3
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'existe un ou plusieurs contrats A --> Analyse';
+	  sc.endStep(ActivInfinitev7.steps.stAnalyseContratsEnCours);
 	  return;
 	}
 }});
@@ -211,6 +288,18 @@ ActivInfinitev7.step({ stContratRadieSuivant: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stContratRadieSuivant: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	data.ppCouranteAnalyse.dataEnLigne.indexContrat += 1;
 	sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsRadies);
+	return;
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAnalyseContratsEnCours : function(ev, sc, st) {
+	var data = sc.data;
+	
+	ctx.traceF.infoTxt('Etape stAnalyseContratsEnCours xxxxxxxxxxxxxxxxxxxx : ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	
+	sc.endStep();
 	return;
 }});
 

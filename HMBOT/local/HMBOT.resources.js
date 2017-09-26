@@ -316,7 +316,10 @@ ActivInfinitev7.pRecherchePPRefGRC.oDateDebutEffet = ActivInfinitev7.pRechercheP
 ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC = ActivInfinitev7.pRecherchePPRefGRC.addItem('oIdentifiantGRC');
 ActivInfinitev7.pRecherchePPRefGRC.oNumeroContratCol = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroContratCol');
 ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP = ActivInfinitev7.pRecherchePPRefGRC.addItem('btRecherchePP');
-ActivInfinitev7.pRecherchePPRefGRC.oGroupeAssure = ActivInfinitev7.pRecherchePPRefGRC.addItem('oGroupeAssure');
+ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroRo', {"mustExist":true});
+ActivInfinitev7.pRecherchePPRefGRC.oNom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNom');
+ActivInfinitev7.pRecherchePPRefGRC.oPrenom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oPrenom');
+ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateNaissance');
 
 ActivInfinitev7.pRecherchePPRefGRCRes = ActivInfinitev7.addPage('pRecherchePPRefGRCRes', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oResultatParRelation');
@@ -327,5 +330,7 @@ ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation = ActivInfinitev7.pRecherche
 ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oIdentiteRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oStatus', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
+ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
+ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
 
 ActivInfinitev7.pHistoriqueOptsConsul = ActivInfinitev7.addPage('pHistoriqueOptsConsul', {"comment":"Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});

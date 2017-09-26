@@ -105,9 +105,7 @@
 	}
 	
 }
-	dateF.dateEnString = function (tps){
-		
-		
+	dateF.dateEnString = function (tps){	
 		var tt=new Date(tps); //creation de l'objet
 		var jj = dateF.format2c(tt.getDate());
 		var mm = dateF.format2c(tt.getMonth()+1);
@@ -116,6 +114,13 @@
 		return stTps;
 	}
 	
+  dateF.formatDateIAE = function (tps){	
+    var jj=tps.substr(6,2);
+		var mm=tps.substr(4,2);
+		var yy=tps.substr(0,4);
+		return jj+'/'+mm+'/'+yy;
+	}	
+
 	dateF.enObjet = function(dateString, separator) {
 		separator = separator || '/';
 		var parts = dateString.split(separator);

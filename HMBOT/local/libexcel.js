@@ -32,6 +32,14 @@
 		];
 		return tab;
 	}
+	
+	excelF.modifierEnteteIAE = function(){
+		var tab = [
+		  { columnIndex: configExcel.indexColonne.contexteAnalyseStoppee, value: "Contexte Analyse Stoppée" }
+		];	
+		return tab;
+	}
+	
 	//startRowIndex
 	excelF.debutIndexLigne = function() {
 		return configExcel.debutIndexLigne - 1;

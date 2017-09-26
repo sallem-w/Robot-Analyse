@@ -398,6 +398,7 @@
 						<TITRE Scan="start-with"><![CDATA[Consultation]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=ACCO([A-Z-0-9]+)]]></URL>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/personne\/RecherchePersonne\.do\?method=validerSelectionPersonne&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/personne\/RecherchePersonne\.do\?method=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum04/mdg/Go.do?id=ACCC04STD]]></PATH>
 					<OBJETS>
@@ -477,6 +478,7 @@
 					<CAPTURE Name="PAGE_ConsultationHaum0a_1533513_1" Comment="Consultation - haum0a - Activ Infinite - Module de gestion" CtxtId="73" Techno="WEB" Timestamp="30/05/2017 15:33:54" />
 					<CAPTURE Name="PAGE_ConsultationN2121_1027005_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="144" Techno="WEB" Timestamp="20/09/2017 10:27:13" />
 					<CAPTURE Name="PAGE_ConsultationHaum03_1552157_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="180" Techno="WEB" Timestamp="25/09/2017 15:52:27" />
+					<CAPTURE Name="PAGE_ConsultationHaum03_1254209_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="184" Techno="WEB" Timestamp="26/09/2017 12:54:35" />
 				</PAGE>
 				<PAGE Name="pIdentContratRechResu" Comment="Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -2990,12 +2992,45 @@
 								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R2R0R2">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+						<OBJET Name="oNumeroRo" MustExist="Y">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R3R1R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroRo6]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNom">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R2R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nom1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPrenom">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R6R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[prenom1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateNaissance">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R6R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateNaissance1]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationHaum03_1702400_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="168" Techno="WEB" Timestamp="21/09/2017 17:03:06" />
+					<CAPTURE Name="PAGE_ConsultationHaum03_1042176_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="183" Techno="WEB" Timestamp="26/09/2017 10:42:37" />
 				</PAGE>
 				<PAGE Name="pRecherchePPRefGRCRes" Comment="Consultation - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -3101,6 +3136,24 @@
 								<TAG Name="P" Scope="All" CapturedPos="170.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R2R0R0">
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[Aucune personne ne répond à vos critères.]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSystemeExterne">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="170.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R4R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[systemeExterne]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btAnnuler">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="170.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R3R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnAnnulerList]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
