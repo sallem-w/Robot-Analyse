@@ -15,6 +15,7 @@
 		nomFichierConfig : 'config.json',
 		constantes : {
 			ASSPRI: 'ASSPRI',
+			principale: 'Principale',
 			produitValide: 'VA',
 			produitTermine : 'RA',
 			correspondanceRang : {
@@ -22,9 +23,10 @@
 				CONJOI: ['11'],
 				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
 			}
-		} ,
-		fichierConfig : ''
-		
+		},
+		gammeProduit : ['Harmonie','Harmonie Santé Particuliers', 'Harmonie Santé Collectif'],
+		fichierConfig : '',
+		fichierConfigScenario:''
 	};
 	
 
@@ -61,12 +63,14 @@
 	}
 		
 	configF.chargementFichierConfigScenarioAdhesion = function() {
-		var cheminConfigScenario = 'configAdhesion.json';
-		ctx.log('-->configF.chargementFichierConfig()');
-		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		var cheminConfig = 'configAdhesion.json';
+		ctx.log('-->configF.chargementFichierConfigScenarioAdhesion()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfig);
+		ctx.log('Chemin dossier server : ' + ctx.options.serverURL);
+		ctx.log('Chemin fichier config Adhesion : ' + ctx.options.serverURL + '\\' + cheminConfig);
 		configF.fichierConfigScenario = new confFileAdhesionClass();
 		configF.fichierConfigScenario = JSON.parse(chemin);
-		ctx.log('Initialisation : Chargement du fichier configCMU.json');
+		ctx.log('Initialisation : Chargement du fichier configAdhesion.json');
 		}
 	
 	

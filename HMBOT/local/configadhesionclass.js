@@ -3,6 +3,7 @@
 /** @constructor */
 var confFileAdhesionClass = function () {
   this.cheminTemplate = '';
+	this.Version = '';
   this.ADHESION = {
     afficherMenu: '',
     cheminRacine: '',
@@ -95,6 +96,5 @@ var confFileAdhesionClass = function () {
       }
     }
   }
-  this.Version = '1.1'
 };
 

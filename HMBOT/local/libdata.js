@@ -134,7 +134,8 @@ ctx.dataF = (function () {
 		        
 		var contratCourantAdhesion = {
 			dataLocale: {
-				numeroContratIndiv : '',
+				NUM_SEQ_CT : '',
+				GAMME : '',
 				tabPersonnesPhysiques : []
             },
       dataEnLigne: {
@@ -154,12 +155,10 @@ ctx.dataF = (function () {
     };
 		
 		dataF.contratCourantAdhesion=contratCourantAdhesion;
-		
-		dataF.configAdhesionClass = new confFileAdhesionClass();
-		
-		dataF.contratAdhesionAttributs = dataF.configAdhesionClass.ADHESION.excel.indexColonne;
-		
+
 		dataF.initialisationScenarioAdhesion = function(dat,scenario){	
+			var configAdhesion = new confFileAdhesionClass();
+			dat.contratAdhesionAttributs = configAdhesion.ADHESION.excel.indexColonne;
 			dat.codeScenario=scenario;
 			dat.nomScenario='Adhesion';
 			ctx.log('Init configF');
@@ -179,7 +178,7 @@ ctx.dataF = (function () {
 			ctx.excelF.configExcel(dat);
 			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
 			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
-			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
+			dat.varGlobales.ligneCourante = dat.scenarioConfig.Adhesion.excel.debutIndexLigne; // depuis le config.JSON
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
 			ctx.traceF.infoTxt('Création du fichier résultat');	
@@ -191,6 +190,8 @@ ctx.dataF = (function () {
 		}
 			
 	dataF.resetContratCourantAdhesion = function(dat,scenario){
+		dat.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques=[];
+		dat.contratCourantAdhesion.dataEnLigne.tabPersonnesPhysiques=[];
 			ctx.log('resetContratCourant');
 			
 	}	

@@ -1,6 +1,7 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
-    "ADHESION":{
+    "Version":1.1,
+    "Adhesion":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\adhesion\\", 
         "controlSeul": true,
@@ -89,67 +90,6 @@
                 "dateTraitementContrat" : 127,
                 "statutsContrat" : 128,
                 "commentaireContrat" : 129
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                "numeroContratIndiv": 3,
-                
-                "dateFinEffetContratIndiv": 6,
-                "codeProduitSouscrit": 7,
-                "dateDebutEffetProduitSouscrit": 8,
-                "dateFinEffetProduitSouscrit": 9,
-                "nbJourCouvCMU": 10,
-                "dateDebutSituationParticuliere": 11,
-                "dateFinSituationParticuliere": 12,
-                "codeCentreGestion": 13,
-                "dateTraitementContrat": 14,
-                "statutsContrat": 15,
-                "commentaireContrat": 16
             }
         }
     }

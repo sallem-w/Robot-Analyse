@@ -13,12 +13,9 @@
         "afficherMenu": true
     },
     "DA": {
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\da\\"
+        "afficherMenu": true
     },
-    "Suspension":{
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\Suspension\\"
-
+    "Adhesion": {
+        "afficherMenu": true
     }
 }
