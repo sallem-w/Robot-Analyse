@@ -34,6 +34,7 @@ ActivInfinitev7.pContexteContratRech.oTitrePage2 = ActivInfinitev7.pContexteCont
 ActivInfinitev7.pContexteContratRech.btRecherche = ActivInfinitev7.pContexteContratRech.addItem('btRecherche');
 ActivInfinitev7.pContexteContratRech.onIdentificationBenef = ActivInfinitev7.pContexteContratRech.addItem('onIdentificationBenef', {"mustExist":true});
 ActivInfinitev7.pContexteContratRech.oTypeIdentification = ActivInfinitev7.pContexteContratRech.addItem('oTypeIdentification', {"mustExist":true});
+ActivInfinitev7.pContexteContratRech.oRechPersDetail = ActivInfinitev7.pContexteContratRech.addItem('oRechPersDetail');
 
 ActivInfinitev7.pContexteContratOuvert = ActivInfinitev7.addPage('pContexteContratOuvert', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher"});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage', {"mustExist":true});
@@ -41,10 +42,18 @@ ActivInfinitev7.pContexteContratOuvert.oNumeroContrat = ActivInfinitev7.pContext
 ActivInfinitev7.pContexteContratOuvert.oDateFinEffet = ActivInfinitev7.pContexteContratOuvert.addItem('oDateFinEffet', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oContratIndiv = ActivInfinitev7.pContexteContratOuvert.addItem('oContratIndiv', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage2 = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage2');
+<<<<<<< HEAD
 ActivInfinitev7.pContexteContratOuvert.oTypeIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeIdentification');
 ActivInfinitev7.pContexteContratOuvert.oNumIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oNumIdentification');
 ActivInfinitev7.pContexteContratOuvert.btRecherche = ActivInfinitev7.pContexteContratOuvert.addItem('btRecherche');
 ActivInfinitev7.pContexteContratOuvert.oInfosSouscripteur = ActivInfinitev7.pContexteContratOuvert.addItem('oInfosSouscripteur');
+=======
+ActivInfinitev7.pContexteContratOuvert.oTabResSynthese = ActivInfinitev7.pContexteContratOuvert.addItem('oTabResSynthese');
+ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetailsTab');
+ActivInfinitev7.pContexteContratOuvert.oPersonneDetails = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetails');
+>>>>>>> 'Modifs2609'
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');

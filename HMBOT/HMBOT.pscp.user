@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
+<<<<<<< HEAD
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
@@ -18,6 +19,119 @@
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 	</PROPERTIES>
 	<WATCHES />
+=======
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="239" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="7067" Length="17"><![CDATA[sc.endScenario();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="237" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="6962" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="221" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="6664" Length="81"><![CDATA[ctx.traceF.infoTxt(' controlSeul - Aucune mise à jour du contrat est effectuée');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="214" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="6234" Length="55"><![CDATA[ctx.traceF.infoTxt('stLancerVerificationSoldeContrat');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="199" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="5814" Length="77"><![CDATA[ctx.traceF.infoTxt(' Fin du sous-scenario - scResiliationContratSuspension');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="194" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="5522" Length="49"><![CDATA[ctx.traceF.infoTxt('stLancerResiliationContrat');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="185" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="5346" Length="58"><![CDATA[sc.endStep(ActivInfinitev7.steps.stFinScenarioSuspension);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="180" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="5307" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="179" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="5303" Length="1"><![CDATA[{]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="162" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="4779" Length="71"><![CDATA[ctx.traceF.infoTxt(' Fin du sous-scenario - scVerifContratSuspension');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="163" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="4853" Length="36"><![CDATA[if(data.scenarioConfig.controlSeul){]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="157" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="4492" Length="50"><![CDATA[ctx.traceF.infoTxt('stLancerVerificationContrat');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="141" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="4252" Length="17"><![CDATA[indexContrat ++ ;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="135" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="4030" Length="87"><![CDATA[ctx.traceF.infoTxt('Aucun contrat de Suspension n\'est proposé dans le fichier JSON.');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="128" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="3767" Length="48"><![CDATA[ctx.traceF.infoTxt('stSelectContratSuspension');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="3311" Length="41"><![CDATA[ctx.traceF.infoTxt('stSelectSuspension');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="159" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="5957" Length="17"><![CDATA[sc.endScenario();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="140" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="5242" Length="41"><![CDATA[data.contratCourantSuspension['Adresse'];]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="145" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="5447" Length="111"><![CDATA[ctx.traceF.infoTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="127" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="4787" Length="64"><![CDATA[sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="121" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="4661" Length="9"><![CDATA[index ++;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="115" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="4478" Length="53"><![CDATA[data.statusSuspension.faireResiliationContrat = true;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="112" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="4287" Length="108"><![CDATA[if(ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(index) == data.contratCourantSuspension['RONumber'] &&]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="107" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="4055" Length="89"><![CDATA[var listePersonnes = ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab.getAll();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="97" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="3633" Length="93"><![CDATA[ctx.traceF.infoTxt(data.contratCourantSuspension['RONumber'] + ' Etape - stLectureSynthese');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="83" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="3163" Length="103"><![CDATA[ctx.traceF.infoTxt(data.contratCourantSuspension['RONumber'] + ' Etape - stFinRechercheBenefSynthese');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="70" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="2794" Length="55"><![CDATA[ActivInfinitev7.pContexteContratRech.wait(function () {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="57" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="2421" Length="45"><![CDATA[ActivInfinitev7.pTabDeBord.wait(function () {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="43" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="1888" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantSuspension['RONumber'] + ' - Début - scénario scVerifContratSuspension');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4761" Length="137"><![CDATA[ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
+	</BREAKPOINTS>
+	<BOOKMARKS />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[webData]]></FINDWHAT>
+		<FINDWHAT><![CDATA[local]]></FINDWHAT>
+		<FINDWHAT><![CDATA[locale]]></FINDWHAT>
+		<FINDWHAT><![CDATA[btContexteContrat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[controlSeul]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.scenarioConfig.controlSeul]]></FINDWHAT>
+		<FINDWHAT><![CDATA[sc2]]></FINDWHAT>
+		<FINDWHAT><![CDATA[sc1]]></FINDWHAT>
+		<FINDWHAT><![CDATA[states]]></FINDWHAT>
+		<FINDWHAT><![CDATA[length]]></FINDWHAT>
+		<FINDWHAT><![CDATA[while]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stServerConnexionCMU]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ctx.configF.scenario.Suspension]]></FINDWHAT>
+		<FINDWHAT><![CDATA[configSuspension]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ sc.data.codeDuScenario]]></FINDWHAT>
+		<FINDWHAT><![CDATA[template.json]]></FINDWHAT>
+		<FINDWHAT><![CDATA[template]]></FINDWHAT>
+		<FINDWHAT><![CDATA[chargementFichierConfig]]></FINDWHAT>
+		<FINDWHAT><![CDATA[configF]]></FINDWHAT>
+		<FINDWHAT><![CDATA[recupererCheminFichier]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pIdentContratRechConsul.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pBlocNotes]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[traceF.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stFinScVerifContratCMU]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[pProdGaranConsul]]></REPLACEWITH>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="163" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="73" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="16" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="239" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<CurPerspective><![CDATA[1]]></CurPerspective>
+		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
+		<DebugTester><![CDATA[]]></DebugTester>
+	</PROPERTIES>
+	<WATCHES>
+		<WATCH><![CDATA[data.contratCourantSuspension.length ]]></WATCH>
+		<WATCH><![CDATA[data.countContratsSuspension]]></WATCH>
+		<WATCH><![CDATA[data.contratCourantSuspension]]></WATCH>
+		<WATCH><![CDATA[data.contratsSuspension]]></WATCH>
+		<WATCH><![CDATA[data.countContracts]]></WATCH>
+		<WATCH><![CDATA[data.contracts]]></WATCH>
+		<WATCH><![CDATA[data.headerNames ]]></WATCH>
+		<WATCH><![CDATA[countContracts]]></WATCH>
+		<WATCH><![CDATA[contracts]]></WATCH>
+		<WATCH><![CDATA[headerNames]]></WATCH>
+		<WATCH><![CDATA[configF]]></WATCH>
+		<WATCH><![CDATA[codeScenario]]></WATCH>
+		<WATCH><![CDATA[configF.fichierConfig[codeScenario]]]></WATCH>
+		<WATCH><![CDATA[ctx.configF.scenario.Suspension]]></WATCH>
+		<WATCH><![CDATA[configSuspension]]></WATCH>
+		<WATCH><![CDATA[configF.fichierConfig]]></WATCH>
+		<WATCH><![CDATA[ctx.options.serverURL]]></WATCH>
+		<WATCH><![CDATA[configF.nomFichierConfig]]></WATCH>
+	</WATCHES>
+>>>>>>> 'Modifs2609'
 	<APPLIFILTERS />
 	<EVENTFILTERS />
 </USER>
