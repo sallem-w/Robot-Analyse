@@ -279,7 +279,7 @@ ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 ////			return sc.endStep();
 //		});
 	ctx.log('Fin du traitement CMU');
-	ctx.popupF.finTraitement();
+	ctx.popupF.finTraitement('CMU');
 	sc.endScenario();
 	return;
 }});

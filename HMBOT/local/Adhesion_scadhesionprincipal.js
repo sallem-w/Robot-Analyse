@@ -13,13 +13,11 @@ ActivInfinitev7.scenario( { scAdhesionPrincipal: function (ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitScenarioAdhesion);
 	sc.step(ActivInfinitev7.steps.stServerConnexionAdhesion);
 	sc.step(ActivInfinitev7.steps.stDebutBoucleContratAdhesion);
-	sc.step(ActivInfinitev7.steps.stLireDonneesAdhesionExcel);
-	sc.step(ActivInfinitev7.steps.stVerifExistanceAssurePrincipal);
-	sc.step(ActivInfinitev7.steps.stVerifContratAdhesionCondition);
-	sc.step(ActivInfinitev7.steps.stVerifContratAdhesion);
-	sc.step(ActivInfinitev7.steps.stResilationAdhesionCondition);
-	sc.step(ActivInfinitev7.steps.stResiliationContratAdhesion);	
-	sc.step(ActivInfinitev7.steps.stMiseAjourVarGloblales);
+	sc.step(ActivInfinitev7.steps.stImporterDonneesExcelAdhesion);
+	sc.step(ActivInfinitev7.steps.stSelectionScenarioAdhesion);
+	sc.step(ActivInfinitev7.steps.stScenarioCreationContrat);
+	sc.step(ActivInfinitev7.steps.stScenarioModificationContrat);
+	sc.step(ActivInfinitev7.steps.stMiseAjourVarGloblalesAdhesion);
 	sc.step(ActivInfinitev7.steps.stInsertDonneesAdhesionExcel);
 	sc.step(ActivInfinitev7.steps.stContratAdhesionSuivant);
 	sc.step(ActivInfinitev7.steps.stFinScenarioAdhesion);
@@ -87,82 +85,60 @@ ActivInfinitev7.step({ stDebutBoucleContratAdhesion: function(ev, sc, st) {
 
 
 /** ce step permet de vérifier dans le dictionnaire l'existance de l'assuré principal, sil existe on lance le sous scénario scVerifContratAdhesion sinon on exécute le sous sc finAdhesion  */
-ActivInfinitev7.step({ stVerifExistanceAssurePrincipal : function(ev, sc, st) {
+ActivInfinitev7.step({ stSelectionScenarioAdhesion : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stVerifExistanceAssurePrincipal');
-	sc.endStep();
-	return;
-}});
-
-/** Condition d'embranchement de scenario */
-ActivInfinitev7.step({ stVerifContratAdhesionCondition: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stResilationAdhesionCondition ');
-	if(data.contratCourantAdhesion.statutsAdhesion.existanceASSPRI == false){
-		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
+	ctx.traceF.infoTxt('Etape - stSelectionScenarioAdhesion');
+	var processus=data.contratCourantAdhesion.dataLocale.contexteAnalyseStoppee;
+	if(processus=='processus création'){
+		sc.endStep(ActivInfinitev7.steps.stScenarioCreationContrat);
 		return;
 	}
-	else{ // on lance le scenario de traitement
-			sc.endStep(ActivInfinitev7.steps.stVerifContratAdhesion);
-			return;
+	else{
+		sc.endStep(ActivInfinitev7.steps.stScenarioModificationContrat);
+		return;
 	}
+	
 }});
 
-/** step qui lance le sous scénario de vérification des données Adhesion */
-ActivInfinitev7.step({ stVerifContratAdhesion : function(ev, sc, st) {
+
+
+/** step qui lance le sous scénario de creation Adhesion */
+ActivInfinitev7.step({ stScenarioCreationContrat : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stVerifContratAdhesion - Lancement du sous-scenario de verification des données en lignes : scVerifContratAdhesion');
+	ctx.traceF.infoTxt('Etape - stScenarioCreation - Lancement du sous-scenario de creation de contrat : stScenarioCreation');
 	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
 	st.disableTimeout();	
-	var scASC = ActivInfinitev7.scenarios.scVerifContratAdhesion.start(data).onEnd(function(sc2){
+	var scASC = ActivInfinitev7.scenarios.scScenarioCreationContrat.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
-		ctx.traceF.infoTxt(' Fin du sous-scenario - scVerifContratAdhesion');
-		if(data.scenarioConfig.Adhesion.controlSeul){
-			ctx.traceF.infoTxt(' controlSeul - Aucune mise à jour du contrat est effectuée');
-			sc.data.contratCourantAdhesion.statutsAdhesion.FinAdhesionProcessus = true;
-		}
+		ctx.traceF.infoTxt(' Fin du sous-scenario - scScenarioCreation');
 		sc.endStep();
 	});
 }});
 
-
-/** Condition d'embranchement de scenario */
-ActivInfinitev7.step({ stResilationAdhesionCondition: function(ev, sc, st) {
+/** step qui lance le sous scénario de creation Adhesion */
+ActivInfinitev7.step({ stScenarioModificationContrat : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stResilationAdhesionCondition ');
-	if(data.contratCourantAdhesion.statutsAdhesion.FinAdhesionProcessus == true){
-		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblales);
-		return;
-	}
-	else{ // on lance le scenario de traitement
-			sc.endStep(ActivInfinitev7.steps.stResiliationContratAdhesion);
-			return;
-	}
-}});
-
-
-/** Etape qui lance le scenario de Résiliation  */
-ActivInfinitev7.step({ stResiliationContratAdhesion: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stResiliationContratAdhesion ');
-	st.disableTimeout();
-	var scAdhesion = ActivInfinitev7.scenarios.scResiliationAdhesion.start(data).onEnd(function(sc4){
-		sc.data = sc4.data;
-		ctx.traceF.infoTxt(' Fin du sous-scenario - scResiliationAdhesion');
+	ctx.traceF.infoTxt('Etape - stScenarioCreation - Lancement du sous-scenario de creation de contrat : stScenarioCreation');
+	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
+	st.disableTimeout();	
+	var scMC = ActivInfinitev7.scenarios.scScenarioModificationContrat.start(data).onEnd(function(sc3){
+		sc.data=sc3.data;
+		ctx.traceF.infoTxt(' Fin du sous-scenario - scScenarioCreation');
 		sc.endStep();
 	});
 }});
+
 
 
 /** Step : Mise à jour des données globales ( stats ) */
-ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
+ActivInfinitev7.step( { stMiseAjourVarGloblalesAdhesion: function (ev, sc, st) {
 		var data = sc.data;
-		ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
-		ctx.statsF.miseAJourAdhesion(data);
+		ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblalesAdhesion ');
 		sc.endStep();
 		return ;
 	}
 });
+
 
 
 
@@ -171,6 +147,7 @@ ActivInfinitev7.step({ stInsertDonneesAdhesionExcel: function(ev, sc, st) {
   ctx.traceF.infoTxt('Etape - stInsertDonneesAdhesionExcel ');
    //lire la date
    data.contratCourantAdhesion.notes.dateTraitementContrat = ctx.getDate();
+	data.contratCourantAdhesion.notes.statutsContrat=data.contratCourantAdhesion.dataLocale.NUM_SEQ_CT;
             
   var arrayMessage = [ {
        columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.dateTraitementContrat, value: data.contratCourantAdhesion.notes.dateTraitementContrat
@@ -197,14 +174,13 @@ ActivInfinitev7.step({ stContratAdhesionSuivant: function(ev, sc, st) {
 		if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
 			// On récupere le nombre de benef
 			var nbBenef=0;
-			for (var i in data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion){
+			for (var i in data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques){
 				nbBenef+=1;
 			}
 			data.varGlobales.ligneCourante+=nbBenef;
-			ctx.log( "data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion : "+ data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion.length);
+			ctx.traceF.infoTxt(' Nombre de Beneficiaire du contrat précédant : '+nbBenef);
+			ctx.traceF.infoTxt(' contrat suivant ligne : '+data.varGlobales.ligneCourante);
 		  ctx.dataF.resetContratCourantAdhesion(data);
-			ctx.log( "data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion : "+ data.contratCourantAdhesion.dataLocale.dictContratsCourantAdhesion.length);
-			ctx.log( "contrat suivant ligne : "+ data.varGlobales.ligneCourante);
 			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratAdhesion);
 			return;
 		}
@@ -223,12 +199,8 @@ ActivInfinitev7.step({ stFinScenarioAdhesion : function(ev, sc, st) {
 	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
 	ctx.statsF.calculerStats(data);
 
-//	ctx.popupF.newPopup("Fin du traitement Adhesion ",'Fin', function() {
-//			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
-////			return sc.endStep();
-//		});
 	ctx.log('Fin du traitement Adhesion');
-	ctx.popupF.finTraitement();
+	ctx.popupF.finTraitement('Adhesion');
 	sc.endScenario();
 	return;
 }});

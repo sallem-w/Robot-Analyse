@@ -2656,9 +2656,11 @@
 				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
-				<SCRIPT Name="scAdhesionPrincipal" Src="scAdhesionPrincipal.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="scAdhesionPrincipal" Src="Adhesion_scAdhesionPrincipal.js" Folder="Processus_Adhesion" />
 				<SCRIPT Name="ConfigAdhesionClass" Src="ConfigAdhesionClass.js" Folder="Complements" />
-				<SCRIPT Name="importerDonneesExcelAdhesion" Src="importerDonneesExcelAdhesion.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="importerDonneesExcelAdhesion" Src="Adhesion_importerDonneesExcelAdhesion.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="scScenarioCreationContrat" Src="Adhesion_scScenarioCreationContrat.js" Folder="Processus_Adhesion" />
+				<SCRIPT Name="scScenarioModificationContrat" Src="Adhesion_scScenarioModificationContrat.js" Folder="Processus_Adhesion" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

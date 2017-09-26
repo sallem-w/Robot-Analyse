@@ -14,5 +14,8 @@
     },
     "DA": {
         "afficherMenu": true
+    },
+    "Adhesion": {
+        "afficherMenu": true
     }
 }

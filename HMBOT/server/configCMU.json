@@ -1,5 +1,6 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
+    "Version":1.1,
     "CMU":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 

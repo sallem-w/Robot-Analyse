@@ -23,8 +23,8 @@
 	};
 
 	
-	popupF.finTraitement = function(){
-		popupF.newPopup("Fin du traitement CMU ",'Fin', function() {
+	popupF.finTraitement = function(nomScenario){
+		popupF.newPopup("Fin du traitement "+nomScenario,'Fin', function() {
 		GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
 		});
 	}
