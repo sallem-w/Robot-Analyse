@@ -46,6 +46,10 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne(); //récupérer l'indice de la dernière ligne dans le fichier excel
 	
 	//copie du fichier d'entrée ==> fichier résultat.
+	
+	
+	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
+	ctx.traceF.infoTxt('Création du fichier résultat, '+ctx.configF.cheminFichierResultat+', '+data.scenarioConfig.excel.debutIndexLigne-1);	
 	sc.endStep();
 	return;
 }});
@@ -121,6 +125,12 @@ ActivInfinitev7.step({ stRecherchePP: function(ev, sc, st) {
 ActivInfinitev7.step({ stInsertionDonneesAnalyseExcel: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInsertionDonneesAnalyseExcel: insertion des données dans le fichier résultat');
+	 var arrayMessage = [ {
+      columnIndex: data.scenarioConfig.excel.indexColonne.contexteAnalyseStoppee, value: data.ppCouranteAnalyse.notes.contexteAnalyseStoppee
+      }
+  ];
+  ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
+  ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
 	sc.endStep();
 	return;
 }});

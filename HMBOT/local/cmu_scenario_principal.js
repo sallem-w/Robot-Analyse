@@ -44,7 +44,7 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
 	ctx.log(" Test URL : "+ data.webData.url);
 	ctx.traceF.infoTxt('Création du fichier résultat');	
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
 	sc.endStep();
 	return;
