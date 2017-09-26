@@ -181,7 +181,7 @@
 		return message;
 	}
 	
-		dateF.conversionEnSecondes  = function(time) {
+	dateF.conversionEnSecondes  = function(time) {
 		var SECONDE = 1000;
 		var MINUTE = 60 * SECONDE;
 		var HOUR = 60 * MINUTE;
@@ -192,7 +192,25 @@
 		return result;
 	}
 	
-		
+	dateF.premierJourDuMoisCourant = function (time) {
+	 	var thisYear = Number(time.substr(6,4));
+		var thisMonth = Number(time.substr(3,2));
+		var thisDay = Number(time.substr(0,2));
+		 
+		var premierJour = dateF.format2c(1);
+		var resultat = premierJour+'/'+dateF.format2c(thisMonth)+'/'+thisYear;
+		return resultat;
+	}
+	 
+	dateF.dateSansSeparatorEnFrancais = function (time){
+		var dateInString = String(time);
+		var day =  Number(time.substr(6,2));
+		var month = Number(time.substr(4,2));
+		var year = Number(time.substr(0,4));
+		var resultat = month+'/'+day+'/'+year;
+		//var resultat = day+'/'+year;
+		return resultat;
+	}	
 	
 	return dateF;
 }) ();

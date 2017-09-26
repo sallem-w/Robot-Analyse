@@ -200,12 +200,31 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btMenuResilConcu">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="170.R0R1R5R1R0R0R0R6R21">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Résiliation liée à la concurrence ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btGroupeObligatoireExterne">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="170.R0R1R5R1R0R0R0R6R22R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[groupe obligatoire externe ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1545374_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="52" Techno="WEB" Timestamp="24/05/2017 15:45:48" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1000036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="111" Techno="WEB" Timestamp="06/07/2017 10:00:14" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1007036_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="112" Techno="WEB" Timestamp="06/07/2017 10:07:14" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1021165_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="113" Techno="WEB" Timestamp="06/07/2017 10:21:27" />
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1658239_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="117" Techno="WEB" Timestamp="11/07/2017 16:58:36" />
+					<CAPTURE Name="PAGE_Haum03ActivInfini_1115520_1" Comment="haum03 - Activ Infinite - Module de gestion" CtxtId="170" Techno="WEB" Timestamp="26/09/2017 11:16:03" />
 				</PAGE>
 				<PAGE Name="pContexteContratRech" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -321,6 +340,48 @@
 								<TAG Name="H2" Scope="All" CapturedPos="56.R0R1R14R1R4R1R6R0R3R0R0R0">
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Détail personne physique]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTypeIdentification">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[typeIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumIdentification">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[numIdentification]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRecherche">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R1R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[linkRechBd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInfosSouscripteur">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R1R0R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[label label-primary contextual-infos]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -548,6 +609,15 @@
 								<TAG Name="DIV" Scope="All" CapturedPos="168.R0R1R3R0">
 									<ATT Name="class">
 										<VALUE Scan="Full"><![CDATA[toast toast-error ui-resizable cgd-collapsable-toast]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateDemande">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="150.R0R1R8R0R0R2R0R0R0R28R0R0R1R0R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDemande]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -2672,6 +2742,61 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_WeblogicBridgeMessa_1804012_1" Comment="Weblogic Bridge Message" CtxtId="130" Techno="WEB" Timestamp="27/07/2017 18:04:01" />
 				</PAGE>
+				<PAGE Name="pResiliationConcu" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat]]></TITRE>
+						<URL Scan="like"><![CDATA[mdg\/Go\.do\?id\=ACRE01RE2B]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/Go.do?id=ACRE01RE2B]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNumeroContratIndiv">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R1R1R0R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContrat2]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateDebutEffet">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumeroContratCol">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroContratCol]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oGroupeAssure">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R2R0R2">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRecherche">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R1R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
@@ -2689,17 +2814,16 @@
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
 				<SCRIPT Name="CMU_resiliation_contrat" Src="cmu_resiliation_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
-				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" Folder="Complements" />
+				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" />
 				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
-				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" Folder="ProcessusDA" />
 				<SCRIPT Name="scenarioPrincipalDA" Folder="ProcessusDA" Src="scenarioPrincipalDA.js" />
 				<SCRIPT Name="verificationContratDA" Folder="ProcessusDA" Src="verificationContratDA.js" />
 				<SCRIPT Name="resiliationConcuDA" Folder="ProcessusDA" Src="resiliationConcuDA.js" />
-				<SCRIPT Name="arrayMap" Src="arrayMap.js" />
-				<SCRIPT Name="objectHelper" Src="objectHelper.js" />
-				<SCRIPT Name="setValue" Src="setValue.js" />
-				<SCRIPT Name="dataDA" Src="dataDA.js" />
+				<SCRIPT Name="arrayMap" Src="arrayMap.js" Folder="ProcessusDA" />
+				<SCRIPT Name="objectHelper" Src="objectHelper.js" Folder="ProcessusDA" />
+				<SCRIPT Name="setValue" Src="setValue.js" Folder="ProcessusDA" />
+				<SCRIPT Name="dataDA" Src="dataDA.js" Folder="ProcessusDA" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

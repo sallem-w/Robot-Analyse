@@ -1,7 +1,7 @@
 ﻿ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
-	if (!ctx.configF.init(sc.data.codeDuScenario)) {
+	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
 		return sc.endScenario();
 	}
 
@@ -33,13 +33,14 @@
 	names.push('Date traitement contrat');
 	names.push('Status contrat');
 	names.push('Commentaire');
-	//names.push('Remarque');
-	// names.push('Courrier');
 	ctx.excelF.remplirTableau(1, names);
 	
 	data.globalVariables.indexContratCourant = 0;
-	data.dataFichier.nomClient = json.customerName;
+	data.globalVariables.nomClient = json.customerName;
 	data.contrat = contracts;
 	data.stats.nombreDeContrats = countContracts;
+	ctx.traceF.infoTxt(" le nombre de contrats est : " + data.stats.nombreDeContrats);
+	ctx.traceF.infoTxt(" premier jour du mois courant " + ctx.dateF.premierJourDuMoisCourant(ctx.dateF.formatJJMMAAAA(new Date())));
+	
 	return sc.endStep();
 }});
