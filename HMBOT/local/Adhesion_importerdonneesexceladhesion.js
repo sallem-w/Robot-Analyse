@@ -9,8 +9,10 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	var temp_ligne=data.varGlobales.ligneCourante;
 	// on récupère les infos de toutes les lignes associées à la demande d'adhesion
 	var numeroSeq= ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_CT);
-	data.contratCourantAdhesion.dataLocale.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
-	data.contratCourantAdhesion.dataLocale.contexteAnalyseStoppee = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.contexteAnalyseStoppee);
+	ctx.log('Gamme : '+ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME))
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.contexteAnalyseStoppee);
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET=ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET);
 	if( numeroSeq == undefined){
 		ctx.traceF.infoTxt(' Le numero de Seq est vide');
 		sc.endStep(ActivInfinitev7.steps.stContratAdhesionSuivant);
