@@ -231,19 +231,9 @@
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action\=afficherContrat]]></URL>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action=afficherContrat]]></URL>
-						<URL Scan="like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=([A-Z-0-9]+)]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACW1&action=afficherContrat]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitrePage2" MustNotExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All">
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Détail personne physique]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btRecherche">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R1R1R0">
@@ -265,7 +255,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oTypeIdentification" MustExist="Y">
+						<OBJET Name="oTypeIdentification">
 							<CRITERE>
 								<TAG Name="SELECT" Scope="All" CapturedPos="56.R0R1R14R1R0R0R2R0R0R1R0R0R0R0R1">
 									<ATT Name="id">
@@ -289,15 +279,60 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oNoInsee">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="180.R0R1R7R0R3R0R0R0R0R27R0R0R1R1R0R3R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroInsee5]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRechDetaillee">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="180.R0R1R7R0R3R0R0R0R0R27R0R0R1R3R0R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechPE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1543058_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="94" Techno="WEB" Timestamp="07/06/2017 15:43:16" />
-					<CAPTURE Name="PAGE_ContexteContratHa_1522115_1" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="169" Techno="WEB" Timestamp="26/09/2017 15:22:30" />
+				</PAGE>
+				<PAGE Name="pContContratRechDet" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=([A-Z-0-9]+)]]></URL>
+						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/Go.do?id=RecherchePersonne&action=afficher]]></PATH>
+					<OBJETS>
+						<OBJET Name="oNoInsee">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="181.R0R1R7R0R3R0R0R0R0R27R0R0R1R1R0R3R1R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numeroInsee5]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRechDetaillee">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="181.R0R1R7R0R3R0R0R0R0R27R0R0R1R3R0R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[linkRechPE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_ContexteContratHa_1643221_1" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="181" Techno="WEB" Timestamp="27/09/2017 16:43:40" />
 				</PAGE>
 				<PAGE Name="pContexteContratOuvert" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/AccueilMenu\.do\?method\=rechercher]]></URL>
-						<URL Scan="like"><![CDATA[(http:\/\/)infinite(-([\da-z\.-]+))?\/mdg\/ficheSynthese\/RecherchePersonne.do\/?]]></URL>
+						<URL Scan="Like"><![CDATA[(http:\/\/)infinite(-([\da-z\.-]+))?\/mdg\/ficheSynthese\/RecherchePersonne.do\/?]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
 					<OBJETS>
@@ -727,12 +762,14 @@
 						</OBJET>
 						<OBJET Name="oPersonneDetailsTab">
 							<CRITERE>
-								<TAG Name="TR" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0">
+								<TAG Name="TABLE" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TBODY" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
+											<SET />
+										</TAG>
+									</TAG>
 									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[0]]></VALUE>
-									</ATT>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[odd]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[resultListPew1]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -748,6 +785,17 @@
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[  M IVRISSE VALERE VALENTIN  QUARTIER MARE CAPRON  97211 RIVIERE PILOTE -     ]]></VALUE>
 									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTypeRelation">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0R4" Range="4" />
+										</TAG>
+									</TAG>
 								</TAG>
 							</CRITERE>
 						</OBJET>

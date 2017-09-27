@@ -30,11 +30,16 @@ ActivInfinitev7.pTabDeBord.btMenuResilConcu = ActivInfinitev7.pTabDeBord.addItem
 ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne = ActivInfinitev7.pTabDeBord.addItem('btGroupeObligatoireExterne');
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
-ActivInfinitev7.pContexteContratRech.oTitrePage2 = ActivInfinitev7.pContexteContratRech.addItem('oTitrePage2', {"mustNotExist":true});
 ActivInfinitev7.pContexteContratRech.btRecherche = ActivInfinitev7.pContexteContratRech.addItem('btRecherche');
 ActivInfinitev7.pContexteContratRech.onIdentificationBenef = ActivInfinitev7.pContexteContratRech.addItem('onIdentificationBenef', {"mustExist":true});
-ActivInfinitev7.pContexteContratRech.oTypeIdentification = ActivInfinitev7.pContexteContratRech.addItem('oTypeIdentification', {"mustExist":true});
+ActivInfinitev7.pContexteContratRech.oTypeIdentification = ActivInfinitev7.pContexteContratRech.addItem('oTypeIdentification');
 ActivInfinitev7.pContexteContratRech.oRechPersDetail = ActivInfinitev7.pContexteContratRech.addItem('oRechPersDetail');
+ActivInfinitev7.pContexteContratRech.oNoInsee = ActivInfinitev7.pContexteContratRech.addItem('oNoInsee');
+ActivInfinitev7.pContexteContratRech.btRechDetaillee = ActivInfinitev7.pContexteContratRech.addItem('btRechDetaillee');
+
+ActivInfinitev7.pContContratRechDet = ActivInfinitev7.addPage('pContContratRechDet', {"comment":"Contexte Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=RecherchePersonne\u0026action=afficher"});
+ActivInfinitev7.pContContratRechDet.oNoInsee = ActivInfinitev7.pContContratRechDet.addItem('oNoInsee');
+ActivInfinitev7.pContContratRechDet.btRechDetaillee = ActivInfinitev7.pContContratRechDet.addItem('btRechDetaillee');
 
 ActivInfinitev7.pContexteContratOuvert = ActivInfinitev7.addPage('pContexteContratOuvert', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher"});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage', {"mustExist":true});
@@ -51,9 +56,13 @@ ActivInfinitev7.pContexteContratOuvert.oInfosSouscripteur = ActivInfinitev7.pCon
 ActivInfinitev7.pContexteContratOuvert.oTabResSynthese = ActivInfinitev7.pContexteContratOuvert.addItem('oTabResSynthese');
 ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
-ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetailsTab');
+ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetailsTab', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oPersonneDetails = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetails');
+<<<<<<< HEAD
 >>>>>>> 'Modifs2609'
+=======
+ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
+>>>>>>> 'Modifs2709'
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
