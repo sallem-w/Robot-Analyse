@@ -18,6 +18,7 @@
 			principale: 'Principale',
 			produitValide: 'VA',
 			produitTermine : 'RA',
+			entiteRattachement : 'P - HARMONIE MUTUELLE',
 			correspondanceRang : {
 				ASSPRI: ['1'],
 				CONJOI: ['11'],

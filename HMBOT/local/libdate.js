@@ -116,6 +116,14 @@
 		return stTps;
 	}
 	
+	
+	dateF.formatDateGRC = function (tps){	
+    var jj=tps.substr(6,2);
+		var mm=tps.substr(4,2);
+		var yy=tps.substr(0,4);
+		return jj+'/'+mm+'/'+yy;
+	}
+	
 	dateF.enObjet = function(dateString, separator) {
 		separator = separator || '/';
 		var parts = dateString.split(separator);

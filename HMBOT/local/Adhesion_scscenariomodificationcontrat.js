@@ -15,7 +15,7 @@ ActivInfinitev7.scenario({ scScenarioModificationContrat: function(ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioModificationContrat: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.NUM_SEQ_CT + ' - Etape - stInitScenarioCreation');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.NUM_SEQ_CT + ' - Etape - stInitScenarioModificationContrat');
 	sc.endStep();
 	return;
 }});

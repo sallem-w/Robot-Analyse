@@ -161,8 +161,6 @@ ctx.dataF = (function () {
 		        
 		var contratCourantAdhesion = {
 			dataLocale: {
-				NUM_SEQ_CT : '',
-				GAMME : '',
 				tabPersonnesPhysiques : []
             },
       dataEnLigne: {
@@ -185,7 +183,7 @@ ctx.dataF = (function () {
 
 		dataF.initialisationScenarioAdhesion = function(dat,scenario){	
 			var configAdhesion = new confFileAdhesionClass();
-			dat.contratAdhesionAttributs = configAdhesion.ADHESION.excel.indexColonne;
+			//dat.contratAdhesionAttributs = configAdhesion.ADHESION.excel.indexColonne;
 			dat.codeScenario=scenario;
 			dat.nomScenario='Adhesion';
 			ctx.log('Init configF');
@@ -195,7 +193,7 @@ ctx.dataF = (function () {
 			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantAdhesion=ctx.dataF.contratCourantAdhesion;
-			dat.contratCourantAdhesion.dataLocale.contratAdhesionAttributs=ctx.dataF.contratAdhesionAttributs;
+			dat.contratCourantAdhesion.dataLocale.contratAdhesionAttributs=configAdhesion.ADHESION.excel.indexColonne;
 			dat.varGlobales=ctx.dataF.varGlobales;	
 			ctx.log('Init Trace : '+dat.scenarioConfig.Adhesion.cheminRacine);
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.Adhesion.cheminRacine, ctx.configF.scenario.Adhesion);

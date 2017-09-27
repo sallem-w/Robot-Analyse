@@ -26,6 +26,7 @@ ActivInfinitev7.pTabDeBord.btFinCMU = ActivInfinitev7.pTabDeBord.addItem('btFinC
 ActivInfinitev7.pTabDeBord.btFinACS = ActivInfinitev7.pTabDeBord.addItem('btFinACS');
 ActivInfinitev7.pTabDeBord.btSansEffetResiC = ActivInfinitev7.pTabDeBord.addItem('btSansEffetResiC');
 ActivInfinitev7.pTabDeBord.btCagSituatPart = ActivInfinitev7.pTabDeBord.addItem('btCagSituatPart');
+ActivInfinitev7.pTabDeBord.btAdhesionIndiv = ActivInfinitev7.pTabDeBord.addItem('btAdhesionIndiv');
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pContexteContratRech.oTitrePage2 = ActivInfinitev7.pContexteContratRech.addItem('oTitrePage2', {"mustNotExist":true});
@@ -279,3 +280,9 @@ ActivInfinitev7.pIntervenantPrincipal.oBtnPageCourante = ActivInfinitev7.pInterv
 
 ActivInfinitev7.pServeurWebFerme = ActivInfinitev7.addPage('pServeurWebFerme', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
 ActivInfinitev7.pServeurWebFerme.oMessageErreur = ActivInfinitev7.pServeurWebFerme.addItem('oMessageErreur');
+
+ActivInfinitev7.pAdhesions = ActivInfinitev7.addPage('pAdhesions', {"comment":"Adhésions individuelles - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACSO01ASOA"});
+ActivInfinitev7.pAdhesions.oDateDebutEffet = ActivInfinitev7.pAdhesions.addItem('oDateDebutEffet');
+ActivInfinitev7.pAdhesions.btRecherche = ActivInfinitev7.pAdhesions.addItem('btRecherche');
+ActivInfinitev7.pAdhesions.oSelectPHarmonie = ActivInfinitev7.pAdhesions.addItem('oSelectPHarmonie');
+ActivInfinitev7.pAdhesions.oEntiteRattachement = ActivInfinitev7.pAdhesions.addItem('oEntiteRattachement');

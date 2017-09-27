@@ -88,7 +88,8 @@ ActivInfinitev7.step({ stDebutBoucleContratAdhesion: function(ev, sc, st) {
 ActivInfinitev7.step({ stSelectionScenarioAdhesion : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stSelectionScenarioAdhesion');
-	var processus=data.contratCourantAdhesion.dataLocale.contexteAnalyseStoppee;
+	var processus=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee;
+	ctx.traceF.infoTxt('Processus identifié : '+processus);
 	if(processus=='processus création'){
 		sc.endStep(ActivInfinitev7.steps.stScenarioCreationContrat);
 		return;
@@ -147,7 +148,7 @@ ActivInfinitev7.step({ stInsertDonneesAdhesionExcel: function(ev, sc, st) {
   ctx.traceF.infoTxt('Etape - stInsertDonneesAdhesionExcel ');
    //lire la date
    data.contratCourantAdhesion.notes.dateTraitementContrat = ctx.getDate();
-	data.contratCourantAdhesion.notes.statutsContrat=data.contratCourantAdhesion.dataLocale.NUM_SEQ_CT;
+	data.contratCourantAdhesion.notes.statutsContrat=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT;
             
   var arrayMessage = [ {
        columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.dateTraitementContrat, value: data.contratCourantAdhesion.notes.dateTraitementContrat
