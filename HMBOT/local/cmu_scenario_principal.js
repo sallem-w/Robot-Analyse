@@ -208,6 +208,7 @@ ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
 			sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		}
 		sc.endStep();
+		return;
 	});
 }});
 
@@ -238,8 +239,9 @@ ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
 	var scCMU = ActivInfinitev7.scenarios.scResiliationCMU.start(data).onEnd(function(sc4){
 		sc.data = sc4.data;
 		ctx.traceF.infoTxt(' Fin du sous-scenario - scResiliationCMU');
-		sc.endStep();
 	});
+	sc.endStep();
+	return;
 }});
 
 
