@@ -2745,7 +2745,8 @@
 				<PAGE Name="pResiliationConcu" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat]]></TITRE>
-						<URL Scan="like"><![CDATA[mdg\/Go\.do\?id\=ACRE01RE2B]]></URL>
+						<URL Scan="Like"><![CDATA[mdg\/Go\.do\?id\=ACRE01RE2B]]></URL>
+						<URL Scan="like"><![CDATA[\/mdg\/ValidationFonction\.do\?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACRE01RE2B]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/Go.do?id=ACRE01RE2B]]></PATH>
 					<OBJETS>
@@ -2790,6 +2791,15 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R1R0R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btFermer">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R1R0R0R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterFermer]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

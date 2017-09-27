@@ -11,6 +11,7 @@
 
 		var globalVariables = {
 			indexContratCourant:0,
+			ligneTraite : 2,
 			nomClient: ''
 		};
 		
@@ -45,8 +46,18 @@
 		};
 		
 		var contrat = {};
-		var contratCourant = {};
+		var contratCourant = {
+			RONumber:  '',
+			Nom : '',
+			Prenom : '',
+			Adresse : '',
+			Localite: '',
+			DateExtraction : '',
+			DateNaissance : '',
+			DateDispenseOuSuspension : ''
+		};
 		var sortieProcessusDA = false;
+		var avertissement = false;
 		
 		data.webData = webData;
 		data.globalVariables = globalVariables;
@@ -56,11 +67,7 @@
 		data.contrat = contrat;
 		data.contratCourant = contratCourant;
 		data.sortieProcessusDA = sortieProcessusDA;
-		
-		ctx.configF.chargementFichierConfigDA();
-		ctx.traceF.initFichierTrace(ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
-		ctx.traceF.infoTxt(' template path ' + ctx.configF.recupererCheminTemplate() + ' '+ ctx.configF.recupererCheminRacine() + ' ' + ctx.configF.scenario.DA);
-		ctx.statsF.initFileStats(ctx.configF.recupererCheminTemplate(), ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
+		data.avertissement = avertissement;
 		
 		sc.endStep();
 		return ;

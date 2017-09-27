@@ -86,6 +86,7 @@
 				data.notes.commentaire = " Revoir centre : le contrat n\'a pas été trouvé ";
 				data.notes.numContratIndiv = ' ';
 				data.sortieProcessusDA = true;
+				data.stats.nombreCasNonTraites += 1;
 				sc.endStep(ActivInfinitev7.steps.stFinDeVerification);
 				return;
 			}
@@ -105,20 +106,50 @@
 	ActivInfinitev7.step({ stVerifierEtatContrat: function(ev, sc, st) {
 		ctx.traceF.infoTxt('STEP --> stVerifierEtatContrat - verification des contrats ouverts et récupération du numéro de contrat individuel');
 		var data = sc.data;
+		var nombreContratOuvert = 0 ;
 		
-		for (var index in ActivInfinitev7.pContexteContratOuvert.oContratIndiv.getAll()) {
-			var endDate = ActivInfinitev7.pContexteContratOuvert.oDateFinEffet.i(index).get();
-
-			if ((endDate === undefined) || (ctx.string.trim(endDate) === '')){
-				var numContrat = ActivInfinitev7.pContexteContratOuvert.oNumeroContrat.i(index).get().trim();
-				var debutNumContrat = numContrat.indexOf("/");
-				data.notes.numContratIndiv = numContrat.substring(debutNumContrat+2).trim();
-				ctx.traceF.infoTxt(" le numéro de contrat individuel est : " + data.notes.numContratIndiv);
-			} 
-			
+		for (var index in ActivInfinitev7.pContexteContratOuvert.oDateFinEffet.getAll())
+		{
+			var finEffet = ActivInfinitev7.pContexteContratOuvert.oDateFinEffet.i(index).get();
+			if((finEffet === undefined) || (finEffet === ''))
+			{
+				nombreContratOuvert += 1;
+			}
 		}
-		sc.endStep();
-		return;
+		
+		if(nombreContratOuvert === 0){
+			data.notes.statut = ctx.excelF.constantes.statuts.Echec;
+			data.notes.commentaire = " Revoir centre : Aucun contrat ouvert ";
+			data.notes.numContratIndiv = ' ';
+			data.sortieProcessusDA = true;
+			data.stats.nombreCasNonTraites += 1;
+			sc.endStep(ActivInfinitev7.steps.stFinDeVerification);
+			return;
+		}
+		else if(nombreContratOuvert > 1){
+			data.notes.statut = ctx.excelF.constantes.statuts.Echec;
+			data.notes.commentaire = " Revoir centre : Plusieurs contrats ouverts ";
+			data.notes.numContratIndiv = ' ';
+			data.sortieProcessusDA = true;
+			data.stats.nombreCasNonTraites += 1;
+			sc.endStep(ActivInfinitev7.steps.stFinDeVerification);
+			return;
+		}
+		else {
+			for (var index in ActivInfinitev7.pContexteContratOuvert.oContratIndiv.getAll()) {
+				var endDate = ActivInfinitev7.pContexteContratOuvert.oDateFinEffet.i(index).get();
+
+				if ((endDate === undefined) || (ctx.string.trim(endDate) === '')){
+					var numContrat = ActivInfinitev7.pContexteContratOuvert.oNumeroContrat.i(index).get().trim();
+					var debutNumContrat = numContrat.indexOf("/");
+					data.notes.numContratIndiv = numContrat.substring(debutNumContrat+2).trim();
+					ctx.traceF.infoTxt(" le numéro de contrat individuel est : " + data.notes.numContratIndiv);
+				} 
+			}
+			sc.endStep();
+			return;
+		}
+		
 	}});
 
 	
@@ -149,17 +180,21 @@
 		ctx.traceF.infoTxt('STEP --> stVerifierNomAdresse - verification du nom et de l\'adresse')
 		var data = sc.data;
 		var infosSouscripteur = ActivInfinitev7.pContexteContratOuvert.oInfosSouscripteur.get();
+		ctx.traceF.infoTxt( ' INFOS SOUSCRIPTEUR ' + infosSouscripteur);
 		
 		if( infosSouscripteur.indexOf(data.contratCourant.Nom) === -1 ){
 			data.notes.commentaire = " Le nom dans Infinite est différent de celui du fichier ";
+			data.avertissement = true;
 		}
 		
 		if( infosSouscripteur.indexOf(data.contratCourant.Adresse) === -1 ){
 			data.notes.commentaire = " L\'adresse dans Infinite est différent de celui du fichier ";
+			data.avertissement = true;
 		}
 		
 		if( infosSouscripteur.indexOf(data.contratCourant.Localite) === -1 ){
 			data.notes.commentaire = " La localité dans Infinite est différent de celui du fichier ";
+			data.avertissement = true;
 		}
 		
 		data.notes.commentaire = " Vérification effectuée";
@@ -178,15 +213,3 @@
 			sc.endStep();
 		});
 	}});
-
-
-	
-	
-	
-	
-
-
-
-	
-	
-

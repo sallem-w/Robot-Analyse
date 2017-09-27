@@ -155,10 +155,9 @@ GLOBAL.events.START.on(function (ev) {
 	if (configDA.afficherMenu) {
 		systray.addMenu('', 'DA', 'Scenario DA ');
 		systray.addMenu('DA', 'DACompletV7', 'DA Complet V7', '', function(ev) {
-			//ctx.traceF.initFichierTrace(ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
+			ctx.traceF.initFichierTrace(configDA.cheminRacine, ctx.configF.scenario.DA);
 			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
-			//ctx.traceF.infoTxt(' template path ' + ctx.configF.recupererCheminTemplate() + ' '+ ctx.configF.recupererCheminRacine() + ' ' + ctx.configF.scenario.DA);
-			//ctx.statsF.initFileStats(ctx.configF.recupererCheminTemplate(), ctx.configF.recupererCheminRacine(), ctx.configF.scenario.DA);
+			ctx.statsF.initFileStats(ctx.configF.recupererCheminTemplate(), configDA.cheminRacine, ctx.configF.scenario.DA);
 			var data = {};
 			ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
