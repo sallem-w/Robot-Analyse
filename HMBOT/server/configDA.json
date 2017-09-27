@@ -1,7 +1,7 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
     "DA": {
-        "afficherMenu": true,
+        "affciherMenu": true,
         "cheminRacine": "C:\\deploy\\da\\"
     }
 }

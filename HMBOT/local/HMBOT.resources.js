@@ -297,3 +297,4 @@ ActivInfinitev7.pResiliationConcu.oDateDebutEffet = ActivInfinitev7.pResiliation
 ActivInfinitev7.pResiliationConcu.oNumeroContratCol = ActivInfinitev7.pResiliationConcu.addItem('oNumeroContratCol');
 ActivInfinitev7.pResiliationConcu.oGroupeAssure = ActivInfinitev7.pResiliationConcu.addItem('oGroupeAssure');
 ActivInfinitev7.pResiliationConcu.btRecherche = ActivInfinitev7.pResiliationConcu.addItem('btRecherche');
+ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.addItem('btFermer');

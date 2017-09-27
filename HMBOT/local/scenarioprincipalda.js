@@ -16,6 +16,7 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stServerConnexionDA);
 	sc.step(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 	sc.step(ActivInfinitev7.steps.stVersVerif);
+	
 	// début de vérification 
 	sc.step(ActivInfinitev7.steps.stInitialisationVerifContractDA);
 	sc.step(ActivInfinitev7.steps.stAllerVersPageSynthèse);
@@ -29,13 +30,24 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stVerifierNomAdresse);
 	sc.step(ActivInfinitev7.steps.stFinDeVerification);
 	// Fin vérification
+	
 	sc.step(ActivInfinitev7.steps.stResiliationOuPassageAuContratSuivant);
 	sc.step(ActivInfinitev7.steps.stVersResiliation);
+	
 	// début résiliation
 	sc.step(ActivInfinitev7.steps.stInitialisationResiliationConcu);
 	sc.step(ActivInfinitev7.steps.stAllerAlaPageDeResiliation);
 	sc.step(ActivInfinitev7.steps.stRechercherContratAResilier);
+	sc.step(ActivInfinitev7.steps.stSaisieDateDemande);
+	sc.step(ActivInfinitev7.steps.stPageBlocNotesResilConcu);
+	sc.step(ActivInfinitev7.steps.stPageParamCalculResilConcu);
+	sc.step(ActivInfinitev7.steps.stPageHistoCotisResilConcu);
+	sc.step(ActivInfinitev7.steps.stPageVisuCptResilConcu);
+	sc.step(ActivInfinitev7.steps.stPageValidationResilConcu);
+	sc.step(ActivInfinitev7.steps.stRetourAuDebutDeResil);
+	sc.step(ActivInfinitev7.steps.stFinResilConcu);
 	// fin résiliation
+	
 	sc.step(ActivInfinitev7.steps.stEcritureDesDonnées);
 	sc.step(ActivInfinitev7.steps.stPasserAuProchainContrat);
 	sc.step(ActivInfinitev7.steps.stFinScenarioPrincipal);
@@ -82,6 +94,7 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		if(data.contratCourant.type == 'DISPENSE AFFILIATION' )
 		{
 			ctx.traceF.infoTxt('cas trouvé');
+			data.stats.nombreCasTrouvesDansPivot += 1 ;
 			sc.endStep();
 			return;
 		}
@@ -160,9 +173,9 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		writeArray.push(ctx.dateF.formatJJMMAAAA(new Date()));
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
-		ctx.excelF.remplirTableau(data.globalVariables.indexContratCourant + 2, writeArray);
+		ctx.excelF.remplirTableau(data.globalVariables.ligneTraite, writeArray);
 		ctx.excelF.sauverFichier();
-
+		data.globalVariables.ligneTraite += 1;
 		sc.endStep();
 		return;
 	}});
@@ -174,9 +187,9 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		
 		if(data.globalVariables.indexContratCourant < data.stats.nombreDeContrats - 1)
 		{
-			
 			data.globalVariables.indexContratCourant += 1 ;
 			data.sortieProcessusDA = false;
+			data.avertissement = false;
 			sc.endStep(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 		}
 		else {
@@ -188,9 +201,18 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	
 	/** Description */
 	ActivInfinitev7.step({ stFinScenarioPrincipal: function(ev, sc, st) {
-		ctx.traceF.infoTxt(' Fin du scénario principal pour la dispense d\'affiliation');
-		var data = sc.data;
 		
+		ctx.traceF.infoTxt(' Fin du scénario principal pour la dispense d\'affiliation et écriture des stats');
+		var data = sc.data;
+		var statistiques = {};
+		//statistiques['tempsEcoule'] = data.stats.nombreDeContrats;
+		statistiques['nombreContrats'] = data.stats.nombreDeContrats;
+		statistiques['nombreCasDansPivot'] = data.stats.nombreCasTrouvesDansPivot;
+		statistiques['nombreCasTraites'] = data.stats.nombreCasTraites;
+		statistiques['nombreCasTraitesAvecAvertissement'] = data.stats.nombreCasTraitesAvecAvertissement;
+		statistiques['nombreCasNonTraites'] = data.stats.nombreCasNonTraites;
+		ctx.statsF.remplirTemplate(statistiques);
+		ctx.statsF.remplirJson(statistiques);
 		sc.endScenario();
 	}});
 	

@@ -36,6 +36,7 @@
 	ctx.excelF.remplirTableau(1, names);
 	
 	data.globalVariables.indexContratCourant = 0;
+	data.globalVariables.ligneTraite = 2;
 	data.globalVariables.nomClient = json.customerName;
 	data.contrat = contracts;
 	data.stats.nombreDeContrats = countContracts;
