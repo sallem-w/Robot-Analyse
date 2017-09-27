@@ -1,0 +1,10 @@
+﻿<APPLI Techno="WEB" Name="APPLI_ActivInfiniteModu_1" ParamName="Activ'Infinite - Module de gestion">
+	<PROPERTIES>
+		<TITRE>Activ'Infinite - Module de gestion</TITRE>
+		<DOMAIN>infinite-haum03</DOMAIN>
+		<URL>http://infinite-haum03/mdg/personne/FicheSynthesePersonne.do?method=afficherPersonne&amp;IdfSys=2953719&amp;popup=true</URL>
+		<CX>987</CX>
+		<CY>1235</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+</APPLI>

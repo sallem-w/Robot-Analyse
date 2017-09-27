@@ -304,5 +304,13 @@ ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefG
 ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
 ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
+ActivInfinitev7.pRecherchePPRefGRCRes.btVisualiser = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btVisualiser');
 
 ActivInfinitev7.pHistoriqueOptsConsul = ActivInfinitev7.addPage('pHistoriqueOptsConsul', {"comment":"Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pHistoriqueOptsConsul.oTableOperations = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oTableOperations', {"occurs":1});
+ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oContexte', {"occurs":1});
+ActivInfinitev7.pHistoriqueOptsConsul.btNextActif = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNextActif', {"mustExist":true});
+
+ActivInfinitev7.pFicheSynthesePersonneIAE = ActivInfinitev7.addPage('pFicheSynthesePersonneIAE', {"comment":"Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/FicheSynthesePersonne.do?method=afficherPersonne\u0026IdfSys=8500398\u0026popup=true"});
+ActivInfinitev7.pFicheSynthesePersonneIAE.btEvenement = ActivInfinitev7.pFicheSynthesePersonneIAE.addItem('btEvenement');
+ActivInfinitev7.pFicheSynthesePersonneIAE.oHistoriqueDesEvets = ActivInfinitev7.pFicheSynthesePersonneIAE.addItem('oHistoriqueDesEvets');

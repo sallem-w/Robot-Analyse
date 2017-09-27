@@ -100,5 +100,6 @@
 	</PROCESSUS>
 	<APPLICATIONS>
 		<include href="app/ActivInfinitev7.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/ActivInfiniteFichePP.pscp" xpointer="xpointer(//APPLI)" />
 	</APPLICATIONS>
 </ConteXtorStudio>
