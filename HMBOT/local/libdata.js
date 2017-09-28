@@ -102,10 +102,12 @@ ctx.dataF = (function () {
 				dateDeNaissance : ''
 			},
 			dataEnLigne: {
+				nbContrat : 0,
 				nbContratRadie : 0,
 				indexContrat : 0,
 				typeRelation : '',
-				identiteRelation : '' 
+				identiteRelation : '',
+				tracePCXExist : false
 			},
 			notes: {
 				contexteAnalyseStoppee : ''

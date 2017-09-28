@@ -114,7 +114,7 @@ ActivInfinitev7.step({ stRecherchePP: function(ev, sc, st) {
 	st.disableTimeout();
 	var scAnalyse = ActivInfinitev7.scenarios.scRechercheAnalysePP.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
-		ctx.traceF.infoTxt(' Fin du sous-scenario - scRechercheAnalysePP');
+		ctx.traceF.infoTxt(' Fin du sous - scenario - scRechercheAnalysePP');
 		sc.endStep();
 	});
 }});
@@ -156,7 +156,7 @@ ActivInfinitev7.step({ stLireRefGRCSuivant: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinAnalyseSitu: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('************* Fin scénario analyse situation *************');
-	sc.endStep();
+	sc.endScenario();
 	return;
 }});
 
