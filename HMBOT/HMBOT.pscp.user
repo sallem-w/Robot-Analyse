@@ -68,6 +68,7 @@
 		<OPENDOC LineNumber="12" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libPopup']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="19" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="3360" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Core']" Offset="0" Length="0" />
+
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
