@@ -531,7 +531,7 @@
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[mdg\/Go\.do\?id\=ACRE01RE3F]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat ]]></TITRE>
-						<URL Scan="like"><![CDATA[\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F]]></URL>
+						<URL Scan="Like"><![CDATA[\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
