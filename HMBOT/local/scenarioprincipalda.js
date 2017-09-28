@@ -119,7 +119,6 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			sc.endStep();
 			return;
 		});*/
-		
 		sc.endStep();
 	}});
   
