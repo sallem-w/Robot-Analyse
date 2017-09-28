@@ -3,9 +3,13 @@
 ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 	var data = sc.data;
 	sc.onTimeout(30000, function (sc, st) {
+		ctx.traceF.errorTxt('onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	}); // default timeout handler for each step
 	sc.onError(function (sc, st, ex) {
+		ctx.traceF.errorTxt('onError -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName + ' en raison de : '+ ex);
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
@@ -66,7 +70,7 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		
 		data.webData.tabDeBordURL=infos.document.URL;
-		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+		ctx.traceF.simpleTxt('URL du Tableau de bord : ' + data.webData.tabDeBordURL);
 		sc.endStep();
 		return;
 		});
@@ -276,11 +280,6 @@ ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	ctx.excelF.fermerFichier();
 	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
 	ctx.statsF.calculerStats(data);
-
-//	ctx.popupF.newPopup("Fin du traitement CMU ",'Fin', function() {
-//			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
-////			return sc.endStep();
-//		});
 	ctx.log('Fin du traitement CMU');
 	ctx.popupF.finTraitement();
 	sc.endScenario();

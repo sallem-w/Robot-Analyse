@@ -9,7 +9,7 @@ var confFileACSClass = function() {
 		controlSeul : '',
 		controlSolde : '',
 		controlBlocNote : '',
-		sauverMiseAJour : '',
+		touteTraceActive : '',
 		ajouterAnneeRechercheContrat : '',
 		excel : {
 			debutIndexCol : '',
@@ -47,4 +47,8 @@ var confFileACSClass = function() {
 		}	
   }
 };
+
+
+
+
 

@@ -8,7 +8,7 @@ var confFileCMUClass = function() {
     cheminRacine : '',
     controlSeul : '',
     controlSolde : '',
-    sauverMiseAJour : '',
+    touteTraceActive : '',
     excel : {
       debutIndexCol : '',
       debutIndexLigne : '',

@@ -105,10 +105,9 @@ ctx.dataF = (function () {
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 			dat.varGlobales=ctx.dataF.varGlobales;	
-			ctx.log('Init Trace : '+dat.scenarioConfig.CMU.cheminRacine);
+			ctx.log('Init Trace : '+ dat.scenarioConfig.CMU.cheminRacine);
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
-			ctx.traceF.infoTxt('Version du projet : ' + dat.scenarioConfig.Version + ' - Date de la Version : ' + ctx.getDate());
-			
+			ctx.traceF.simpleTxt('Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.log('Init excelF');
 			ctx.excelF.configExcel(dat);
 			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
@@ -123,14 +122,6 @@ ctx.dataF = (function () {
 			ctx.log('Init statsF');
 			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 			ctx.statsF.debuterStats(dat);
-			
-			
-				
-	
-	
-	
-			
-			
 			
 		}
 		 
