@@ -17,7 +17,6 @@
 	ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
 	var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
 	var json = JSON.parse(fileContracts);
-	
 	var entetes = json.keyLabel;
 	var contracts = json.data;
 	var countContracts = contracts.length;
