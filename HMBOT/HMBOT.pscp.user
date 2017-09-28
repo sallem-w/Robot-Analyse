@@ -60,6 +60,7 @@
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 		<DebugTester><![CDATA[ctx.log('etat'+ctx.traceF.constantes.touteTraceActive)]]></DebugTester>
+		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />
