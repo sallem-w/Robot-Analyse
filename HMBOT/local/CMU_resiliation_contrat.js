@@ -1,13 +1,13 @@
 ﻿ActivInfinitev7.scenario({ scResiliationCMU: function(ev, sc) {
 	var data = sc.data;
   sc.onTimeout(30000, function(sc, st) {
-		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Timeout le scénario courant a été arrêté');
+		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
-		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ex + ' le scénario courant a été arrêté');
+		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName + ' en raison de : '+ ex);
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
@@ -180,6 +180,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisant: function(ev, sc, st) {
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers Visualisation du compte cotisant';
 		data.contratCourantCMU.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		
     sc.endScenario();
 	});
 	ActivInfinitev7.pHistoCotisation.wait(function(ev){
@@ -209,20 +210,24 @@ ActivInfinitev7.step({ stSauvegardeCMU: function(ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stSauvegardeCMU');
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
-	
 		data.contratCourantCMU.notes.commentaireContrat = data.nomScenario + ' effectuée';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 		data.contratCourantCMU.statutsCMU.contratResilie = true;
-		
-    sc.endStep();
+	});
+	
+	ActivInfinitev7.pIdentContResilRech.wait(function(ev) {
+		ctx.log('Retour sur la page Resiliation Contrat Recherche');
+		sc.endStep();
 		return;
 	});
+	
 }});
 
 ActivInfinitev7.step({ stFinResiliationCMU: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP END - stFinResiliationCMU');
 	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+	ctx.log('Retour au tableau de bord');
 	sc.endStep();
 	return ;
 }});
