@@ -29,7 +29,7 @@ _.toArray = function (data) {
 		return data;
 	}
 	return _.map(function (key, index) {
-		if (isNaN(parseInt(key,1))) {
+		if (isNaN(parseInt(key,10))) {
 			throw new Error(JSON.stringify(data) + ' : Cannot be converted to array, key : ' + key + ' is not a number');
 		}
 		return data[key];
