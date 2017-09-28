@@ -4,18 +4,16 @@ ActivInfinitev7.scenario( {
 	scVerifContratCMU: function (ev, sc) {
 	var data = sc.data;
 		sc.onTimeout(40000, function(sc, st) { 
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut :  On quitte le sous scenario scVerifContratCMU');
-		var nomPage = ev.pageName;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut : depuis la page :'+nomPage);
-		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
-		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
-		sc.endScenario(); 
+			ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
+			data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+			ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
+			sc.endScenario(); 
 	}); 
 	
 	sc.onError(function(sc, st, ex) { 
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError :  On quitte le sous scenario scVerifContratCMU : '+ ex);
+		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onError -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName + ' en raison de : '+ ex);
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
@@ -227,7 +225,7 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 				//incoherence entre les rangs
 				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - incohérece entre les rangs');
 				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
-				data.statistiquesF.nbCasRevoirCentre += 1;
+			
 				data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 				sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
@@ -252,7 +250,7 @@ ActivInfinitev7.step( { stBenefPrinciTermineAutresBenefNonTermines : function (e
 		if (data.contratCourantCMU.statutsCMU.ASSPRITermine && data.contratCourantCMU.statutsCMU.assureValid) {
 			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - ASSPRI est terminé mais un ou plusieurs autres beneficiaries e sont pas terminé(s)');
 			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: L\'assuré principal est radié, mais un ou plusieurs bénéficiaire ne sont pas radié pour CMU';
-			data.statistiquesF.nbCasRevoirCentre += 1;
+
 			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
@@ -342,7 +340,6 @@ ActivInfinitev7.step( { stVerfiIOrdreSurDateBenefEtDateASSPRI: function (ev, sc,
 		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Debut - Etape stVerfiIOrdreSurDateBenefEtDateASSPRI - beneficiaire numero: ' + data.contratCourantCMU.dataEnLigne.variables.indiceBenef);
 	if(	data.contratCourantCMU.dataEnLigne.variables.typeAssure !== ctx.configF.constantes.ASSPRI && ctx.dateF.estAvant(new Date(data.contratCourantCMU.dataLocale.dateFinEffSituatParti),data.contratCourantCMU.dataEnLigne.variables.dateFinEffetInfinite)){
 		  data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: probleme sur les dates de fin d\'effet des beneficiaires';
-			data.statistiquesF.nbCasRevoirCentre += 1;
 			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		  sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);

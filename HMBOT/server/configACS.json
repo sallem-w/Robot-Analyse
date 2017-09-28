@@ -6,7 +6,7 @@
         "controlSeul": true,
         "controlSolde": false,
         "controlBlocNote": false,
-        "sauverMiseAJour": false,
+        "touteTraceActive": true,
         "ajouterAnneeRechercheContrat": 30,
         "excel": {
             "debutIndexCol": 1,

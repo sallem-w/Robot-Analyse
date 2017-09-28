@@ -3,9 +3,9 @@
     "CMU":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 
-        "controlSeul": true,
+        "controlSeul": false,
         "controlSolde": true,
-        "sauverMiseAJour": false,
+        "touteTraceActive": false,
         "excel": {
             "debutIndexCol": 1,
             "debutIndexLigne": 5,
