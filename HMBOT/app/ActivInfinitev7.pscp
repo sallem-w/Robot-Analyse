@@ -2929,24 +2929,17 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btNextActif" MustExist="Y">
+						<OBJET Name="btNext">
 							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="174.R0R1R7R0R0R2R0R0R0R2R0R0R1R0R0R0R5R0R4">
-									<TAG Name="A" Scope="All" CapturedPos="174.R0R1R7R0R0R2R0R0R0R2R0R0R1R0R0R0R5R0R4R0">
-										<ATT Name="Text">
-											<VALUE Scan="Full"><![CDATA[>]]></VALUE>
-										</ATT>
-									</TAG>
-									<ATT Name="InnerHTML">
-										<VALUE Scan="Part"><![CDATA[class="tooltipstered"]]></VALUE>
+								<TAG Name="A" Scope="All" CapturedPos="174.R0R1R7R0R0R2R0R0R0R2R0R0R1R0R0R0R5R0R4R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableOperations_next]]></VALUE>
 									</ATT>
-									<SET />
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2260_1645334_1" Comment="Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion" CtxtId="174" Techno="WEB" Timestamp="22/09/2017 16:45:47" />
-					<CAPTURE Name="PAGE_ConsultationN0162_1726159_1" Comment="Consultation - N°01621813 - Résilié - Adhérent : Monsieur SAVARY CEDRIC - HARMONIE MUTUELLE EP - haum03 - Activ Infinite - Module de gestion" CtxtId="192" Techno="WEB" Timestamp="27/09/2017 17:26:28" />
 				</PAGE>
 				<PAGE Name="pFicheSynthesePersonneIAE" Comment="Activ Infinite - Module de gestion">
 					<CRITERE>
