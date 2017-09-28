@@ -37,7 +37,8 @@
 		};
 
 		var stats = {
-			dureeTraitement : new Date(),
+			dureeTraitement : 0,
+			debutTraitement : ctx.dateF.conversionEnSecondes(new Date()),
 			nombreCasTrouvesDansPivot : 0,
 			nombreCasTraites : 0,
 			nombreCasTraitesAvecAvertissement : 0,

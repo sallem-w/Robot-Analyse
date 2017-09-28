@@ -174,7 +174,7 @@
 		return;
 	}});
 	
-  
+  // wait à mettre ou LOAD.once ou rien ?
 	/** Description */
 	ActivInfinitev7.step({ stVerifierNomAdresse: function(ev, sc, st) {
 		ctx.traceF.infoTxt('STEP --> stVerifierNomAdresse - verification du nom et de l\'adresse')

@@ -119,6 +119,7 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			sc.endStep();
 			return;
 		});*/
+		
 		sc.endStep();
 	}});
   
@@ -205,7 +206,9 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		ctx.traceF.infoTxt(' Fin du scénario principal pour la dispense d\'affiliation et écriture des stats');
 		var data = sc.data;
 		var statistiques = {};
-		//statistiques['tempsEcoule'] = data.stats.nombreDeContrats;
+		data.stats.dureeTraitement =  ctx.dateF.afficherDuree(ctx.dateF.conversionEnSecondes(new Date()) - data.stats.debutTraitement);
+		statistiques['fileName'] = ctx.configF.nomFichierResultat;
+		statistiques['tempsEcoule'] = data.stats.dureeTraitement;
 		statistiques['nombreContrats'] = data.stats.nombreDeContrats;
 		statistiques['nombreCasDansPivot'] = data.stats.nombreCasTrouvesDansPivot;
 		statistiques['nombreCasTraites'] = data.stats.nombreCasTraites;
