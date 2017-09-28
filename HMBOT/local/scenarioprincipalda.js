@@ -7,7 +7,6 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
-
 	
 	sc.data.codeDuScenario = ctx.configF.scenario.DA;
 	
@@ -112,13 +111,6 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	ActivInfinitev7.step({ stVersVerif: function(ev, sc, st) {
 		ctx.traceF.infoTxt(' STEP - stVersVerif');
 		var data = sc.data;
-		//st.disableTimeout();
-		/*var scVerification = ActivInfinitev7.scenarios.scVerifContratDA.start(data).onEnd(function(sc5){
-			ctx.traceF.infoTxt(' STEP - dans le sous-scénario de vérification');
-			sc.data = sc5.data;
-			sc.endStep();
-			return;
-		});*/
 		sc.endStep();
 	}});
   
