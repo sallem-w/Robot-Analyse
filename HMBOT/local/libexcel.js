@@ -65,7 +65,7 @@ excelF.remplirObjetTableau = function(Index, arrayMessage) {
 excelF.remplirTableau = function(rowIndex, arrayMessage) {
 		for (var i in arrayMessage) {
 			var message = arrayMessage[i];
-			ctx.excel.sheet.setCell(rowIndex, parseInt(i,10) + 1, String(message));
+			ctx.excel.sheet.setCell(rowIndex, parseInt(i) + 1, String(message));
 		}
 	}
 //.createFile
