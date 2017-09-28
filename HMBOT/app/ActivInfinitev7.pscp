@@ -321,7 +321,7 @@
 				</PAGE>
 				<PAGE Name="pContContratRechDet" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=([A-Z-0-9]+)]]></URL>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=([A-Z-0-9]+)]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/Go.do?id=RecherchePersonne&action=afficher]]></PATH>
