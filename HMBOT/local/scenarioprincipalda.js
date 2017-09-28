@@ -1,7 +1,7 @@
 ﻿
 /** Description */
 ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
-	ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
+	//ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
 	var data = sc.data;
 
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
