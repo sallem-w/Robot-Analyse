@@ -3277,6 +3277,7 @@
 				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
 				<SCRIPT Name="RechercheEtAnalysePP" Src="RechercheEtAnalysePP.js" Folder="Analyse Situation" />
 				<SCRIPT Name="Recherche_Operations_Contentieux" Src="Recherche_Operations_Contentieux.js" Folder="Analyse Situation" />
+				<SCRIPT Name="AnalyseContratsEnCours" Src="AnalyseContratsEnCours.js" Folder="Analyse Situation" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

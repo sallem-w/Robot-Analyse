@@ -18,17 +18,14 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitRechercheOptrsContentieux);
 	sc.step(ActivInfinitev7.steps.stParcourirListeOperts);
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
-	
-	
-	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
-	
+	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);	
 }});
 
 
 /** Description */
 ActivInfinitev7.step({ stInitRechercheOptrsContentieux: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stInitRechercheOptrsContentieux: voir liste des opérations ++++++ indice du contrat courant vaut: '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	ctx.traceF.infoTxt('Etape stInitRechercheOptrsContentieux (voir la liste des OPERATIONS) indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
 	sc.endStep();
 	return;
 }});
@@ -37,7 +34,7 @@ ActivInfinitev7.step({ stInitRechercheOptrsContentieux: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stParcourirListeOperts : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stParcourirListeOperts: '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	ctx.traceF.infoTxt('Etape stParcourirListeOperts, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
   var contextes = ActivInfinitev7.pHistoriqueOptsConsul.oContexte.getAll();
 	
 	var index = 0;
@@ -46,16 +43,17 @@ ActivInfinitev7.step({ stParcourirListeOperts : function(ev, sc, st) {
 		var valContexte = contexte.get();
     if (valContexte.indexOf('PCX') !== -1){
 			data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = true;
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d un précontentieux';//insertion de la trace dans le fichier Excel
+			ctx.traceF.infoTxt('La trace PCX EXISTE, indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d un précontentieux';
 		}
 		index ++;
 	}
 	if(data.ppCouranteAnalyse.dataEnLigne.tracePCXExist === true){
-		ctx.traceF.infoTxt('La trace PCX existe ----> fin analyse de la PP courante');
+		ctx.traceF.infoTxt('La trace PCX existe ---> Fin analyse de la PP courante');
 		sc.endStep(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
 		return;
 	}else{
-		ctx.traceF.infoTxt('La trace PCX n existe pas ----> on page à la page suivante ou au contrat suivant');
+		ctx.traceF.infoTxt('La trace PCX n existe pas das le tableau courant ---> on passe à la page suivante (Next) ou au contrat suivant');
 		sc.endStep();
     return;
 	}
@@ -82,7 +80,7 @@ ActivInfinitev7.step({ stListeOprtsSuivante: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stFinRechercheOptrsContentieux: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stFinRechercheOptrsContentieux: ');
+	ctx.traceF.infoTxt('Etape stFinRechercheOptrsContentieux, indice du contrat : '+  data.ppCouranteAnalyse.dataEnLigne.indexContrat);
 	sc.endStep();
 	return;
 }});
