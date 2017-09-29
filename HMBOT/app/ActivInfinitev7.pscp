@@ -2701,7 +2701,7 @@
 				</PAGE>
 				<PAGE Name="pAdhIndivIdentContrat" Comment="Adhésions individuelles - N°22629359 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="like"><![CDATA[\/ACIC\.do\?method\=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_341&CONTAINER_NOM_FONCTION=ACIC_100&]]></URL>
+						<URL Scan="Like"><![CDATA[\/ACIC\.do\?method\=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_100&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_341&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -2719,24 +2719,6 @@
 								<TAG Name="BUTTON" Scope="All" CapturedPos="176.R0R1R7R0R1R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oOffre">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="176.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0">
-									<TAG Name="INPUT" Scope="All" CapturedPos="176.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[form-control cgd-input tt-hint]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Offre 
-
-
- ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -2759,23 +2741,148 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDIV">
+						<OBJET Name="oGroupeGestion">
 							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2" Range="2">
-									<TAG Name="INPUT" Scope="Children" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[form-control cgd-input tt-hint]]></VALUE>
+								<TAG Name="DIV" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1">
+									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R0">
+										<ATT Name="OuterHTML">
+											<VALUE Scan="Full"><![CDATA[<input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="*" data-input-format-uppercase="" data-search-label="ODGGLIBCOU" data-search-value="ODGGCODGGS" data-search-service="appelerInviteGroupeGestion" data-search-title="Liste des groupes de gestion" autocomplete="off">]]></VALUE>
 										</ATT>
-										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Groupe de gestion]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Contexte administratif]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCentreGestion">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1">
+									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R3R0R0R3R0">
+										<ATT Name="OuterHTML">
+											<VALUE Scan="Full"><![CDATA[<input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="*" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODCGCODCGS" data-search-service="appelerInviteCentreGestion" data-search-title="Liste des centres de gestion" autocomplete="off">]]></VALUE>
+										</ATT>
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Contexte administratif]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSuivant">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="178.R0R1R7R0R1R0R0R0R1R0R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btMiseEnInstance">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="178.R0R1R7R0R1R0R0R0R2R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterMiseEnInstance]]></VALUE>
+									</ATT>
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Mise en instance]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelectOffre">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0">
+									<TAG Name="FORM" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0">
+										<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29">
+											<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0">
+												<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0">
+													<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0R1R0">
+														<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R3">
+															<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R3R0">
+																<TAG Name="DIV" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R3R0R0" Occurs="Y">
+																	<ATT Name="class">
+																		<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
+																	</ATT>
+																</TAG>
+															</TAG>
+														</TAG>
+														<ATT Name="class">
+															<VALUE Scan="Full"><![CDATA[form-group]]></VALUE>
+														</ATT>
+													</TAG>
+													<ATT Name="Text">
+														<VALUE Scan="Like"><![CDATA[Contexte commercial]]></VALUE>
+													</ATT>
+													<ATT Name="InnerHTML">
+														<VALUE Scan="Full"><![CDATA[
+					<h2 class="cgd-title">Contexte commercial</h2>
+					<div class="cgd-box-body cgd-left-border-green-flat form-horizontal">
+						<div class="form-group">
+							<div class="col-md-12 cgd-padding-B-small">
+								<div class="row reset-padding">
+									<div class="col-md-12">
+										<label class="control-label" id="txtOffre" for="codeOffre">Offre</label>
+										<span class="pull-right cgd-btn-fa fa-search-plus cgd-search-icon tooltipstered" id="codeOffre-search"></span><input name="codeOffre" class="form-control cgd-input" id="codeOffre" style="text-transform: uppercase; display: none;" maxlength="10" value="" data-lock="" data-input-format-uppercase="" data-search-label="PROFLIBCOU" data-search-value="PROFCODOFF" data-search-service="appelerInviteOffre" data-search-title="Liste des offres"><span class="twitter-typeahead" style="display: inline-block; position: relative;"><input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="10" readonly="" value="" data-lock="" data-input-format-uppercase="" data-search-label="PROFLIBCOU" data-search-value="PROFCODOFF" data-search-service="appelerInviteOffre" data-search-title="Liste des offres" autocomplete="off"><input name="codeOffre-display" class="form-control cgd-input tt-input" id="codeOffre-display" style='width: 100%; text-transform: uppercase; vertical-align: top; position: relative; background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); background-color: transparent;' dir="auto" spellcheck="false" maxlength="10" value="" data-lock="" data-input-format-uppercase="" data-search-label="PROFLIBCOU" data-search-value="PROFCODOFF" data-search-service="appelerInviteOffre" data-search-title="Liste des offres" autocomplete="off"><pre aria-hidden="true" style="text-transform: uppercase; text-indent: 0px; letter-spacing: 0px; font-family: inconsolatamedium; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;">PPSTA</pre><div class="tt-menu tt-open" style="left: 0px; top: 100%; display: block; position: absolute; z-index: 100;"><div class="tt-dataset tt-dataset-codeOffre-display"><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>00 - H+ HM</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>001 - PART ACS-P</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>002 - PART HPA</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>003 - PART RECEPTACLE</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>004 - PART HSA</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>01 - PARTICULIER EST</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>02 - RAC</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>03 - PART PMO</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>04 - PART MUTOUEST</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>05 - PART SOMILOR</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>06 - PART UMACIP</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>07 - PERF PREST IND</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>08 - GAMME LM PRETA</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>10 - PART ALTEIS</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>14 - PART NORMANDIE</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>14A - PART NORMANDIEA</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>22 - PARTICULIER 22</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>29 - PARTICULIER 29</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>35 - PARTICULIER 35</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>53 - PARTICULIER 53</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>56 - PARTICULIER 56</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>89 - PART RELEYA</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>M22 - PARTICULIER M22</div><div class="tt-suggestion tt-selectable"><strong class="tt-highlight">PPSTA</strong>M29 - PARTICULIER M29</div></div></div></span>
+									</div>
+								</div>
+								<div>
+									<div class="row reset-padding">
+										<div class="col-md-12">
+											<label class="control-label disabled-control-label" id="txtReseau" for="codeReseau">Réseau</label>
+											<span class="pull-right cgd-btn-fa fa-search-plus cgd-search-icon tooltipstered" id="codeReseau-search" style="display: none;"></span><input name="codeReseau" class="form-control cgd-input" id="codeReseau" style="text-transform: uppercase; display: none;" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="ODRSLIBLON" data-search-value="ODRSCODRDI" data-search-service="appelerInviteReseau" data-search-title="Liste des réseaux"><span class="twitter-typeahead" style="display: inline-block; position: relative;"><input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; display: none; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="" data-lock="" data-input-format-uppercase="" data-search-label="ODRSLIBLON" data-search-value="ODRSCODRDI" data-search-service="appelerInviteReseau" data-search-title="Liste des réseaux" autocomplete="off"><input name="codeReseau-display" class="form-control cgd-input tt-input" id="codeReseau-display" style='width: 100%; text-transform: uppercase; vertical-align: top; display: none; position: relative; background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); background-color: transparent;' dir="auto" spellcheck="false" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="ODRSLIBLON" data-search-value="ODRSCODRDI" data-search-service="appelerInviteReseau" data-search-title="Liste des réseaux" autocomplete="off"><p class="form-control-static cgd-emptyStatic" id="codeReseau-display-static"></p><pre aria-hidden="true" style="text-transform: uppercase; text-indent: 0px; letter-spacing: 0px; font-family: inconsolatamedium; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;"></pre><div class="tt-menu" style="left: 0px; top: 100%; display: none; position: absolute; z-index: 100;"><div class="tt-dataset tt-dataset-codeReseau-display"></div></div></span>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="row reset-padding">
+										<div class="col-md-12">
+											<label class="control-label disabled-control-label" id="txtProducteur" for="codeProducteur">Producteur</label>
+											<span class="pull-right cgd-btn-fa fa-search-plus cgd-search-icon tooltipstered" id="codeProducteur-search" style="display: none;"></span><input name="codeProducteur" class="form-control cgd-input" id="codeProducteur" style="text-transform: uppercase; display: none;" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODPUCODPUC" data-search-service="appelerInviteProducteur" data-search-title="Liste des producteurs"><span class="twitter-typeahead" style="display: inline-block; position: relative;"><input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; display: none; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODPUCODPUC" data-search-service="appelerInviteProducteur" data-search-title="Liste des producteurs" autocomplete="off"><input name="codeProducteur-display" class="form-control cgd-input tt-input" id="codeProducteur-display" style='width: 100%; text-transform: uppercase; vertical-align: top; display: none; position: relative; background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); background-color: transparent;' dir="auto" spellcheck="false" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODPUCODPUC" data-search-service="appelerInviteProducteur" data-search-title="Liste des producteurs" autocomplete="off"><p class="form-control-static cgd-emptyStatic" id="codeProducteur-display-static"></p><pre aria-hidden="true" style="text-transform: uppercase; text-indent: 0px; letter-spacing: 0px; font-family: inconsolatamedium; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;"></pre><div class="tt-menu" style="left: 0px; top: 100%; display: none; position: absolute; z-index: 100;"><div class="tt-dataset tt-dataset-codeProducteur-display"></div></div></span>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="row reset-padding">
+										<div class="col-md-12">
+											<label class="control-label disabled-control-label" id="txtAgence" for="codeAgence">Agence</label>
+											<span class="pull-right cgd-btn-fa fa-search-plus cgd-search-icon tooltipstered" id="codeAgence-search" style="display: none;"></span><input name="codeAgence" class="form-control cgd-input" id="codeAgence" style="text-transform: uppercase; display: none;" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODAGCODAGC" data-search-service="appelerInviteAgence" data-search-title="Liste des agences"><span class="twitter-typeahead" style="display: inline-block; position: relative;"><input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; display: none; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODAGCODAGC" data-search-service="appelerInviteAgence" data-search-title="Liste des agences" autocomplete="off"><input name="codeAgence-display" class="form-control cgd-input tt-input" id="codeAgence-display" style='width: 100%; text-transform: uppercase; vertical-align: top; display: none; position: relative; background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); background-color: transparent;' dir="auto" spellcheck="false" maxlength="9" value="" data-lock="" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODAGCODAGC" data-search-service="appelerInviteAgence" data-search-title="Liste des agences" autocomplete="off"><p class="form-control-static cgd-emptyStatic" id="codeAgence-display-static"></p><pre aria-hidden="true" style="text-transform: uppercase; text-indent: 0px; letter-spacing: 0px; font-family: inconsolatamedium; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; white-space: pre; visibility: hidden; position: absolute;"></pre><div class="tt-menu" style="left: 0px; top: 100%; display: none; position: absolute; z-index: 100;"><div class="tt-dataset tt-dataset-codeAgence-display"></div></div></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				]]></VALUE>
+													</ATT>
+												</TAG>
+												<ATT Name="class">
+													<VALUE Scan="Full"><![CDATA[row]]></VALUE>
+												</ATT>
+											</TAG>
+										</TAG>
+										<ATT Name="id">
+											<VALUE Scan="Full"><![CDATA[acicForm]]></VALUE>
+										</ATT>
+										<ATT Name="name">
+											<VALUE Scan="Full"><![CDATA[acicForm]]></VALUE>
+										</ATT>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oOffre">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="180.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codeOffre-display]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1751057_1" Comment="Adhésions individuelles - N°22629359 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="178" Techno="WEB" Timestamp="28/09/2017 17:51:19" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1416578_1" Comment="Adhésions individuelles - N°22629364 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="180" Techno="WEB" Timestamp="29/09/2017 14:17:13" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
