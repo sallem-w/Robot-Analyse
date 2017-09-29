@@ -49,6 +49,7 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 				delay: 50,
 				nbMax: 10,
 				test: function(index) { 
+					ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
 					return ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist(); 
 				},
 				done: function() { 
