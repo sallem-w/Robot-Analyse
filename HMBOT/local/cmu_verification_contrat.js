@@ -209,18 +209,35 @@ ActivInfinitev7.step( { stLireBenefLocal: function (ev, sc, st) {
 }});
 
 ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
-	var data = sc.data;
-	data.varGlobales.nomPageCourante=ev.pageName;
-	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifValiditeRange');
-	//déclaration du tableau de correspondance
-	var tabRange = ctx.configF.constantes.correspondanceRang[data.contratCourantCMU.dataEnLigne.variables.typeAssure];
-	var coherence = false;
-	for (var i in tabRange) {
-//ctx.log(' tabRange : '+tabRange[i]+' Rang Assure : '+data.contratCourantCMU.dataEnLigne.variables.rangAssure)
-		if (tabRange[i] === data.contratCourantCMU.dataEnLigne.variables.rangAssure) {
-				coherence=true;
-				break;
-		}
+		var data = sc.data;
+		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - Début - Etape stVerifValiditeRange');
+		//déclaration du tableau de correspondance
+		var tabRange = ctx.configF.constantes.correspondanceRang[data.contratCourantCMU.dataEnLigne.variables.typeAssure];
+		var coherence = false;
+			for (var i in tabRange) {
+				ctx.log(' tabRange : '+tabRange[i]+' Rang Assure : '+data.contratCourantCMU.dataEnLigne.variables.rangAssure)
+				if (tabRange[i] === data.contratCourantCMU.dataEnLigne.variables.rangAssure) {
+					coherence=true;
+					break;
+				}
+			}
+		
+			if(coherence){
+				//cohérence entre les rangs 
+					ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - les rangs sont cohérents');
+					sc.endStep();
+					return ;
+			}
+			else{
+					//incoherence entre les rangs
+				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - incohérece entre les rangs');
+				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
+				data.statistiquesF.nbCasRevoirCentre += 1;
+				data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+				return ;
+			}
 	}
 		
 	if(coherence){
