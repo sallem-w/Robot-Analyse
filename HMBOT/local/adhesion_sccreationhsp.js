@@ -43,13 +43,24 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.keyStroke('P - HA'); // on insere 'P' pour faire apparaitre la boite cliquable
 //		ActivInfinitev7.pAdhesions.oEntiteRattachement.set(ctx.keyStroke('P - HA',1500));
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
-//		ctx.wait(function(ev){
-			ActivInfinitev7.pAdhesions.oSelectPHarmonie.click(); // peut etre faire un polling pour plus de robustesse
-//		},1000);
+		ctx.polling({
+				delay: 100,
+				nbMax: 10,
+				test: function(index) { 
+					return ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist(); 
+				},
+				done: function() { 
+						ActivInfinitev7.pAdhesions.oSelectPHarmonie.click();
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'entite de rattachement');
+				}
+		});
+			
 		var dd=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET;
-		var dateD = ctx.dateF.formatDateGRC(dd); 
-		ctx.log('dateD'+dateD);
-		ActivInfinitev7.pAdhesions.oDateDebutEffet.set(dateD);
+		ctx.log('dd :'+dd);
+		ActivInfinitev7.pAdhesions.oDateDebutEffet.setFocus();
+		ActivInfinitev7.pAdhesions.oDateDebutEffet.set(dd);
 		ActivInfinitev7.pAdhesions.btRecherche.click();
 		sc.endStep();
 		return;

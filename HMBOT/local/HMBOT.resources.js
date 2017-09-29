@@ -301,3 +301,11 @@ ActivInfinitev7.pAdhesions.oDateDebutEffet = ActivInfinitev7.pAdhesions.addItem(
 ActivInfinitev7.pAdhesions.btRecherche = ActivInfinitev7.pAdhesions.addItem('btRecherche');
 ActivInfinitev7.pAdhesions.oSelectPHarmonie = ActivInfinitev7.pAdhesions.addItem('oSelectPHarmonie');
 ActivInfinitev7.pAdhesions.oEntiteRattachement = ActivInfinitev7.pAdhesions.addItem('oEntiteRattachement');
+
+ActivInfinitev7.pAdhIndivIdentContrat = ActivInfinitev7.addPage('pAdhIndivIdentContrat', {"comment":"Adhésions individuelles - N°22629359 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_341\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivIdentContrat.oNumeroContrat = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oNumeroContrat');
+ActivInfinitev7.pAdhIndivIdentContrat.btBtnSuivant = ActivInfinitev7.pAdhIndivIdentContrat.addItem('btBtnSuivant');
+ActivInfinitev7.pAdhIndivIdentContrat.oOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oOffre');
+ActivInfinitev7.pAdhIndivIdentContrat.oNumeroExterne = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oNumeroExterne');
+ActivInfinitev7.pAdhIndivIdentContrat.oEcheancePrincip = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oEcheancePrincip');
+ActivInfinitev7.pAdhIndivIdentContrat.oDIV = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oDIV');

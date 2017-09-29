@@ -12,7 +12,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	ctx.log('Gamme : '+ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME))
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.contexteAnalyseStoppee);
-	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET=ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET);
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET=ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET)));
 	if( numeroSeq == undefined){
 		ctx.traceF.infoTxt(' Le numero de Seq est vide');
 		sc.endStep(ActivInfinitev7.steps.stContratAdhesionSuivant);
@@ -26,7 +26,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	while (numeroSeq !== undefined && numeroSeq === tmpNumeroSeq) {
 		temp_contrat.NUM_SEQ_CT = numeroSeq;
 		temp_contrat.DISCRIMINANT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DISCRIMINANT);
-		temp_contrat.DATE_DEBUT_EFFET = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET);
+		temp_contrat.DATE_DEBUT_EFFET =ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET)))
 		temp_contrat.TYPE_ASSURE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TYPE_ASSURE);
 		temp_contrat.CONTACT_SEX = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CONTACT_SEX);
 		temp_contrat.BRTH_DAY_GREG = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.BRTH_DAY_GREG);
