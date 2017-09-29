@@ -13,6 +13,8 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.contexteAnalyseStoppee);
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET=ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET)));
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DISCRIMINANT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DISCRIMINANT);
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_EXT_CTT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_EXT_CTT);
 	if( numeroSeq == undefined){
 		ctx.traceF.infoTxt(' Le numero de Seq est vide');
 		sc.endStep(ActivInfinitev7.steps.stContratAdhesionSuivant);

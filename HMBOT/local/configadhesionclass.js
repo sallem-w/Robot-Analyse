@@ -94,7 +94,15 @@ var confFileAdhesionClass = function () {
         statutsContrat: '',
         commentaireContrat: ''
       }
-    }
+    },
+		Offre : {
+			HSP :''
+		},
+		Gestion : {
+			CGGRC : [],
+			GroupeGestionInfinite : [],
+			CentreGestionInfinite : []
+		}
   }
 };
 

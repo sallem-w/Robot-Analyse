@@ -9,7 +9,9 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitCreationHSP);
 	sc.step(ActivInfinitev7.steps.stVersAdhesionIndividuelle);
 	sc.step(ActivInfinitev7.steps.stOuvertureDossierHSP);
+	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
+	
 	
 }});
 
@@ -42,9 +44,9 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.keyStroke('P - HA'); // on insere 'P' pour faire apparaitre la boite cliquable
 //		ActivInfinitev7.pAdhesions.oEntiteRattachement.set(ctx.keyStroke('P - HA',1500));
-		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
+//		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
 		ctx.polling({
-				delay: 100,
+				delay: 50,
 				nbMax: 10,
 				test: function(index) { 
 					return ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist(); 
@@ -68,6 +70,76 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 }});
 
 
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stRemplirIdentificationContratHSP: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP');
+	var numExterneContrat =data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_EXT_CTT;
+	var OffreHSP = data.scenarioConfig.Adhesion.Offre.HSP;
+	var tabGestion = data.scenarioConfig.Adhesion.Gestion;
+	
+	/// on va rechercher dans la table de gestion les codes infinites correspondant au code GRC du contrat
+	var codeGRC = data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DISCRIMINANT;
+	ctx.log('codeGRC : '+codeGRC);
+	var codeGG = undefined;
+	var codeCG = undefined;
+	var index=-1;
+	for(var i  in tabGestion.CGGRC){
+		if(codeGRC==tabGestion.CGGRC[i]){
+			index=i;
+			break;
+		}
+	}
+	
+	if (index == -1){
+		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
+	}else{
+		codeGG = tabGestion.GroupeGestionInfinite[index];
+		codeCG =tabGestion.CentreGestionInfinite[index];
+	}
+	ctx.log('codeGG : '+codeGG+' , code CG : '+codeCG);
+	ctx.log('codeGG : '+codeGG+' , code CG : '+codeCG);
+	
+	//==================================================
+	
+	ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+	ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke(OffreHSP);
+	var offreExistance = false;
+	var indexOffre = -1;
+	ctx.polling({	
+		delay: 50,	
+		nbMax: 10,		
+		test: function(index) { 		
+			return ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre.exist(); 	
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			var tabOffre = ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre.getAll();
+			for (var i in tabOffre){
+				if(OffreHSP == tabOffre[i]){
+					indexOffre=i;
+					break;
+				}
+			}
+			ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre.i(indexOffre).click();
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+		}
+	});
+	
+	ActivInfinitev7.pAdhIndivIdentContrat.oNumeroExterne.setFocus();
+		ActivInfinitev7.pAdhIndivIdentContrat.oEcheancePrincip.setFocus();
+	sc.endStep();
+	return;
+}});
+
+
+
 /** Description */
 ActivInfinitev7.step({ stFinScCreationHSP: function(ev, sc, st) {
 	var data = sc.data;
@@ -77,5 +149,3 @@ ActivInfinitev7.step({ stFinScCreationHSP: function(ev, sc, st) {
 	sc.endStep();
 	return;
 }});
-
-
