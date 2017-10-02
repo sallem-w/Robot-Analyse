@@ -2,64 +2,15 @@
 <USER>
 	<BREAKPOINTS />
 	<BOOKMARKS />
-	<FINDHISTORY>
-		<FINDWHAT><![CDATA[ctx.log]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
-		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucune date de fin d'effet n'a été trouvé pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecherContratIndivCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAffichageInforRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel.debut]]></FINDWHAT>
-		<FINDWHAT><![CDATA[recupConfigScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.scenarioConfig.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.chargementFichierConfig()]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.init]]></FINDWHAT>
-		<FINDWHAT><![CDATA[fichierConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[status]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentAss]]></FINDWHAT>
-		<FINDWHAT><![CDATA[prolonge]]></FINDWHAT>
-		<FINDWHAT><![CDATA[contrat Prolonge]]></FINDWHAT>
-		<FINDWHAT><![CDATA[contratProlonge]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dureeTraitement]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statistiquesF]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pIdentContratRechConsul.]]></REPLACEWITH>
-	</FINDHISTORY>
+	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='arrayMap']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="70" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="175" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scenarioPrincipalDA']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="46" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='dataDA']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="126" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="213" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='verificationContratDA']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="145" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='resiliationConcuDA']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="67" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="3" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scenarioPrincipalDA']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[ctx.log('etat'+ctx.traceF.constantes.touteTraceActive)]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />
