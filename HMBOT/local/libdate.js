@@ -1,4 +1,4 @@
-﻿ ctx.dateF = (function() {
+﻿  ctx.dateF = (function() {
 	
 	var dateF = {};
 
@@ -151,6 +151,18 @@
 		return [jj, mm, aa].join(separateur);
 	};	
 		
+		// format MMJJAAAA
+		dateF.formatMMJJAAAA = function(dateObj, separateur) {
+		if (typeof dateObj !== 'object') {
+			dateObj = new Date(dateObj);
+		}
+		separateur = separateur || '/';
+		var jj = dateF.format2c(dateObj.getDate());
+		var mm = dateF.format2c(dateObj.getMonth() + 1);
+		var aa = dateObj.getFullYear();
+		return [mm, jj, aa].join(separateur);
+	};	
+		
 //	formatYYYMMDD	
 		dateF.formatAAAAMMJJ = function(dateObj) {
 		var mm = dateF.format2c(dateObj.getMonth() + 1);
@@ -193,22 +205,31 @@
 	}
 	
 	dateF.premierJourDuMoisCourant = function (time) {
-	 	var thisYear = Number(time.substr(6,4));
-		var thisMonth = Number(time.substr(3,2));
-		var thisDay = Number(time.substr(0,2));
+		var dateInString = String(time);
+	 	var thisYear = dateInString.substr(0,4);
+		var thisMonth = dateInString.substr(4,2);
+		var thisDay = Number(dateInString.substr(6,2));
 		 
-		var premierJour = dateF.format2c(1);
-		var resultat = premierJour+'/'+dateF.format2c(thisMonth)+'/'+thisYear;
+		var premierJour = 1;
+		var resultat = dateF.format2c(premierJour)+'/'+dateF.format2c(thisMonth)+'/'+thisYear;
 		return resultat;
 	}
 	 
 	dateF.dateSansSeparatorEnFrancais = function (time){
 		var dateInString = String(time);
-		var day =  Number(time.substr(6,2));
-		var month = Number(time.substr(4,2));
-		var year = Number(time.substr(0,4));
-		var resultat = month+'/'+day+'/'+year;
-		//var resultat = day+'/'+year;
+		var day = dateInString.substr(6,2);
+		var month = dateInString.substr(4,2);
+		var year = dateInString.substr(0,4);
+		var resultat = dateF.format2c(day)+'/'+dateF.format2c(month)+'/'+year;
+		return resultat;
+	}	
+	
+	dateF.dateAvecSeparateurEnAnglais = function (time){
+		var dateInString = String(time);
+		var day = dateInString.substr(6,2);
+		var month = dateInString.substr(4,2);
+		var year = dateInString.substr(0,4);
+		var resultat = dateF.format2c(month)+'/'+dateF.format2c(day)+'/'+year;
 		return resultat;
 	}	
 	
