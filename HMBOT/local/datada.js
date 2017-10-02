@@ -1,7 +1,9 @@
 ﻿ActivInfinitev7.step( {stInitScenarioDA: function (ev, sc, st) {
 		var data = sc.data;
+		ctx.configF.chargementFichierConfigDA();
+	  var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 		ctx.traceF.infoTxt(' stInitScenarioDA ');
-	
+	  ctx.statsF.initFileStats(ctx.configF.fichierConfig.cheminTemplate, configDA.cheminRacine, ctx.configF.scenario.DA);
 		var webData = {
 			url:'',
 			tabDeBordURL:'',
@@ -74,3 +76,4 @@
 		return ;
 	}
 });
+

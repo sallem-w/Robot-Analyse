@@ -43,7 +43,7 @@ ActivInfinitev7.step({ stAllerAlaPageDeResiliation: function(ev, sc, st) {
 ActivInfinitev7.step({ stRechercherContratAResilier: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pResiliationConcu.wait(function(ev){
-		var dateEffet = ctx.dateF.premierJourDuMoisCourant(ctx.dateF.formatJJMMAAAA(new Date()));
+		var dateEffet = ctx.dateF.premierJourDuMoisCourant(data.contratCourant.DateExtraction);
 		ActivInfinitev7.pResiliationConcu.oDateDebutEffet.set(dateEffet);
 		ActivInfinitev7.pResiliationConcu.btRecherche.click();
 		sc.endStep();

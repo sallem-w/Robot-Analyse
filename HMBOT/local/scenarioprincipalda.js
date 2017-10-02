@@ -1,6 +1,7 @@
 ﻿
 /** Description */
 ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
+	// initialiser les fichiers pour les traces et les stats
 	//ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
 	var data = sc.data;
 
@@ -11,7 +12,7 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.data.codeDuScenario = ctx.configF.scenario.DA;
 	
 	sc.step(ActivInfinitev7.steps.stInitScenarioDA);
-	sc.step(ActivInfinitev7.steps.initPivot);
+	sc.step(ActivInfinitev7.steps.initPivotDA);
 	sc.step(ActivInfinitev7.steps.stServerConnexionDA);
 	sc.step(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 	sc.step(ActivInfinitev7.steps.stVersVerif);
@@ -150,9 +151,9 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		data.dataFichier.prenom = data.contratCourant.Prenom;
 		data.dataFichier.adresse = data.contratCourant.Adresse;
 		data.dataFichier.localite = data.contratCourant.Localite;
-		data.dataFichier.dateExtraction = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction);
-		data.dataFichier.dateNaissance = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateNaissance);
-		data.dataFichier.dateDispense = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension);
+		data.dataFichier.dateExtraction = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction);
+		data.dataFichier.dateNaissance = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateNaissance);
+		data.dataFichier.dateDispense = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateDispenseOuSuspension);
 		
 		ctx.traceF.infoTxt( 'le nom du client est :' + data.globalVariables.nomClient );
 		ctx.traceF.infoTxt( 'Numéro Sécu :' + data.dataFichier.numRO );
@@ -162,7 +163,12 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	
 		var writeArray = _.getObjectValues(data.dataFichier);
 		writeArray.push(data.notes.numContratIndiv);
-		writeArray.push(ctx.dateF.formatJJMMAAAA(new Date()));
+		data.notes.dateDeTraitement = ctx.dateF.formatMMJJAAAA(new Date());
+		writeArray.push(data.notes.dateDeTraitement);
+		ctx.log(data.notes.dateDeTraitement);
+		ctx.log(ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction));
+		ctx.log(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction));
+		ctx.log(ctx.dateF.premierJourDuMoisCourant("20151223"));
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
 		ctx.excelF.remplirTableau(data.globalVariables.ligneTraite, writeArray);

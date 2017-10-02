@@ -1,4 +1,4 @@
-﻿ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
+﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
 	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
