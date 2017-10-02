@@ -3,6 +3,7 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[ctx.log]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
 		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
@@ -22,7 +23,6 @@
 		<FINDWHAT><![CDATA[prolonge]]></FINDWHAT>
 		<FINDWHAT><![CDATA[contrat Prolonge]]></FINDWHAT>
 		<FINDWHAT><![CDATA[contratProlonge]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomScenario]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
