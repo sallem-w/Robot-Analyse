@@ -1,17 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ConteXtorStudio Version="Studio V3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
 	<Properties>
-		<Property Name="validity" />
+		<Property Name="validity"></Property>
 		<Property Name="cyphering">0</Property>
 		<Property Name="compression">1</Property>
 	</Properties>
-	<UpdatePackages />
+	<UpdatePackages>
+	</UpdatePackages>
 	<Evolutions>
 		<Evolution Version="1.0" Date="05/09/2017"><![CDATA[Project creation]]></Evolution>
 		<Evolution Version="..." Date="..."><![CDATA[...]]></Evolution>
 	</Evolutions>
 	<PROCESSUS>
-		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus" >
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="GLOBAL">
 					<OBJDON Name="PrjVersion">1.0</OBJDON>
@@ -20,7 +21,7 @@
 					<OBJDON Name="PrjDate">05/09/2017</OBJDON>
 					<OBJDON Name="PrjLabel"><![CDATA[HMBOT - Robots Harmonie Mutuelle]]></OBJDON>
 					<OBJDON Name="PrjComment"><![CDATA[]]></OBJDON>
-					<OBJDON Name="LicenceURL" />
+					<OBJDON Name="LicenceURL"></OBJDON>
 					<STRUCTUREDON Name="Xc_MessBoxHtml">
 						<OBJDON Name="Style">style="font-size:12pt;font-family:'Arial'"</OBJDON>
 						<OBJDON Name="ErrColor">white</OBJDON>
@@ -76,6 +77,7 @@
 				<RESOURCE Name="stop 16px" Src="%sdk%\templates\resources\bmp\stop.png" Dest="bmp" />
 				<RESOURCE Name="warning 16px" Src="%sdk%\templates\resources\bmp\warning.png" Dest="bmp" />
 				<RESOURCE Name="record 16px" Src="%sdk%\templates\resources\bmp\record.png" Dest="bmp" />
+				
 				<RESOURCE Name="contextor 32px" Src="%sdk%\templates\resources\bmp32\contextor.png" Dest="bmp32" />
 				<RESOURCE Name="accept 32px" Src="%sdk%\templates\resources\bmp32\accept.png" Dest="bmp32" />
 				<RESOURCE Name="cancel 32px" Src="%sdk%\templates\resources\bmp32\cancel.png" Dest="bmp32" />
@@ -83,6 +85,7 @@
 				<RESOURCE Name="information 32px" Src="%sdk%\templates\resources\bmp32\information.png" Dest="bmp32" />
 				<RESOURCE Name="user 32px" Src="%sdk%\templates\resources\bmp32\user.png" Dest="bmp32" />
 				<RESOURCE Name="warning 32px" Src="%sdk%\templates\resources\bmp32\warning.png" Dest="bmp32" />
+
 				<RESOURCE Name="icon 64px" Src="%sdk%\templates\resources\bmp64\contextor.png" Dest="bmp64" />
 				<RESOURCE Name="hello 64px" Src="%sdk%\templates\resources\bmp64\hello.png" Dest="bmp64" />
 				<RESOURCE Name="hello 128px" Src="%sdk%\templates\resources\bmp64\hello128.png" Dest="bmp64" />
@@ -90,5 +93,5 @@
 			</RESOURCES>
 		</PROCESS>
 	</PROCESSUS>
-	<APPLICATIONS />
+	<APPLICATIONS/>
 </ConteXtorStudio>
