@@ -3,6 +3,7 @@
 		ctx.configF.chargementFichierConfigDA();
 	  var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 		ctx.traceF.infoTxt(' stInitScenarioDA ');
+	  ctx.traceF.initFichierTrace(configDA.cheminRacine, ctx.configF.scenario.DA);
 	  ctx.statsF.initFileStats(ctx.configF.fichierConfig.cheminTemplate, configDA.cheminRacine, ctx.configF.scenario.DA);
 		var webData = {
 			url:'',
