@@ -30,6 +30,8 @@ ActivInfinitev7.scenario({ scVerifContratSuspension: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stFinRechercheBenefSynthese);
 	sc.step(ActivInfinitev7.steps.stLectureSynthese);
 	sc.step(ActivInfinitev7.steps.stComparaisonNomsPrenomsAdresse);
+	//sc.step(ActivInfinitev7.steps.stClickPourRetourDashbord);
+	//sc.step(ActivInfinitev7.steps.stRetourDashbord);
 	sc.step(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 	}
 });
@@ -95,7 +97,7 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stLectureSynthese');
 		ActivInfinitev7.pContexteContratOuvert.wait(function () {
-			var index = 0;
+			
 			var listeLignes = ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab.getAll();
 			var nombreLignes = ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab.count();
 			if(nombreLignes==0)
@@ -106,27 +108,28 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 			else
 			{
 				
-				if(index < nombreLignes)
+				if(data.indexLextureSynthese < nombreLignes)
 				{
-					if(ActivInfinitev7.pContexteContratOuvert.oTypeRelation.i(index)== 'Adhésion indiv.' && ActivInfinitev7.pContexteContratOuvert.oStatus.i(index) == 'A')
+					if(String(ActivInfinitev7.pContexteContratOuvert.oTypeRelation.i(data.indexLextureSynthese).get()).indexOf(data.constantes.adhesionIndividuelle)!==-1 && ActivInfinitev7.pContexteContratOuvert.oStatus.i(data.indexLextureSynthese).get() === 'A')
 					{
 						data.status.faireResiliationContrat = true;
-						ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(index).click();
-						sc.endStep()
-					return;
+						ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(data.indexLextureSynthese).click();
+						data.contratCourantSuspension.noContrat = ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(data.indexLextureSynthese).get();
+						sc.endStep();
+						return;
 					}
 					else{
-						index ++;
+						data.indexLextureSynthese++ ;
+						sc.endStep(ActivInfinitev7.steps.stLectureSynthese);
+						return;
 					}
 				}
 				else
 				{
-					ctx.traceF.infoTxt('Pas de contrat correspondant aux critères de recherche');
+					ctx.traceF.infoTxt('Aucun contrat parmi ceux proposés ne correspondnt aux critères de recherche');
 					sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 				}
 			}
-			sc.endStep();
-			return ;
 		});
 	}
 });
@@ -134,30 +137,57 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 ActivInfinitev7.step( { stComparaisonNomsPrenomsAdresse : function (ev, sc, st) {
 		var data = sc.data;
     ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stComparaisonNomsPrenomsAdresse');
-		var detailsPersonneFichier = data.contratCourantSuspension.infos['Nom'] + " " + data.contratCourantSuspension.infos['Prenom'] +
-		data.contratCourantSuspension.infos['Adresse'];
-		var detailsPersonneSite = ActivInfinitev7.pContexteContratOuvert.oPersonneDetails.get();
 		
-	  if (!detailsPersonneSite.indexOf(detailsPersonneFichier))
-		{
-			 ctx.traceF.infoTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');
-			 ctx.traceF.infoTxt('Données du fichier:' + detailsPersonneFichier);
-			 ctx.traceF.infoTxt('Données du site:' + detailsPersonneSite);
-		}
-	
-		sc.endScenario();
+		
+		ActivInfinitev7.pContContratDetPers.wait (function () {
+			var detailsPersonneFichier = data.contratCourantSuspension.infos['Nom'] + " " + data.contratCourantSuspension.infos['Prenom'] + " " + data.contratCourantSuspension.infos['Adresse'] ;
+			var detailsPersonneSite = ActivInfinitev7.pContContratDetPers.oDetailsPersonne.get();
+			if (detailsPersonneSite.indexOf(detailsPersonneFichier)===-1)
+			{
+			 	ctx.traceF.infoTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');
+			 	ctx.traceF.infoTxt('Données du fichier:' + detailsPersonneFichier);
+			 	ctx.traceF.infoTxt('Données du site:' + detailsPersonneSite);
+			}
+		sc.endStep();
+		return ;	
+		});
+	  
+	}
+});
+
+
+/*ActivInfinitev7.step( { stClickPourRetourDashbord : function (ev, sc, st) {
+		var data = sc.data;
+    ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stClickPourRetourDashbord');
+		ActivInfinitev7.pTabDeBord.btConsultation.click();
+		sc.endStep();
 		return ;
 	}
 });
+
+
+ActivInfinitev7.step( { stRetourDashbord : function (ev, sc, st) {
+		var data = sc.data;
+    ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stRetourDashbord');
+		ActivInfinitev7.pIdentContratRechConsul.wait(function(){
+			ActivInfinitev7.pIdentContratRechConsul.btFermeture.click();	
+		});
+		sc.endStep();
+		return ;
+	}
+});*/
 
 
 ActivInfinitev7.step( { stFinScVerifContratSuspension : function (ev, sc, st) {
 		var data = sc.data;
     ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stFinScVerifContratSuspension');
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 		return ;
 	}
 });
+
+
 
 
 

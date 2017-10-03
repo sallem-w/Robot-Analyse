@@ -26,8 +26,12 @@ ActivInfinitev7.pTabDeBord.btFinCMU = ActivInfinitev7.pTabDeBord.addItem('btFinC
 ActivInfinitev7.pTabDeBord.btFinACS = ActivInfinitev7.pTabDeBord.addItem('btFinACS');
 ActivInfinitev7.pTabDeBord.btSansEffetResiC = ActivInfinitev7.pTabDeBord.addItem('btSansEffetResiC');
 ActivInfinitev7.pTabDeBord.btCagSituatPart = ActivInfinitev7.pTabDeBord.addItem('btCagSituatPart');
+<<<<<<< HEAD
 ActivInfinitev7.pTabDeBord.btMenuResilConcu = ActivInfinitev7.pTabDeBord.addItem('btMenuResilConcu');
 ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne = ActivInfinitev7.pTabDeBord.addItem('btGroupeObligatoireExterne');
+=======
+ActivInfinitev7.pTabDeBord.btCongeParentSab = ActivInfinitev7.pTabDeBord.addItem('btCongeParentSab');
+>>>>>>> 'Modifs0310'
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pContexteContratRech.btRecherche = ActivInfinitev7.pContexteContratRech.addItem('btRecherche');
@@ -57,12 +61,19 @@ ActivInfinitev7.pContexteContratOuvert.oTabResSynthese = ActivInfinitev7.pContex
 ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetailsTab', {"occurs":1});
+<<<<<<< HEAD
 ActivInfinitev7.pContexteContratOuvert.oPersonneDetails = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetails');
 <<<<<<< HEAD
 >>>>>>> 'Modifs2609'
 =======
+=======
+>>>>>>> 'Modifs0310'
 ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
 >>>>>>> 'Modifs2709'
+
+ActivInfinitev7.pContContratDetPers = ActivInfinitev7.addPage('pContContratDetPers', {"comment":"Contexte Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/AccueilMenu.do?method=initBandeauForwardContrat"});
+ActivInfinitev7.pContContratDetPers.oDetailsPersonne = ActivInfinitev7.pContContratDetPers.addItem('oDetailsPersonne');
+ActivInfinitev7.pContContratDetPers.btActualiser = ActivInfinitev7.pContContratDetPers.addItem('btActualiser');
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
@@ -99,6 +110,11 @@ ActivInfinitev7.pIdentContResilRechRe.oDateDemande = ActivInfinitev7.pIdentContR
 
 ActivInfinitev7.pIdentContResilRechRe = ActivInfinitev7.addPage('pIdentContResilRechRe', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_403\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContResilRechRe.oDivErreur = ActivInfinitev7.pIdentContResilRechRe.addItem('oDivErreur', {"mustExist":true});
+
+ActivInfinitev7.pIdentContrRechColl = ActivInfinitev7.addPage('pIdentContrRechColl', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE4B"});
+ActivInfinitev7.pIdentContrRechColl.oDateDebutEffet = ActivInfinitev7.pIdentContrRechColl.addItem('oDateDebutEffet');
+ActivInfinitev7.pIdentContrRechColl.btFermeture = ActivInfinitev7.pIdentContrRechColl.addItem('btFermeture');
+ActivInfinitev7.pIdentContrRechColl.oNumeroContrat = ActivInfinitev7.pIdentContrRechColl.addItem('oNumeroContrat');
 
 ActivInfinitev7.pBlocNotesResil = ActivInfinitev7.addPage('pBlocNotesResil', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACBN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlocNotesResil.oBtnPageCourante = ActivInfinitev7.pBlocNotesResil.addItem('oBtnPageCourante');

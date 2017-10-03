@@ -35,8 +35,12 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
  	var countContracts = 0;
 	var countContratsSuspension = 0;
 	var indexContrat = 0;
+	var indexLextureSynthese = 0;
 	var names = []
-	
+	var constantes = {
+		adhesionIndividuelle : 'indiv'
+	} 
+	var noContrat = 0;	
 	var notes = {
 		commentaireContrat : '',
 		statusContrat : ''
@@ -53,14 +57,19 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
             identifiant:'', 
             motDePasse:'' 
         }
+	contratCourantSuspension.noContrat = noContrat;
 	contratCourantSuspension.notes = notes;
-	contratCourantSuspension.infos = infos;
+	contratCourantSuspension.infos = infos; // A partir de la lecture effectuée dans le fichier config.json, on remarque que les différentes clés associées à contratSuspension.infos sont 
+	//Adresse, DateDispenseOuSuspension, DateEntreeFiliale, DateExtraction, Localite, Nom, Prenom, RONumber, type
 	contratCourantSuspension.status= status;
 	data.headerNames = headerNames;
+	data.constantes = constantes;
 	data.contracts = contracts;
 	data.countContracts = countContracts;
 	data.countContratsSuspension = countContratsSuspension;
 	data.indexContrat = indexContrat;
+	data.indexLextureSynthese = indexLextureSynthese;
+	
 	data.names = names;
 	data.status = status;
 	data.contratCourantSuspension = contratCourantSuspension;
@@ -82,7 +91,7 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 ActivInfinitev7.step({ stServerConnexionSuspension : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Début étape - stServerConnexionSuspension');
-		if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
+	/*	if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
 			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
 			ctx.popupF.newPopup('Le serveur Infinite est fermé');
 			return ;
@@ -99,7 +108,7 @@ ActivInfinitev7.step({ stServerConnexionSuspension : function(ev, sc, st) {
 	data.webData.motDePasse = ActivInfinitev7.pConnexion.oPwd.get();
 		
 		//on entre dans Infinite
-		ActivInfinitev7.pConnexion.btConnexion.click();
+		ActivInfinitev7.pConnexion.btConnexion.click();*/
 		ActivInfinitev7.pTabDeBord.wait(function(ev) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		
