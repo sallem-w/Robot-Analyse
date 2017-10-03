@@ -165,10 +165,10 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		writeArray.push(data.notes.numContratIndiv);
 		data.notes.dateDeTraitement = ctx.dateF.formatMMJJAAAA(new Date());
 		writeArray.push(data.notes.dateDeTraitement);
-		ctx.log(data.notes.dateDeTraitement);
+		/*ctx.log(data.notes.dateDeTraitement);
 		ctx.log(ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction));
 		ctx.log(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction));
-		ctx.log(ctx.dateF.premierJourDuMoisCourant("20151223"));
+		ctx.log(ctx.dateF.premierJourDuMoisCourant("20151223"));*/
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
 		ctx.excelF.remplirTableau(data.globalVariables.ligneTraite, writeArray);
