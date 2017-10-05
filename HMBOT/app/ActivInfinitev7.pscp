@@ -2744,10 +2744,11 @@
 						<OBJET Name="oGroupeGestion">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1">
-									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R0">
-										<ATT Name="OuterHTML">
-											<VALUE Scan="Full"><![CDATA[<input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="*" data-input-format-uppercase="" data-search-label="ODGGLIBCOU" data-search-value="ODGGCODGGS" data-search-service="appelerInviteGroupeGestion" data-search-title="Liste des groupes de gestion" autocomplete="off">]]></VALUE>
+									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R1">
+										<ATT Name="name">
+											<VALUE Scan="Full"><![CDATA[groupeGestion-display]]></VALUE>
 										</ATT>
+										<SET />
 									</TAG>
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Contexte administratif]]></VALUE>
@@ -2758,10 +2759,11 @@
 						<OBJET Name="oCentreGestion">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1">
-									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R3R0R0R3R0">
-										<ATT Name="OuterHTML">
-											<VALUE Scan="Full"><![CDATA[<input tabindex="-1" class="form-control cgd-input tt-hint" style="background: rgb(254, 254, 254); border-color: transparent; left: 0px; top: 0px; width: 100%; text-transform: uppercase; position: absolute; opacity: 1; box-shadow: none;" dir="ltr" spellcheck="false" maxlength="9" readonly="" value="*" data-input-format-uppercase="" data-search-label="PENOLIBLON" data-search-value="ODCGCODCGS" data-search-service="appelerInviteCentreGestion" data-search-title="Liste des centres de gestion" autocomplete="off">]]></VALUE>
+									<TAG Name="INPUT" Scope="All" CapturedPos="178.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R3R0R0R3R1">
+										<ATT Name="name">
+											<VALUE Scan="Full"><![CDATA[centreGestion-display]]></VALUE>
 										</ATT>
+										<SET />
 									</TAG>
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Contexte administratif]]></VALUE>
@@ -2801,15 +2803,16 @@
 						</OBJET>
 						<OBJET Name="oSelectGroupeGestion">
 							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="182.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R3">
-									<TAG Name="DIV" Scope="All" CapturedPos="182.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R3R0">
-										<TAG Name="DIV" Scope="Children" CapturedPos="182.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R3R0R0" Occurs="Y">
-											<SET />
-										</TAG>
+								<TAG Name="DIV" Scope="All" CapturedPos="182.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R3R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="182.R0R1R7R0R0R2R0R0R0R29R0R1R1R0R0R2R0R0R3R3R0R0" Occurs="Y">
 										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-groupeGestion-display]]></VALUE>
+											<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
 										</ATT>
+										<SET />
 									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-groupeGestion-display]]></VALUE>
+									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
