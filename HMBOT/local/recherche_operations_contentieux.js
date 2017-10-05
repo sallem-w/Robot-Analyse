@@ -81,6 +81,7 @@ ActivInfinitev7.step({ stListeOprtsSuivante: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinRechercheOptrsContentieux: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinRechercheOptrsContentieux, indice du contrat : '+  data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	
 	sc.endStep();
 	return;
 }});

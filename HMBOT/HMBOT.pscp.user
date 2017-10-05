@@ -1,20 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="39" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="1973" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="79" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="3166" Length="65"><![CDATA[ctx.traceF.infoTxt('****** Fin analyse contrat en cours ******');]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4761" Length="137"><![CDATA[ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[dateDeNaissance]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLireRefGRC]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRechercheEtAnalysePP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[scAnalyseContratsEnCours]]></FINDWHAT>
+		<FINDWHAT><![CDATA[scRechercheOprtsContentieux]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nbContratRadie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[pHisto]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat ]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRadie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stAnalyseContratsIA]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nbContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbContratRadie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nbContratRadie ]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stTraiterResultatRecherchePP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stConsultationPP]]></FINDWHAT>
@@ -23,11 +30,6 @@
 		<FINDWHAT><![CDATA[stVerifRadiationContrats]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ctx.date]]></FINDWHAT>
 		<FINDWHAT><![CDATA[load]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAnalyseContratsRadies]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stAnalyseContratsRadies]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.contrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireRefGRCSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[indexDerniereLigne]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[nbContrat]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
@@ -51,12 +53,15 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="38" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="107" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="54" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="141" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="PROCESS[@Name='GLOBAL']/_DECLAREVAR" Offset="0" Length="0" />
+		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="45" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="161" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="85" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="96" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="319" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS" Offset="0" Length="0" />
-		<OPENDOC LineNumber="57" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

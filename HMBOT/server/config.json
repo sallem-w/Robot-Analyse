@@ -99,8 +99,16 @@
                 "referenceGRC" : 89,
                 "type" : 8,
                 "numeroRO" : 50,
+                "gammeProduit" : 55,
+                "debDateEffet" : 7,
                 "contexteAnalyseStoppee": 126
             }
-        }
+        },
+        "gammeCodeProduit" :[
+        {"gamme": "Accès Santé", "code":"PPSTA002"},
+        {"gamme": "Harmonie Santé Particuliers", "code":"PPSTA002"},
+        {"gamme": "Harmonie Santé Accueil", "code":"PPSTA004"}
+    ]  
     }
+   
 }
