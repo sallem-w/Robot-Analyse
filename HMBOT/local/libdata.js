@@ -99,7 +99,10 @@ ctx.dataF = (function () {
 				numeroRO : '',
 				nom : '',
 				prenom : '',
-				dateDeNaissance : ''
+				dateDeNaissance : '',
+				debDateEffet: '',
+				gammeProduit:'',
+				tabGammeCode : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,

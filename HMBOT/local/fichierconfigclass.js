@@ -103,7 +103,8 @@ var confFileClass = function() {
 								dateTraitementContrat : '',
 								commentaireContrat : ''
             }
-        }
+        },
+			 gammeCodeProduit : []
 	}
 };
 

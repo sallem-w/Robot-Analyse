@@ -18,7 +18,7 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitConsultationPP);
 	sc.step(ActivInfinitev7.steps.stConsultationPP);
 	sc.step(ActivInfinitev7.steps.stResultRecherchePP);
-//	sc.step(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
+	sc.step(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
 	sc.step(ActivInfinitev7.steps.stInitRecherchePPParRO);
 	sc.step(ActivInfinitev7.steps.stRecherchePPParRO);
 	sc.step(ActivInfinitev7.steps.stResultRecherchePPParRO);
@@ -30,6 +30,8 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stContratsIASuivant);
 	sc.step(ActivInfinitev7.steps.stFinAnalyseContratsIA);
 
+	sc.step(ActivInfinitev7.steps.stAnalyseContratEnCours);
+	
 	sc.step(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 
 }});
@@ -87,6 +89,31 @@ ActivInfinitev7.step({ stResultRecherchePP : function(ev, sc, st) {
 			sc.endStep(ActivInfinitev7.steps.stInitRecherchePPParRO);
 	  	return;
 		}else if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
+			sc.endStep();
+			return;
+		}
+	});
+}});
+
+
+
+///** Description */
+ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stTraiterResultatRecherchePP: '+ data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	
+	st.onTimeout(10000, function (sc, st) {
+		ctx.traceF.errorTxt('TimeOut - Etape  stTraiterResultatRecherchePP');
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.endScenario();
+	});
+	st.onError(function (sc, st, ex) {
+		ctx.traceF.errorTxt('OnError - Etape stTraiterResultatRecherchePP');
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.endScenario();
+	});
+
+		if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
 			data.ppCouranteAnalyse.dataEnLigne.typeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation.i(0).get();
 			data.ppCouranteAnalyse.dataEnLigne.identiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation.i(0).get();
 			if(data.ppCouranteAnalyse.dataEnLigne.typeRelation === '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation === ''){
@@ -100,48 +127,12 @@ ActivInfinitev7.step({ stResultRecherchePP : function(ev, sc, st) {
 				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
 				return;
 			}	
-		}
-	});
+	}else{
+		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		return;
+	}
+	
 }});
-
-
-
-///** Description */
-//ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
-//	var data = sc.data;
-//	ctx.traceF.infoTxt('Etape stTraiterResultatRecherchePP: '+ data.ppCouranteAnalyse.dataLocale.referenceGRC);
-	
-////	st.onTimeout(10000, function (sc, st) {
-////		ctx.traceF.errorTxt('TimeOut - Etape  stTraiterResultatRecherchePP');
-////		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-////		sc.endScenario();
-////	});
-////	st.onError(function (sc, st, ex) {
-////		ctx.traceF.errorTxt('OnError - Etape stTraiterResultatRecherchePP');
-////		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-////		sc.endScenario();
-////	});
-
-//		if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
-//			data.ppCouranteAnalyse.dataEnLigne.typeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation.i(0).get();
-//			data.ppCouranteAnalyse.dataEnLigne.identiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation.i(0).get();
-//			if(data.ppCouranteAnalyse.dataEnLigne.typeRelation === '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation === ''){
-//				ctx.traceF.infoTxt('Champs type relation / identité relation vides: '+ data.ppCouranteAnalyse.dataLocale.referenceGRC);
-//	    	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création - type relation / identité relation vides';
-//		  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-//	    	return;
-//			}else if(data.ppCouranteAnalyse.dataEnLigne.typeRelation !== '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation !== ''){
-//				ctx.traceF.infoTxt('Un ou plusieurs contrats sont associe(s) à la PP courante, voir l HISTORIQUE de chaque contrat');
-//				data.ppCouranteAnalyse.dataEnLigne.nbContrat = ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.count();
-//				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
-//				return;
-//			}	
-//	}else{
-//		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-//		return;
-//	}
-	
-//}});
 
 
 /** cet étape initialise la recherche de la PP par num RO */
@@ -182,35 +173,20 @@ ActivInfinitev7.step({ stResultRecherchePPParRO : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stResultRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);
 	ActivInfinitev7.pRecherchePPRefGRCRes.wait(function(){
-		ctx.sleep(100);
+		//ctx.sleep(100);
 		if(ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo.exist()){
 			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'création contrat';
 			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 			return;
 		}else if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
-			data.ppCouranteAnalyse.dataEnLigne.typeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation.i(0).get();
-			data.ppCouranteAnalyse.dataEnLigne.identiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation.i(0).get();
-			if(data.ppCouranteAnalyse.dataEnLigne.typeRelation === '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation === ''){
-				ctx.traceF.infoTxt('Champs type relation / identité relation vides: '+ data.ppCouranteAnalyse.dataLocale.referenceGRC);
-	    	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création - type relation / identité relation vides';
-		  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-	    	return;
-			}else if(data.ppCouranteAnalyse.dataEnLigne.typeRelation !== '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation !== ''){
-				ctx.traceF.infoTxt('Un ou plusieurs contrats sont associe(s) à la PP courante, voir l HISTORIQUE de chaque contrat');
-				data.ppCouranteAnalyse.dataEnLigne.nbContrat = ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.count();
-				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
-				return;
-			}	
+			sc.endStep(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
+			return;
 	}
-//			sc.endStep(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
-//			return;
-
 	});
-
 }});
 
 
-/** séléction du premier contrat Inactif et click sur le boton visualiser */
+/** séléction du premier contrat Inactif et click sur le bouton visualiser */
 ActivInfinitev7.step({ stInitAnalyseContratsIA : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitAnalyseContratsIA: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
@@ -298,6 +274,7 @@ ActivInfinitev7.step({ stContratsIASuivant: function(ev, sc, st) {
 		sc.endStep(ActivInfinitev7.steps.stInitRechercheEtAnalysePP);
 		return;
 	}else{
+		ctx.traceF.infoTxt('On a traité tous les contrats pour la recherche de la trace PCX');
 		sc.endStep();
 		return;
 	}
@@ -309,30 +286,36 @@ ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
   if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie < data.ppCouranteAnalyse.dataEnLigne.nbContrat){
-		ctx.traceF.infoTxt('Existe au moins un contrat actif ---> vérification des gammes');
+		ctx.traceF.infoTxt('Existe au moins un contrat actif ********** vérification de l enregistrement de l adhésion Siebel sur Infinite');
+		ctx.traceF.infoTxt('//////////////// ********* /////////////// Début scénario scAnalyseContratsEnCours //////////////// ********* ///////////////');
 	  data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
 	  data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
 	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
-		
-		//appel du sous scénario
-		st.disableTimeout();
-	  ActivInfinitev7.scenarios.scRechercheOprtsContentieux.start(data).onEnd(function(sc3) {
-		  sc.data=sc3.data;
-		  ctx.traceF.infoTxt(' Fin du sous-scenario - scRechercheOprtsContentieux');
-		  sc.endStep();
-    });
-		
-//		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-//		return;
+    sc.endStep();
+		return;
 	}else if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie === data.ppCouranteAnalyse.dataEnLigne.nbContrat){
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Processus création - La PP est inactif sur tous les contrats et n a aucune trace de contetieux';
 		data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
 	  data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
 	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 		return;
 	}
 }});
+
+
+/** Description */
+ActivInfinitev7.step({ stAnalyseContratEnCours: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stAnalyseContratEnCours' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	st.disableTimeout();
+	  ActivInfinitev7.scenarios.scAnalyseContratsEnCours.start(data).onEnd(function(sc3) {
+		  sc.data=sc3.data;
+		  ctx.traceF.infoTxt(' Fin du sous-scenario - scAnalyseContratsEnCours');
+		  sc.endStep();
+    });
+}});
+
 
 /** Description */
 ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
