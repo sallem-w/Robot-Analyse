@@ -1,6 +1,6 @@
 ﻿ActivInfinitev7.scenario({ scResiliationCMU: function(ev, sc) {
 	var data = sc.data;
-  sc.onTimeout(30000, function(sc, st) {
+  sc.onTimeout(120000, function(sc, st) {
 		ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);

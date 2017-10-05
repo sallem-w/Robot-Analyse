@@ -3,7 +3,7 @@
 ActivInfinitev7.scenario( {
 	scVerifContratCMU: function (ev, sc) {
 	var data = sc.data;
-		sc.onTimeout(40000, function(sc, st) { 
+		sc.onTimeout(120000, function(sc, st) { 
 			ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv  + 'onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
 			data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
 			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
