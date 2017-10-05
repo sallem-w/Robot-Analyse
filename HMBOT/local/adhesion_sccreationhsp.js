@@ -40,33 +40,43 @@ ActivInfinitev7.step({ stVersAdhesionIndividuelle: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' - Etape - stOuvertureDossierHSP');
 	ActivInfinitev7.pAdhesions.wait(function(ev) {
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.keyStroke('P - HA'); // on insere 'P' pour faire apparaitre la boite cliquable
-//		ActivInfinitev7.pAdhesions.oEntiteRattachement.set(ctx.keyStroke('P - HA',1500));
-//		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
-		ctx.polling({
-				delay: 50,
+		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
+		var countPoll=0;		
+			ctx.polling({
+				delay: 100,
 				nbMax: 10,
 				test: function(index) { 
-					ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
-					return ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist(); 
+					countPoll++;
+					ctx.log('counter : '+countPoll);
+					if(ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist()){
+							ActivInfinitev7.pAdhesions.oSelectPHarmonie.click();
+							return true;
+					}
+					else{
+							return false;
+					}
 				},
 				done: function() { 
-						ActivInfinitev7.pAdhesions.oSelectPHarmonie.click();
+					ctx.traceF.infoTxt(' L\'entite de rattachement a été trouvée');
+					var dd=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET;	
+					ctx.log('dd :'+dd);
+					ActivInfinitev7.pAdhesions.oDateDebutEffet.setFocus();
+					ActivInfinitev7.pAdhesions.oDateDebutEffet.set(dd);
+					ActivInfinitev7.pAdhesions.btRecherche.click();
+					sc.endStep();
+					return;
 				},
 				fail: function() { 
 					ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'entite de rattachement');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+					
 				}
 		});
-			
-		var dd=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.DATE_DEBUT_EFFET;
-		ctx.log('dd :'+dd);
-		ActivInfinitev7.pAdhesions.oDateDebutEffet.setFocus();
-		ActivInfinitev7.pAdhesions.oDateDebutEffet.set(dd);
-		ActivInfinitev7.pAdhesions.btRecherche.click();
-		sc.endStep();
-		return;
 	});
 }});
 
@@ -108,6 +118,10 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP: function(ev, sc, st) {
 	//==================================================
 	
 	ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+//ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke('PPST');
+
+	
+//	ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
 	ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke(OffreHSP);
 	var offreExistance = false;
 	var indexOffre = -1;
