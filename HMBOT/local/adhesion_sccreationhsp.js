@@ -11,6 +11,7 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stOuvertureDossierHSP);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_Offre);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_NumExterne);
+	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_GroupeGestion);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -175,6 +176,7 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 	data.contratCourantAdhesion.dataLocale.centreGestion=codeCG;
 	//==================================================================================
 	ActivInfinitev7.pAdhIndivIdentContrat.oGroupeGestion.setFocus();
+	ActivInfinitev7.pAdhIndivIdentContrat.oGroupeGestion.set('');
 	ActivInfinitev7.pAdhIndivIdentContrat.oGroupeGestion.keyStroke(codeGG);
 	ActivInfinitev7.pAdhIndivIdentContrat.oGroupeGestion.setFocus();
 	
@@ -186,13 +188,19 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 				test: function(index) { 
 					countPoll++;
 					ctx.log('counter : '+countPoll);
-					return ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion.exist();
+					if(ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion.count()>0){
+						return true;
+					}
+					else{
+						return false;
+					}
 				},
 				done: function() { 
 				/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
 				var tabGG = ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion.getAll();
 				for (var i in tabGG ){
-					if(codeGG == tabGG[i]){
+					var existance = tabGG[i].indexOf(codeGG);
+					if(existance!=-1){
 						indexGG=i;
 						break;
 					}
