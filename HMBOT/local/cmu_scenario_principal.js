@@ -38,19 +38,6 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-	ctx.log('--> template.json :  Excel Debut');
-	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
-	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le template.JSON
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
- 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
-	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.log(" Test URL : "+ data.webData.url);
-	ctx.traceF.infoTxt('Création du fichier résultat');	
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-	ctx.log('fichier résultat créé');
-
-
 	sc.endStep();
 	return;
 }});
@@ -87,7 +74,6 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stDemmarrageTableauDeBord: function(ev, sc, st) {
 	var data = sc.data;
-	data.varGlobales.nomPageCourante=ev.pageName;
 	ActivInfinitev7.pTabDeBord.wait(function(ev) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		data.webData.tabDeBordURL=infos.document.URL;
@@ -281,11 +267,23 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	var data = sc.data;
 	data.varGlobales.nomPageCourante=ev.pageName;
 	ctx.traceF.infoTxt('Etape - stContratCMUSuivant - Initialisations pour un changement de contrat');
-	if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
-		// On récupere le nombre de benef
-		var nbBenef=0;
-		for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
-			nbBenef+=1;
+		if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
+			// On récupere le nombre de benef
+			var nbBenef=0;
+			for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
+				nbBenef+=1;
+			}
+			data.varGlobales.ligneCourante+=nbBenef;
+//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
+		  ctx.dataF.resetContratCourantCMU(data);
+//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
+//			ctx.log( "contrat suivant ligne : "+ data.varGlobales.ligneCourante);
+			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
+			return;
+		}
+		else{
+			sc.endStep();
+			return;
 		}
 		data.varGlobales.ligneCourante+=nbBenef;
 //			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
