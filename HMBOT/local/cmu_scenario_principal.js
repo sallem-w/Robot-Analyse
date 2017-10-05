@@ -2,7 +2,7 @@
 /** Description */
 ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function (sc, st) {
+	sc.onTimeout(120000, function (sc, st) {
 		ctx.traceF.errorTxt('onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
