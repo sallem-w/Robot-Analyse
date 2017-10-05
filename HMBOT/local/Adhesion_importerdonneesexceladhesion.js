@@ -9,6 +9,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	var temp_ligne=data.varGlobales.ligneCourante;
 	// on récupère les infos de toutes les lignes associées à la demande d'adhesion
 	var numeroSeq= ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_CT);
+	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT=numeroSeq;
 	ctx.log('Gamme : '+ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME))
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
 	data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.contexteAnalyseStoppee);

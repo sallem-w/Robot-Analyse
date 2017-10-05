@@ -11,7 +11,8 @@ ActivInfinitev7.scenario( { scAdhesionPrincipal: function (ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 		
 	sc.step(ActivInfinitev7.steps.stInitScenarioAdhesion);
-	sc.step(ActivInfinitev7.steps.stServerConnexionAdhesion);
+//	sc.step(ActivInfinitev7.steps.stServerConnexionAdhesion);
+	sc.step(ActivInfinitev7.steps.stSauvegardeURLTableauDeBord);
 	sc.step(ActivInfinitev7.steps.stDebutBoucleContratAdhesion);
 	sc.step(ActivInfinitev7.steps.stImporterDonneesExcelAdhesion);
 	sc.step(ActivInfinitev7.steps.stSelectionScenarioAdhesion);
@@ -58,16 +59,24 @@ ActivInfinitev7.step({ stServerConnexionAdhesion : function(ev, sc, st) {
 		
 		//on entre dans Infinite
 		ActivInfinitev7.pConnexion.btConnexion.click();
+		sc.endStep();
+		return;
+	
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stSauvegardeURLTableauDeBord: function(ev, sc, st) {
+	var data = sc.data;
 		ActivInfinitev7.pTabDeBord.wait(function(ev) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
-		
 		data.webData.tabDeBordURL=infos.document.URL;
 		ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
 		sc.endStep();
 		return;
 		});
-}
-});
+}});
 
 
 /** Description */
