@@ -134,6 +134,8 @@ ctx.dataF = (function () {
 		        
 		var contratCourantAdhesion = {
 			dataLocale: {
+				groupeGestion:'',
+				centreGestion:'',
 				tabPersonnesPhysiques : []
             },
       dataEnLigne: {

@@ -311,5 +311,6 @@ ActivInfinitev7.pAdhIndivIdentContrat.oGroupeGestion = ActivInfinitev7.pAdhIndiv
 ActivInfinitev7.pAdhIndivIdentContrat.oCentreGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oCentreGestion');
 ActivInfinitev7.pAdhIndivIdentContrat.btSuivant = ActivInfinitev7.pAdhIndivIdentContrat.addItem('btSuivant');
 ActivInfinitev7.pAdhIndivIdentContrat.btMiseEnInstance = ActivInfinitev7.pAdhIndivIdentContrat.addItem('btMiseEnInstance');
-ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectOffre', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentContrat.oOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oOffre');
+ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectGroupeGestion', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectOffre', {"occurs":1});
