@@ -207,8 +207,9 @@
 	/** Description */
 	ActivInfinitev7.step({ stSelectionnerEmbranchement: function(ev, sc, st) {
 		var data = sc.data;
-
-		if(data.dateDebutEffet == ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension)){
+		ctx.log(" date entrée filiale " + ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateEntreeFiliale));
+		ctx.log(" date de dispense " + ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension));
+		if(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateEntreeFiliale) === ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension)){
 			data.annulAdhesion = true;
 		}
 		else

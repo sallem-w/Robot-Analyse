@@ -1,5 +1,4 @@
-﻿
-/** Description */
+﻿/** Description */
 ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	// initialiser les fichiers pour les traces et les stats
 	//ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
@@ -186,6 +185,7 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		data.dataFichier.localite = data.contratCourant.Localite;
 		data.dataFichier.dateExtraction = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction);
 		data.dataFichier.dateNaissance = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateNaissance);
+		data.dataFichier.dateEntreeFiliale = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateEntreeFiliale);
 		data.dataFichier.dateDispense = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateDispenseOuSuspension);
 		
 		ctx.traceF.infoTxt( 'le nom du client est :' + data.globalVariables.nomClient );
@@ -221,6 +221,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			data.globalVariables.indexContratCourant += 1 ;
 			data.sortieProcessusDA = false;
 			data.avertissement = false;
+			data.annulAdhesion = false;
+			data.resilConcu = false;
 			sc.endStep(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 		}
 		else {

@@ -27,6 +27,7 @@
 			adresse:'',
 			localite:'',
 			dateNaissance:'',
+			dateEntreeFiliale:'',
 			dateDispense:''
 		};
 
@@ -58,6 +59,7 @@
 			Localite: '',
 			DateExtraction : '',
 			DateNaissance : '',
+			DateEntreeFiliale:'',
 			DateDispenseOuSuspension : ''
 		};
 		var sortieProcessusDA = false;
