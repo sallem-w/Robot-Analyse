@@ -123,7 +123,7 @@ ActivInfinitev7.pIdentAssuresAttest.btFermeture = ActivInfinitev7.pIdentAssuresA
 ActivInfinitev7.pIdentAssuresAttest.oBtnPageCourante = ActivInfinitev7.pIdentAssuresAttest.addItem('oBtnPageCourante', {"mustExist":true});
 
 ActivInfinitev7.pProdGaranConsul = ActivInfinitev7.addPage('pProdGaranConsul', {"comment":"Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage', {"mustExist":true});
+ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage');
 ActivInfinitev7.pProdGaranConsul.oListeAssures = ActivInfinitev7.pProdGaranConsul.addItem('oListeAssures', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oNomPrenomBenef = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenomBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oTypeBenef = ActivInfinitev7.pProdGaranConsul.addItem('oTypeBenef', {"occurs":1});
@@ -138,7 +138,7 @@ ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.ad
 ActivInfinitev7.pProdGaranConsul.oBtnPageCourante = ActivInfinitev7.pProdGaranConsul.addItem('oBtnPageCourante');
 
 ActivInfinitev7.pVisuCptCotisConsul = ActivInfinitev7.addPage('pVisuCptCotisConsul', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage', {"mustExist":true});
+ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage');
 ActivInfinitev7.pVisuCptCotisConsul.oDateEch = ActivInfinitev7.pVisuCptCotisConsul.addItem('oDateEch', {"occurs":1});
 ActivInfinitev7.pVisuCptCotisConsul.oSoldeCompt = ActivInfinitev7.pVisuCptCotisConsul.addItem('oSoldeCompt', {"occurs":1});
 ActivInfinitev7.pVisuCptCotisConsul.oListeProduits = ActivInfinitev7.pVisuCptCotisConsul.addItem('oListeProduits');
