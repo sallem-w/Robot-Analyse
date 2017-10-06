@@ -139,7 +139,7 @@
 	    return String("00" + nombre).slice(-2);
 	}
 	
-		dateF.estEgalle = function(date1, date2) {
+		dateF.estEgale = function(date1, date2) {
 		//ctx.log('isEqual  : dateStart'+dateStart+' =?  dateEnd :'+ dateEnd);
 		return date1 === date2;
 	}

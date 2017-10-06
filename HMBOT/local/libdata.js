@@ -67,9 +67,11 @@ ctx.dataF = (function () {
             dateFinEffProduit:'',
             dateDebEffSituatParti:'',
             dateFinEffSituatParti:''
-        }
-				
-   
+        },
+				objGC :{
+					code: '',
+					gamme: ''
+				}
     };
 		
 		var ppCouranteAnalyse = {
@@ -82,7 +84,9 @@ ctx.dataF = (function () {
 				dateDeNaissance : '',
 				debDateEffet: '',
 				gammeProduit:'',
-				tabGammeCode : []
+				codeOffre :'',
+				tabGamme : [],
+				tabCode : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -90,7 +94,10 @@ ctx.dataF = (function () {
 				indexContrat : 0,
 				typeRelation : '',
 				identiteRelation : '',
-				tracePCXExist : false
+				tracePCXExist : false,
+				codeOffre : '',
+				debDateEffet : '',
+				critereRecherche : 1
 			},
 			notes: {
 				contexteAnalyseStoppee : ''

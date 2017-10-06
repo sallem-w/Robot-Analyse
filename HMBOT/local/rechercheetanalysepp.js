@@ -179,6 +179,7 @@ ActivInfinitev7.step({ stResultRecherchePPParRO : function(ev, sc, st) {
 			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 			return;
 		}else if(ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist()){
+			data.ppCouranteAnalyse.dataEnLigne.critereRecherche = 2;
 			sc.endStep(ActivInfinitev7.steps.stTraiterResultatRecherchePP);
 			return;
 	}
@@ -289,7 +290,7 @@ ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 		ctx.traceF.infoTxt('Existe au moins un contrat actif ********** vérification de l enregistrement de l adhésion Siebel sur Infinite');
 		ctx.traceF.infoTxt('//////////////// ********* /////////////// Début scénario scAnalyseContratsEnCours //////////////// ********* ///////////////');
 	  data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
-	  data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
+	 // data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
 	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
     sc.endStep();
 		return;
@@ -312,6 +313,7 @@ ActivInfinitev7.step({ stAnalyseContratEnCours: function(ev, sc, st) {
 	  ActivInfinitev7.scenarios.scAnalyseContratsEnCours.start(data).onEnd(function(sc3) {
 		  sc.data=sc3.data;
 		  ctx.traceF.infoTxt(' Fin du sous-scenario - scAnalyseContratsEnCours');
+			data.ppCouranteAnalyse.dataEnLigne.critereRecherche = 1;
 		  sc.endStep();
     });
 }});

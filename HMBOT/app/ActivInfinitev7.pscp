@@ -490,6 +490,24 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oDateDebutEffet">
+							<CRITERE>
+								<TAG Name="P" Scope="All" CapturedPos="142.R0R1R7R0R0R2R0R0R0R28R0R0R1R0R0R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[dateEffetCotis-static]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCodeOffre">
+							<CRITERE>
+								<TAG Name="P" Scope="All" CapturedPos="142.R0R1R7R0R0R2R0R0R0R29R0R0R1R0R0R0R0R3R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codeOffre-display-static]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0002_1103149_1" Comment="Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion" CtxtId="142" Techno="WEB" Timestamp="15/09/2017 11:03:27" />
 					<CAPTURE Name="PAGE_ConsultationHaum03_1108052_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="143" Techno="WEB" Timestamp="15/09/2017 11:08:17" />
