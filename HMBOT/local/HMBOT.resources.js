@@ -28,6 +28,8 @@ ActivInfinitev7.pTabDeBord.btSansEffetResiC = ActivInfinitev7.pTabDeBord.addItem
 ActivInfinitev7.pTabDeBord.btCagSituatPart = ActivInfinitev7.pTabDeBord.addItem('btCagSituatPart');
 ActivInfinitev7.pTabDeBord.btMenuResilConcu = ActivInfinitev7.pTabDeBord.addItem('btMenuResilConcu');
 ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne = ActivInfinitev7.pTabDeBord.addItem('btGroupeObligatoireExterne');
+ActivInfinitev7.pTabDeBord.btMenuResilException = ActivInfinitev7.pTabDeBord.addItem('btMenuResilException');
+ActivInfinitev7.pTabDeBord.btAnnulRenonciation = ActivInfinitev7.pTabDeBord.addItem('btAnnulRenonciation');
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pContexteContratRech.oTitrePage2 = ActivInfinitev7.pContexteContratRech.addItem('oTitrePage2', {"mustNotExist":true});
@@ -45,6 +47,7 @@ ActivInfinitev7.pContexteContratOuvert.oTypeIdentification = ActivInfinitev7.pCo
 ActivInfinitev7.pContexteContratOuvert.oNumIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oNumIdentification');
 ActivInfinitev7.pContexteContratOuvert.btRecherche = ActivInfinitev7.pContexteContratOuvert.addItem('btRecherche');
 ActivInfinitev7.pContexteContratOuvert.oInfosSouscripteur = ActivInfinitev7.pContexteContratOuvert.addItem('oInfosSouscripteur');
+ActivInfinitev7.pContexteContratOuvert.oDateDebutEffet = ActivInfinitev7.pContexteContratOuvert.addItem('oDateDebutEffet', {"occurs":1});
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
@@ -306,3 +309,13 @@ ActivInfinitev7.pResiliationConcu.oNumeroContratCol = ActivInfinitev7.pResiliati
 ActivInfinitev7.pResiliationConcu.oGroupeAssure = ActivInfinitev7.pResiliationConcu.addItem('oGroupeAssure');
 ActivInfinitev7.pResiliationConcu.btRecherche = ActivInfinitev7.pResiliationConcu.addItem('btRecherche');
 ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.addItem('btFermer');
+ActivInfinitev7.pResiliationConcu.oPopupConfirmation = ActivInfinitev7.pResiliationConcu.addItem('oPopupConfirmation');
+ActivInfinitev7.pResiliationConcu.btNon = ActivInfinitev7.pResiliationConcu.addItem('btNon');
+
+ActivInfinitev7.pAnnulationAdhesion = ActivInfinitev7.addPage('pAnnulationAdhesion', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE3A"});
+ActivInfinitev7.pAnnulationAdhesion.oNumeroContratIndiv = ActivInfinitev7.pAnnulationAdhesion.addItem('oNumeroContratIndiv');
+ActivInfinitev7.pAnnulationAdhesion.oDateDebutEffet = ActivInfinitev7.pAnnulationAdhesion.addItem('oDateDebutEffet');
+ActivInfinitev7.pAnnulationAdhesion.btRecherche = ActivInfinitev7.pAnnulationAdhesion.addItem('btRecherche');
+ActivInfinitev7.pAnnulationAdhesion.btFermer = ActivInfinitev7.pAnnulationAdhesion.addItem('btFermer');
+ActivInfinitev7.pAnnulationAdhesion.btNon = ActivInfinitev7.pAnnulationAdhesion.addItem('btNon');
+ActivInfinitev7.pAnnulationAdhesion.oPopupConfirmation = ActivInfinitev7.pAnnulationAdhesion.addItem('oPopupConfirmation');

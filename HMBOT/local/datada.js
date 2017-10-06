@@ -62,6 +62,9 @@
 		};
 		var sortieProcessusDA = false;
 		var avertissement = false;
+		var annulAdhesion = false;
+		var resilConcu = false;
+		var dateDebutEffet =  '';
 		
 		data.webData = webData;
 		data.globalVariables = globalVariables;
@@ -72,6 +75,9 @@
 		data.contratCourant = contratCourant;
 		data.sortieProcessusDA = sortieProcessusDA;
 		data.avertissement = avertissement;
+		data.annulAdhesion = annulAdhesion;
+		data.resilConcu = resilConcu;
+		data.dateDebutEffet = dateDebutEffet;
 		
 		sc.endStep();
 		return ;
