@@ -299,3 +299,18 @@ ActivInfinitev7.pAdhIndivIdentContrat.btMiseEnInstance = ActivInfinitev7.pAdhInd
 ActivInfinitev7.pAdhIndivIdentContrat.oOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oOffre');
 ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectGroupeGestion', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectOffre', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectCentreGestion', {"occurs":1});
+
+ActivInfinitev7.pAdhIndivIdPrinRech = ActivInfinitev7.addPage('pAdhIndivIdPrinRech', {"comment":"Adhésions individuelles - N°22629425 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_78\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_78\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivIdPrinRech.oNom = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('oNom');
+ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('oNumeroRo');
+ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('oPrenom');
+ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('oDateNaissance');
+ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('btRechercher');
+ActivInfinitev7.pAdhIndivIdPrinRech.btAnnuler = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('btAnnuler');
+
+ActivInfinitev7.pAdhIndivIdPrinRechResu = ActivInfinitev7.addPage('pAdhIndivIdPrinRechResu', {"comment":"Adhésions individuelles - N°22629433 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_88\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivIdPrinRechResu.oAucunePersonne = ActivInfinitev7.pAdhIndivIdPrinRechResu.addItem('oAucunePersonne');
+ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom = ActivInfinitev7.pAdhIndivIdPrinRechResu.addItem('oNom', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdPrinRechResu.btValider = ActivInfinitev7.pAdhIndivIdPrinRechResu.addItem('btValider');
+ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler = ActivInfinitev7.pAdhIndivIdPrinRechResu.addItem('btAnnuler');

@@ -176,9 +176,11 @@ ctx.dataF = (function () {
       notes: {
         dateTraitementContrat:'',
         statutsContrat: '',
-         commentaireContrat: ''
+        commentaireContrat: ''
       },
-      statuts: {}
+      statuts: {
+				finCreation : false
+			}
     };
 		
 		dataF.contratCourantAdhesion=contratCourantAdhesion;

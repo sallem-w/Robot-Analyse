@@ -12,6 +12,12 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_Offre);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_NumExterne);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_GroupeGestion);
+	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_CentreGestion);
+	sc.step(ActivInfinitev7.steps.stRecherchePersonneAdhesionIndiv);
+	sc.step(ActivInfinitev7.steps.stResultatRecherchePersonneAdhesionIndiv);
+	sc.step(ActivInfinitev7.steps.stCreationIdentificationPersonneAdhesionIndiv);
+	sc.step(ActivInfinitev7.steps.stSelectionPersonneAdhesionIndiv);
+	sc.step(ActivInfinitev7.steps.stModifIdentificationPersonneAdhesionIndiv);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -149,7 +155,7 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_NumExterne: function(ev
 
 ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_NumExterne');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_GroupeGestion');
 	var tabGestion = data.scenarioConfig.Adhesion.Gestion;
 	
 	/// on va rechercher dans la table de gestion les codes infinites correspondant au code GRC du contrat
@@ -218,6 +224,176 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 }});
 
 
+
+ActivInfinitev7.step({ stRemplirIdentificationContratHSP_CentreGestion: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_CentreGestion');
+	var codeCG = data.contratCourantAdhesion.dataLocale.centreGestion;
+	//==================================================================================
+	ActivInfinitev7.pAdhIndivIdentContrat.oCentreGestion.setFocus();
+	ActivInfinitev7.pAdhIndivIdentContrat.oCentreGestion.set('');
+	ActivInfinitev7.pAdhIndivIdentContrat.oCentreGestion.keyStroke(codeCG);
+	ActivInfinitev7.pAdhIndivIdentContrat.oCentreGestion.setFocus();
+	
+		var countPoll=0;	
+		var indexCG = -1;
+			ctx.polling({
+				delay: 200,
+				nbMax: 10,
+				test: function(index) { 
+					countPoll++;
+					ctx.log('counter : '+countPoll);
+					if(ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion.count()>0){
+						return true;
+					}
+					else{
+						return false;
+					}
+				},
+				done: function() { 
+				/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+				var tabCG = ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion.getAll();
+				for (var i in tabCG ){
+					var existance = tabCG[i].indexOf(codeCG);
+					if(existance!=-1){
+						indexCG=i;
+						break;
+					}
+				}
+				ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion.i(indexCG).click();
+				// Fin du remplissage des données on clique sur le bouton suivant
+				ActivInfinitev7.pAdhIndivIdentContrat.btBtnSuivant.click();
+				sc.endStep();
+				return;
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage du centre de gestion');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+		});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRecherchePersonneAdhesionIndiv');
+//	var nom=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].contratAdhesionAttributs.CONTACT_NOM;
+	var nom=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CONTACT_NOM;
+	var prenom = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CONTACT_PRENOM;
+	var dateNaissance = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].BRTH_DAY_GREG;
+	var numRo = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].NUM_RO;
+	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
+	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
+	ActivInfinitev7.pAdhIndivIdPrinRech.wait(function(ev) {
+		ActivInfinitev7.pAdhIndivIdPrinRech.oNom.setFocus();
+		ActivInfinitev7.pAdhIndivIdPrinRech.oNom.keyStroke(nom);
+		ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.set(prenom);
+		ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.set(dateNaissance);
+		ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.set(numRo);
+		ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stResultatRecherchePersonneAdhesionIndiv');
+	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
+		if(ActivInfinitev7.pAdhIndivIdPrinRechResu.oAucunePersonne){
+			ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.click();
+			sc.endStep(ActivInfinitev7.steps.stCreationIdentificationPersonneAdhesionIndiv);
+			return;
+		}
+		else{
+			var countPoll=0;	
+		ctx.polling({	
+			delay: 200,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count()>0;
+			},
+			done: function() { 
+				/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+				var nbPP = ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count();
+				if(nbPP==1){
+					// la Personne physique est unique on peut continuer avec
+					ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.i(0).click();
+					sc.endStep(ActivInfinitev7.steps.stSelectionPersonneAdhesionIndiv);
+					return;
+				}
+				else{
+					/// il y a plusieur PP on renvoi au centre
+					ctx.traceF.errorTxt(' La PP n\'est pas unique , on ne traite pas le dossier ');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: il y a plusieurs PP identiques ';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+		}
+	});
+}});
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stCreationIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stCreationIdentificationPersonneAdhesionIndiv');
+	sc.endStep();
+	return;
+}});
+
+
+ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stSelectionPersonneAdhesionIndiv');
+	//on fait un polling pour attendre l'apparation du bouton valider
+	var countPoll=0;
+	ctx.polling({	
+		delay: 200,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIdPrinRechResu.btValider.exist();
+		},
+		done: function() { 
+		ActivInfinitev7.pAdhIndivIdPrinRechResu.btValider.click();
+			sc.endStep(ActivInfinitev7.steps.stModifIdentificationPersonneAdhesionIndiv);
+			return;
+
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors de la selection de la PP ');
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
+
+
+ActivInfinitev7.step({ stModifIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stModifIdentificationPersonneAdhesionIndiv');
+	sc.endStep();
+	return;
+}});
 
 
 
