@@ -5,7 +5,7 @@
         "cheminRacine": "C:\\deploy\\cmu\\", 
         "controlSeul": false,
         "controlSolde": true,
-        "touteTraceActive": false,
+        "touteTraceActive": true,
         "excel": {
             "debutIndexCol": 1,
             "debutIndexLigne": 5,
