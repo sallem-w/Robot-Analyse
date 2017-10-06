@@ -63,6 +63,8 @@ ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures = ActivInfinitev7.pIdentCo
 ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts = ActivInfinitev7.pIdentContratRechResu.addItem('oHistoriqueOpts');
 ActivInfinitev7.pIdentContratRechResu.oTexteErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTexteErreur');
+ActivInfinitev7.pIdentContratRechResu.oDateDebutEffet = ActivInfinitev7.pIdentContratRechResu.addItem('oDateDebutEffet');
+ActivInfinitev7.pIdentContratRechResu.oCodeOffre = ActivInfinitev7.pIdentContratRechResu.addItem('oCodeOffre');
 
 ActivInfinitev7.pIdentContResilRech = ActivInfinitev7.addPage('pIdentContResilRech', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContResilRech.btRecherche = ActivInfinitev7.pIdentContResilRech.addItem('btRecherche');

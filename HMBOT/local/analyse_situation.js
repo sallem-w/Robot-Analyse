@@ -43,11 +43,13 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 	//openFile: ouverture fichier IAE
 	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
 	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; //la ligne courante dans le fichier excel
+	var tab = data.scenarioConfig.tabGammeCode;
+	for (var i in tab){
+	  data.ppCouranteAnalyse.dataLocale.tabGamme.push(tab[i].gamme);
+		data.ppCouranteAnalyse.dataLocale.tabCode.push(tab[i].code);
+	}
 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne(); //récupérer l'indice de la dernière ligne dans le fichier excel
-	
 	//copie du fichier d'entrée ==> fichier résultat.
-	
-	
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
 	ctx.traceF.infoTxt('Création du fichier résultat, '+ctx.configF.cheminFichierResultat+', '+data.scenarioConfig.excel.debutIndexLigne-1);	
 	sc.endStep();

@@ -94,17 +94,20 @@ var confFileClass = function() {
        cheminRacine: '',
        excel : {
             debutIndexLigne : '',
+				    debutIndexCol : '',
             indexColonne : {
       	        nom : '',
                 prenom : '',
                 dateDeNaissance : '', 
                 referenceGRC : '',
                 type : '',
-								dateTraitementContrat : '',
-								commentaireContrat : ''
+                numeroRO : '',
+							  gammeProduit: '',
+							  debDateEffet: '',
+								contexteAnalyseStoppee : ''
             }
         },
-			 gammeCodeProduit : []
+			 tabGammeCode : []
 	}
 };
 
