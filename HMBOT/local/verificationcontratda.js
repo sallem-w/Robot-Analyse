@@ -141,6 +141,7 @@
 
 				if ((endDate === undefined) || (ctx.string.trim(endDate) === '')){
 					var numContrat = ActivInfinitev7.pContexteContratOuvert.oNumeroContrat.i(index).get().trim();
+					data.dateDebutEffet = ActivInfinitev7.pContexteContratOuvert.oDateDebutEffet.i(index).get().trim();
 					var debutNumContrat = numContrat.indexOf("/");
 					data.notes.numContratIndiv = numContrat.substring(debutNumContrat+2).trim();
 					ctx.traceF.infoTxt(" le numéro de contrat individuel est : " + data.notes.numContratIndiv);
@@ -201,6 +202,23 @@
 		sc.endStep();
 		return;
 	}});
+
+  
+	/** Description */
+	ActivInfinitev7.step({ stSelectionnerEmbranchement: function(ev, sc, st) {
+		var data = sc.data;
+
+		if(data.dateDebutEffet == ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension)){
+			data.annulAdhesion = true;
+		}
+		else
+		{
+			data.resilConcu = true;
+		}
+		sc.endStep();
+		return;
+	}});
+	
 	
 	
   

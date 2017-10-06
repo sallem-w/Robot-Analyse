@@ -123,6 +123,10 @@ ActivInfinitev7.step({ stRetourAuDebutDeResil: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pResiliationConcu.wait(function(ev){
 		ActivInfinitev7.pResiliationConcu.btFermer.click();
+		if(ActivInfinitev7.pResiliationConcu.oPopupConfirmation.exist())
+		{
+			ActivInfinitev7.pResiliationConcu.btNon.click();
+		}
 		sc.endStep();
 	  return;
 	});
