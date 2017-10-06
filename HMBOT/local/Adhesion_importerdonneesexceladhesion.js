@@ -32,7 +32,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.DATE_DEBUT_EFFET =ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET)))
 		temp_contrat.TYPE_ASSURE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TYPE_ASSURE);
 		temp_contrat.CONTACT_SEX = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CONTACT_SEX);
-		temp_contrat.BRTH_DAY_GREG = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.BRTH_DAY_GREG);
+		temp_contrat.BRTH_DAY_GREG = ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.BRTH_DAY_GREG)));
 		temp_contrat.SITUATION_FAMILLE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.SITUATION_FAMILLE);
 		temp_contrat.CAT_SOCIALE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CAT_SOCIALE);
 		temp_contrat.CONTACT_NOM = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CONTACT_NOM);
