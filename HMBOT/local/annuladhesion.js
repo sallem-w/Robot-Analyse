@@ -43,7 +43,7 @@ ActivInfinitev7.step({ stAllerAlaPageAnnulAdhesion: function(ev, sc, st) {
 ActivInfinitev7.step({ stRechercherContrataAnnuler: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pAnnulationAdhesion.wait(function(ev){
-		var dateEffet = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension);
+		var dateEffet = ctx.dateF.premierJourDuMoisCourant(data.contratCourant.DateExtraction);
 		ActivInfinitev7.pAnnulationAdhesion.oDateDebutEffet.set(dateEffet);
 		ActivInfinitev7.pAnnulationAdhesion.btRecherche.click();
 		sc.endStep();
@@ -56,7 +56,7 @@ ActivInfinitev7.step({ stRechercherContrataAnnuler: function(ev, sc, st) {
 ActivInfinitev7.step({ stSaisieDateDemandeAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pIdentContResilRechRe.wait(function(ev){
-		ActivInfinitev7.pIdentContResilRechRe.oDateDemande.set(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension));
+		ActivInfinitev7.pIdentContResilRechRe.oDateDemande.set(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction));
 		ActivInfinitev7.pIdentContResilRechRe.btSuivant.click();
 		sc.endStep();
 		return;
