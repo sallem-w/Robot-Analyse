@@ -28,10 +28,29 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stSelectionnerAdhesion);
 	sc.step(ActivInfinitev7.steps.stRechercherViaNumeroContratIndiv);
 	sc.step(ActivInfinitev7.steps.stVerifierNomAdresse);
+	sc.step(ActivInfinitev7.steps.stSelectionnerEmbranchement);
 	sc.step(ActivInfinitev7.steps.stFinDeVerification);
 	// Fin vérification
 	
 	sc.step(ActivInfinitev7.steps.stResiliationOuPassageAuContratSuivant);
+	sc.step(ActivInfinitev7.steps.stAnnulationOuResiliation);
+	
+	// début annulation 
+	
+	sc.step(ActivInfinitev7.steps.stInitialisationAnnulationAdhesion);
+	sc.step(ActivInfinitev7.steps.stAllerAlaPageAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRechercherContrataAnnuler);
+	sc.step(ActivInfinitev7.steps.stSaisieDateDemandeAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageBlocNotesAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageParamCalculAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageHistoCotisAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageVisuCptAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageValidationAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRetourAuDebutDAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stFinAnnulAdhesion);
+	
+	// fin annulation
+	
 	sc.step(ActivInfinitev7.steps.stVersResiliation);
 	
 	// début résiliation
@@ -127,7 +146,19 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			return;
 		}
 	}});
-
+  
+  
+	/** Description */
+	ActivInfinitev7.step({ stAnnulationOuResiliation: function(ev, sc, st) {
+		var data = sc.data;
+		if(data.annulAdhesion){
+			sc.endStep();
+		}
+		else {
+			sc.endStep(ActivInfinitev7.steps.stVersResiliation);
+		}
+	}});
+	
 	
 	/** Description */
 	ActivInfinitev7.step({ stVersResiliation: function(ev, sc, st) {
@@ -137,6 +168,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		sc.endStep();
 		return;
 	}});
+
+	
 	
 	
 	
