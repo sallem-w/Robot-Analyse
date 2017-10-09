@@ -21,6 +21,7 @@ var confFileAdhesionClass = function () {
         BRTH_DAY_GREG: '',
         SITUATION_FAMILLE: '',
         CAT_SOCIALE: '',
+				CONTACT_CIVILITE:'',
         CONTACT_NOM: '',
         CONTACT_PRENOM: '',
         NOM_JEUNE_FILLE: '',

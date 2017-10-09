@@ -99,7 +99,35 @@
 		return codeScenario === ctx.configF.scenario.SIRH ? 'xls' : ctx.fso.file.getExtensionName(nomFichier);
 	}
 	
-	
+//	configF.selectionFichier = function (chemin,extensionFichier,finTitre){
+		
+//		var listeFichiers = ctx.fso.folder.getFileCollection(chemin);
+//		var cheminVersFichier=undefined;
+//		var label = "<script>function cl(element) { close(element.id); }</script>";
+//		label = label + "<p> Avec quel fichier souhaitez-vous travailler ? :<br/><br/>";
+//		var count=0;
+//		while(!listeFichiers.atEnd()) {
+//			var ff = listeFichiers.item();
+//			ctx.log('Nom fichier : '+ ff);
+//				// on verifie si il n'y a pas deux fichiers de données sans "finTitreResultat" dans le titre
+//			if ((ff.Name.indexOf(extensionFichier) !== -1) && (ff.Name.indexOf(finTitre==-1))) {
+//				label = label + "<a href='javascript:void(0)' id='Option"+count+"' onclick='cl(this);' > ";
+//				label = label + "<b> "+ ff.Name+" </b> </a><br/>";
+//				count += 1;
+//			}
+//				listeFichiers.moveNext();
+//		}
+//		var pMaPopup = ctx.popup('maPopup', e.popup.template.NoButton) ;
+//			pMaPopup.open({	message: label }) ;
+//			pMaPopup.waitResult(function(res) 
+//			{
+//				var it=Number(res[6]);
+//				cheminVersFichier=ff.Name;
+//			  ctx.log('Résultat cliqué: ' + res + " k : " +it+ "Fichier : "+cheminVersFichier);
+//				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
+//			});
+//		return cheminVersFichier;
+//	}
 	
 	configF.init = function(codeScenario) {
 		ctx.log('---> configF.init('+codeScenario+')');
@@ -121,7 +149,9 @@
 		var fichiers = ctx.fso.folder.getFileCollection(configF.cheminRacine);
 		var n_fichiers = 0;
 		while(!fichiers.atEnd()) {
+			
 			var ff = fichiers.item();
+			ctx.log('Nom fichier : '+ ff);
 			// on verifie si il n'y a pas deux fichiers de données sans "finTitreResultat" dans le titre
 			if ((ff.Name.indexOf(extensionFichier) !== -1) && (ff.Name.indexOf(finTitreResultat==-1))) {
 				n_fichiers += 1;
@@ -131,9 +161,16 @@
 		}
 		
 		if (n_fichiers !== 1) {
-			ctx.traceF.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
-			ctx.popupF.newPopup(n_fichiers + " fichier(s) Excel de données trouvé(s) dans " + configF.cheminRacine + ", il en faut un et un seul.", 'Erreur Excel');
-			return false;	
+//			var cheminVersFichier = ctx.configF.selectionFichier(configF.cheminRacine,extensionFichier,finTitreResultat);
+//			if (cheminVersFichier != undefined){
+//				configF.nomFichier=cheminVersFichier;
+//			} 
+//			else{
+				ctx.traceF.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
+				ctx.popupF.newPopup(n_fichiers + " fichier(s) Excel de données trouvé(s) dans " + configF.cheminRacine + ", il en faut un et un seul.", 'Erreur Excel');
+				return false;
+//			}
+				
 		}
 
 		var extension = ctx.configF.extensionFichierResultat(codeScenario, configF.nomFichier);
@@ -186,5 +223,20 @@
     }
 
 
+	
+	configF.correspondanceTab = function(tab1,tab2,nom){
+		var resultat= '';
+		for( var i in tab1){
+			if(nom == tab1[i]){
+				resultat=tab2[i];
+				break;
+			}
+		}
+		if(resultat == ''){
+			ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + nom);
+		}
+		return resultat;
+	}
+	
 	return configF;
 }) ();
