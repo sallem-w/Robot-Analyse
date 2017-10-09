@@ -1,22 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="140" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="5844" Length="120"><![CDATA[if(ctx.dateF.estEgale(data.ppCouranteAnalyse.dataEnLigne.debDateEffet, data.ppCouranteAnalyse.dataLocale.debDateEffet)){]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="155" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="6415" Length="103"><![CDATA[if(data.ppCouranteAnalyse.dataEnLigne.indexContrat < data.ppCouranteAnalyse.dataEnLigne.nbContrat - 1){]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="173" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="7011" Length="17"><![CDATA[sc.endScenario();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="182" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="8011" Length="56"><![CDATA[data.ppCouranteAnalyse.dataEnLigne.critereRecherche = 2;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4761" Length="137"><![CDATA[ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4761" Length="137"><![CDATA[ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[stInitRechercheEtAnalysePP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stResultRecherchePP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stResultRecherchePPParRO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRecherchePPParRO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRecherchePPParROContratEnCours]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRecherchePPParRO]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stResultRecherchePPContratEnCours]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitLireContratActif]]></FINDWHAT>
+		<FINDWHAT><![CDATA[1-SZ4N2F]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stTraiterResRechPPContratEnCours]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stResRechercheppParROContratEnCours]]></FINDWHAT>
+		<FINDWHAT><![CDATA[lecture des données du fichier Excel]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.codeOffre]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRechercheEtAnalysePP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[dictContratsCourantCMU]]></FINDWHAT>
 		<FINDWHAT><![CDATA[CMUtemp_contractF]]></FINDWHAT>
 		<FINDWHAT><![CDATA[scenarioConfig]]></FINDWHAT>
@@ -24,14 +28,6 @@
 		<FINDWHAT><![CDATA[getLastRow]]></FINDWHAT>
 		<FINDWHAT><![CDATA[tabGammeCode]]></FINDWHAT>
 		<FINDWHAT><![CDATA[dateDeNaissance]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireRefGRC]]></FINDWHAT>
-		<FINDWHAT><![CDATA[scAnalyseContratsEnCours]]></FINDWHAT>
-		<FINDWHAT><![CDATA[scRechercheOprtsContentieux]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbContratRadie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pHisto]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat ]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRadie]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[nbContrat]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
@@ -55,15 +51,15 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="141" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="154" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="315" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="99" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="113" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="99" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="315" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="154" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="141" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
