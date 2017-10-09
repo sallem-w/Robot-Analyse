@@ -4,11 +4,13 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 	var data = sc.data;
 	sc.onTimeout(30000, function(sc, st) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -44,7 +46,7 @@ ActivInfinitev7.step({ stParcourirListeOperts : function(ev, sc, st) {
     if (valContexte.indexOf('PCX') !== -1){
 			data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = true;
 			ctx.traceF.infoTxt('La trace PCX EXISTE, indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d un précontentieux';
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d’un précontentieux';
 		}
 		index ++;
 	}
