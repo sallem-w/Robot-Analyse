@@ -248,6 +248,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		statistiques['nombreCasNonTraites'] = data.stats.nombreCasNonTraites;
 		ctx.statsF.remplirTemplate(statistiques);
 		ctx.statsF.remplirJson(statistiques);
+		ctx.log( " Fin DU SCENARIO DE DISPENSE D\'AFFILIATION " );
+		ctx.popupF.finTraitement();
 		sc.endScenario();
 	}});
 	
