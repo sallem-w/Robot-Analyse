@@ -4,6 +4,8 @@
     "Adhesion": {
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\adhesion\\",
+        "cheminData": "C:\\deploy\\adhesion\\data\\",
+        "cheminResultats": "C:\\deploy\\adhesion\\resultats\\",
         "controlSeul": true,
         "controlSolde": true,
         "excel": {
@@ -18,6 +20,7 @@
                 "BRTH_DAY_GREG": 11,
                 "SITUATION_FAMILLE": 12,
                 "CAT_SOCIALE": 13,
+                "CONTACT_CIVILITE":15,
                 "CONTACT_NOM": 16,
                 "CONTACT_PRENOM": 17,
                 "NOM_JEUNE_FILLE": 18,

@@ -10,6 +10,7 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stVersAdhesionIndividuelle);
 	sc.step(ActivInfinitev7.steps.stOuvertureDossierHSP);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_Offre);
+	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_SelectOffre);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_NumExterne);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_GroupeGestion);
 	sc.step(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_CentreGestion);
@@ -18,6 +19,11 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stCreationIdentificationPersonneAdhesionIndiv);
 	sc.step(ActivInfinitev7.steps.stSelectionPersonneAdhesionIndiv);
 	sc.step(ActivInfinitev7.steps.stModifIdentificationPersonneAdhesionIndiv);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_CodePostal);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -91,10 +97,41 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 
 
 
-
+ActivInfinitev7.step({ stRemplirIdentificationContratHSP_Offre: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_Offre');
+	var OffreHSP = data.scenarioConfig.Adhesion.Offre.HSP;
+	//==================================================
+	ActivInfinitev7.pAdhIndivIdentContrat.wait(function(ev){
+		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke(OffreHSP);
+		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+		var countPoll=0;	
+		var offreExistance = false;
+		var indexOffre = -1;
+		ctx.polling({	
+			delay: 200,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIdentContrat.oOffre.exist();
+			},
+			done: function() { 
+				sc.endStep(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_SelectOffre);
+				return;
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+	});
+}});
 
 /** Description */
-ActivInfinitev7.step({ stRemplirIdentificationContratHSP_Offre: function(ev, sc, st) {
+ActivInfinitev7.step({ stRemplirIdentificationContratHSP_SelectOffre: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_Offre');
 	var OffreHSP = data.scenarioConfig.Adhesion.Offre.HSP;
@@ -287,14 +324,38 @@ ActivInfinitev7.step({ stRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
 	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
 	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
 	ActivInfinitev7.pAdhIndivIdPrinRech.wait(function(ev) {
-		ActivInfinitev7.pAdhIndivIdPrinRech.oNom.setFocus();
-		ActivInfinitev7.pAdhIndivIdPrinRech.oNom.keyStroke(nom);
-		ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.set(prenom);
-		ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.set(dateNaissance);
-		ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.set(numRo);
-		ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.click();
-		sc.endStep();
-		return;
+		var countPoll=0;	
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return (ActivInfinitev7.pAdhIndivIdPrinRech.oNom.exist() && ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.exist());
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNom.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNom.set(nom);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.set(prenom);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.set(dateNaissance);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.set(numRo);
+				ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.click();
+				sc.endStep();
+				return;	
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Rercherche Personne Impossible : Element oNom introuvable ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Error Rercherche Personne Impossible ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+		
+
 	});
 }});
 
@@ -305,14 +366,31 @@ ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stResultatRecherchePersonneAdhesionIndiv');
 	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
 		if(ActivInfinitev7.pAdhIndivIdPrinRechResu.oAucunePersonne){
-			ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.click();
-			sc.endStep(ActivInfinitev7.steps.stCreationIdentificationPersonneAdhesionIndiv);
-			return;
+			var countPoll=0;	
+			ctx.polling({	
+				delay: 300,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.exist();
+				},
+				done: function() { 
+					ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.click();
+					sc.endStep(ActivInfinitev7.steps.stCreationIdentificationPersonneAdhesionIndiv);
+					return;
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt('Error Recherche personne :  btAnnuler n\'existe pas');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
 		}
 		else{
 			var countPoll=0;	
 		ctx.polling({	
-			delay: 200,	
+			delay: 300,	
 			nbMax: 10,		
 			test: function(index) { 		
 				countPoll++;
@@ -355,9 +433,204 @@ ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc
 ActivInfinitev7.step({ stCreationIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stCreationIdentificationPersonneAdhesionIndiv');
+	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
+		ctx.log('--> Creation intervenant principal ');
+		sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);
+		return;
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_IdentificationAdherent: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_IdentificationAdherent');
+	// Identification Adherent
+	var civilite= data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CONTACT_CIVILITE;
+	ctx.log('Civilité : '+civilite);
+	ctx.wait(function(ev){
+		var countPoll=0;	
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.oCivilite.exist();
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIntervtPrin.oCivilite.setFocus();
+				ActivInfinitev7.pAdhIndivIntervtPrin.oCivilite.set(civilite);
+				sc.endStep();
+				return;
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage de la civilité ');
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+	},1000);
+
+}});
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent');
+	
+	
+//	par defaut Type Adresse
+	ActivInfinitev7.pAdhIndivIntervtPrin.oTypeAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oTypeAdresse.set('DOM');
+	// Pays
+	var codePays=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CODE_PAYS;
+	//Normalement les codes pays sont les memes pour GRC et infinite ( à confirmer )
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysAdresse.set(codePays);
+	// Code Cedex ( a voir )
+	
+	
+	ctx.log('----');
 	sc.endStep();
 	return;
 }});
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_CodePostal: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_CodePostal');
+	var cp = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CODE_POSTAL;
+	// comme plusieurs communes peuvent avoir le meme code postal , on ajoute le nom de la commune
+	cp = cp + ' - '+ data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].LIBELLE_LOCALITE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodePostal.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodePostal.keyStroke(cp);
+	var countPoll=0;	
+	ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.count()>0;
+			},
+			done: function() { 
+				/// la combinaison ville + code postal doit etre unique
+				var choixUnique = false;
+				if(ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.i(0).get()==cp){
+					choixUnique = true;
+				}
+				if(choixUnique){
+					// la Personne physique est unique on peut continuer avec
+					ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.i(0).click();
+					sc.endStep();
+					return;
+				}
+				else{
+					/// il y a plusieur PP on renvoi au centre
+					ctx.traceF.errorTxt(' La ville n\'est pas unique');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Code Postal :  La ville n\'est pas unique';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage du code postal ');
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+}});
+
+
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse');
+	// Escalier  Etage ..
+	var complementAdresse_1 = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_IDENT_DEST;
+	var complementAdresse_2 = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_IDENTIF_GEO;
+	var numeroVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].NUMERO_VOIE;
+	var complementVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_NUM_VOIE 
+	ActivInfinitev7.pAdhIndivIntervtPrin.oEscalierEtage.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oEscalierEtage.keyStroke(complementAdresse_1);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBatimentAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBatimentAdresse.keyStroke(complementAdresse_2);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumeroAdresse.setFocus();
+	ctx.log('numero de voie : '+numeroVoie);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumeroAdresse.keyStroke(numeroVoie);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBtqAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBtqAdresse.keyStroke(complementVoie); /// Attention Select, il se peut que les codes GRC soient différents de ceux d'infinite
+	
+	sc.endStep();
+	return;
+}});
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie');
+	
+	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].ADRESSE_NAT_VOIE);
+	var nomVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].LIBELLE_VOIE;
+	// comme plusieurs communes peuvent avoir le meme code postal , on ajoute le nom de la commune
+	var voie = natureVoie + ' '+ nomVoie;
+	ctx.log(' Voie : '+voie);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.keyStroke(voie);
+	
+	var countPoll=0;	
+	ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.count()>0;
+			},
+			done: function() { 
+				/// la combinaison ville + code postal doit etre unique
+				var choixUnique = false;
+				if(ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).get()== voie){
+					choixUnique = true;
+				}
+				if(choixUnique){
+					// la Personne physique est unique on peut continuer avec
+					ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).click();
+					sc.endStep();
+					return;
+				}
+				else{
+					/// il y a plusieur PP on renvoi au centre
+					ctx.traceF.errorTxt(' La voie n\'est pas unique');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Nom de voie :  La voie n\'est pas unique';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage du nom de la voie');
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_Telephone: function(ev, sc, st) {
+	var data = sc.data;
+	
+	sc.endStep();
+	return;
+}});
+
 
 
 ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
@@ -391,7 +664,7 @@ ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
 ActivInfinitev7.step({ stModifIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stModifIdentificationPersonneAdhesionIndiv');
-	sc.endStep();
+	sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);
 	return;
 }});
 
