@@ -1,18 +1,17 @@
-﻿
-/** Description */
+﻿/** Description */
 ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
-	ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
+	// initialiser les fichiers pour les traces et les stats
+	//ctx.traceF.infoTxt(' Début du scénario principal pour la dispense d\'affiliation');
 	var data = sc.data;
 
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
-
 	
 	sc.data.codeDuScenario = ctx.configF.scenario.DA;
 	
 	sc.step(ActivInfinitev7.steps.stInitScenarioDA);
-	sc.step(ActivInfinitev7.steps.initPivot);
+	sc.step(ActivInfinitev7.steps.initPivotDA);
 	sc.step(ActivInfinitev7.steps.stServerConnexionDA);
 	sc.step(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 	sc.step(ActivInfinitev7.steps.stVersVerif);
@@ -28,10 +27,29 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stSelectionnerAdhesion);
 	sc.step(ActivInfinitev7.steps.stRechercherViaNumeroContratIndiv);
 	sc.step(ActivInfinitev7.steps.stVerifierNomAdresse);
+	sc.step(ActivInfinitev7.steps.stSelectionnerEmbranchement);
 	sc.step(ActivInfinitev7.steps.stFinDeVerification);
 	// Fin vérification
 	
 	sc.step(ActivInfinitev7.steps.stResiliationOuPassageAuContratSuivant);
+	sc.step(ActivInfinitev7.steps.stAnnulationOuResiliation);
+	
+	// début annulation 
+	
+	sc.step(ActivInfinitev7.steps.stInitialisationAnnulationAdhesion);
+	sc.step(ActivInfinitev7.steps.stAllerAlaPageAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRechercherContrataAnnuler);
+	sc.step(ActivInfinitev7.steps.stSaisieDateDemandeAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageBlocNotesAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageParamCalculAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageHistoCotisAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageVisuCptAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageValidationAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRetourAuDebutDAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stFinAnnulAdhesion);
+	
+	// fin annulation
+	
 	sc.step(ActivInfinitev7.steps.stVersResiliation);
 	
 	// début résiliation
@@ -112,13 +130,6 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	ActivInfinitev7.step({ stVersVerif: function(ev, sc, st) {
 		ctx.traceF.infoTxt(' STEP - stVersVerif');
 		var data = sc.data;
-		//st.disableTimeout();
-		/*var scVerification = ActivInfinitev7.scenarios.scVerifContratDA.start(data).onEnd(function(sc5){
-			ctx.traceF.infoTxt(' STEP - dans le sous-scénario de vérification');
-			sc.data = sc5.data;
-			sc.endStep();
-			return;
-		});*/
 		sc.endStep();
 	}});
   
@@ -134,7 +145,19 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			return;
 		}
 	}});
-
+  
+  
+	/** Description */
+	ActivInfinitev7.step({ stAnnulationOuResiliation: function(ev, sc, st) {
+		var data = sc.data;
+		if(data.annulAdhesion){
+			sc.endStep();
+		}
+		else {
+			sc.endStep(ActivInfinitev7.steps.stVersResiliation);
+		}
+	}});
+	
 	
 	/** Description */
 	ActivInfinitev7.step({ stVersResiliation: function(ev, sc, st) {
@@ -144,6 +167,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		sc.endStep();
 		return;
 	}});
+
+	
 	
 	
 	
@@ -158,9 +183,10 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		data.dataFichier.prenom = data.contratCourant.Prenom;
 		data.dataFichier.adresse = data.contratCourant.Adresse;
 		data.dataFichier.localite = data.contratCourant.Localite;
-		data.dataFichier.dateExtraction = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction);
-		data.dataFichier.dateNaissance = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateNaissance);
-		data.dataFichier.dateDispense = ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension);
+		data.dataFichier.dateExtraction = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction);
+		data.dataFichier.dateNaissance = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateNaissance);
+		data.dataFichier.dateEntreeFiliale = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateEntreeFiliale);
+		data.dataFichier.dateDispense = ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateDispenseOuSuspension);
 		
 		ctx.traceF.infoTxt( 'le nom du client est :' + data.globalVariables.nomClient );
 		ctx.traceF.infoTxt( 'Numéro Sécu :' + data.dataFichier.numRO );
@@ -170,7 +196,12 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 	
 		var writeArray = _.getObjectValues(data.dataFichier);
 		writeArray.push(data.notes.numContratIndiv);
-		writeArray.push(ctx.dateF.formatJJMMAAAA(new Date()));
+		data.notes.dateDeTraitement = ctx.dateF.formatMMJJAAAA(new Date());
+		writeArray.push(data.notes.dateDeTraitement);
+		/*ctx.log(data.notes.dateDeTraitement);
+		ctx.log(ctx.dateF.dateAvecSeparateurEnAnglais(data.contratCourant.DateExtraction));
+		ctx.log(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction));
+		ctx.log(ctx.dateF.premierJourDuMoisCourant("20151223"));*/
 		writeArray.push(data.notes.statut);
 		writeArray.push(data.notes.commentaire);
 		ctx.excelF.remplirTableau(data.globalVariables.ligneTraite, writeArray);
@@ -190,6 +221,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 			data.globalVariables.indexContratCourant += 1 ;
 			data.sortieProcessusDA = false;
 			data.avertissement = false;
+			data.annulAdhesion = false;
+			data.resilConcu = false;
 			sc.endStep(ActivInfinitev7.steps.stDebutScenarioPrincipalDA);
 		}
 		else {
@@ -215,6 +248,8 @@ ActivInfinitev7.scenario({ scScenarioPrincipalDA: function(ev, sc) {
 		statistiques['nombreCasNonTraites'] = data.stats.nombreCasNonTraites;
 		ctx.statsF.remplirTemplate(statistiques);
 		ctx.statsF.remplirJson(statistiques);
+		ctx.log( " Fin DU SCENARIO DE DISPENSE D\'AFFILIATION " );
+		ctx.popupF.finTraitement();
 		sc.endScenario();
 	}});
 	

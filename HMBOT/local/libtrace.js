@@ -24,7 +24,7 @@
 			ctx.fso.file.create(cheminFichier);
 		}
 		cheminFichierTrace = cheminFichier;
-		traceF.constantes.touteTraceActive=ctx.configF.fichierConfigScenario[nomScen].touteTraceActive;
+		traceF.constantes.touteTraceActive = ctx.configF.fichierConfig[nomScen].touteTraceActive;
 	};
 	
 //	trace.writeInfo

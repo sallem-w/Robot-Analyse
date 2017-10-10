@@ -1,4 +1,4 @@
-﻿ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
+﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
 	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
@@ -16,8 +16,13 @@
 	ctx.traceF.infoTxt('STEP - readFile');
 	ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
 	var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
-	var json = JSON.parse(fileContracts);
+	var json = {
+		customerName : '',
+		data : {},
+		keyLabel : {}
+	};
 	
+	json = JSON.parse(fileContracts);
 	var entetes = json.keyLabel;
 	var contracts = json.data;
 	var countContracts = contracts.length;

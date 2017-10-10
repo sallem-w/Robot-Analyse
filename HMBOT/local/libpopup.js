@@ -24,7 +24,7 @@
 
 	
 	popupF.finTraitement = function(){
-		popupF.newPopup("Fin du traitement CMU ",'Fin', function() {
+		popupF.newPopup("Fin du traitement ",'Fin', function() {
 		GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
 		});
 	}

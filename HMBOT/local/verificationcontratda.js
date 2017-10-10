@@ -141,7 +141,20 @@
 
 				if ((endDate === undefined) || (ctx.string.trim(endDate) === '')){
 					var numContrat = ActivInfinitev7.pContexteContratOuvert.oNumeroContrat.i(index).get().trim();
-					var debutNumContrat = numContrat.indexOf("/");
+					data.dateDebutEffet = ActivInfinitev7.pContexteContratOuvert.oDateDebutEffet.i(index).get().trim();
+					var debutNumContrat;
+					if(numContrat.indexOf("/") !== -1){
+						debutNumContrat = numContrat.indexOf("/");
+					}
+					else{
+						data.notes.statut = ctx.excelF.constantes.statuts.Echec;
+						data.notes.commentaire = " Revoir centre : le contrat n\'a pas été trouvé ou a déjà été traité ";
+						data.notes.numContratIndiv = ' ';
+						data.sortieProcessusDA = true;
+						data.stats.nombreCasNonTraites += 1;
+						sc.endStep(ActivInfinitev7.steps.stFinDeVerification);
+						return;
+					}
 					data.notes.numContratIndiv = numContrat.substring(debutNumContrat+2).trim();
 					ctx.traceF.infoTxt(" le numéro de contrat individuel est : " + data.notes.numContratIndiv);
 				} 
@@ -201,6 +214,24 @@
 		sc.endStep();
 		return;
 	}});
+
+  
+	/** Description */
+	ActivInfinitev7.step({ stSelectionnerEmbranchement: function(ev, sc, st) {
+		var data = sc.data;
+		ctx.log(" date entrée filiale " + ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateEntreeFiliale));
+		ctx.log(" date de dispense " + ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension));
+		if(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateEntreeFiliale) === ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateDispenseOuSuspension)){
+			data.annulAdhesion = true;
+		}
+		else
+		{
+			data.resilConcu = true;
+		}
+		sc.endStep();
+		return;
+	}});
+	
 	
 	
   

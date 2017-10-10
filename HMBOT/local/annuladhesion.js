@@ -7,45 +7,45 @@
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 	
-	sc.step(ActivInfinitev7.steps.stInitialisationResiliationConcu);
-	sc.step(ActivInfinitev7.steps.stAllerAlaPageDeResiliation);
-	sc.step(ActivInfinitev7.steps.stRechercherContratAResilier);
-	sc.step(ActivInfinitev7.steps.stSaisieDateDemande);
-	sc.step(ActivInfinitev7.steps.stPageBlocNotesResilConcu);
-	sc.step(ActivInfinitev7.steps.stPageParamCalculResilConcu);
-	sc.step(ActivInfinitev7.steps.stPageHistoCotisResilConcu);
-	sc.step(ActivInfinitev7.steps.stPageVisuCptResilConcu);
-	sc.step(ActivInfinitev7.steps.stPageValidationResilConcu);
-	sc.step(ActivInfinitev7.steps.stRetourAuDebutDeResil);
-	sc.step(ActivInfinitev7.steps.stFinResilConcu);
+	sc.step(ActivInfinitev7.steps.stInitialisationAnnulationAdhesion);
+	sc.step(ActivInfinitev7.steps.stAllerAlaPageAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRechercherContrataAnnuler);
+  sc.step(ActivInfinitev7.steps.stSaisieDateDemandeAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageBlocNotesAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageParamCalculAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageHistoCotisAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageVisuCptAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stPageValidationAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stRetourAuDebutDAnnulAdhesion);
+	sc.step(ActivInfinitev7.steps.stFinAnnulAdhesion);
 }});
 */
 
 /** Description */
-ActivInfinitev7.step({ stInitialisationResiliationConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stInitialisationAnnulationAdhesion: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(' STEP --> stInitialisationResiliationConcu');
+	ctx.traceF.infoTxt(' STEP --> stInitialisationAnnulationAdhesion');
 	sc.endStep();
 	return;
 }});
 
 
 /** Description */
-ActivInfinitev7.step({ stAllerAlaPageDeResiliation: function(ev, sc, st) {
+ActivInfinitev7.step({ stAllerAlaPageAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
-	ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne.click();
+	ActivInfinitev7.pTabDeBord.btAnnulRenonciation.click();
 	sc.endStep();
 	return;
 }});
 
 
 /** Description */
-ActivInfinitev7.step({ stRechercherContratAResilier: function(ev, sc, st) {
+ActivInfinitev7.step({ stRechercherContrataAnnuler: function(ev, sc, st) {
 	var data = sc.data;
-	ActivInfinitev7.pResiliationConcu.wait(function(ev){
+	ActivInfinitev7.pAnnulationAdhesion.wait(function(ev){
 		var dateEffet = ctx.dateF.premierJourDuMoisCourant(data.contratCourant.DateExtraction);
-		ActivInfinitev7.pResiliationConcu.oDateDebutEffet.set(dateEffet);
-		ActivInfinitev7.pResiliationConcu.btRecherche.click();
+		ActivInfinitev7.pAnnulationAdhesion.oDateDebutEffet.set(dateEffet);
+		ActivInfinitev7.pAnnulationAdhesion.btRecherche.click();
 		sc.endStep();
 		return;
 	});
@@ -53,7 +53,7 @@ ActivInfinitev7.step({ stRechercherContratAResilier: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stSaisieDateDemande: function(ev, sc, st) {
+ActivInfinitev7.step({ stSaisieDateDemandeAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pIdentContResilRechRe.wait(function(ev){
 		ActivInfinitev7.pIdentContResilRechRe.oDateDemande.set(ctx.dateF.dateSansSeparatorEnFrancais(data.contratCourant.DateExtraction));
@@ -65,7 +65,7 @@ ActivInfinitev7.step({ stSaisieDateDemande: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stPageBlocNotesResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stPageBlocNotesAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pBlocNotesResil.wait(function(ev){
 		ActivInfinitev7.pBlocNotesResil.btSuivant.click();
@@ -76,7 +76,7 @@ ActivInfinitev7.step({ stPageBlocNotesResilConcu: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stPageParamCalculResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stPageParamCalculAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pParamDeCalcul.wait(function(ev){
 		ActivInfinitev7.pParamDeCalcul.btSuivant.click();
@@ -86,7 +86,7 @@ ActivInfinitev7.step({ stPageParamCalculResilConcu: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stPageHistoCotisResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stPageHistoCotisAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pHistoCotisation.wait(function(ev){
 		ActivInfinitev7.pHistoCotisation.btSuivant.click();
@@ -96,7 +96,7 @@ ActivInfinitev7.step({ stPageHistoCotisResilConcu: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stPageVisuCptResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stPageVisuCptAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pVisuCptCotisChgtCouv.wait(function(ev){
 		ActivInfinitev7.pVisuCptCotisChgtCouv.oValidation.set('OUI');
@@ -107,7 +107,7 @@ ActivInfinitev7.step({ stPageVisuCptResilConcu: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stPageValidationResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stPageValidationAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pValidationActeChgtCouv.wait(function(ev){
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
@@ -119,13 +119,13 @@ ActivInfinitev7.step({ stPageValidationResilConcu: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stRetourAuDebutDeResil: function(ev, sc, st) {
+ActivInfinitev7.step({ stRetourAuDebutDAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
-	ActivInfinitev7.pResiliationConcu.wait(function(ev){
-		ActivInfinitev7.pResiliationConcu.btFermer.click();
-		if(ActivInfinitev7.pResiliationConcu.oPopupConfirmation.exist())
+	ActivInfinitev7.pAnnulationAdhesion.wait(function(ev){
+		ActivInfinitev7.pAnnulationAdhesion.btFermer.click();
+		if(ActivInfinitev7.pAnnulationAdhesion.oPopupConfirmation.exist())
 		{
-			ActivInfinitev7.pResiliationConcu.btNon.click();
+			ActivInfinitev7.pAnnulationAdhesion.btNon.click();
 		}
 		sc.endStep();
 	  return;
@@ -134,26 +134,16 @@ ActivInfinitev7.step({ stRetourAuDebutDeResil: function(ev, sc, st) {
 
 
 /** Description */
-ActivInfinitev7.step({ stFinResilConcu: function(ev, sc, st) {
+ActivInfinitev7.step({ stFinAnnulAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ActivInfinitev7.pTabDeBord.wait(function(ev){
 		if(data.avertissement){
 			data.stats.nombreCasTraitesAvecAvertissement += 1;
 		}
 		data.stats.nombreCasTraites += 1;
-		data.notes.commentaire += " | résiliation effectuée ";
+		data.notes.commentaire += " | annulation adhésion effectuée ";
 		data.notes.statut = ctx.excelF.constantes.statuts.Succes;
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.stEcritureDesDonnées);
 	  return;
 	});
 }});
-
-
-
-
-
-
-
-
-
-

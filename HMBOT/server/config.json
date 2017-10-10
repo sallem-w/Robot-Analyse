@@ -13,7 +13,6 @@
         "afficherMenu": true
     },
     "DA": {
-        "afficherMenu": true,
-        "cheminRacine": "C:\\deploy\\da\\"
+        "afficherMenu": true
     }
 }
