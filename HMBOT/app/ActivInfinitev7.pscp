@@ -2969,7 +2969,8 @@
 				</PAGE>
 				<PAGE Name="pAdhIndivIntervtPrin" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[\/mdg\/personne\/RecherchePersonne\.do\?method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=modifModeReglement&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_325&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -3307,6 +3308,7 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1137181_1" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="190" Techno="WEB" Timestamp="09/10/2017 11:37:41" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1605598_1" Comment="Adhésions individuelles - N°22629464 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="194" Techno="WEB" Timestamp="09/10/2017 16:06:24" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1656402_1" Comment="Adhésions individuelles - N°22629469 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="195" Techno="WEB" Timestamp="09/10/2017 16:57:07" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1440053_1" Comment="Adhésions individuelles - N°22629483 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="196" Techno="WEB" Timestamp="10/10/2017 14:40:28" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

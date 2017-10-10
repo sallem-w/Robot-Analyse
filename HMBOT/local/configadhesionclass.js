@@ -90,6 +90,7 @@ var confFileAdhesionClass = function () {
         IND_TLT: '',
         ANCIEN_ASSURE: '',
         REF_EXT: '',
+				TOP_ABONN_DEC:'',
         contexteAnalyseStoppee: '',
         dateTraitementContrat: '',
         statutsContrat: '',
