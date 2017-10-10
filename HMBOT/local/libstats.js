@@ -12,11 +12,8 @@
 		var cheminFichierTemplate = cheminDossierTemplate + nomScen + '.html';
 			
 		if (!ctx.fso.file.exist(cheminFichierTemplate)) {
-<<<<<<< HEAD
 			ctx.traceF.errorTxt(' Le fichier de template n\'est pas trouvé pour ' + nomScen + ' scenario');
-=======
 			ctx.traceF.errorTxt(' Le fichier de statistiques de template n\'est pas trouvé pour ' + nomScenario + ' scenario');
->>>>>>> 'Suspension1010'
 			return;
 		}
 		
