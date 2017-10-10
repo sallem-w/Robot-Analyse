@@ -42,7 +42,7 @@ ctx.dataF = (function () {
 		
 ////// CMU ///////////////////////////////////////////////////////////////////////////////////////////////	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
-		var CMUtemp_contractF = {
+	/*	var CMUtemp_contractF = {
 			typeAssure:'',
       dateDebEffContrat:'',
       dateFinEffContrat:'',
@@ -99,7 +99,7 @@ ctx.dataF = (function () {
 			dat.nomScenario='Résiliation CMU';
 			ctx.log('Init configF');
 			ctx.configF.chargementFichierConfigScenarioCMU();
-			dat.scenarioConfig = new confFileCMUClass();
+			dat.scenarioConfig = new confFileClass();
 			dat.scenarioConfig=ctx.configF.fichierConfigScenario;
 			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
@@ -139,7 +139,7 @@ ctx.dataF = (function () {
 				dat.contratCourantCMU.statutsCMU.contratProlonge=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
-			 }
+			 }*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		
     return dataF;
