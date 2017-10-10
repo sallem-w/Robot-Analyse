@@ -24,7 +24,10 @@
 	
 	json = JSON.parse(fileContracts);
 	var entetes = json.keyLabel;
-	var contracts = json.data;
+	var contracts = {
+		length:''
+	}
+	contracts = json.data;
 	var countContracts = contracts.length;
 		
 	ctx.traceF.infoTxt('STEP - createOutputFile');
