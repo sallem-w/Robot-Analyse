@@ -76,6 +76,8 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 
             
 		data.config = ctx.configF.recupConfigScenario(data.codeDuScenario);
+		
+
 		ctx.traceF.infoTxt(JSON.stringify(data.config));
     ctx.traceF.infoTxt('STEP - Create Pivot');
     ctx.traceF.infoTxt(ctx.options.serverURL + '\\harmonieCustomer.exe ' + ctx.configF.recupererCheminRacine());
@@ -85,7 +87,12 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
     ctx.traceF.infoTxt('STEP - readFile');
     ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
     var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
-    var json = JSON.parse(fileContracts);
+		
+		var json = {
+		keyLabel : {}
+		} 
+		
+   	json = JSON.parse(fileContracts);
             
     data.headerNames = json.keyLabel;
     //data.contracts = json.data;
@@ -95,7 +102,8 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
     ctx.excelF.creerFichier();
             
     ctx.traceF.infoTxt('STEP - saveOutputFile');
-    ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat); 
+    ctx.excelF.sauverFichier(ctx.configF.recupererCheminFichierDeSortie()); 
+		
             
     ctx.traceF.infoTxt('STEP - writeHeaderOutputFile');
     var names = _.getObjectValues(data.headerNames);
@@ -103,9 +111,14 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
     names.push('Date traitement contrat');
     names.push('Status contrat');
     names.push('Commentaire');
+<<<<<<< HEAD
     names.push('Remarque');
     names.push('Courrier');
 >>>>>>> 'Modifs2609'
+=======
+    //names.push('Remarque');
+    //names.push('Courrier');
+>>>>>>> 'Suspension1010'
     ctx.excelF.remplirTableau(1, names);
     
 		data.names = names;
@@ -118,6 +131,7 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
     data.countCaseProcessed = 0;
     data.countCaseProcessedWithWarning = 0;
     data.countCaseFailProcessed = 0;
+		data.ligneCourante+=1;
      return sc.endStep();
 
 }});

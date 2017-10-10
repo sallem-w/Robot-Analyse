@@ -1,10 +1,10 @@
 ﻿
 
 /** Description */
-ActivInfinitev7.scenario({ scVerifContratSuspension: function(ev, sc) {
+/*ActivInfinitev7.scenario({ scVerifContratSuspension: function(ev, sc) {
 	
 	var data = sc.data;
-		sc.onTimeout(40000, function(sc, st) { 
+		sc.onTimeout(120000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onTimeOut :  On quitte le sous scenario scVerifContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
 		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
@@ -34,7 +34,7 @@ ActivInfinitev7.scenario({ scVerifContratSuspension: function(ev, sc) {
 	//sc.step(ActivInfinitev7.steps.stRetourDashbord);
 	sc.step(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 	}
-});
+});*/
 
 
 
@@ -93,33 +93,38 @@ ActivInfinitev7.step( { stFinRechercheBenefSynthese : function (ev, sc, st) {
 
 
 
+
 ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stLectureSynthese');
-		ActivInfinitev7.pContexteContratOuvert.wait(function () {
+	 
+		ActivInfinitev7.pContexteContOuvDet.wait(function () {
+			var nombreLignes = ActivInfinitev7.pContexteContOuvDet.oTypeRelation.count();
 			
-			var listeLignes = ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab.getAll();
-			var nombreLignes = ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab.count();
-			if(nombreLignes==0)
+			if(nombreLignes===0)
 			{
 				ctx.traceF.infoTxt('Pas de contrat correspondant aux critères de recherche');
+				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
+				data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 			}
 			else
 			{
-				
-				if(data.indexLextureSynthese < nombreLignes)
+				if(data.indexLectureSynthese < nombreLignes)
 				{
-					if(String(ActivInfinitev7.pContexteContratOuvert.oTypeRelation.i(data.indexLextureSynthese).get()).indexOf(data.constantes.adhesionIndividuelle)!==-1 && ActivInfinitev7.pContexteContratOuvert.oStatus.i(data.indexLextureSynthese).get() === 'A')
+					if(String(ActivInfinitev7.pContexteContOuvDet.oTypeRelation.i(data.indexLectureSynthese).get()).indexOf(data.constantes.adhesionIndividuelle)!==-1 && ActivInfinitev7.pContexteContOuvDet.oStatus.i(data.indexLectureSynthese).get() === 'A')
 					{
 						data.status.faireResiliationContrat = true;
-						ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(data.indexLextureSynthese).click();
-						data.contratCourantSuspension.noContrat = ActivInfinitev7.pContexteContratOuvert.btNoInsee.i(data.indexLextureSynthese).get();
+						var listeNumeros = ActivInfinitev7.pContexteContOuvDet.btNoInsee.i(data.indexLectureSynthese).get();
+						data.contratCourantSuspension.noContrat = (listeNumeros.split('/')[1]).trim();
+						ActivInfinitev7.pContexteContOuvDet.oTypeIdentification.set('ACAI');
+						ActivInfinitev7.pContexteContOuvDet.onIdentificationBenef.set(data.contratCourantSuspension.noContrat);
+						ActivInfinitev7.pContexteContOuvDet.btRecherche.click();
 						sc.endStep();
 						return;
 					}
 					else{
-						data.indexLextureSynthese++ ;
+						data.indexLectureSynthese++ ;
 						sc.endStep(ActivInfinitev7.steps.stLectureSynthese);
 						return;
 					}
@@ -127,6 +132,8 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 				else
 				{
 					ctx.traceF.infoTxt('Aucun contrat parmi ceux proposés ne correspondnt aux critères de recherche');
+					data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
+					data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
 					sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 				}
 			}
@@ -139,14 +146,14 @@ ActivInfinitev7.step( { stComparaisonNomsPrenomsAdresse : function (ev, sc, st) 
     ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stComparaisonNomsPrenomsAdresse');
 		
 		
-		ActivInfinitev7.pContContratDetPers.wait (function () {
+		ActivInfinitev7.pContexteContratOuvert.wait (function () {
 			var detailsPersonneFichier = data.contratCourantSuspension.infos['Nom'] + " " + data.contratCourantSuspension.infos['Prenom'] + " " + data.contratCourantSuspension.infos['Adresse'] ;
-			var detailsPersonneSite = ActivInfinitev7.pContContratDetPers.oDetailsPersonne.get();
+			var detailsPersonneSite = ActivInfinitev7.pContexteContratOuvert.oDetailsPersonne.get();
 			if (detailsPersonneSite.indexOf(detailsPersonneFichier)===-1)
 			{
 			 	ctx.traceF.infoTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');
-			 	ctx.traceF.infoTxt('Données du fichier:' + detailsPersonneFichier);
-			 	ctx.traceF.infoTxt('Données du site:' + detailsPersonneSite);
+			 	ctx.traceF.infoTxt('Données du fichier : ' + detailsPersonneFichier);
+			 	ctx.traceF.infoTxt('Données du site : ' + detailsPersonneSite);
 			}
 		sc.endStep();
 		return ;	
@@ -182,7 +189,7 @@ ActivInfinitev7.step( { stFinScVerifContratSuspension : function (ev, sc, st) {
 		var data = sc.data;
     ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' Etape - stFinScVerifContratSuspension');
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-		sc.endScenario();
+		sc.endStep();
 		return ;
 	}
 });
