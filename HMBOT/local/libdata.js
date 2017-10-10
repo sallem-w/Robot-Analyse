@@ -3,6 +3,7 @@ ctx.dataF = (function () {
     var dataF = {
 				scenarioConfig : '',
 				codeScenario : '',
+<<<<<<< HEAD
 				nomScenario:'',
         webData : {
             url:'',
@@ -61,6 +62,13 @@ ctx.dataF = (function () {
 				numeroContratIndiv : '',
 				dictContratsCourantCMU : [],
 				dateFinEffSituatParti : ''
+=======
+        contratCourantCMU: {
+            dataLocale: {
+                numeroContratIndiv : '',
+                dictContratsCourantCMU : [],
+								dateFinEffSituatParti : ''
+>>>>>>> 'ModifsRebase'
             },
             dataEnLigne: {
               numeroContratIndiv : '',
@@ -77,74 +85,89 @@ ctx.dataF = (function () {
             },
             notes: {
                 dateTraitementContrat:'',
-                statutsContrat: '',
+                statusContrat: '',
                 commentaireContrat: ''
             },
-            statutsCMU: {
+            statusCMU: {
 								existanceASSPRI : false,
                 FinCMUProcessus : false,
 								contratProlonge : false,
 								ASSPRITermine : false,
 								assureValid : false,
-								contratTermine : false,
-								contratResilie : false
+								contratTermine : false
             }
-        };
-		
-		dataF.contratCourantCMU=contratCourantCMU;
-		
-			
-		dataF.initialisationScenarioCMU = function(dat,scenario){
+        },
+        statistiquesF : {
+            debutTpsTraitement : 0,
+						tpsTraitement : 0,
+            nbCasTraite : 0, //countCaseProcessed
+            nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
+            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
+            nbCasTraitementEchec : 0, //countCaseFailProcessed
+            nbCasRevoirCentre : 0, //countCaseBackToCenter
+            nbContratsPretsPrResiliation : 0, //sc.data.countCaseReadyToRemove
+            nbContratsResilies : 0
+        },
+        webData : {
+            url:'htt://exemple.com',
+            tabDeBordURL:'', 
+            identifiant:'', 
+            motDePasse:'' 
+        },
+        varGlobales : { //globalVariables
+            ligneCourante:0, //currentRow
+            indexDerniereLigne:0, //indexLastRow
+            controlSeul:false //controlSeul
+        },
+        CMUtemp_contractF : {
+            typeAssure:'',
+            dateDebEffContrat:'',
+            dateFinEffContrat:'',
+            codeProduit:'',
+            dateDebEffProduit:'',
+            dateFinEffProduit:'',
+            dateDebEffSituatParti:'',
+            dateFinEffSituatParti:''
+        }
 				
-			dat.codeScenario=scenario;
-			dat.nomScenario='Résiliation CMU';
-			ctx.log('Init configF');
-			ctx.configF.chargementFichierConfigScenarioCMU();
-			dat.scenarioConfig = new confFileClass();
-			dat.scenarioConfig=ctx.configF.fichierConfigScenario;
-			ctx.configF.init(dat);
+   
+    };
+		
+		dataF.initialisationScenarioCMU = function(dat,scenario){
+	
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
-			dat.varGlobales=ctx.dataF.varGlobales;	
-			ctx.log('Init Trace : '+ dat.scenarioConfig.CMU.cheminRacine);
-			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
-			ctx.traceF.simpleTxt('Date de la Version : ' + GLOBAL.data.projectDate);
+			dat.varGlobales=ctx.dataF.varGlobales;
+			dat.statistiquesF=ctx.dataF.statistiquesF;
+				
+			dat.codeScenario=scenario;
+			ctx.log('Init configF');
+			ctx.configF.init(scenario);
+			dat.scenarioConfig = new confFileClass();
+			dat.scenarioConfig=ctx.configF.fichierConfig;
 			ctx.log('Init excelF');
-			ctx.excelF.configExcel(dat);
-			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
-			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
-			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
-			ctx.traceF.infoTxt('Création du fichier résultat');	
-			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.CMU.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-			ctx.log('fichier résultat créé');
-//			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
-			ctx.log('Init statsF');
-			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
-			ctx.statsF.debuterStats(dat);
-			
+		//		ctx.excelF.configExcel(scenario);
+			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
+				//data.configExcel = data.config.excel;
+			ctx.log(" Test URL : "+ dat.webData.url);	
+
 		}
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
 				ctx.log('resetContratCourant');
-				dat.contratCourantCMU.notes.dateTraitementContrat='';
-				dat.contratCourantCMU.notes.statutsContrat='';
-				dat.contratCourantCMU.notes.commentaireContrat='';
 				dat.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
 				dat.contratCourantCMU.dataEnLigne.dictContratsCourantCMU = [];
-				dat.contratCourantCMU.statutsCMU.existanceASSPRI=false;
-				dat.contratCourantCMU.statutsCMU.FinCMUProcessus=false;
-				dat.contratCourantCMU.statutsCMU.contratTermine=false;
-				dat.contratCourantCMU.statutsCMU.contratResilie=false;
-				dat.contratCourantCMU.statutsCMU.contratProlonge=false;
+				dat.contratCourantCMU.statusCMU.existanceASSPRI=false;
+				dat.contratCourantCMU.statusCMU.FinCMUProcessus=false;
+				dat.contratCourantCMU.statusCMU.contratTermine=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////		
+		
 		
     return dataF;
 }) ();
+
 
 
 
