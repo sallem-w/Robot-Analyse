@@ -250,9 +250,9 @@
 				</PAGE>
 				<PAGE Name="pContexteContratRech" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<TITRE Scan="start-with"><![CDATA[Contexte Contrat ]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action=afficher]]></URL>
-						<TITRE Scan="start-with"><![CDATA[Visualisation du compte - haum03 - Activ'Infinite - Module de gestion]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Visualisation du compte ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/Go.do?id=ACW1&action=afficherContrat]]></PATH>
 					<OBJETS>
@@ -309,6 +309,7 @@
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id\=RecherchePersonne]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
+						<TITRE Scan="start-with"><![CDATA[Visualisation du compte ]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/Go.do?id=RecherchePersonne&action=afficher]]></PATH>
 					<OBJETS>
@@ -332,6 +333,7 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1643221_1" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="181" Techno="WEB" Timestamp="27/09/2017 16:43:40" />
+					<CAPTURE Name="PAGE_VisualisationDuComp_1618575_1" Comment="Visualisation du compte - haum03 - Activ Infinite - Module de gestion" CtxtId="230" Techno="WEB" Timestamp="10/10/2017 16:19:17" />
 				</PAGE>
 				<PAGE Name="pContexteContOuvDet" Comment="Contexte Contrat - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -424,6 +426,7 @@
 					<CRITERE>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/AccueilMenu\.do\?method\=rechercher]]></URL>
+						<TITRE Scan="start-with"><![CDATA[Visualisation du compte]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher]]></PATH>
 					<OBJETS>
@@ -572,44 +575,8 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ContexteContratHa_1717568_1" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion" CtxtId="56" Techno="WEB" Timestamp="29/05/2017 17:18:02" />
-				</PAGE>
-				<PAGE Name="pContexteContOuvSolde" Comment="Visualisation du compte - haum03 - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/AccueilMenu\.do\?method\=rechercher]]></URL>
-						<TITRE Scan="start-with"><![CDATA[Visualisation du compte]]></TITRE>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum03/mdg/AccueilMenu.do?method=rechercher]]></PATH>
-					<OBJETS>
-						<OBJET Name="oSoldeGlobal">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0">
-									<TAG Name="TR" Scope="All" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0" Occurs="Y">
-										<TAG Name="TD" Scope="Children" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0R5" Range="5">
-											<SET />
-										</TAG>
-									</TAG>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[listeCpt]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oPart">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0">
-									<TAG Name="TR" Scope="All" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0" Occurs="Y">
-										<TAG Name="TD" Scope="Children" CapturedPos="228.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0R1" Range="1">
-											<SET />
-										</TAG>
-									</TAG>
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[listeCpt]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_VisualisationDuComp_1016385_1" Comment="Visualisation du compte - haum03 - Activ Infinite - Module de gestion" CtxtId="228" Techno="WEB" Timestamp="05/10/2017 10:16:51" />
+					<CAPTURE Name="PAGE_VisualisationDuComp_1628188_1" Comment="Visualisation du compte - haum03 - Activ Infinite - Module de gestion" CtxtId="231" Techno="WEB" Timestamp="10/10/2017 16:28:30" />
+					<CAPTURE Name="PAGE_VisualisationDuComp_1644379_1" Comment="Visualisation du compte - haum03 - Activ Infinite - Module de gestion" CtxtId="233" Techno="WEB" Timestamp="10/10/2017 16:44:48" />
 				</PAGE>
 				<PAGE Name="pIdentContratRechConsul" Comment="Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -1114,7 +1081,7 @@
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 					<CAPTURE Name="PAGE_ConsultationN2121_1035344_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="145" Techno="WEB" Timestamp="20/09/2017 10:35:51" />
 				</PAGE>
-				<PAGE Name="pIdentAssuresEdit" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
+				<PAGE Name="pIdentAssuresEdit" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" Technical="Y">
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[\?method=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIA_([0-9]+)&]]></URL>
 					</CRITERE>

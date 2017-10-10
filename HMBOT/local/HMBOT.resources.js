@@ -119,10 +119,6 @@ ActivInfinitev7.pContexteContratOuvert.oDetailsPersonne = ActivInfinitev7.pConte
 =======
 >>>>>>> 'ModifsRebase'
 
-ActivInfinitev7.pContexteContOuvSolde = ActivInfinitev7.addPage('pContexteContOuvSolde', {"comment":"Visualisation du compte - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/AccueilMenu.do?method=rechercher"});
-ActivInfinitev7.pContexteContOuvSolde.oSoldeGlobal = ActivInfinitev7.pContexteContOuvSolde.addItem('oSoldeGlobal', {"occurs":1});
-ActivInfinitev7.pContexteContOuvSolde.oPart = ActivInfinitev7.pContexteContOuvSolde.addItem('oPart', {"occurs":1});
-
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
 ActivInfinitev7.pIdentContratRechConsul.oDateDebEffet = ActivInfinitev7.pIdentContratRechConsul.addItem('oDateDebEffet');

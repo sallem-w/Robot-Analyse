@@ -66,16 +66,16 @@ ActivInfinitev7.step( { stVisualisationSoldeSuspension : function (ev, sc, st) {
 		var data = sc.data;
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Début - scénario scVerificationSoldeContratSuspension');
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Etape - stVisualisationSoldeSuspension');
-		ActivInfinitev7.pContexteContOuvSolde.wait(function(){
-			var toutesParts = ActivInfinitev7.pContexteContOuvSolde.oSoldeGlobal.getAll();
-			var tousSoldes = ActivInfinitev7.pContexteContOuvSolde.oPart.getAll();
-			var nombreSoldes = ActivInfinitev7.pContexteContOuvSolde.oPart.count();
+		ActivInfinitev7.pContexteContratOuvert.wait(function(){
+			var toutesParts = ActivInfinitev7.pContexteContratOuvert.oSoldeGlobal.getAll();
+			var tousSoldes = ActivInfinitev7.pContexteContratOuvert.oPart.getAll();
+			var nombreSoldes = ActivInfinitev7.pContexteContratOuvert.oPart.count();
 			
 			for(var index = 0 ; index < nombreSoldes ; index++)
 			{
 				if((toutesParts[index]).indexOf(data.constantes.adehsion)!==-1 && (tousSoldes[index].indexOf(data.constantes.moins)!==-1))
 				{
-					ctx.traceF.infoTxt('Un solde négatif de' + tousSoldes[index] + ' euros est présent');
+					ctx.traceF.simpleTxt('Un solde négatif de' + tousSoldes[index] + ' euros est présent');
 				}
 			}
 			

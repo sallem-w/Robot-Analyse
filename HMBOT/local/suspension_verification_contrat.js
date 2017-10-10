@@ -105,6 +105,7 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 			{
 				ctx.traceF.infoTxt('Pas de contrat correspondant aux critères de recherche');
 				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
+			  data.contratCourantSuspension.noContrat ='';
 				data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 			}
@@ -133,6 +134,7 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 				{
 					ctx.traceF.infoTxt('Aucun contrat parmi ceux proposés ne correspondnt aux critères de recherche');
 					data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
+					data.contratCourantSuspension.noContrat ='';
 					data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
 					sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 				}
@@ -151,9 +153,9 @@ ActivInfinitev7.step( { stComparaisonNomsPrenomsAdresse : function (ev, sc, st) 
 			var detailsPersonneSite = ActivInfinitev7.pContexteContratOuvert.oDetailsPersonne.get();
 			if (detailsPersonneSite.indexOf(detailsPersonneFichier)===-1)
 			{
-			 	ctx.traceF.infoTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');
-			 	ctx.traceF.infoTxt('Données du fichier : ' + detailsPersonneFichier);
-			 	ctx.traceF.infoTxt('Données du site : ' + detailsPersonneSite);
+			 	ctx.traceF.simpleTxt('Des différences entre le nom, prénom ou adressse dans le fichier json et le fichier Json');
+			 	ctx.traceF.simpleTxt('Données du fichier : ' + detailsPersonneFichier);
+			 	ctx.traceF.simpleTxt('Données du site : ' + detailsPersonneSite);
 			}
 		sc.endStep();
 		return ;	
