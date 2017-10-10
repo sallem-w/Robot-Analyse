@@ -318,7 +318,7 @@ ActivInfinitev7.step({ stSauvegardeSuspension: function(ev, sc, st) {
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - STEP - stSauvegardeSuspension');
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
 	
-		data.contratCourantSuspension.notes.commentaireContrat += ' | ' + sc.data.currentScenario + ' effectuée';
+		data.contratCourantSuspension.notes.commentaireContrat =  'Suspension effectuée';
 		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Succes;
 		
     sc.endStep();
