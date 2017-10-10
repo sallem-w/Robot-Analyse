@@ -39,21 +39,7 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 	
 	
-<<<<<<< HEAD
  
-=======
-	ctx.log('--> config.json :  Excel Debut');
-	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
-	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le config.JSON
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
- 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
-	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.log(" Test URL : "+ data.webData.url);
-	ctx.traceF.infoTxt('Création du fichier résultat');	
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne, ctx.excelF.modifierEntete());
-	ctx.log('fichier résultat créé');
->>>>>>> e15a7009029435cc2f3e2e3b006de0e07bd07bec
 	sc.endStep();
 	return;
 }});

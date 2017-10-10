@@ -46,8 +46,8 @@ ActivInfinitev7.step({ stInitAnalyseContratEnCours: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('****** Début analyse contrat en cours ******');
 	//lire la gamme de produit et la date de début de fin d'effet
-	data.ppCouranteAnalyse.dataLocale.gammeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.gammeProduit);
-	var debDateEffet = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.debDateEffet);
+	data.ppCouranteAnalyse.dataLocale.gammeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.gammeProduit);
+	var debDateEffet = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.debDateEffet);
 	data.ppCouranteAnalyse.dataLocale.debDateEffet = ctx.dateF.formatDateIAE(debDateEffet+'');
 	//récupération du code d'offre
 	for(var i=0; i < data.ppCouranteAnalyse.dataLocale.gammeProduit.length; i++){

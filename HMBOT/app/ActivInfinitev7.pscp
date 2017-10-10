@@ -2953,6 +2953,7 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
+					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
 				</PAGE>
 				<PAGE Name="pRecherchePPRefGRC" Comment="Consultation - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -3010,6 +3011,10 @@
 								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R2R0R2">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oNumeroRo" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R3R1R1R1">
@@ -3106,7 +3111,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oContratIndiv">
+						<!--<OBJET Name="oContratIndiv">-->
 						<OBJET Name="oTypeRelation">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="169.R0R1R7R0R0R2R0R0R0R0R0R0R29R0R0R1R0R1R0R1R5R1R0R0">
@@ -3186,7 +3191,6 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_ResiliationContrat_1428223_1" Comment="Resiliation Contrat - haum03 - Activ Infinite - Module de gestion" CtxtId="172" Techno="WEB" Timestamp="26/09/2017 14:28:36" />
 					<CAPTURE Name="PAGE_ConsultationHaum03_1746388_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="169" Techno="WEB" Timestamp="21/09/2017 17:46:59" />
 					<CAPTURE Name="PAGE_ConsultationHaum03_1008160_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="170" Techno="WEB" Timestamp="22/09/2017 10:08:36" />
 				</PAGE>
@@ -3236,34 +3240,6 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2260_1645334_1" Comment="Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion" CtxtId="174" Techno="WEB" Timestamp="22/09/2017 16:45:47" />
 				</PAGE>
-				<PAGE Name="pFicheSynthesePersonneIAE" Comment="Activ Infinite - Module de gestion">
-					<CRITERE>
-						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/personne\/FicheSynthesePersonne\.do\?method=afficherPersonne&IdfSys=([0-9]+)&popup=([a-z]+)]]></URL>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum03/mdg/personne/FicheSynthesePersonne.do?method=afficherPersonne&IdfSys=8500398&popup=true]]></PATH>
-					<OBJETS>
-						<OBJET Name="btEvenement">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="186.R0R1R3R6R0R4">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[btOnglEvenement]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oHistoriqueDesEvets">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="187.R0R1R3R7R4R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Historique des évènements]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_ActivInfiniteModu_1023573_1" Comment="Activ Infinite - Module de gestion" CtxtId="186" Techno="WEB" Timestamp="27/09/2017 10:24:17" />
-					<CAPTURE Name="PAGE_ActivInfiniteModu_1038179_1" Comment="Activ Infinite - Module de gestion" CtxtId="187" Techno="WEB" Timestamp="27/09/2017 10:38:36" />
-				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
@@ -3281,7 +3257,6 @@
 				<SCRIPT Name="libstats" Src="libstats.js" Folder="Complements" />
 				<SCRIPT Name="libString" Folder="Complements" Src="libstring.js" />
 				<SCRIPT Name="CMU_resiliation_contrat" Src="cmu_resiliation_contrat.js" Folder="Processus_CMU" />
-				<SCRIPT Name="ConfigClass" Src="configJSONClass.js" Folder="Complements" />
 				<SCRIPT Name="ConfigCMUClass" Src="configCMUClass.js" />
 				<SCRIPT Name="ConfigACSClass" Src="configACSClass.js" Folder="Complements" />
 				<SCRIPT Name="initPivot" Src="initPivot.js" Folder="ProcessusDA" />
@@ -3296,6 +3271,7 @@
 				<SCRIPT Name="RechercheEtAnalysePP" Src="RechercheEtAnalysePP.js" Folder="Analyse Situation" />
 				<SCRIPT Name="Recherche_Operations_Contentieux" Src="Recherche_Operations_Contentieux.js" Folder="Analyse Situation" />
 				<SCRIPT Name="AnalyseContratsEnCours" Src="AnalyseContratsEnCours.js" Folder="Analyse Situation" />
+				<SCRIPT Name="ConfigANALYSEClass" Src="ConfigANALYSEClass.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

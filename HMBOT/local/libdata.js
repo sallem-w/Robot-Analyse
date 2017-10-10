@@ -123,28 +123,31 @@ ctx.dataF = (function () {
 		};
 		
 		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
+		
 		dataF.initialisationScenarioAnalyse = function(dat, scenario){
+			
+			dat.codeScenario=scenario;
+			ctx.configF.chargementFichierConfigScenarioANALYSE();
+			dat.scenarioConfig = new confFileANALYSEClass(); //initialisation des objets
+			dat.scenarioConfig=ctx.configF.fichierConfigScenario;//?????
+			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
 			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
 			dat.varGlobales=ctx.dataF.varGlobales;
-			dat.codeScenario=scenario;
-			ctx.configF.init(scenario);
-			dat.scenarioConfig = new confFileClass(); //initialisation des objets
-			dat.scenarioConfig=ctx.configF.fichierConfig;
-			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //r�cup�ration config json
+			ctx.traceF.initFichierTrace(dat.scenarioConfig.ANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+		
+			ctx.excelF.configExcel(dat);
+			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+			
+			dat.varGlobales.ligneCourante = dat.scenarioConfig.ANALYSE.excel.debutIndexLigne; // depuis le config.JSON
+			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+			
+			
+			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+			
+			//dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //r�cup�ration config json
 		}
 		
-		dataF.initialisationScenarioCMU = function(dat,scenario){
-	
-			dat.webData=ctx.dataF.webData;
-			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
-			dat.varGlobales=ctx.dataF.varGlobales;
-			dat.codeScenario=scenario;
-			ctx.configF.init(scenario);
-			dat.scenarioConfig = new confFileClass(); //initialisation des objets
-			dat.scenarioConfig=ctx.configF.fichierConfig;
-			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //r�cup�ration config json
-		}
 		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 				
@@ -162,8 +165,12 @@ ctx.dataF = (function () {
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 			ctx.traceF.simpleTxt('Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.log('Init excelF');
+			
+			
 			ctx.excelF.configExcel(dat);
 			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
+			
+			
 			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
 			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();

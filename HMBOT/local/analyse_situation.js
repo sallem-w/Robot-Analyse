@@ -32,7 +32,7 @@ ActivInfinitev7.step({ stInitAnalyseSitu: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('************* Début scénario analyse situation *************');
 	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
-	ctx.excelF.configExcel(ctx.configF.scenario.Analyse);
+//	ctx.excelF.configExcel(ctx.configF.scenario.Analyse);
 	sc.endStep();
 	return;
 }});
@@ -43,17 +43,17 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stChargementFichierIAE - chargement et ouverture du fichier Excel PRE-IAE');
 	//openFile: ouverture fichier IAE
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
-	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; //la ligne courante dans le fichier excel
+	//ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+	//data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; //la ligne courante dans le fichier excel
 	var tab = data.scenarioConfig.tabGammeCode;
 	for (var i in tab){
 	  data.ppCouranteAnalyse.dataLocale.tabGamme.push(tab[i].gamme);
 		data.ppCouranteAnalyse.dataLocale.tabCode.push(tab[i].code);
 	}
-	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne(); //récupérer l'indice de la dernière ligne dans le fichier excel
+	//data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne(); //récupérer l'indice de la dernière ligne dans le fichier excel
 	//copie du fichier d'entrée ==> fichier résultat.
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
-	ctx.traceF.infoTxt('Création du fichier résultat, '+ctx.configF.cheminFichierResultat+', '+data.scenarioConfig.excel.debutIndexLigne-1);	
+	//ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
+	//ctx.traceF.infoTxt('Création du fichier résultat, '+ctx.configF.cheminFichierResultat+', '+data.scenarioConfig.excel.debutIndexLigne-1);	
 	sc.endStep();
 	return;
 }});
@@ -96,9 +96,9 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireRefGRC - lecture de la pp courante du fichier IAE :');
 	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
-		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.type);
+		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
 		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){
-			data.ppCouranteAnalyse.dataLocale.referenceGRC = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.referenceGRC);
+			data.ppCouranteAnalyse.dataLocale.referenceGRC = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.referenceGRC);
 			ctx.traceF.infoTxt('Reference GRC: '+data.ppCouranteAnalyse.dataLocale.referenceGRC +', ligne courante: '+data.varGlobales.ligneCourante);
 			sc.endStep();
 	    return;
@@ -130,7 +130,7 @@ ActivInfinitev7.step({ stInsertionDonneesAnalyseExcel: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInsertionDonneesAnalyseExcel: insertion des données dans le fichier résultat');
 	 var arrayMessage = [ {
-      columnIndex: data.scenarioConfig.excel.indexColonne.contexteAnalyseStoppee, value: data.ppCouranteAnalyse.notes.contexteAnalyseStoppee
+      columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.contexteAnalyseStoppee, value: data.ppCouranteAnalyse.notes.contexteAnalyseStoppee
       }
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);

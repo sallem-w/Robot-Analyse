@@ -192,10 +192,10 @@ ActivInfinitev7.step({ stInitRecherchePPParRO: function(ev, sc, st) {
 		done: function() { 
 			// add code here
 			ctx.traceF.infoTxt('bcount: '+ nbcount);
-				data.ppCouranteAnalyse.dataLocale.numeroRO = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.numeroRO);
-	  		data.ppCouranteAnalyse.dataLocale.nom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.nom);
-	  		data.ppCouranteAnalyse.dataLocale.prenom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.prenom);
-	  		data.ppCouranteAnalyse.dataLocale.dateDeNaissance = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.excel.indexColonne.dateDeNaissance);
+				data.ppCouranteAnalyse.dataLocale.numeroRO = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numeroRO);
+	  		data.ppCouranteAnalyse.dataLocale.nom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.nom);
+	  		data.ppCouranteAnalyse.dataLocale.prenom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.prenom);
+	  		data.ppCouranteAnalyse.dataLocale.dateDeNaissance = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.dateDeNaissance);
 				ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche.click();
 				sc.endStep();
 				return;
@@ -288,6 +288,7 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 		sc.endStep(ActivInfinitev7.steps.stContratsIASuivant);
 		return;
 	}else{
+		
 		  ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
 				 sc.endStep(); 
 	       return;	 

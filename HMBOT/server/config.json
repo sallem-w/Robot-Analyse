@@ -17,44 +17,6 @@
         "cheminRacine": "C:\\deploy\\da\\"
     },
     "ANALYSE":{
-      "afficherMenu" : true,
-       "cheminRacine": "C:\\deploy\\analyse\\",
-       "excel" : {
-            "debutIndexLigne" : 2,
-            "debutIndexCol" : 1,
-            "indexColonne" : {
-      	        "nom" : 16,
-                "prenom" : 17,
-                "dateDeNaissance" : 11, 
-                "referenceGRC" : 89,
-                "type" : 8,
-                "numeroRO" : 50,
-                "gammeProduit" : 55,
-                "debDateEffet" : 7,
-                "contexteAnalyseStoppee": 126
-            }
-        },
-        "tabGammeCode" :[
-        {"code":"PPSTA002", "gamme": "Accès Santé ACS"},
-        {"code":"PPSTA002", "gamme": "Harmonie Santé Particuliers"},
-        {"code":"PPSTA004", "gamme": "Harmonie Santé Accueil"},
-        {"code":"PESTA008", "gamme": "Harmonie Santé Territoriale"},
-        {"code":"PESTB007", "gamme": "Harmonie Santé Hospitaliers"},
-        {"code":"PESTA004", "gamme": "Harmonie Santé TNS"},
-        {"code":"PESTB008", "gamme": "Harmonie Santé Collectivités"},
-        {"code":"PESTA009", "gamme": "Harmonie Essentiel Séniors"},
-        {"code":"", "gamme": "Harmonie Frontaliers Suisse"},
-        {"code":"", "gamme": "Harmonie Protection Plus"},
-        {"code":"", "gamme": "Autres Offres Santé"},
-        {"code":"", "gamme": "Harmonie Santé CO"},
-        {"code":"", "gamme": "Harmonie Accueil Collectif"},
-        {"code":"", "gamme": "Harmonie Santé Plus"},
-        {"code":"", "gamme": "Harmonie Santé Pro"},
-        {"code":"", "gamme": "Harmonie Santé"},
-        {"code":"", "gamme": "Gamme fleurie"},
-        {"code":"", "gamme": "Ancienne Gamme 44"},
-        {"code":"", "gamme": "Ancienne Gamme SVF"},
-        {"code":"", "gamme": "Ancienne Gamme Normandie"}
-        ] 
-        }
+      "afficherMenu" : true 
+    }
 }

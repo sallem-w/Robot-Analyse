@@ -17,6 +17,9 @@ var confFileClass = function() {
 	};
 	this.DA = {
 		afficherMenu : ''
-	}
+	};
+	this.ANALYSE = {
+		afficherMenu : ''
+	};
 };
 

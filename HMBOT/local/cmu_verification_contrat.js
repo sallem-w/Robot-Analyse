@@ -346,7 +346,7 @@ ActivInfinitev7.step( { stVerfiIOrdreSurDateBenefEtDateASSPRI: function (ev, sc,
 			sc.endStep();
 		return ;
 	}
-});
+}});
 
 
 /** mise à juor des attribus et rebouclage sur le step stVerifBenefCMU */
@@ -555,20 +555,20 @@ ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 				sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
 				return ;
 			});
-		}
+		}}});
 
-/** Description */ //stToTerminated
-ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
-		var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape stContratCMUtermine');
-		data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
-	  data.contratCourantCMU.statutsCMU.contratTermine = true; //nécessaire pour les stats
-	  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
+///** Description */ //stToTerminated
+//ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
+//		var data = sc.data;
+//		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' Etape stContratCMUtermine');
+//		data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
+//	  data.contratCourantCMU.statutsCMU.contratTermine = true; //nécessaire pour les stats
+//	  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
 		
-		sc.endStep();
-		return ;
-	}
-});
+//		sc.endStep();
+//		return ;
+//	}
+//});
 
 
 /** Description */
@@ -581,7 +581,5 @@ ActivInfinitev7.step( { stFinScVerifContratCMU : function (ev, sc, st) {
     ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();
 		return ;
-	}
-});
-
+	}});
 

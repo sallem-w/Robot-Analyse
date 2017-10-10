@@ -67,6 +67,14 @@
 		ctx.log('Initialisation : Chargement du fichier configCMU.json');
 	}
 	
+	configF.chargementFichierConfigScenarioANALYSE = function() {
+		var cheminConfigScenario = 'configAnalyseSituation.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileANALYSEClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configCMU.json');
+	}
 	
 	
 	configF.recupConfigScenario = function(codeScenario) {
@@ -135,7 +143,7 @@
 		var extension = ctx.configF.extensionFichierResultat(codeScenario, configF.nomFichier);
 		var test = ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1);
 		ctx.log('test : '+test);
-		var nomFichierResultatComplet =  "_" + codeScenario + "_" + ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1)  + finTitreResultat + extension;
+		var nomFichierResultatComplet = ctx.dateF.formatAAAAMMJJ(new Date())+ "_" + codeScenario + "_" + ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1)  + finTitreResultat + extension;
 		
 		configF.cheminFichier=configF.cheminRacine + configF.nomFichier;
 		if (!ctx.fso.file.exist(configF.cheminFichier)) {

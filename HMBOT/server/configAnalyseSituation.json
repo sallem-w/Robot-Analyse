@@ -1,6 +1,7 @@
 {
     "ANALYSE": {
        "afficherMenu" : true,
+       "touteTraceActive": true,
        "cheminRacine": "C:\\deploy\\analyse\\",
        "excel" : {
             "debutIndexLigne" : 2,
