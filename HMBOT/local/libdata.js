@@ -43,7 +43,7 @@ ctx.dataF = (function () {
 		
 ////// CMU ///////////////////////////////////////////////////////////////////////////////////////////////	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
-	/*	var CMUtemp_contractF = {
+		var CMUtemp_contractF = {
 			typeAssure:'',
       dateDebEffContrat:'',
       dateFinEffContrat:'',
@@ -140,7 +140,7 @@ ctx.dataF = (function () {
 				dat.contratCourantCMU.statutsCMU.contratProlonge=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
-			 }*/
+			 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		
     return dataF;
