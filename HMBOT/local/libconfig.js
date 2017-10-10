@@ -109,12 +109,9 @@
 		// Dans le cas du scenario SIRH ou autre où les données sont dans un json et non dans un xls
 		if (!avecExcel) {
 			configF.nomFichier = 'pivot.json';
-<<<<<<< HEAD
 			//configF.nomFichierResultat = ctx.dateF.formatJJMMAAAA(new Date()) + "_" + codeScenario + finTitreResultat + 'xls';
 			configF.nomFichierResultat =  "_" + codeScenario + finTitreResultat + 'xls';
-=======
 			configF.nomFichierResultat = ctx.dateF.formatAAAAMMJJ(new Date()) + "_" + codeScenario + finTitreResultat + 'xls';
->>>>>>> 'Suspension1010'
 			return true;
 		}
 		var extensionFichier = ctx.configF.fichierExtension(codeScenario);

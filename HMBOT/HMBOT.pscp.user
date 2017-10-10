@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-<<<<<<< HEAD
 	<BREAKPOINTS />
 	<BOOKMARKS />
+<<<<<<< HEAD
 	<FINDHISTORY>
 <<<<<<< HEAD
 		<FINDWHAT><![CDATA[events.load]]></FINDWHAT>
@@ -148,24 +148,23 @@
 	<OPENDOCS>
 		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+=======
+	<FINDHISTORY />
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="16" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="65" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="54" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
+>>>>>>> 'ModifsRebase'
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="321" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
-	<WATCHES>
-		<WATCH><![CDATA[data.indexLectureSynthese]]></WATCH>
-		<WATCH><![CDATA[nombreLignes]]></WATCH>
-		<WATCH><![CDATA[indexLectureSynthese]]></WATCH>
-		<WATCH><![CDATA[data.indexLectureSynthese ]]></WATCH>
-		<WATCH><![CDATA[ActivInfinitev7.pContexteContOuvDet.oStatus.i(data.indexLectureSynthese).get() ]]></WATCH>
-	</WATCHES>
->>>>>>> 'Modifs2609'
+	<WATCHES />
 	<APPLIFILTERS />
 	<EVENTFILTERS />
 </USER>
