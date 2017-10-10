@@ -89,6 +89,7 @@
                 "IND_TLT": 87,
                 "ANCIEN_ASSURE": 88,
                 "REF_EXT": 89,
+                "TOP_ABONN_DEC" : 122,
                 "contexteAnalyseStoppee": 126,
                 "dateTraitementContrat": 127,
                 "statutsContrat": 128,

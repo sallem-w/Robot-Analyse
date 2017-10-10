@@ -104,6 +104,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.IND_TLT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.IND_TLT);
 		temp_contrat.ANCIEN_ASSURE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.ANCIEN_ASSURE);
 		temp_contrat.REF_EXT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.REF_EXT);
+		temp_contrat.TOP_ABONN_DEC= ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TOP_ABONN_DEC);
 		ctx.log('Numero Sequence: '+tmpNumeroSeq); 
 		ctx.log('Type contrat: '+ temp_contrat.GAMME); 
 		data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.push(temp_contrat);

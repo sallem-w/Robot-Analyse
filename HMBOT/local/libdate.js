@@ -170,6 +170,23 @@ dateF.mettreEnFormeDateExcel = function(date){
 		return new Date(parts[2], parts[1]-1, parts[0]); 
 	}
 	
+	dateF.dateDebut = function(jour){
+		var tt=new Date();
+		var jj = dateF.format2c(Number(jour));
+		var jRef = dateF.format2c(tt.getDate());
+		var mm = dateF.format2c(tt.getMonth()+1);
+		var yy = tt.getFullYear();
+		if(Number(jj)>Number(jRef)){
+			mm = dateF.format2c(mm+1);
+			if(mm=='13'){
+				mm='01';
+				yy= String(Number(yy)+1);
+			}
+		}
+		var stTps=jj+'/'+mm+'/'+yy;
+		return stTps;
+	}
+	
 	//isBefore
 	dateF.estAvant = function(date1, date2) {
 		return (date1.getTime() < date2.getTime());
