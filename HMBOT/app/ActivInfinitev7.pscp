@@ -3181,7 +3181,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oBanqueRibDisplay">
+						<OBJET Name="oCodeBanque">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R0R3R1">
 									<ATT Name="name">
@@ -3190,7 +3190,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oGuichetRibDisplay">
+						<OBJET Name="oCodeGuichet">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R1R3R1">
 									<ATT Name="name">
@@ -3226,7 +3226,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPaysISODisplay">
+						<OBJET Name="oPaysISO">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R2R0R1R0R0R3R1">
 									<ATT Name="name">
@@ -3304,11 +3304,56 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oSelectEtablissement">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="199.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R0R3R3R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="199.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R0R3R3R0R0" Occurs="Y">
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-banqueRib-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelectGuichet">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="200.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R1R3R3R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="200.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R1R1R3R3R0R0" Occurs="Y">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-guichetRib-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelectPaysISO">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="201.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R2R0R1R0R0R3R3R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="201.R0R1R7R0R0R2R0R0R0R44R0R0R1R0R2R0R1R0R0R3R3R0R0" Occurs="Y">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-paysISO-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1137181_1" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="190" Techno="WEB" Timestamp="09/10/2017 11:37:41" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1605598_1" Comment="Adhésions individuelles - N°22629464 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="194" Techno="WEB" Timestamp="09/10/2017 16:06:24" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1656402_1" Comment="Adhésions individuelles - N°22629469 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="195" Techno="WEB" Timestamp="09/10/2017 16:57:07" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1440053_1" Comment="Adhésions individuelles - N°22629483 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="196" Techno="WEB" Timestamp="10/10/2017 14:40:28" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1757036_1" Comment="Adhésions individuelles - N°22629502 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="199" Techno="WEB" Timestamp="10/10/2017 17:57:24" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1801395_1" Comment="Adhésions individuelles - N°22629502 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="200" Techno="WEB" Timestamp="10/10/2017 18:02:01" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1827468_1" Comment="Adhésions individuelles - N°22629503 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="201" Techno="WEB" Timestamp="10/10/2017 18:28:08" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

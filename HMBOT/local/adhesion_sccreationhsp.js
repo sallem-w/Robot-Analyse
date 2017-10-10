@@ -29,6 +29,9 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Cotisation_PrelvtBancaire);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Cotisation_Cheque);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB_Etablissement);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB_Guichet);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_IBAN);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -394,39 +397,39 @@ ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc
 		}
 		else{
 			var countPoll=0;	
-		ctx.polling({	
-			delay: 300,	
-			nbMax: 10,		
-			test: function(index) { 		
-				countPoll++;
-				ctx.log('countP :'+countPoll);
-				return ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count()>0;
-			},
-			done: function() { 
-				/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
-				var nbPP = ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count();
-				if(nbPP==1){
-					// la Personne physique est unique on peut continuer avec
-					ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.i(0).click();
-					sc.endStep(ActivInfinitev7.steps.stSelectionPersonneAdhesionIndiv);
-					return;
-				}
-				else{
-					/// il y a plusieur PP on renvoi au centre
-					ctx.traceF.errorTxt(' La PP n\'est pas unique , on ne traite pas le dossier ');
-					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: il y a plusieurs PP identiques ';
-					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-					data.contratCourantAdhesion.statuts.finCreation = true;
+			ctx.polling({	
+				delay: 300,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count()>0;
+				},
+				done: function() { 
+					/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+					var nbPP = ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count();
+					if(nbPP==1){
+						// la Personne physique est unique on peut continuer avec
+						ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.i(0).click();
+						sc.endStep(ActivInfinitev7.steps.stSelectionPersonneAdhesionIndiv);
+						return;
+					}
+					else{
+						/// il y a plusieur PP on renvoi au centre
+						ctx.traceF.errorTxt(' La PP n\'est pas unique , on ne traite pas le dossier ');
+						data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: il y a plusieurs PP identiques ';
+						data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+						data.contratCourantAdhesion.statuts.finCreation = true;
+						sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+						return;
+					}
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
 					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 					return;
 				}
-			},
-			fail: function() { 
-				ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
-				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-				return;
-			}
-		});
+			});
 		}
 	});
 }});
@@ -774,16 +777,184 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_Cheque: function(ev, sc, st) {
 
 
 
-/** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB');
+	// Titulaire
+	var titulaire=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].TITU_COMPTE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oTitulaireRib.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oTitulaireRib.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oTitulaireRib.set(titulaire);
+	// Numero de compte
+	var numCpt = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].NUM_COMPTE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCompteRib.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCompteRib.set(numCpt);
+	// Clef RIB
+	var cleRIB = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CLE_RIB;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCleRib.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCleRib.set(cleRIB);
+	// Code banque et guichet sont remplis dans les steps suivantes
 	sc.endStep();
 	return;
 }});
 
 
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Etablissement: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_Etablissement');
+	// Etablissement
+	var codeEtblt=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CODE_BANQUE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeBanque.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeBanque.keyStroke(codeEtblt);
+	var countPoll=0;	
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectEtablissement.count()>0;
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			var nbEt = ActivInfinitev7.pAdhIndivIntervtPrin.oSelectEtablissement.count();
+			if(nbEt==1){
+				//Il n'y a qu'un seul etablissement
+				ActivInfinitev7.pAdhIndivIntervtPrin.oSelectEtablissement.i(0).click();
+				sc.endStep();
+				return;
+			}
+			else{
+				/// il y a plusieur PP on renvoi au centre
+				ctx.traceF.errorTxt(' Confusion sur le code etablissement , on ne traite pas le dossier ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Confusion sur le code etablissement ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage du RIB : Code Etablissement ');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage du RIB : Code Etablissement ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
 
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Guichet: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB_Guichet');
+	// Guichet
+	var codeGuichet=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CODE_GUICHET;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeGuichet.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeGuichet.keyStroke(codeGuichet);
+	var countPoll=0;	
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectGuichet.count()>0;
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			var nbEt = ActivInfinitev7.pAdhIndivIntervtPrin.oSelectGuichet.count();
+			if(nbEt==1){
+				//Il n'y a qu'un seul etablissement
+				ActivInfinitev7.pAdhIndivIntervtPrin.oSelectGuichet.i(0).click();
+				sc.endStep();
+				return;
+			}
+			else{
+				/// il y a plusieur PP on renvoi au centre
+				ctx.traceF.errorTxt(' Confusion sur le Code Guichet , on ne traite pas le dossier ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Confusion sur le Code Guichet ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage du RIB : Code Guichet ');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage du RIB : Code Guichet  ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
+	// Clef IBAN
+	var cleIBAN = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CLE_IBAN;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCleIBAN.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCleIBAN.set(cleIBAN);
+	codeIBAN = codeIBAN.substr(0,2);
+	sc.endStep();
+	return;
+}});
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN_PAYS: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
+	var codeIBAN = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CLE_IBAN;
+	codeIBAN = codeIBAN.substr(0,2);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.keyStroke(codeIBAN);
+	var countPoll=0;	
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectPaysISO.count()>0;
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			var nbPays = ActivInfinitev7.pAdhIndivIntervtPrin.oSelectPaysISO.count();
+			if(nbPays==1){
+				//Il n'y a qu'un seul pays
+				ActivInfinitev7.pAdhIndivIntervtPrin.oSelectPaysISO.i(0).click();
+				sc.endStep();
+				return;
+			}
+			else{
+				/// il y a plusieurs pays possibles
+				ctx.traceF.errorTxt(' Confusion sur le pays ISO , on ne traite pas le dossier ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Confusion sur le Pays ISO ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage de l IBAN');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage de l IBAN : Pays ISO  ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
 
 /** Description */
 ActivInfinitev7.step({ stFinScCreationHSP: function(ev, sc, st) {
