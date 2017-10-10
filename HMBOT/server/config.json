@@ -29,12 +29,8 @@
                 "referenceGRC" : 89,
                 "type" : 8,
                 "numeroRO" : 50,
-<<<<<<< HEAD
-<<<<<<< HEAD
                 "gammeProduit" : 55,
                 "debDateEffet" : 7,
-=======
->>>>>>> recherche par RO
                 "contexteAnalyseStoppee": 126
             }
         },
@@ -60,44 +56,5 @@
         {"code":"", "gamme": "Ancienne Gamme SVF"},
         {"code":"", "gamme": "Ancienne Gamme Normandie"}
         ] 
-=======
-                "gammeProduit" : 55,
-                "debDateEffet" : 7,
-                "contexteAnalyseStoppee": 126
-            }
-        },
-<<<<<<< HEAD
-        "gammeCodeProduit" :[
-        {"gamme": "Accès Santé", "code":"PPSTA002"},
-        {"gamme": "Harmonie Santé Particuliers", "code":"PPSTA002"},
-        {"gamme": "Harmonie Santé Accueil", "code":"PPSTA004"}
-    ]  
->>>>>>> corespondace gamme code produit infinite
-    }
-   
-=======
-        "tabGammeCode" :[
-        {"code":"PPSTA002", "gamme": "Accès Santé ACS"},
-        {"code":"PPSTA002", "gamme": "Harmonie Santé Particuliers"},
-        {"code":"PPSTA004", "gamme": "Harmonie Santé Accueil"},
-        {"code":"PESTA008", "gamme": "Harmonie Santé Territoriale"},
-        {"code":"PESTB007", "gamme": "Harmonie Santé Hospitaliers"},
-        {"code":"PESTA004", "gamme": "Harmonie Santé TNS"},
-        {"code":"PESTB008", "gamme": "Harmonie Santé Collectivités"},
-        {"code":"PESTA009", "gamme": "Harmonie Essentiel Séniors"},
-        {"code":"", "gamme": "Harmonie Frontaliers Suisse"},
-        {"code":"", "gamme": "Harmonie Protection Plus"},
-        {"code":"", "gamme": "Autres Offres Santé"},
-        {"code":"", "gamme": "Harmonie Santé CO"},
-        {"code":"", "gamme": "Harmonie Accueil Collectif"},
-        {"code":"", "gamme": "Harmonie Santé Plus"},
-        {"code":"", "gamme": "Harmonie Santé Pro"},
-        {"code":"", "gamme": "Harmonie Santé"},
-        {"code":"", "gamme": "Gamme fleurie"},
-        {"code":"", "gamme": "Ancienne Gamme 44"},
-        {"code":"", "gamme": "Ancienne Gamme SVF"},
-        {"code":"", "gamme": "Ancienne Gamme Normandie"}
-        ]  
-    }  
->>>>>>> fin ttt contrats actifs
+        }
 }

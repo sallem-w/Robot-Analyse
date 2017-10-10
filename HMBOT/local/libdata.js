@@ -88,50 +88,9 @@ ctx.dataF = (function () {
 								contratTermine : false,
 								contratResilie : false
             }
-<<<<<<< HEAD
         };
 		
 		dataF.contratCourantCMU=contratCourantCMU;
-=======
-        },
-        statistiquesF : {
-            debutTpsTraitement : 0,
-						tpsTraitement : 0,
-            nbCasTraite : 0, //countCaseProcessed
-            nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
-            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
-            nbCasTraitementEchec : 0, //countCaseFailProcessed
-            nbCasRevoirCentre : 0, //countCaseBackToCenter
-            nbContratsPretsPrResiliation : 0, //sc.data.countCaseReadyToRemove
-            nbContratsResilies : 0
-        },
-        webData : {
-            url:'htt://exemple.com',
-            tabDeBordURL:'', 
-            identifiant:'', 
-            motDePasse:'' 
-        },
-        varGlobales : { //globalVariables
-            ligneCourante:0, //currentRow
-            indexDerniereLigne:0, //indexLastRow
-            controlSeul:false //controlSeul
-        },
-        CMUtemp_contractF : {
-            typeAssure:'',
-            dateDebEffContrat:'',
-            dateFinEffContrat:'',
-            codeProduit:'',
-            dateDebEffProduit:'',
-            dateFinEffProduit:'',
-            dateDebEffSituatParti:'',
-            dateFinEffSituatParti:''
-        },
-				objGC :{
-					code: '',
-					gamme: ''
-				}
-    };
->>>>>>> fin ttt contrats actifs
 		
 		var ppCouranteAnalyse = {
 			dataLocale: {
@@ -165,6 +124,18 @@ ctx.dataF = (function () {
 		
 		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
 		dataF.initialisationScenarioAnalyse = function(dat, scenario){
+			dat.webData=ctx.dataF.webData;
+			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
+			dat.varGlobales=ctx.dataF.varGlobales;
+			dat.codeScenario=scenario;
+			ctx.configF.init(scenario);
+			dat.scenarioConfig = new confFileClass(); //initialisation des objets
+			dat.scenarioConfig=ctx.configF.fichierConfig;
+			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //r�cup�ration config json
+		}
+		
+		dataF.initialisationScenarioCMU = function(dat,scenario){
+	
 			dat.webData=ctx.dataF.webData;
 			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
 			dat.varGlobales=ctx.dataF.varGlobales;

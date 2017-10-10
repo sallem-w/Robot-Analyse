@@ -29,9 +29,13 @@
 	
 //	trace.writeInfo
 	traceF.infoTxt = function(str, dateObj, separateur) {
+<<<<<<< HEAD
 		if(ctx.traceF.constantes.touteTraceActive){
 			traceF.tracer(str, traceF.constantes.typeM.Info, dateObj, separateur)
 		}	
+=======
+		//traceF.tracer(str, traceF.constantes.typeM.Info, dateObj, separateur)
+>>>>>>> e15a7009029435cc2f3e2e3b006de0e07bd07bec
 	};
 	//trace.writeError
 	traceF.errorTxt = function(str, dateObj, separateur) {
