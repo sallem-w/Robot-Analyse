@@ -181,6 +181,10 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 						ActivInfinitev7.pIdentContResilRech.btBtnContinuer.click();
 						sc.endStep();
 						return;	
+				},
+				fail: function() { 
+						sc.endStep();
+						return;	
 				}
 			});	
 	});

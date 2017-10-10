@@ -229,6 +229,7 @@ ActivInfinitev7.step({ stSelectSuspension: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stLancerVerificationContratCondition: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.simpleTxt(data.contratCourantSuspension.infos['RONumber'] + ' Début du traitement spécigfique de la suspension');
 	ctx.traceF.infoTxt('stLancerVerificationContratCondition');
 	data.countContratsSuspension = Object.keys(data.contratsSuspension).length;
 	if (data.countContratsSuspension !== 0)
@@ -241,6 +242,8 @@ ActivInfinitev7.step({ stLancerVerificationContratCondition: function(ev, sc, st
 	else 
 	{
 		ctx.traceF.infoTxt('Aucun contrat de Suspension n\'est proposé dans le fichier JSON.');
+		data.contratCourantSuspension.noContrat ='';
+
 		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblalesSuspension);
 		return;
 	}
@@ -364,9 +367,7 @@ ActivInfinitev7.step({ stInsertDonneesSuspensionExcel: function(ev, sc, st) {
   	ctx.traceF.infoTxt('Etape - stInsertDonneesSuspensionExcel ');
    //lire la date
    data.contratCourantSuspension.notes.dateTraitementContrat = ctx.getDate();
-		if (data.contratCourantSuspension.noContrat==0){
-			data.contratCourantSuspension.noContrat ='';
-		}
+		
             
   var arrayMessage = [ {
        columnIndex: data.paramConfigExcel.indexColonne.type , value: data.contratCourantSuspension.infos['Type']
@@ -435,7 +436,7 @@ ActivInfinitev7.step({ stContratSuspensionSuivant: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinScenarioSuspension : function(ev, sc, st) {
 	var data = sc.data;
 	
-	ctx.traceF.infoTxt('Etape - stFinScenarioSuspension - Fin du scénario principal');
+	ctx.traceF.simpleTxt('Etape - stFinScenarioSuspension - Fin du scénario principal');
 	
 	ctx.popupF.newPopup("Fin du traitement",'Fin', function() {
 			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
