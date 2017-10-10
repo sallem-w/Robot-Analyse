@@ -18,14 +18,20 @@
 	
 	
 	//initFileTrace
-	traceF.initFichierTrace = function(cheminDossier, nomScen) {
-		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScen);
+	traceF.initFichierTrace = function(cheminDossier, nomScenario) {
+		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScenario);
 		if (!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
 		}
+
 		cheminFichierTrace = cheminFichier;
+<<<<<<< HEAD
 		traceF.constantes.touteTraceActive = ctx.configF.fichierConfig[nomScen].touteTraceActive;
+=======
+		var txtTrace = ctx.fso.file.read(cheminFichierTrace);
+>>>>>>> 'ModifsRebase'
 	};
+
 	
 //	trace.writeInfo
 	traceF.infoTxt = function(str, dateObj, separateur) {
