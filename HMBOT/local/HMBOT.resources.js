@@ -31,19 +31,30 @@ ActivInfinitev7.pTabDeBord.btMenuResilConcu = ActivInfinitev7.pTabDeBord.addItem
 ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne = ActivInfinitev7.pTabDeBord.addItem('btGroupeObligatoireExterne');
 =======
 ActivInfinitev7.pTabDeBord.btCongeParentSab = ActivInfinitev7.pTabDeBord.addItem('btCongeParentSab');
+<<<<<<< HEAD
 >>>>>>> 'Modifs0310'
+=======
+ActivInfinitev7.pTabDeBord.btVisuCompte = ActivInfinitev7.pTabDeBord.addItem('btVisuCompte');
+>>>>>>> 'Suspension1010'
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pContexteContratRech.btRecherche = ActivInfinitev7.pContexteContratRech.addItem('btRecherche');
 ActivInfinitev7.pContexteContratRech.onIdentificationBenef = ActivInfinitev7.pContexteContratRech.addItem('onIdentificationBenef', {"mustExist":true});
 ActivInfinitev7.pContexteContratRech.oTypeIdentification = ActivInfinitev7.pContexteContratRech.addItem('oTypeIdentification');
 ActivInfinitev7.pContexteContratRech.oRechPersDetail = ActivInfinitev7.pContexteContratRech.addItem('oRechPersDetail');
-ActivInfinitev7.pContexteContratRech.oNoInsee = ActivInfinitev7.pContexteContratRech.addItem('oNoInsee');
-ActivInfinitev7.pContexteContratRech.btRechDetaillee = ActivInfinitev7.pContexteContratRech.addItem('btRechDetaillee');
 
 ActivInfinitev7.pContContratRechDet = ActivInfinitev7.addPage('pContContratRechDet', {"comment":"Contexte Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=RecherchePersonne\u0026action=afficher"});
 ActivInfinitev7.pContContratRechDet.oNoInsee = ActivInfinitev7.pContContratRechDet.addItem('oNoInsee');
-ActivInfinitev7.pContContratRechDet.btRechDetaillee = ActivInfinitev7.pContContratRechDet.addItem('btRechDetaillee');
+ActivInfinitev7.pContContratRechDet.btRechDetaillee = ActivInfinitev7.pContContratRechDet.addItem('btRechDetaillee', {"mustExist":true});
+
+ActivInfinitev7.pContexteContOuvDet = ActivInfinitev7.addPage('pContexteContOuvDet', {"comment":"Contexte Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/ficheSynthese/RecherchePersonne.do?method=doRecherchePersonne"});
+ActivInfinitev7.pContexteContOuvDet.oPersonneDetailsTab = ActivInfinitev7.pContexteContOuvDet.addItem('oPersonneDetailsTab');
+ActivInfinitev7.pContexteContOuvDet.oTypeRelation = ActivInfinitev7.pContexteContOuvDet.addItem('oTypeRelation', {"occurs":1});
+ActivInfinitev7.pContexteContOuvDet.btNoInsee = ActivInfinitev7.pContexteContOuvDet.addItem('btNoInsee', {"occurs":1});
+ActivInfinitev7.pContexteContOuvDet.oStatus = ActivInfinitev7.pContexteContOuvDet.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pContexteContOuvDet.oTypeIdentification = ActivInfinitev7.pContexteContOuvDet.addItem('oTypeIdentification');
+ActivInfinitev7.pContexteContOuvDet.onIdentificationBenef = ActivInfinitev7.pContexteContOuvDet.addItem('onIdentificationBenef');
+ActivInfinitev7.pContexteContOuvDet.btRecherche = ActivInfinitev7.pContexteContOuvDet.addItem('btRecherche');
 
 ActivInfinitev7.pContexteContratOuvert = ActivInfinitev7.addPage('pContexteContratOuvert', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/AccueilMenu.do?method=rechercher"});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage', {"mustExist":true});
@@ -51,6 +62,7 @@ ActivInfinitev7.pContexteContratOuvert.oNumeroContrat = ActivInfinitev7.pContext
 ActivInfinitev7.pContexteContratOuvert.oDateFinEffet = ActivInfinitev7.pContexteContratOuvert.addItem('oDateFinEffet', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oContratIndiv = ActivInfinitev7.pContexteContratOuvert.addItem('oContratIndiv', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage2 = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage2');
+<<<<<<< HEAD
 <<<<<<< HEAD
 ActivInfinitev7.pContexteContratOuvert.oTypeIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeIdentification');
 ActivInfinitev7.pContexteContratOuvert.oNumIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oNumIdentification');
@@ -70,10 +82,18 @@ ActivInfinitev7.pContexteContratOuvert.oPersonneDetails = ActivInfinitev7.pConte
 >>>>>>> 'Modifs0310'
 ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
 >>>>>>> 'Modifs2709'
+=======
+ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oSoldeGlobal = ActivInfinitev7.pContexteContratOuvert.addItem('oSoldeGlobal', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oPart = ActivInfinitev7.pContexteContratOuvert.addItem('oPart', {"occurs":1});
+ActivInfinitev7.pContexteContratOuvert.oDetailsPersonne = ActivInfinitev7.pContexteContratOuvert.addItem('oDetailsPersonne');
+>>>>>>> 'Suspension1010'
 
-ActivInfinitev7.pContContratDetPers = ActivInfinitev7.addPage('pContContratDetPers', {"comment":"Contexte Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/AccueilMenu.do?method=initBandeauForwardContrat"});
-ActivInfinitev7.pContContratDetPers.oDetailsPersonne = ActivInfinitev7.pContContratDetPers.addItem('oDetailsPersonne');
-ActivInfinitev7.pContContratDetPers.btActualiser = ActivInfinitev7.pContContratDetPers.addItem('btActualiser');
+ActivInfinitev7.pContexteContOuvSolde = ActivInfinitev7.addPage('pContexteContOuvSolde', {"comment":"Visualisation du compte - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/AccueilMenu.do?method=rechercher"});
+ActivInfinitev7.pContexteContOuvSolde.oSoldeGlobal = ActivInfinitev7.pContexteContOuvSolde.addItem('oSoldeGlobal', {"occurs":1});
+ActivInfinitev7.pContexteContOuvSolde.oPart = ActivInfinitev7.pContexteContOuvSolde.addItem('oPart', {"occurs":1});
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
@@ -95,6 +115,7 @@ ActivInfinitev7.pIdentContResilRech.btRecherche = ActivInfinitev7.pIdentContResi
 ActivInfinitev7.pIdentContResilRech.oContratIndiv = ActivInfinitev7.pIdentContResilRech.addItem('oContratIndiv');
 ActivInfinitev7.pIdentContResilRech.oDateDebEffet = ActivInfinitev7.pIdentContResilRech.addItem('oDateDebEffet');
 ActivInfinitev7.pIdentContResilRech.oBtnPageCourante = ActivInfinitev7.pIdentContResilRech.addItem('oBtnPageCourante');
+<<<<<<< HEAD
 ActivInfinitev7.pIdentContResilRech.oTexte1 = ActivInfinitev7.pIdentContResilRech.addItem('oTexte1', {"mustNotExist":true});
 ActivInfinitev7.pIdentContResilRech.oBlocNotes = ActivInfinitev7.pIdentContResilRech.addItem('oBlocNotes', {"mustNotExist":true});
 ActivInfinitev7.pIdentContResilRech.oParametresDuCalcul = ActivInfinitev7.pIdentContResilRech.addItem('oParametresDuCalcul', {"mustNotExist":true});
@@ -107,14 +128,17 @@ ActivInfinitev7.pIdentContResilRechRe.btSuivant = ActivInfinitev7.pIdentContResi
 ActivInfinitev7.pIdentContResilRechRe.btBtnContinuer = ActivInfinitev7.pIdentContResilRechRe.addItem('btBtnContinuer');
 ActivInfinitev7.pIdentContResilRechRe.oDivErreur = ActivInfinitev7.pIdentContResilRechRe.addItem('oDivErreur');
 ActivInfinitev7.pIdentContResilRechRe.oDateDemande = ActivInfinitev7.pIdentContResilRechRe.addItem('oDateDemande');
+=======
+ActivInfinitev7.pIdentContResilRech.btSuivant = ActivInfinitev7.pIdentContResilRech.addItem('btSuivant');
+ActivInfinitev7.pIdentContResilRech.btBtnContinuer = ActivInfinitev7.pIdentContResilRech.addItem('btBtnContinuer');
+ActivInfinitev7.pIdentContResilRech.btDETAIL = ActivInfinitev7.pIdentContResilRech.addItem('btDETAIL');
+ActivInfinitev7.pIdentContResilRech.oDivErreur = ActivInfinitev7.pIdentContResilRech.addItem('oDivErreur', {"mustNotExist":true});
+ActivInfinitev7.pIdentContResilRech.oDateDemande = ActivInfinitev7.pIdentContResilRech.addItem('oDateDemande');
+ActivInfinitev7.pIdentContResilRech.oDetailPopup = ActivInfinitev7.pIdentContResilRech.addItem('oDetailPopup');
+>>>>>>> 'Suspension1010'
 
 ActivInfinitev7.pIdentContResilRechRe = ActivInfinitev7.addPage('pIdentContResilRechRe', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_403\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContResilRechRe.oDivErreur = ActivInfinitev7.pIdentContResilRechRe.addItem('oDivErreur', {"mustExist":true});
-
-ActivInfinitev7.pIdentContrRechColl = ActivInfinitev7.addPage('pIdentContrRechColl', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE4B"});
-ActivInfinitev7.pIdentContrRechColl.oDateDebutEffet = ActivInfinitev7.pIdentContrRechColl.addItem('oDateDebutEffet');
-ActivInfinitev7.pIdentContrRechColl.btFermeture = ActivInfinitev7.pIdentContrRechColl.addItem('btFermeture');
-ActivInfinitev7.pIdentContrRechColl.oNumeroContrat = ActivInfinitev7.pIdentContrRechColl.addItem('oNumeroContrat');
 
 ActivInfinitev7.pBlocNotesResil = ActivInfinitev7.addPage('pBlocNotesResil', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACBN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_438\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pBlocNotesResil.oBtnPageCourante = ActivInfinitev7.pBlocNotesResil.addItem('oBtnPageCourante');
@@ -288,16 +312,6 @@ ActivInfinitev7.pIdentAssuresInfoRO.btModifListeAssures = ActivInfinitev7.pIdent
 ActivInfinitev7.pIdentAssuresInfoRO.btSuivant = ActivInfinitev7.pIdentAssuresInfoRO.addItem('btSuivant');
 ActivInfinitev7.pIdentAssuresInfoRO.oBtnPageCourante = ActivInfinitev7.pIdentAssuresInfoRO.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentAssuresInfoRO.oE = ActivInfinitev7.pIdentAssuresInfoRO.addItem('oE', {"mustExist":true});
-
-ActivInfinitev7.pIdentContRechContratColl = ActivInfinitev7.addPage('pIdentContRechContratColl', {"comment":"Adhésions en collectif - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACSO01ASOB"});
-ActivInfinitev7.pIdentContRechContratColl.oNumContratCollec = ActivInfinitev7.pIdentContRechContratColl.addItem('oNumContratCollec', {"mustExist":true});
-ActivInfinitev7.pIdentContRechContratColl.oGroupAssures = ActivInfinitev7.pIdentContRechContratColl.addItem('oGroupAssures', {"mustExist":true});
-ActivInfinitev7.pIdentContRechContratColl.oTypeContrat = ActivInfinitev7.pIdentContRechContratColl.addItem('oTypeContrat', {"mustExist":true});
-ActivInfinitev7.pIdentContRechContratColl.btSuivant = ActivInfinitev7.pIdentContRechContratColl.addItem('btSuivant', {"mustNotExist":true});
-ActivInfinitev7.pIdentContRechContratColl.btRecherche = ActivInfinitev7.pIdentContRechContratColl.addItem('btRecherche');
-ActivInfinitev7.pIdentContRechContratColl.oDateDebEffet = ActivInfinitev7.pIdentContRechContratColl.addItem('oDateDebEffet', {"mustExist":true});
-ActivInfinitev7.pIdentContRechContratColl.btFermeture = ActivInfinitev7.pIdentContRechContratColl.addItem('btFermeture');
-ActivInfinitev7.pIdentContRechContratColl.oBtnPageCourante = ActivInfinitev7.pIdentContRechContratColl.addItem('oBtnPageCourante', {"mustExist":true});
 
 ActivInfinitev7.pIntervPrinRechBenef = ActivInfinitev7.addPage('pIntervPrinRechBenef', {"comment":"Adhésions en collectif - N°22401301 - EN COURS - - VETIR ERAM ENSEMBLE DU PERSONNEL - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOB_28\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIntervPrinRechBenef.oNumINSEE = ActivInfinitev7.pIntervPrinRechBenef.addItem('oNumINSEE');
