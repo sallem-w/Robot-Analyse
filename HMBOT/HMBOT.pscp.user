@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="27" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="571" Length="95"><![CDATA[traceF.constantes.touteTraceActive=ctx.configF.fichierConfigScenario[nomScen].touteTraceActive;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="165" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="7230" Length="86"><![CDATA[ActivInfinitev7.scenarios.SuspensionScenarioPrincipal.start(data).onEnd(function(){});]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="164" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="7211" Length="14"><![CDATA[var data = {};]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="163" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="7085" Length="121"><![CDATA[ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configSuspension.cheminRacine, ctx.configF.scenario.Suspension);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="161" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="6856" Length="92"><![CDATA[ctx.traceF.initFichierTrace(configSuspension.cheminRacine, ctx.configF.scenario.Suspension);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="162" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="6953" Length="127"><![CDATA[ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="160" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="6755" Length="96"><![CDATA[systray.addMenu('Suspension', 'SuspensionCompletV7', 'Suspension Complet V7', '', function(ev) {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="159" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="6693" Length="58"><![CDATA[systray.addMenu('', 'Suspension', 'Scenario Suspension ');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="1739" Length="70"><![CDATA[ctx.excel.sheet.setCell(rowIndex, parseInt(i,1) + 1, String(message));]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="67" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="1705" Length="30"><![CDATA[var message = arrayMessage[i];]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[remplirt]]></FINDWHAT>
+		<FINDWHAT><![CDATA[remplir]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ remplirTableau]]></FINDWHAT>
+		<FINDWHAT><![CDATA[traceF.initFichierTrace ]]></FINDWHAT>
 		<FINDWHAT><![CDATA[fichier]]></FINDWHAT>
 		<FINDWHAT><![CDATA[fichierScenario]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ctx.configF]]></FINDWHAT>
@@ -21,25 +19,27 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="161" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="65" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="71" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="153" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
-		<CurPerspective><![CDATA[1]]></CurPerspective>
+		<CurPerspective><![CDATA[3]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[ctx.configF.fichierConfigScenario]]></WATCH>
-		<WATCH><![CDATA[configSuspension.cheminRacine]]></WATCH>
+		<WATCH><![CDATA[message]]></WATCH>
+		<WATCH><![CDATA[i]]></WATCH>
+		<WATCH><![CDATA[rowIndex]]></WATCH>
 		<WATCH><![CDATA[ctx.configF.scenario.Suspension]]></WATCH>
+		<WATCH><![CDATA[configSuspension.cheminRacine]]></WATCH>
+		<WATCH><![CDATA[ctx.configF.fichierConfigScenario]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />
