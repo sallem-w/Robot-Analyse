@@ -172,8 +172,8 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 	
 	ActivInfinitev7.pIdentContResilRech.wait(function(ev){
 			ctx.polling({
-				delay: 100,
-				nbMax: 10,
+				delay: 200,
+				nbMax: 20,
 				test: function(index) { 
 					return ActivInfinitev7.pIdentContResilRech.btBtnContinuer.exist();
 				},
