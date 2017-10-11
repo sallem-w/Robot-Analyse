@@ -3,6 +3,7 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
 		<FINDWHAT><![CDATA[btSuivant]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.constantes.adehsion]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.constantes.adhesionIndividuelle]]></FINDWHAT>
@@ -22,12 +23,14 @@
 		<FINDWHAT><![CDATA[initialisation]]></FINDWHAT>
 		<FINDWHAT><![CDATA[initialisationCMU]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ctx.configF.fichierConfigScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[confFileCMUClass]]></FINDWHAT>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
+		<OPENDOC LineNumber="171" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="256" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="38" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1523" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="29" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="423" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="165" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="99" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
 	</OPENDOCS>

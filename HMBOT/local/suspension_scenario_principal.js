@@ -401,7 +401,7 @@ ActivInfinitev7.step({ stInsertDonneesSuspensionExcel: function(ev, sc, st) {
   ];
             
   ctx.excelF.remplirObjetTableau(data.ligneCourante, arrayMessage);
-  ctx.excelF.sauverFichier(ctx.configF.recupererCheminRacine());
+  ctx.excelF.sauverFichier(ctx.configF.recupererCheminFichierDeSortie());
   sc.endStep();
   return;
 }});
