@@ -165,10 +165,18 @@
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
 =======
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[btSuivant]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.constantes.adehsion]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.constantes.adhesionIndividuelle]]></FINDWHAT>
+		<FINDWHAT><![CDATA[indiv]]></FINDWHAT>
+		<FINDWHAT><![CDATA[lancerVerificationSoldeContrat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stFinResiliationSuspension]]></FINDWHAT>
+		<FINDWHAT><![CDATA[pIdentContratRechResu]]></FINDWHAT>
+		<FINDWHAT><![CDATA[pIdentContResilRechRe]]></FINDWHAT>
+		<FINDWHAT><![CDATA[pIdentContResilRech]]></FINDWHAT>
 		<FINDWHAT><![CDATA[Aucun contrat ]]></FINDWHAT>
 		<FINDWHAT><![CDATA[Aucun contrat correspondant aux]]></FINDWHAT>
 		<FINDWHAT><![CDATA[Revoir centre: Aucun contrat correspondant aux critères de recherche]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContResilRech]]></FINDWHAT>
 		<FINDWHAT><![CDATA[touteTrace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ERAM]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ERAM_Mise à jour]]></FINDWHAT>
@@ -177,16 +185,10 @@
 		<FINDWHAT><![CDATA[initialisationCMU]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ctx.configF.fichierConfigScenario]]></FINDWHAT>
 		<FINDWHAT><![CDATA[confFileCMUClass]]></FINDWHAT>
-		<FINDWHAT><![CDATA[remplirt]]></FINDWHAT>
-		<FINDWHAT><![CDATA[remplir]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ remplirTableau]]></FINDWHAT>
-		<FINDWHAT><![CDATA[traceF.initFichierTrace ]]></FINDWHAT>
-		<FINDWHAT><![CDATA[fichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[fichierScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.configF]]></FINDWHAT>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -256,6 +258,16 @@
 		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="295" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+=======
+		<OPENDOC LineNumber="125" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="92" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="84" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="116" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="215" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="62" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="0" Length="0" />
+>>>>>>> 'ModifsSuspension1110'
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
@@ -263,12 +275,20 @@
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[message]]></WATCH>
-		<WATCH><![CDATA[i]]></WATCH>
-		<WATCH><![CDATA[rowIndex]]></WATCH>
-		<WATCH><![CDATA[ctx.configF.scenario.Suspension]]></WATCH>
-		<WATCH><![CDATA[configSuspension.cheminRacine]]></WATCH>
+		<WATCH><![CDATA[tousSoldes[index]]]></WATCH>
+		<WATCH><![CDATA[data.constantes.adhesio]]></WATCH>
+		<WATCH><![CDATA[toutesParts[index]]]></WATCH>
+		<WATCH><![CDATA[(toutesParts[index]).indexOf(data.constantes.adhesion)]]></WATCH>
+		<WATCH><![CDATA[data.constantes.adhesion]]></WATCH>
+		<WATCH><![CDATA[toutesParts[index]).indexOf(data.constantes.adhesion)]]></WATCH>
+		<WATCH><![CDATA[data.countContratsSuspension]]></WATCH>
+		<WATCH><![CDATA[data.status.lancerVerificationSoldeContrat]]></WATCH>
 		<WATCH><![CDATA[ctx.configF.fichierConfigScenario]]></WATCH>
+		<WATCH><![CDATA[configSuspension.cheminRacine]]></WATCH>
+		<WATCH><![CDATA[ctx.configF.scenario.Suspension]]></WATCH>
+		<WATCH><![CDATA[rowIndex]]></WATCH>
+		<WATCH><![CDATA[i]]></WATCH>
+		<WATCH><![CDATA[message]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />
