@@ -333,9 +333,9 @@ ActivInfinitev7.pRecherchePPRefGRCRes.btFermer = ActivInfinitev7.pRecherchePPRef
 ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oTypeRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oIdentiteRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
 ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
-ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.btVisualiser = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btVisualiser');
 
 ActivInfinitev7.pHistoriqueOptsConsul = ActivInfinitev7.addPage('pHistoriqueOptsConsul', {"comment":"Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});

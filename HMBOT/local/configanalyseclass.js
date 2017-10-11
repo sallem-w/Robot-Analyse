@@ -18,10 +18,13 @@ var confFileANALYSEClass = function() {
                 numeroRO : '',
 							  gammeProduit: '',
 							  debDateEffet: '',
+							  numProduit1 : '',
+							  numSEQ : '',
 								contexteAnalyseStoppee : ''
             }
         },
-			 tabGammeCode : []
+			 tabGammeCode : [],
+			 listeProduits : []
 	}
 	this.Version = '1.1'
 };

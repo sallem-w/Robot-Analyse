@@ -42,18 +42,13 @@ ActivInfinitev7.step({ stInitAnalyseSitu: function(ev, sc, st) {
 ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stChargementFichierIAE - chargement et ouverture du fichier Excel PRE-IAE');
-	//openFile: ouverture fichier IAE
-	//ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
-	//data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; //la ligne courante dans le fichier excel
-	var tab = data.scenarioConfig.tabGammeCode;
+	var tab = data.scenarioConfig.ANALYSE.tabGammeCode;
 	for (var i in tab){
 	  data.ppCouranteAnalyse.dataLocale.tabGamme.push(tab[i].gamme);
 		data.ppCouranteAnalyse.dataLocale.tabCode.push(tab[i].code);
-	}
-	//data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne(); //récupérer l'indice de la dernière ligne dans le fichier excel
-	//copie du fichier d'entrée ==> fichier résultat.
-	//ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
-	//ctx.traceF.infoTxt('Création du fichier résultat, '+ctx.configF.cheminFichierResultat+', '+data.scenarioConfig.excel.debutIndexLigne-1);	
+	}	
+	
+	ctx.traceF.infoTxt('Chargement des numéros des produits (10 produits)');
 	sc.endStep();
 	return;
 }});
@@ -61,7 +56,7 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stServerConnexionAnalyse : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Début étape - stServerConnexionCMU');
+	ctx.traceF.infoTxt('Début étape - stServerConnexionAnalyse');
 		if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
 			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
 			ctx.popupF.newPopup('Le serveur Infinite est fermé');
@@ -98,8 +93,41 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
 		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
 		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){
+			//récupérer la référece GRC
 			data.ppCouranteAnalyse.dataLocale.referenceGRC = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.referenceGRC);
 			ctx.traceF.infoTxt('Reference GRC: '+data.ppCouranteAnalyse.dataLocale.referenceGRC +', ligne courante: '+data.varGlobales.ligneCourante);
+			
+			// DEBUT récupérer la liste des produits de l'assuré Principale
+//			var j = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit1;
+//			var numProd = {
+//				numProdP: '',
+//				numProdC: ''
+//			};
+//			data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
+//			var tempLigneCourante = data.varGlobales.ligneCourante +1;
+//			//vérifier si on a un conjoint ==> on récupère les produits associés à lui
+//			if(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ === ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ)){
+//				for(var i =0; i<10; i++){
+//		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
+//						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);
+//					}
+//					if(ctx.excel.sheet.getCell(tempLigneCourante, j) !== undefined){
+//						numProd.numProdC = ctx.excel.sheet.getCell(tempLigneCourante, j);
+//					}
+//					data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);
+//          j += 1;
+//			  }
+//			}else{ //on a un seul assuré
+//				for(var i =0; i<10; i++){
+//		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
+//						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);		
+//					}
+//					data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);
+//		    	j += 1;
+//	    	}
+//			}
+			// fin récupération des produits
+			
 			sc.endStep();
 	    return;
 		}else{

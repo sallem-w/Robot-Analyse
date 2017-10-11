@@ -15,6 +15,8 @@
                 "numeroRO" : 50,
                 "gammeProduit" : 55,
                 "debDateEffet" : 7,
+                "numProduit1": 56,
+                "numSEQ" : 2,
                 "contexteAnalyseStoppee": 126
             }
         },
@@ -39,6 +41,18 @@
         {"code":"", "gamme": "Ancienne Gamme 44"},
         {"code":"", "gamme": "Ancienne Gamme SVF"},
         {"code":"", "gamme": "Ancienne Gamme Normandie"}
+        ],
+        "listeProduits":[
+            "HDA20",
+            "HDA40",
+            "HDA60",
+            "HRA15",
+            "HRA30",
+            "HRA45",
+            "HPH15",
+            "HPH30",
+            "HPH45",
+            "HPB00" 
         ]  
     }  
 }

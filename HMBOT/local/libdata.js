@@ -104,7 +104,9 @@ ctx.dataF = (function () {
 				gammeProduit:'',
 				codeOffre :'',
 				tabGamme : [],
-				tabCode : []
+				tabCode : [],
+				numSEQ : '',
+				tabListeProduits: [] //la liste des produits GRC: de la colonne BD (NUM_PROD_1) à BM (NUM_PROD_10) 
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -113,6 +115,8 @@ ctx.dataF = (function () {
 				typeRelation : '',
 				identiteRelation : '',
 				tracePCXExist : false,
+				contratEstActif : false,
+				adhesionEstEnregistree : false,
 				codeOffre : '',
 				debDateEffet : '',
 				critereRecherche : 1
@@ -143,7 +147,7 @@ ctx.dataF = (function () {
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 			
 			
-			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
 			
 			//dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //rï¿½cupï¿½ration config json
 		}

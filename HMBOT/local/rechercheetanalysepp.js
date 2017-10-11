@@ -32,7 +32,7 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stContratsIASuivant);
 	sc.step(ActivInfinitev7.steps.stFinAnalyseContratsIA);
 
-	sc.step(ActivInfinitev7.steps.stAnalyseContratEnCours);
+	//sc.step(ActivInfinitev7.steps.stAnalyseContratEnCours);
 	
 	sc.step(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 
@@ -256,7 +256,9 @@ ActivInfinitev7.step({ stInitAnalyseContratsIA : function(ev, sc, st) {
 		ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.i(data.ppCouranteAnalyse.dataEnLigne.indexContrat).click();
 		if(ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.i(data.ppCouranteAnalyse.dataEnLigne.indexContrat).get() === 'I'){
 			data.ppCouranteAnalyse.dataEnLigne.nbContratRadie += 1;
-		}
+		}else{ /** deb modif 11-10-2017*/
+			data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
+		}/** fin modif 11-10-2017*/
 		ActivInfinitev7.pRecherchePPRefGRCRes.btValider.click();
 		sc.endStep();
 	  return;
@@ -284,15 +286,38 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stResOuvertureContratRadie: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	ActivInfinitev7.pIdentContratRechResu.wait(function(){
 		if(ActivInfinitev7.pIdentContratRechResu.btDETAIL.exist()){
-		ctx.traceF.infoTxt('Aucune opération valide pour le numéro de contrat saisi à la date de début d effet (date courante)');
-		sc.endStep(ActivInfinitev7.steps.stContratsIASuivant);
-		return;
-	}else{
-		
-		  ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
-				 sc.endStep(); 
-	       return;	 
-	}
+			ctx.traceF.infoTxt('Aucune opération valide pour le numéro de contrat saisi à la date de début d effet (date courante)');
+			sc.endStep(ActivInfinitev7.steps.stContratsIASuivant);
+			return;
+	  }else if(data.ppCouranteAnalyse.dataEnLigne.contratEstActif){
+		    			/** deb modif 11-10-2017*/ /** lecture de : datedebuteffet, codeoffre (EN LIGNE) */
+			  			data.ppCouranteAnalyse.dataEnLigne.codeOffre = ActivInfinitev7.pIdentContratRechResu.oCodeOffre.get();
+		    			data.ppCouranteAnalyse.dataEnLigne.debDateEffet = ActivInfinitev7.pIdentContratRechResu.oDateDebutEffet.get();
+			  			//lire la gamme de produit et la date de début de fin d'effet ==> codeoffre (LOCALE)
+			  			data.ppCouranteAnalyse.dataLocale.gammeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.gammeProduit);
+	      			var debDateEffet = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.debDateEffet);
+	      			data.ppCouranteAnalyse.dataLocale.debDateEffet = ctx.dateF.formatDateIAE(debDateEffet+'');
+	      			//récupération du code d'offre
+	      			for(var i=0; i < data.ppCouranteAnalyse.dataLocale.gammeProduit.length; i++){
+		      				if(data.ppCouranteAnalyse.dataLocale.tabGamme[i]+'' === data.ppCouranteAnalyse.dataLocale.gammeProduit+''){
+			      						data.ppCouranteAnalyse.dataLocale.codeOffre = data.ppCouranteAnalyse.dataLocale.tabCode[i];
+			      						break;
+		      				}
+	      			}
+			  			if(ctx.dateF.estEgale(data.ppCouranteAnalyse.dataEnLigne.debDateEffet, data.ppCouranteAnalyse.dataLocale.debDateEffet) && data.ppCouranteAnalyse.dataEnLigne.codeOffre === data.ppCouranteAnalyse.dataLocale.codeOffre){
+		      				data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = true;
+									sc.endStep(ActivInfinitev7.steps.stFinAnalyseContratsIA);
+									return;
+	      			}else{
+									ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+		      				sc.endStep(); 
+	        				return;	 
+							}
+					}else{
+							ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+		  				sc.endStep(); 
+	    				return;	 
+					}
 	});
 }});
 
@@ -320,20 +345,48 @@ ActivInfinitev7.step({ stRechercheTracePCX: function(ev, sc, st) {
 }});
 
 
+///** Description */   ************************ Première version *******************
+//ActivInfinitev7.step({ stContratsIASuivant: function(ev, sc, st) {
+//	var data = sc.data;
+//	ctx.traceF.infoTxt('Etape stContratsIASuivant: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+//	if(data.ppCouranteAnalyse.dataEnLigne.tracePCXExist){
+//		ctx.traceF.infoTxt('La trace PCX existe dans le contexte - Fin recherche et analyse');//si on trouve la trace PCX avec le premier contrat, on s'arrete on continue pas le parcours des autres contrats
+//		data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = false;
+//		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+//		return;
+//	}else if(data.ppCouranteAnalyse.dataEnLigne.indexContrat < data.ppCouranteAnalyse.dataEnLigne.nbContrat - 1){
+//		ctx.traceF.infoTxt('La trace PCX n existe pas dans le contexte - on reboucle avec le contrat suivant');
+//		ctx.traceF.infoTxt('+++++++++++++++++++++++++ Rebouclage sur le contrat suivant +++++++++++++++++++++++++');
+//		data.ppCouranteAnalyse.dataEnLigne.indexContrat += 1;
+//		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+//		sc.endStep(ActivInfinitev7.steps.stInitRechercheEtAnalysePP);
+//		return;
+//	}else{
+//		ctx.traceF.infoTxt('On a traité tous les contrats pour la recherche de la trace PCX');
+//		sc.endStep();
+//		return;
+//	}
+//}});
+
+
 /** Description */
 ActivInfinitev7.step({ stContratsIASuivant: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stContratsIASuivant: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	
 	if(data.ppCouranteAnalyse.dataEnLigne.tracePCXExist){
 		ctx.traceF.infoTxt('La trace PCX existe dans le contexte - Fin recherche et analyse');//si on trouve la trace PCX avec le premier contrat, on s'arrete on continue pas le parcours des autres contrats
-		data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = false;
 		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		return;
+	}else if(data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree){
+		sc.endStep(ActivInfinitev7.steps.stFinAnalyseContratsIA);
 		return;
 	}else if(data.ppCouranteAnalyse.dataEnLigne.indexContrat < data.ppCouranteAnalyse.dataEnLigne.nbContrat - 1){
 		ctx.traceF.infoTxt('La trace PCX n existe pas dans le contexte - on reboucle avec le contrat suivant');
 		ctx.traceF.infoTxt('+++++++++++++++++++++++++ Rebouclage sur le contrat suivant +++++++++++++++++++++++++');
 		data.ppCouranteAnalyse.dataEnLigne.indexContrat += 1;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		data.ppCouranteAnalyse.dataEnLigne.contratEstActif = false;
 		sc.endStep(ActivInfinitev7.steps.stInitRechercheEtAnalysePP);
 		return;
 	}else{
@@ -344,52 +397,87 @@ ActivInfinitev7.step({ stContratsIASuivant: function(ev, sc, st) {
 }});
 
 
+///** Description */ ****************** première version ****************************
+//ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
+//	var data = sc.data;
+//	ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+//  if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie < data.ppCouranteAnalyse.dataEnLigne.nbContrat){
+//		ctx.traceF.infoTxt('Existe au moins un contrat actif ********** vérification de l enregistrement de l adhésion Siebel sur Infinite');
+//		ctx.traceF.infoTxt('//////////////// ********* /////////////// Début scénario scAnalyseContratsEnCours //////////////// ********* ///////////////');
+//	  data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
+//	 // data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
+//	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
+//    sc.endStep();
+//		return;
+//	}else if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie === data.ppCouranteAnalyse.dataEnLigne.nbContrat){
+//		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création de contrat – Pas de contrat actif sur la PP';
+//		data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
+//	  data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
+//	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
+//		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+//		return;
+//	}
+//}});
+
+
+
+
 /** Description */
 ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
-  if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie < data.ppCouranteAnalyse.dataEnLigne.nbContrat){
-		ctx.traceF.infoTxt('Existe au moins un contrat actif ********** vérification de l enregistrement de l adhésion Siebel sur Infinite');
-		ctx.traceF.infoTxt('//////////////// ********* /////////////// Début scénario scAnalyseContratsEnCours //////////////// ********* ///////////////');
-	  data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
-	 // data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
-	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
+	
+	if(data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree){
+		 data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement';
+		 sc.endStep();
+		 return;
+	}else if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie < data.ppCouranteAnalyse.dataEnLigne.nbContrat && !data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree){
+	  data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Modification de contrat – Présence d’un contrat actif';
     sc.endStep();
 		return;
 	}else if(data.ppCouranteAnalyse.dataEnLigne.nbContratRadie === data.ppCouranteAnalyse.dataEnLigne.nbContrat){
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création de contrat – Pas de contrat actif sur la PP';
-		data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
-	  data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
-	  data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;	
-		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		sc.endStep();
+		return;
+	}else{
+		sc.endStep();
 		return;
 	}
 }});
 
 
-/** Description */
-ActivInfinitev7.step({ stAnalyseContratEnCours: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stAnalyseContratEnCours' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
-//	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-//	st.disableTimeout();
-//	  ActivInfinitev7.scenarios.scAnalyseContratsEnCours.start(data).onEnd(function(sc3) {
-//		  sc.data=sc3.data;
-//		  ctx.traceF.infoTxt(' Fin du sous-scenario - scAnalyseContratsEnCours');
-//			data.ppCouranteAnalyse.dataEnLigne.critereRecherche = 1;
-//		  sc.endStep();
-//    });
+///** Description */
+//ActivInfinitev7.step({ stAnalyseContratEnCours: function(ev, sc, st) {
+//	var data = sc.data;
+//	ctx.traceF.infoTxt('Etape stAnalyseContratEnCours' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+////	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+////	st.disableTimeout();
+////	  ActivInfinitev7.scenarios.scAnalyseContratsEnCours.start(data).onEnd(function(sc3) {
+////		  sc.data=sc3.data;
+////		  ctx.traceF.infoTxt(' Fin du sous-scenario - scAnalyseContratsEnCours');
+////			data.ppCouranteAnalyse.dataEnLigne.critereRecherche = 1;
+////		  sc.endStep();
+////    });
 	
-	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Modification de contrat – Présence d’un contrat actif';
-	sc.endStep();
-	return;
-}});
+//	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Modification de contrat – Présence d’un contrat actif';
+//	sc.endStep();
+//	return;
+//}});
 
 
 /** Description */
 ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('****************** Etape stFinRechercheAnalysePP: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	//maj des variables 
+	data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
+	data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
+	data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;
+	
+	data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = false;
+	data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = false;
+	data.ppCouranteAnalyse.dataEnLigne.contratEstActif = false;
+	
 	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 	sc.endScenario();
 	return;
