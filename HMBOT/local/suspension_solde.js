@@ -67,13 +67,13 @@ ActivInfinitev7.step( { stVisualisationSoldeSuspension : function (ev, sc, st) {
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Début - scénario scVerificationSoldeContratSuspension');
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Etape - stVisualisationSoldeSuspension');
 		ActivInfinitev7.pContexteContratOuvert.wait(function(){
-			var toutesParts = ActivInfinitev7.pContexteContratOuvert.oSoldeGlobal.getAll();
-			var tousSoldes = ActivInfinitev7.pContexteContratOuvert.oPart.getAll();
+			var tousSoldes = ActivInfinitev7.pContexteContratOuvert.oSoldeGlobal.getAll();
+			var toutesParts = ActivInfinitev7.pContexteContratOuvert.oPart.getAll();
 			var nombreSoldes = ActivInfinitev7.pContexteContratOuvert.oPart.count();
 			
 			for(var index = 0 ; index < nombreSoldes ; index++)
 			{
-				if((toutesParts[index]).indexOf(data.constantes.adehsion)!==-1 && (tousSoldes[index].indexOf(data.constantes.moins)!==-1))
+				if((toutesParts[index]).indexOf(data.constantes.adhesion)!==-1 && (tousSoldes[index].indexOf(data.constantes.moins)!==-1))
 				{
 					ctx.traceF.simpleTxt('Un solde négatif de' + tousSoldes[index] + ' euros est présent');
 				}

@@ -104,7 +104,7 @@ ActivInfinitev7.step( { choixProchainStep : function (ev, sc, st) {
 		
 		pIdentContResilRechReListener = ActivInfinitev7.pIdentContResilRechRe.wait(function() {
 			ctx.off(pIdentContResilRechListener);
-			sc.endStep();
+			sc.endStep(ActivInfinitev7.steps.stRechercheContratSuspensionError);
 			return;
 		});
 	}
@@ -135,14 +135,14 @@ ActivInfinitev7.step({ stRechercheContratSuspensionError: function(ev, sc, st) {
 	});
 	
 	ActivInfinitev7.pIdentContResilRechRe.wait(function(ev){
-		if(ActivInfinitev7.pIdentContResilRech.oDivErreur.exist()){
-		 		var msgErreur = ActivInfinitev7.pIdentContResilRech.oDivErreur.get().trim();
-				ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + ' - erreur recherche contrat à la résiliation: ' + msgErreur);
-				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: ' + msgErreur;
+		//if(ActivInfinitev7.pIdentContResilRech.oDivErreur.exist()){
+		 		//var msgErreur = ActivInfinitev7.pIdentContResilRech.oDivErreur.get().trim();
+				ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Erreur recherche contrat à la résiliation: Contrat résilié ou aucune opération valide saisi à la date si le contrat donné ne correspond pas à un cas de Suspension' );
+				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: Contrat résilié ou aucune opération valide saisi à la date si le contrat donné ne correspond pas à un cas de Suspension' ;
 				data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
 				sc.endStep(ActivInfinitev7.steps.stFinResiliationSuspension);
 				return ;
-		 }
+		// }
 		});
 		
 	
@@ -172,8 +172,8 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 	
 	ActivInfinitev7.pIdentContResilRech.wait(function(ev){
 			ctx.polling({
-				delay: 1000,
-				nbMax: 100,
+				delay: 100,
+				nbMax: 10,
 				test: function(index) { 
 					return ActivInfinitev7.pIdentContResilRech.btBtnContinuer.exist();
 				},
@@ -324,7 +324,7 @@ ActivInfinitev7.step({ stSauvegardeSuspension: function(ev, sc, st) {
 	
 		data.contratCourantSuspension.notes.commentaireContrat =  'Suspension effectuée';
 		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		
+		data.status.lancerVerificationSoldeContrat = true;
     sc.endStep();
 		return;
 	});
@@ -332,7 +332,7 @@ ActivInfinitev7.step({ stSauvegardeSuspension: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stFinResiliationSuspension: function(ev, sc, st) {
 	var data = sc.data;
-	data.status.lancerVerificationSoldeContrat = true;
+	
 	ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - STEP END - stFinResiliationSuspension');
 	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 	sc.endStep();

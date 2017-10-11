@@ -80,8 +80,8 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 	var indexLectureSynthese = 0;
 	var names = []
 	var constantes = {
-		adhesionIndividuelle : 'indiv',
-		adehsion : 'ADH',
+		adhesionIndividuelle : 'Adhésion ind',
+		adhesion : 'ADH',
 		moins :'-'
 	} 
 	var noContrat = 0;	
