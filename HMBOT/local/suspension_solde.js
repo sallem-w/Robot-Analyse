@@ -75,7 +75,7 @@ ActivInfinitev7.step( { stVisualisationSoldeSuspension : function (ev, sc, st) {
 			{
 				if((toutesParts[index]).indexOf(data.constantes.adhesion)!==-1 && (tousSoldes[index].indexOf(data.constantes.moins)!==-1))
 				{
-					ctx.traceF.simpleTxt('Un solde négatif de' + tousSoldes[index] + ' euros est présent');
+					ctx.traceF.simpleTxt('Un solde négatif de ' + tousSoldes[index] + ' euros est présent');
 				}
 			}
 			
