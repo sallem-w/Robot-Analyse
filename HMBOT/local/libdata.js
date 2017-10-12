@@ -171,6 +171,8 @@ ctx.dataF = (function () {
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantAdhesion=ctx.dataF.contratCourantAdhesion;
 			dat.contratCourantAdhesion.dataLocale.contratAdhesionAttributs=configAdhesion.ADHESION.excel.indexColonne;
+			dat.contratCourantAdhesion.dataLocale.contratTemp=configAdhesion.ADHESION.excel.indexColonne;
+			dat.contratCourantAdhesion.dataEnLigne.contratTemp=configAdhesion.ADHESION.excel.indexColonne;
 			dat.varGlobales=ctx.dataF.varGlobales;	
 			ctx.log('Init Trace : '+dat.scenarioConfig.Adhesion.cheminRacine);
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.Adhesion.cheminRacine, ctx.configF.scenario.Adhesion);

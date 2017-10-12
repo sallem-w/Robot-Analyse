@@ -373,6 +373,7 @@ ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant = ActivInfinitev7.pAdhIndivInterv
 ActivInfinitev7.pAdhIndivIntervtPrin.btClosePopUp = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('btClosePopUp');
 ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oPopUpTitre');
 ActivInfinitev7.pAdhIndivIntervtPrin.oInformationRattachem = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oInformationRattachem', {"mustNotExist":true});
+ActivInfinitev7.pAdhIndivIntervtPrin.oCodeCedex = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oCodeCedex');
 
 ActivInfinitev7.pAdhIndivIdentAssures = ActivInfinitev7.addPage('pAdhIndivIdentAssures', {"comment":"Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentAssures.oBtnPageCourante = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oBtnPageCourante');
