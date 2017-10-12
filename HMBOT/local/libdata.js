@@ -106,7 +106,12 @@ ctx.dataF = (function () {
 				tabGamme : [],
 				tabCode : [],
 				numSEQ : '',
-				tabListeProduits: [] //la liste des produits GRC: de la colonne BD (NUM_PROD_1) à BM (NUM_PROD_10) 
+//				tabListeProduits: [{
+//					numProdC : '',
+//					numProdP : ''
+//				}
+//				] 
+				tabListeProduits : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -125,6 +130,13 @@ ctx.dataF = (function () {
 				contexteAnalyseStoppee : ''
 			}	
 		};
+		
+//		var numProd ={
+//			numProdC : '',
+//			numProdP : ''
+//		};
+		
+//		dataF.numProd = numProd;
 		
 		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
 		

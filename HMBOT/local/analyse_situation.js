@@ -98,34 +98,51 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 			ctx.traceF.infoTxt('Reference GRC: '+data.ppCouranteAnalyse.dataLocale.referenceGRC +', ligne courante: '+data.varGlobales.ligneCourante);
 			
 			// DEBUT récupérer la liste des produits de l'assuré Principale
-//			var j = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit1;
-//			var numProd = {
-//				numProdP: '',
-//				numProdC: ''
-//			};
-//			data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
-//			var tempLigneCourante = data.varGlobales.ligneCourante +1;
+			var j = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit1;
+			//var numProd = ctx.dataF.numProd;
+			var numProd = {
+				numProdC : '',
+				numProdP : ''
+			};
+			data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
+			var tempLigneCourante = data.varGlobales.ligneCourante +1;
 //			//vérifier si on a un conjoint ==> on récupère les produits associés à lui
-//			if(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ === ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ)){
-//				for(var i =0; i<10; i++){
-//		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
-//						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);
-//					}
-//					if(ctx.excel.sheet.getCell(tempLigneCourante, j) !== undefined){
-//						numProd.numProdC = ctx.excel.sheet.getCell(tempLigneCourante, j);
-//					}
-//					data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);
-//          j += 1;
-//			  }
-//			}else{ //on a un seul assuré
-//				for(var i =0; i<10; i++){
-//		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
-//						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);		
-//					}
-//					data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);
-//		    	j += 1;
-//	    	}
-//			}
+			if(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ === ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ) && ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type) === 'Conjoint'){
+				ctx.traceF.infoTxt('************ Principale + conjoint ***************');
+				data.ppCouranteAnalyse.dataLocale.tabListeProduits = [];
+				for(var i =0; i<10; i++){
+		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
+						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);
+					}
+					if(ctx.excel.sheet.getCell(tempLigneCourante, j) !== undefined){
+						numProd.numProdC = ctx.excel.sheet.getCell(tempLigneCourante, j);
+					}
+					data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);
+					numProd = {
+						numProdC : '',
+						numProdP : ''
+				  };
+          j += 1;
+			  }
+			}else{ //on a un seul assuré
+				ctx.traceF.infoTxt('************ Principale SANS conjoint ***************');
+				data.ppCouranteAnalyse.dataLocale.tabListeProduits = [];
+				for(var i =0; i<10; i++){
+		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
+						numProd.numProdP = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);		
+					}
+				data.ppCouranteAnalyse.dataLocale.tabListeProduits.push(numProd);			
+        numProd = {
+					numProdC : '',
+					numProdP : ''
+				};
+		    	j += 1;
+	    	}
+				
+				for (var i =0; i<10; i++){
+					ctx.traceF.infoTxt('('+i +', '+j+'): '+ data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdP +', '+data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdC);
+				}
+			}
 			// fin récupération des produits
 			
 			sc.endStep();
