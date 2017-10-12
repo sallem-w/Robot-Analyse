@@ -3384,6 +3384,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oCodeCedex">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R40R0R0R1R0R0R1R1R2">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[codePostalAdresseCedex]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1137181_1" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="190" Techno="WEB" Timestamp="09/10/2017 11:37:41" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1605598_1" Comment="Adhésions individuelles - N°22629464 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="194" Techno="WEB" Timestamp="09/10/2017 16:06:24" />

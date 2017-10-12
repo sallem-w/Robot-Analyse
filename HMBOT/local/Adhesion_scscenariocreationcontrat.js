@@ -17,8 +17,8 @@ ActivInfinitev7.scenario({ scScenarioCreationContrat: function(ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCreationContrat: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' - Etape - stInitScenarioCreation');
-	var gamme = data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.GAMME;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' - Etape - stInitScenarioCreation');
+	var gamme = data.contratCourantAdhesion.dataLocale.contratTemp.GAMME;
 	var tabProd=ctx.configF.gammeProduit;
 	var ncase = 0;
 	/// on recherche dans la table ( indexOf ne fonctionnant pas)
