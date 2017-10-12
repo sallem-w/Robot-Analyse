@@ -35,7 +35,8 @@
 	
 	excelF.modifierEnteteIAE = function(){
 		var tab = [
-		  { columnIndex: configExcel.indexColonne.contexteAnalyseStoppee, value: "Contexte Analyse Stoppée" }
+		  { columnIndex: configExcel.indexColonne.contexteAnalyseStoppee, value: "Contexte Analyse Stoppée" },
+			{ columnIndex: configExcel.indexColonne.presenceHPP, value: "Présence HPP" }
 		];	
 		return tab;
 	}

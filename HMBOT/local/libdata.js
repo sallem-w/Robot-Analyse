@@ -105,6 +105,8 @@ ctx.dataF = (function () {
 				codeOffre :'',
 				tabGamme : [],
 				tabCode : [],
+				tabGammeCode : [],
+				tabProduits: [],
 				numSEQ : '',
 //				tabListeProduits: [{
 //					numProdC : '',
@@ -122,12 +124,14 @@ ctx.dataF = (function () {
 				tracePCXExist : false,
 				contratEstActif : false,
 				adhesionEstEnregistree : false,
+			  HPPExiste : false,
 				codeOffre : '',
 				debDateEffet : '',
 				critereRecherche : 1
 			},
 			notes: {
-				contexteAnalyseStoppee : ''
+				contexteAnalyseStoppee : '',
+				presenceHPP : 'Non' 
 			}	
 		};
 		

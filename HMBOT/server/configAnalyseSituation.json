@@ -17,7 +17,8 @@
                 "debDateEffet" : 7,
                 "numProduit1": 56,
                 "numSEQ" : 2,
-                "contexteAnalyseStoppee": 126
+                "contexteAnalyseStoppee": 126,
+                "presenceHPP" : 127
             }
         },
         "tabGammeCode" :[

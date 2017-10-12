@@ -19,7 +19,9 @@ ActivInfinitev7.scenario({ scAnalyseSituation: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitAnalyseSitu);
 	sc.step(ActivInfinitev7.steps.stChargementFichierIAE);
 	sc.step(ActivInfinitev7.steps.stServerConnexionAnalyse);
+	
 	sc.step(ActivInfinitev7.steps.stLireRefGRC);
+	sc.step(ActivInfinitev7.steps.stVerifPetitePrev);
 	sc.step(ActivInfinitev7.steps.stRecherchePP);
 	sc.step(ActivInfinitev7.steps.stInsertionDonneesAnalyseExcel);
 	sc.step(ActivInfinitev7.steps.stLireRefGRCSuivant);
@@ -43,12 +45,24 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stChargementFichierIAE - chargement et ouverture du fichier Excel PRE-IAE');
 	var tab = data.scenarioConfig.ANALYSE.tabGammeCode;
+	var structGammeCode = {
+		code : '',
+		gamme : ''
+	};
 	for (var i in tab){
 	  data.ppCouranteAnalyse.dataLocale.tabGamme.push(tab[i].gamme);
 		data.ppCouranteAnalyse.dataLocale.tabCode.push(tab[i].code);
-	}	
-	
+		structGammeCode.code = tab[i].code;
+		structGammeCode.gamme = tab[i].gamme;
+		data.ppCouranteAnalyse.dataLocale.tabGammeCode.push(structGammeCode);
+		structGammeCode = { //initialisation pour éviter la redondance
+			code : '',
+			gamme : ''
+		};
+	}
+	//lecture de la liste des produits de la configuration JSON
 	ctx.traceF.infoTxt('Chargement des numéros des produits (10 produits)');
+	data.ppCouranteAnalyse.dataLocale.tabProduits = data.scenarioConfig.ANALYSE.listeProduits;
 	sc.endStep();
 	return;
 }});
@@ -99,7 +113,6 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 			
 			// DEBUT récupérer la liste des produits de l'assuré Principale
 			var j = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit1;
-			//var numProd = ctx.dataF.numProd;
 			var numProd = {
 				numProdC : '',
 				numProdP : ''
@@ -108,7 +121,6 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 			var tempLigneCourante = data.varGlobales.ligneCourante +1;
 //			//vérifier si on a un conjoint ==> on récupère les produits associés à lui
 			if(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ === ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ) && ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type) === 'Conjoint'){
-				ctx.traceF.infoTxt('************ Principale + conjoint ***************');
 				data.ppCouranteAnalyse.dataLocale.tabListeProduits = [];
 				for(var i =0; i<10; i++){
 		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
@@ -124,8 +136,7 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 				  };
           j += 1;
 			  }
-			}else{ //on a un seul assuré
-				ctx.traceF.infoTxt('************ Principale SANS conjoint ***************');
+			}else{ 
 				data.ppCouranteAnalyse.dataLocale.tabListeProduits = [];
 				for(var i =0; i<10; i++){
 		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
@@ -138,10 +149,6 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 				};
 		    	j += 1;
 	    	}
-				
-				for (var i =0; i<10; i++){
-					ctx.traceF.infoTxt('('+i +', '+j+'): '+ data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdP +', '+data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdC);
-				}
 			}
 			// fin récupération des produits
 			
@@ -156,10 +163,31 @@ ActivInfinitev7.step({ stLireRefGRC: function(ev, sc, st) {
 }});
 
 
+/** Description */
+ActivInfinitev7.step({ stVerifPetitePrev: function(ev, sc, st) {
+	var data = sc.data;
+  ctx.traceF.infoTxt('Etape stRecherchePP: Recherche de produit HPP');
+	var numProdP;
+	var numProdC;
+	for(var i=0; i<10; i++){
+		numProdP = data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdP;
+		numProdC = data.ppCouranteAnalyse.dataLocale.tabListeProduits[i].numProdC;
+		for (var j =0; j<10; j++){
+			if(numProdP+''  === data.ppCouranteAnalyse.dataLocale.tabProduits[j]+'' || numProdC+'' === data.ppCouranteAnalyse.dataLocale.tabProduits[j]+''){
+				data.ppCouranteAnalyse.dataEnLigne.HPPExiste = true;
+				data.ppCouranteAnalyse.notes.presenceHPP = 'Oui';
+		  }
+	  }
+	}
+	sc.endStep();
+	return;
+}});
+
 
 /** lancement du sous scenario de recherche de la pp infinite */
 ActivInfinitev7.step({ stRecherchePP: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stRecherchePP: Scénario de recherche de la PP');
 	st.disableTimeout();
 	var scAnalyse = ActivInfinitev7.scenarios.scRechercheAnalysePP.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
@@ -176,7 +204,9 @@ ActivInfinitev7.step({ stInsertionDonneesAnalyseExcel: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stInsertionDonneesAnalyseExcel: insertion des données dans le fichier résultat');
 	 var arrayMessage = [ {
       columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.contexteAnalyseStoppee, value: data.ppCouranteAnalyse.notes.contexteAnalyseStoppee
-      }
+      },{
+			columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.presenceHPP, value: data.ppCouranteAnalyse.notes.presenceHPP
+			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
   ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
@@ -194,6 +224,8 @@ ActivInfinitev7.step({ stLireRefGRCSuivant: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	}else{
+		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
+		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
 		sc.endStep(ActivInfinitev7.steps.stLireRefGRC);
 	  return;
 	}

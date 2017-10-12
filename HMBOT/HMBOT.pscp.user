@@ -3,8 +3,9 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.tabListeProduits]]></FINDWHAT>
 		<FINDWHAT><![CDATA[temp_contract]]></FINDWHAT>
+		<FINDWHAT><![CDATA[gamme]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.tabListeProduits]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.contratEstActif]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stInitAnalyseContratsIA]]></FINDWHAT>
@@ -22,7 +23,6 @@
 		<FINDWHAT><![CDATA[initFichierTrace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
 		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
@@ -46,13 +46,14 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="190" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="117" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="139" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="36" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="127" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="46" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="24" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigACSClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="147" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="71" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="39" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="137" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="190" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
