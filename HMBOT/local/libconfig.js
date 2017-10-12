@@ -218,5 +218,7 @@
 		return resultat;
 	}
 	
+	
+	
 	return configF;
 }) ();
