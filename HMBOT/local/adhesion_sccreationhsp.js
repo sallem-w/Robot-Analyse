@@ -2,8 +2,14 @@
 /** Description */
 ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
-	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
+	sc.onTimeout(30000, function(sc, st) { 
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.endScenario();	
+	}); // default timeout handler for each step
+	sc.onError(function(sc, st, ex) { 
+		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.endScenario();	
+	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 	sc.step(ActivInfinitev7.steps.stInitCreationHSP);
@@ -24,6 +30,8 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_CodePostal);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Prestation);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Cotisation);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Cotisation_PrelvtBancaire);
@@ -32,6 +40,8 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB_Etablissement);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB_Guichet);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_IBAN);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_IBAN_PAYS);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_DonneesMandat);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -69,7 +79,7 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
 		var countPoll=0;		
 			ctx.polling({
-				delay: 200,
+				delay: 300,
 				nbMax: 10,
 				test: function(index) { 
 					countPoll++;
@@ -118,7 +128,7 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_Offre: function(ev, sc,
 		var offreExistance = false;
 		var indexOffre = -1;
 		ctx.polling({	
-			delay: 200,	
+			delay: 300,	
 			nbMax: 10,		
 			test: function(index) { 		
 				countPoll++;
@@ -152,7 +162,7 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_SelectOffre: function(e
 		var offreExistance = false;
 		var indexOffre = -1;
 		ctx.polling({	
-			delay: 200,	
+			delay: 300,	
 			nbMax: 10,		
 			test: function(index) { 		
 				countPoll++;
@@ -616,14 +626,33 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse: function(ev, sc,
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie');
+	var code = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].ADRESSE_NAT_VOIE;
+//	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,natureVoieGRC);
+	/// lib long
+	var tab = { code :'',lib_court:'',lib_long:''};
+	tab = ctx.formF.typeVoie ;
+	var resultat2='';
+	for ( var i in tab ){
+		if(tab[i].code != undefined){
+			if( code == tab[i].code){
+				resultat2=tab[i].lib_long;
+			}
+		}
+		else{
+			ctx.traceF.errorTxt(' Le code ' + code + ' n\'existe pas pour ce tableau');
+		}
+	}
+	if(resultat2 == ''){
+		ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + code);
+	}
 	
-	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].ADRESSE_NAT_VOIE);
+	ctx.log(' NAT VOIE : '+ resultat2);
 	var nomVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].LIBELLE_VOIE;
 	// comme plusieurs communes peuvent avoir le meme code postal , on ajoute le nom de la commune
-	var voie = natureVoie + ' '+ nomVoie;
-	ctx.log(' Voie : '+voie);
+	var voie_nom_long = resultat2 + ' '+ nomVoie;
+	ctx.log(' Voie : '+voie_nom_long);
 	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.setFocus();
-	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.keyStroke(voie);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.keyStroke(voie_nom_long);
 	
 	var countPoll=0;	
 	ctx.polling({	
@@ -637,34 +666,150 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie: fu
 			done: function() { 
 				/// la combinaison ville + code postal doit etre unique
 				var choixUnique = false;
-				if(ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).get()== voie){
+				if(ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).get() == voie_nom_long){
 					choixUnique = true;
 				}
 				if(choixUnique){
 					// la Personne physique est unique on peut continuer avec
 					ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).click();
-					sc.endStep();
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_Prestation);
 					return;
 				}
 				else{
-					/// il y a plusieur PP on renvoi au centre
-					ctx.traceF.errorTxt(' La voie n\'est pas unique');
-					data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Nom de voie :  La voie n\'est pas unique';
-					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-					data.contratCourantAdhesion.statuts.finCreation = true;
-					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					ctx.traceF.errorTxt(' La voie n\'est pas unique --> Passage en France ss ctrl');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'La voie n\'est pas unique --> Passage en France ss ctrl';
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle);
+					return;
+				}
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' La voie n\'est pas unique --> Passage en France ss ctrl');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'La voie n\'est pas unique --> Passage en France ss ctrl';
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle);
+				return;
+			}
+		});
+}});
+
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court');
+	/// la selection de la voie avec un libellé long n'a pas marché on tente avec une libellé court
+	var code = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].ADRESSE_NAT_VOIE;
+//	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,natureVoieGRC);
+	/// lib long
+	var tab = { code :'',lib_court:'',lib_long:''};
+	tab = ctx.formF.typeVoie ;
+	var resultat1= '';
+		for ( var i in tab ){
+			if(tab[i].code != undefined){
+				if( code == tab[i].code){
+					resultat1=tab[i].lib_court;
+				}
+			}
+			else{
+				ctx.traceF.errorTxt(' Le code ' + code + ' n\'existe pas pour ce tableau');
+			}
+		}
+		if(resultat1 == ''){
+			ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + code);
+		}
+	ctx.log(' NAT VOIE : '+ resultat1);
+	var nomVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].LIBELLE_VOIE;
+	// comme plusieurs communes peuvent avoir le meme code postal , on ajoute le nom de la commune
+	var voie_nom_court = resultat1 + ' '+ nomVoie;
+	ctx.log(' Voie : '+ voie_nom_court);
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oVoieAdresse.keyStroke(voie_nom_court);
+	
+	var countPoll=0;	
+	ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.count()>0;
+			},
+			done: function() { 
+				/// la combinaison ville + code postal doit etre unique
+				var choixUnique = false;
+				if(ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).get() == voie_nom_court){
+					choixUnique = true;
+				}
+				if(choixUnique){
+					// la voie est unique on peut continuer avec
+					ActivInfinitev7.pAdhIndivIntervtPrin.oSelectVoie.i(0).click();
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_Prestation);
+					return;
+				}
+				else{
+					ctx.traceF.errorTxt(' La voie n\'est pas unique --> Passage en France ss ctrl');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'La voie n\'est pas unique --> Passage en France ss ctrl';
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle);
 					return;
 				}
 			},
 			fail: function() { 
 				ctx.traceF.errorTxt(' Erreur lors du remplissage du nom de la voie');
-				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-				data.contratCourantAdhesion.statuts.finCreation = true;
-				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				data.contratCourantAdhesion.notes.commentaireContrat = ' Voie introuvable --> Passage en France ss ctrl';
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle);
 				return;
 			}
 		});
 }});
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle');
+	// L'adresse est introuvable dans la base Infinite, on enregistre l'adresse en "france sans controle "
+	/// Pays : France ss ctrl
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysAdresse.set('ZZZ');
+	// Code postal :
+	var cp = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CODE_POSTAL;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodePostal.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodePostal.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oCodePostal.set(cp);
+	// Localite
+	var localite = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].LIBELLE_LOCALITE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oLocalite.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oLocalite.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oLocalite.set(localite);
+	// Escalier
+	var complementAdresse_1 = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_IDENT_DEST;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oEscalierEtage.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oEscalierEtage.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oEscalierEtage.set(complementAdresse_1);
+	// Résidence, Batiment..
+	var complementAdresse_2 = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_IDENTIF_GEO;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBatimentAdresse.setFocus();
+		ActivInfinitev7.pAdhIndivIntervtPrin.oBatimentAdresse.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBatimentAdresse.set(complementAdresse_2);
+	// numéro de voie
+	var numeroVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].NUMERO_VOIE;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumeroAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumeroAdresse.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumeroAdresse.set(numeroVoie);
+	// Complement Voie
+	var complementVoie = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].COMP_NUM_VOIE 
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBtqAdresse.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBtqAdresse.set('');
+	ActivInfinitev7.pAdhIndivIntervtPrin.oBtqAdresse.set(complementVoie); 
+	
+	sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_Prestation);
+	return;
+	
+	
+}});
+
+
+
+
 
 
 /** Description */
@@ -679,7 +824,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Prestation: function(ev, sc, st) {
 		//Virement
 		ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('V');
 		sc.endStep();
-	return;
+		return;
 	}
 	else if(typeAbo == 'N' && cptBanque ==''){
 		// Rejet
@@ -693,7 +838,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Prestation: function(ev, sc, st) {
 		// Virement email
 		ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('VE');
 		sc.endStep();
-	return;
+		return;
 	}
 	
 }});
@@ -902,9 +1047,15 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN: function(ev, sc, st) {
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
 	// Clef IBAN
 	var cleIBAN = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CLE_IBAN;
+	cleIBAN = cleIBAN.substr(2,2);
 	ActivInfinitev7.pAdhIndivIntervtPrin.oCleIBAN.setFocus();
 	ActivInfinitev7.pAdhIndivIntervtPrin.oCleIBAN.set(cleIBAN);
-	codeIBAN = codeIBAN.substr(0,2);
+	// Identificateur National
+	
+	/// Bic
+	var bic = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].BIC;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumBic.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oNumBic.set(bic);
 	sc.endStep();
 	return;
 }});
@@ -912,10 +1063,11 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN_PAYS: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN_PAYS');
 	var codeIBAN = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].CLE_IBAN;
 	codeIBAN = codeIBAN.substr(0,2);
 	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.set('');
 	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.keyStroke(codeIBAN);
 	var countPoll=0;	
 	ctx.polling({	
@@ -954,6 +1106,75 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN_PAYS: function(ev, sc, s
 			return;
 		}
 	});
+}});
+
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_DonneesMandat: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_DonneesMandat');
+	var dateSign = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].DATE_SIGN_MANDAT;
+	ActivInfinitev7.pAdhIndivIntervtPrin.oDateSignature.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.oDateSignature.set(dateSign);
+	 
+	
+	sc.endStep();
+	return;
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_VerificationDesDonnees: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_VerificationDesDonnees');
+	/// on quitte la page intervenant principal
+	//ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.setFocus();
+	ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.click();
+	sc.endStep();
+	return;
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_GestionsDesErreurs');
+	// on verifie qu'il n'y a pas d'erreurs, si oui on continue sinon on traite l'erreur
+	
+	
+	
+//	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function () {
+//		ActivInfinitev7.pIdentContratRechConsul.oContratIndiv.set(data.contratCourantCMU.dataLocale.numeroContratIndiv);
+//		ActivInfinitev7.pIdentContratRechConsul.btRecherche.click();
+//	});
+	
+
+	 ActivInfinitev7.pAdhIndivIntervtPrin.wait(function () {
+		 if(ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre.exist()){
+		 		var msg = ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre.get().trim();
+			 if(msg.indexOf('RIB')!=-1){
+			 	// le blocage concerne le RIB
+				// On modifie la prestation en mode cheque annuel
+				 
+			 }
+				
+				sc.endStep();
+				return ;
+		 }
+		 else{
+		 	ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - contract trouve');
+			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
+			sc.endStep();
+			return ;
+		}
+
+});
+
 }});
 
 /** Description */

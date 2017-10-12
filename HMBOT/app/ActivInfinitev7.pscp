@@ -3145,6 +3145,8 @@
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[method\=modifModeReglement&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
 						<URL Scan="Like"><![CDATA[method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=modifDateSignature&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_325&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -3220,7 +3222,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oLocaliteAdresseDispl">
+						<OBJET Name="oLocalite">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R40R0R0R1R0R0R1R2R3R1">
 									<ATT Name="name">
@@ -3427,7 +3429,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateSignatue">
+						<OBJET Name="oDateSignature">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R45R0R0R1R0R0R0R4R1">
 									<ATT Name="name">
@@ -3520,6 +3522,42 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btSuivant">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="190.R0R1R7R0R1R0R0R0R1R0R0R2R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSuivant]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClosePopUp">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="205.R0R1R3R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPopUpTitre">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="205.R0R1R3R0R1">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInformationRattachem" MustNotExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="207.R0R1R7R0R0R2R0R0R0R55R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1137181_1" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="190" Techno="WEB" Timestamp="09/10/2017 11:37:41" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1605598_1" Comment="Adhésions individuelles - N°22629464 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="194" Techno="WEB" Timestamp="09/10/2017 16:06:24" />
@@ -3528,6 +3566,42 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1757036_1" Comment="Adhésions individuelles - N°22629502 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="199" Techno="WEB" Timestamp="10/10/2017 17:57:24" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1801395_1" Comment="Adhésions individuelles - N°22629502 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="200" Techno="WEB" Timestamp="10/10/2017 18:02:01" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1827468_1" Comment="Adhésions individuelles - N°22629503 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="201" Techno="WEB" Timestamp="10/10/2017 18:28:08" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1101176_1" Comment="Adhésions individuelles - N°22629511 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="203" Techno="WEB" Timestamp="11/10/2017 11:01:43" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1644032_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="205" Techno="WEB" Timestamp="11/10/2017 16:44:26" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1707093_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="207" Techno="WEB" Timestamp="11/10/2017 17:07:28" />
+				</PAGE>
+				<PAGE Name="pAdhIndivIdentAssures" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oBtnPageCourante">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="206.R0R1R7R0R0R0R2R0R3">
+									<TAG Name="DIV" Scope="Children" CapturedPos="206.R0R1R7R0R0R0R2R0R3R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-incomplete cgd-step-active disable tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Identification des assurés]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInformationRattachem" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1702348_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="206" Techno="WEB" Timestamp="11/10/2017 17:02:52" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>

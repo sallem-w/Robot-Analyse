@@ -66,7 +66,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.CLE_RIB = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CLE_RIB);
 		temp_contrat.CLE_IBAN = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CLE_IBAN);
 		temp_contrat.BIC = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.BIC);
-		temp_contrat.DATE_SIGN_MANDAT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_SIGN_MANDAT);
+		temp_contrat.DATE_SIGN_MANDAT = ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_SIGN_MANDAT)));
 		temp_contrat.CODE_PAYS_RIB = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_PAYS_RIB);
 		temp_contrat.CODE_GR = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_GR);
 		temp_contrat.CAISSE_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CAISSE_RO);
