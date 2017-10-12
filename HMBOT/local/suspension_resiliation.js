@@ -196,7 +196,7 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 /** Description */
 ActivInfinitev7.step({ stNaviguerVersBlocNotesSuspension: function(ev, sc, st) {
 	var data = sc.data;
-	st.onTimeout(90000,function(sc,st){
+	st.onTimeout(150000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Paramètre de calcul ';
 		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
