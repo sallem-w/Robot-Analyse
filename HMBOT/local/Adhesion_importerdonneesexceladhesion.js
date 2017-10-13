@@ -68,11 +68,11 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.BIC = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.BIC);
 		temp_contrat.DATE_SIGN_MANDAT = ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_SIGN_MANDAT)));
 		temp_contrat.CODE_PAYS_RIB = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_PAYS_RIB);
-		temp_contrat.CODE_GR = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_GR);
+		temp_contrat.CODE_GR = ctx.stringF.format2c(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_GR));
 		temp_contrat.CAISSE_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CAISSE_RO);
 		temp_contrat.CENTRE_PAIEMENT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CENTRE_PAIEMENT);
 		temp_contrat.NUM_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_RO);
-		temp_contrat.CLE_NUM_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CLE_NUM_RO);
+		temp_contrat.CLE_NUM_RO = ctx.stringF.format2c(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CLE_NUM_RO));
 		temp_contrat.RANG_GEM_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.RANG_GEM_RO);
 		temp_contrat.ASSURE_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.ASSURE_RO);
 		temp_contrat.NUM_PROD_1 = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_PROD_1);
