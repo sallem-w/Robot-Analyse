@@ -166,6 +166,9 @@ ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
 				data.ppCouranteAnalyse.dataEnLigne.nbContrat = ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.count();
 				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
 				return;
+			}else{
+				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
+				return;
 			}	
 	}else{
 		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);

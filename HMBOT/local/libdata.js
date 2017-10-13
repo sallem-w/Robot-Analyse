@@ -108,11 +108,6 @@ ctx.dataF = (function () {
 				tabGammeCode : [],
 				tabProduits: [],
 				numSEQ : '',
-//				tabListeProduits: [{
-//					numProdC : '',
-//					numProdP : ''
-//				}
-//				] 
 				tabListeProduits : []
 			},
 			dataEnLigne: {
