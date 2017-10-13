@@ -47,6 +47,9 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_IdentifiantAdherent);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO_SelectionRegime);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -1283,6 +1286,124 @@ ActivInfinitev7.step({ stPageIdentificationAssures: function(ev, sc, st) {
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures');
 	sc.endStep();
 	return;
+}});
+
+
+
+ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_IdentifiantAdherent');
+	var nomDeNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.NOM_JEUNE_FILLE;
+	var sexe = data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_SEX;
+	var dateNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.BRTH_DAY_GREG;
+	var situFamille =  data.contratCourantAdhesion.dataLocale.contratTemp.SITUATION_FAMILLE;
+	ctx.log('Identification Adhérent');
+	ctx.log(' Nom e de naissance : '+nomDeNaissance+'  Sexe : '+sexe+' Date de naissance : '+dateNaissance+' situation Famille : '+situFamille);
+	ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.keyStroke(nomDeNaissance);
+	ActivInfinitev7.pAdhIndivIdentAssures.oSexe.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oSexe.set(sexe);
+	ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.set(dateNaissance);	
+	ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.set(situFamille);
+	sc.endStep();
+	return;
+}});
+
+
+
+
+ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO');
+	/// Assure RO
+	var AssureRO = data.contratCourantAdhesion.dataLocale.contratTemp.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
+	ActivInfinitev7.pAdhIndivIdentAssures.oTypAssRO.click(true);
+	/// Numero RO
+	var numRO = data.contratCourantAdhesion.dataLocale.contratTemp.NUM_RO;
+	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.set(numRO);
+	/// Clef RO
+	var cleRO = data.contratCourantAdhesion.dataLocale.contratTemp.CLE_NUM_RO;
+	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.set(cleRO);
+	
+	/// caisse RO 
+	var caisseRO = data.contratCourantAdhesion.dataLocale.contratTemp.CAISSE_RO;
+	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.set(caisseRO);
+	
+	/// Centre RO
+	var centrePaiement = data.contratCourantAdhesion.dataLocale.contratTemp.CENTRE_PAIEMENT;
+	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.set(centrePaiement);
+	
+	// Teletransmission 
+	var teletrans = data.contratCourantAdhesion.dataLocale.contratTemp.IND_TLT;
+	/// verifier si la case est cochée si teletrans O il faut la cocher sinon la décocher si necessaire
+	
+	
+	sc.endStep();
+	return;
+}});
+
+ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO_SelectionRegime: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO_SelectionRegime');
+	
+	/// Organisme RO
+	var organismeRO = data.contratCourantAdhesion.dataLocale.contratTemp.CODE_GR;
+	ActivInfinitev7.pAdhIndivIdentAssures.oRegimeRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oRegimeRO.keyStroke(organismeRO);
+	var countPoll=0;
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIdentAssures.oSelectRegime.count()>0;
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			var nbRegime = ActivInfinitev7.pAdhIndivIdentAssures.oSelectRegime.count();
+			if(nbRegime==1){
+				//Il n'y a qu'un seul pays
+				ActivInfinitev7.pAdhIndivIdentAssures.oSelectRegime.i(0).click();
+				sc.endStep();
+				return;
+			}
+			else{
+				/// il y a plusieurs  regimes possibles
+				ctx.traceF.errorTxt(' Confusion sur le régime , on ne traite pas le dossier ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Confusion sur le régime ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage de l organisme RO');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage de l organisme RO  ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
+
+
+ActivInfinitev7.step({ stPageIdentificationAssures_Validation: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Validation');
+	ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
+	
+	
+	
+	
 }});
 
 

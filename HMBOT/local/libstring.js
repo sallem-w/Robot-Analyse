@@ -11,5 +11,10 @@
 		return str.replace(/\n|\r/g,' ');
 	};
 
+		//padLeft
+	stringF.format2c = function(nombre) {
+	    return String("00" + nombre).slice(-2);
+	}
+	
 	return stringF;
 }) ();
