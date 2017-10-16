@@ -54,7 +54,10 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
 
+<<<<<<< HEAD
 >>>>>>> 'ConfigurationSuspension2201'
+=======
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 	sc.endStep();
 	return;
 }});

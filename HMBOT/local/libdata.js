@@ -4,6 +4,7 @@ ctx.dataF = (function () {
 				scenarioConfig : '',
 				codeScenario : '',
 <<<<<<< HEAD
+<<<<<<< HEAD
 				nomScenario:'',
         webData : {
             url:'',
@@ -63,12 +64,17 @@ ctx.dataF = (function () {
 				dictContratsCourantCMU : [],
 				dateFinEffSituatParti : ''
 =======
+=======
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
                 dictContratsCourantCMU : [],
 								dateFinEffSituatParti : ''
+<<<<<<< HEAD
 >>>>>>> 'ModifsRebase'
+=======
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
             },
             dataEnLigne: {
               numeroContratIndiv : '',

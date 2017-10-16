@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
 =======
 =======
@@ -48,6 +49,21 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 		data.config = ctx.configF.recupConfigScenario(data.codeDuScenario);
 		
 
+=======
+	ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
+		
+		var data = sc.data;
+		 
+  	ctx.traceF.infoTxt('init pivot file ' + data.codeDuScenario);
+    if (!ctx.configF.init(data.codeDuScenario)) {
+    	return sc.endScenario();
+    }
+
+            
+		data.config = ctx.configF.recupConfigScenario(data.codeDuScenario);
+		
+
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 		ctx.traceF.infoTxt(JSON.stringify(data.config));
     ctx.traceF.infoTxt('STEP - Create Pivot');
     ctx.traceF.infoTxt(ctx.options.serverURL + '\\harmonieCustomer.exe ' + ctx.configF.recupererCheminRacine());
@@ -57,6 +73,7 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
     ctx.traceF.infoTxt('STEP - readFile');
     ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
     var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
+<<<<<<< HEAD
 >>>>>>> 'ModifsRebase'
 		
 		var json = {
@@ -77,6 +94,13 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 		} 
 >>>>>>> 'ModifsRebase'
 		
+=======
+		
+		var json = {
+		keyLabel : {}
+		} 
+		
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
    	json = JSON.parse(fileContracts);
             
     data.headerNames = json.keyLabel;

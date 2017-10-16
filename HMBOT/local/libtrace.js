@@ -26,10 +26,14 @@
 
 		cheminFichierTrace = cheminFichier;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		traceF.constantes.touteTraceActive = ctx.configF.fichierConfig[nomScen].touteTraceActive;
 =======
 		var txtTrace = ctx.fso.file.read(cheminFichierTrace);
 >>>>>>> 'ModifsRebase'
+=======
+		var txtTrace = ctx.fso.file.read(cheminFichierTrace);
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 	};
 
 	

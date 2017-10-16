@@ -122,12 +122,15 @@ GLOBAL.events.START.on(function (ev) {
 	
 	ctx.configF.chargementFichierConfig();
 <<<<<<< HEAD
+<<<<<<< HEAD
 	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
 	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
 	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 =======
+=======
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 	//var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
 	//var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
 	//var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);

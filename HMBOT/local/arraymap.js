@@ -31,6 +31,7 @@ _.toArray = function (data) {
 	return _.map(function (key, index) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		if (isNaN(parseInt(key,10))) {
 =======
 		if (isNaN(parseInt(key))) {
@@ -38,6 +39,9 @@ _.toArray = function (data) {
 =======
 		if (isNaN(parseInt(key,10))) {
 >>>>>>> 'Suspension1010'
+=======
+		if (isNaN(parseInt(key,10))) {
+>>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 			throw new Error(JSON.stringify(data) + ' : Cannot be converted to array, key : ' + key + ' is not a number');
 		}
 		return data[key];

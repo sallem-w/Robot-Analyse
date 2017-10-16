@@ -227,6 +227,10 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="193.R0R1R5R1R0R0R0R1R5R0">
 									<ATT Name="Text">
+						<OBJET Name="btVisuCompte">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="193.R0R1R5R1R0R0R0R1R5R0">
+									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[Visualisation du compte]]></VALUE>
 									</ATT>
 								</TAG>
@@ -240,9 +244,11 @@
 					<CAPTURE Name="PAGE_Haum0aActivInfini_1658239_1" Comment="haum0a - Activ Infinite - Module de gestion" CtxtId="117" Techno="WEB" Timestamp="11/07/2017 16:58:36" />
 					<CAPTURE Name="PAGE_Haum03ActivInfini_1115520_1" Comment="haum03 - Activ Infinite - Module de gestion" CtxtId="170" Techno="WEB" Timestamp="26/09/2017 11:16:03" />
 					<CAPTURE Name="PAGE_Haum03ActivInfini_1505225_1" Comment="haum03 - Activ Infinite - Module de gestion" CtxtId="188" Techno="WEB" Timestamp="05/10/2017 15:05:33" />
+					<CAPTURE Name="PAGE_Haum03ActivInfini_1607031_1" Comment="haum03 - Activ Infinite - Module de gestion" CtxtId="193" Techno="WEB" Timestamp="03/10/2017 16:07:12" />
 				</PAGE>
 				<PAGE Name="pContexteContratRech" Comment="Contexte Contrat - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action=afficher]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Contexte Contrat]]></TITRE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action\=afficherContrat]]></URL>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/Go\.do\?id([\dA-Z\.-=]+)&action=afficherContrat]]></URL>
@@ -538,6 +544,20 @@
 										<VALUE Scan="Full"><![CDATA[ListeCtt]]></VALUE>
 									</ATT>
 						<OBJET Name="oTypeRelation">
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTypeRelation">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0R4" Range="4" />
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="oSoldeGlobal">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="211.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0">
@@ -548,6 +568,22 @@
 											</TAG>
 										</TAG>
 									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPart">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="211.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="211.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="211.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="211.R0R1R7R0R3R0R15R1R0R0R0R1R0R3R1R0R0R1R0R1" Range="1">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 								</TAG>
 							</CRITERE>
 						</OBJET>
@@ -792,6 +828,16 @@
 							</CRITERE>
 						</OBJET>
 						<OBJET Name="btDETAIL">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="166.R0R1R3R0R2R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[DETAIL]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDivErreur" MustNotExist="Y">
+							<CRITERE>
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="166.R0R1R3R0R2R1R0R0">
 									<ATT Name="Text">
