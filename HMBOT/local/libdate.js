@@ -106,7 +106,14 @@ dateF.mettreEnFormeDateExcel = function(date){
 		var thisMonth = String(date.substr(4,2));
 		var thisYear = String(date.substr(0,4));
 		var dateReecrite = thisDay + '/' + thisMonth + '/' + thisYear;
-		return dateReecrite;
+		if(thisDay==='00' && thisMonth ==='00' && thisYear ==='00')
+		{
+			var vide = '';
+			return vide;
+		}
+		else{
+			return dateReecrite;
+		}
 	}
 }
 	
