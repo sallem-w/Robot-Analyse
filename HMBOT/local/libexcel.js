@@ -133,18 +133,16 @@ excelF.remplirObjetTableau = function(Index, arrayMessage) {
 excelF.remplirTableau = function(rowIndex, arrayMessage) {
 		for (var i in arrayMessage) {
 			var message = arrayMessage[i];
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			//ctx.log(message);
 			//ctx.log(parseInt(i,10) + 1);
 			ctx.excel.sheet.setCell(rowIndex, parseInt(i,10) + 1, String(message));
 			//ctx.log(String(message));
-=======
+
 			ctx.excel.sheet.setCell(rowIndex, parseInt(i,10) + 1, String(message));
->>>>>>> 'FinRebase1010'
-=======
+
 			ctx.excel.sheet.setCell(rowIndex, parseInt(i,10) + 1, String(message));
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
+
 		}
 	}
 

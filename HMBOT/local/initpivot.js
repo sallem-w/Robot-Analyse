@@ -1,16 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
-=======
-=======
->>>>>>> 'Modifs2609'
-=======
->>>>>>> 'ModifsRebase'
-ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
->>>>>>> 'ConfigurationSuspension2201'
+
+ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
+
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
 	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
@@ -28,61 +18,12 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 	ctx.traceF.infoTxt('STEP - readFile');
 	ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
 	var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
-<<<<<<< HEAD
+
 	var json = {
 		customerName : '',
 		data : {},
 		keyLabel : {}
 	};
-=======
-=======
-	ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
-		
-		var data = sc.data;
-		 
-  	ctx.traceF.infoTxt('init pivot file ' + data.codeDuScenario);
-    if (!ctx.configF.init(data.codeDuScenario)) {
-    	return sc.endScenario();
-    }
-
-            
-		data.config = ctx.configF.recupConfigScenario(data.codeDuScenario);
-		
-
-=======
-	ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
-		
-		var data = sc.data;
-		 
-  	ctx.traceF.infoTxt('init pivot file ' + data.codeDuScenario);
-    if (!ctx.configF.init(data.codeDuScenario)) {
-    	return sc.endScenario();
-    }
-
-            
-		data.config = ctx.configF.recupConfigScenario(data.codeDuScenario);
-		
-
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
-		ctx.traceF.infoTxt(JSON.stringify(data.config));
-    ctx.traceF.infoTxt('STEP - Create Pivot');
-    ctx.traceF.infoTxt(ctx.options.serverURL + '\\harmonieCustomer.exe ' + ctx.configF.recupererCheminRacine());
-    var result = ctx.execRun(ctx.configF.cheminVersAppliHarmonieCustomer() + ' ' + ctx.configF.recupererCheminRacine(), 1, true);
-    ctx.traceF.infoTxt('result : ' + result);
-            
-    ctx.traceF.infoTxt('STEP - readFile');
-    ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
-    var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
-<<<<<<< HEAD
->>>>>>> 'ModifsRebase'
-		
-		var json = {
-		keyLabel : {}
-<<<<<<< HEAD
-	} 
-	json = JSON.parse(fileContracts);
->>>>>>> 'ModifsRebase'
-	
 	json = JSON.parse(fileContracts);
 	var entetes = json.keyLabel;
 	var contracts = {
@@ -90,17 +31,7 @@ ActivInfinitev7.step({ initPivot : function(ev, sc, st) {
 	}
 	contracts = json.data;
 	var countContracts = contracts.length;
-=======
-		} 
->>>>>>> 'ModifsRebase'
 		
-=======
-		
-		var json = {
-		keyLabel : {}
-		} 
-		
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
    	json = JSON.parse(fileContracts);
             
     data.headerNames = json.keyLabel;

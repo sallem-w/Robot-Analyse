@@ -38,10 +38,6 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-<<<<<<< HEAD
-=======
-	
-
 	ctx.log('--> template.json :  Excel Debut');
 	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
 	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le template.JSON
@@ -54,10 +50,7 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
 	ctx.log('fichier résultat créé');
 
-<<<<<<< HEAD
->>>>>>> 'ConfigurationSuspension2201'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
+
 	sc.endStep();
 	return;
 }});

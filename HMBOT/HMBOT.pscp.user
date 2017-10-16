@@ -1,364 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="215" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="7318" Length="66"><![CDATA[data.contratsSuspension[indexSuspension] = data.contracts[index] ;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="216" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="7388" Length="18"><![CDATA[indexSuspension++;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="213" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="7261" Length="49"><![CDATA[if (data.contracts[index]['Type']== 'SUSPENSION')]]></BREAKPOINT>
-	</BREAKPOINTS>
-	<BOOKMARKS />
-<<<<<<< HEAD
-<<<<<<< HEAD
-	<FINDHISTORY>
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<FINDWHAT><![CDATA[events.load]]></FINDWHAT>
-		<FINDWHAT><![CDATA[event.load]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stProduitCMUSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAffichageInforRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[vargloba]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.log]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
-		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucune date de fin d'effet n'a été trouvé pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecherContratIndivCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel.debut]]></FINDWHAT>
-		<FINDWHAT><![CDATA[recupConfigScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.scenarioConfig.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.chargementFichierConfig()]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.init]]></FINDWHAT>
-		<FINDWHAT><![CDATA[fichierConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[status]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dureeTraitement]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statistiquesF]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pIdentContratRechConsul.]]></REPLACEWITH>
-	</FINDHISTORY>
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-		<OPENDOC LineNumber="29" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="125" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="184" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="35" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='testDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="10" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigCMUClass']" Offset="0" Length="0" />
-=======
-		<FINDWHAT><![CDATA[var confFileClass ]]></FINDWHAT>
-	</FINDHISTORY>
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-		<OPENDOC LineNumber="177" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="77" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="57" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="53" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='arrayMap']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="15" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='objectHelper']" Offset="0" Length="0" />
->>>>>>> 'ConfigurationSuspension2201'
-	</OPENDOCS>
-	<PROPERTIES>
-		<CurPerspective><![CDATA[1]]></CurPerspective>
-	</PROPERTIES>
-	<WATCHES />
-=======
-	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="104" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4761" Length="137"><![CDATA[ctx.traceF.errorTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - erreur recherche contrat à la résiliation: ' + msgErreur);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="4347" Length="111"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP - stNaviguerVersBlocNotes');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1503" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="55" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2588" Length="3"><![CDATA[});]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="24" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="374" Length="27"><![CDATA[configExcel = config.excel;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="316" Length="55"><![CDATA[config = ctx.configF.recupConfigScenario(codeScenario);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="827" Length="39"><![CDATA[return configExcel.debutIndexLigne - 1;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="2126" Length="76"><![CDATA[ActivInfinitev7.step( { stRechercheSoldeSuspension : function (ev, sc, st) {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="51" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="2205" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="67" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="2919" Length="129"><![CDATA[ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Début - scénario scVerificationSoldeContratSuspension');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="3891" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="194" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="8269" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="211" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="9260" Length="54"><![CDATA[ActivInfinitev7.pIdentContResilRech.btSuivant.click();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="210" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="9203" Length="54"><![CDATA[ActivInfinitev7.pIdentContResilRech.wait(function(ev){]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="181" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="8044" Length="59"><![CDATA[ActivInfinitev7.pIdentContResilRech.btBtnContinuer.click();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="174" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="7859" Length="13"><![CDATA[ctx.polling({]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="173" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="7801" Length="54"><![CDATA[ActivInfinitev7.pIdentContResilRech.wait(function(ev){]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="155" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="6763" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="178" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="7940" Length="66"><![CDATA[return ActivInfinitev7.pIdentContResilRech.btBtnContinuer.exist();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="123" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5211" Length="38"><![CDATA[ctx.configF.chargementFichierConfig();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="125" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5252" Length="74"><![CDATA[var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="121" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5150" Length="57"><![CDATA[ctx.string.init(); // Afin d'utiliser la librairie string]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="83" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2256" Length="34"><![CDATA[configF.chargementFichierConfig();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="84" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2293" Length="64"><![CDATA[configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="85" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2360" Length="49"><![CDATA[var config = configF.fichierConfig[codeScenario];]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="86" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2412" Length="43"><![CDATA[configF.cheminRacine = config.cheminRacine;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="45" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1009" Length="48"><![CDATA[ctx.log('-->configF.chargementFichierConfig()');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1151" Length="44"><![CDATA[configF.fichierConfig = new confFileClass();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="46" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1060" Length="88"><![CDATA[var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + configF.nomFichierConfig);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1198" Length="43"><![CDATA[configF.fichierConfig = JSON.parse(chemin);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1244" Length="64"><![CDATA[configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1311" Length="62"><![CDATA[ctx.log('Initialisation : Chargement du fichier config.json');]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[reprisePoolingContinuer]]></FINDWHAT>
-		<FINDWHAT><![CDATA[polling]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stFinResiliationSuspension]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.contratCourantSuspension.notes.statusContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stFinRechercheBenefSynthese]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.indexLextureSynthes]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.status.faireResiliationContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLancerVerificationSoldeContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLancerVerificationContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[btRechDetaillee]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.popup]]></FINDWHAT>
-		<FINDWHAT><![CDATA[type]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pContContratRechDet]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pas trou]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stbenef]]></FINDWHAT>
-		<FINDWHAT><![CDATA[n'est pas trouvé pour]]></FINDWHAT>
-		<FINDWHAT><![CDATA[contratsSuspension]]></FINDWHAT>
-		<FINDWHAT><![CDATA[indexContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[DateNaissance]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminRacine]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[scVerificationSoldeContratSuspension]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[Suspension]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantSuspension.infos['RONumber']]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pIdentContratRechConsul.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pBlocNotes]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[traceF.]]></REPLACEWITH>
+		<FINDWHAT><![CDATA[chargementFichierConfig]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Erreur de syntaxe]]></FINDWHAT>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-=======
-	<FINDHISTORY />
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-<<<<<<< HEAD
-		<OPENDOC LineNumber="16" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="65" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="54" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-=======
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-=======
-	<FINDHISTORY>
-		<FINDWHAT><![CDATA[stroke]]></FINDWHAT>
-		<FINDWHAT><![CDATA[keystroke]]></FINDWHAT>
-		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[btSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.constantes.adehsion]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.constantes.adhesionIndividuelle]]></FINDWHAT>
-		<FINDWHAT><![CDATA[indiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[lancerVerificationSoldeContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stFinResiliationSuspension]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContratRechResu]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContResilRechRe]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContResilRech]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucun contrat ]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucun contrat correspondant aux]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Revoir centre: Aucun contrat correspondant aux critères de recherche]]></FINDWHAT>
-		<FINDWHAT><![CDATA[touteTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ERAM]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ERAM_Mise à jour]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Mise à jour à Traiter]]></FINDWHAT>
-		<FINDWHAT><![CDATA[initialisation]]></FINDWHAT>
-	</FINDHISTORY>
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<OPENDOC LineNumber="161" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-=======
-		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-<<<<<<< HEAD
-		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-=======
-		<OPENDOC LineNumber="295" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="101" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="150" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="129" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-=======
-		<OPENDOC LineNumber="44" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
->>>>>>> 'ModifsRebase'
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="129" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="150" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="295" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-=======
->>>>>>> 'FinRebase1010'
-		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="295" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="150" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="129" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-=======
->>>>>>> 'ModifsSuspension1010Version3'
-		<OPENDOC LineNumber="44" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="129" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="150" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="295" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-=======
-		<OPENDOC LineNumber="125" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="92" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="84" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="116" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="215" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="62" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="0" Length="0" />
->>>>>>> 'ModifsSuspension1110'
-=======
-		<OPENDOC LineNumber="1518" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="87" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_solde']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="215" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="116" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="84" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="92" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="125" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 'ModifsSuspension1110'
-=======
-=======
-		<OPENDOC LineNumber="171" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-=======
-		<OPENDOC LineNumber="165" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
->>>>>>> 'Modifs1210'
-=======
-		<OPENDOC LineNumber="163" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
->>>>>>> 'Modfis1210'
-=======
-		<OPENDOC LineNumber="111" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="170" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
->>>>>>> 'SuspensionModifs1610'
-		<OPENDOC LineNumber="256" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="38" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
->>>>>>> 'Modifs1111Version3'
-		<OPENDOC LineNumber="1523" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-<<<<<<< HEAD
-		<OPENDOC LineNumber="423" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-<<<<<<< HEAD
-		<OPENDOC LineNumber="165" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="99" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 'Modifs1111Version3'
-=======
-		<OPENDOC LineNumber="199" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="109" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 'Modifs1210'
-=======
-		<OPENDOC LineNumber="213" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="199" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-<<<<<<< HEAD
-		<OPENDOC LineNumber="130" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 'Modfis1210'
-=======
-		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 'SuspensionModifs1610'
-=======
-		<FINDWHAT><![CDATA[stroke]]></FINDWHAT>
-		<FINDWHAT><![CDATA[keystroke]]></FINDWHAT>
-		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[btSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.constantes.adehsion]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.constantes.adhesionIndividuelle]]></FINDWHAT>
-		<FINDWHAT><![CDATA[indiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[lancerVerificationSoldeContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stFinResiliationSuspension]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContratRechResu]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContResilRechRe]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContResilRech]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucun contrat ]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucun contrat correspondant aux]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Revoir centre: Aucun contrat correspondant aux critères de recherche]]></FINDWHAT>
-		<FINDWHAT><![CDATA[touteTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ERAM]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ERAM_Mise à jour]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Mise à jour à Traiter]]></FINDWHAT>
-		<FINDWHAT><![CDATA[initialisation]]></FINDWHAT>
-	</FINDHISTORY>
-	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS>
-		<OPENDOC LineNumber="111" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="170" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="256" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="38" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1523" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="213" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="199" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_resiliation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
+		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="123" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="114" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="166" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
@@ -366,21 +35,10 @@
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[message]]></WATCH>
-		<WATCH><![CDATA[i]]></WATCH>
-		<WATCH><![CDATA[rowIndex]]></WATCH>
-		<WATCH><![CDATA[ctx.configF.scenario.Suspension]]></WATCH>
-		<WATCH><![CDATA[configSuspension.cheminRacine]]></WATCH>
-		<WATCH><![CDATA[ctx.configF.fichierConfigScenario]]></WATCH>
-		<WATCH><![CDATA[data.status.lancerVerificationSoldeContrat]]></WATCH>
-		<WATCH><![CDATA[data.countContratsSuspension]]></WATCH>
-		<WATCH><![CDATA[toutesParts[index]).indexOf(data.constantes.adhesion)]]></WATCH>
-		<WATCH><![CDATA[data.constantes.adhesion]]></WATCH>
-		<WATCH><![CDATA[(toutesParts[index]).indexOf(data.constantes.adhesion)]]></WATCH>
-		<WATCH><![CDATA[toutesParts[index]]]></WATCH>
-		<WATCH><![CDATA[data.constantes.adhesio]]></WATCH>
-		<WATCH><![CDATA[tousSoldes[index]]]></WATCH>
-		<WATCH><![CDATA[data.contracts[index]['Type']]]></WATCH>
+		<WATCH><![CDATA[chemin]]></WATCH>
+		<WATCH><![CDATA[configF.fichierConfig]]></WATCH>
+		<WATCH><![CDATA[ctx.options.serverURL]]></WATCH>
+		<WATCH><![CDATA[ configF.nomFichierConfig]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />

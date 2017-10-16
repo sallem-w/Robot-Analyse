@@ -121,16 +121,14 @@ GLOBAL.events.START.on(function (ev) {
 	ctx.string.init(); // Afin d'utiliser la librairie string
 	
 	ctx.configF.chargementFichierConfig();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
 	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
 	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
-=======
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
+
+
 	//var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
 	//var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
 	//var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
@@ -138,8 +136,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
 	//var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	
->>>>>>> 'ConfigurationSuspension2201'
-	
+
 		/*if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
@@ -188,8 +185,8 @@ GLOBAL.events.START.on(function (ev) {
 			ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
 		});	
-	}*/
-});
+	//}
+//});
 
 /** Auto-update menu handler */
 GLOBAL.events.UPDATECTX.on(function(ev) {

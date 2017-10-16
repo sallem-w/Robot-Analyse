@@ -26,34 +26,8 @@ ActivInfinitev7.pTabDeBord.btFinCMU = ActivInfinitev7.pTabDeBord.addItem('btFinC
 ActivInfinitev7.pTabDeBord.btFinACS = ActivInfinitev7.pTabDeBord.addItem('btFinACS');
 ActivInfinitev7.pTabDeBord.btSansEffetResiC = ActivInfinitev7.pTabDeBord.addItem('btSansEffetResiC');
 ActivInfinitev7.pTabDeBord.btCagSituatPart = ActivInfinitev7.pTabDeBord.addItem('btCagSituatPart');
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActivInfinitev7.pTabDeBord.btMenuResilConcu = ActivInfinitev7.pTabDeBord.addItem('btMenuResilConcu');
-ActivInfinitev7.pTabDeBord.btGroupeObligatoireExterne = ActivInfinitev7.pTabDeBord.addItem('btGroupeObligatoireExterne');
-<<<<<<< HEAD
-ActivInfinitev7.pTabDeBord.btMenuResilException = ActivInfinitev7.pTabDeBord.addItem('btMenuResilException');
-ActivInfinitev7.pTabDeBord.btAnnulRenonciation = ActivInfinitev7.pTabDeBord.addItem('btAnnulRenonciation');
-=======
-=======
-ActivInfinitev7.pTabDeBord.btCongeParentSab = ActivInfinitev7.pTabDeBord.addItem('btCongeParentSab');
-<<<<<<< HEAD
->>>>>>> 'Modifs0310'
-<<<<<<< HEAD
->>>>>>> 'Modifs0310'
-=======
-=======
-ActivInfinitev7.pTabDeBord.btVisuCompte = ActivInfinitev7.pTabDeBord.addItem('btVisuCompte');
->>>>>>> 'Suspension1010'
->>>>>>> 'Suspension1010'
-=======
 ActivInfinitev7.pTabDeBord.btCongeParentSab = ActivInfinitev7.pTabDeBord.addItem('btCongeParentSab');
 ActivInfinitev7.pTabDeBord.btVisuCompte = ActivInfinitev7.pTabDeBord.addItem('btVisuCompte');
->>>>>>> 'ModifsRebase'
-=======
-ActivInfinitev7.pTabDeBord.btCongeParentSab = ActivInfinitev7.pTabDeBord.addItem('btCongeParentSab');
-ActivInfinitev7.pTabDeBord.btVisuCompte = ActivInfinitev7.pTabDeBord.addItem('btVisuCompte');
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 
 ActivInfinitev7.pContexteContratRech = ActivInfinitev7.addPage('pContexteContratRech', {"comment":"Contexte Contrat - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/Go.do?id=ACW1\u0026action=afficherContrat"});
 ActivInfinitev7.pContexteContratRech.btRecherche = ActivInfinitev7.pContexteContratRech.addItem('btRecherche');
@@ -79,56 +53,12 @@ ActivInfinitev7.pContexteContratOuvert.oTitrePage = ActivInfinitev7.pContexteCon
 ActivInfinitev7.pContexteContratOuvert.oDateFinEffet = ActivInfinitev7.pContexteContratOuvert.addItem('oDateFinEffet', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oContratIndiv = ActivInfinitev7.pContexteContratOuvert.addItem('oContratIndiv', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oTitrePage2 = ActivInfinitev7.pContexteContratOuvert.addItem('oTitrePage2');
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActivInfinitev7.pContexteContratOuvert.oTypeIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeIdentification');
-ActivInfinitev7.pContexteContratOuvert.oNumIdentification = ActivInfinitev7.pContexteContratOuvert.addItem('oNumIdentification');
-ActivInfinitev7.pContexteContratOuvert.btRecherche = ActivInfinitev7.pContexteContratOuvert.addItem('btRecherche');
-ActivInfinitev7.pContexteContratOuvert.oInfosSouscripteur = ActivInfinitev7.pContexteContratOuvert.addItem('oInfosSouscripteur');
-<<<<<<< HEAD
-ActivInfinitev7.pContexteContratOuvert.oDateDebutEffet = ActivInfinitev7.pContexteContratOuvert.addItem('oDateDebutEffet', {"occurs":1});
-=======
-=======
-ActivInfinitev7.pContexteContratOuvert.oTabResSynthese = ActivInfinitev7.pContexteContratOuvert.addItem('oTabResSynthese');
-ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
-ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
-ActivInfinitev7.pContexteContratOuvert.oPersonneDetailsTab = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetailsTab', {"occurs":1});
-<<<<<<< HEAD
-ActivInfinitev7.pContexteContratOuvert.oPersonneDetails = ActivInfinitev7.pContexteContratOuvert.addItem('oPersonneDetails');
-<<<<<<< HEAD
->>>>>>> 'Modifs2609'
-<<<<<<< HEAD
->>>>>>> 'Modifs2609'
-=======
-=======
-=======
->>>>>>> 'Modifs0310'
-ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
->>>>>>> 'Modifs2709'
-<<<<<<< HEAD
->>>>>>> 'Modifs2709'
-=======
-=======
-=======
->>>>>>> 'ModifsRebase'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 ActivInfinitev7.pContexteContratOuvert.btNoInsee = ActivInfinitev7.pContexteContratOuvert.addItem('btNoInsee', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oStatus = ActivInfinitev7.pContexteContratOuvert.addItem('oStatus', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oTypeRelation = ActivInfinitev7.pContexteContratOuvert.addItem('oTypeRelation', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oSoldeGlobal = ActivInfinitev7.pContexteContratOuvert.addItem('oSoldeGlobal', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oPart = ActivInfinitev7.pContexteContratOuvert.addItem('oPart', {"occurs":1});
 ActivInfinitev7.pContexteContratOuvert.oDetailsPersonne = ActivInfinitev7.pContexteContratOuvert.addItem('oDetailsPersonne');
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 'Suspension1010'
->>>>>>> 'Suspension1010'
-=======
->>>>>>> 'ModifsRebase'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
 
 ActivInfinitev7.pIdentContratRechConsul = ActivInfinitev7.addPage('pIdentContratRechConsul', {"comment":"Sans effet - Changement couverture - haum04 - Activ Infinite - Module de gestion","path":"http://infinite-haum04/mdg/Go.do?id=ACCC04STD"});
 ActivInfinitev7.pIdentContratRechConsul.oContratIndiv = ActivInfinitev7.pIdentContratRechConsul.addItem('oContratIndiv');
@@ -211,7 +141,7 @@ ActivInfinitev7.pIdentAssuresAttest.btFermeture = ActivInfinitev7.pIdentAssuresA
 ActivInfinitev7.pIdentAssuresAttest.oBtnPageCourante = ActivInfinitev7.pIdentAssuresAttest.addItem('oBtnPageCourante', {"mustExist":true});
 
 ActivInfinitev7.pProdGaranConsul = ActivInfinitev7.addPage('pProdGaranConsul', {"comment":"Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage');
+ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage', {"mustExist":true});
 ActivInfinitev7.pProdGaranConsul.oListeAssures = ActivInfinitev7.pProdGaranConsul.addItem('oListeAssures', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oNomPrenomBenef = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenomBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oTypeBenef = ActivInfinitev7.pProdGaranConsul.addItem('oTypeBenef', {"occurs":1});
@@ -226,7 +156,7 @@ ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.ad
 ActivInfinitev7.pProdGaranConsul.oBtnPageCourante = ActivInfinitev7.pProdGaranConsul.addItem('oBtnPageCourante');
 
 ActivInfinitev7.pVisuCptCotisConsul = ActivInfinitev7.addPage('pVisuCptCotisConsul', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage');
+ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage', {"mustExist":true});
 ActivInfinitev7.pVisuCptCotisConsul.oDateEch = ActivInfinitev7.pVisuCptCotisConsul.addItem('oDateEch', {"occurs":1});
 ActivInfinitev7.pVisuCptCotisConsul.oSoldeCompt = ActivInfinitev7.pVisuCptCotisConsul.addItem('oSoldeCompt', {"occurs":1});
 ActivInfinitev7.pVisuCptCotisConsul.oListeProduits = ActivInfinitev7.pVisuCptCotisConsul.addItem('oListeProduits');
@@ -364,27 +294,3 @@ ActivInfinitev7.pIntervenantPrincipal.oBtnPageCourante = ActivInfinitev7.pInterv
 
 ActivInfinitev7.pServeurWebFerme = ActivInfinitev7.addPage('pServeurWebFerme', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
 ActivInfinitev7.pServeurWebFerme.oMessageErreur = ActivInfinitev7.pServeurWebFerme.addItem('oMessageErreur');
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-ActivInfinitev7.pResiliationConcu = ActivInfinitev7.addPage('pResiliationConcu', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE2B"});
-ActivInfinitev7.pResiliationConcu.oNumeroContratIndiv = ActivInfinitev7.pResiliationConcu.addItem('oNumeroContratIndiv');
-ActivInfinitev7.pResiliationConcu.oDateDebutEffet = ActivInfinitev7.pResiliationConcu.addItem('oDateDebutEffet');
-ActivInfinitev7.pResiliationConcu.oNumeroContratCol = ActivInfinitev7.pResiliationConcu.addItem('oNumeroContratCol');
-ActivInfinitev7.pResiliationConcu.oGroupeAssure = ActivInfinitev7.pResiliationConcu.addItem('oGroupeAssure');
-ActivInfinitev7.pResiliationConcu.btRecherche = ActivInfinitev7.pResiliationConcu.addItem('btRecherche');
-ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.addItem('btFermer');
-ActivInfinitev7.pResiliationConcu.oPopupConfirmation = ActivInfinitev7.pResiliationConcu.addItem('oPopupConfirmation');
-ActivInfinitev7.pResiliationConcu.btNon = ActivInfinitev7.pResiliationConcu.addItem('btNon');
-
-ActivInfinitev7.pAnnulationAdhesion = ActivInfinitev7.addPage('pAnnulationAdhesion', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE3A"});
-ActivInfinitev7.pAnnulationAdhesion.oNumeroContratIndiv = ActivInfinitev7.pAnnulationAdhesion.addItem('oNumeroContratIndiv');
-ActivInfinitev7.pAnnulationAdhesion.oDateDebutEffet = ActivInfinitev7.pAnnulationAdhesion.addItem('oDateDebutEffet');
-ActivInfinitev7.pAnnulationAdhesion.btRecherche = ActivInfinitev7.pAnnulationAdhesion.addItem('btRecherche');
-ActivInfinitev7.pAnnulationAdhesion.btFermer = ActivInfinitev7.pAnnulationAdhesion.addItem('btFermer');
-ActivInfinitev7.pAnnulationAdhesion.btNon = ActivInfinitev7.pAnnulationAdhesion.addItem('btNon');
-ActivInfinitev7.pAnnulationAdhesion.oPopupConfirmation = ActivInfinitev7.pAnnulationAdhesion.addItem('oPopupConfirmation');
-=======
->>>>>>> 'ModifsRebase'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8

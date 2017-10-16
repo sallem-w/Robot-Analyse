@@ -3,78 +3,11 @@ ctx.dataF = (function () {
     var dataF = {
 				scenarioConfig : '',
 				codeScenario : '',
-<<<<<<< HEAD
-<<<<<<< HEAD
-				nomScenario:'',
-        webData : {
-            url:'',
-            tabDeBordURL:'', 
-            identifiant:'', 
-            motDePasse:'' 
-        },
-        varGlobales : { //globalVariables
-            ligneCourante:0, //currentRow
-            indexDerniereLigne:0, //indexLastRow
-            controlSeul:false, //controlSeul
-						nomPageCourante : ''
-        }
-    };
-		
-		
-	
-	////////////////////////////////////////	
-		var statistiquesF = {
-						nomFichier : '',
-            debutTpsTraitement : 0,
-						finTpsTraitement : 0,
-						dureeTraitement : 0,
-            nbCasTraite : 0, //countCaseProcessed
-            nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
-            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
-            nbCasTraitementEchec : 0, //countCaseFailProcessed
-            nbCasRevoirCentre : 0, //countCaseBackToCenter
-            nbContratsPretsPrResiliation : 0, //sc.data.countCaseReadyToRemove
-            nbContratsResilies : 0
-        };
-		dataF.statistiquesF=statistiquesF;
-		
-		//////////////////////////////////////////////
-		
-		
-		 
-		
-////// CMU ///////////////////////////////////////////////////////////////////////////////////////////////	
-//////////////////////////////////////////////////////////////////////////////////////////////////////////		
-		var CMUtemp_contractF = {
-			typeAssure:'',
-      dateDebEffContrat:'',
-      dateFinEffContrat:'',
-      codeProduit:'',
-      dateDebEffProduit:'',
-			dateFinEffProduit:'',    
-			dateDebEffSituatParti:'',
-      dateFinEffSituatParti:''
-		}; 
-			
-		dataF.CMUtemp_contractF=CMUtemp_contractF;
-		        
-		var contratCourantCMU = {
-			dataLocale: {
-				numeroContratIndiv : '',
-				dictContratsCourantCMU : [],
-				dateFinEffSituatParti : ''
-=======
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
         contratCourantCMU: {
             dataLocale: {
                 numeroContratIndiv : '',
                 dictContratsCourantCMU : [],
 								dateFinEffSituatParti : ''
-<<<<<<< HEAD
->>>>>>> 'ModifsRebase'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
             },
             dataEnLigne: {
               numeroContratIndiv : '',
@@ -173,6 +106,7 @@ ctx.dataF = (function () {
 		
     return dataF;
 }) ();
+
 
 
 
