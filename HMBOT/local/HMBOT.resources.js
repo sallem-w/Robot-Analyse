@@ -314,26 +314,22 @@ ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.a
 
 ActivInfinitev7.pRecherchePPRefGRC = ActivInfinitev7.addPage('pRecherchePPRefGRC', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercheContrat\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRC.addItem('oSystemeExterne');
-ActivInfinitev7.pRecherchePPRefGRC.oDateDebutEffet = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateDebutEffet');
 ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC = ActivInfinitev7.pRecherchePPRefGRC.addItem('oIdentifiantGRC');
-ActivInfinitev7.pRecherchePPRefGRC.oNumeroContratCol = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroContratCol');
 ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP = ActivInfinitev7.pRecherchePPRefGRC.addItem('btRecherchePP');
-ActivInfinitev7.pRecherchePPRefGRC.oGroupeAssure = ActivInfinitev7.pRecherchePPRefGRC.addItem('oGroupeAssure');
-ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroRo', {"mustExist":true});
+ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroRo');
 ActivInfinitev7.pRecherchePPRefGRC.oNom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNom');
 ActivInfinitev7.pRecherchePPRefGRC.oPrenom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oPrenom');
 ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateNaissance');
 
 ActivInfinitev7.pRecherchePPRefGRCRes = ActivInfinitev7.addPage('pRecherchePPRefGRCRes', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oResultatParRelation');
 ActivInfinitev7.pRecherchePPRefGRCRes.oListeContrats = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oListeContrats', {"occurs":1});
-ActivInfinitev7.pRecherchePPRefGRCRes.btRecherche = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btRecherche');
 ActivInfinitev7.pRecherchePPRefGRCRes.btValider = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btValider');
 ActivInfinitev7.pRecherchePPRefGRCRes.btFermer = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btFermer');
 ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oTypeRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oIdentiteRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oStatus', {"occurs":1});
-ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
 ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
 ActivInfinitev7.pRecherchePPRefGRCRes.btVisualiser = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btVisualiser');

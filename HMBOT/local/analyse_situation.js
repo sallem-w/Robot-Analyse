@@ -70,7 +70,7 @@ ActivInfinitev7.step({ stChargementFichierIAE: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stServerConnexionAnalyse : function(ev, sc, st) {
 	var data = sc.data;
-//	ctx.traceF.infoTxt('Début étape - stServerConnexionAnalyse');
+	ctx.traceF.infoTxt('Début étape - stServerConnexionAnalyse');
 //		if (ActivInfinitev7.pServeurWebFerme.exist() && ActivInfinitev7.pServeurWebFerme.oMessageErreur.exist()) {
 //			ctx.traceF.infoTxt('Le serveur Infinite est fermé');
 //			ctx.popupF.newPopup('Le serveur Infinite est fermé');

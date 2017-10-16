@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="12" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="495" Length="111"><![CDATA[ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="151" Length="114"><![CDATA[ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');]]></BREAKPOINT>
-	</BREAKPOINTS>
+	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stOuvertureContrat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stTraiterResultatRecherchePP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[contratEstActif]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRecherchePPParRO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stRecherchePPParRO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ stRecherchePPParRO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stConsultationPP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[temp_contract]]></FINDWHAT>
 		<FINDWHAT><![CDATA[gamme]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.tabListeProduits]]></FINDWHAT>
@@ -19,13 +23,6 @@
 		<FINDWHAT><![CDATA[fichierConfigScenario]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stContratCMUtermine]]></FINDWHAT>
 		<FINDWHAT><![CDATA[recupConfigScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[chargementFichierConfigScenarioCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.options.serverURL]]></FINDWHAT>
-		<FINDWHAT><![CDATA[serverURL]]></FINDWHAT>
-		<FINDWHAT><![CDATA[confFileCMUClass]]></FINDWHAT>
-		<FINDWHAT><![CDATA[initFichierTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
-		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
@@ -49,11 +46,13 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="75" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="3360" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Core']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="133" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="71" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="39" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="129" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="195" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="154" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="174" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>

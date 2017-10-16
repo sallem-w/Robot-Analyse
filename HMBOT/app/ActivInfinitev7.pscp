@@ -2970,29 +2970,11 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oDateDebutEffet">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R3R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[dateDebutEffet]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oIdentifiantGRC">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="168.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R4R1R1">
 									<ATT Name="name">
 										<VALUE Scan="Full"><![CDATA[identifiantExterne1]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oNumeroContratCol">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R1R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numeroContratCol]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -3006,16 +2988,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oGroupeAssure">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R0R0R2R2R0R2">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[groupeAssure]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oNumeroRo" MustExist="Y">
+						<OBJET Name="oNumeroRo">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="183.R0R1R7R0R0R2R0R0R0R0R0R0R28R0R0R1R1R0R3R1R1R1">
 									<ATT Name="name">
@@ -3080,15 +3053,6 @@
 									</TAG>
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[resultListPew1]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btRecherche">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="172.R0R1R7R0R0R2R0R0R0R27R0R0R1R1R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btRecherche]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
