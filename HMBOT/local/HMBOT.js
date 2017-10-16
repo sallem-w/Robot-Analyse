@@ -181,8 +181,8 @@ GLOBAL.events.START.on(function (ev) {
 			/*ctx.traceF.initFichierTrace(configDA.cheminRacine, ctx.configF.scenario.DA);
 			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.statsF.initFileStats(ctx.configF.recupererCheminTemplate(), configDA.cheminRacine, ctx.configF.scenario.DA);*/
-			var data = {};
-			ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
+			//var data = {};
+			//ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
 		});	
 	//}

@@ -13,18 +13,12 @@
         "afficherMenu": true
     },
     "DA": {
-<<<<<<< HEAD
-        "afficherMenu": true
-=======
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\da\\"
     },
     "Suspension":{
         "afficherMenu": true,
         "cheminRacine": "C:\\deploy\\Suspension\\"
-<<<<<<< HEAD
->>>>>>> 'ConfigurationSuspension2201'
-=======
->>>>>>> 17625bff956beced4c06121be089cacd56ee4ac8
+
     }
 }
