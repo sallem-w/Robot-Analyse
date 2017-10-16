@@ -1,72 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS />
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="123" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5211" Length="38"><![CDATA[ctx.configF.chargementFichierConfig();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="125" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5252" Length="74"><![CDATA[var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="121" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="5150" Length="57"><![CDATA[ctx.string.init(); // Afin d'utiliser la librairie string]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="83" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2256" Length="34"><![CDATA[configF.chargementFichierConfig();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="84" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2293" Length="64"><![CDATA[configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="85" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2360" Length="49"><![CDATA[var config = configF.fichierConfig[codeScenario];]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="86" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="2412" Length="43"><![CDATA[configF.cheminRacine = config.cheminRacine;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="45" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1009" Length="48"><![CDATA[ctx.log('-->configF.chargementFichierConfig()');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1151" Length="44"><![CDATA[configF.fichierConfig = new confFileClass();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="46" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1060" Length="88"><![CDATA[var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + configF.nomFichierConfig);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1198" Length="43"><![CDATA[configF.fichierConfig = JSON.parse(chemin);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1244" Length="64"><![CDATA[configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="50" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="1311" Length="62"><![CDATA[ctx.log('Initialisation : Chargement du fichier config.json');]]></BREAKPOINT>
+	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[events.load]]></FINDWHAT>
-		<FINDWHAT><![CDATA[event.load]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stProduitCMUSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAffichageInforRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[vargloba]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.log]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nbCasRevoirCentre]]></FINDWHAT>
-		<FINDWHAT><![CDATA[txtTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Aucune date de fin d'effet n'a été trouvé pour le produit CMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecherContratIndivCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configExcel.debut]]></FINDWHAT>
-		<FINDWHAT><![CDATA[recupConfigScenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.scenarioConfig.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.chargementFichierConfig()]]></FINDWHAT>
-		<FINDWHAT><![CDATA[configF.init]]></FINDWHAT>
-		<FINDWHAT><![CDATA[fichierConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[status]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dureeTraitement]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statistiquesF]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pIdentContratRechConsul.]]></REPLACEWITH>
+		<FINDWHAT><![CDATA[chargementFichierConfig]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Erreur de syntaxe]]></FINDWHAT>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="29" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="125" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="184" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_scenario_principal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="35" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='testDate']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="10" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigCMUClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="123" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="114" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="166" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="48" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[ctx.log('etat'+ctx.traceF.constantes.touteTraceActive)]]></DebugTester>
+		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
-	<WATCHES />
+	<WATCHES>
+		<WATCH><![CDATA[chemin]]></WATCH>
+		<WATCH><![CDATA[configF.fichierConfig]]></WATCH>
+		<WATCH><![CDATA[ctx.options.serverURL]]></WATCH>
+		<WATCH><![CDATA[ configF.nomFichierConfig]]></WATCH>
+	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />
 </USER>

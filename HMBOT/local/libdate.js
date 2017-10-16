@@ -81,6 +81,46 @@
 			return false;
 		}
 	}
+	
+	
+		
+	dateF.premierJourMois = function(date){
+	
+		var thisYear=String(date.substr(0,4));
+		var thisMonth = String(date.substr(4,2));
+		var thisDay = '01';
+		var premierJourMois = thisDay + '/' + thisMonth + '/' + thisYear;
+		
+		return premierJourMois;
+	}
+
+dateF.mettreEnFormeDateExcel = function(date){
+	if(date===null || date === '')
+	{
+		var vide = '';
+		return vide;
+	}
+	else 
+	{
+		var thisDay = String(date.substr(6,2));
+		var thisMonth = String(date.substr(4,2));
+		var thisYear = String(date.substr(0,4));
+		var dateReecrite = thisDay + '/' + thisMonth + '/' + thisYear;
+		if(thisDay==='00' && thisMonth ==='00' && thisYear ==='00')
+		{
+			var vide = '';
+			return vide;
+		}
+		else{
+			return dateReecrite;
+		}
+	}
+}
+	
+	
+	
+	
+	
 	dateF.contains = function(a, obj) {
     for (var i = 0; i < a.length; i++) {
         if (a[i] === obj) {

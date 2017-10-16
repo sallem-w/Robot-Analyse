@@ -38,6 +38,19 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
+	ctx.log('--> template.json :  Excel Debut');
+	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
+	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le template.JSON
+	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+ 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
+	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
+	ctx.log(" Test URL : "+ data.webData.url);
+	ctx.traceF.infoTxt('Création du fichier résultat');	
+	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+	ctx.log('fichier résultat créé');
+
+
 	sc.endStep();
 	return;
 }});
@@ -191,6 +204,7 @@ ActivInfinitev7.step({ stVerifContratCMU : function(ev, sc, st) {
 			sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
 		}
 		sc.endStep();
+		return;
 	});
 }});
 
@@ -221,8 +235,9 @@ ActivInfinitev7.step({ stResiliationContratCMU: function(ev, sc, st) {
 	var scCMU = ActivInfinitev7.scenarios.scResiliationCMU.start(data).onEnd(function(sc4){
 		sc.data = sc4.data;
 		ctx.traceF.infoTxt(' Fin du sous-scenario - scResiliationCMU');
-		sc.endStep();
 	});
+	sc.endStep();
+	return;
 }});
 
 
