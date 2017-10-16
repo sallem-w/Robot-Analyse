@@ -45,11 +45,17 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_DonneesMandat);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_VerificationDesDonnees);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_IdentifiantAdherent);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO_SelectionRegime);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_Validation);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_Erreur_RO);
+	sc.step(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur);
+	sc.step(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur_ROValide);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -922,29 +928,50 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation: function(ev, sc, st) {
 ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation_PrelvtBancaire');
-
 	ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.set('3');
-	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.on(function(ev){
+	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
 		var jourPrelev = ctx.dateF.format2c(data.contratCourantAdhesion.dataLocale.contratTemp.JOUR_PRELEV);
 		var freqReglt = data.contratCourantAdhesion.dataLocale.contratTemp.PERIODICITE;
 		var freqAvisEch = data.contratCourantAdhesion.dataLocale.contratTemp.FREQ_AVIS_ECH;
 		var typeTerme =  data.contratCourantAdhesion.dataLocale.contratTemp.TYPE_TERME;
 		ctx.log('Code Echeancier : '+jourPrelev);
 		if(  jourPrelev !=''){
-			// Date Debut Prelevement
-			ActivInfinitev7.pAdhIndivIntervtPrin.oCodeEcheancier.setFocus();
-			ActivInfinitev7.pAdhIndivIntervtPrin.oCodeEcheancier.set(jourPrelev);
-			// Frequence Reglement
-			ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
-			ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set(freqReglt);
-			// Frequence Avis d'échéance
-			ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
-			ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A'); // toujours annuel 
-			// Type Terme
-			ActivInfinitev7.pAdhIndivIntervtPrin.oTypeTerme.setFocus();
-			ActivInfinitev7.pAdhIndivIntervtPrin.oTypeTerme.set('AE'); // toujours à échoir
-			sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB);
-			return;
+			ctx.polling({
+				delay: 100,
+				nbMax: 10,
+				test: function(index) { 
+					var ECE = ActivInfinitev7.pAdhIndivIntervtPrin.oCodeEcheancier.exist();
+					var EFR = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.exist();
+					var EFA = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.exist();
+					var ETT = ActivInfinitev7.pAdhIndivIntervtPrin.oTypeTerme.exist();
+					var existance = ECE * EFR * EFA * ETT ;
+					return existance; 
+				},
+				done: function() { 
+					// Date Debut Prelevement
+					ActivInfinitev7.pAdhIndivIntervtPrin.oCodeEcheancier.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oCodeEcheancier.set(jourPrelev);
+					// Frequence Reglement
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set(freqReglt);
+					// Frequence Avis d'échéance
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A'); // toujours annuel 
+					// Type Terme
+					ActivInfinitev7.pAdhIndivIntervtPrin.oTypeTerme.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oTypeTerme.set('AE'); // toujours à échoir
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_Remplissage_RIB);
+					return;
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage des coordonnées bancaires : erreur Serveur Code echéancier  n\'existe pas ');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage des coordonnées bancaire : erreur Serveur Code echéancier  n\'existe pas ';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
 		}
 		else{
 			ctx.traceF.errorTxt(' Erreur lors du remplissage du mode prelevement : données incomplètes');
@@ -952,12 +979,8 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, s
 			data.contratCourantAdhesion.statuts.finCreation = true;
 			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 			return;
-		}
-			
+		}	
 	});
-	
-
-	
 }});
 
 /** Description */
@@ -1185,12 +1208,33 @@ ActivInfinitev7.step({ stAdhesionIndiv_VerificationDesDonnees: function(ev, sc, 
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_VerificationDesDonnees');
 	/// on quitte la page intervenant principal
-	ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.setFocus();
-	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.once(function(ev){
-		ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.click();
-		sc.endStep();
-	return;
-	});
+	
+//	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.once(function(ev){
+		var countPoll=0;
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.exist();
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.setFocus();
+				ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.click();
+				sc.endStep();
+				return;
+			},
+			fail: function() { 
+				 	ctx.traceF.errorTxt(' Blocage à la page : '+ev.pageName + ' Probleme Bouton suivant');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Blocage à la page : '+ev.pageName + ' click sur bouton suivant impossible';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+			}
+		});
+//	});
 	
 }});
 
@@ -1215,10 +1259,11 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 			},
 			done: function() { 
 				var msg = ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre.get().trim();
+				ActivInfinitev7.pAdhIndivIntervtPrin.btClosePopUp.click();
 				 if(msg.indexOf('RIB')!=-1){
 				 	// le blocage concerne le RIB
 					// On modifie la prestation en mode cheque annuel
-					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut);
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement);
 					return ;
 				 }
 				 else{
@@ -1258,25 +1303,82 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 }});
 
 
-
+ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement');
+	var countPoll=0;
+	ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.exist(); 
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.set('1');
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut);
+				return;
+				
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du chgt du mode de reglement : erreur Serveur Mode Reglement n\'existe pas ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:   Erreur lors du chgt du mode de reglement : erreur Serveur Mode Reglement n\'existe pas ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+}});
 
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut');
-	ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.set('1');
-	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.once(function(ev){
-		ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.setFocus();
-		ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('C');
-		ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
-		ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set('TR');
-		ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
-		ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A');
-		data.contratCourantAdhesion.notes.commentaireContrat = ' RIB MANQUANT :ENVOI COURRIER';
-		sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
-		return;
+	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
+		var countPoll=0;
+		ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				var EMP = ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.exist();
+				var EFR = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.exist();
+				var EFA = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.exist();
+				var existance = EMP * EFR * EFA ;
+				return existance; 
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.setFocus();
+				ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('C');
+				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
+				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set('TR');
+				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
+				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A');
+				data.contratCourantAdhesion.notes.commentaireContrat = ' RIB MANQUANT :ENVOI COURRIER';
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
+				return;
+				
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage des coordonnées bancaires : erreur Serveur Mode Paiement n\'existe pas ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage des coordonnées bancaire : erreur Serveur Mode Paiement  n\'existe pas ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+
 	});
 }});
+
+
+
+
+
 
 
 
@@ -1299,16 +1401,42 @@ ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function
 	var situFamille =  data.contratCourantAdhesion.dataLocale.contratTemp.SITUATION_FAMILLE;
 	ctx.log('Identification Adhérent');
 	ctx.log(' Nom e de naissance : '+nomDeNaissance+'  Sexe : '+sexe+' Date de naissance : '+dateNaissance+' situation Famille : '+situFamille);
-	ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.setFocus();
-	ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.keyStroke(nomDeNaissance);
-	ActivInfinitev7.pAdhIndivIdentAssures.oSexe.setFocus();
-	ActivInfinitev7.pAdhIndivIdentAssures.oSexe.set(sexe);
-	ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.setFocus();
-	ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.set(dateNaissance);	
-	ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.setFocus();
-	ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.set(situFamille);
-	sc.endStep();
-	return;
+	var countPoll=0;
+	ctx.polling({
+		delay: 200,
+		nbMax: 10,
+		test: function(index) { 
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			var ENJF = ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.exist();
+			var ES = ActivInfinitev7.pAdhIndivIdentAssures.oSexe.exist();
+			var EDN = ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.exist();
+			var ESF = ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.exist();
+			var existance = ENJF * ES * EDN * ESF ;
+			return existance; 
+		},
+		done: function() { 
+			ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.keyStroke(nomDeNaissance);
+			ActivInfinitev7.pAdhIndivIdentAssures.oSexe.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oSexe.set(sexe);
+			ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.set(dateNaissance);	
+			ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.set(situFamille);
+			sc.endStep();
+			return;
+			
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'identification Adhérent : erreur Serveur ');
+			data.contratCourantAdhesion.notes.commentaireContrat += 'Revoir centre:  Erreur lors du remplissage de l\'identification Adhérent : erreur Serveur  ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
 }});
 
 
@@ -1400,10 +1528,135 @@ ActivInfinitev7.step({ stPageIdentificationAssures_Validation: function(ev, sc, 
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Validation');
 	ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		sc.endStep(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur);
+			return ;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stPageIdentificationAssures_Erreur_RO: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO');
+	// Erreur sur le numero RO, On désactive la télétransmission
+	ActivInfinitev7.pAdhIndivIdentAssures.oTeletrans.click();
+	/// Numero RO
+	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.set('0000000000000');
+	/// Clef RO
+	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.set('97');
+	
+	/// caisse RO 
+	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.set('');
+	
+	/// Centre RO
+	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.setFocus();
+	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.set('');
+	ctx.traceF.errorTxt(' Erreur sur le RO --> Teletransmission Désactivée');
+	data.contratCourantAdhesion.notes.commentaireContrat += ' Erreur sur le RO --> Teletransmission Désactivée + numero RO fictif';
+	sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_Validation);
+	return;
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur');
+	var countPoll=0;
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.exist();
+		},
+		done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.click();
+			sc.endStep();
+			return;
+			
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors du click sur la page d\'identification du souscripteur');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur lors du click sur la page d\'identification du souscripteur ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur_ROValide: function(ev, sc, st) {
+	var data = sc.data;
+		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur_ROValide');
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		var countPoll=0;
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIdentAssures.oTitrePopUp.exist();
+			},
+			done: function() { 
+				var msg = ActivInfinitev7.pAdhIndivIdentAssures.oTitrePopUp.get().trim();
+				ActivInfinitev7.pAdhIndivIdentAssures.btClosePopUp2.click();
+				if(msg.indexOf('RO')!=-1){
+				 	// le blocage concerne le RO
+					// On modifie la prestation en mode cheque annuel
+					sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_Erreur_RO);
+					return ;
+				 }
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors de la validation de l\'idnetification de l\'assure');
+				data.contratCourantAdhesion.notes.commentaireContrat = ' Erreur lors de la validation de l\'idnetification de l\'assure';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+
+	});
+	
+	ActivInfinitev7.pAdhIndivIdentSouscri.wait(function(ev){
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationSouscripteur);
+		return;
+		
+	});
 	
 	
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stPageIdentificationSouscripteur: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationSouscripteur');
+	/// On renseigne les infos disponibles
+	sc.endStep();
+	return;
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication: function(ev, sc, st) {
+	var data = sc.data;
 	
-	
+	sc.endStep();
+	return;
 }});
 
 

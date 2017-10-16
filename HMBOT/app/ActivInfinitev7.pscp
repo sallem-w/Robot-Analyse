@@ -684,7 +684,7 @@
 				</PAGE>
 				<PAGE Name="pIdentAssures" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=ACIA_([0-9]+)&]]></URL>
+						<URL Scan="Like"><![CDATA[debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA([0-9_]+)&AFFICHAGE_CONTAINER\=OK&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -783,7 +783,7 @@
 				</PAGE>
 				<PAGE Name="pIdentAssuresEdit" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/contrat\/ACIA\.do\?method\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOB([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA_([0-9_]+)&AFFICHAGE_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/contrat\/ACIA\.do\?method\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOB([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA_([0-9_]+)&AFFICHAGE_CONTAINER\=]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1961,209 +1961,6 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ChangementDeCouvert_1207204_1" Comment="Changement de couverture - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum04 - Activ Infinite - Module de gestion" CtxtId="90" Techno="WEB" Timestamp="01/06/2017 12:07:23" />
 				</PAGE>
-				<PAGE Name="pAdhIndivIdentAssures" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion">
-					<CRITERE>
-						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&]]></URL>
-						<URL Scan="like"><![CDATA[\/contrat\/ACIA\.do\?method\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA([0-9_]+)&AFFICHAGE_CONTAINER\=]]></URL>
-					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
-					<OBJETS>
-						<OBJET Name="oBtnPageCourante">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="206.R0R1R7R0R0R0R2R0R3">
-									<TAG Name="DIV" Scope="Children" CapturedPos="206.R0R1R7R0R0R0R2R0R3R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-incomplete cgd-step-active disable tooltipstered]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Identification des assurés]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oInformationRattachem" MustExist="Y">
-							<CRITERE>
-								<TAG Name="H2" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oNomJF">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[nomJF]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oSexe">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[sexe]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oDateNaissance">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R1R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[dateNaiss]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oSituationFamille">
-							<CRITERE>
-								<TAG Name="SELECT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R2R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[sitFam]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTypAssRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oNumRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R0R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[numRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oCleRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R1R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[cleRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oCaisseRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R3R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[caisseRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oCentreRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R4R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[centreRO]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oRegimeRO">
-							<CRITERE>
-								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R1">
-									<ATT Name="name">
-										<VALUE Scan="Full"><![CDATA[regimeRO-display]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oSelectRegime">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="209.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R4R0">
-									<TAG Name="DIV" Scope="Children" CapturedPos="209.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R4R0R0" Occurs="Y">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-regimeRO-display]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btValider">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="210.R0R1R7R0R0R2R0R0R0R60R0R0R1">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[btValider]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oPopUpErreur">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="211.R0R1R3R0R1">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btClosePopUp">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="211.R0R1R3R0R0">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oTextPopUp">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="211.R0R1R3R0R2">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-message]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oPageIdentiSouscripteur">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="211.R0R1R7R0R0R0R2R0R2">
-									<TAG Name="DIV" Scope="Children" CapturedPos="211.R0R1R7R0R0R0R2R0R2R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[cgd-step-circle disable tooltipstered]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Identification souscripteur]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="btNouveau" MustNotExist="Y">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="213.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R0R2">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[nouveau]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1628393_1" Comment="Adhésions individuelles - N°22629577 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="210" Techno="WEB" Timestamp="13/10/2017 16:28:58" />
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1537409_1" Comment="Adhésions individuelles - N°22629567 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="209" Techno="WEB" Timestamp="13/10/2017 15:37:59" />
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1631464_1" Comment="Adhésions individuelles - N°22629577 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="211" Techno="WEB" Timestamp="13/10/2017 16:32:05" />
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1706107_1" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="213" Techno="WEB" Timestamp="13/10/2017 17:06:29" />
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1718376_1" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="214" Techno="WEB" Timestamp="13/10/2017 17:18:56" />
-				</PAGE>
 				<PAGE Name="pInformationRO" Comment="Changement situation particulière - N°00502420 - Valide - Adhérent : Mademoiselle DESILE MONIQUE - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/contrat\/ACRO\.do\?method=modifierAssures&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACM([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=([A-Z-0-9]+_([0-9]+)&AFFICHAGE_CONTAINER)]]></URL>
@@ -3172,10 +2969,10 @@
 				</PAGE>
 				<PAGE Name="pAdhIndivIntervtPrin" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[method\=modifModeReglement&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
-						<URL Scan="Like"><![CDATA[method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
-						<URL Scan="Like"><![CDATA[method\=modifDateSignature&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
-						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=modifDateSignature&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[method\=modifModeReglement&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_325&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -3278,7 +3075,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oNumeroAdresse">
+						<OBJET Name="oNumeroAdresse" MustExist="Y">
 							<CRITERE>
 								<TAG Name="INPUT" Scope="All" CapturedPos="190.R0R1R7R0R0R2R0R0R0R40R0R0R1R0R0R4R0R1">
 									<ATT Name="name">
@@ -3608,35 +3405,323 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1644032_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="205" Techno="WEB" Timestamp="11/10/2017 16:44:26" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1707093_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="207" Techno="WEB" Timestamp="11/10/2017 17:07:28" />
 				</PAGE>
-				<PAGE Name="pAdhIndivIdentAssuresValid" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion">
+				<PAGE Name="pAdhIndivIdentAssures" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="like"><![CDATA[\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA([0-9_]+)&AFFICHAGE_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIA_([0-9]+)&AFFICHAGE_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIS_([0-9]+)&AFFICHAGE_CONTAINER\=OK&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=]]></URL>
 					</CRITERE>
-					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIA.do?method=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_62&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=]]></PATH>
+					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="btNouveau" MustExist="Y">
+						<OBJET Name="oBtnPageCourante">
 							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="212.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R0R2">
+								<TAG Name="LI" Scope="All" CapturedPos="206.R0R1R7R0R0R0R2R0R3">
+									<TAG Name="DIV" Scope="Children" CapturedPos="206.R0R1R7R0R0R0R2R0R3R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-incomplete cgd-step-active disable tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Identification des assurés]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oInformationRattachem">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Information rattachement RO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNomJF">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nomJF]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSexe">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sexe]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateNaissance">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R4R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[dateNaiss]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSituationFamille">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R0R0R1R3R2R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[sitFam]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTypAssRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R1R0R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[typAssRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNumRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R0R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[numRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCleRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R1R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[cleRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCaisseRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[caisseRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCentreRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R4R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[centreRO]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRegimeRO">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="206.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[regimeRO-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelectRegime">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="209.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R4R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="209.R0R1R7R0R0R2R0R0R0R55R1R0R1R2R2R3R4R0R0" Occurs="Y">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[tt-suggestion tt-selectable]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-regimeRO-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btValider">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="210.R0R1R7R0R0R2R0R0R0R60R0R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btValider]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTextPopUp">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="211.R0R1R3R0R2">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-message]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNouveau">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="219.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R0R2">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[nouveau]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oPageIdentificationSouscripteur">
+						<OBJET Name="btModifier">
 							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="212.R0R1R7R0R0R0R2R0R2">
-									<TAG Name="DIV" Scope="Children" CapturedPos="212.R0R1R7R0R0R0R2R0R2R0">
+								<TAG Name="BUTTON" Scope="All" CapturedPos="219.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R0R1">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[modifier]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="BtPageIdentificationSouscripteur">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="219.R0R1R7R0R0R0R2R0R2">
+									<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R7R0R0R0R2R0R2R0">
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Identification souscripteur]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Identification souscripteur]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTitrePopUp">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="214.R0R1R3R0R1">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btClosePopUp2">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="214.R0R1R3R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTeletrans">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="211.R0R1R7R0R0R2R0R0R0R55R1R0R1R3R0">
+									<TAG Name="INPUT" Scope="Children" CapturedPos="211.R0R1R7R0R0R2R0R0R0R55R1R0R1R3R0R1">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-checkbox]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[txtIndTeletrans]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPageIdentiSouscripteur">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="213.R0R1R7R0R0R0R2R0R2">
+									<TAG Name="DIV" Scope="Children" CapturedPos="213.R0R1R7R0R0R0R2R0R2R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Identification souscripteur]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCommunicationsAdhere" MustNotExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="222.R0R1R7R0R0R2R0R0R0R43R5R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Communications Adhérent]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1703294_1" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="212" Techno="WEB" Timestamp="13/10/2017 17:03:48" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1628393_1" Comment="Adhésions individuelles - N°22629577 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="210" Techno="WEB" Timestamp="13/10/2017 16:28:58" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1537409_1" Comment="Adhésions individuelles - N°22629567 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="209" Techno="WEB" Timestamp="13/10/2017 15:37:59" RatioX="108" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1631464_1" Comment="Adhésions individuelles - N°22629577 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="211" Techno="WEB" Timestamp="13/10/2017 16:32:05" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1706107_1" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="213" Techno="WEB" Timestamp="13/10/2017 17:06:29" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1718376_1" Comment="Adhésions individuelles - N°22629578 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="214" Techno="WEB" Timestamp="13/10/2017 17:18:56" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1144190_1" Comment="Adhésions individuelles - N°22629593 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="215" Techno="WEB" Timestamp="16/10/2017 11:44:42" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1209468_1" Comment="Adhésions individuelles - N°22629593 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="217" Techno="WEB" Timestamp="16/10/2017 12:10:03" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1406259_1" Comment="Adhésions individuelles - N°22629594 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="219" Techno="WEB" Timestamp="16/10/2017 14:06:43" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1712416_1" Comment="Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="222" Techno="WEB" Timestamp="16/10/2017 17:12:59" />
+				</PAGE>
+				<PAGE Name="pAdhIndivIdentSouscri" Comment="Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIS_([0-9]+)&AFFICHAGE_CONTAINER\=OK&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=]]></URL>
+						<URL Scan="like"><![CDATA[method\=ajoutCommunications&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIS_([0-9]+)&AFFICHAGE_CONTAINER\=]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="oPersonne">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="221.R0R1R7R0R0R2R0R0R0R43R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Personne]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCommunicationsAdhere" MustExist="Y">
+							<CRITERE>
+								<TAG Name="H2" Scope="All" CapturedPos="221.R0R1R7R0R0R2R0R0R0R43R5R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Communications Adhérent]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNouveau">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="221.R0R1R7R0R0R2R0R0R0R43R5R0R1R0R0R1R0R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[boutonNouveau]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNature">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="223.R0R1R7R0R0R2R0R0R0R43R5R0R1R0R0R1R0R0R5R1R0R0R1R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[nature[0]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oType">
+							<CRITERE>
+								<TAG Name="SELECT" Scope="All" CapturedPos="223.R0R1R7R0R0R2R0R0R0R43R5R0R1R0R0R1R0R0R5R1R0R0R1R0R2R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[type[0]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oValeurCom">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="223.R0R1R7R0R0R2R0R0R0R43R5R0R1R0R0R1R0R0R5R1R0R0R1R0R3R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[valeurCom[0]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1709053_1" Comment="Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="221" Techno="WEB" Timestamp="16/10/2017 17:09:24" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1723052_1" Comment="Adhésions individuelles - N°22629617 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="223" Techno="WEB" Timestamp="16/10/2017 17:23:23" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
