@@ -1,4 +1,6 @@
-﻿ActivInfinitev7.step({ initPivotDA : function(ev, sc, st) {
+
+ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
+
 	var data = sc.data;
 	ctx.traceF.infoTxt('init pivot file ' + sc.data.codeDuScenario);
 	if (!ctx.configF.initDA(sc.data.codeDuScenario)) {
@@ -16,12 +18,12 @@
 	ctx.traceF.infoTxt('STEP - readFile');
 	ctx.traceF.infoTxt('pathFile : ' + ctx.configF.recupererCheminFichier());
 	var fileContracts = ctx.fso.file.read(ctx.configF.recupererCheminFichier());
+
 	var json = {
 		customerName : '',
 		data : {},
 		keyLabel : {}
 	};
-	
 	json = JSON.parse(fileContracts);
 	var entetes = json.keyLabel;
 	var contracts = {
@@ -30,26 +32,40 @@
 	contracts = json.data;
 	var countContracts = contracts.length;
 		
-	ctx.traceF.infoTxt('STEP - createOutputFile');
-	ctx.excelF.creerFichier();
-	ctx.traceF.infoTxt('STEP - saveOutputFile');
-	ctx.excelF.sauverFichier(ctx.configF.recupererCheminFichierDeSortie()); 
-	
-	ctx.traceF.infoTxt('STEP - writeHeaderOutputFile');
-	var names = _.getObjectValues(entetes);
-	names.push('Numéro de contrat individuel');
-	names.push('Date traitement contrat');
-	names.push('Status contrat');
-	names.push('Commentaire');
-	ctx.excelF.remplirTableau(1, names);
-	
-	data.globalVariables.indexContratCourant = 0;
-	data.globalVariables.ligneTraite = 2;
-	data.globalVariables.nomClient = json.customerName;
-	data.contrat = contracts;
-	data.stats.nombreDeContrats = countContracts;
-	ctx.traceF.infoTxt(" le nombre de contrats est : " + data.stats.nombreDeContrats);
-	ctx.traceF.infoTxt(" premier jour du mois courant " + ctx.dateF.premierJourDuMoisCourant(ctx.dateF.formatJJMMAAAA(new Date())));
-	
-	return sc.endStep();
+   	json = JSON.parse(fileContracts);
+            
+    data.headerNames = json.keyLabel;
+    //data.contracts = json.data;
+    //data.countContracts = data.contracts.length;
+                        
+    ctx.traceF.infoTxt('STEP - createOutputFile');
+    ctx.excelF.creerFichier();
+            
+    ctx.traceF.infoTxt('STEP - saveOutputFile');
+    ctx.excelF.sauverFichier(ctx.configF.recupererCheminFichierDeSortie()); 
+		
+            
+    ctx.traceF.infoTxt('STEP - writeHeaderOutputFile');
+    var names = _.getObjectValues(data.headerNames);
+    names.push('Num�ro de contrat individuel');
+    names.push('Date traitement contrat');
+    names.push('Status contrat');
+    names.push('Commentaire');
+    //names.push('Remarque');
+    //names.push('Courrier');
+    ctx.excelF.remplirTableau(1, names);
+    
+		data.names = names;
+    data.indexCurrentContract = 0;
+    data.customerName = json.customerName;
+  	data.contracts = json.data;
+    data.countContracts = data.contracts.length;
+    data.totalTimeDuration = new Date();
+    data.countCaseFindIntoPivot = data.countContracts;
+    data.countCaseProcessed = 0;
+    data.countCaseProcessedWithWarning = 0;
+    data.countCaseFailProcessed = 0;
+		data.ligneCourante+=1;
+     return sc.endStep();
 }});
+

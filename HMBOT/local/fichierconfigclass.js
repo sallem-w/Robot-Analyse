@@ -75,6 +75,12 @@ var confFileClass = function() {
       }
     }
 	}; 
+	
+	this.Suspension = {
+		afficherMenu : '',
+		cheminRacine : ''
+	}
+	
   this.SIRH = {
 		afficherMenu : '',
 		sauverMiseAJour : '',
