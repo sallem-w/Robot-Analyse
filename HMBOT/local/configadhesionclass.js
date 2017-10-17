@@ -108,3 +108,5 @@ var confFileAdhesionClass = function () {
   }
 };
 
+
+

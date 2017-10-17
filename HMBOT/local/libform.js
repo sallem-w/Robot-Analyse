@@ -21,6 +21,33 @@
 //	}
 //	formF.typeVoie = typeVoie;
 
+	var typeCommunication = {
+		telephoneDomicile : {
+				nature : 'TELP',
+				type : 'DOM'
+		},
+		telephonePortable : {
+				nature : 'TELP',
+				type : 'MOB'
+		},
+		telephoneBureau : {
+				nature : 'TELP',
+				type : 'PROF'
+		},
+		adresseMail : {
+			nature : 'MAIL',
+			type : 'MPCP'
+		},
+		fax : {
+			nature : 'MAIL',
+			type : 'PROF'
+		}
+	}
+
+	formF.typeCommunication=typeCommunication;
+	
+	
+	
 	var typeVoie = [
 		{ "code": "ABE", "lib_court": "ABBAYE", "lib_long": "ABBAYE" },
 		{ "code": "ACH", "lib_court": "ACH", "lib_long": "ANCIEN CHEMIN" },

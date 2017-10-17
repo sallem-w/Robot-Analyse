@@ -361,7 +361,6 @@ ActivInfinitev7.pAdhIndivIntervtPrin.oInformationRattachem = ActivInfinitev7.pAd
 ActivInfinitev7.pAdhIndivIntervtPrin.oCodeCedex = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oCodeCedex');
 
 ActivInfinitev7.pAdhIndivIdentAssures = ActivInfinitev7.addPage('pAdhIndivIdentAssures', {"comment":"Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pAdhIndivIdentAssures.oBtnPageCourante = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oBtnPageCourante');
 ActivInfinitev7.pAdhIndivIdentAssures.oInformationRattachem = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oInformationRattachem');
 ActivInfinitev7.pAdhIndivIdentAssures.oNomJF = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oNomJF');
 ActivInfinitev7.pAdhIndivIdentAssures.oSexe = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oSexe');
@@ -378,7 +377,6 @@ ActivInfinitev7.pAdhIndivIdentAssures.btValider = ActivInfinitev7.pAdhIndivIdent
 ActivInfinitev7.pAdhIndivIdentAssures.oTextPopUp = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTextPopUp');
 ActivInfinitev7.pAdhIndivIdentAssures.btNouveau = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btNouveau');
 ActivInfinitev7.pAdhIndivIdentAssures.btModifier = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btModifier');
-ActivInfinitev7.pAdhIndivIdentAssures.BtPageIdentificationSouscripteur = ActivInfinitev7.pAdhIndivIdentAssures.addItem('BtPageIdentificationSouscripteur');
 ActivInfinitev7.pAdhIndivIdentAssures.oTitrePopUp = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTitrePopUp');
 ActivInfinitev7.pAdhIndivIdentAssures.btClosePopUp2 = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btClosePopUp2');
 ActivInfinitev7.pAdhIndivIdentAssures.oTeletrans = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTeletrans');
@@ -392,3 +390,7 @@ ActivInfinitev7.pAdhIndivIdentSouscri.btNouveau = ActivInfinitev7.pAdhIndivIdent
 ActivInfinitev7.pAdhIndivIdentSouscri.oNature = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oNature');
 ActivInfinitev7.pAdhIndivIdentSouscri.oType = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oType');
 ActivInfinitev7.pAdhIndivIdentSouscri.oValeurCom = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oValeurCom');
+ActivInfinitev7.pAdhIndivIdentSouscri.oSelectNature = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectNature', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectType', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectValeur', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('btSuivant');
