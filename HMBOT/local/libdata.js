@@ -27,7 +27,7 @@ ctx.dataF = (function () {
                 statusContrat: '',
                 commentaireContrat: ''
             },
-            statusCMU: {
+            statutsCMU: {
 								existanceASSPRI : false,
                 FinCMUProcessus : false,
 								contratProlonge : false,
@@ -96,9 +96,9 @@ ctx.dataF = (function () {
 				ctx.log('resetContratCourant');
 				dat.contratCourantCMU.dataLocale.dictContratsCourantCMU = [];
 				dat.contratCourantCMU.dataEnLigne.dictContratsCourantCMU = [];
-				dat.contratCourantCMU.statusCMU.existanceASSPRI=false;
-				dat.contratCourantCMU.statusCMU.FinCMUProcessus=false;
-				dat.contratCourantCMU.statusCMU.contratTermine=false;
+				dat.contratCourantCMU.statutsCMU.existanceASSPRI=false;
+				dat.contratCourantCMU.statutsCMU.FinCMUProcessus=false;
+				dat.contratCourantCMU.statutsCMU.contratTermine=false;
 //				dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }

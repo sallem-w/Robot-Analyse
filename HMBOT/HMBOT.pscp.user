@@ -5,13 +5,16 @@
 		<BREAKPOINT LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="233" Length="73"><![CDATA[sc.data.config = ctx.configF.recupConfigScenario(sc.data.codeDuScenario);]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
-	<FINDHISTORY />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[mis]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomsc]]></FINDWHAT>
+		<FINDWHAT><![CDATA[contratCourantCMU]]></FINDWHAT>
+		<FINDWHAT><![CDATA[statusCMU]]></FINDWHAT>
+		<FINDWHAT><![CDATA[scenario]]></FINDWHAT>
+	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="14" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="9" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initPivot']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Suspension_verification_contrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="193" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='SuspScenPrincipal']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

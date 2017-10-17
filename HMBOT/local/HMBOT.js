@@ -122,22 +122,22 @@ GLOBAL.events.START.on(function (ev) {
 	
 	ctx.configF.chargementFichierConfig();
 
-	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
+	/*var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
 	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
 	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);*/
+
+
+	var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
+	var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
+	var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
-
-
-	//var configACS = ctx.configF.recupConfigScenario(ctx.configF.scenario.ACS);
-	//var configCMU = ctx.configF.recupConfigScenario(ctx.configF.scenario.CMU);
-	//var configSIRH = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRH);
-	//var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
-	//var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	
 
-		/*if (configACS.afficherMenu) {
+		if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -146,11 +146,11 @@ GLOBAL.events.START.on(function (ev) {
 				var data = {};
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
-	}*/
+	}
 
 	
 	
-		/*if (configCMU.afficherMenu) {
+		if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
 		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
 			
@@ -160,7 +160,7 @@ GLOBAL.events.START.on(function (ev) {
 			
 			
 		});	
-	}*/
+	}
 		
 		
 		if (configSuspension.afficherMenu) {
@@ -175,7 +175,7 @@ GLOBAL.events.START.on(function (ev) {
 	}
 	
 		
-	/*if (configDA.afficherMenu) {
+	if (configDA.afficherMenu) {
 		systray.addMenu('', 'DA', 'Scenario DA ');
 		systray.addMenu('DA', 'DACompletV7', 'DA Complet V7', '', function(ev) {
 			/*ctx.traceF.initFichierTrace(configDA.cheminRacine, ctx.configF.scenario.DA);
@@ -185,8 +185,8 @@ GLOBAL.events.START.on(function (ev) {
 			//ActivInfinitev7.scenarios.scScenarioPrincipalDA.start(data).onEnd(function(){});
 			
 		});	
-	//}
-//});
+	}
+});
 
 /** Auto-update menu handler */
 GLOBAL.events.UPDATECTX.on(function(ev) {
