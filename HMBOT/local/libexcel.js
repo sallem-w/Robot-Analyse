@@ -9,7 +9,7 @@
 	//Constantes
 	//excelHelper.constants
 	excelF.constantes = {
-		status: {
+		statuts: {
 			Succes: "Traité",
 			Echec: "Non traité",
 			DejaTraite : "Déjà Fait"
