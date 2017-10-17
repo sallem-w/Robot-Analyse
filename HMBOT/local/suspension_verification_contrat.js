@@ -7,8 +7,8 @@
 		sc.onTimeout(120000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onTimeOut :  On quitte le sous scenario scVerifContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario(); 
 	}); 
@@ -16,8 +16,8 @@
 		sc.onError(function(sc, st, ex) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onError :  On quitte le sous scenario scVerifContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	});
@@ -106,16 +106,16 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 				ctx.traceF.infoTxt('Pas de contrat correspondant aux critères de recherche');
 				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
 			  data.contratCourantSuspension.noContrat ='';
-				data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
+				data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Succes;
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 			}
 			else
 			{
 				if(data.indexLectureSynthese < nombreLignes)
 				{
-					if(String(ActivInfinitev7.pContexteContOuvDet.oTypeRelation.i(data.indexLectureSynthese).get()).indexOf(data.constantes.adhesionIndividuelle)!==-1 && ActivInfinitev7.pContexteContOuvDet.oStatus.i(data.indexLectureSynthese).get() === 'A')
+					if(String(ActivInfinitev7.pContexteContOuvDet.oTypeRelation.i(data.indexLectureSynthese).get()).indexOf(data.constantes.adhesionIndividuelle)!==-1 && ActivInfinitev7.pContexteContOuvDet.ostatuts.i(data.indexLectureSynthese).get() === 'A')
 					{
-						data.status.faireResiliationContrat = true;
+						data.statuts.faireResiliationContrat = true;
 						var listeNumeros = ActivInfinitev7.pContexteContOuvDet.btNoInsee.i(data.indexLectureSynthese).get();
 						data.contratCourantSuspension.noContrat = (listeNumeros.split('/')[1]).trim();
 						ActivInfinitev7.pContexteContOuvDet.oTypeIdentification.set('ACAI');
@@ -135,7 +135,7 @@ ActivInfinitev7.step( { stLectureSynthese : function (ev, sc, st) {
 					ctx.traceF.infoTxt('Aucun contrat parmi ceux proposés ne correspondnt aux critères de recherche');
 					data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Aucun contrat correspondant aux critères de recherche';
 					data.contratCourantSuspension.noContrat ='';
-					data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Succes;
+					data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Succes;
 					sc.endStep(ActivInfinitev7.steps.stFinScVerifContratSuspension);
 				}
 			}

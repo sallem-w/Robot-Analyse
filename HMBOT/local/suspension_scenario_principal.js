@@ -87,11 +87,11 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 	var noContrat = 0;	
 	var notes = {
 		commentaireContrat : '',
-		statusContrat : '',
+		statutsContrat : '',
 		dateTraitementContrat : ''
 	};
 	var infos = {};
-	var status ={
+	var statuts ={
 		faireResiliationContrat : false,
 		finSuspensionProcessus : false,
 		lancerVerificationSoldeContrat : false
@@ -111,7 +111,7 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 				dateDispenseOuSuspension : 10,
 				numeroContrat : 11,
 				dateTraitementContrat : 12,
-				statusContrat : 13,
+				statutsContrat : 13,
 				commentaireContrat : 14
 		}
 	
@@ -141,7 +141,7 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 	contratCourantSuspension.notes = notes;
 	contratCourantSuspension.infos = infos; // A partir de la lecture effectuée dans le fichier config.json, on remarque que les différentes clés associées à contratSuspension.infos sont 
 	//Adresse, DateDispenseOuSuspension, DateEntreeFiliale, DateExtraction, Localite, Nom, Prenom, RONumber, type
-	contratCourantSuspension.status= status;
+	contratCourantSuspension.statuts= statuts;
 	data.contratCourantSuspension = contratCourantSuspension;
 	data.countContratsSuspension = countContratsSuspension;
 	
@@ -156,7 +156,7 @@ ActivInfinitev7.step({ stInitScenarioSuspension: function(ev, sc, st) {
 	data.indexDerniereLigne = indexDerniereLigne;
 	data.ligneCourante = ligneCourante ;
 	data.names = names;
-	data.status = status;
+	data.statuts = statuts;
 	
 	data.statistiques = statistiques ;	
 	data.codeDuScenario =ctx.configF.scenario.Suspension;
@@ -269,7 +269,7 @@ ActivInfinitev7.step({ stResiliationSuspensionCondition: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('stResiliationSuspensionCondition');
 	
-	if (data.status.faireResiliationContrat)
+	if (data.statuts.faireResiliationContrat)
 	{
 		sc.endStep();
 		return;
@@ -302,7 +302,7 @@ ActivInfinitev7.step({ stLancerVerificationSoldeContratCondition: function(ev, s
 	var data = sc.data;
 	ctx.traceF.infoTxt('stLancerVerificationSoldeContratCondition');
 	
-	if (data.status.lancerVerificationSoldeContrat)
+	if (data.statuts.lancerVerificationSoldeContrat)
 	{
 		sc.endStep();
 		return;
@@ -341,11 +341,11 @@ ActivInfinitev7.step({ stMiseAjourVarGloblalesSuspension: function(ev, sc, st) {
 	
 	data.statistiques.nbCasTraite +=1;
 	data.statistiques.nbCasTrouveDsExcel = data.indexDerniereLigne - data.paramConfigExcel.debutIndexLigne + 1;
-		if (data.contratCourantSuspension.notes.statusContrat === ctx.excelF.constantes.status.Succes) {
+		if (data.contratCourantSuspension.notes.statutsContrat === ctx.excelF.constantes.statuts.Succes) {
 				data.statistiques.nbCasTraitementSucces += 1;
 		}
 
-		if (data.contratCourantSuspension.notes.statusContrat === ctx.excelF.constantes.status.Echec) {
+		if (data.contratCourantSuspension.notes.statutsContrat === ctx.excelF.constantes.statuts.Echec) {
 				data.statistiques.nbCasTraitementEchec += 1;
 		}
 		
@@ -394,7 +394,7 @@ ActivInfinitev7.step({ stInsertDonneesSuspensionExcel: function(ev, sc, st) {
       },{
         columnIndex: data.paramConfigExcel.indexColonne.dateTraitementContrat , value: data.contratCourantSuspension.notes.dateTraitementContrat
       },{
-       columnIndex: data.paramConfigExcel.indexColonne.statusContrat, value: data.contratCourantSuspension.notes.statusContrat
+       columnIndex: data.paramConfigExcel.indexColonne.statutsContrat, value: data.contratCourantSuspension.notes.statutsContrat
       }, {
       columnIndex: data.paramConfigExcel.indexColonne.commentaireContrat, value: data.contratCourantSuspension.notes.commentaireContrat
       }
@@ -414,12 +414,12 @@ ActivInfinitev7.step({ stContratSuspensionSuivant: function(ev, sc, st) {
 	data.indexLectureSynthese = 0;
 	data.ligneCourante ++;
 	data.indexContrat ++ ;
-	data.status.faireResiliationContrat = false;
-	data.status.finSuspensionProcessus = false;
+	data.statuts.faireResiliationContrat = false;
+	data.statuts.finSuspensionProcessus = false;
 		if (data.indexContrat < data.countContratsSuspension)
 		{
-			data.status.faireResiliationContrat = false;
-			data.status.finSuspensionProcessus = false;
+			data.statuts.faireResiliationContrat = false;
+			data.statuts.finSuspensionProcessus = false;
 			sc.endStep(ActivInfinitev7.steps.stLancerVerificationContratCondition);
 			return;
 		}

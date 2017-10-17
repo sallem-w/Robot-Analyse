@@ -356,7 +356,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStatus">
+						<OBJET Name="ostatuts">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="225.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0">
 									<TAG Name="TR" Scope="All" CapturedPos="225.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1R0" Occurs="Y">
@@ -466,7 +466,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oStatus">
+						<OBJET Name="ostatuts">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0">
 									<TAG Name="TBODY" Scope="Children" CapturedPos="172.R0R1R7R0R3R0R0R0R0R28R0R0R1R0R1R0R1R5R1R0R0R1">

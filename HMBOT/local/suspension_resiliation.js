@@ -6,8 +6,8 @@
 		sc.onTimeout(120000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onTimeOut :  On quitte le sous scenario scResiliationContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario(); 
 	}); 
@@ -15,8 +15,8 @@
 		sc.onError(function(sc, st, ex) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onError :  On quitte le sous scenario scResiliationContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	});
@@ -62,7 +62,7 @@ ActivInfinitev7.step({ stRechercheContratSuspension: function(ev, sc, st) {
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat  = 'Revoir centre: Erreur recherche contrat : Sortie du Scenario car temps de recherche trop long ';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -70,7 +70,7 @@ ActivInfinitev7.step({ stRechercheContratSuspension: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat : ';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -121,7 +121,7 @@ ActivInfinitev7.step({ stRechercheContratSuspensionError: function(ev, sc, st) {
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers le bloc-notes ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -129,7 +129,7 @@ ActivInfinitev7.step({ stRechercheContratSuspensionError: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber']  + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers le bloc-notes';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -139,7 +139,7 @@ ActivInfinitev7.step({ stRechercheContratSuspensionError: function(ev, sc, st) {
 		 		//var msgErreur = ActivInfinitev7.pIdentContResilRech.oDivErreur.get().trim();
 				ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + ' - Erreur recherche contrat à la résiliation: Contrat résilié ou aucune opération valide saisi à la date si le contrat donné ne correspond pas à un cas de Suspension' );
 				data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur recherche contrat à la résiliation: Contrat résilié ou aucune opération valide saisi à la date si le contrat donné ne correspond pas à un cas de Suspension' ;
-				data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
+				data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 				sc.endStep(ActivInfinitev7.steps.stFinResiliationSuspension);
 				return ;
 		// }
@@ -157,7 +157,7 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers le bloc-notes ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -165,7 +165,7 @@ ActivInfinitev7.step({ stGestionBoutonContunuerResiliation: function(ev, sc, st)
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber']  + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers le bloc-notes';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -199,7 +199,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotesSuspension: function(ev, sc, st) {
 	st.onTimeout(150000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Paramètre de calcul ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -207,7 +207,7 @@ ActivInfinitev7.step({ stNaviguerVersBlocNotesSuspension: function(ev, sc, st) {
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: erreur lors de la navigation vers le paramètre de calcul : ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -228,7 +228,7 @@ ActivInfinitev7.step({ stNaviguerVersCalculParamSuspension: function(ev, sc, st)
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Paramètre de calcul ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -236,7 +236,7 @@ ActivInfinitev7.step({ stNaviguerVersCalculParamSuspension: function(ev, sc, st)
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: erreur lors de la navigation vers le paramètre de calcul : ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -254,7 +254,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisationsSuspension: function(ev, sc
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers l\'Historique des cotisations';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -262,7 +262,7 @@ ActivInfinitev7.step({ stNaviguerVersHistoCotisationsSuspension: function(ev, sc
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers l\'Historique des cotisations ';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -281,7 +281,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisantSuspension: function(ev, 
 	st.onTimeout(90000,function(sc,st){
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'TimeOut -  search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Timeout lors de la navigation vers Visualisation du compte cotisant';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});	
@@ -289,7 +289,7 @@ ActivInfinitev7.step({ stNaviguerVersVisuCompteCotisantSuspension: function(ev, 
 	st.onError(function(sc,st,ex) {
 		ctx.traceF.errorTxt(data.contratCourantSuspension.infos['RONumber'] + 'OnError - error search contract ');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Revoir centre: Erreur lors de la navigation vers Visualisation du compte cotisant';
-		data.contratCourantSuspension.notes.statusContrat= ctx.excelF.constantes.status.Echec;
+		data.contratCourantSuspension.notes.statutsContrat= ctx.excelF.constantes.statuts.Echec;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -323,8 +323,8 @@ ActivInfinitev7.step({ stSauvegardeSuspension: function(ev, sc, st) {
 		ActivInfinitev7.pValidationActeChgtCouv.btSauvegarde.click();
 	
 		data.contratCourantSuspension.notes.commentaireContrat =  'Suspension effectuée';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Succes;
-		data.status.lancerVerificationSoldeContrat = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
+		data.statuts.lancerVerificationSoldeContrat = true;
     sc.endStep();
 		return;
 	});
