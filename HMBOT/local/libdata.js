@@ -136,12 +136,19 @@ ctx.dataF = (function () {
 			dataLocale: {
 				groupeGestion:'',
 				centreGestion:'',
-				tabPersonnesPhysiques : []
-            },
+				tabPersonnesPhysiques : [],
+				variables : {
+							listCom : [],
+							nbCom : '',
+							indexCom :''
+				},
+				contratAdhesionAttributs : {},
+				contratTemp :{}
+      },
       dataEnLigne: {
         numeroContratIndiv : '',
         tabPersonnesPhysiques : [],
-				variables :{
+				variables : {
 							
 				}
 							

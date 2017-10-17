@@ -56,6 +56,9 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur);
 	sc.step(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur_ROValide);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication_Boucle);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -66,7 +69,7 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitCreationHSP: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' - Etape - stInitCreationHSP');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' - Etape - stInitCreationHSP');
 	data.contratCourantAdhesion.dataLocale.contratTemp=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0]; // pour l'assure principal
 	sc.endStep();
 	return;
@@ -396,7 +399,7 @@ ActivInfinitev7.step({ stRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stResultatRecherchePersonneAdhesionIndiv');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stResultatRecherchePersonneAdhesionIndiv');
 	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
 		if(ActivInfinitev7.pAdhIndivIdPrinRechResu.oAucunePersonne){
 			var countPoll=0;	
@@ -462,7 +465,7 @@ ActivInfinitev7.step({ stResultatRecherchePersonneAdhesionIndiv: function(ev, sc
 
 ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stSelectionPersonneAdhesionIndiv');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stSelectionPersonneAdhesionIndiv');
 	//on fait un polling pour attendre l'apparation du bouton valider
 	var countPoll=0;
 	ctx.polling({	
@@ -491,7 +494,7 @@ ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stCreationIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stCreationIdentificationPersonneAdhesionIndiv');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stCreationIdentificationPersonneAdhesionIndiv');
 	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
 		ctx.log('--> Creation intervenant principal ');
 		
@@ -547,7 +550,7 @@ ActivInfinitev7.step({ stRecuperationDesChampsPageIntervenantPrincipal: function
 
 ActivInfinitev7.step({ stModifIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stModifIdentificationPersonneAdhesionIndiv');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stModifIdentificationPersonneAdhesionIndiv');
 	sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);
 	return;
 }});
@@ -557,7 +560,7 @@ ActivInfinitev7.step({ stModifIdentificationPersonneAdhesionIndiv: function(ev, 
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_IdentificationAdherent: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_IdentificationAdherent');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_IdentificationAdherent');
 	// Identification Adherent
 	var civilite= data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_CIVILITE;
 	ctx.log('Civilité : '+civilite);
@@ -592,7 +595,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_IdentificationAdherent: function(ev, sc, 
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent');
 	
 	
 //	par defaut Type Adresse
@@ -612,7 +615,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_CodePostal: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_CodePostal');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_CodePostal');
 	var cp = data.contratCourantAdhesion.dataLocale.contratTemp.CODE_POSTAL;
 	// comme plusieurs communes peuvent avoir le meme code postal , on ajoute le nom de la commune
 	cp = cp + ' - '+ data.contratCourantAdhesion.dataLocale.contratTemp.LIBELLE_LOCALITE;
@@ -662,7 +665,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_CodePostal: function(ev, 
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse');
 	// Escalier  Etage ..
 	var complementAdresse_1 = data.contratCourantAdhesion.dataLocale.contratTemp.COMP_IDENT_DEST;
 	var complementAdresse_2 = data.contratCourantAdhesion.dataLocale.contratTemp.COMP_IDENTIF_GEO;
@@ -685,7 +688,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse: function(ev, sc,
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie');
 	var code = data.contratCourantAdhesion.dataLocale.contratTemp.ADRESSE_NAT_VOIE;
 //	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,natureVoieGRC);
 	/// lib long
@@ -755,7 +758,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie: fu
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib_court');
 	/// la selection de la voie avec un libellé long n'a pas marché on tente avec une libellé court
 	var code = data.contratCourantAdhesion.dataLocale.contratTemp.ADRESSE_NAT_VOIE;
 //	var natureVoie = ctx.configF.correspondanceTab(ctx.formF.typeVoie.GRC,ctx.formF.typeVoie.Infinite,natureVoieGRC);
@@ -825,7 +828,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_selectionVoie_lib
 
 ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_controle');
 	// L'adresse est introuvable dans la base Infinite, on enregistre l'adresse en "france sans controle "
 	/// Pays : France ss ctrl
 	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysAdresse.setFocus();
@@ -875,7 +878,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_Adresse_France_ss_control
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Prestation: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Prestation');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Prestation');
 	var typeAbo = data.contratCourantAdhesion.dataLocale.contratTemp.TOP_ABONN_DEC;
 	var cptBanque= data.contratCourantAdhesion.dataLocale.contratTemp.COMPTE_BANQUE_PREST;
 	// 3 conditions
@@ -907,7 +910,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Prestation: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Cotisation: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation');
 	/// Mode de reglement
 	var modePrelvt = data.contratCourantAdhesion.dataLocale.contratTemp.MODE_PAIE;
 	ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.setFocus();
@@ -927,7 +930,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation_PrelvtBancaire');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation_PrelvtBancaire');
 	ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.set('3');
 	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
 		var jourPrelev = ctx.dateF.format2c(data.contratCourantAdhesion.dataLocale.contratTemp.JOUR_PRELEV);
@@ -986,7 +989,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, s
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_Cheque: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation_Cheque');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Cotisation_Cheque');
 	ActivInfinitev7.pAdhIndivIntervtPrin.oModeReglement.set('1');
 	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.on(function(ev){
 	var freqReglt = data.contratCourantAdhesion.dataLocale.contratTemp.PERIODICITE;
@@ -1001,7 +1004,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_Cheque: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB');
 	// Titulaire
 	var titulaire=data.contratCourantAdhesion.dataLocale.contratTemp.TITU_COMPTE;
 	ActivInfinitev7.pAdhIndivIntervtPrin.oTitulaireRib.setFocus();
@@ -1024,7 +1027,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Etablissement: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_Etablissement');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_Etablissement');
 	// Etablissement
 	var codeEtblt=data.contratCourantAdhesion.dataLocale.contratTemp.CODE_BANQUE;
 	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeBanque.setFocus();
@@ -1072,7 +1075,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Etablissement: function(e
 
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Guichet: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB_Guichet');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_RIB_Guichet');
 	// Guichet
 	var codeGuichet=data.contratCourantAdhesion.dataLocale.contratTemp.CODE_GUICHET;
 	ActivInfinitev7.pAdhIndivIntervtPrin.oCodeGuichet.setFocus();
@@ -1121,7 +1124,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_RIB_Guichet: function(ev, sc,
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN');
 	// Clef IBAN
 	var cleIBAN = data.contratCourantAdhesion.dataLocale.contratTemp.CLE_IBAN;
 	cleIBAN = cleIBAN.substr(2,2);
@@ -1140,7 +1143,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN_PAYS: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN_PAYS');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_Remplissage_IBAN_PAYS');
 	var codeIBAN = data.contratCourantAdhesion.dataLocale.contratTemp.CLE_IBAN;
 	codeIBAN = codeIBAN.substr(0,2);
 	ActivInfinitev7.pAdhIndivIntervtPrin.oPaysISO.setFocus();
@@ -1192,7 +1195,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_Remplissage_IBAN_PAYS: function(ev, sc, s
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_DonneesMandat: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_DonneesMandat');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_DonneesMandat');
 	var dateSign = data.contratCourantAdhesion.dataLocale.contratTemp.DATE_SIGN_MANDAT;
 	ActivInfinitev7.pAdhIndivIntervtPrin.oDateSignature.setFocus();
 	ActivInfinitev7.pAdhIndivIntervtPrin.oDateSignature.set(dateSign);
@@ -1206,7 +1209,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_DonneesMandat: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_VerificationDesDonnees: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_VerificationDesDonnees');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_VerificationDesDonnees');
 	/// on quitte la page intervenant principal
 	
 //	ActivInfinitev7.pAdhIndivIntervtPrin.events.LOAD.once(function(ev){
@@ -1243,7 +1246,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_VerificationDesDonnees: function(ev, sc, 
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_GestionsDesErreurs');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_GestionsDesErreurs');
 	// on verifie qu'il n'y a pas d'erreurs, si oui on continue sinon on traite l'erreur
 	
 	
@@ -1295,7 +1298,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 	
 	ActivInfinitev7.pAdhIndivIdentAssures.wait(function () {
 	 //Il n'y a pas d'erreur, on passe à la page Identification des assurés
-		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + '--> Page ' + ev.pageName);
+		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + '--> Page ' + ev.pageName);
 		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures);
 		return ;
 	});
@@ -1305,7 +1308,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 
 ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setModeReglement');
 	var countPoll=0;
 	ctx.polling({
 			delay: 300,
@@ -1335,7 +1338,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut_setMode
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut');
 	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
 		var countPoll=0;
 		ctx.polling({
@@ -1385,7 +1388,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut: functi
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationAssures: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures');
 	sc.endStep();
 	return;
 }});
@@ -1394,7 +1397,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures: function(ev, sc, st) {
 
 ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_IdentifiantAdherent');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_IdentifiantAdherent');
 	var nomDeNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.NOM_JEUNE_FILLE;
 	var sexe = data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_SEX;
 	var dateNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.BRTH_DAY_GREG;
@@ -1444,7 +1447,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function
 
 ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO');
 	/// Assure RO
 	var AssureRO = data.contratCourantAdhesion.dataLocale.contratTemp.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
 	ActivInfinitev7.pAdhIndivIdentAssures.oTypAssRO.click(true);
@@ -1478,7 +1481,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO: function(ev, s
 
 ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO_SelectionRegime: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO_SelectionRegime');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO_SelectionRegime');
 	
 	/// Organisme RO
 	var organismeRO = data.contratCourantAdhesion.dataLocale.contratTemp.CODE_GR;
@@ -1526,7 +1529,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO_SelectionRegime
 
 ActivInfinitev7.step({ stPageIdentificationAssures_Validation: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Validation');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Validation');
 	ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
 	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
 		sc.endStep(ActivInfinitev7.steps.stVersLaPageIdentificationSouscripteur);
@@ -1538,7 +1541,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_Validation: function(ev, sc, 
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationAssures_Erreur_RO: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO');
 	// Erreur sur le numero RO, On désactive la télétransmission
 	ActivInfinitev7.pAdhIndivIdentAssures.oTeletrans.click();
 	/// Numero RO
@@ -1565,7 +1568,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_Erreur_RO: function(ev, sc, s
 /** Description */
 ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur');
 	var countPoll=0;
 	ctx.polling({	
 		delay: 300,	
@@ -1577,6 +1580,7 @@ ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur: function(ev, sc, 
 		},
 		done: function() { 
 			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+			ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.setFocus();
 			ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.click();
 			sc.endStep();
 			return;
@@ -1597,7 +1601,7 @@ ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur: function(ev, sc, 
 /** Description */
 ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur_ROValide: function(ev, sc, st) {
 	var data = sc.data;
-		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur_ROValide');
+		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur_ROValide');
 	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
 		var countPoll=0;
 		ctx.polling({	
@@ -1643,27 +1647,202 @@ ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur_ROValide: function
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationSouscripteur: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stPageIdentificationSouscripteur');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationSouscripteur');
 	/// On renseigne les infos disponibles
-	sc.endStep();
+
+	
+	var com = {
+		nature : '',
+		type : '',
+		valeure : ''
+	}; 
+	
+	//initialisations
+	data.contratCourantAdhesion.dataLocale.variables.nbCom = 0;
+	data.contratCourantAdhesion.dataLocale.variables.indexCom = 0;
+	
+	ctx.log('nbCom :'+data.contratCourantAdhesion.dataLocale.variables.nbCom+' , indexCom : '+data.contratCourantAdhesion.dataLocale.variables.indexCom);
+	var telDom = {
+		nature : '',
+		type : '',
+		valeure : ''
+	};
+	telDom.valeure = data.contratCourantAdhesion.dataLocale.contratTemp.TEL_DOM;
+	var indicatif = telDom.valeure.substr(0,2);
+	if((indicatif == '06') | (indicatif == '07')){
+		telDom.type = ctx.formF.typeCommunication.telephonePortable.type;
+	}
+	else{
+		telDom.type = ctx.formF.typeCommunication.telephoneDomicile.type;
+	}
+	
+	telDom.nature = ctx.formF.typeCommunication.telephoneDomicile.nature;
+	var val = data.contratCourantAdhesion.dataLocale.contratTemp.TEL_DOM;
+	if(telDom.valeure != ''){
+		data.contratCourantAdhesion.dataLocale.variables.listCom[data.contratCourantAdhesion.dataLocale.variables.nbCom]=telDom;
+		data.contratCourantAdhesion.dataLocale.variables.nbCom += 1;
+	}
+	var telBur = {
+		nature : '',
+		type : '',
+		valeure : ''
+	};
+	telBur.nature = ctx.formF.typeCommunication.telephoneBureau.nature;
+	telBur.type = ctx.formF.typeCommunication.telephoneBureau.type;
+	telBur.valeure = data.contratCourantAdhesion.dataLocale.contratTemp.TEL_PRO;
+	if(telBur.valeure != ''){
+		data.contratCourantAdhesion.dataLocale.variables.listCom[data.contratCourantAdhesion.dataLocale.variables.nbCom]=telBur;
+		data.contratCourantAdhesion.dataLocale.variables.nbCom+=1;
+	}
+	var telPor = {
+		nature : '',
+		type : '',
+		valeure : ''
+	};
+	telPor.nature = ctx.formF.typeCommunication.telephonePortable.nature;
+	telPor.type = ctx.formF.typeCommunication.telephonePortable.type;
+	telPor.valeure = data.contratCourantAdhesion.dataLocale.contratTemp.TEL_POR;
+	if(telPor.valeure != ''){
+		data.contratCourantAdhesion.dataLocale.variables.listCom[data.contratCourantAdhesion.dataLocale.variables.nbCom]=telPor;
+		data.contratCourantAdhesion.dataLocale.variables.nbCom+=1;
+	}	
+		
+	var adrMail = {
+		nature : '',
+		type : '',
+		valeure : ''
+	};
+	adrMail.nature = ctx.formF.typeCommunication.adresseMail.nature;
+	adrMail.type = ctx.formF.typeCommunication.adresseMail.type;
+	if(data.contratCourantAdhesion.dataLocale.contratTemp.ADDR_MAIL == undefined ){
+		adrMail.valeure = '';
+	}
+	else{
+		adrMail.valeure = data.contratCourantAdhesion.dataLocale.contratTemp.ADDR_MAIL;
+	}
+	if(adrMail.valeure != ''){
+		data.contratCourantAdhesion.dataLocale.variables.listCom[data.contratCourantAdhesion.dataLocale.variables.nbCom]=adrMail;
+		data.contratCourantAdhesion.dataLocale.variables.nbCom+=1;
+	}		
+	
+	var fax = {
+		nature : '',
+		type : '',
+		valeure : ''
+	};
+	fax.nature = ctx.formF.typeCommunication.adresseMail.nature;
+	fax.type = ctx.formF.typeCommunication.adresseMail.type;
+	if(data.contratCourantAdhesion.dataLocale.contratTemp.FAX == undefined ){
+		fax.valeure = '';
+	}
+	else{
+		fax.valeure = data.contratCourantAdhesion.dataLocale.contratTemp.FAX;
+	}
+	if(fax.valeure != ''){
+		data.contratCourantAdhesion.dataLocale.variables.listCom[data.contratCourantAdhesion.dataLocale.variables.nbCom]=fax;
+		data.contratCourantAdhesion.dataLocale.variables.nbCom +=1;
+	}		
+	
+	
+	ctx.log(' nbCom : '+ data.contratCourantAdhesion.dataLocale.variables.nbCom);
+	
+	
+	
+	
+	
+	sc.endStep(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication_Boucle);
 	return;
 }});
 
 
 
 /** Description */
+ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication_Boucle: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationSouscripteur_AjoutCommunication');
+	
+	if(data.contratCourantAdhesion.dataLocale.variables.indexCom<data.contratCourantAdhesion.dataLocale.variables.nbCom){
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication);
+		return;
+	}else{
+		ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant.click();
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire);
+		return;
+	}
+	
+	
+}});
+
+/** Description */
 ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationSouscripteur_AjoutCommunication');
+	ActivInfinitev7.pAdhIndivIdentSouscri.btNouveau.click();
+	ActivInfinitev7.pAdhIndivIdentSouscri.events.LOAD.once(function(ev){
+		var index = data.contratCourantAdhesion.dataLocale.variables.indexCom;
+		var nat = data.contratCourantAdhesion.dataLocale.variables.listCom[index].nature;
+		var typ = data.contratCourantAdhesion.dataLocale.variables.listCom[index].type;
+		var val = data.contratCourantAdhesion.dataLocale.variables.listCom[index].valeure;
+		ctx.log('nature : '+nat+' , type : '+typ+' valeure : '+val);
+		var countPoll=0;
+		ctx.polling({
+			delay: 200,
+			nbMax: 10,
+			test: function(index) { 
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				var EN = ActivInfinitev7.pAdhIndivIdentSouscri.oSelectNature.count()>0;
+				var ET = ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType.count()>0;
+				var EV = ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur.count()>0;
+				
+				var existance = EN * ET * EV;
+				return existance; 
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectNature.i(index).setFocus();
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectNature.i(index).set(nat);
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType.i(index).setFocus();
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType.i(index).set(typ);
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur.i(index).setFocus();
+				ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur.i(index).set(val);
+				data.contratCourantAdhesion.dataLocale.variables.indexCom += 1;
+				sc.endStep(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication_Boucle);
+				return;
+				
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage des communications adherents : erreur Serveur ');
+				data.contratCourantAdhesion.notes.commentaireContrat += 'Erreur lors du remplissage des communications adherents : erreur Serveur ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire');
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
 	
-	sc.endStep();
-	return;
+		
+		sc.endStep();
+		return;
+		
+	});
+	
 }});
 
 
 /** Description */
 ActivInfinitev7.step({ stFinScCreationHSP: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT + ' Etape - stFinScCreationHSP');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stFinScCreationHSP');
 	//retour au dashboard
   ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 	sc.endStep();

@@ -54,9 +54,9 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.DEPARTEMENT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DEPARTEMENT);
 		temp_contrat.CODE_PAYS = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_PAYS);
 		temp_contrat.CODE_RNVP = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CODE_RNVP);
-		temp_contrat.TEL_DOM = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_DOM);
-		temp_contrat.TEL_PRO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_PRO);
-		temp_contrat.TEL_POR = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_POR);
+		temp_contrat.TEL_DOM = ctx.stringF.formatTel(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_DOM));
+		temp_contrat.TEL_PRO = ctx.stringF.formatTel(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_PRO));
+		temp_contrat.TEL_POR = ctx.stringF.formatTel(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TEL_POR));
 		temp_contrat.ADDR_MAIL = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.ADDR_MAIL);
 		temp_contrat.FAX = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.FAX);
 		temp_contrat.TITU_COMPTE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TITU_COMPTE);
