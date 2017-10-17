@@ -27,7 +27,7 @@
 	excelF.modifierEntete = function() {
 		var tab = [
 			{ columnIndex: configExcel.indexColonne.dateTraitementContrat, value: "Date traitement contrat" },
-			{ columnIndex: configExcel.indexColonne.statusContrat, value: "Status contrat" },
+			{ columnIndex: configExcel.indexColonne.statutsContrat, value: "Statuts contrat" },
 			{ columnIndex: configExcel.indexColonne.commentaireContrat, value: "Commentaire" }
 		];
 		return tab;

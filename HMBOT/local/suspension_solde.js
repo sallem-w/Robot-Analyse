@@ -6,8 +6,8 @@
 		sc.onTimeout(120000, function(sc, st) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onTimeOut :  On quitte le sous scenario scVerificationSoldeContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario(); 
 	}); 
@@ -15,8 +15,8 @@
 		sc.onError(function(sc, st, ex) { 
 		ctx.traceF.infoTxt(data.contratCourantSuspension.infos['RONumber']  + 'onError :  On quitte le sous scenario scVerificationSoldeContratSuspension');
 		data.contratCourantSuspension.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
-		data.contratCourantSuspension.notes.statusContrat = ctx.excelF.constantes.status.Echec;
-		data.contratCourantSuspension.status.finSuspensionProcessus = true;
+		data.contratCourantSuspension.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		data.contratCourantSuspension.statuts.finSuspensionProcessus = true;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	});

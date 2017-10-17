@@ -25,7 +25,7 @@ ctx.dataF = (function () {
             },
             notes: {
                 dateTraitementContrat:'',
-                statusContrat: '',
+                statutsContrat: '',
                 commentaireContrat: ''
             },
             statutsCMU: {
