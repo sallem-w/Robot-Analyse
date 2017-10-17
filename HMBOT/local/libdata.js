@@ -1,6 +1,7 @@
 ctx.dataF = (function () {
 
     var dataF = {
+			nomScenario : '',
 				scenarioConfig : '',
 				codeScenario : '',
         contratCourantCMU: {
