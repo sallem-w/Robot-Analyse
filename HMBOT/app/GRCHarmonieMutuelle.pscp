@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="GRCHarmonieMutuelle" Nature="WEB3" TechnoSDK="V3" Sync="250">
+			<CAPTURE Name="APPLI_GRCHarmonieMutuelle_1" CtxtId="1" Techno="WEB" />
+			<SCRIPTS>
+				<SCRIPT Name="VerificationDataGRC" Src="VerificationDataGRC.js" />
+			</SCRIPTS>
+			<SCENARII />
+			<ACTIONS />
+			<EVENTS />
+			<CRITERE>
+				<DOMAIN Scan="Part"><![CDATA[sbl37inf1]]></DOMAIN>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GRCHarmonieMutuelle" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pConnexionGRC" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.00_012 / 36.00.00_001 / 5.4.1_B012)">
+					<CRITERE>
+						<URL Scan="start-with"><![CDATA[http://sbl37inf1/fins_fra/]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Start&SWEHo=sbl37inf1]]></PATH>
+					<OBJETS>
+						<OBJET Name="oIdentifiant">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="186.R0R1R0R0R3R0R0R1R0R0R0R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[SWEUserName]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPwd">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="186.R0R1R0R0R3R0R0R1R0R0R0R0R3R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[SWEPassword]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oConnexion">
+							<CRITERE>
+								<TAG Name="IMG" Scope="All" CapturedPos="186.R0R1R0R0R3R0R0R1R0R0R0R0R5R0R0">
+									<ATT Name="alt">
+										<VALUE Scan="Full"><![CDATA[Connexion]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_GRCHarmonieMutuelle_1527473_1" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.00_012 / 36.00.00_001 / 5.4.1_B012)" CtxtId="186" Techno="WEB" Timestamp="17/10/2017 15:27:50" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Start&SWEHo=sbl37inf1]]></PATH>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

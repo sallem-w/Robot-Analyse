@@ -10,6 +10,11 @@ ctx.dataF = (function () {
             identifiant:'', 
             motDePasse:'' 
         },
+				webDataGRC : {
+						url: '',
+					  identifiant : '',
+					  motDePasse: ''
+				},
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
@@ -103,11 +108,12 @@ ctx.dataF = (function () {
 				debDateEffet: '',
 				gammeProduit:'',
 				codeOffre :'',
-				tabGamme : [],
-				tabCode : [],
+//				tabGamme : [],
+//				tabCode : [],
 				tabGammeCode : [],
 				tabProduits: [],
 				numSEQ : '',
+				tabProduitsPrinConj : [],
 				tabListeProduits : []
 			},
 			dataEnLigne: {
@@ -120,6 +126,7 @@ ctx.dataF = (function () {
 				contratEstActif : false,
 				adhesionEstEnregistree : false,
 			  HPPExiste : false,
+			  produitGammeCompatible : false,
 				codeOffre : '',
 				debDateEffet : '',
 				critereRecherche : 1
@@ -147,6 +154,7 @@ ctx.dataF = (function () {
 			dat.scenarioConfig=ctx.configF.fichierConfigScenario;//?????
 			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
+			dat.webDataGRC=ctx.dataF.webDataGRC;
 			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
 			dat.varGlobales=ctx.dataF.varGlobales;
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.ANALYSE.cheminRacine, ctx.configF.scenario.Analyse);

@@ -322,7 +322,6 @@ ActivInfinitev7.pRecherchePPRefGRC.oPrenom = ActivInfinitev7.pRecherchePPRefGRC.
 ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateNaissance');
 
 ActivInfinitev7.pRecherchePPRefGRCRes = ActivInfinitev7.addPage('pRecherchePPRefGRCRes', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oResultatParRelation');
 ActivInfinitev7.pRecherchePPRefGRCRes.oListeContrats = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oListeContrats', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.btValider = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btValider');
@@ -330,6 +329,7 @@ ActivInfinitev7.pRecherchePPRefGRCRes.btFermer = ActivInfinitev7.pRecherchePPRef
 ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oTypeRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oIdentiteRelation', {"occurs":1});
 ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
 ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
 ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
 ActivInfinitev7.pRecherchePPRefGRCRes.btVisualiser = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btVisualiser');
@@ -338,3 +338,11 @@ ActivInfinitev7.pHistoriqueOptsConsul = ActivInfinitev7.addPage('pHistoriqueOpts
 ActivInfinitev7.pHistoriqueOptsConsul.oTableOperations = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oTableOperations', {"occurs":1});
 ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oContexte', {"occurs":1});
 ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNext');
+
+
+var GRCHarmonieMutuelle = ctx.addApplication('GRCHarmonieMutuelle', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Start\u0026SWEHo=sbl37inf1"});
+
+GRCHarmonieMutuelle.pConnexionGRC = GRCHarmonieMutuelle.addPage('pConnexionGRC', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.00_012 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Start\u0026SWEHo=sbl37inf1"});
+GRCHarmonieMutuelle.pConnexionGRC.oIdentifiant = GRCHarmonieMutuelle.pConnexionGRC.addItem('oIdentifiant');
+GRCHarmonieMutuelle.pConnexionGRC.oPwd = GRCHarmonieMutuelle.pConnexionGRC.addItem('oPwd');
+GRCHarmonieMutuelle.pConnexionGRC.oConnexion = GRCHarmonieMutuelle.pConnexionGRC.addItem('oConnexion');

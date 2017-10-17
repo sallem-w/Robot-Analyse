@@ -178,6 +178,7 @@ ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
 		delay: 200,
 		nbMax: 10,
 		test: function(index) { 
+			ctx.log('stTraiterResultatRecherchePP: non executé ***************************************************');
 			return ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist(); 
 		},
 		done: function() { 
@@ -390,17 +391,29 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 		    			/** deb modif 11-10-2017*/ /** lecture de : datedebuteffet, codeoffre (EN LIGNE) */
 			  			data.ppCouranteAnalyse.dataEnLigne.codeOffre = ActivInfinitev7.pIdentContratRechResu.oCodeOffre.get();
 		    			data.ppCouranteAnalyse.dataEnLigne.debDateEffet = ActivInfinitev7.pIdentContratRechResu.oDateDebutEffet.get();
-			  			//lire la gamme de produit et la date de début de fin d'effet ==> codeoffre (LOCALE)
-			  			data.ppCouranteAnalyse.dataLocale.gammeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.gammeProduit);
+			  			
 	      			var debDateEffet = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.debDateEffet);
 	      			data.ppCouranteAnalyse.dataLocale.debDateEffet = ctx.dateF.formatDateIAE(debDateEffet+'');
 	      			//récupération du code d'offre
-	      			for(var i=0; i < data.ppCouranteAnalyse.dataLocale.gammeProduit.length; i++){
-		      				if(data.ppCouranteAnalyse.dataLocale.tabGamme[i]+'' === data.ppCouranteAnalyse.dataLocale.gammeProduit+''){
-			      						data.ppCouranteAnalyse.dataLocale.codeOffre = data.ppCouranteAnalyse.dataLocale.tabCode[i];
+//	      			for(var i=0; i < data.ppCouranteAnalyse.dataLocale.gammeProduit.length; i++){
+//		      				if(data.ppCouranteAnalyse.dataLocale.tabGamme[i]+'' === data.ppCouranteAnalyse.dataLocale.gammeProduit+''){
+//			      						data.ppCouranteAnalyse.dataLocale.codeOffre = data.ppCouranteAnalyse.dataLocale.tabCode[i];
+//			      						break;
+//		      				}
+//	      			}
+							var res = [];
+							for(var i=0; i < 10; i++){
+								  res = data.ppCouranteAnalyse.dataLocale.tabGammeCode[i].split(':');
+		      				if(res[0] === data.ppCouranteAnalyse.dataLocale.gammeProduit+''){
+			      						data.ppCouranteAnalyse.dataLocale.codeOffre = res[1];
+										    ctx.traceF.infoTxt('/////////// res[0]: '+ res[0]+', res[1]: '+res[1]+', gammeProduitGRC: '+data.ppCouranteAnalyse.dataLocale.gammeProduit);
+										    if(res[2] == 1){
+													data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = true;
+												}
 			      						break;
 		      				}
 	      			}
+							
 			  			if(ctx.dateF.estEgale(data.ppCouranteAnalyse.dataEnLigne.debDateEffet, data.ppCouranteAnalyse.dataLocale.debDateEffet) && data.ppCouranteAnalyse.dataEnLigne.codeOffre === data.ppCouranteAnalyse.dataLocale.codeOffre){
 		      				data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = true;
 									sc.endStep(ActivInfinitev7.steps.stFinAnalyseContratsIA);

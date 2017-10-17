@@ -159,7 +159,7 @@ GLOBAL.events.START.on(function (ev) {
 //			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 //			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
 			var data = {};
-			ActivInfinitev7.scenarios.scAnalyseSituation.start(data).onEnd(function(){});
+			GRCHarmonieMutuelle.scenarios.scVerifDataGRC.start(data).onEnd(function(){});
 		});	
 		}
 	
