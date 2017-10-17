@@ -59,7 +59,7 @@ ActivInfinitev7.step({ stInitPivot : function(ev, sc, st) {
     data.indexCurrentContract = 0;
     data.customerName = json.customerName;
   	data.contracts = json.data;
-    data.countContracts = data.contracts.length;
+    data.countContracts = countContracts;
     data.totalTimeDuration = new Date();
     data.countCaseFindIntoPivot = data.countContracts;
     data.countCaseProcessed = 0;

@@ -65,6 +65,41 @@
 		}
 	}
 	
+	statsF.miseAJourCMU = function(dat){
+		dat.statistiquesF.nbCasTraite +=1;
+		dat.statistiquesF.nbCasTrouveDsExcel = dat.varGlobales.indexDerniereLigne - dat.scenarioConfig.CMU.excel.debutIndexLigne + 1;
+		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
+		
+		
+		if (dat.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Succes) {
+				dat.statistiquesF.nbCasTraitementSucces += 1;
+		}
+
+		if (dat.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Echec) {
+				dat.statistiquesF.nbCasTraitementEchec += 1;
+		}
+		
+		if (dat.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1){
+			dat.statistiquesF.nbCasRevoirCentre +=1;
+		}
+		
+		if ( dat.contratCourantCMU.statutsCMU.contratTermine == true){
+			dat.statistiquesF.nbContratsPretsPrResiliation += 1;
+		}
+		
+		if ( dat.contratCourantCMU.statutsCMU.contratResilie == true){
+			dat.statistiquesF.nbContratsResilies += 1;
+		}
+		
+	}
+
+	statsF.calculerStats = function (dat) {
+		dat.statistiquesF.FinTpsTraitement = ctx.dateF.conversionEnSecondes(new Date());
+  	dat.statistiquesF.dureeTraitement = ctx.dateF.afficherDuree(dat.statistiquesF.FinTpsTraitement - dat.statistiquesF.debutTpsTraitement);
+		ctx.statsF.remplir(dat);
+	}
+
+	
 	return statsF;
 }) ();
 
