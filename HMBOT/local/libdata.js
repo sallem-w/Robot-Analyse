@@ -108,13 +108,11 @@ ctx.dataF = (function () {
 				debDateEffet: '',
 				gammeProduit:'',
 				codeOffre :'',
-//				tabGamme : [],
-//				tabCode : [],
 				tabGammeCode : [],
-				tabProduits: [],
+				tabProduits: [], //10 produits du fichier JSON
 				numSEQ : '',
-				tabProduitsPrinConj : [],
-				tabListeProduits : []
+				numExtCtt : '',
+				tabProduitsPrinConj : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,

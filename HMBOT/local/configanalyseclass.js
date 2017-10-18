@@ -20,6 +20,7 @@ var confFileANALYSEClass = function() {
 							  debDateEffet: '',
 							  numProduit1 : '',
 							  numSEQ : '',
+							  numExtCtt : '',
 								contexteAnalyseStoppee : '',
 							  presenceHPP : ''
             }

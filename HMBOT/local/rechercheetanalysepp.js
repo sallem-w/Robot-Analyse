@@ -16,6 +16,7 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
+//	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
 	sc.step(ActivInfinitev7.steps.stInitRechercheEtAnalysePP);
 	sc.step(ActivInfinitev7.steps.stInitConsultationPP);
 	sc.step(ActivInfinitev7.steps.stConsultationPP);
@@ -38,6 +39,19 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 
 }});
 
+
+///** Description */
+ActivInfinitev7.step({ stDemarrageServeurInfinite: function(ev, sc, st) {
+	var data = sc.data;
+		ctx.traceF.infoTxt('Début étape - stDemarrageServeurInfinite');
+		ActivInfinitev7.pTabDeBord.wait(function(ev) {
+			var infos = ActivInfinitev7.pTabDeBord.getInfos();
+			data.webData.tabDeBordURL=infos.document.URL;
+			ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+			sc.endStep();
+			return;
+		});
+}});
 
 
 /** Description */

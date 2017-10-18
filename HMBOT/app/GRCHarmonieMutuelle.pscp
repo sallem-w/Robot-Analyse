@@ -15,7 +15,9 @@
 			<SCRIPTS>
 				<SCRIPT Name="VerificationDataGRC" Src="VerificationDataGRC.js" />
 			</SCRIPTS>
-			<SCENARII />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
 			<ACTIONS />
 			<EVENTS />
 			<CRITERE>
