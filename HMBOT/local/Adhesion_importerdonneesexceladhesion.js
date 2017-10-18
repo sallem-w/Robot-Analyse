@@ -5,7 +5,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape - stImporterDonneesExcelAdhesion');
 	var configAdhesion = new confFileAdhesionClass();
 	var contratAdhesionAttributs = configAdhesion.ADHESION.excel.indexColonne;
-	var temp_contrat=contratAdhesionAttributs;
+//	var temp_contrat=contratAdhesionAttributs;
 	var temp_ligne=data.varGlobales.ligneCourante;
 	// on récupère les infos de toutes les lignes associées à la demande d'adhesion
 	var numeroSeq= ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_CT);
@@ -28,7 +28,11 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 	ctx.log('Ligne courante : '+data.varGlobales.ligneCourante);
 	ctx.log('numeroSeq : '+ numeroSeq);
 	while (numeroSeq !== undefined && numeroSeq === tmpNumeroSeq) {
+		var AdhesionObj = new confFileAdhesionClass();
+		var contratAttributs = AdhesionObj.ADHESION.excel.indexColonne;
+		var temp_contrat= contratAttributs;
 		temp_contrat.NUM_SEQ_CT = numeroSeq;
+		temp_contrat.NUM_SEQ_PER = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_PER);
 		temp_contrat.DISCRIMINANT = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DISCRIMINANT);
 		temp_contrat.DATE_DEBUT_EFFET =ctx.dateF.formatDateGRC(String(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.DATE_DEBUT_EFFET)))
 		temp_contrat.TYPE_ASSURE = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TYPE_ASSURE);
@@ -107,9 +111,11 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.TOP_ABONN_DEC= ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.TOP_ABONN_DEC);
 		ctx.log('Numero Sequence: '+tmpNumeroSeq); 
 		ctx.log('Type contrat: '+ temp_contrat.GAMME); 
-		data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.push(temp_contrat);
+		var index = temp_contrat.NUM_SEQ_PER -1 ;
+		data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[index]=temp_contrat;
 		temp_ligne+=1;
 		tmpNumeroSeq = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_CT);
+		
 	}
 	ctx.log('ligne Courante: '+ data.varGlobales.ligneCourante);
 	sc.endStep();

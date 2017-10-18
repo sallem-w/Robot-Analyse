@@ -59,6 +59,18 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication_Boucle);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication);
 	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire);
+	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
+//	sc.step(ActivInfinitev7.steps.stRechercheBenefeciaireAdhesionIndiv);
+//	sc.step(ActivInfinitev7.steps.stResultatRechercheBenefeciaireAdhesionIndiv);
+//	sc.step(ActivInfinitev7.steps.stSelectionBenefeciaireAdhesionIndiv);
+//	sc.step(ActivInfinitev7.steps.stCreationBenefeciaireAdhesionIndiv);
+//	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_IdentifiantAdherent);
+//	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO);
+//	sc.step(ActivInfinitev7.steps.stPageIdentificationAssures_InformationRO_SelectionRegime);
+	sc.step(ActivInfinitev7.steps.stScenarioAjoutBeneficiaire);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_ValidationBeneficiaire); 
+//	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_ModifIdentificationBeneficiaire); 
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -336,6 +348,8 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_CentreGestion: function
 				ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion.i(indexCG).click();
 				// Fin du remplissage des données on clique sur le bouton suivant
 				ActivInfinitev7.pAdhIndivIdentContrat.btBtnSuivant.click();
+				// On passe à la recherche sur la personne physique
+				data.contratCourantAdhesion.dataLocale.personnePhysique=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0]; // Assure Principal
 				sc.endStep();
 				return;
 				},
@@ -353,10 +367,10 @@ ActivInfinitev7.step({ stRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stRecherchePersonneAdhesionIndiv');
 //	var nom=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].contratAdhesionAttributs.CONTACT_NOM;
-	var nom=data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_NOM;
-	var prenom = data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_PRENOM;
-	var dateNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.BRTH_DAY_GREG;
-	var numRo = data.contratCourantAdhesion.dataLocale.contratTemp.NUM_RO;
+	var nom = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_NOM;
+	var prenom = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_PRENOM;
+	var dateNaissance = data.contratCourantAdhesion.dataLocale.personnePhysique.BRTH_DAY_GREG;
+	var numRo = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_RO;
 	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
 	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
 	ActivInfinitev7.pAdhIndivIdPrinRech.wait(function(ev) {
@@ -495,7 +509,7 @@ ActivInfinitev7.step({ stSelectionPersonneAdhesionIndiv: function(ev, sc, st) {
 ActivInfinitev7.step({ stCreationIdentificationPersonneAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stCreationIdentificationPersonneAdhesionIndiv');
-	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
+	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
 		ctx.log('--> Creation intervenant principal ');
 		
 //		sc.endStep(ActivInfinitev7.steps.stRecuperationDesChampsPageIntervenantPrincipal);
@@ -1341,39 +1355,42 @@ ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut: functi
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut');
 	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
 		var countPoll=0;
-		ctx.polling({
-			delay: 300,
-			nbMax: 10,
-			test: function(index) { 
-				countPoll++;
-				ctx.log('countP :'+countPoll);
-				var EMP = ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.exist();
-				var EFR = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.exist();
-				var EFA = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.exist();
-				var existance = EMP * EFR * EFA ;
-				return existance; 
-			},
-			done: function() { 
-				ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.setFocus();
-				ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('C');
-				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
-				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set('TR');
-				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
-				ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A');
-				data.contratCourantAdhesion.notes.commentaireContrat = ' RIB MANQUANT :ENVOI COURRIER';
-				sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
-				return;
-				
-			},
-			fail: function() { 
-				ctx.traceF.errorTxt(' Erreur lors du remplissage des coordonnées bancaires : erreur Serveur Mode Paiement n\'existe pas ');
-				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage des coordonnées bancaire : erreur Serveur Mode Paiement  n\'existe pas ';
-				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-				data.contratCourantAdhesion.statuts.finCreation = true;
-				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-				return;
-			}
-		});
+		ctx.wait(function(ev) {
+			ctx.polling({
+				delay: 300,
+				nbMax: 10,
+				test: function(index) { 
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					var EMP = ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.exist();
+					var EFR = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.exist();
+					var EFA = ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.exist();
+					var existance = EMP * EFR * EFA ;
+					return existance; 
+				},
+				done: function() { 
+					ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oModePaiement.set('C');
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceReglement.set('TR');
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.setFocus();
+					ActivInfinitev7.pAdhIndivIntervtPrin.oFrequenceAvisEcheance.set('A');
+					data.contratCourantAdhesion.notes.commentaireContrat = ' RIB MANQUANT :ENVOI COURRIER';
+					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
+					return;
+					
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage des coordonnées bancaires : erreur Serveur Mode Paiement n\'existe pas ');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre:  Erreur lors du remplissage des coordonnées bancaire : erreur Serveur Mode Paiement  n\'existe pas ';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
+		}, 1000);
+		
 
 	});
 }});
@@ -1398,10 +1415,37 @@ ActivInfinitev7.step({ stPageIdentificationAssures: function(ev, sc, st) {
 ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_IdentifiantAdherent');
-	var nomDeNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.NOM_JEUNE_FILLE;
-	var sexe = data.contratCourantAdhesion.dataLocale.contratTemp.CONTACT_SEX;
-	var dateNaissance = data.contratCourantAdhesion.dataLocale.contratTemp.BRTH_DAY_GREG;
-	var situFamille =  data.contratCourantAdhesion.dataLocale.contratTemp.SITUATION_FAMILLE;
+	///
+	var typeAssureGRC = data.contratCourantAdhesion.dataLocale.personnePhysique.TYPE_ASSURE;
+	
+	var tab = { GRC :'', Infinite:''};
+	tab = ctx.formF.typeAssure ;
+	var resultat='';
+	for ( var i in tab ){
+		if(tab[i].GRC != undefined){
+			if( typeAssureGRC == tab[i].GRC){
+				resultat=tab[i].Infinite;
+			}
+		}
+		else{
+			ctx.traceF.errorTxt(' Le code ' + typeAssureGRC + ' n\'existe pas pour ce tableau');
+		}
+	}
+	if(resultat == ''){
+		ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + typeAssureGRC);
+	}
+	
+	ctx.log(' ->Civilité : '+ resultat);
+	
+	var typeAssure = resultat;
+	///
+	
+	
+	var civilite = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_CIVILITE;
+	var nomDeNaissance = data.contratCourantAdhesion.dataLocale.personnePhysique.NOM_JEUNE_FILLE;
+	var sexe = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_SEX;
+	var dateNaissance = data.contratCourantAdhesion.dataLocale.personnePhysique.BRTH_DAY_GREG;
+	var situFamille =  data.contratCourantAdhesion.dataLocale.personnePhysique.SITUATION_FAMILLE;
 	ctx.log('Identification Adhérent');
 	ctx.log(' Nom e de naissance : '+nomDeNaissance+'  Sexe : '+sexe+' Date de naissance : '+dateNaissance+' situation Famille : '+situFamille);
 	var countPoll=0;
@@ -1411,14 +1455,20 @@ ActivInfinitev7.step({ stPageIdentificationAssures_IdentifiantAdherent: function
 		test: function(index) { 
 			countPoll++;
 			ctx.log('countP :'+countPoll);
+			var ETA = ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure.exist();
+			var EC = ActivInfinitev7.pAdhIndivIdentAssures.oCivilite.exist();
 			var ENJF = ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.exist();
 			var ES = ActivInfinitev7.pAdhIndivIdentAssures.oSexe.exist();
 			var EDN = ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance.exist();
 			var ESF = ActivInfinitev7.pAdhIndivIdentAssures.oSituationFamille.exist();
-			var existance = ENJF * ES * EDN * ESF ;
+			var existance = ETA * EC * ENJF * ES * EDN * ESF ;
 			return existance; 
 		},
 		done: function() { 
+			ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure.set(typeAssure);
+			ActivInfinitev7.pAdhIndivIdentAssures.oCivilite.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssures.oCivilite.set(civilite);
 			ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.setFocus();
 			ActivInfinitev7.pAdhIndivIdentAssures.oNomJF.keyStroke(nomDeNaissance);
 			ActivInfinitev7.pAdhIndivIdentAssures.oSexe.setFocus();
@@ -1449,29 +1499,29 @@ ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO: function(ev, s
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO');
 	/// Assure RO
-	var AssureRO = data.contratCourantAdhesion.dataLocale.contratTemp.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
+	var AssureRO = data.contratCourantAdhesion.dataLocale.personnePhysique.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
 	ActivInfinitev7.pAdhIndivIdentAssures.oTypAssRO.click(true);
 	/// Numero RO
-	var numRO = data.contratCourantAdhesion.dataLocale.contratTemp.NUM_RO;
+	var numRO = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_RO;
 	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.setFocus();
 	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.set(numRO);
 	/// Clef RO
-	var cleRO = data.contratCourantAdhesion.dataLocale.contratTemp.CLE_NUM_RO;
+	var cleRO = data.contratCourantAdhesion.dataLocale.personnePhysique.CLE_NUM_RO;
 	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.setFocus();
 	ActivInfinitev7.pAdhIndivIdentAssures.oCleRO.set(cleRO);
 	
 	/// caisse RO 
-	var caisseRO = data.contratCourantAdhesion.dataLocale.contratTemp.CAISSE_RO;
+	var caisseRO = data.contratCourantAdhesion.dataLocale.personnePhysique.CAISSE_RO;
 	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.setFocus();
 	ActivInfinitev7.pAdhIndivIdentAssures.oCaisseRO.set(caisseRO);
 	
 	/// Centre RO
-	var centrePaiement = data.contratCourantAdhesion.dataLocale.contratTemp.CENTRE_PAIEMENT;
+	var centrePaiement = data.contratCourantAdhesion.dataLocale.personnePhysique.CENTRE_PAIEMENT;
 	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.setFocus();
 	ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.set(centrePaiement);
 	
 	// Teletransmission 
-	var teletrans = data.contratCourantAdhesion.dataLocale.contratTemp.IND_TLT;
+	var teletrans = data.contratCourantAdhesion.dataLocale.personnePhysique.IND_TLT;
 	/// verifier si la case est cochée si teletrans O il faut la cocher sinon la décocher si necessaire
 	
 	
@@ -1484,7 +1534,7 @@ ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO_SelectionRegime
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO_SelectionRegime');
 	
 	/// Organisme RO
-	var organismeRO = data.contratCourantAdhesion.dataLocale.contratTemp.CODE_GR;
+	var organismeRO = data.contratCourantAdhesion.dataLocale.personnePhysique.CODE_GR;
 	ActivInfinitev7.pAdhIndivIdentAssures.oRegimeRO.setFocus();
 	ActivInfinitev7.pAdhIndivIdentAssures.oRegimeRO.keyStroke(organismeRO);
 	var countPoll=0;
@@ -1570,31 +1620,34 @@ ActivInfinitev7.step({ stVersLaPageIdentificationSouscripteur: function(ev, sc, 
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur');
 	var countPoll=0;
-	ctx.polling({	
-		delay: 300,	
-		nbMax: 10,		
-		test: function(index) { 		
-			countPoll++;
-			ctx.log('countP :'+countPoll);
-			return ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.exist();
-		},
-		done: function() { 
-			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
-			ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.setFocus();
-			ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.click();
-			sc.endStep();
-			return;
-			
-		},
-		fail: function() { 
-			ctx.traceF.errorTxt(' Erreur lors du click sur la page d\'identification du souscripteur');
-			data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur lors du click sur la page d\'identification du souscripteur ';
-			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-			data.contratCourantAdhesion.statuts.finCreation = true;
-			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-			return;
-		}
-	});
+	ctx.wait(function(ev) {
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.exist();
+			},
+			done: function() { 
+				/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+				ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.setFocus();
+				ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur.click();
+				sc.endStep();
+				return;
+				
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du click sur la page d\'identification du souscripteur');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur lors du click sur la page d\'identification du souscripteur ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});	
+	}, 1000);
+
 }});
 
 
@@ -1743,13 +1796,7 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur: function(ev, sc, st) {
 		data.contratCourantAdhesion.dataLocale.variables.nbCom +=1;
 	}		
 	
-	
 	ctx.log(' nbCom : '+ data.contratCourantAdhesion.dataLocale.variables.nbCom);
-	
-	
-	
-	
-	
 	sc.endStep(ActivInfinitev7.steps.stPageIdentificationSouscripteur_AjoutCommunication_Boucle);
 	return;
 }});
@@ -1766,7 +1813,8 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication_Boucl
 		return;
 	}else{
 		ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant.click();
-		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire);
+		data.contratCourantAdhesion.dataLocale.variables.indexBenef = 1; // on commence au 1er benef ( 0 étant l'assure principal)
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
 		return;
 	}
 	
@@ -1825,17 +1873,255 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication: func
 
 
 /** Description */
+ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire_Boucle: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire_Boucle');
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		if(data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[data.contratCourantAdhesion.dataLocale.variables.indexBenef]!= undefined){
+			data.contratCourantAdhesion.dataLocale.personnePhysique=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[data.contratCourantAdhesion.dataLocale.variables.indexBenef];
+			data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
+			ActivInfinitev7.pAdhIndivIdentAssures.btNouveau.click();
+			sc.endStep(ActivInfinitev7.steps.stScenarioAjoutBeneficiaire);
+			return;
+		}
+		else{
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation);
+			return;
+		}
+	});
+}});
+
 ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire');
 	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
-	
-		
-		sc.endStep();
+		ActivInfinitev7.pAdhIndivIdentAssures.btNouveau.click();
+		sc.endStep(ActivInfinitev7.steps.stRechercheBenefeciaireAdhesionIndiv);
 		return;
 		
 	});
 	
+}});
+
+
+
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stRechercheBenefeciaireAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stRechercheBenefeciaireAdhesionIndiv');
+//	var nom=data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[0].contratAdhesionAttributs.CONTACT_NOM;
+	var nom = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_NOM;
+	var prenom = data.contratCourantAdhesion.dataLocale.personnePhysique.CONTACT_PRENOM;
+	var dateNaissance = data.contratCourantAdhesion.dataLocale.personnePhysique.BRTH_DAY_GREG;
+	var numRo = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_RO;
+	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
+	ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );
+	ActivInfinitev7.pAdhIndivIdPrinRech.wait(function(ev) {
+		var countPoll=0;	
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return (ActivInfinitev7.pAdhIndivIdPrinRech.oNom.exist() && ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.exist());
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNom.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNom.set(nom);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oPrenom.set(prenom);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oDateNaissance.set(dateNaissance);
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.setFocus();
+				ActivInfinitev7.pAdhIndivIdPrinRech.oNumeroRo.set(numRo);
+				ActivInfinitev7.pAdhIndivIdPrinRech.btRechercher.click();
+				sc.endStep(ActivInfinitev7.steps.stResultatRechercheBenefeciaireAdhesionIndiv);
+				return;	
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Rercherche Personne Impossible : Element oNom introuvable ');
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Error Rercherche Personne Impossible ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+		});
+		
+
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stResultatRechercheBenefeciaireAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stResultatRechercheBenefeciaireAdhesionIndiv');
+	ActivInfinitev7.pAdhIndivIdPrinRechResu.wait(function(ev){
+		if(ActivInfinitev7.pAdhIndivIdPrinRechResu.oAucunePersonne){
+			var countPoll=0;	
+			ctx.polling({	
+				delay: 300,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.exist();
+				},
+				done: function() { 
+					ActivInfinitev7.pAdhIndivIdPrinRechResu.btAnnuler.click();
+					sc.endStep(ActivInfinitev7.steps.stCreationBenefeciaireAdhesionIndiv);
+					return;
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt('Error Recherche personne :  btAnnuler n\'existe pas');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
+		}
+		else{
+			var countPoll=0;	
+			ctx.polling({	
+				delay: 300,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count()>0;
+				},
+				done: function() { 
+					/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+					var nbPP = ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.count();
+					if(nbPP==1){
+						// la Personne physique est unique on peut continuer avec
+						ActivInfinitev7.pAdhIndivIdPrinRechResu.oNom.i(0).click();
+						sc.endStep(ActivInfinitev7.steps.stSelectionBenefeciaireAdhesionIndiv);
+						return;
+					}
+					else{
+						/// il y a plusieur PP on renvoi au centre
+						ctx.traceF.errorTxt(' La PP n\'est pas unique , on ne traite pas le dossier ');
+						data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: il y a plusieurs PP identiques ';
+						data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+						data.contratCourantAdhesion.statuts.finCreation = true;
+						sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+						return;
+					}
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
+		}
+	});
+}});
+
+
+ActivInfinitev7.step({ stSelectionBenefeciaireAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stSelectionBenefeciaireAdhesionIndiv');
+	//on fait un polling pour attendre l'apparation du bouton valider
+	var countPoll=0;
+	ctx.polling({	
+		delay: 200,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIdPrinRechResu.btValider.exist();
+		},
+		done: function() { 
+		ActivInfinitev7.pAdhIndivIdPrinRechResu.btValider.click();
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_ModifIdentificationBeneficiaire);
+			return;
+
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur lors de la selection de la PP ');
+			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+			return;
+		}
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stCreationBenefeciaireAdhesionIndiv: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stCreationBenefeciaireAdhesionIndiv');
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		ctx.log('--> Creation Benefeciaire ');
+		
+//		sc.endStep(ActivInfinitev7.steps.stRecuperationDesChampsPageIntervenantPrincipal);
+			sc.endStep();
+		return;
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_IdentificationBeneficiaire: function(ev, sc, st) {
+	var data = sc.data;
+	
+	sc.endStep();
+	return;
+}});
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_ValidationBeneficiaire: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_ValidationBeneficiaire');
+	ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
+			return ;
+	});
+}});
+
+
+
+ActivInfinitev7.step({ stAdhesionIndiv_ModifIdentificationBeneficiaire: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_ModifIdentificationBeneficiaire');
+	sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);
+	return;
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stScenarioAjoutBeneficiaire: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape - stScenarioCreation - Lancement du sous-scenario : stScenarioAjoutBeneficiaire');
+	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
+	st.disableTimeout();	
+	var scA = ActivInfinitev7.scenarios.scScenarioCreationContrat.start(data).onEnd(function(scAB){
+		sc.data=scAB.data;
+		ctx.traceF.infoTxt(' Fin du sous-scenario - stScenarioAjoutBeneficiaire');
+		sc.endStep();
+	});
+}});
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndividuelle_Modification_RIB_Prestation: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.contratTemp.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_Modification_RIB_Prestation');
+	sc.endStep();
+	return;
 }});
 
 

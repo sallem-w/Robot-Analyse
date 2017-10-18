@@ -5,14 +5,25 @@
 	var civilite = {
 		GRC: ['MME', 'MLLE', 'M'],
 		Infinite: ['MME', 'MLLE', 'M']
-	}
+	};
 	formF.civilite = civilite
 
+	var typeAssure = [
+		{ "GRC": "Principale", "Infinite": "ASSPRI" },
+		{ "GRC": "Conjoint", "Infinite": "CONJOI" },
+		{ "GRC": "Enfant", "Infinite": "ENFANT" },
+		{ "GRC": "Autre", "Infinite": "RATTAC" }
+		];
+		
+	
+	formF.typeAssure=typeAssure;
+	
+	
 	var typeAdresse = {
 		Domicile: 'Domicile',
 		Professionnelle: 'Professionnelle',
 		Temporaire: 'Temporaire'
-	}
+	};
 	formF.typeAdresse = typeAdresse;
 
 //	var typeVoie = {

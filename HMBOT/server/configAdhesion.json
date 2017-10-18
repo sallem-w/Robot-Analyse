@@ -13,6 +13,7 @@
             "debutIndexLigne": 2,
             "indexColonne": {
                 "NUM_SEQ_CT": 2,
+                "NUM_SEQ_PER": 3,
                 "DISCRIMINANT": 4,
                 "DATE_DEBUT_EFFET": 7,
                 "TYPE_ASSURE": 8,
