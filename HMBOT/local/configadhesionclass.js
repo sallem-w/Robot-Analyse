@@ -14,6 +14,7 @@ var confFileAdhesionClass = function () {
       debutIndexLigne: '',
       indexColonne: {
         NUM_SEQ_CT:'',
+				NUM_SEQ_PER :'',
         DISCRIMINANT: '',
         DATE_DEBUT_EFFET: '',
         TYPE_ASSURE: '',

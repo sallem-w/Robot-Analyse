@@ -140,10 +140,12 @@ ctx.dataF = (function () {
 				variables : {
 							listCom : [],
 							nbCom : '',
-							indexCom :''
+							indexCom :'',
+							indexBenef : ''
 				},
 				contratAdhesionAttributs : {},
-				contratTemp :{}
+				contratTemp :{},
+				personnePhysique : {}
       },
       dataEnLigne: {
         numeroContratIndiv : '',
