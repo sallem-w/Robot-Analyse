@@ -148,14 +148,27 @@ GLOBAL.events.START.on(function (ev) {
 		});	
 	}
 	
+//	if(configAdhesion.afficherMenu){
+//		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
+//		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
+//		var data = {};
+//		ActivInfinitev7.scenarios.scAdhesionPrincipal.start(data).onEnd(function(){});
+//		});
+		
+//	}
+	
 	if(configAdhesion.afficherMenu){
 		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
 		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
-		var data = {};
-		ActivInfinitev7.scenarios.scAdhesionPrincipal.start(data).onEnd(function(){});
+		var data = {
+			codeScenario : ctx.configF.scenario.Adhesion,
+			nomFichierConfigScenario : 'configAdhesion.json'
+		};
+		ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(){});
 		});
 		
 	}
+	
 	
 	
 });
