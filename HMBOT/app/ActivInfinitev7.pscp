@@ -3989,6 +3989,8 @@
 				<SCRIPT Name="scCreationHSP" Src="Adhesion_scCreationHSP.js" Folder="Processus_Adhesion" />
 				<SCRIPT Name="libForm" Folder="Complements" Src="libForm.js" />
 				<SCRIPT Name="scCreationHSP_ajoutBenef" Folder="Processus_Adhesion" Src="scCreationHSP_ajoutBenef.js" />
+				<SCRIPT Name="initialisations" Folder="Complements" Src="initialisations.js" />
+				<SCRIPT Name="scAdhesionInit" Folder="Processus_Adhesion" Src="scAdhesionInit.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

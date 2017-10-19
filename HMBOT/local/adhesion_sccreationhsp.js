@@ -1907,8 +1907,6 @@ ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire: function(e
 
 
 
-
-
 /** Description */
 ActivInfinitev7.step({ stRechercheBenefeciaireAdhesionIndiv: function(ev, sc, st) {
 	var data = sc.data;
