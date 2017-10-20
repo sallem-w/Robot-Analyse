@@ -2,7 +2,7 @@
     "cheminTemplate": "C:\\deploy\\template\\",
     "Version": 1.1,
     "Adhesion": {
-        "afficherMenu": true,
+        "devel": true,
         "cheminRacine": "C:\\deploy\\adhesion\\",
         "cheminData": "C:\\deploy\\adhesion\\data\\",
         "cheminResultats": "C:\\deploy\\adhesion\\resultats\\",

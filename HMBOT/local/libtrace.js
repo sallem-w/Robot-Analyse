@@ -4,8 +4,7 @@
 	var traceF = {};
 	var cheminFichierTrace;
 	
-	
-	
+	traceF.cheminFichierTrace=cheminFichierTrace;
 	
 	traceF.constantes = {
 		touteTraceActive:false,
@@ -58,11 +57,10 @@
 		separateur = separateur || '    ';
 		dateObj = dateObj || new Date();
 		//typeM = typeM || traceF.constantes.typeM.Info;
-		
-		
-		
+			
 		var traceCourante = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
 		ctx.writeFile(cheminFichierTrace,traceCourante,true,true);
+
 		if (ctx.options.isDebug) {
 			ctx.log(typeM + '		' + str);
 		}
