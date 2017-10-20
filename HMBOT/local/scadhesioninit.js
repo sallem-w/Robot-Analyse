@@ -8,7 +8,10 @@ ActivInfinitev7.scenario({ scAdhesionInit: function(ev, sc) {
 	// add steps here...
 	sc.step(ActivInfinitev7.steps.stChargementConfigScenario);
 	sc.step(ActivInfinitev7.steps.stConfigurationJSON_Adhesion);
-	sc.step(ActivInfinitev7.steps.stConfigurationFichiersDonneesExcel);
-	sc.step(ActivInfinitev7.steps.stConfigurationExcel);
+	sc.step(ActivInfinitev7.steps.stConfigurationTrace);
+	sc.step(ActivInfinitev7.steps.stConfigurationFichiersDonneesExcel_CreationChemin);
+	sc.step(ActivInfinitev7.steps.stConfigurationFichiersDonneesExcel_OuvertureFichier);
+	sc.step(ActivInfinitev7.steps.stConfigurationStatistiques);
+	sc.step(ActivInfinitev7.steps.stFinInitialisation);
 	sc.step(ActivInfinitev7.steps.stEchecInitialisation);
 }});

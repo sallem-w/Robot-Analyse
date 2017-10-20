@@ -5,7 +5,7 @@ var confFileAdhesionClass = function () {
   this.cheminTemplate = '';
 	this.Version = '';
   this.ADHESION = {
-    afficherMenu: '',
+    devel: '',
     cheminRacine: '',
     controlSeul: '',
     controlSolde: '',
