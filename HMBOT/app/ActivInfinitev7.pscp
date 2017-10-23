@@ -3780,6 +3780,59 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1723052_1" Comment="Adhésions individuelles - N°22629617 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="223" Techno="WEB" Timestamp="16/10/2017 17:23:23" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1606126_1" Comment="Adhésions individuelles - N°22629654 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="224" Techno="WEB" Timestamp="17/10/2017 16:06:33" />
 				</PAGE>
+				<PAGE Name="pAdhIndivProdGaran" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIP_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="like"><![CDATA[method\=doModifierAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74&CONTAINER_NOM_FONCTION=ACIP_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btModifier">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="233.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R0R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[modifier]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oligneAdherent">
+							<CRITERE>
+								<TAG Name="TBODY" Scope="All" CapturedPos="234.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1">
+									<TAG Name="TR" Scope="Children" CapturedPos="234.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+										<SET />
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oCodeProduitNelleGarD">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="236.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R4R1">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[codeProduitNelleGar-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSelectCodeProduit">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="237.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R4R3R0">
+									<TAG Name="DIV" Scope="Children" CapturedPos="237.R0R1R7R0R0R2R0R0R0R14R0R0R1R0R2R4R3R0R0" Occurs="Y">
+										<SET />
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[tt-dataset tt-dataset-codeProduitNelleGar-display]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1616574_1" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="233" Techno="WEB" Timestamp="23/10/2017 16:17:10" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1622214_1" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="234" Techno="WEB" Timestamp="23/10/2017 16:22:32" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1628357_1" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="236" Techno="WEB" Timestamp="23/10/2017 16:28:46" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1629428_1" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="237" Techno="WEB" Timestamp="23/10/2017 16:29:57" />
+				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
@@ -3809,6 +3862,7 @@
 				<SCRIPT Name="scCreationHSP_ajoutBenef" Folder="Processus_Adhesion" Src="scCreationHSP_ajoutBenef.js" />
 				<SCRIPT Name="initialisations" Folder="Complements" Src="initialisations.js" />
 				<SCRIPT Name="scAdhesionInit" Folder="Processus_Adhesion" Src="scAdhesionInit.js" />
+				<SCRIPT Name="DataClass" Folder="Complements" Src="DataClass.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

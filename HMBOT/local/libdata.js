@@ -4,6 +4,7 @@ ctx.dataF = (function () {
 				scenarioConfig : '',
 				codeScenario : '',
 				nomScenario:'',
+			  nomFichierConfigScenario : '',
         webData : {
             url:'',
             tabDeBordURL:'', 
@@ -144,7 +145,7 @@ ctx.dataF = (function () {
 			
 	////Adhesion/////////////////////////////////////////////////////////		
 			
-			
+		
 		var AdhesionContratTemp = {
 			typeAssure:'',
       dateDebEffContrat:'',

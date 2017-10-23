@@ -30,10 +30,15 @@ ActivInfinitev7.scenario( { scAdhesionPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioAdhesion : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.dataF.initialisationScenarioAdhesion(data,ctx.configF.scenario.Adhesion);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
-	ctx.traceF.infoTxt('Début étape - stInitScenarioAdhesion');
-	sc.endStep();
-	return;
+	//ctx.dataF.initialisationScenarioAdhesion(data,ctx.configF.scenario.Adhesion);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	//ctx.traceF.infoTxt('Début étape - stInitScenarioAdhesion');
+	st.disableTimeout();	
+	var scInit = ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(scI){
+		sc.data=scI.data;
+		ctx.traceF.infoTxt(' stInitScenarioAdhesion - Initialisation effectuée');
+		sc.endStep();
+	});
+	
 }});
 
 

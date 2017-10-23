@@ -5,7 +5,7 @@ ActivInfinitev7.scenario({ scAdhesionInit: function(ev, sc) {
 	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	// add steps here...
+	sc.step(ActivInfinitev7.steps.stInitialisationAdhesionConfigurationData);
 	sc.step(ActivInfinitev7.steps.stChargementConfigScenario);
 	sc.step(ActivInfinitev7.steps.stConfigurationJSON_Adhesion);
 	sc.step(ActivInfinitev7.steps.stConfigurationTrace);
@@ -15,3 +15,58 @@ ActivInfinitev7.scenario({ scAdhesionInit: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stFinInitialisation);
 	sc.step(ActivInfinitev7.steps.stEchecInitialisation);
 }});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stInitialisationAdhesionConfigurationData: function(ev, sc, st) {
+	var data = sc.data;
+	sc.data = new dataClass();  // Attention ( bug) ne marche pas sans le sc ' pb de passage en reference'
+	sc.data.codeScenario = ctx.configF.scenario.Adhesion;
+	sc.data.nomFichierConfigScenario = 'configAdhesion.json';
+	/// Contrat Courant
+	var contratCourantAdhesion = {
+			dataLocale: {
+				groupeGestion:'',
+				centreGestion:'',
+				tabPersonnesPhysiques : [],
+				variables : {
+					listCom : [],
+					nbCom : '',
+					indexCom :'',
+					indexBenef : '',
+					listProd : []	,
+					indexProd : '',
+					nbProd : ''
+				},
+				contratAdhesionAttributs : {},
+				assurePrincipal :{},
+				personnePhysique : {}
+      },
+      dataEnLigne: {
+        numeroContratIndiv : '',
+        tabPersonnesPhysiques : [],
+				variables : {
+							
+				}
+							
+       },
+      notes: {
+        dateTraitementContrat:'',
+        statutsContrat: '',
+        commentaireContrat: ''
+      },
+      statuts: {
+				finCreation : false
+			}
+    };
+		/////
+	
+	sc.data.contratCourantAdhesion=contratCourantAdhesion;
+	sc.endStep();
+	return;
+}});
+
+
+
+
