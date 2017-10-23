@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="GRCHarmonieM" CustomType="Siebel" Nature="WEB3" TechnoSDK="V3" Sync="250">
+			<CAPTURE Name="APPLI_GRCHarmonieMutuelle_1" CtxtId="1" Techno="WEB" />
+			<CRITERE>
+				<DOMAIN Scan="Part"><![CDATA[sbl37inf1]]></DOMAIN>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GRCHarmonieM" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pGRCHarmonieMutuelle" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)">
+					<CRITERE />
+					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r&SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb&SWETS=1508771956508&SWEHo=sbl37inf1]]></PATH>
+					<OBJETS />
+					<CAPTURE Name="PAGE_GRCHarmonieMutuelle_1746492_1" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)" CtxtId="186" Techno="WEB" Timestamp="23/10/2017 17:46:50" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r&SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb&SWETS=1508771956508&SWEHo=sbl37inf1]]></PATH>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

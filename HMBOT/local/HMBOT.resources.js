@@ -340,9 +340,6 @@ ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOpt
 ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNext');
 
 
-var GRCHarmonieMutuelle = ctx.addApplication('GRCHarmonieMutuelle', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Start\u0026SWEHo=sbl37inf1"});
+var GRCHarmonieM = ctx.addApplication('GRCHarmonieM', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r\u0026SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb\u0026SWETS=1508771956508\u0026SWEHo=sbl37inf1","customType":"Siebel"});
 
-GRCHarmonieMutuelle.pConnexionGRC = GRCHarmonieMutuelle.addPage('pConnexionGRC', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.00_012 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Start\u0026SWEHo=sbl37inf1"});
-GRCHarmonieMutuelle.pConnexionGRC.oIdentifiant = GRCHarmonieMutuelle.pConnexionGRC.addItem('oIdentifiant');
-GRCHarmonieMutuelle.pConnexionGRC.oPwd = GRCHarmonieMutuelle.pConnexionGRC.addItem('oPwd');
-GRCHarmonieMutuelle.pConnexionGRC.oConnexion = GRCHarmonieMutuelle.pConnexionGRC.addItem('oConnexion');
+GRCHarmonieM.pGRCHarmonieMutuelle = GRCHarmonieM.addPage('pGRCHarmonieMutuelle', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r\u0026SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb\u0026SWETS=1508771956508\u0026SWEHo=sbl37inf1"});
