@@ -3,6 +3,7 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stTraiterResultatRecherchePP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRechercheProduitHPP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[tabProduits]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stLireRefGRC]]></FINDWHAT>
@@ -13,7 +14,6 @@
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stChargementFichierIAE]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stOuvertureContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stTraiterResultatRecherchePP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[contratEstActif]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stInitRecherchePPParRO]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRecherchePPParRO]]></FINDWHAT>
@@ -46,13 +46,11 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="57" SearchPath="APPLI[@Name='GRCHarmonieMutuelle']/SCRIPTS/SCRIPT[@Name='VerificationDataGRC']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="112" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="12" SearchPath="APPLI[@Name='GRCHarmonieMutuelle']/SCRIPTS/SCRIPT[@Name='VerificationDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="51" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="122" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="188" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='AnalyseContratsEnCours']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

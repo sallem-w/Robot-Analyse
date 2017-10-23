@@ -9,7 +9,7 @@ GRCHarmonieMutuelle.scenario({ scVerifDataGRC: function(ev, sc) {
 	
 	sc.step(GRCHarmonieMutuelle.steps.stInitVerifDataGRC);
 	//sc.step(GRCHarmonieMutuelle.steps.stConnexionGRCSiebel);
-	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette etape
+	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarmonieMutuelle.steps.stLireDataConfig);
 	sc.step(GRCHarmonieMutuelle.steps.stLireDataPPIAE);
 	sc.step(GRCHarmonieMutuelle.steps.stRechercheProduitHPP);
@@ -53,7 +53,8 @@ GRCHarmonieMutuelle.step({ stConnexionGRCSiebel: function(ev, sc, st) {
 GRCHarmonieMutuelle.step({ stLireDataConfig: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataConfig: lecture des données de configuration du fichier .JSON');
-	var tab = data.scenarioConfig.ANALYSE.tabGammeCode;
+	var tab = {code: '', gamme: '', compatible:''};
+	tab = data.scenarioConfig.ANALYSE.tabGammeCode;
 	var gc;
 	for (var i in tab){
 		gc = tab[i].gamme +':'+ tab[i].code +':'+ tab[i].compatible;
@@ -149,6 +150,10 @@ GRCHarmonieMutuelle.step({ stRechercheProduitHPP: function(ev, sc, st) {
 /** Description */
 GRCHarmonieMutuelle.step({ stLancerSCaALSEGRC: function(ev, sc, st) {
 	var data = sc.data;
+	//extraction de numéro de l'adhésion
+	var iUderscore = data.ppCouranteAnalyse.dataLocale.numExtCtt.indexOf('_');
+	var tabNumExtCtt = data.ppCouranteAnalyse.dataLocale.numExtCtt.split('_');
+	var numExtCtt = tabNumExtCtt[1];
 	sc.endStep();
 	return;
 }});
