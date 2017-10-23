@@ -6,7 +6,7 @@
 /** Description */
 ActivInfinitev7.step({ stChargementConfigScenario: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Chargement du fichier de configuration JSON pour le scenario : '+ data.codeScenario);
+	ctx.log('Chargement du fichier de configuration JSON pour le scenario : '+ sc.data.codeScenario);
 	var nomFichierConfigScenario = data.nomFichierConfigScenario;
 	ctx.log('--> '+ nomFichierConfigScenario);
 	var chemin = ctx.options.serverURL + '\\' + nomFichierConfigScenario ;
@@ -157,6 +157,7 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: fun
 //	ctx.excelF.configExcel(dat);
 	ctx.excel.release();
 	ctx.excel.initialize();
+	ctx.excel.file.closeAll('true');  // on ferme les feuilles excel ouvertes
 	ctx.excel.file.open(data.nomFichier);
 	
 	// on crée maintenant le fichier Résultat
@@ -171,6 +172,13 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: fun
 		];
 	ctx.excel.file.saveAs(data.cheminFichierResultat); 
 	ctx.excelF.remplirObjetTableau(indexPremiereLigne-1, tab);
+	
+	
+	///Initilisation des variables globales
+	data.varGlobales.ligneCourante = indexPremiereLigne; 
+	data.varGlobales.indexDerniereLigne = indexDerniereLigne;
+	///
+	
 	ctx.log('fichier résultat créé');
 	
 	

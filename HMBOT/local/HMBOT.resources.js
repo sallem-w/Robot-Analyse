@@ -411,3 +411,9 @@ ActivInfinitev7.pAdhIndivIdentSouscri.oSelectNature = ActivInfinitev7.pAdhIndivI
 ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectType', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectValeur', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivProdGaran = ActivInfinitev7.addPage('pAdhIndivProdGaran', {"comment":"Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIP_500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivProdGaran.btModifier = ActivInfinitev7.pAdhIndivProdGaran.addItem('btModifier');
+ActivInfinitev7.pAdhIndivProdGaran.oligneAdherent = ActivInfinitev7.pAdhIndivProdGaran.addItem('oligneAdherent', {"occurs":1});
+ActivInfinitev7.pAdhIndivProdGaran.oCodeProduitNelleGarD = ActivInfinitev7.pAdhIndivProdGaran.addItem('oCodeProduitNelleGarD');
+ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit = ActivInfinitev7.pAdhIndivProdGaran.addItem('oSelectCodeProduit', {"occurs":1});

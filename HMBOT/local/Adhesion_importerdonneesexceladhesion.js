@@ -79,6 +79,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		temp_contrat.CLE_NUM_RO = ctx.stringF.format2c(ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.CLE_NUM_RO));
 		temp_contrat.RANG_GEM_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.RANG_GEM_RO);
 		temp_contrat.ASSURE_RO = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.ASSURE_RO);
+		temp_contrat.GAMME = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.GAMME);
 		temp_contrat.NUM_PROD_1 = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_PROD_1);
 		temp_contrat.NUM_PROD_2 = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_PROD_2);
 		temp_contrat.NUM_PROD_3 = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_PROD_3);
@@ -113,6 +114,7 @@ ActivInfinitev7.step({ stImporterDonneesExcelAdhesion : function(ev, sc, st) {
 		ctx.log('Type contrat: '+ temp_contrat.GAMME); 
 		var index = temp_contrat.NUM_SEQ_PER -1 ;
 		data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[index]=temp_contrat;
+		if(index==0){data.contratCourantAdhesion.dataLocale.assurePrincipal=temp_contrat;}
 		temp_ligne+=1;
 		tmpNumeroSeq = ctx.excel.sheet.getCell(temp_ligne, data.scenarioConfig.Adhesion.excel.indexColonne.NUM_SEQ_CT);
 		

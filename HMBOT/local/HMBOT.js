@@ -188,7 +188,7 @@ GLOBAL.events.START.on(function (ev) {
 //		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
 //		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
 //		var data = {};
-//		ActivInfinitev7.scenarios.scAdhesionPrincipal.start(data).onEnd(function(){});
+//		ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(){});
 //		});
 		
 //	}
@@ -204,6 +204,7 @@ GLOBAL.events.START.on(function (ev) {
 		ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(){});
 		});
 	}
+
 });
 
 /** Auto-update menu handler */
