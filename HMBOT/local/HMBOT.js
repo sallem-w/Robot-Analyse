@@ -159,7 +159,7 @@ GLOBAL.events.START.on(function (ev) {
 //			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 //			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
 			var data = {};
-			GRCHarmonieMutuelle.scenarios.scVerifDataGRC.start(data).onEnd(function(){});
+			GRCHarMu.scenarios.scVerifDataGRC.start(data).onEnd(function(){});
 		});	
 		}
 	
@@ -175,6 +175,14 @@ GLOBAL.events.START.on(function (ev) {
 			
 		});	
 	}
+	
+	
+//	ctx.siebel.setViewName(GRCHarMu.pBarDeMenuGRC, 'Menu%List%View');
+//		ctx.siebel.initApplication(GRCHarMu.pMenu);
+//		ctx.siebel.navigateView(GRCHarMu.pBarDeMenuGRC);
+//		  GRCHarMu.pBarDeMenuGRC.wait(function(ev){
+//				ctx.log('execute');
+//			});
 });
 
 /** Auto-update menu handler */

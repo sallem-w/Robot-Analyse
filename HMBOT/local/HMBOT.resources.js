@@ -340,6 +340,10 @@ ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOpt
 ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNext');
 
 
-var GRCHarmonieM = ctx.addApplication('GRCHarmonieM', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r\u0026SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb\u0026SWETS=1508771956508\u0026SWEHo=sbl37inf1","customType":"Siebel"});
+var GRCHarMu = ctx.addApplication('GRCHarMu', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb\u0026SWETS=1508832674552","customType":"Siebel"});
 
-GRCHarmonieM.pGRCHarmonieMutuelle = GRCHarmonieM.addPage('pGRCHarmonieMutuelle', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=j6Qmu-EzVHTcfMEi.CYOwLZE4aEuEx24FpeRtS6rT3eo.6raQ2QamtsQNy8WldxM-lr8BVNgaqmNI2qbTrgvySngNf0MFlXUp5hr..WKkzHA7C1HoZHKCazpj7WDG79WqO0.-RXCvef2XPK51mcGznsAaIkvotfiyRAv1pVrsjPjAdT9tRXnkggQe7P9M85r\u0026SRN=NbxJapSyNwvQFahLgajKZGg2NspxhDbxenjsVOkh30kb\u0026SWETS=1508771956508\u0026SWEHo=sbl37inf1"});
+GRCHarMu.pGRCMain = GRCHarMu.addPage('pGRCMain', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb\u0026SWETS=1508860822112"});
+
+GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb"});
+GRCHarMu.pRechercheAI.btRechercher = GRCHarMu.pRechercheAI.addItem('btRechercher');
+GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
