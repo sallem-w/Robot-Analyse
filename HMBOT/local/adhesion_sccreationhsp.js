@@ -70,7 +70,13 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stScenarioAjoutBeneficiaire);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_ValidationBeneficiaire); 
 //	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_ModifIdentificationBeneficiaire); 
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation_condition);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_VersLaPageDesProduits);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Produits);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -953,7 +959,8 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, s
 		var freqAvisEch = data.contratCourantAdhesion.dataLocale.assurePrincipal.FREQ_AVIS_ECH;
 		var typeTerme =  data.contratCourantAdhesion.dataLocale.assurePrincipal.TYPE_TERME;
 		ctx.log('Code Echeancier : '+jourPrelev);
-		if(  jourPrelev !=''){
+		ctx.wait(function(ev){
+			if(  jourPrelev !=''){
 			var countPoll=0;
 			ctx.polling({
 				delay: 100,
@@ -1001,6 +1008,8 @@ ActivInfinitev7.step({ stAdhesionIndiv_Cotisation_PrelvtBancaire: function(ev, s
 			sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 			return;
 		}	
+		},1000);
+		
 	});
 }});
 
@@ -1878,27 +1887,48 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication: func
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire_Boucle: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire_Boucle');
+	ctx.log("test");
+	var AdhesionObj = new confFileAdhesionClass();
+	var contratBeneficiaire = AdhesionObj.ADHESION.excel.indexColonne;
+	contratBeneficiaire = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[data.contratCourantAdhesion.dataLocale.variables.indexBenef] ;
+	if(contratBeneficiaire!= undefined){
+		data.contratCourantAdhesion.dataLocale.personnePhysique=contratBeneficiaire;
+		data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
+		ActivInfinitev7.pAdhIndivIdentAssures.btNouveau.click();
+		sc.endStep(ActivInfinitev7.steps.stScenarioAjoutBeneficiaire);
+		return;
+	}
+	else{
+		/// Il n'y a plus de beneficiaire, on clique sur Next
+		var countPoll=0;
+		ctx.polling({	
+			delay: 300,	
+			nbMax: 10,		
+			test: function(index) { 		
+				countPoll++;
+				ctx.log('countP :'+countPoll);
+				return ActivInfinitev7.pAdhIndivIdentAssures.btSuivant.exist();
+			},
+			done: function() { 
+				ActivInfinitev7.pAdhIndivIdentAssures.btSuivant.setFocus();
+				ActivInfinitev7.pAdhIndivIdentAssures.btSuivant.click();
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation_condition);
+				return;
+			},
+			fail: function() { 
+				 	ctx.traceF.errorTxt(' Blocage à la page : '+ev.pageName + ' Probleme Bouton suivant');
+					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Blocage à la page : '+ev.pageName + ' click sur bouton suivant impossible';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+					data.contratCourantAdhesion.statuts.finCreation = true;
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+			}
+		});
+		
+		
 	
-//	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
-		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire_Boucle');
-		ctx.log("test");
-		var AdhesionObj = new confFileAdhesionClass();
-		var contratBeneficiaire = AdhesionObj.ADHESION.excel.indexColonne;
-		contratBeneficiaire = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[data.contratCourantAdhesion.dataLocale.variables.indexBenef] ;
-		if(contratBeneficiaire!= undefined){
-			data.contratCourantAdhesion.dataLocale.personnePhysique=contratBeneficiaire;
-			data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
-			ActivInfinitev7.pAdhIndivIdentAssures.btNouveau.click();
-			sc.endStep(ActivInfinitev7.steps.stScenarioAjoutBeneficiaire);
-			return;
-		}
-		else{
-			/// Il n'y a plus de beneficiaire, on enregistre la page
-			
-			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation_condition);
-			return;
-		}
-//	});
+	}
 }});
 
 ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire: function(ev, sc, st) {
@@ -2090,7 +2120,31 @@ ActivInfinitev7.step({ stAdhesionIndiv_IdentificationBeneficiaire: function(ev, 
 ActivInfinitev7.step({ stAdhesionIndiv_ValidationBeneficiaire: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_ValidationBeneficiaire');
-	ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
+	var countPoll=0;
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivIdentAssures.btValider.exist();
+		},
+		done: function() { 
+			ActivInfinitev7.pAdhIndivIdentAssures.btValider.click();
+			sc.endStep();
+			return;
+		},
+		fail: function() { 
+			 	ctx.traceF.errorTxt(' Blocage à la page : '+ev.pageName + ' Probleme Bouton valider introuvable');
+				data.contratCourantAdhesion.notes.commentaireContrat = ' Revoir Centre : Blocage à la page : '+ev.pageName + ' Probleme Bouton valider introuvable';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+	}
+});
+	
+	
 	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
 		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
 			return ;
@@ -2160,9 +2214,16 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_Modification_RIB_Prestation: funct
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_VersLaPageDesProduits: function(ev, sc, st) {
 	var data = sc.data;
-	
-	sc.endStep();
-	return;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_VersLaPageDesProduits');
+	ActivInfinitev7.pAdhIndivProdGaran.wait(function(ev){
+		if(ActivInfinitev7.pAdhIndivProdGaran.btContinuer.exist()){
+			ActivInfinitev7.pAdhIndivProdGaran.btContinuer.click();
+
+		}
+		sc.endStep();
+		return;
+	});
+
 }});
 
 
@@ -2170,18 +2231,20 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_VersLaPageDesProduits: function(ev
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire');
 	data.contratCourantAdhesion.dataLocale.variables.indexBenef = 1; ///  ajoute à l'étape qui précède
 	var index = data.contratCourantAdhesion.dataLocale.variables.indexBenef;
 	var contratBenef = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[index];
-	if(contratBenef.NUM_SEQ_CT != undefined){
+	if(contratBenef != undefined){
 		data.contratCourantAdhesion.dataLocale.personnePhysique=contratBenef;
 		
 		data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
 	return;
 	}
 	else{
-		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
+		// Tous les produits ont été rajoutés --> on avance
+		sc.endStep(ActivInfinitev7.steps.stVersLaPageVisuCompteCotisant);
 	return;
 	}
 }});
@@ -2191,7 +2254,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire:
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: function(ev, sc, st) {
 	var data = sc.data;
-	
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits_ListeProduit');
 	// on récupère la table des produits
 	var listProd =[];
 	var np = 0;
@@ -2253,18 +2316,50 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: functi
 	/// on va ajouter les produits un à un 
 	data.contratCourantAdhesion.dataLocale.indexProd=0;
 	data.contratCourantAdhesion.dataLocale.nbProd = np;
-	sc.endStep();
-	return;
+	
+	///Polling sur l'existence de bt Modifier
+
+	var countPoll=0;
+	ctx.polling({	
+		delay: 300,	
+		nbMax: 10,		
+		test: function(index) { 		
+			countPoll++;
+			ctx.log('countP :'+countPoll);
+			return ActivInfinitev7.pAdhIndivProdGaran.btModifier.exist();
+		},
+		done : function() { 
+			ActivInfinitev7.pAdhIndivProdGaran.btModifier.click();
+				ActivInfinitev7.pAdhIndivProdGaran.events.LOAD.once(function(ev){
+					sc.endStep();
+					return;
+			});
+		},
+		fail: function() { 
+			ctx.traceF.errorTxt(' Erreur Serveur lors de l\'ajout des produits - Bouton <Modifier> introuvable ');
+			data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre :  Erreur Serveur lors de l\'ajout des produits - Bouton <Modifier> introuvable ';
+			data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+			data.contratCourantAdhesion.statuts.finCreation = true;
+			sc.endStep(ActivInfinitev7.steps.stFinScenarioAjoutBenef);
+			return;
+		}
+	});
+
 }});
 
 
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Produits: function(ev, sc, st) {
 	var data = sc.data;
-	
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits_Boucle_Produits');
 	if(data.contratCourantAdhesion.dataLocale.indexProd<data.contratCourantAdhesion.dataLocale.nbProd){
-		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
-		return;
+		
+		ctx.log(' index Produit : '+data.contratCourantAdhesion.dataLocale.indexProd+'  Nombre Produits : '+data.contratCourantAdhesion.dataLocale.nbProd);
+		
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
+			return;
+		
+		
 	}else{
 		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire);
 		return;
@@ -2279,7 +2374,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Produits: fun
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st) {
 	var data = sc.data;
-	
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits');
 	// on recherche si le produit est bien dans la base infinite 
 	var codeCourant = data.contratCourantAdhesion.dataLocale.listProd[data.contratCourantAdhesion.dataLocale.indexProd];
 	var tabProduits = ctx.formF.gammeProd;
@@ -2288,7 +2383,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 	var codeInfinite = undefined;
 	var index=-1;
 	for(var i  in tabProduits){
-		if(codeCourant == tabProduits.codeGRC[i]){
+		if(codeCourant == tabProduits[i].codeGRC){
 			index=i;
 			break;
 		}
@@ -2297,9 +2392,62 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 	if (index == -1){
 		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
 	}else{
-		codeProdInfinite = tabProduits.codeProduitInfinite[index];
+		codeProdInfinite = tabProduits[index].codeProduitInfinite;
 	}
 	
+	ActivInfinitev7.pAdhIndivProdGaran.oCodeProduit.setFocus();
+	ActivInfinitev7.pAdhIndivProdGaran.oCodeProduit.keyStroke(codeProdInfinite);
+	var countPoll=0;	
+	var indexP = -1;
+		ctx.polling({
+			delay: 500,
+			nbMax: 10,
+			test: function(index) { 
+				countPoll++;
+				ctx.log('counter : '+countPoll);
+				return ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit.count()>0;
+			},
+			done: function() { 
+			/// on cherche parmis les resultats du tableau celui qui correspond à l'offre
+				
+				var nbP = ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit.count();
+					if(nbP==1){
+						// la Personne physique est unique on peut continuer avec
+						ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit.i(0).click();
+						ActivInfinitev7.pAdhIndivProdGaran.oValiderProduit.click();
+						ActivInfinitev7.pAdhIndivProdGaran.events.LOAD.once(function(ev){
+							data.contratCourantAdhesion.dataLocale.indexProd++;
+							ActivInfinitev7.pAdhIndivProdGaran.btNouveau.click();
+							sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Produits);
+							return;
+						});
+						
+					}
+					else{
+						/// il y a plusieur produits possible on renvoi au centre
+						ctx.traceF.errorTxt(' Le code produit n\'est pas unique , on ne traite pas le dossier ');
+						data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: il y a plusieurs produits possibles ';
+						data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+						data.contratCourantAdhesion.statuts.finCreation = true;
+						sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+						return;
+					}
+			},
+			fail: function() { 
+				ctx.traceF.errorTxt(' Erreur lors du remplissage du code produit');
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
+			}
+	});
+}});
+
+
+
+
+/** Description */
+ActivInfinitev7.step({ stVersLaPageVisuCompteCotisant: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageVisuCompteCotisant');
 	sc.endStep();
 	return;
 }});
