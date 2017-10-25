@@ -4,9 +4,36 @@
 
 
 /** Description */
+ActivInfinitev7.step({ stInitialisationDataBasique: function(ev, sc, st) {
+	var data = sc.data;
+	
+	
+ var webData = {
+    url:'',
+    tabDeBordURL:'', 
+    identifiant:'', 
+    motDePasse:'' 
+   };
+ 
+ var varGlobales = { 
+    ligneCourante :'',
+    indexDerniereLigne :'', 
+    controlSeul:'' 
+  };
+
+	data.webData=webData;
+ 	data.varGlobales=varGlobales;
+ sc.endStep();
+	return;
+}});
+
+
+
+
+/** Description */
 ActivInfinitev7.step({ stChargementConfigScenario: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Chargement du fichier de configuration JSON pour le scenario : '+ sc.data.codeScenario);
+	ctx.log('Création du chemin vers le fichier de configuration JSON pour le scenario : '+ sc.data.codeScenario);
 	var nomFichierConfigScenario = data.nomFichierConfigScenario;
 	ctx.log('--> '+ nomFichierConfigScenario);
 	var chemin = ctx.options.serverURL + '\\' + nomFichierConfigScenario ;
@@ -16,10 +43,10 @@ ActivInfinitev7.step({ stChargementConfigScenario: function(ev, sc, st) {
 	return;
 }});
 
-
 /** Description */
 ActivInfinitev7.step({ stConfigurationJSON_Adhesion: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.log(' --> Chargement du fichier de configuration JSON ');
 	var fichierJSON = ctx.fso.file.read(data.cheminFichierConfigScenario);
 	var scenarioConfig = new confFileAdhesionClass();
 	scenarioConfig = JSON.parse(fichierJSON);
@@ -32,19 +59,46 @@ ActivInfinitev7.step({ stConfigurationJSON_Adhesion: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stConfigurationTrace: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.log(' --> Initialisation Trace');
 	var config = data.scenarioConfig[data.codeScenario];
 	var cheminRacine = config.cheminRacine;
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Logs.log';
 	var nomScen = data.codeScenario;
 	var cheminFichier = cheminRacine + nomFichier.replace('{0}', nomScen);
-	if (!ctx.fso.file.exist(cheminFichier)) {
+	/// Verifier si le chemin Racine existe
+	if(ctx.fso.folder.exist(cheminRacine)) {
+		if(!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
+		}
+		ctx.traceF.cheminFichierTrace = cheminFichier;
+		ctx.traceF.infoTxt("Initialisation Trace effectuée ");
+		//ctx.traceF.txtTrace = ctx.fso.file.read(cheminFichier);
+		sc.endStep();
+		return;
 	}
-	ctx.traceF.cheminFichierTrace = cheminFichier;
-	ctx.traceF.infoTxt("Initialisation Trace effectuée ");
-//	ctx.traceF.txtTrace = ctx.fso.file.read(cheminFichier);
-	sc.endStep();
-	return;
+	else{
+		// create the Popup using the 'e.popup.template.OkCancel' template
+		var myPopup = ctx.popup('pMyPopup', e.popup.template.OkCancel);
+		myPopup.open({title: ' Dossier : '+cheminRacine+' introuvable',message: ' Veuillez ajouter le dossier et cliquez sur réessayer .',  
+  		buttons: {  
+    		essaye: {label: 'Reessayer'},
+    		annule: {label: ' Annuler '}  
+  		}  
+		}) ;
+	// wait until the Popup closes 
+	myPopup.waitResult(function(res) 
+	{
+	  if (res == 'essaye') {
+	    sc.endStep(ActivInfinitev7.steps.stConfigurationTrace);
+			return;
+	  }
+		else{
+			sc.endStep(ActivInfinitev7.steps.stEchecInitialisation);
+			return;
+		}
+	});
+	}
+	
 }});
 
 
@@ -53,6 +107,7 @@ ActivInfinitev7.step({ stConfigurationTrace: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_CreationChemin: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.log('Création des chemins pour les données Excel');
 	var config = data.scenarioConfig[data.codeScenario];
 	var cheminRacine = config.cheminRacine;
 	var developpement=config.devel;
@@ -154,6 +209,7 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_CreationChemin: funct
 /** Description */
 ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.log(' --> Ouverture des données Excel');
 //	ctx.excelF.configExcel(dat);
 	ctx.excel.release();
 	ctx.excel.initialize();
@@ -190,6 +246,7 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: fun
 /** Description */
 ActivInfinitev7.step({ stConfigurationStatistiques: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.log('Initialisation des statistiques');
 	var cheminDossierTemplate = data.scenarioConfig.cheminTemplate;
 	var config = data.scenarioConfig[data.codeScenario];
 	var cheminRacine = config.cheminRacine;
@@ -226,7 +283,7 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('Echec initialisation');
 	ActivInfinitev7.scenarios.clearAll() ;
-	sc.endStep();
+	sc.endScenario();
 	return;
 	
 }});
@@ -236,7 +293,7 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stFinInitialisation: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Initialisation Effectuée');
+	ctx.traceF.infoTxt('Initialisations Effectuées');
 	sc.endScenario();
 	return;
 }});

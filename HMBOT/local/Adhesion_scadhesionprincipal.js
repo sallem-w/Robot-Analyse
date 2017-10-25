@@ -35,7 +35,6 @@ ActivInfinitev7.step({ stInitScenarioAdhesion : function(ev, sc, st) {
 	st.disableTimeout();	
 	var scInit = ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(scI){
 		sc.data=scI.data;
-		ctx.traceF.infoTxt(' stInitScenarioAdhesion - Initialisation effectuée');
 		sc.endStep();
 	});
 	

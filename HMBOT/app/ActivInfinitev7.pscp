@@ -3644,6 +3644,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btSauvegarder">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="238.R0R1R7R0R1R0R0R0R1R0R0R1R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[btnFooterSauvegarder]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1628393_1" Comment="Adhésions individuelles - N°22629577 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="210" Techno="WEB" Timestamp="13/10/2017 16:28:58" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1537409_1" Comment="Adhésions individuelles - N°22629567 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="209" Techno="WEB" Timestamp="13/10/2017 15:37:59" RatioX="108" />
@@ -3656,6 +3665,7 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1712416_1" Comment="Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="222" Techno="WEB" Timestamp="16/10/2017 17:12:59" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1148415_1" Comment="Adhésions individuelles - N°22629667 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="230" Techno="WEB" Timestamp="18/10/2017 11:48:59" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1203018_1" Comment="Adhésions individuelles - N°22629669 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="231" Techno="WEB" Timestamp="18/10/2017 12:03:23" />
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1538206_1" Comment="Adhésions individuelles - N°22629733 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="238" Techno="WEB" Timestamp="24/10/2017 15:38:41" />
 				</PAGE>
 				<PAGE Name="pAdhIndivIdentSouscri" Comment="Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -3782,9 +3792,9 @@
 				</PAGE>
 				<PAGE Name="pAdhIndivProdGaran" Comment="Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIP_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
-						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
-						<URL Scan="like"><![CDATA[method\=doModifierAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIP_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[method\=doModifierAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74&CONTAINER_NOM_FONCTION=ACIP_500&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>

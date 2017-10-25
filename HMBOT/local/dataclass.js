@@ -13,9 +13,10 @@ var dataClass = function() {
     motDePasse:'' 
    };
   this.varGlobales = { //globalVariables
-    ligneCourante:0, //currentRow
-    indexDerniereLigne:0, //indexLastRow
-     controlSeul:false //controlSeul
-  }
+    ligneCourante:'', //currentRow
+    indexDerniereLigne:'', //indexLastRow
+     controlSeul:'' //controlSeul
+  };
+	this.contratCourantAdhesion = {};
 };
-		
+

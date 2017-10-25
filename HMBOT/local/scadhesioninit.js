@@ -2,9 +2,10 @@
 /** Description */
 ActivInfinitev7.scenario({ scAdhesionInit: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
+	sc.onTimeout(120000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
+	sc.step(ActivInfinitev7.steps.stInitialisationDataBasique);
 	sc.step(ActivInfinitev7.steps.stInitialisationAdhesionConfigurationData);
 	sc.step(ActivInfinitev7.steps.stChargementConfigScenario);
 	sc.step(ActivInfinitev7.steps.stConfigurationJSON_Adhesion);
@@ -18,12 +19,13 @@ ActivInfinitev7.scenario({ scAdhesionInit: function(ev, sc) {
 
 
 
+
 /** Description */
 ActivInfinitev7.step({ stInitialisationAdhesionConfigurationData: function(ev, sc, st) {
 	var data = sc.data;
-	sc.data = new dataClass();  // Attention ( bug) ne marche pas sans le sc ' pb de passage en reference'
-	sc.data.codeScenario = ctx.configF.scenario.Adhesion;
-	sc.data.nomFichierConfigScenario = 'configAdhesion.json';
+//	data = new dataClass();  // Attention ( bug) ne marche pas sans le sc ' pb de passage en reference'
+	data.codeScenario = ctx.configF.scenario.Adhesion;
+	data.nomFichierConfigScenario = 'configAdhesion.json';
 	/// Contrat Courant
 	var contratCourantAdhesion = {
 			dataLocale: {
@@ -62,11 +64,9 @@ ActivInfinitev7.step({ stInitialisationAdhesionConfigurationData: function(ev, s
     };
 		/////
 	
-	sc.data.contratCourantAdhesion=contratCourantAdhesion;
+	data.contratCourantAdhesion=contratCourantAdhesion;
 	sc.endStep();
 	return;
 }});
-
-
 
 

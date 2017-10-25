@@ -241,7 +241,7 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_NumExterne: function(ev
 ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_GroupeGestion');
-	var tabGestion = data.scenarioConfig.Adhesion.Gestion;
+	var tabGestion =ctx.formF.codeGestion;
 	
 	/// on va rechercher dans la table de gestion les codes infinites correspondant au code GRC du contrat
 	var codeGRC = data.contratCourantAdhesion.dataLocale.assurePrincipal.DISCRIMINANT;
@@ -249,8 +249,8 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 	var codeGG = undefined;
 	var codeCG = undefined;
 	var index=-1;
-	for(var i  in tabGestion.CGGRC){
-		if(codeGRC==tabGestion.CGGRC[i]){
+	for(var i  in tabGestion){
+		if(codeGRC == tabGestion[i].codeGRC){
 			index=i;
 			break;
 		}
@@ -259,8 +259,9 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 	if (index == -1){
 		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
 	}else{
-		codeGG = tabGestion.GroupeGestionInfinite[index];
-		codeCG =tabGestion.CentreGestionInfinite[index];
+		codeGG = tabGestion[index].groupeGestionInfinite;
+		codeCG = tabGestion[index].centreGestionInfinite;
+		ctx.log('codeGG : '+codeGG+' , code CG : '+codeCG);
 	}
 	ctx.log('codeGG : '+codeGG+' , code CG : '+codeCG);
 	data.contratCourantAdhesion.dataLocale.groupeGestion=codeGG;
@@ -1816,12 +1817,12 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication_Boucl
 		return;
 	}else{
 		ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant.click();
-		data.contratCourantAdhesion.dataLocale.variables.indexBenef = 1; // on commence au 1er benef ( 0 étant l'assure principal)
-		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
-		return;
+		ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+			data.contratCourantAdhesion.dataLocale.variables.indexBenef = 1; // on commence au 1er benef ( 0 étant l'assure principal)
+			sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_AjoutBeneficiaire_Boucle);
+			return;
+		});
 	}
-	
-	
 }});
 
 /** Description */
@@ -1877,13 +1878,14 @@ ActivInfinitev7.step({ stPageIdentificationSouscripteur_AjoutCommunication: func
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire_Boucle: function(ev, sc, st) {
 	var data = sc.data;
-//	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire_Boucle');
-	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+	
+//	ActivInfinitev7.pAdhIndivIdentAssures.wait(function(ev){
+		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_AjoutBeneficiaire_Boucle');
 		ctx.log("test");
-	/*	var AdhesionObj = new confFileAdhesionClass();
+		var AdhesionObj = new confFileAdhesionClass();
 		var contratBeneficiaire = AdhesionObj.ADHESION.excel.indexColonne;
 		contratBeneficiaire = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[data.contratCourantAdhesion.dataLocale.variables.indexBenef] ;
-		if(contratBeneficiaire.NUM_SEQ_CT!= undefined){
+		if(contratBeneficiaire!= undefined){
 			data.contratCourantAdhesion.dataLocale.personnePhysique=contratBeneficiaire;
 			data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
 			ActivInfinitev7.pAdhIndivIdentAssures.btNouveau.click();
@@ -1891,13 +1893,12 @@ ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire_Boucle: fun
 			return;
 		}
 		else{
-			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation);
+			/// Il n'y a plus de beneficiaire, on enregistre la page
+			
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation_condition);
 			return;
-		}*/
-		
-		sc.endStep();
-		return;
-	});
+		}
+//	});
 }});
 
 ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire: function(ev, sc, st) {
@@ -2113,7 +2114,7 @@ ActivInfinitev7.step({ stScenarioAjoutBeneficiaire: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape - stScenarioCreation - Lancement du sous-scenario : stScenarioAjoutBeneficiaire');
 	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
 	st.disableTimeout();	
-	var scA = ActivInfinitev7.scenarios.scScenarioCreationContrat.start(data).onEnd(function(scAB){
+	var scA = ActivInfinitev7.scenarios.scCreationHSP_AjoutBenef.start(data).onEnd(function(scAB){
 		sc.data=scAB.data;
 		ctx.traceF.infoTxt(' Fin du sous-scenario - stScenarioAjoutBeneficiaire');
 		sc.endStep();
@@ -2126,17 +2127,20 @@ ActivInfinitev7.step({ stScenarioAjoutBeneficiaire: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stAdhesionIndividuelle_Modification_RIB_Prestation_condition: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_Modification_RIB_Prestation');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_Modification_RIB_Prestation_condition');
 	
 	// on va comparer les RIB prestation et cotisation, si différents on doit modifier le RIB prestation sinon on passe à l'étape suivant
 	var RIBPrestation = data.contratCourantAdhesion.dataLocale.assurePrincipal.CODE_BANQUE + data.contratCourantAdhesion.dataLocale.assurePrincipal.CODE_GUICHET + data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_COMPTE  + data.contratCourantAdhesion.dataLocale.assurePrincipal.CLE_RIB;
 	var RIBCotisation = data.contratCourantAdhesion.dataLocale.assurePrincipal.BANQUE_PREST + data.contratCourantAdhesion.dataLocale.assurePrincipal.GUICHE_BANQUE_PREST + data.contratCourantAdhesion.dataLocale.assurePrincipal.COMPTE_BANQUE_PREST  + data.contratCourantAdhesion.dataLocale.assurePrincipal.CLE_RIB_PREST;
+	ctx.log('RIB Prestation : '+RIBPrestation+' , RIB Cotisation : '+RIBCotisation);
 	if(RIBPrestation == RIBCotisation){
-		sc.endStep();
+		
+		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_VersLaPageDesProduits);
 		return;
 	}
 	else{
-	sc.endStep();
+	
+	sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_Modification_RIB_Prestation);
 	return;
 	}
 	
@@ -2151,6 +2155,15 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_Modification_RIB_Prestation: funct
 	
 }});
 
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndividuelle_VersLaPageDesProduits: function(ev, sc, st) {
+	var data = sc.data;
+	
+	sc.endStep();
+	return;
+}});
 
 
 
@@ -2171,13 +2184,6 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire:
 		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
 	return;
 	}
-	
-	
-	
-
-	
-	sc.endStep();
-	return;
 }});
 
 
@@ -2239,11 +2245,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: functi
 		listProd[np] = p10 ;
 		np++;
 	}
-	var p1 = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_PROD_1;
-	if(p1 != undefined){
-		listProd[np] = p1 ;
-		np++;
-	}
+
 	
 	
 	data.contratCourantAdhesion.dataLocale.listProd=listProd;
@@ -2279,25 +2281,23 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 	var data = sc.data;
 	
 	// on recherche si le produit est bien dans la base infinite 
-	
 	var codeCourant = data.contratCourantAdhesion.dataLocale.listProd[data.contratCourantAdhesion.dataLocale.indexProd];
 	var tabProduits = ctx.formF.gammeProd;
 	ctx.log('codeCourant : '+codeCourant);
-	var codeGRC = undefined;
+	var codeProdInfinite = undefined;
 	var codeInfinite = undefined;
 	var index=-1;
 	for(var i  in tabProduits){
-		if(codeCourant == tabGestion.codeGRC[i]){
+		if(codeCourant == tabProduits.codeGRC[i]){
 			index=i;
 			break;
 		}
 	}
 	
 	if (index == -1){
-		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
+		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
 	}else{
-		codeGG = tabGestion.GroupeGestionInfinite[index];
-		codeCG =tabGestion.CentreGestionInfinite[index];
+		codeProdInfinite = tabProduits.codeProduitInfinite[index];
 	}
 	
 	sc.endStep();
