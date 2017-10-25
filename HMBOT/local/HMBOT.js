@@ -137,8 +137,6 @@ GLOBAL.events.START.on(function (ev) {
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
-
-	
 	
 		if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');

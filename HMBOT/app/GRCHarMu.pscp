@@ -10,7 +10,7 @@
 		</PROCESS>
 	</PROCESSUS>
 	<APPLICATIONS>
-		<APPLI Name="GRCHarMu" CustomType="Siebel" Nature="WEB3" TechnoSDK="V3" Sync="250">
+		<APPLI Name="GRCHarMu" Nature="WEB3" TechnoSDK="V3" Sync="250" CustomType="Siebel">
 			<CAPTURE Name="APPLI_GRCHarmonieMutuelle_1" CtxtId="1" Techno="WEB" />
 			<SCENARII>
 				<Steps />
@@ -51,7 +51,7 @@
 														<TAG Name="SPAN" Scope="Children" CapturedPos="218.R0R1R2R2R0R0R0R0R0R7R0R0R0">
 															<TAG Name="A" Scope="Children" CapturedPos="218.R0R1R2R2R0R0R0R0R0R7R0R0R0R0">
 																<ATT Name="Text">
-																	<VALUE Scan="like"><![CDATA[Rechercher]]></VALUE>
+																	<VALUE Scan="Like"><![CDATA[Rechercher]]></VALUE>
 																</ATT>
 																<SET />
 															</TAG>
@@ -75,12 +75,77 @@
 														<TAG Name="SPAN" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R8R0R0R0">
 															<TAG Name="A" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R8R0R0R0R0">
 																<ATT Name="Text">
-																	<VALUE Scan="like"><![CDATA[Exécuter]]></VALUE>
+																	<VALUE Scan="Like"><![CDATA[Exécuter]]></VALUE>
 																</ATT>
 																<SET />
 															</TAG>
 														</TAG>
 													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oProduit" CustomType="siebel.editTextInput">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12" Range="12">
+											<TAG Name="TD" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2" Range="2">
+												<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2R0R0" Range="0" />
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Part"><![CDATA[GridBack]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oListNOK">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="219.R0R1R2R2R0R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0">
+											<TAG Name="TD" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1">
+												<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1R0">
+													<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1R0R1" />
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oListOK">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="219.R0R1R2R2R0R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0">
+											<TAG Name="TD" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1">
+												<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1R0">
+													<TAG Name="OBJECT" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R0R0R0R1R0R2" Range="0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oRechercheIA" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
+							<CRITERE>
+								<TAG Name="FORM" Scope="All" CapturedPos="219.R0R1R2R2">
+									<TAG Name="SPAN" Scope="Children" CapturedPos="219.R0R1R2R2R0">
+										<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0">
+											<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R2">
+												<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R2R2R0R0R2R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="219.R0R1R2R2R0R0R2R0R1" Range="0" />
 												</TAG>
 											</TAG>
 										</TAG>
@@ -96,6 +161,7 @@
 			<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb&SWETS=1508832674552]]></PATH>
 			<SCRIPTS>
 				<SCRIPT Name="VerificationDataGrc" Src="VerificationDataGrc.js" />
+				<SCRIPT Name="VerifDataGRC" Src="VerifDataGRC.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

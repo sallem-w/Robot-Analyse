@@ -6,45 +6,27 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
-	
-	sc.step(GRCHarMu.steps.stInitAppGRC);
+
 	sc.step(GRCHarMu.steps.stInitVerifDataGRC);
-	//sc.step(GRCHarmonieMutuelle.steps.stConnexionGRCSiebel);
-/*	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
-	sc.step(GRCHarmonieMutuelle.steps.stLireDataConfig);
-	sc.step(GRCHarmonieMutuelle.steps.stLireDataPPIAE);
-	sc.step(GRCHarmonieMutuelle.steps.stRechercheProduitHPP);
-	*/
-	//sc.step(GRCHarmonieMutuelle.steps.stLancerSCaALSEGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-//	sc.step(GRCHarmonieMutuelle.steps.stDemarrageServeurInfinite);
- // sc.step(GRCHarmonieMutuelle.steps.stRechercheEtAnalysePP);
-//	sc.step(GRCHarmonieMutuelle.steps.stInsertionDonneesAnalyseExcel);
-//	sc.step(GRCHarmonieMutuelle.steps.stLireDataPPSuivanteIAE);
+	sc.step(GRCHarMu.steps.stConnexionGRCSiebel);
+  //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
+	sc.step(GRCHarMu.steps.stLireDataConfig);
+	sc.step(GRCHarMu.steps.stLireDataPPIAE);
+	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
+	
+	sc.step(GRCHarMu.steps.stLancerSCaALSEGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+  //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
+  //sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+  sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
+ 	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 	
 }});
 
 
-/** Description */
-GRCHarMu.step({ stInitAppGRC: function(ev, sc, st) {
-	var data = sc.data;
-	
-	ctx.log('*** Etape stInitAppGRC ***');
-	ctx.log('Initialisation de l application en utilisant la page main');
-		ctx.log('renommage de la page');
-		ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
-		ctx.log('initialisation');
-		ctx.siebel.initApplication(GRCHarMu.pGRCMain);
-	  ctx.log('redirection vers la page');
-		ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
-	
-	 GRCHarMu.pRechercheAI.wait(function(ev){
-	 	GRCHarMu.pRechercheAI.btRechercher.click();
-		 sc.endStep();
-	     return;
-		
-	 });
-}});
+
+
+
 
 
 
@@ -52,7 +34,7 @@ GRCHarMu.step({ stInitAppGRC: function(ev, sc, st) {
 GRCHarMu.step({ stInitVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitVerifDataGRC: ');
-	//ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
+	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
 	sc.endStep();
 	return;
 }});
@@ -63,10 +45,10 @@ GRCHarMu.step({ stConnexionGRCSiebel: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stConnexionGRCSiebel: ');
 	
-	/*data.webDataGRC.url =GRCHarMu.pConnexionGRC.getInfos();
-	data.webDataGRC.identifiant = GRCHarmonieMutuelle.pConnexionGRC.oIdentifiant.get();
-	data.webDataGRC.motDePasse = GRCHarmonieMutuelle.pConnexionGRC.oPwd.get();
-	GRCHarmonieMutuelle.pConnexionGRC.oConnexion.click();
+	//data.webDataGRC.url =GRCHarMu.pConnexionGRC.getInfos();
+	/*data.webDataGRC.identifiant = GRCHarMu.pConnexionGRC.oIdentifiant.get();
+	data.webDataGRC.motDePasse = GRCHarMu.pConnexionGRC.oPwd.get();
+	GRCHarMu.pConnexionGRC.oConnexion.click();
 	*/sc.endStep();
 	return;
 }});
@@ -174,11 +156,14 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 GRCHarMu.step({ stLancerSCaALSEGRC: function(ev, sc, st) {
 	var data = sc.data;
 	//extraction de numéro de l'adhésion
-	var iUderscore = data.ppCouranteAnalyse.dataLocale.numExtCtt.indexOf('_');
-	var tabNumExtCtt = data.ppCouranteAnalyse.dataLocale.numExtCtt.split('_');
-	var numExtCtt = tabNumExtCtt[1];
-	sc.endStep();
-	return;
+
+	ctx.traceF.infoTxt('************* Début scénario Analyse Data GRC Siebel *************');
+	st.disableTimeout();
+	GRCHarMu.scenarios.scAnalyseDataGRC.start(data).onEnd(function(sc3) {
+		sc.data=sc3.data;
+		ctx.traceF.infoTxt('************* Fin scénario Analyse Data GRC Siebel *************');
+		sc.endStep();
+	});
 }});
 
 
@@ -227,7 +212,17 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPSuivanteIAE: lecture des données de la PP suivante du fichier IAE');
 	data.varGlobales.ligneCourante += 1;
-	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){
+	/*if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
+		sc.endStep();
+		return;
+	}else{
+		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
+		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
+		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
+		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
+	  return;
+	}*/
+	if(data.varGlobales.ligneCourante === 3){  //cas particulier pour tester l'isertion dans le data grid
 		sc.endStep();
 		return;
 	}else{

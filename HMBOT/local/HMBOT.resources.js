@@ -347,3 +347,7 @@ GRCHarMu.pGRCMain = GRCHarMu.addPage('pGRCMain', {"comment":"GRC Harmonie Mutuel
 GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb"});
 GRCHarMu.pRechercheAI.btRechercher = GRCHarMu.pRechercheAI.addItem('btRechercher');
 GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
+GRCHarMu.pRechercheAI.oProduit = GRCHarMu.pRechercheAI.addItem('oProduit', {"customType":"siebel.editTextInput"});
+GRCHarMu.pRechercheAI.oListNOK = GRCHarMu.pRechercheAI.addItem('oListNOK');
+GRCHarMu.pRechercheAI.oRechercheIA = GRCHarMu.pRechercheAI.addItem('oRechercheIA', {"customType":"siebel.grid"});
+GRCHarMu.pRechercheAI.oListOK = GRCHarMu.pRechercheAI.addItem('oListOK');
