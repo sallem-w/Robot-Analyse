@@ -385,6 +385,8 @@ ActivInfinitev7.pAdhIndivIdentAssures.oCommunicationsAdhere = ActivInfinitev7.pA
 ActivInfinitev7.pAdhIndivIdentAssures.oCivilite = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oCivilite');
 ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTypeAssure');
 ActivInfinitev7.pAdhIndivIdentAssures.btSauvegarder = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btSauvegarder');
+ActivInfinitev7.pAdhIndivIdentAssures.btContinuer = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btContinuer');
+ActivInfinitev7.pAdhIndivIdentAssures.btSuivant = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btSuivant');
 
 ActivInfinitev7.pAdhIndivIdentSouscri = ActivInfinitev7.addPage('pAdhIndivIdentSouscri', {"comment":"Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentSouscri.oPersonne = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oPersonne');
@@ -398,8 +400,26 @@ ActivInfinitev7.pAdhIndivIdentSouscri.oSelectType = ActivInfinitev7.pAdhIndivIde
 ActivInfinitev7.pAdhIndivIdentSouscri.oSelectValeur = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oSelectValeur', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentSouscri.btSuivant = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('btSuivant');
 
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur = ActivInfinitev7.addPage('pAdhIndivIdentAssurPageErreur', {"comment":"Adhésions individuelles - N°22629738 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_1\u0026CONTAINER_NOM_FONCTION=ACVV_1500\u0026CONTAINER_MODE_EXECUTION_VALIDATION_SCENARIO=9\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_ENREGISTRER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_1\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oPopUpErreur = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oPopUpErreur');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btClosePopUp = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btClosePopUp');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTitrePopUp = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oTitrePopUp');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTypAssRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oTypAssRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oNumRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oNumRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oCleRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oCleRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oRegimeRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oRegimeRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oCaisseRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oCaisseRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oCentreRO = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oCentreRO');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTeletrans = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oTeletrans');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btSauvegarder = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btSauvegarder');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btValider = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btValider');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btBtnContinuer = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btBtnContinuer', {"mustNotExist":true});
+
 ActivInfinitev7.pAdhIndivProdGaran = ActivInfinitev7.addPage('pAdhIndivProdGaran', {"comment":"Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIP_500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivProdGaran.btModifier = ActivInfinitev7.pAdhIndivProdGaran.addItem('btModifier');
 ActivInfinitev7.pAdhIndivProdGaran.oligneAdherent = ActivInfinitev7.pAdhIndivProdGaran.addItem('oligneAdherent', {"occurs":1});
-ActivInfinitev7.pAdhIndivProdGaran.oCodeProduitNelleGarD = ActivInfinitev7.pAdhIndivProdGaran.addItem('oCodeProduitNelleGarD');
+ActivInfinitev7.pAdhIndivProdGaran.oCodeProduit = ActivInfinitev7.pAdhIndivProdGaran.addItem('oCodeProduit');
 ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit = ActivInfinitev7.pAdhIndivProdGaran.addItem('oSelectCodeProduit', {"occurs":1});
+ActivInfinitev7.pAdhIndivProdGaran.btContinuer = ActivInfinitev7.pAdhIndivProdGaran.addItem('btContinuer');
+ActivInfinitev7.pAdhIndivProdGaran.oValiderProduit = ActivInfinitev7.pAdhIndivProdGaran.addItem('oValiderProduit');
+ActivInfinitev7.pAdhIndivProdGaran.btNouveau = ActivInfinitev7.pAdhIndivProdGaran.addItem('btNouveau');
