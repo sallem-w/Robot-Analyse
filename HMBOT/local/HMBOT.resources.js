@@ -399,6 +399,7 @@ ActivInfinitev7.pAdhIndivIdentAssures.oPageIdentiSouscripteur = ActivInfinitev7.
 ActivInfinitev7.pAdhIndivIdentAssures.oCommunicationsAdhere = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oCommunicationsAdhere', {"mustNotExist":true});
 ActivInfinitev7.pAdhIndivIdentAssures.oCivilite = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oCivilite');
 ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTypeAssure');
+ActivInfinitev7.pAdhIndivIdentAssures.btSauvegarder = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btSauvegarder');
 
 ActivInfinitev7.pAdhIndivIdentSouscri = ActivInfinitev7.addPage('pAdhIndivIdentSouscri', {"comment":"Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentSouscri.oPersonne = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oPersonne');

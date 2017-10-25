@@ -1,22 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="1879" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="78395" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="1928" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="80600" Length="106"><![CDATA[ctx.log('Données - nom : '+nom+' prenom : '+prenom+' date naissance : '+dateNaissance+' numRo : '+numRo );]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="2079" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="86098" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="2036" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="84720" Length="136"><![CDATA[ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stSelectionBenefeciaireAdhesionIndiv');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="2314" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="93314" Length="60"><![CDATA[ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="560" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="24032" Length="73"><![CDATA[sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="528" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="21433" Length="79"><![CDATA[attributsEnLigne.CONTACT_NOM = ActivInfinitev7.pAdhIndivIntervtPrin.oNom.get();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="1882" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="78631" Length="16"><![CDATA[ctx.log("test");]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="1898" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="79372" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="93" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="3647" Length="59"><![CDATA[ActivInfinitev7.pAdhIndivIdentAssures.oCentreRO.setFocus();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="82" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="3239" Length="56"><![CDATA[ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.setFocus();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="80" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="3165" Length="57"><![CDATA[ActivInfinitev7.pAdhIndivIdentAssures.oTeletrans.click();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="32" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="1334" Length="162"><![CDATA[ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageIdentificationSouscripteur_Validation_Beneficiaire');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="97" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="3970" Length="73"><![CDATA[sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures_Validation);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="2136" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="88848" Length="35"><![CDATA[if(RIBPrestation == RIBCotisation){]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="2134" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="88450" Length="314"><![CDATA[var RIBCotisation = data.contratCourantAdhesion.dataLocale.assurePrincipal.BANQUE_PREST + data.contratCourantAdhesion.dataLocale.assurePrincipal.GUICHE_BANQUE_PREST + data.contratCourantAdhesion.dataLocale.assurePrincipal.COMPTE_BANQUE_PREST  + data.contratCourantAdhesion.dataLocale.assurePrincipal.CLE_RIB_PREST;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="2080" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="86234" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="2037" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="84856" Length="136"><![CDATA[ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stSelectionBenefeciaireAdhesionIndiv');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="561" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="24069" Length="73"><![CDATA[sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_IdentificationAdherent);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="529" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="21470" Length="79"><![CDATA[attributsEnLigne.CONTACT_NOM = ActivInfinitev7.pAdhIndivIntervtPrin.oNom.get();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="2312" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="93507" Length="118"><![CDATA[ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stFinScCreationHSP');]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="36" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1465" Length="68"><![CDATA[ActivInfinitev7.step({ stRechercheContratCMU: function(ev, sc, st) {]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="54" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="2554" Length="3"><![CDATA[});]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="27" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='CMU_resiliation_contrat']" Offset="1221" Length="106"><![CDATA[ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - STEP START - stInitFinCMU');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="47" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="1736" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="46" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="1660" Length="19"><![CDATA[var data = sc.data;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="59" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="2188" Length="42"><![CDATA[ctx.log(" Test URL : "+ data.webData.url);]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures_Erreur_RO]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures_InformationRO_SelectionRegime]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stAdhesionIndividuelle_Modification_RIB_Prestation]]></FINDWHAT>
+		<FINDWHAT><![CDATA[RIB]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stScenarioAjoutBeneficiaire]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures_AjoutBeneficiaire_Boucle]]></FINDWHAT>
+		<FINDWHAT><![CDATA[tabGestion]]></FINDWHAT>
 		<FINDWHAT><![CDATA[tab]]></FINDWHAT>
 		<FINDWHAT><![CDATA[typeVoie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[.personnePhysique]]></FINDWHAT>
@@ -30,13 +41,6 @@
 		<FINDWHAT><![CDATA[chemin Fichier Trace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminFichier]]></FINDWHAT>
 		<FINDWHAT><![CDATA[configExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRechercheBenefeciaireAdhesionIndiv]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stPageIdentificationAssures_InformationRO_SelectionRegime]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stPageIdentificationAssures_Validation]]></FINDWHAT>
-		<FINDWHAT><![CDATA[oFrequence]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.wait]]></FINDWHAT>
-		<FINDWHAT><![CDATA[recher]]></FINDWHAT>
-		<FINDWHAT><![CDATA[oSelect]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[delay: 300,]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[data.contratCourantAdhesion.dataLocale.assurePrincipal]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[valeure]]></REPLACEWITH>
@@ -62,22 +66,23 @@
 	<OPENDOCS>
 		<OPENDOC LineNumber="3" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigClass']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigCMUClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="3" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='DataClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='DataClass']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="36" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="21" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="32" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="155" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigAdhesionClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="2298" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="83" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='importerDonneesExcelAdhesion']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="2312" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="85" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='importerDonneesExcelAdhesion']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="94" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="252" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libForm']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="9" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initialisations']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="40" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionInit']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libForm']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="234" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initialisations']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionInit']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="26" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libPopup']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="44" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scScenarioCreationContrat']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1388" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1598" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Application']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
