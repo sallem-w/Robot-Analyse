@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="87" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="2524" Length="61"><![CDATA[GRCHarMu.pRechercheAI.oRechercheIA.clickLink(1,2, function(){ // la méthode click link ne marche pas]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="90" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="2672" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="80" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="2172" Length="29"><![CDATA[ctx.log('click sur le lien');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="87" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="2421" Length="50"><![CDATA[var valPOs = GRCHarMu.pRechercheAI.getFocusRect();]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
@@ -50,14 +48,57 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="83" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="66" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="190" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="163" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="159" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
-		<CurPerspective><![CDATA[1]]></CurPerspective>
+		<CurPerspective><![CDATA[0]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[]]></DebugTester>
+		<DebugTester><![CDATA[
+GRCHarMu.pCoordBancairesC.oTabC.hasFocus();
+GRCHarMu.pCoordBancairesC.oTabC.exist();
+GRCHarMu.pCoordBancairesC.oTabC.click();
+GRCHarMu.pCoordBancairesC.oTabC.click();
+GRCHarMu.pCoordBancairesC.oTabC.getActiveRow();
+GRCHarMu.pCoordBancairesC.oTabC.getCellEditValue();
+GRCHarMu.pCoordBancairesC.oTabC.getColAttribute();
+GRCHarMu.pCoordBancairesC.oTabC.getColWidth();
+GRCHarMu.pCoordBancairesC.oTabC.getRect();
+GRCHarMu.pCoordBancairesC.oTabC.getRect();
+GRCHarMu.pCoordBancairesC.oTabC.click('', 23, '', 23);
+GRCHarMu.pCoordBancairesC.oTabC.click('', 23, '', 23);
+GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
+GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
+GRCHarMu.pCoordBancairesC.oTabC.clickLink();
+GRCHarMu.pCoordBancairesC.oTabC.clickLink();
+GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
+GRCHarMu.pCoordBancairesC.oTabC.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.exist();
+GRCHarMu.pRechercheAI.oRechercheIA.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.click('', 10, '', 29);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 10, 29);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 10, 29);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 11, 30);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 11, 30);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 30);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 30);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 33);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 33);
+GRCHarMu.pRechercheAI.oRechercheIA.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 40);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 40);
+GRCHarMu.pRechercheAI.oRechercheIA.clickLink();
+GRCHarMu.pRechercheAI.oRechercheIA.getRect();
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25, 60);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25, 60);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25);
+GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25);]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />

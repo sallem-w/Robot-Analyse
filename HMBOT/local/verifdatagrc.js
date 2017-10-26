@@ -63,7 +63,8 @@ GRCHarMu.step({ stStep2: function(ev, sc, st) {
    	  var numExtCtt = tabNumExtCtt[1];
       GRCHarMu.pRechercheAI.oRechercheIA.set(numExtCtt,1,1); //la valeur, ligne, colonne
       GRCHarMu.pRechercheAI.btExecuter.click();
-			
+		//	var pos = GRCHarMu.pRechercheAI.btExecuter.getRect();
+		
 			sc.endStep();
 	    return;
 		}else{
@@ -78,17 +79,34 @@ GRCHarMu.step({ stStep2: function(ev, sc, st) {
 GRCHarMu.step({ stStep3: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('click sur le lien');
-	GRCHarMu.pRechercheAI.wait(function(ev){
-		//var p = GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-		//var y= GRCHarMu.pRechercheAI.oRechercheIA.click(true, 1,1);
-		//var m = GRCHarMu.pRechercheAI.oRechercheIA.getAttibute(e.siebel.grid.event.OnClickLink);
 	
-		var bool = GRCHarMu.pRechercheAI.oRechercheIA.hasFocus();
-	  GRCHarMu.pRechercheAI.oRechercheIA.clickLink(1,2, function(){ // la méthode click link ne marche pas
-			ctx.log('fin click sur le champs');
-		});
+	GRCHarMu.pRechercheAI.wait(function(ev){
+				var res = {};
+			GRCHarMu.pRechercheAI.getItems(res);
+				GRCHarMu.pRechercheAI.oRechercheIA.setFocus(true);
+				var valPOs = GRCHarMu.pRechercheAI.getFocusRect();
+		    GRCHarMu.pRechercheAI.oProduit.get();
+				GRCHarMu.pRechercheAI.oProduit.set('valeur');
+		//  var val = GRCHarMu.pRechercheAI.oRechercheIA.getCellEditValue(1,1);
+		//  var scr =  GRCHarMu.pRechercheAI.oRechercheIA
+		//	GRCHarMu.pRechercheAI.oRechercheIA.notify(e.siebel.grid.event.OnClickLink);
+				GRCHarMu.pRechercheAI.oRechercheIA.clickLink(1,1, function(){ // la méthode click link ne marche pas
+					ctx.log('fin click sur le champs');
+				});
+
+		
 		sc.endStep();
 		return;
+	 // GRCHarMu.pRechercheAI.oRechercheIA.click();
+
+	  // var res = GRCHarMu.pRechercheAI.oRechercheIA.getCaptData(e.siebel.grid.event.OnDblClickRow);
+		//
+		
+//	 
+		
+		
+//	var infor = 	GRCHarMu.pRechercheAI.getItems();
+		
 	});
 
 }});
