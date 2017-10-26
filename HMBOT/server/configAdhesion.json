@@ -94,7 +94,9 @@
                 "contexteAnalyseStoppee": 126,
                 "dateTraitementContrat": 127,
                 "statutsContrat": 128,
-                "commentaireContrat": 129
+                "commentaireContrat": 129,
+                "numContrat1":132,
+                "numContrat2":133
             }
         },
         "Offre": {
