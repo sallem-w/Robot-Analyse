@@ -94,8 +94,10 @@ var confFileAdhesionClass = function () {
 				TOP_ABONN_DEC:'',
         contexteAnalyseStoppee: '',
         dateTraitementContrat: '',
-        statutsContrat: '',
-        commentaireContrat: ''
+        statutsContrat : '',
+        commentaireContrat : '',
+				numContrat1 : '',
+				numContrat2 : ''
       }
     },
 		Offre : {

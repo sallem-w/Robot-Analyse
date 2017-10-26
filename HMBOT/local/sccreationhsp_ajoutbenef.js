@@ -119,10 +119,13 @@ ActivInfinitev7.step({ stPageIdentificationAssures_Enregistrement_Beneficiaire_G
 /** Description */
 ActivInfinitev7.step({ stPageIdentificationAssures_Erreur_RO_Beneficiaire: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO');
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO_Beneficiaire');
 	// Assure RO
-	ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTypAssRO.click();
-	
+	if(ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTypAssAyantDroit.getAttribute('checked')!= true ){
+		ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTypAssAyantDroit.click();
+			ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oRangAttach.setFocus();
+			ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oRangAttach.set('1');
+	}
 	// Erreur sur le numero RO, On désactive la télétransmission
 	ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTeletrans.click();
 	/// Numero RO

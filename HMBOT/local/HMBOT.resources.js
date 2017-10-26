@@ -296,11 +296,13 @@ ActivInfinitev7.pIntervenantPrincipal.oBtnPageCourante = ActivInfinitev7.pInterv
 ActivInfinitev7.pServeurWebFerme = ActivInfinitev7.addPage('pServeurWebFerme', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
 ActivInfinitev7.pServeurWebFerme.oMessageErreur = ActivInfinitev7.pServeurWebFerme.addItem('oMessageErreur');
 
-ActivInfinitev7.pAdhesions = ActivInfinitev7.addPage('pAdhesions', {"comment":"Adhésions individuelles - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACSO01ASOA"});
-ActivInfinitev7.pAdhesions.oDateDebutEffet = ActivInfinitev7.pAdhesions.addItem('oDateDebutEffet');
-ActivInfinitev7.pAdhesions.btRecherche = ActivInfinitev7.pAdhesions.addItem('btRecherche');
-ActivInfinitev7.pAdhesions.oSelectPHarmonie = ActivInfinitev7.pAdhesions.addItem('oSelectPHarmonie');
-ActivInfinitev7.pAdhesions.oEntiteRattachement = ActivInfinitev7.pAdhesions.addItem('oEntiteRattachement', {"mustExist":true});
+ActivInfinitev7.pAdhesionsIndividuelles = ActivInfinitev7.addPage('pAdhesionsIndividuelles', {"comment":"Adhésions individuelles - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACSO01ASOA"});
+ActivInfinitev7.pAdhesionsIndividuelles.oDateDebutEffet = ActivInfinitev7.pAdhesionsIndividuelles.addItem('oDateDebutEffet');
+ActivInfinitev7.pAdhesionsIndividuelles.btRecherche = ActivInfinitev7.pAdhesionsIndividuelles.addItem('btRecherche');
+ActivInfinitev7.pAdhesionsIndividuelles.oSelectPHarmonie = ActivInfinitev7.pAdhesionsIndividuelles.addItem('oSelectPHarmonie');
+ActivInfinitev7.pAdhesionsIndividuelles.oEntiteRattachement = ActivInfinitev7.pAdhesionsIndividuelles.addItem('oEntiteRattachement', {"mustExist":true});
+ActivInfinitev7.pAdhesionsIndividuelles.btNon = ActivInfinitev7.pAdhesionsIndividuelles.addItem('btNon');
+ActivInfinitev7.pAdhesionsIndividuelles.btFermer = ActivInfinitev7.pAdhesionsIndividuelles.addItem('btFermer');
 
 ActivInfinitev7.pAdhIndivIdentContrat = ActivInfinitev7.addPage('pAdhIndivIdentContrat', {"comment":"Adhésions individuelles - N°22629359 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_341\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentContrat.oNumeroContrat = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oNumeroContrat');
@@ -315,6 +317,7 @@ ActivInfinitev7.pAdhIndivIdentContrat.oOffre = ActivInfinitev7.pAdhIndivIdentCon
 ActivInfinitev7.pAdhIndivIdentContrat.oSelectGroupeGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectGroupeGestion', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentContrat.oSelectOffre = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectOffre', {"occurs":1});
 ActivInfinitev7.pAdhIndivIdentContrat.oSelectCentreGestion = ActivInfinitev7.pAdhIndivIdentContrat.addItem('oSelectCentreGestion', {"occurs":1});
+ActivInfinitev7.pAdhIndivIdentContrat.btFermer = ActivInfinitev7.pAdhIndivIdentContrat.addItem('btFermer');
 
 ActivInfinitev7.pAdhIndivIdPrinRech = ActivInfinitev7.addPage('pAdhIndivIdPrinRech', {"comment":"Adhésions individuelles - N°22629425 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_78\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_78\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdPrinRech.oNom = ActivInfinitev7.pAdhIndivIdPrinRech.addItem('oNom');
@@ -376,7 +379,7 @@ ActivInfinitev7.pAdhIndivIntervtPrin.oInformationRattachem = ActivInfinitev7.pAd
 ActivInfinitev7.pAdhIndivIntervtPrin.oCodeCedex = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oCodeCedex');
 
 ActivInfinitev7.pAdhIndivIdentAssures = ActivInfinitev7.addPage('pAdhIndivIdentAssures', {"comment":"Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pAdhIndivIdentAssures.oInformationRattachem = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oInformationRattachem');
+ActivInfinitev7.pAdhIndivIdentAssures.oInformationRattachem = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oInformationRattachem', {"mustExist":true});
 ActivInfinitev7.pAdhIndivIdentAssures.oNomJF = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oNomJF');
 ActivInfinitev7.pAdhIndivIdentAssures.oSexe = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oSexe');
 ActivInfinitev7.pAdhIndivIdentAssures.oDateNaissance = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oDateNaissance');
@@ -402,6 +405,8 @@ ActivInfinitev7.pAdhIndivIdentAssures.oTypeAssure = ActivInfinitev7.pAdhIndivIde
 ActivInfinitev7.pAdhIndivIdentAssures.btSauvegarder = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btSauvegarder');
 ActivInfinitev7.pAdhIndivIdentAssures.btContinuer = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btContinuer');
 ActivInfinitev7.pAdhIndivIdentAssures.btSuivant = ActivInfinitev7.pAdhIndivIdentAssures.addItem('btSuivant');
+ActivInfinitev7.pAdhIndivIdentAssures.oTypAssAyantDroit = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oTypAssAyantDroit');
+ActivInfinitev7.pAdhIndivIdentAssures.oRangAttach = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oRangAttach');
 
 ActivInfinitev7.pAdhIndivIdentSouscri = ActivInfinitev7.addPage('pAdhIndivIdentSouscri', {"comment":"Adhésions individuelles - N°22629615 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_584\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentSouscri.oPersonne = ActivInfinitev7.pAdhIndivIdentSouscri.addItem('oPersonne');
@@ -429,6 +434,9 @@ ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTeletrans = ActivInfinitev7.pAdhI
 ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btSauvegarder = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btSauvegarder');
 ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btValider = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btValider');
 ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btBtnContinuer = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btBtnContinuer', {"mustNotExist":true});
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.btBtRecherche = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('btBtRecherche', {"mustNotExist":true});
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oTypAssAyantDroit = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oTypAssAyantDroit');
+ActivInfinitev7.pAdhIndivIdentAssurPageErreur.oRangAttach = ActivInfinitev7.pAdhIndivIdentAssurPageErreur.addItem('oRangAttach');
 
 ActivInfinitev7.pAdhIndivProdGaran = ActivInfinitev7.addPage('pAdhIndivProdGaran', {"comment":"Adhésions individuelles - N°22629703 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIP_500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_74\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivProdGaran.btModifier = ActivInfinitev7.pAdhIndivProdGaran.addItem('btModifier');
@@ -438,3 +446,29 @@ ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit = ActivInfinitev7.pAdhIndi
 ActivInfinitev7.pAdhIndivProdGaran.btContinuer = ActivInfinitev7.pAdhIndivProdGaran.addItem('btContinuer');
 ActivInfinitev7.pAdhIndivProdGaran.oValiderProduit = ActivInfinitev7.pAdhIndivProdGaran.addItem('oValiderProduit');
 ActivInfinitev7.pAdhIndivProdGaran.btNouveau = ActivInfinitev7.pAdhIndivProdGaran.addItem('btNouveau');
+ActivInfinitev7.pAdhIndivProdGaran.btValiderCouverture = ActivInfinitev7.pAdhIndivProdGaran.addItem('btValiderCouverture');
+ActivInfinitev7.pAdhIndivProdGaran.btSuivant = ActivInfinitev7.pAdhIndivProdGaran.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivParamDivers = ActivInfinitev7.addPage('pAdhIndivParamDivers', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACPP_800\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACG2_700\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivParamDivers.btSuivant = ActivInfinitev7.pAdhIndivParamDivers.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivParamCalcul = ActivInfinitev7.addPage('pAdhIndivParamCalcul', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC32_1000\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACPD_900\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivParamCalcul.btSuivant = ActivInfinitev7.pAdhIndivParamCalcul.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivHistoDesCoti = ActivInfinitev7.addPage('pAdhIndivHistoDesCoti', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC3Q_1100\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC32_1000\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivHistoDesCoti.btSuivant = ActivInfinitev7.pAdhIndivHistoDesCoti.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivVisuCptCotis = ActivInfinitev7.addPage('pAdhIndivVisuCptCotis', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC36_1200\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC3Q_1100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivVisuCptCotis.oValidation = ActivInfinitev7.pAdhIndivVisuCptCotis.addItem('oValidation', {"mustExist":true});
+ActivInfinitev7.pAdhIndivVisuCptCotis.btSuivant = ActivInfinitev7.pAdhIndivVisuCptCotis.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivAvisEcheance = ActivInfinitev7.addPage('pAdhIndivAvisEcheance', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC3U_1300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC36_1200\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivAvisEcheance.btSuivant = ActivInfinitev7.pAdhIndivAvisEcheance.addItem('btSuivant');
+
+ActivInfinitev7.pAdhIndivDemandeCarte = ActivInfinitev7.addPage('pAdhIndivDemandeCarte', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACEK_1400\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=AC3U_1300\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivDemandeCarte.btSuivant = ActivInfinitev7.pAdhIndivDemandeCarte.addItem('btSuivant');
+ActivInfinitev7.pAdhIndivDemandeCarte.oTypeDiffere = ActivInfinitev7.pAdhIndivDemandeCarte.addItem('oTypeDiffere');
+ActivInfinitev7.pAdhIndivDemandeCarte.oTypePasEdition = ActivInfinitev7.pAdhIndivDemandeCarte.addItem('oTypePasEdition');
+
+ActivInfinitev7.pAdhIndivValidActe = ActivInfinitev7.addPage('pAdhIndivValidActe', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACVV_1500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACEK_1400\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivValidActe.btSauvegarder = ActivInfinitev7.pAdhIndivValidActe.addItem('btSauvegarder');

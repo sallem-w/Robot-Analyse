@@ -2,7 +2,7 @@
 /** Description */
 ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(120000, function(sc, st) { 
+	sc.onTimeout(240000, function(sc, st) { 
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();	
 	}); // default timeout handler for each step
@@ -77,6 +77,14 @@ ActivInfinitev7.scenario({ scCreationHSP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Produits);
 	sc.step(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
+	sc.step(ActivInfinitev7.steps.stVersLaPageParamDivers);
+	sc.step(ActivInfinitev7.steps.stVersLaPageParamDeCalcul);
+	sc.step(ActivInfinitev7.steps.stVersLaPageHistoDesCotisations);
+	sc.step(ActivInfinitev7.steps.stPageVisuCompteCotisant_ValidationDuCalcul);
+	sc.step(ActivInfinitev7.steps.stVersLaPageAvisEcheance);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_PageDemandeCarteDeTiers_TypeEdition)
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_ValidationActe);
+	sc.step(ActivInfinitev7.steps.stAdhesionIndiv_RetourPageIdentificationContrat);
 	sc.step(ActivInfinitev7.steps.stFinScCreationHSP);
 	
 	
@@ -109,10 +117,10 @@ ActivInfinitev7.step({ stVersAdhesionIndividuelle: function(ev, sc, st) {
 ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' - Etape - stOuvertureDossierHSP');
-	ActivInfinitev7.pAdhesions.wait(function(ev) {
-		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
-		ActivInfinitev7.pAdhesions.oEntiteRattachement.keyStroke('P - HA'); // on insere 'P' pour faire apparaitre la boite cliquable
-		ActivInfinitev7.pAdhesions.oEntiteRattachement.setFocus();
+	ActivInfinitev7.pAdhesionsIndividuelles.wait(function(ev) {
+		ActivInfinitev7.pAdhesionsIndividuelles.oEntiteRattachement.setFocus();
+		ActivInfinitev7.pAdhesionsIndividuelles.oEntiteRattachement.keyStroke('P - HA'); // on insere 'P' pour faire apparaitre la boite cliquable
+		ActivInfinitev7.pAdhesionsIndividuelles.oEntiteRattachement.setFocus();
 		var countPoll=0;		
 			ctx.polling({
 				delay: 300,
@@ -120,8 +128,8 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 				test: function(index) { 
 					countPoll++;
 					ctx.log('counter : '+countPoll);
-					if(ActivInfinitev7.pAdhesions.oSelectPHarmonie.exist()){
-							ActivInfinitev7.pAdhesions.oSelectPHarmonie.click();
+					if(ActivInfinitev7.pAdhesionsIndividuelles.oSelectPHarmonie.exist()){
+							ActivInfinitev7.pAdhesionsIndividuelles.oSelectPHarmonie.click();
 							return true;
 					}
 					else{
@@ -132,9 +140,9 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 					ctx.traceF.infoTxt(' L\'entite de rattachement a été trouvée');
 					var dd=data.contratCourantAdhesion.dataLocale.assurePrincipal.DATE_DEBUT_EFFET;	
 					ctx.log('dd :'+dd);
-					ActivInfinitev7.pAdhesions.oDateDebutEffet.setFocus();
-					ActivInfinitev7.pAdhesions.oDateDebutEffet.set(dd);
-					ActivInfinitev7.pAdhesions.btRecherche.click();
+					ActivInfinitev7.pAdhesionsIndividuelles.oDateDebutEffet.setFocus();
+					ActivInfinitev7.pAdhesionsIndividuelles.oDateDebutEffet.set(dd);
+					ActivInfinitev7.pAdhesionsIndividuelles.btRecherche.click();
 					sc.endStep();
 					return;
 				},
@@ -239,6 +247,10 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_NumExterne: function(ev
 	ActivInfinitev7.pAdhIndivIdentContrat.oNumeroExterne.setFocus();
 	ActivInfinitev7.pAdhIndivIdentContrat.oNumeroExterne.set(numExterneContrat);
 	ActivInfinitev7.pAdhIndivIdentContrat.oEcheancePrincip.setFocus();
+	
+	/// On enregistre aussi le numéro de contrat créé
+	data.contratCourantAdhesion.dataEnLigne.numeroContratIndiv =  ActivInfinitev7.pAdhIndivIdentContrat.oNumeroContrat.get();
+	
 	sc.endStep();
 	return;
 }});
@@ -1512,8 +1524,14 @@ ActivInfinitev7.step({ stPageIdentificationAssures_InformationRO: function(ev, s
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_InformationRO');
 	/// Assure RO
-	var AssureRO = data.contratCourantAdhesion.dataLocale.personnePhysique.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
-	ActivInfinitev7.pAdhIndivIdentAssures.oTypAssRO.click(true);
+	var conditionAssureRO = data.contratCourantAdhesion.dataLocale.personnePhysique.ASSURE_RO; /// a valider : on coche par défaut Assurer RO
+	if(conditionAssureRO == 'O'){
+		ActivInfinitev7.pAdhIndivIdentAssures.oTypAssRO.click();
+	}
+	else{
+		ActivInfinitev7.pAdhIndivIdentAssures.oTypAssAyantDroit.click();
+	}
+	
 	/// Numero RO
 	var numRO = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_RO;
 	ActivInfinitev7.pAdhIndivIdentAssures.oNumRO.setFocus();
@@ -1605,6 +1623,9 @@ ActivInfinitev7.step({ stPageIdentificationAssures_Validation: function(ev, sc, 
 ActivInfinitev7.step({ stPageIdentificationAssures_Erreur_RO: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures_Erreur_RO');
+	// Ayant droit
+
+	
 	// Erreur sur le numero RO, On désactive la télétransmission
 	ActivInfinitev7.pAdhIndivIdentAssures.oTeletrans.click();
 	/// Numero RO
@@ -2220,6 +2241,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_VersLaPageDesProduits: function(ev
 			ActivInfinitev7.pAdhIndivProdGaran.btContinuer.click();
 
 		}
+		data.contratCourantAdhesion.dataLocale.variables.indexBenef = 0; 
 		sc.endStep();
 		return;
 	});
@@ -2232,19 +2254,30 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_VersLaPageDesProduits: function(ev
 ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire');
-	data.contratCourantAdhesion.dataLocale.variables.indexBenef = 1; ///  ajoute à l'étape qui précède
-	var index = data.contratCourantAdhesion.dataLocale.variables.indexBenef;
-	var contratBenef = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[index];
+	
+	var indexB = data.contratCourantAdhesion.dataLocale.variables.indexBenef;
+	var contratBenef = data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques[indexB];
 	if(contratBenef != undefined){
-		data.contratCourantAdhesion.dataLocale.personnePhysique=contratBenef;
-		
+		data.contratCourantAdhesion.dataLocale.personnePhysique=contratBenef
 		data.contratCourantAdhesion.dataLocale.variables.indexBenef++;
-		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
-	return;
+		// A l'exception de l'assurer principal ( index = 1), on doit cliquer sur la ligne de l'adherent
+		if(indexB==0){
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
+			return;
+		}
+		else{
+			ActivInfinitev7.pAdhIndivProdGaran.oligneAdherent.i(indexB).click();
+			ActivInfinitev7.pAdhIndivProdGaran.events.LOAD.once(function(ev){
+				sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_ListeProduit);
+				return;
+			});
+		}
+	
 	}
 	else{
 		// Tous les produits ont été rajoutés --> on avance
-		sc.endStep(ActivInfinitev7.steps.stVersLaPageVisuCompteCotisant);
+		ActivInfinitev7.pAdhIndivProdGaran.btSuivant.click();
+		sc.endStep(ActivInfinitev7.steps.stVersLaPageParamDivers);
 	return;
 	}
 }});
@@ -2269,7 +2302,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: functi
 		np++;
 	}
 	var p3 = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_PROD_3;
-	if(p1 != undefined){
+	if(p3 != undefined){
 		listProd[np] = p3 ;
 		np++;
 	}
@@ -2279,7 +2312,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: functi
 		np++;
 	}
 	var p5 = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_PROD_5;
-	if(p1 != undefined){
+	if(p5 != undefined){
 		listProd[np] = p5 ;
 		np++;
 	}
@@ -2289,12 +2322,12 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_ListeProduit: functi
 		np++;
 	}
 	var p7 = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_PROD_7;
-	if(p1 != undefined){
+	if(p7 != undefined){
 		listProd[np] = p7 ;
 		np++;
 	}
 	var p8 = data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_PROD_8;
-	if(p1 != undefined){
+	if(p8 != undefined){
 		listProd[np] = p8 ;
 		np++;
 	}
@@ -2353,16 +2386,26 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits_Boucle_Produits: fun
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits_Boucle_Produits');
 	if(data.contratCourantAdhesion.dataLocale.indexProd<data.contratCourantAdhesion.dataLocale.nbProd){
-		
 		ctx.log(' index Produit : '+data.contratCourantAdhesion.dataLocale.indexProd+'  Nombre Produits : '+data.contratCourantAdhesion.dataLocale.nbProd);
+		// A l'exception du premier ajout , on doit cliquer sur nouveau
+		if(data.contratCourantAdhesion.dataLocale.indexProd!=0){
+			ActivInfinitev7.pAdhIndivProdGaran.btNouveau.click();
+		}
 		
-			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
-			return;
+		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits);
+		return;
 		
 		
 	}else{
-		sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire);
-		return;
+		ActivInfinitev7.pAdhIndivProdGaran.btValiderCouverture.click()
+		ActivInfinitev7.pAdhIndivProdGaran.events.LOAD.once(function(ev){
+			if(ActivInfinitev7.pAdhIndivProdGaran.btContinuer.exist()){
+				ActivInfinitev7.pAdhIndivProdGaran.btContinuer.click();
+			}
+			sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Beneficiaire);
+			return;
+		});
+	
 	}
 	
 	
@@ -2377,13 +2420,15 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndividuelle_AjoutProduits');
 	// on recherche si le produit est bien dans la base infinite 
 	var codeCourant = data.contratCourantAdhesion.dataLocale.listProd[data.contratCourantAdhesion.dataLocale.indexProd];
+	var gammeCourante = data.contratCourantAdhesion.dataLocale.personnePhysique.GAMME;
 	var tabProduits = ctx.formF.gammeProd;
 	ctx.log('codeCourant : '+codeCourant);
 	var codeProdInfinite = undefined;
 	var codeInfinite = undefined;
 	var index=-1;
 	for(var i  in tabProduits){
-		if(codeCourant == tabProduits[i].codeGRC){
+	//	ctx.log('Gamme  : '+gammeCourante + ', Code Courant : '+codeCourant+ ', tabGamme : '+tabProduits[i].gamme+', tabGRC : ' + tabProduits[i].codeGRC);
+		if(codeCourant == tabProduits[i].codeGRC && gammeCourante ==  tabProduits[i].gamme){
 			index=i;
 			break;
 		}
@@ -2393,6 +2438,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 		ctx.traceF.errorTxt(data.contratCourantAdhesion.dataLocale.personnePhysique.NUM_SEQ_CT + ' PAS DE CORRESPONDANCE TROUVE ENTRE CODE GRC ET INFINITE ');
 	}else{
 		codeProdInfinite = tabProduits[index].codeProduitInfinite;
+		ctx.log('Code infinite : '+codeProdInfinite);
 	}
 	
 	ActivInfinitev7.pAdhIndivProdGaran.oCodeProduit.setFocus();
@@ -2404,7 +2450,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 			nbMax: 10,
 			test: function(index) { 
 				countPoll++;
-				ctx.log('counter : '+countPoll);
+				ctx.log('countP : '+countPoll);
 				return ActivInfinitev7.pAdhIndivProdGaran.oSelectCodeProduit.count()>0;
 			},
 			done: function() { 
@@ -2417,7 +2463,7 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 						ActivInfinitev7.pAdhIndivProdGaran.oValiderProduit.click();
 						ActivInfinitev7.pAdhIndivProdGaran.events.LOAD.once(function(ev){
 							data.contratCourantAdhesion.dataLocale.indexProd++;
-							ActivInfinitev7.pAdhIndivProdGaran.btNouveau.click();
+							
 							sc.endStep(ActivInfinitev7.steps.stAdhesionIndividuelle_AjoutProduits_Boucle_Produits);
 							return;
 						});
@@ -2445,13 +2491,122 @@ ActivInfinitev7.step({ stAdhesionIndividuelle_AjoutProduits: function(ev, sc, st
 
 
 /** Description */
-ActivInfinitev7.step({ stVersLaPageVisuCompteCotisant: function(ev, sc, st) {
+ActivInfinitev7.step({ stVersLaPageParamDivers: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageVisuCompteCotisant');
-	sc.endStep();
-	return;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageParamDivers');
+	ActivInfinitev7.pAdhIndivParamDivers.wait(function(ev){
+		ActivInfinitev7.pAdhIndivParamDivers.btSuivant.click();
+		sc.endStep();
+		return;
+	});
 }});
 
+/** Description */
+ActivInfinitev7.step({ stVersLaPageParamDeCalcul: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageParamDeCalcul');
+	ActivInfinitev7.pAdhIndivParamCalcul.wait(function(ev){
+		ActivInfinitev7.pAdhIndivParamCalcul.btSuivant.click();
+			sc.endStep();
+			return;
+	});
+}});
+
+/** Description */
+ActivInfinitev7.step({ stVersLaPageHistoDesCotisations: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageHistoDesCotisations');
+	ActivInfinitev7.pAdhIndivHistoDesCoti.wait(function(ev){
+		ActivInfinitev7.pAdhIndivHistoDesCoti.btSuivant.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+
+/** Description */
+ActivInfinitev7.step({ stPageVisuCompteCotisant_ValidationDuCalcul: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageVisuCompteCotisant');
+	ActivInfinitev7.pAdhIndivVisuCptCotis.wait(function(ev){
+		ActivInfinitev7.pAdhIndivVisuCptCotis.oValidation.setFocus();
+		ActivInfinitev7.pAdhIndivVisuCptCotis.oValidation.set('OUI');
+		ActivInfinitev7.pAdhIndivVisuCptCotis.btSuivant.click();
+		sc.endStep(ActivInfinitev7.steps.stVersLaPageAvisEcheance);
+		return;
+	});
+}});
+
+
+ActivInfinitev7.step({ stVersLaPageAvisEcheance: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stVersLaPageAvisEcheance');
+	ActivInfinitev7.pAdhIndivAvisEcheance.wait(function(ev){
+		ActivInfinitev7.pAdhIndivAvisEcheance.btSuivant.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_PageDemandeCarteDeTiers_TypeEdition: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_PageDemandeCarteDeTiers_TypeEdition');
+	ActivInfinitev7.pAdhIndivDemandeCarte.wait(function(ev){
+		ActivInfinitev7.pAdhIndivDemandeCarte.btSuivant.click();
+			sc.endStep();
+			return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_ValidationActe: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_ValidationActe');
+	ActivInfinitev7.pAdhIndivValidActe.wait(function(ev){
+		ActivInfinitev7.pAdhIndivValidActe.btSauvegarder.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stAdhesionIndiv_RetourPageIdentificationContrat: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RetourPageIdentificationContrat');
+	ActivInfinitev7.pAdhesionsIndividuelles.wait(function(ev){
+		ActivInfinitev7.pAdhesionsIndividuelles.btFermer.click();
+//		ActivInfinitev7.pAdhesionsIndividuelles.events.LOAD.on(function(ev){
+			var countPoll=0;	
+			ctx.polling({	
+				delay: 400,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhesionsIndividuelles.btNon.exist();
+				},
+				done: function() { 
+					ActivInfinitev7.pAdhesionsIndividuelles.btNon.click();
+					ActivInfinitev7.pTabDeBord.wait(function(ev){
+						sc.endStep();
+						return;
+					});
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du retour au tableau de bord ');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
+//		});
+
+	});
+}});
 
 
 /** Description */
