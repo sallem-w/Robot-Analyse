@@ -311,7 +311,7 @@ ActivInfinitev7.step({ stFinScenarioCMU : function(ev, sc, st) {
 	ctx.traceF.infoTxt('---> Ecriture des statistiques ');
 	ctx.statsF.calculerStats(data);
 	ctx.log('Fin du traitement CMU');
-	ctx.popupF.finTraitement();
+	ctx.popupF.finTraitement('CMU');
 	sc.endScenario();
 	return;
 }});

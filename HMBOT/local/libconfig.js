@@ -15,16 +15,19 @@
 		nomFichierConfig : 'config.json',
 		constantes : {
 			ASSPRI: 'ASSPRI',
+			principale: 'Principale',
 			produitValide: 'VA',
 			produitTermine : 'RA',
+			entiteRattachement : 'P - HARMONIE MUTUELLE',
 			correspondanceRang : {
 				ASSPRI: ['1'],
 				CONJOI: ['11'],
 				ENFANT: ['21', '22', '23', '24', '25', '26', '27', '28', '29']
 			}
-		} ,
-		fichierConfig : ''
-		
+		},
+		gammeProduit : ['Harmonie','Harmonie Santé Particuliers', 'Harmonie Santé Collectif'],
+		fichierConfig : '',
+		fichierConfigScenario:''
 	};
 	
 
@@ -37,6 +40,8 @@
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
 	scenario.Suspension ='Suspension';
+
+	scenario.Adhesion = 'Adhesion';
 	
 	configF.scenario=scenario;
 	
@@ -50,6 +55,29 @@
 		ctx.log('Initialisation : Chargement du fichier config.json');
 	}
 	
+	configF.chargementFichierConfigScenarioCMU = function() {
+		var cheminConfigScenario = 'configCMU.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileCMUClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configCMU.json');
+	}
+		
+	configF.chargementFichierConfigScenarioAdhesion = function() {
+		var cheminConfig = 'configAdhesion.json';
+		ctx.log('-->configF.chargementFichierConfigScenarioAdhesion()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfig);
+		ctx.log('Chemin dossier server : ' + ctx.options.serverURL);
+		ctx.log('Chemin fichier config Adhesion : ' + ctx.options.serverURL + '\\' + cheminConfig);
+		configF.fichierConfigScenario = new confFileAdhesionClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+		ctx.log('Initialisation : Chargement du fichier configAdhesion.json');
+		}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 	
 	
 	configF.recupConfigScenario = function(codeScenario) {
@@ -76,9 +104,42 @@
 		return codeScenario === ctx.configF.scenario.SIRH ? 'xls' : ctx.fso.file.getExtensionName(nomFichier);
 	}
 	
+//	configF.selectionFichier = function (chemin,extensionFichier,finTitre){
+		
+//		var listeFichiers = ctx.fso.folder.getFileCollection(chemin);
+//		var cheminVersFichier=undefined;
+//		var label = "<script>function cl(element) { close(element.id); }</script>";
+//		label = label + "<p> Avec quel fichier souhaitez-vous travailler ? :<br/><br/>";
+//		var count=0;
+//		while(!listeFichiers.atEnd()) {
+//			var ff = listeFichiers.item();
+//			ctx.log('Nom fichier : '+ ff);
+//				// on verifie si il n'y a pas deux fichiers de données sans "finTitreResultat" dans le titre
+//			if ((ff.Name.indexOf(extensionFichier) !== -1) && (ff.Name.indexOf(finTitre==-1))) {
+//				label = label + "<a href='javascript:void(0)' id='Option"+count+"' onclick='cl(this);' > ";
+//				label = label + "<b> "+ ff.Name+" </b> </a><br/>";
+//				count += 1;
+//			}
+//				listeFichiers.moveNext();
+//		}
+//		var pMaPopup = ctx.popup('maPopup', e.popup.template.NoButton) ;
+//			pMaPopup.open({	message: label }) ;
+//			pMaPopup.waitResult(function(res) 
+//			{
+//				var it=Number(res[6]);
+//				cheminVersFichier=ff.Name;
+//			  ctx.log('Résultat cliqué: ' + res + " k : " +it+ "Fichier : "+cheminVersFichier);
+//				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
+//			});
+//		return cheminVersFichier;
+//	}
 	
-	
+<<<<<<< HEAD
 	configF.init = function(codeScenario) {
+=======
+	configF.init = function(dat) {
+		var codeScenario=dat.codeScenario;
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 		ctx.log('---> configF.init('+codeScenario+')');
 		configF.chargementFichierConfig();
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
@@ -98,7 +159,9 @@
 		var fichiers = ctx.fso.folder.getFileCollection(configF.cheminRacine);
 		var n_fichiers = 0;
 		while(!fichiers.atEnd()) {
+			
 			var ff = fichiers.item();
+			ctx.log('Nom fichier : '+ ff);
 			// on verifie si il n'y a pas deux fichiers de données sans "finTitreResultat" dans le titre
 			if ((ff.Name.indexOf(extensionFichier) !== -1) && (ff.Name.indexOf(finTitreResultat==-1))) {
 				n_fichiers += 1;
@@ -108,9 +171,16 @@
 		}
 		
 		if (n_fichiers !== 1) {
-			ctx.traceF.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
-			ctx.popupF.newPopup(n_fichiers + " fichier(s) Excel de données trouvé(s) dans " + configF.cheminRacine + ", il en faut un et un seul.", 'Erreur Excel');
-			return false;	
+//			var cheminVersFichier = ctx.configF.selectionFichier(configF.cheminRacine,extensionFichier,finTitreResultat);
+//			if (cheminVersFichier != undefined){
+//				configF.nomFichier=cheminVersFichier;
+//			} 
+//			else{
+				ctx.traceF.errorTxt(n_fichiers + " " + extensionFichier + " fichiers trouvés dans  " + configF.cheminRacine + ", seulement 1 fichier est demandé");
+				ctx.popupF.newPopup(n_fichiers + " fichier(s) Excel de données trouvé(s) dans " + configF.cheminRacine + ", il en faut un et un seul.", 'Erreur Excel');
+				return false;
+//			}
+				
 		}
 
 		var extension = ctx.configF.extensionFichierResultat(codeScenario, configF.nomFichier);
@@ -163,5 +233,22 @@
     }
 
 
+	
+	configF.correspondanceTab = function(tab1,tab2,nom){
+		var resultat= '';
+		for( var i in tab1){
+			if(nom == tab1[i]){
+				resultat=tab2[i];
+				break;
+			}
+		}
+		if(resultat == ''){
+			ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + nom);
+		}
+		return resultat;
+	}
+	
+	
+	
 	return configF;
 }) ();

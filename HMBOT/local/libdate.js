@@ -156,10 +156,35 @@ dateF.mettreEnFormeDateExcel = function(date){
 		return stTps;
 	}
 	
+	
+	dateF.formatDateGRC = function (tps){	
+    var jj=tps.substr(6,2);
+		var mm=tps.substr(4,2);
+		var yy=tps.substr(0,4);
+		return jj+'/'+mm+'/'+yy;
+	}
+	
 	dateF.enObjet = function(dateString, separator) {
 		separator = separator || '/';
 		var parts = dateString.split(separator);
 		return new Date(parts[2], parts[1]-1, parts[0]); 
+	}
+	
+	dateF.dateDebut = function(jour){
+		var tt=new Date();
+		var jj = dateF.format2c(Number(jour));
+		var jRef = dateF.format2c(tt.getDate());
+		var mm = dateF.format2c(tt.getMonth()+1);
+		var yy = tt.getFullYear();
+		if(Number(jj)>Number(jRef)){
+			mm = dateF.format2c(mm+1);
+			if(mm=='13'){
+				mm='01';
+				yy= String(Number(yy)+1);
+			}
+		}
+		var stTps=jj+'/'+mm+'/'+yy;
+		return stTps;
 	}
 	
 	//isBefore

@@ -3,9 +3,12 @@
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Logs.log';
 	var traceF = {};
 	var cheminFichierTrace;
+<<<<<<< HEAD
+=======
+	var txtTrace='';
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 	
-	
-	
+	traceF.cheminFichierTrace=cheminFichierTrace;
 	
 	traceF.constantes = {
 		touteTraceActive:false,
@@ -56,11 +59,7 @@
 		}
 
 		separateur = separateur || '    ';
-		dateObj = dateObj || new Date();
-		//typeM = typeM || traceF.constantes.typeM.Info;
-		
-		
-		
+		dateObj = dateObj || new Date();	
 		var traceCourante = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
 		ctx.writeFile(cheminFichierTrace,traceCourante,true,true);
 		if (ctx.options.isDebug) {

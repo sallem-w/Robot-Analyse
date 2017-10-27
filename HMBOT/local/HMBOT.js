@@ -135,9 +135,16 @@ GLOBAL.events.START.on(function (ev) {
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
-	
+<<<<<<< HEAD
+	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 
-		if (configACS.afficherMenu) {
+=======
+	
+	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
+	
+	
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
+	if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -150,18 +157,22 @@ GLOBAL.events.START.on(function (ev) {
 
 	
 	
-		if (configCMU.afficherMenu) {
+	if (configCMU.afficherMenu) {
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
-		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {
-			
-			
-			var data = {};
-			ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
-			
-			
+		systray.addMenu('CMU', 'CMUCompletV7', 'CMU Complet V7', '', function(ev) {	
+		var data = {};
+		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
-		
+	
+	if(configAdhesion.afficherMenu){
+		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
+		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion 1.0', '', function(ev) {	
+		//var data = {};
+		ActivInfinitev7.scenarios.scAdhesionPrincipal.start().onEnd(function(){});
+		});
+
+	}
 		
 		if (configSuspension.afficherMenu) {
 			systray.addMenu('', 'Suspension', 'Scenario Suspension ');
@@ -173,8 +184,9 @@ GLOBAL.events.START.on(function (ev) {
 				ActivInfinitev7.scenarios.SuspensionScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
+
 	
-		
+
 	if (configDA.afficherMenu) {
 		systray.addMenu('', 'DA', 'Scenario DA ');
 		systray.addMenu('DA', 'DACompletV7', 'DA Complet V7', '', function(ev) {

@@ -65,6 +65,15 @@
 		}
 	}
 	
+	
+		statsF.debuterStats = function (dat) {
+//		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+		dat.statistiquesF=ctx.dataF.statistiquesF;
+		dat.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
+		dat.statistiquesF.nomFichier=ctx.configF.nomFichier;
+	}
+	
+	
 	statsF.miseAJourCMU = function(dat){
 		dat.statistiquesF.nbCasTraite +=1;
 		dat.statistiquesF.nbCasTrouveDsExcel = dat.varGlobales.indexDerniereLigne - dat.scenarioConfig.CMU.excel.debutIndexLigne + 1;
@@ -99,6 +108,20 @@
 		ctx.statsF.remplir(dat);
 	}
 
+	
+	statsF.miseAJourAdhesion = function(dat){
+	
+		
+	}
+	
+	
+	
+	statsF.miseAJourAdhesion = function(dat){
+	
+		
+	}
+	
+	
 	
 	return statsF;
 }) ();
