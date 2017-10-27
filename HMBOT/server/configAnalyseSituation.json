@@ -19,7 +19,14 @@
                 "numSEQ" : 2,
                 "numExtCtt" : 66,
                 "contexteAnalyseStoppee": 126,
-                "presenceHPP" : 127
+                "dateTraitementAnalyse" : 127,
+                "presenceHPP" : 128,
+                "paiementAdhesion" : 129,
+                "dateEffetAControler" : 130,
+                "payeurSouscriptDifferent" : 131,
+                "clauseBenef": 132,
+                "clauseBenefConjoint": 133,
+                "controleGestion" : 134
             }
         },
         "tabGammeCode" :[

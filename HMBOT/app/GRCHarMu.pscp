@@ -88,24 +88,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oProduit" CustomType="siebel.editTextArea">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0">
-									<TAG Name="TBODY" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0">
-										<TAG Name="TR" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12" Range="12">
-											<TAG Name="TD" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2" Range="2">
-												<TAG Name="DIV" Scope="Children" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2R0">
-													<TAG Name="OBJECT" Scope="All" CapturedPos="219.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R12R2R0R0" />
-												</TAG>
-											</TAG>
-										</TAG>
-									</TAG>
-									<ATT Name="class">
-										<VALUE Scan="Part"><![CDATA[GridBack]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oRechercheIA" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
 							<CRITERE>
 								<TAG Name="FORM" Scope="All" CapturedPos="219.R0R1R2R2">
@@ -157,10 +139,151 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oIdOpportunite">
+							<CRITERE>
+								<TAG Name="TR" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4">
+									<TAG Name="DIV" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4R2R0">
+										<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4R2R0R0">
+											<SET />
+										</TAG>
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[mceGridField]]></VALUE>
+										</ATT>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPaiementAI">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R17" Range="17">
+											<TAG Name="TD" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R17R8" Range="8">
+												<TAG Name="DIV" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R17R8R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R17R8R0R1">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateAI">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16" Range="16">
+											<TAG Name="TD" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R2">
+												<TAG Name="DIV" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R2R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R2R0R0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateEffet">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16" Range="16">
+											<TAG Name="TD" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R8" Range="8">
+												<TAG Name="DIV" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R8R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R16R8R0R0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTab">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="226.R0R1R4" Range="1">
+									<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R4R1">
+										<SET />
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oClauseBenefAdh">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R17" Range="17">
+											<TAG Name="TD" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R17R5" Range="5">
+												<TAG Name="OBJECT" Scope="All" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R17R5R0R0">
+													<SET />
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oClauseBenefCoinj">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R18" Range="18">
+											<TAG Name="TD" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R18R4" Range="4">
+												<TAG Name="DIV" Scope="Children" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R18R4R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="232.R0R1R5R1R1R0R0R0R0R0R0R4R0R0R0R18R4R0R0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oComboFamilleProd">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4">
+											<TAG Name="TD" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4R5" Range="5">
+												<TAG Name="DIV" Scope="Children" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4R5R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="226.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R4R5R0R0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oControlGestion">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R6" Range="6">
+											<TAG Name="TD" Scope="Children" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R6R7" Range="7">
+												<TAG Name="DIV" Scope="Children" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R6R7R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="232.R0R1R2R2R0R0R0R0R0R0R4R0R0R0R6R7R0R1">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_MesPolicesDevis_1827409_1" Comment="[_svf0] - Mes polices/devis" CtxtId="218" Techno="WEB" Timestamp="24/10/2017 18:27:53" />
 					<CAPTURE Name="PAGE_MesPolicesDevis_1837013_1" Comment="[_svf0] - Mes polices/devis" CtxtId="219" Techno="WEB" Timestamp="24/10/2017 18:37:17" />
 					<CAPTURE Name="PAGE_MesPolicesDevis_1545276_1" Comment="[_svf0] - Mes polices/devis" CtxtId="226" Techno="WEB" Timestamp="26/10/2017 15:45:40" />
+					<CAPTURE Name="PAGE_MesPolicesDevis_1226502_1" Comment="[_svf0] - Mes polices/devis" CtxtId="232" Techno="WEB" Timestamp="27/10/2017 12:27:08" />
 				</PAGE>
 				<PAGE Name="pCoordonneesBancaires" Comment="Coordonnées bancaires">
 					<CRITERE>
@@ -173,7 +296,7 @@
 				</PAGE>
 				<PAGE Name="pCoordBancairesC" Comment="[_swepopcontent] - Coordonnées bancaires">
 					<CRITERE>
-						<NAME Scan="like"><![CDATA[_swepopcontent]]></NAME>
+						<NAME Scan="Like"><![CDATA[_swepopcontent]]></NAME>
 						<TITRE Scan="Part"><![CDATA[Coordonnées bancaires]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame&SWEC=67&SWEFrame=top._sweclient._swecontent._sweview._swetmp&SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb&SWESP=1&SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb&SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb]]></PATH>
@@ -186,7 +309,9 @@
 											<TAG Name="TR" Scope="Children" CapturedPos="231.R0R1R1R0R0R0">
 												<TAG Name="TD" Scope="Children" CapturedPos="231.R0R1R1R0R0R0R0">
 													<TAG Name="DIV" Scope="Children" CapturedPos="231.R0R1R1R0R0R0R0R2">
-														<TAG Name="OBJECT" Scope="All" CapturedPos="231.R0R1R1R0R0R0R0R2R1" Range="0" />
+														<TAG Name="OBJECT" Scope="All" CapturedPos="231.R0R1R1R0R0R0R0R2R1">
+															<SET />
+														</TAG>
 													</TAG>
 												</TAG>
 											</TAG>

@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="87" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="2421" Length="50"><![CDATA[var valPOs = GRCHarMu.pRechercheAI.getFocusRect();]]></BREAKPOINT>
-	</BREAKPOINTS>
+	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
 		<FINDWHAT><![CDATA[GRCHarmonieMutuelle]]></FINDWHAT>
@@ -48,57 +46,106 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="66" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="190" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="163" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="25" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="4" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS" Offset="0" Length="0" />
+		<OPENDOC LineNumber="29" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="191" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[0]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 		<DebugTester><![CDATA[
-GRCHarMu.pCoordBancairesC.oTabC.hasFocus();
-GRCHarMu.pCoordBancairesC.oTabC.exist();
-GRCHarMu.pCoordBancairesC.oTabC.click();
-GRCHarMu.pCoordBancairesC.oTabC.click();
-GRCHarMu.pCoordBancairesC.oTabC.getActiveRow();
-GRCHarMu.pCoordBancairesC.oTabC.getCellEditValue();
-GRCHarMu.pCoordBancairesC.oTabC.getColAttribute();
-GRCHarMu.pCoordBancairesC.oTabC.getColWidth();
-GRCHarMu.pCoordBancairesC.oTabC.getRect();
-GRCHarMu.pCoordBancairesC.oTabC.getRect();
-GRCHarMu.pCoordBancairesC.oTabC.click('', 23, '', 23);
-GRCHarMu.pCoordBancairesC.oTabC.click('', 23, '', 23);
-GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
-GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
-GRCHarMu.pCoordBancairesC.oTabC.clickLink();
-GRCHarMu.pCoordBancairesC.oTabC.clickLink();
-GRCHarMu.pCoordBancairesC.oTabC.click(true, 23, 23);
-GRCHarMu.pCoordBancairesC.oTabC.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.exist();
-GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.click('', 10, '', 29);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 10, 29);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 10, 29);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 11, 30);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 11, 30);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 30);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 30);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 33);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 19, 33);
-GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 40);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 40);
-GRCHarMu.pRechercheAI.oRechercheIA.clickLink();
-GRCHarMu.pRechercheAI.oRechercheIA.getRect();
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 20, 60);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25, 60);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25, 60);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25);
-GRCHarMu.pRechercheAI.oRechercheIA.click(true, 25);]]></DebugTester>
+GRCHarMu[4288].pRechercheAI[1111].oRechercheIA.getActiveRow();
+GRCHarMu[4288].pCoordBancairesC[1117].oTabC.get(1,1);
+GRCHarMu[4288].pCoordBancairesC[1117].oTabC.get();
+GRCHarMu[4288].pCoordBancairesC[1117].oTabC.get();
+GRCHarMu[4288].pCoordBancairesC[1120].oTabC.get(1,3);
+GRCHarMu[4288].pRechercheAI[1124].oDIV.exist();
+GRCHarMu[4288].pRechercheAI[1124].oDIV.html();
+GRCHarMu[4288].pRechercheAI[1124].oDIV.innerHtml();
+GRCHarMu[4288].pRechercheAI[1124].oDIV.exist();
+GRCHarMu[4288].pRechercheAI[1124].oDIV.getRect();
+GRCHarMu[4288].pRechercheAI[1128].oDIV.exist();
+GRCHarMu[4288].pRechercheAI[1128].oDIV.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1128].oDIV.getRect();
+GRCHarMu[4288].pRechercheAI[1128].oDIV.get();
+GRCHarMu[4288].pRechercheAI[1128].oDIV.click();
+GRCHarMu[4288].pRechercheAI[1131].oDIV.exist();
+GRCHarMu[4288].pRechercheAI[1131].oDIV.getAttribute('');
+GRCHarMu[4288].pRechercheAI[1134].oDIV.exist();
+GRCHarMu[4288].pRechercheAI[1134].oDIV.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1134].oDIV.html();
+GRCHarMu[4288].pRechercheAI[1134].oDIV.setFocus();
+GRCHarMu.pRechercheAI.oDIV.setFocus();
+GRCHarMu[4288].pRechercheAI[1134].evalScript('document.body');
+GRCHarMu[4288].pRechercheAI[1134].evalScript('document.body');
+GRCHarMu[4288].pRechercheAI[1134].execScript();
+GRCHarMu[4288].pRechercheAI[1134].oDIV.execScript();
+GRCHarMu[4288].pRechercheAI[1140].oDIV.getAttribute('href');
+GRCHarMu[4288].pRechercheAI[1140].oDIV.execScript('');
+GRCHarMu[4288].pRechercheAI[1140].oDIV.execScript('javascript:void(0);');
+GRCHarMu[4288].pRechercheAI[1140].execScript('javascript:void(0);');
+GRCHarMu[4288].pRechercheAI[1140].oDIV.tooltip();
+GRCHarMu[4288].pRechercheAI[1140].oDIV.innerHtml();
+GRCHarMu[4288].pRechercheAI[1140].oDIV.html();
+GRCHarMu[4288].pRechercheAI[1140].oDIV.getAttribute('id');
+GRCHarMu[4288].pRechercheAI[1142].oSVctrlDiv.getRect();
+GRCHarMu[4288].pRechercheAI[1142].oSVctrlDiv.setFocus();
+GRCHarMu[4288].pRechercheAI[1142].oSVctrlDiv.html();
+GRCHarMu[4288].pRechercheAI[1146].oDIV2.html();
+GRCHarMu[4288].pRechercheAI[1150].insertHtml('', '');
+GRCHarMu[4288].pRechercheAI[1150].isBrowserVisible();
+GRCHarMu[4288].pRechercheAI[1150].injectFunction();
+GRCHarMu[4288].pRechercheAI[1150].getInfos();
+GRCHarMu[4288].pRechercheAI[1150].getFocusRect();
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.getAttribute('href');
+GRCHarMu.pRechercheAI.oSVctrlDiv.item.html();
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.getAttribute('tabIndex');
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.innerHtml();
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.getAttribute('CLASSID');
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.innerHtml();
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.html();
+GRCHarMu[4288].pRechercheAI[1150].oSVctrlDiv.getAttribute('class');
+GRCHarMu[4288].pRechercheAI[1151].oSVctrlDiv.scriptItem();
+GRCHarMu[4288].pRechercheAI[1160].oSVctrlDiv.exist();
+GRCHarMu[4288].pRechercheAI[1160].oSVctrlDiv.html();
+GRCHarMu[4288].pRechercheAI[1160].oSVctrlDiv.innerHtml();
+GRCHarMu[4288].pRechercheAI[1160].oSVctrlDiv.getAttribute('href');
+GRCHarMu[4288].pRechercheAI[1160].oSVctrlDiv.getAttributes('');
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.exist();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.get();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.html();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.innerHtml();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.tooltip();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.scriptItem();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.html();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.getAttribute('id');
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.innerHtml();
+GRCHarMu[4288].pRechercheAI[1167].oClauseBenefAdh.html();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getComboValues();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.html();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.innerHtml();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getControlType();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.get();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getAttribute('');
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.html();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.innerHtml();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.isDirty();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getDisplayText();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getControlType();
+GRCHarMu[4288].pRechercheAI[1172].oClauseBenefAdh.getComboValues();
+GRCHarMu[4288].pRechercheAI[1190].oS21450.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1194].oClauseBenefAdh.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1199].oControlGestion.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1200].oClauseBenefAdh.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1200].oClauseBenefAdh.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1200].oClauseBenefAdh.getAttribute('');
+GRCHarMu[4288].pRechercheAI[1200].oControlGestion.getAttribute('value');
+GRCHarMu[4288].pRechercheAI[1200].oControlGestion.getAttribute('');
+GRCHarMu[4288].pRechercheAI[1200].oClauseBenefAdh.getAttribute('value');]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />

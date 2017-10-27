@@ -85,8 +85,8 @@ GRCHarMu.step({ stStep3: function(ev, sc, st) {
 			GRCHarMu.pRechercheAI.getItems(res);
 				GRCHarMu.pRechercheAI.oRechercheIA.setFocus(true);
 				var valPOs = GRCHarMu.pRechercheAI.getFocusRect();
-		    GRCHarMu.pRechercheAI.oProduit.get();
-				GRCHarMu.pRechercheAI.oProduit.set('valeur');
+//		    GRCHarMu.pRechercheAI.oProduit.get();
+//				GRCHarMu.pRechercheAI.oProduit.set('valeur');
 		//  var val = GRCHarMu.pRechercheAI.oRechercheIA.getCellEditValue(1,1);
 		//  var scr =  GRCHarMu.pRechercheAI.oRechercheIA
 		//	GRCHarMu.pRechercheAI.oRechercheIA.notify(e.siebel.grid.event.OnClickLink);

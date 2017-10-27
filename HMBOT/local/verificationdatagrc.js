@@ -184,7 +184,7 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 	var data = sc.data;
-	
+	var dateTrait = ctx.getDate();
 	ctx.traceF.infoTxt('Etape stInsertionDonneesAnalyseExcel - Insertion des données dans le fichier résultat: '+data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	var compGammeCode = data.ppCouranteAnalyse.notes.presenceHPP;
 	if(data.ppCouranteAnalyse.notes.presenceHPP === 'Oui'){ 
@@ -197,6 +197,8 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 	 var arrayMessage = [ {
       columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.contexteAnalyseStoppee, value: data.ppCouranteAnalyse.notes.contexteAnalyseStoppee
       },{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.dateTraitementAnalyse, value: dateTrait
+			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.presenceHPP, value: compGammeCode
 			}
   ];

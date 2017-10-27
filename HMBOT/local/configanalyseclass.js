@@ -22,7 +22,14 @@ var confFileANALYSEClass = function() {
 							  numSEQ : '',
 							  numExtCtt : '',
 								contexteAnalyseStoppee : '',
-							  presenceHPP : ''
+							  dateTraitementAnalyse : '',
+							  presenceHPP : '',
+								paiementAdhesion : '',
+								dateEffetAControler : '',
+								payeurSouscriptDifferent : '',
+								clauseBenef : '',
+								clauseBenefConjoint : '',
+								controleGestion : ''
             }
         },
 			 tabGammeCode : [],

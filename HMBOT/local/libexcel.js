@@ -36,7 +36,14 @@
 	excelF.modifierEnteteIAE = function(){
 		var tab = [
 		  { columnIndex: configExcel.indexColonne.contexteAnalyseStoppee, value: "Contexte Analyse Stoppée" },
-			{ columnIndex: configExcel.indexColonne.presenceHPP, value: "Présence HPP" }
+			{ columnIndex: configExcel.indexColonne.dateTraitementAnalyse, value: "Date Traitement Analyse" },
+			{ columnIndex: configExcel.indexColonne.presenceHPP, value: "Présence HPP" },
+			{ columnIndex: configExcel.indexColonne.paiementAdhesion, value: "Paiement à l’adhésion" },
+			{ columnIndex: configExcel.indexColonne.dateEffetAControler, value: "Date d’effet à contrôler" },
+			{ columnIndex: configExcel.indexColonne.payeurSouscriptDifferent, value: "Payeur différent du souscripteur" },
+			{ columnIndex: configExcel.indexColonne.clauseBenef, value: "Clause bénéficiaire" },
+			{ columnIndex: configExcel.indexColonne.clauseBenefConjoint, value: "Clause bénéficiaire conjoint" },
+			{ columnIndex: configExcel.indexColonne.controleGestion, value: "Contrôle gestion" }
 		];	
 		return tab;
 	}

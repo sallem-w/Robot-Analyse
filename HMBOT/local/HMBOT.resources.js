@@ -347,10 +347,18 @@ GRCHarMu.pGRCMain = GRCHarMu.addPage('pGRCMain', {"comment":"GRC Harmonie Mutuel
 GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb"});
 GRCHarMu.pRechercheAI.btRechercher = GRCHarMu.pRechercheAI.addItem('btRechercher');
 GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
-GRCHarMu.pRechercheAI.oProduit = GRCHarMu.pRechercheAI.addItem('oProduit', {"customType":"siebel.editTextArea"});
 GRCHarMu.pRechercheAI.oRechercheIA = GRCHarMu.pRechercheAI.addItem('oRechercheIA', {"customType":"siebel.grid"});
 GRCHarMu.pRechercheAI.oBulletinAdhesion = GRCHarMu.pRechercheAI.addItem('oBulletinAdhesion');
 GRCHarMu.pRechercheAI.btCoordBancaires = GRCHarMu.pRechercheAI.addItem('btCoordBancaires');
+GRCHarMu.pRechercheAI.oIdOpportunite = GRCHarMu.pRechercheAI.addItem('oIdOpportunite');
+GRCHarMu.pRechercheAI.oPaiementAI = GRCHarMu.pRechercheAI.addItem('oPaiementAI');
+GRCHarMu.pRechercheAI.oDateAI = GRCHarMu.pRechercheAI.addItem('oDateAI');
+GRCHarMu.pRechercheAI.oDateEffet = GRCHarMu.pRechercheAI.addItem('oDateEffet');
+GRCHarMu.pRechercheAI.oTab = GRCHarMu.pRechercheAI.addItem('oTab');
+GRCHarMu.pRechercheAI.oClauseBenefAdh = GRCHarMu.pRechercheAI.addItem('oClauseBenefAdh');
+GRCHarMu.pRechercheAI.oClauseBenefCoinj = GRCHarMu.pRechercheAI.addItem('oClauseBenefCoinj');
+GRCHarMu.pRechercheAI.oComboFamilleProd = GRCHarMu.pRechercheAI.addItem('oComboFamilleProd');
+GRCHarMu.pRechercheAI.oControlGestion = GRCHarMu.pRechercheAI.addItem('oControlGestion');
 
 GRCHarMu.pCoordonneesBancaires = GRCHarMu.addPage('pCoordonneesBancaires', {"comment":"Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames\u0026SWEDIC=1\u0026SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d67%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3d7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb%26SWESP%3d1%26SRN%3d7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb\u0026SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb"});
 
