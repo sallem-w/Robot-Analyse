@@ -1,10 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS />
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="1350" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="57236" Length="82"><![CDATA[var msg = ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.oPopUpTitre.get().trim();]]></BREAKPOINT>
+	</BREAKPOINTS>
 	<BOOKMARKS />
-	<FINDHISTORY />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Beneficiaire_GestionsDesErreurs]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures_Enregistrement_Beneficiaire_GestionsDesErreurs]]></FINDWHAT>
+		<FINDWHAT><![CDATA[numContrat1]]></FINDWHAT>
+		<FINDWHAT><![CDATA["]]></FINDWHAT>
+	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
-	<OPENDOCS />
+	<OPENDOCS>
+		<OPENDOC LineNumber="144" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="237" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="112" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigAdhesionClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scScenarioCreationContrat']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="170" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionInit']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1470" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="117" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='initialisations']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="63" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libForm']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="69" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scCreationHSP_ajoutBenef']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="61" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1511" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Scenario']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scScenarioModificationContrat']" Offset="0" Length="0" />
+	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>

@@ -373,10 +373,12 @@ ActivInfinitev7.pAdhIndivIntervtPrin.oSelectEtablissement = ActivInfinitev7.pAdh
 ActivInfinitev7.pAdhIndivIntervtPrin.oSelectGuichet = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oSelectGuichet', {"occurs":1});
 ActivInfinitev7.pAdhIndivIntervtPrin.oSelectPaysISO = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oSelectPaysISO', {"occurs":1});
 ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('btSuivant');
-ActivInfinitev7.pAdhIndivIntervtPrin.btClosePopUp = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('btClosePopUp');
-ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oPopUpTitre');
 ActivInfinitev7.pAdhIndivIntervtPrin.oInformationRattachem = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oInformationRattachem', {"mustNotExist":true});
 ActivInfinitev7.pAdhIndivIntervtPrin.oCodeCedex = ActivInfinitev7.pAdhIndivIntervtPrin.addItem('oCodeCedex');
+
+ActivInfinitev7.pAdhIndivIntervtPrinPageErreur = ActivInfinitev7.addPage('pAdhIndivIntervtPrinPageErreur', {"comment":"Adhésions individuelles - N°22629946 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_87\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_87\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.btClosePopUp = ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.addItem('btClosePopUp');
+ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.oPopUpTitre = ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.addItem('oPopUpTitre');
 
 ActivInfinitev7.pAdhIndivIdentAssures = ActivInfinitev7.addPage('pAdhIndivIdentAssures', {"comment":"Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIS_300\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_695\u0026CONTAINER_NOM_FONCTION=ACIN_200\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivIdentAssures.oInformationRattachem = ActivInfinitev7.pAdhIndivIdentAssures.addItem('oInformationRattachem', {"mustExist":true});

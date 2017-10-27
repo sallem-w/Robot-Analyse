@@ -8,6 +8,7 @@
         "cheminResultats": "C:\\deploy\\adhesion\\resultats\\",
         "controlSeul": true,
         "controlSolde": true,
+        "touteTraceActive" : true,
         "excel": {
             "debutIndexCol": 1,
             "debutIndexLigne": 2,
@@ -92,11 +93,23 @@
                 "REF_EXT": 89,
                 "TOP_ABONN_DEC" : 122,
                 "contexteAnalyseStoppee": 126,
-                "dateTraitementContrat": 127,
-                "statutsContrat": 128,
-                "commentaireContrat": 129,
-                "numContrat1":132,
-                "numContrat2":133
+                "dateTraitementAnalyse":127,
+                "presenceHPP":128,
+                "paiementAlAdhesion":129,
+                "dateEffetAControler":130,
+                "payeurDifferentDuSoucripteur":131,
+                "clauseBeneficiaire":132,
+                "clauseBeneficiaireConjoint":133,
+                "controleGestion":134,
+                "numeroContrat":135,
+                "numeroContratPrevoyance":136,
+                "statutsContrat": 137,
+                "dateTraitementContrat": 138,
+                "typeRejet": 139,
+                "instanceRIBCotisation":140,
+                "instanceRIBPrestation":141,
+                "instanceInfosRO":142,
+                "instanceAutres":143
             }
         },
         "Offre": {

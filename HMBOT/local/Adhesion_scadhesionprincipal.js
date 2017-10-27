@@ -167,9 +167,9 @@ ActivInfinitev7.step({ stInsertDonneesAdhesionExcel: function(ev, sc, st) {
       }, {
        columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.statutsContrat, value: data.contratCourantAdhesion.notes.statutsContrat
       }, {
-      columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.commentaireContrat, value: data.contratCourantAdhesion.notes.commentaireContrat
+      columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.typeRejet, value: data.contratCourantAdhesion.notes.commentaireContrat
       }, {
-      columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.numContrat1, value: data.contratCourantAdhesion.dataEnLigne.numeroContratIndiv
+      columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.numeroContrat, value: data.contratCourantAdhesion.dataEnLigne.numeroContratIndiv
       }
   ];
             
