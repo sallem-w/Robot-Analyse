@@ -135,8 +135,15 @@ GLOBAL.events.START.on(function (ev) {
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+<<<<<<< HEAD
 	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 
+=======
+	
+	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
+	
+	
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 	if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
@@ -177,6 +184,7 @@ GLOBAL.events.START.on(function (ev) {
 				ActivInfinitev7.scenarios.SuspensionScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
+
 	
 
 	if (configDA.afficherMenu) {

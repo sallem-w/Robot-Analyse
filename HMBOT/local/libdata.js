@@ -162,7 +162,6 @@ ctx.dataF = (function () {
 				ctx.log('Reset Contrat : '+dat.contratCourantCMU.dataLocale.numeroContratIndiv);
 			 }
 		
-		
 			
 			
 	////Adhesion/////////////////////////////////////////////////////////		

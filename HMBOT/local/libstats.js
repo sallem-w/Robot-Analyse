@@ -116,6 +116,13 @@
 	
 	
 	
+	statsF.miseAJourAdhesion = function(dat){
+	
+		
+	}
+	
+	
+	
 	return statsF;
 }) ();
 

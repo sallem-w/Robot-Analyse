@@ -40,6 +40,7 @@
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
 	scenario.Suspension ='Suspension';
+
 	scenario.Adhesion = 'Adhesion';
 	
 	configF.scenario=scenario;
@@ -73,6 +74,10 @@
 		configF.fichierConfigScenario = JSON.parse(chemin);
 		ctx.log('Initialisation : Chargement du fichier configAdhesion.json');
 		}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 	
 	
 	configF.recupConfigScenario = function(codeScenario) {
@@ -129,7 +134,12 @@
 //		return cheminVersFichier;
 //	}
 	
+<<<<<<< HEAD
 	configF.init = function(codeScenario) {
+=======
+	configF.init = function(dat) {
+		var codeScenario=dat.codeScenario;
+>>>>>>> 60ef554f642819a89e9cceae6e7246a34e34eb29
 		ctx.log('---> configF.init('+codeScenario+')');
 		configF.chargementFichierConfig();
 		configF.cheminVersTemplate=configF.fichierConfig.cheminTemplate;
