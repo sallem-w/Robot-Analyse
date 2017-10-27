@@ -15,6 +15,9 @@
     "DA": {
         "afficherMenu": true
     },
+    "Suspension": {
+        "afficherMenu": true
+    },
     "Adhesion": {
         "afficherMenu": true
     }

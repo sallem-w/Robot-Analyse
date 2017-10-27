@@ -137,7 +137,7 @@ GLOBAL.events.START.on(function (ev) {
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
 	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 
-		if (configACS.afficherMenu) {
+	if (configACS.afficherMenu) {
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -165,7 +165,7 @@ GLOBAL.events.START.on(function (ev) {
 		ActivInfinitev7.scenarios.scAdhesionPrincipal.start().onEnd(function(){});
 		});
 
-		
+	}
 		
 		if (configSuspension.afficherMenu) {
 			systray.addMenu('', 'Suspension', 'Scenario Suspension ');

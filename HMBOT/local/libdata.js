@@ -1,7 +1,6 @@
 ctx.dataF = (function () {
 
     var dataF = {
-			nomScenario : '',
 				scenarioConfig : '',
 				codeScenario : '',
 				nomScenario:'',
@@ -63,65 +62,63 @@ ctx.dataF = (function () {
 				dictContratsCourantCMU : [],
 				dateFinEffSituatParti : ''
             },
-            dataEnLigne: {
-              numeroContratIndiv : '',
-              dictContratsCourantCMU : [],
-							variables :{
-								indiceBenef : '',
-								nbBenef: '',
-								typeAssure : '',
-								etatCourant : '',
-								rangAssure : '',
-								dateFinEffetInfinite : ''
-							}
-							
-            },
-            notes: {
-                dateTraitementContrat:'',
-                statutsContrat: '',
-                commentaireContrat: ''
-            },
-            statutsCMU: {
-								existanceASSPRI : false,
-                FinCMUProcessus : false,
-								contratProlonge : false,
-								ASSPRITermine : false,
-								assureValid : false,
-								contratTermine : false
-            }
-        },
-        statistiquesF : {
-            debutTpsTraitement : 0,
-						tpsTraitement : 0,
-            nbCasTraite : 0, //countCaseProcessed
-            nbCasTrouveDsExcel : 0, //countCaseFindIntoExcel
-            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
-            nbCasTraitementEchec : 0, //countCaseFailProcessed
-            nbCasRevoirCentre : 0, //countCaseBackToCenter
-            nbContratsPretsPrResiliation : 0, //sc.data.countCaseReadyToRemove
-            nbContratsResilies : 0
-        },
-        webData : {
-            url:'htt://exemple.com',
-            tabDeBordURL:'', 
-            identifiant:'', 
-            motDePasse:'' 
-        },
-        varGlobales : { //globalVariables
-            ligneCourante:0, //currentRow
-            indexDerniereLigne:0, //indexLastRow
-            controlSeul:false //controlSeul
-        },
-        CMUtemp_contractF : {
-            typeAssure:'',
-            dateDebEffContrat:'',
-            dateFinEffContrat:'',
-            codeProduit:'',
-            dateDebEffProduit:'',
-            dateFinEffProduit:'',
-            dateDebEffSituatParti:'',
-            dateFinEffSituatParti:''
-        }
+      dataEnLigne: {
+        numeroContratIndiv : '',
+        dictContratsCourantCMU : [],
+				variables :{
+					indiceBenef : '',
+					nbBenef: '',
+					typeAssure : '',
+					etatCourant : '',
+					rangAssure : '',
+					dateFinEffetInfinite : ''
+				}
+      },
+      notes: {
+          dateTraitementContrat:'',
+          statutsContrat: '',
+          commentaireContrat: ''
+      },
+      statutsCMU: {
+					existanceASSPRI : false,
+          FinCMUProcessus : false,
+					contratProlonge : false,
+					ASSPRITermine : false,
+					assureValid : false,
+					contratTermine : false
+      },
+      statistiquesF : {
+          debutTpsTraitement : 0,
+					tpsTraitement : 0,
+          nbCasTraite : 0, 
+          nbCasTrouveDsExcel : 0, 
+          nbCasTraitementSucces : 0, 
+          nbCasTraitementEchec : 0, 
+          nbCasRevoirCentre : 0, 
+          nbContratsPretsPrResiliation : 0, 
+          nbContratsResilies : 0
+      },
+      webData : {
+          url:'htt://exemple.com',
+          tabDeBordURL:'', 
+          identifiant:'', 
+          motDePasse:'' 
+      },
+      varGlobales : { //globalVariables
+          ligneCourante:0, //currentRow
+          indexDerniereLigne:0, //indexLastRow
+          controlSeul:false //controlSeul
+      },
+      CMUtemp_contractF : {
+          typeAssure:'',
+          dateDebEffContrat:'',
+          dateFinEffContrat:'',
+          codeProduit:'',
+          dateDebEffProduit:'',
+          dateFinEffProduit:'',
+          dateDebEffSituatParti:'',
+          dateFinEffSituatParti:''
+      }
 				
    
     };

@@ -214,6 +214,10 @@
 								<TAG Name="A" Scope="All" CapturedPos="193.R0R1R5R1R0R0R0R1R5R0">
 									<ATT Name="Text">
 										<VALUE Scan="Full"><![CDATA[Visualisation du compte]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 						<OBJET Name="btAdhesionIndiv">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="112.R0R1R5R1R0R0R0R6R3R1">
