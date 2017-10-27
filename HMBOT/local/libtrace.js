@@ -55,12 +55,9 @@
 		}
 
 		separateur = separateur || '    ';
-		dateObj = dateObj || new Date();
-		//typeM = typeM || traceF.constantes.typeM.Info;
-			
+		dateObj = dateObj || new Date();	
 		var traceCourante = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
 		ctx.writeFile(cheminFichierTrace,traceCourante,true,true);
-
 		if (ctx.options.isDebug) {
 			ctx.log(typeM + '		' + str);
 		}

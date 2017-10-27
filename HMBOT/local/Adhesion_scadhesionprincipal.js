@@ -2,7 +2,7 @@
 /** Description */
 ActivInfinitev7.scenario( { scAdhesionPrincipal: function (ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function (sc, st) {
+	sc.onTimeout(120000, function (sc, st) {
 		sc.endScenario();
 	}); // default timeout handler for each step
 	sc.onError(function (sc, st, ex) {
@@ -101,7 +101,7 @@ ActivInfinitev7.step({ stDebutBoucleContratAdhesion: function(ev, sc, st) {
 ActivInfinitev7.step({ stSelectionScenarioAdhesion : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape - stSelectionScenarioAdhesion');
-	var processus=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.contexteAnalyseStoppee;
+	var processus=data.contratCourantAdhesion.notes.contexteAnalyseStoppee;
 	ctx.traceF.infoTxt('Processus identifié : '+processus);
 	if(processus=='processus création'){
 		sc.endStep(ActivInfinitev7.steps.stScenarioCreationContrat);
@@ -125,20 +125,20 @@ ActivInfinitev7.step({ stScenarioCreationContrat : function(ev, sc, st) {
 	var scASC = ActivInfinitev7.scenarios.scScenarioCreationContrat.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt(' Fin du sous-scenario - scScenarioCreation');
-		sc.endStep();
+		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblalesAdhesion);
 	});
 }});
 
 /** step qui lance le sous scénario de creation Adhesion */
 ActivInfinitev7.step({ stScenarioModificationContrat : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape - stScenarioCreation - Lancement du sous-scenario de creation de contrat : stScenarioCreation');
+	ctx.traceF.infoTxt('Etape - stScenarioModificationContrat - Lancement du sous-scenario de creation de contrat : scScenarioModificationContrat');
 	// on desactive le TimeOut principal afin que le timeOut execute soit celui du sous-scenario
 	st.disableTimeout();	
 	var scMC = ActivInfinitev7.scenarios.scScenarioModificationContrat.start(data).onEnd(function(sc3){
 		sc.data=sc3.data;
-		ctx.traceF.infoTxt(' Fin du sous-scenario - scScenarioCreation');
-		sc.endStep();
+		ctx.traceF.infoTxt(' Fin du sous-scenario - scScenarioModificationContrat');
+		sc.endStep(ActivInfinitev7.steps.stMiseAjourVarGloblalesAdhesion);
 	});
 }});
 
@@ -161,7 +161,6 @@ ActivInfinitev7.step({ stInsertDonneesAdhesionExcel: function(ev, sc, st) {
   ctx.traceF.infoTxt('Etape - stInsertDonneesAdhesionExcel ');
    //lire la date
    data.contratCourantAdhesion.notes.dateTraitementContrat = ctx.getDate();
-	data.contratCourantAdhesion.notes.statutsContrat=data.contratCourantAdhesion.dataLocale.contratAdhesionAttributs.NUM_SEQ_CT;
             
   var arrayMessage = [ {
        columnIndex: data.scenarioConfig.Adhesion.excel.indexColonne.dateTraitementContrat, value: data.contratCourantAdhesion.notes.dateTraitementContrat
@@ -196,7 +195,25 @@ ActivInfinitev7.step({ stContratAdhesionSuivant: function(ev, sc, st) {
 			data.varGlobales.ligneCourante+=nbBenef;
 			ctx.traceF.infoTxt(' Nombre de Beneficiaire du contrat précédant : '+nbBenef);
 			ctx.traceF.infoTxt(' contrat suivant ligne : '+data.varGlobales.ligneCourante);
-		  ctx.dataF.resetContratCourantAdhesion(data);
+			/// reset de la data
+			data.contratCourantAdhesion.dataLocale.assurePrincipal = {};
+			data.contratCourantAdhesion.dataLocale.personnePhysique = {};
+				data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques = [];
+				data.contratCourantAdhesion.dataEnLigne.tabPersonnesPhysiques = [];
+				data.contratCourantAdhesion.dataLocale.variables.listCom = [];
+				data.contratCourantAdhesion.dataLocale.variables.nbCom = '';
+				data.contratCourantAdhesion.dataLocale.variables.indexCom ='';
+				data.contratCourantAdhesion.dataLocale.variables.indexBenef ='';
+				data.contratCourantAdhesion.dataLocale.variables.listProd = [];
+				data.contratCourantAdhesion.dataLocale.variables.nbProd ='';
+			//
+			data.contratCourantAdhesion.notes.dateTraitementContrat = '';
+			data.contratCourantAdhesion.notes.statutsContrat = '';
+			data.contratCourantAdhesion.notes.commentaireContrat = '';
+			data.contratCourantAdhesion.statuts.finCreation = false ;
+			ctx.log('resetContratCourant');
+			
+		  //ctx.dataF.resetContratCourantAdhesion(data);
 			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratAdhesion);
 			return;
 		}

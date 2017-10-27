@@ -157,6 +157,14 @@ GLOBAL.events.START.on(function (ev) {
 		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
+	
+	if(configAdhesion.afficherMenu){
+		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
+		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion 1.0', '', function(ev) {	
+		//var data = {};
+		ActivInfinitev7.scenarios.scAdhesionPrincipal.start().onEnd(function(){});
+		});
+
 		
 		
 		if (configSuspension.afficherMenu) {
@@ -182,29 +190,6 @@ GLOBAL.events.START.on(function (ev) {
 			
 		});	
 	}
-
-
-//	if(configAdhesion.afficherMenu){
-//		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
-//		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
-//		var data = {};
-//		ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(){});
-//		});
-		
-//	}
-	
-
-	if(configAdhesion.afficherMenu){
-		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
-		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
-		var data = {
-			codeScenario : ctx.configF.scenario.Adhesion,
-			nomFichierConfigScenario : 'configAdhesion.json'
-		};
-		ActivInfinitev7.scenarios.scAdhesionInit.start(data).onEnd(function(){});
-		});
-	}
-
 });
 
 /** Auto-update menu handler */
