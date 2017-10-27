@@ -54,6 +54,7 @@ ActivInfinitev7.step({ stInitialisationAdhesionConfigurationData: function(ev, s
 							
        },
       notes: {
+				contexteAnalyseStoppee:'',
         dateTraitementContrat:'',
         statutsContrat: '',
         commentaireContrat: ''

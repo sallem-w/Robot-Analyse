@@ -150,7 +150,7 @@ GLOBAL.events.START.on(function (ev) {
 	
 	if(configAdhesion.afficherMenu){
 		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
-		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion', '', function(ev) {	
+		systray.addMenu('Adhesion', 'Adhesion', 'Adhesion 1.0', '', function(ev) {	
 		//var data = {};
 		ActivInfinitev7.scenarios.scAdhesionPrincipal.start().onEnd(function(){});
 		});

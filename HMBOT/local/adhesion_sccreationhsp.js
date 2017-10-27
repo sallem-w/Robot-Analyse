@@ -676,13 +676,34 @@ ActivInfinitev7.step({ stAdhesionIndiv_AdresseAdherent_CodePostal: function(ev, 
 					return;
 				}
 				else{
-					/// il y a plusieur PP on renvoi au centre
-					ctx.traceF.errorTxt(' La ville n\'est pas unique');
-					data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Code Postal :  La ville n\'est pas unique';
-					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-					data.contratCourantAdhesion.statuts.finCreation = true;
-					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-					return;
+					// on essaye de reconnaitre le pattern dans les choix
+					var trouve = false;
+					var indexV = -1;
+					ctx.log('ville courante : '+cp);
+					for(var vv in ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.getAll()){
+						var ville = ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.i(vv).get();
+						ctx.log('Choix ville : '+ville);
+						if(ville.indexOf(cp)!=-1){
+							ctx.log('-->Trouvée');
+							trouve=true;
+							indexV=vv;
+						}
+					}
+					if(trouve){
+							ActivInfinitev7.pAdhIndivIntervtPrin.oSelectCodePostal.i(indexV).click();
+							sc.endStep();
+							return;
+					}
+					else{
+						/// il y a plusieur PP on renvoi au centre
+						ctx.traceF.errorTxt(' La ville n\'est pas unique - impossible à distinguer');
+						data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Code Postal :  La ville n\'est pas unique - impossible à distinguer';
+						data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+						data.contratCourantAdhesion.statuts.finCreation = true;
+						sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+						return;
+					}
+					
 				}
 			},
 			fail: function() { 
@@ -1946,9 +1967,6 @@ ActivInfinitev7.step({ stPageIdentificationAssures_AjoutBeneficiaire_Boucle: fun
 					return;
 			}
 		});
-		
-		
-	
 	}
 }});
 
@@ -2568,6 +2586,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_ValidationActe: function(ev, sc, st) {
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_ValidationActe');
 	ActivInfinitev7.pAdhIndivValidActe.wait(function(ev){
 		ActivInfinitev7.pAdhIndivValidActe.btSauvegarder.click();
+		data.contratCourantAdhesion.notes.statutsContrat=ctx.excelF.constantes.statuts.Succes;
 		sc.endStep();
 		return;
 	});
@@ -2580,7 +2599,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_RetourPageIdentificationContrat: function
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stAdhesionIndiv_RetourPageIdentificationContrat');
 	ActivInfinitev7.pAdhesionsIndividuelles.wait(function(ev){
 		ActivInfinitev7.pAdhesionsIndividuelles.btFermer.click();
-//		ActivInfinitev7.pAdhesionsIndividuelles.events.LOAD.on(function(ev){
+		ctx.wait(function(ev){
 			var countPoll=0;	
 			ctx.polling({	
 				delay: 400,	
@@ -2603,8 +2622,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_RetourPageIdentificationContrat: function
 					return;
 				}
 			});
-//		});
-
+		},500);
 	});
 }});
 

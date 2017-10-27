@@ -49,7 +49,7 @@
 		typeM = typeM || traceF.constantes.typeM.Info;
 		
 		var txtTrace = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
-		ctx.log("Chemin Fichier Trace : " + traceF.cheminFichierTrace);
+		//ctx.log("Chemin Fichier Trace : " + traceF.cheminFichierTrace);
 //		ctx.fso.file.write(cheminFichierTrace, txtTrace);
 		ctx.writeFile(traceF.cheminFichierTrace, txtTrace,true,true);
 		if (ctx.options.isDebug) {

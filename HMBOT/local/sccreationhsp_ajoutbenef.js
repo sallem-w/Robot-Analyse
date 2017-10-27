@@ -2,7 +2,7 @@
 /** Description */
 ActivInfinitev7.scenario({ scCreationHSP_AjoutBenef: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(120000, function(sc, st) { 
+	sc.onTimeout(240000, function(sc, st) { 
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 		sc.endScenario();	
 	}); // default timeout handler for each step
