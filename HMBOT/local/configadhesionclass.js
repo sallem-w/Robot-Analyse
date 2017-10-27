@@ -93,11 +93,23 @@ var confFileAdhesionClass = function () {
         REF_EXT: '',
 				TOP_ABONN_DEC:'',
         contexteAnalyseStoppee: '',
+        dateTraitementAnalyse: '',
+        presenceHPP: '',
+        paiementAlAdhesion: '',
+        dateEffetAControler: '',
+        payeurDifferentDuSoucripteur: '',
+        clauseBeneficiaire: '',
+        clauseBeneficiaireConjoint: '',
+        controleGestion: '',
+        numeroContrat: '',
+        numeroContratPrevoyance:'',
+        statutsContrat: '',
         dateTraitementContrat: '',
-        statutsContrat : '',
-        commentaireContrat : '',
-				numContrat1 : '',
-				numContrat2 : ''
+        typeRejet: '',
+        instanceRIBCotisation: '',
+        instanceRIBPrestation:'',
+        instanceInfosRO:'',
+        instanceAutres:''
       }
     },
 		Offre : {

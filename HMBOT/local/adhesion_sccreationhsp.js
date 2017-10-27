@@ -162,34 +162,54 @@ ActivInfinitev7.step({ stOuvertureDossierHSP: function(ev, sc, st) {
 ActivInfinitev7.step({ stRemplirIdentificationContratHSP_Offre: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stRemplirIdentificationContratHSP_Offre');
-	var OffreHSP = data.scenarioConfig.Adhesion.Offre.HSP;
-	//==================================================
-	ActivInfinitev7.pAdhIndivIdentContrat.wait(function(ev){
-		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
-		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke(OffreHSP);
-		ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
-		var countPoll=0;	
-		var offreExistance = false;
-		var indexOffre = -1;
-		ctx.polling({	
-			delay: 300,	
-			nbMax: 10,		
-			test: function(index) { 		
-				countPoll++;
-				ctx.log('countP :'+countPoll);
-				return ActivInfinitev7.pAdhIndivIdentContrat.oOffre.exist();
-			},
-			done: function() { 
-				sc.endStep(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_SelectOffre);
-				return;
-			},
-			fail: function() { 
-				ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
-				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-				return;
-			}
+//	var OffreHSP = data.scenarioConfig.Adhesion.Offre.HSP;
+	var OffreHSP = undefined;
+	var HSP = "HSP";
+	var tabOffre = ctx.formF.codeOffre;
+	for(var i in tabOffre){
+		if(tabOffre[i].offre==HSP){
+			OffreHSP=tabOffre[i].code;
+			break;
+		}
+	}
+	
+	if(OffreHSP == undefined){
+		ctx.traceF.errorTxt(' Erreur - Code Offre Introuvable ');
+		data.contratCourantAdhesion.notes.commentaireContrat = ' Erreur - Code Offre Introuvable ';
+		data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+		sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+		return;
+	}
+	else{
+		//==================================================
+		ActivInfinitev7.pAdhIndivIdentContrat.wait(function(ev){
+			ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+			ActivInfinitev7.pAdhIndivIdentContrat.oOffre.keyStroke(OffreHSP);
+			ActivInfinitev7.pAdhIndivIdentContrat.oOffre.setFocus();
+			var countPoll=0;	
+			var offreExistance = false;
+			var indexOffre = -1;
+			ctx.polling({	
+				delay: 300,	
+				nbMax: 10,		
+				test: function(index) { 		
+					countPoll++;
+					ctx.log('countP :'+countPoll);
+					return ActivInfinitev7.pAdhIndivIdentContrat.oOffre.exist();
+				},
+				done: function() { 
+					sc.endStep(ActivInfinitev7.steps.stRemplirIdentificationContratHSP_SelectOffre);
+					return;
+				},
+				fail: function() { 
+					ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+					return;
+				}
+			});
 		});
-	});
+	}
+	
 }});
 
 /** Description */
@@ -228,6 +248,8 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_SelectOffre: function(e
 			},
 			fail: function() { 
 				ctx.traceF.errorTxt(' Erreur lors du remplissage de l\'offre ');
+				data.contratCourantAdhesion.notes.commentaireContrat = ' Erreur lors du remplissage de l\'offre ';
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 				return;
 			}
@@ -321,6 +343,8 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_GroupeGestion: function
 				},
 				fail: function() { 
 					ctx.traceF.errorTxt(' Erreur lors du remplissage du groupe de gestion');
+					data.contratCourantAdhesion.notes.commentaireContrat = ' Erreur lors du remplissage du groupe de gestion';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 					return;
 				}
@@ -374,6 +398,8 @@ ActivInfinitev7.step({ stRemplirIdentificationContratHSP_CentreGestion: function
 				},
 				fail: function() { 
 					ctx.traceF.errorTxt(' Erreur lors du remplissage du centre de gestion');
+					data.contratCourantAdhesion.notes.commentaireContrat = ' Erreur lors du remplissage du centre de gestion';
+					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 					return;
 				}
@@ -417,7 +443,7 @@ ActivInfinitev7.step({ stRecherchePersonneAdhesionIndiv: function(ev, sc, st) {
 			},
 			fail: function() { 
 				ctx.traceF.errorTxt(' Rercherche Personne Impossible : Element oNom introuvable ');
-				data.contratCourantAdhesion.notes.commentaireContrat = 'Error Rercherche Personne Impossible ';
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Erreur Rercherche Personne Impossible ';
 				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
 				return;
@@ -1310,7 +1336,7 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 	// on verifie qu'il n'y a pas d'erreurs, si oui on continue sinon on traite l'erreur
 	
 	
-	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function () {
+	ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.wait(function () {
 		var countPoll=0;
 		ctx.polling({	
 			delay: 300,	
@@ -1318,11 +1344,11 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 			test: function(index) { 		
 				countPoll++;
 				ctx.log('countP :'+countPoll);
-				return ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre.exist();
+				return ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.oPopUpTitre.exist();
 			},
 			done: function() { 
-				var msg = ActivInfinitev7.pAdhIndivIntervtPrin.oPopUpTitre.get().trim();
-				ActivInfinitev7.pAdhIndivIntervtPrin.btClosePopUp.click();
+				var msg = ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.oPopUpTitre.get().trim();
+				ActivInfinitev7.pAdhIndivIntervtPrinPageErreur.btClosePopUp.click();
 				 if(msg.indexOf('RIB')!=-1){
 				 	// le blocage concerne le RIB
 					// On modifie la prestation en mode cheque annuel
@@ -1339,28 +1365,20 @@ ActivInfinitev7.step({ stAdhesionIndiv_GestionsDesErreurs: function(ev, sc, st) 
 				 }
 			},
 			fail: function() { 
-				if(ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.exist()){
-				 	ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.click();
-					sc.endStep(ActivInfinitev7.steps.stAdhesionIndiv_GestionsDesErreurs);
-					return;
-				}
-				else{
-				 	ctx.traceF.errorTxt(' Blocage à la page : '+ev.pageName + ' Probleme Bouton suivant');
-					data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Blocage à la page : '+ev.pageName + ' click sur bouton suivant impossible';
-					data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-					data.contratCourantAdhesion.statuts.finCreation = true;
-					sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
-					return;
-				}
+				ctx.traceF.errorTxt(' Blocage PopUP à la page : '+ev.pageName);
+				data.contratCourantAdhesion.notes.commentaireContrat = 'Revoir centre: Blocage PopUP à la page : '+ev.pageName ;
+				data.contratCourantAdhesion.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantAdhesion.statuts.finCreation = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScCreationHSP);
+				return;
 			}
 		});
 	});
 	
-	ActivInfinitev7.pAdhIndivIdentAssures.wait(function () {
-	 //Il n'y a pas d'erreur, on passe à la page Identification des assurés
-		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + '--> Page ' + ev.pageName);
+	ActivInfinitev7.pAdhIndivIntervtPrin.wait(function(ev){
+		ActivInfinitev7.pAdhIndivIntervtPrin.btSuivant.click();
 		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures);
-		return ;
+		return;
 	});
 
 }});
@@ -1452,8 +1470,12 @@ ActivInfinitev7.step({ stAdhesionIndiv_RIB_Erreur_Modif_Cheque_ParDefaut: functi
 ActivInfinitev7.step({ stPageIdentificationAssures: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + ' Etape - stPageIdentificationAssures');
-	sc.endStep();
-	return;
+	ActivInfinitev7.pAdhIndivIdentAssures.wait(function () {
+	 //Il n'y a pas d'erreur, on passe à la page Identification des assurés
+		ctx.traceF.infoTxt(data.contratCourantAdhesion.dataLocale.assurePrincipal.NUM_SEQ_CT + '--> Page ' + ev.pageName);
+		sc.endStep(ActivInfinitev7.steps.stPageIdentificationAssures);
+		return ;
+	});
 }});
 
 

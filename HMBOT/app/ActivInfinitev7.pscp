@@ -3184,7 +3184,6 @@
 				</PAGE>
 				<PAGE Name="pAdhIndivIntervtPrin" Comment="Adhésions individuelles - N°22629439 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIS([0-9_]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
 						<URL Scan="Like"><![CDATA[method\=modifDateSignature&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
 						<URL Scan="Like"><![CDATA[method\=retourFonctionPrincipale&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
 						<URL Scan="Like"><![CDATA[method\=modifModeReglement&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIN([0-9_]+)&AFFICHAGE_CONTAINER]]></URL>
@@ -3572,24 +3571,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btClosePopUp">
-							<CRITERE>
-								<TAG Name="BUTTON" Scope="All" CapturedPos="205.R0R1R3R0R0">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-						<OBJET Name="oPopUpTitre">
-							<CRITERE>
-								<TAG Name="DIV" Scope="All" CapturedPos="205.R0R1R3R0R1">
-									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[toast-title]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oInformationRattachem" MustNotExist="Y">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="207.R0R1R7R0R0R2R0R0R0R55R1R0R0">
@@ -3617,8 +3598,34 @@
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1801395_1" Comment="Adhésions individuelles - N°22629502 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="200" Techno="WEB" Timestamp="10/10/2017 18:02:01" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1827468_1" Comment="Adhésions individuelles - N°22629503 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="201" Techno="WEB" Timestamp="10/10/2017 18:28:08" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1101176_1" Comment="Adhésions individuelles - N°22629511 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="203" Techno="WEB" Timestamp="11/10/2017 11:01:43" />
-					<CAPTURE Name="PAGE_AdhesionsIndividuell_1644032_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="205" Techno="WEB" Timestamp="11/10/2017 16:44:26" />
 					<CAPTURE Name="PAGE_AdhesionsIndividuell_1707093_1" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="207" Techno="WEB" Timestamp="11/10/2017 17:07:28" />
+				</PAGE>
+				<PAGE Name="pAdhIndivIntervtPrinPageErreur" Comment="Adhésions individuelles - N°22629946 - EN COURS - haum03 - Activ Infinite - Module de gestion">
+					<CRITERE>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOA_([0-9]+)&CONTAINER_NOM_FONCTION\=ACIS_([0-9]+)&AFFICHAGE_CONTAINER\=OK&BOUTON_CONTAINER\=]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[http://infinite-haum03/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_87&CONTAINER_NOM_FONCTION=ACIS_300&AFFICHAGE_CONTAINER=OK&BOUTON_CONTAINER=BOUTON_SUIVANT&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_87&CONTAINER_NOM_FONCTION=ACIN_200&AFFICHAGE_CONTAINER]]></PATH>
+					<OBJETS>
+						<OBJET Name="btClosePopUp">
+							<CRITERE>
+								<TAG Name="BUTTON" Scope="All" CapturedPos="265.R0R1R3R0R0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-close-button]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oPopUpTitre">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="265.R0R1R3R0R1">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[toast-title]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_AdhesionsIndividuell_1602548_1" Comment="Adhésions individuelles - N°22629946 - EN COURS - haum03 - Activ Infinite - Module de gestion" CtxtId="265" Techno="WEB" Timestamp="27/10/2017 16:03:17" />
 				</PAGE>
 				<PAGE Name="pAdhIndivIdentAssures" Comment="Adhésions individuelles - N°22629534 - EN COURS - haum03 - Activ Infinite - Module de gestion">
 					<CRITERE>

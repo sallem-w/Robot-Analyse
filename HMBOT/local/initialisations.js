@@ -65,13 +65,21 @@ ActivInfinitev7.step({ stConfigurationTrace: function(ev, sc, st) {
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Logs.log';
 	var nomScen = data.codeScenario;
 	var cheminFichier = cheminRacine + nomFichier.replace('{0}', nomScen);
+	//Activation trace
+	ctx.traceF.constantes.touteTraceActive=config.touteTraceActive;
+	if(ctx.traceF.constantes.touteTraceActive){
+		ctx.log('Traces Infos Actives');
+	}else{
+		ctx.log('Traces Infos Désactivées');
+	}
+	
 	/// Verifier si le chemin Racine existe
 	if(ctx.fso.folder.exist(cheminRacine)) {
 		if(!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
 		}
 		ctx.traceF.cheminFichierTrace = cheminFichier;
-		ctx.traceF.infoTxt("Initialisation Trace effectuée ");
+		ctx.traceF.infoTxt("Initialisation Trace effectuée - Chemin : "+cheminFichier);
 		//ctx.traceF.txtTrace = ctx.fso.file.read(cheminFichier);
 		sc.endStep();
 		return;
@@ -224,7 +232,13 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: fun
 	var tab = [
 			{ columnIndex: configExcel.indexColonne.dateTraitementContrat, value: "Date traitement contrat" },
 			{ columnIndex: configExcel.indexColonne.statutsContrat, value: "Statuts contrat" },
-			{ columnIndex: configExcel.indexColonne.commentaireContrat, value: "Commentaire" }
+			{ columnIndex: configExcel.indexColonne.typeRejet, value: "Commentaire" },
+			{ columnIndex: configExcel.indexColonne.numeroContrat, value: "Numéro de contrat" },
+			{ columnIndex: configExcel.indexColonne.numeroContratPrevoyance, value: "Numéro de contrat prévoyance" },
+			{ columnIndex: configExcel.indexColonne.instanceRIBCotisation, value: "Instance RIB cotisations" },
+			{ columnIndex: configExcel.indexColonne.instanceRIBPrestation, value: "Instance RIB prestations" },
+			{ columnIndex: configExcel.indexColonne.instanceInfosRO, value: "Instance infos RO" },
+			{ columnIndex: configExcel.indexColonne.instanceAutres, value: "Instance Autres" }
 		];
 	ctx.excel.file.saveAs(data.cheminFichierResultat); 
 	ctx.excelF.remplirObjetTableau(indexPremiereLigne-1, tab);
@@ -294,6 +308,7 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 ActivInfinitev7.step({ stFinInitialisation: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Initialisations Effectuées');
+	ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 	sc.endScenario();
 	return;
 }});
