@@ -1,8 +1,7 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
-    "Version":1.1,
     "CMU":{
-        "afficherMenu": true,
+        "devel": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 
         "controlSeul": false,
         "controlSolde": true,

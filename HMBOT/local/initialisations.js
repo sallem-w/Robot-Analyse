@@ -43,17 +43,6 @@ ActivInfinitev7.step({ stChargementConfigScenario: function(ev, sc, st) {
 	return;
 }});
 
-/** Description */
-ActivInfinitev7.step({ stConfigurationJSON_Adhesion: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.log(' --> Chargement du fichier de configuration JSON ');
-	var fichierJSON = ctx.fso.file.read(data.cheminFichierConfigScenario);
-	var scenarioConfig = new confFileAdhesionClass();
-	scenarioConfig = JSON.parse(fichierJSON);
-	data.scenarioConfig=scenarioConfig;
-	sc.endStep();
-	return;
-}});
 
 
 /** Description */
@@ -119,9 +108,9 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_CreationChemin: funct
 	var config = data.scenarioConfig[data.codeScenario];
 	var cheminRacine = config.cheminRacine;
 	var developpement=config.devel;
-	var finTitreResultat = '_Resultats.';
+	var finTitreResultat = '_Resultats';
 	
-	var extensionFichier = 'xls';
+	var extensionFichier = '.xls';
 	var fichiers = ctx.fso.folder.getFileCollection(cheminRacine);
 	var nomFichier ='';
 	var n_fichiers = 0;
@@ -214,47 +203,6 @@ ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_CreationChemin: funct
 
 
 
-/** Description */
-ActivInfinitev7.step({ stConfigurationFichiersDonneesExcel_OuvertureFichier: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.log(' --> Ouverture des données Excel');
-//	ctx.excelF.configExcel(dat);
-	ctx.excel.release();
-	ctx.excel.initialize();
-	ctx.excel.file.closeAll('true');  // on ferme les feuilles excel ouvertes
-	ctx.excel.file.open(data.nomFichier);
-	
-	// on crée maintenant le fichier Résultat
-	var indexDerniereLigne = ctx.excel.sheet.getLastRow2('A1');
-	ctx.log(' DerniereLigne : '+indexDerniereLigne );
-	var configExcel = data.scenarioConfig[data.codeScenario].excel;
-	var indexPremiereLigne = configExcel.debutIndexLigne;
-	var tab = [
-			{ columnIndex: configExcel.indexColonne.dateTraitementContrat, value: "Date traitement contrat" },
-			{ columnIndex: configExcel.indexColonne.statutsContrat, value: "Statuts contrat" },
-			{ columnIndex: configExcel.indexColonne.typeRejet, value: "Commentaire" },
-			{ columnIndex: configExcel.indexColonne.numeroContrat, value: "Numéro de contrat" },
-			{ columnIndex: configExcel.indexColonne.numeroContratPrevoyance, value: "Numéro de contrat prévoyance" },
-			{ columnIndex: configExcel.indexColonne.instanceRIBCotisation, value: "Instance RIB cotisations" },
-			{ columnIndex: configExcel.indexColonne.instanceRIBPrestation, value: "Instance RIB prestations" },
-			{ columnIndex: configExcel.indexColonne.instanceInfosRO, value: "Instance infos RO" },
-			{ columnIndex: configExcel.indexColonne.instanceAutres, value: "Instance Autres" }
-		];
-	ctx.excel.file.saveAs(data.cheminFichierResultat); 
-	ctx.excelF.remplirObjetTableau(indexPremiereLigne-1, tab);
-	
-	
-	///Initilisation des variables globales
-	data.varGlobales.ligneCourante = indexPremiereLigne; 
-	data.varGlobales.indexDerniereLigne = indexDerniereLigne;
-	///
-	
-	ctx.log('fichier résultat créé');
-	
-	
-	sc.endStep();
-	return;
-}});
 
 
 /** Description */

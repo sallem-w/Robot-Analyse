@@ -36,10 +36,14 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	//ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	
+		st.disableTimeout();	
+	var scInit = ActivInfinitev7.scenarios.scFinCMUInit.start(data).onEnd(function(scI){
+		sc.data=scI.data;
+		sc.endStep();
+	});
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-	sc.endStep();
-	return;
 }});
 
 
@@ -232,7 +236,31 @@ ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 	var data = sc.data;
 	data.varGlobales.nomPageCourante=ev.pageName;
 	ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
-	ctx.statsF.miseAJourCMU(data);
+	//ctx.statsF.miseAJourCMU(data);
+	data.statistiquesF.nbCasTraite +=1;
+	data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.CMU.excel.debutIndexLigne + 1;
+		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
+		
+		
+		if (data.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Succes) {
+				data.statistiquesF.nbCasTraitementSucces += 1;
+		}
+
+		if (data.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Echec) {
+				data.statistiquesF.nbCasTraitementEchec += 1;
+		}
+		
+		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1){
+			data.statistiquesF.nbCasRevoirCentre +=1;
+		}
+		
+		if ( data.contratCourantCMU.statutsCMU.contratTermine == true){
+			data.statistiquesF.nbContratsPretsPrResiliation += 1;
+		}
+		
+		if ( data.contratCourantCMU.statutsCMU.contratResilie == true){
+			data.statistiquesF.nbContratsResilies += 1;
+		}
 	sc.endStep();
 	return ;
 }});
@@ -285,18 +313,6 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 			sc.endStep();
 			return;
 		}
-		data.varGlobales.ligneCourante+=nbBenef;
-//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
-	  ctx.dataF.resetContratCourantCMU(data);
-//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
-//			ctx.log( "contrat suivant ligne : "+ data.varGlobales.ligneCourante);
-		sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
-		return;
-	}
-	else{
-		sc.endStep();
-		return;
-	}
 }});
 
 

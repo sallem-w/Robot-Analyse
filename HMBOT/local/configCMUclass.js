@@ -4,7 +4,7 @@
 var confFileCMUClass = function() {
   this.cheminTemplate = ''; 
   this.CMU = {
-		afficherMenu : '',
+		devel: '',
     cheminRacine : '',
     controlSeul : '',
     controlSolde : '',
@@ -32,6 +32,5 @@ var confFileCMUClass = function() {
       }
     }
 	}
-	this.Version = '1.1'
 };
 

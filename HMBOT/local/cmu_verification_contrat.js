@@ -238,24 +238,6 @@ ActivInfinitev7.step( { stVerifValiditeRange: function (ev, sc, st) {
 				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
 				return ;
 			}
-	}
-		
-	if(coherence){
-		//cohérence entre les rangs 
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - les rangs sont cohérents');
-		sc.endStep();
-		return ;
-	}
-	else{
-		//incoherence entre les rangs
-		ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + ' - incohérece entre les rangs');
-		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Incohérence entre les rangs et type d\'assuré';
-		data.statistiquesF.nbCasRevoirCentre += 1;
-		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-		sc.data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-		sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
-		return ;
-	}	
 }});
 
 /** Description */ //ok
@@ -351,7 +333,6 @@ ActivInfinitev7.step( { stVerifOrdreSurDateInfiniteEtDateExcel: function (ev, sc
 			sc.endStep();
 		  return ;
 		}
-	}
 }});
 
 /** verifier si la date de fin de situ part de l'assure ASSPRI est avant la date de fin d'effet infinite*/
@@ -464,50 +445,53 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 	var verif = false;
 	var tabstatuts = [];
 	/// Polling sur l'existance du tableau Codeproduit
-	var countPoll=0;
-	ctx.polling({
-		delay: 300,
-		nbMax: 10,
-		test: function(index) { 
-			ctx.log('countPoll : ' +countPoll);
-			return ActivInfinitev7.pProdGaranConsul.oCodeProduit.count()>0; 
-		},
-		done: function() { 
-			var listeProduit = ActivInfinitev7.pProdGaranConsul.oCodeProduit.getAll();
-			for (var i = 0; i<listeProduit.length;i++) {
-				if (ActivInfinitev7.pProdGaranConsul.oCodeProduit.i(i).get() === data.CMUtemp_contractF.codeProduit) {
-					data.contratCourantCMU.dataEnLigne.variables.produitTrouve = true;
-					tabstatuts.push(ActivInfinitev7.pProdGaranConsul.oEtatProduit.i(i).get());
-				}
-			}
-			for (var j=0;j<tabstatuts.length;j++) {
-				if (tabstatuts[j] === ctx.configF.constantes.produitValide) {
-					verif = true;
-				}
-			}
-				if (tabstatuts.length> 0 && verif) {
-				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'un ou plusieurs produits sont valides, on continue la vérification');
-				//goToContribution
-				sc.endStep(ActivInfinitev7.steps.stInitContributionCMU);
-				return ;
-				}
-				else{
-					/// le produit a été radié
-					sc.endStep();
-					return ;		
-				}
-		},
-		fail: function() { 
-			ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'Erreur Serveur : Liste des produits introuvable');
-			data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur Serveur : Liste des produits introuvable';
-		  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
-			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-			ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
-			sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
-			return ;
-		}
-	});
 	
+		var countPoll=0;
+		ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				ctx.log('countPoll : ' +countPoll);
+				countPoll++;
+				return ActivInfinitev7.pProdGaranConsul.oCodeProduit.count()>0; 
+			},
+			done: function() {
+				
+					var listeProduit = ActivInfinitev7.pProdGaranConsul.oCodeProduit.getAll();
+					for (var i = 0; i<listeProduit.length;i++) {
+						if (ActivInfinitev7.pProdGaranConsul.oCodeProduit.i(i).get() === data.CMUtemp_contractF.codeProduit) {
+							data.contratCourantCMU.dataEnLigne.variables.produitTrouve = true;
+							tabstatuts.push(ActivInfinitev7.pProdGaranConsul.oEtatProduit.i(i).get());
+						}
+					}
+					for (var j=0;j<tabstatuts.length;j++) {
+						if (tabstatuts[j] === ctx.configF.constantes.produitValide) {
+							verif = true;
+						}
+					}
+						if (tabstatuts.length> 0 && verif) {
+						ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'un ou plusieurs produits sont valides, on continue la vérification');
+						//goToContribution
+						sc.endStep(ActivInfinitev7.steps.stInitContributionCMU);
+						return ;
+						}
+						else{
+							/// le produit a été radié
+							sc.endStep();
+							return ;		
+						}
+			
+
+			},
+			fail: function() { 
+				ctx.traceF.infoTxt(data.contratCourantCMU.dataLocale.numeroContratIndiv + 'Erreur Serveur : Liste des produits introuvable');
+				data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: Erreur Serveur : Liste des produits introuvable';
+			  data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
+				data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+				return ;
+			}
+		});
 	
 
 }});
@@ -601,8 +585,11 @@ ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 //			return ;
 //		});
 		ActivInfinitev7.pProdGaranConsul.wait(function () {
-			sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
-			return ;
+			ctx.wait(function(ev){ // on attends un peu car existance ne suffit pas...
+				sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
+				return ;
+		},500);
+	
 		});
 	}
 }});

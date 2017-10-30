@@ -1320,8 +1320,8 @@
 						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=ACG2_([0-9]+)&]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Consultation -]]></TITRE>
 						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=ACG2&]]></URL>
-						<URL Scan="like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER\=OK&]]></URL>
-						<URL Scan="like"><![CDATA[method\=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER\=OK&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -4476,7 +4476,7 @@
 				<SCRIPT Name="CMU_verification_contrat" Src="cmu_verification_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
 				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
-				<SCRIPT Name="libDate" Src="libdate.js" />
+				<SCRIPT Name="libDate" Src="libdate.js" Folder="Complements" />
 				<SCRIPT Name="libTrace" Folder="Complements" Src="libtrace.js" />
 				<SCRIPT Name="libPopup" Folder="Complements" Src="libpopup.js" />
 				<SCRIPT Name="testDate" Folder="Tests" Src="testdate.js" />
@@ -4508,6 +4508,7 @@
 				<SCRIPT Name="initialisations" Folder="Complements" Src="initialisations.js" />
 				<SCRIPT Name="scAdhesionInit" Folder="Processus_Adhesion" Src="scAdhesionInit.js" />
 				<SCRIPT Name="DataClass" Folder="Complements" Src="DataClass.js" />
+				<SCRIPT Name="scInitFinCMU" Folder="Processus_CMU" Src="scFinCMUInit.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

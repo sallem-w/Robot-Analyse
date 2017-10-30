@@ -16,14 +16,13 @@
 	
 	
 	//initFileTrace
-	traceF.initFichierTrace = function(cheminDossier, nomScenario) {
-		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScenario);
+	traceF.initFichierTrace = function(cheminDossier, nomScen) {
+		var cheminFichier = cheminDossier + nomFichier.replace('{0}', nomScen);
 		if (!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
 		}
-
-		cheminFichierTrace = cheminFichier;
-		var txtTrace = ctx.fso.file.read(cheminFichierTrace);
+		ctx.traceF.cheminFichierTrace = cheminFichier;
+		ctx.traceF.constantes.touteTraceActive=ctx.configF.fichierConfigScenario[nomScen].touteTraceActive;
 	};
 
 	
@@ -56,7 +55,7 @@
 		separateur = separateur || '    ';
 		dateObj = dateObj || new Date();	
 		var traceCourante = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
-		ctx.log('Chemin Fichier Trace : '+ctx.traceF.cheminFichierTrace);
+		//ctx.log('Chemin Fichier Trace : '+ctx.traceF.cheminFichierTrace);
 		var cheminTr = ctx.traceF.cheminFichierTrace;
 		ctx.writeFile(cheminTr,traceCourante,true,true);
 		if (ctx.options.isDebug) {

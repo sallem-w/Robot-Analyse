@@ -96,16 +96,44 @@ ctx.dataF = (function () {
 		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 	
+//			dat.webData=ctx.dataF.webData;
+//			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
+//			dat.varGlobales=ctx.dataF.varGlobales;
+//			dat.statistiquesF=ctx.dataF.statistiquesF;
+				
+//			dat.codeScenario=scenario;
+//			ctx.configF.chargementFichierConfigScenarioCMU();
+//			ctx.log('Init configF');
+//			ctx.configF.init(scenario);
+//			dat.scenarioConfig = new confFileClass();
+//			dat.scenarioConfig=ctx.configF.fichierConfig;
+//			ctx.log('Init excelF');
+//			ctx.excelF.configExcel(dat);
+//			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
+//			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+//			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
+//			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+//			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
+//			ctx.traceF.infoTxt('Création du fichier résultat');	
+//			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.CMU.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
+//			ctx.log('fichier résultat créé');
+////			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
+//			ctx.log('Init statsF');
+//			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
+//			ctx.statsF.debuterStats(dat);
+			dat.codeScenario=scenario;
+			dat.nomScenario='Résiliation CMU';
+			ctx.log('Init configF');
+			ctx.configF.chargementFichierConfigScenarioCMU();
+			dat.scenarioConfig = new confFileCMUClass();
+			dat.scenarioConfig=ctx.configF.fichierConfigScenario;
+			ctx.configF.init(dat);
 			dat.webData=ctx.dataF.webData;
 			dat.contratCourantCMU=ctx.dataF.contratCourantCMU;
-			dat.varGlobales=ctx.dataF.varGlobales;
-			dat.statistiquesF=ctx.dataF.statistiquesF;
-				
-			dat.codeScenario=scenario;
-			ctx.log('Init configF');
-			ctx.configF.init(scenario);
-			dat.scenarioConfig = new confFileClass();
-			dat.scenarioConfig=ctx.configF.fichierConfig;
+			dat.varGlobales=ctx.dataF.varGlobales;	
+			ctx.log('Init Trace : '+ dat.scenarioConfig.CMU.cheminRacine);
+			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
+			ctx.traceF.simpleTxt('Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.log('Init excelF');
 			ctx.excelF.configExcel(dat);
 			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
@@ -120,6 +148,8 @@ ctx.dataF = (function () {
 			ctx.log('Init statsF');
 			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 			ctx.statsF.debuterStats(dat);
+			
+			
 		}
 		 
 		 	dataF.resetContratCourantCMU = function(dat,scenario){
