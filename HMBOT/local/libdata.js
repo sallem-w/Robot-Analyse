@@ -68,6 +68,7 @@ ctx.dataF = (function () {
 							variables :{
 								indiceBenef : '',
 								nbBenef: '',
+								produitTrouve:false,
 								typeAssure : '',
 								etatCourant : '',
 								rangAssure : '',
