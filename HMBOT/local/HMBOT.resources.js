@@ -342,25 +342,10 @@ ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsCo
 
 var GRCHarMu = ctx.addApplication('GRCHarMu', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb\u0026SWETS=1508832674552","customType":"Siebel"});
 
-GRCHarMu.pGRCMain = GRCHarMu.addPage('pGRCMain', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb\u0026SWETS=1508860822112"});
+GRCHarMu.pMain = GRCHarMu.addPage('pMain', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb\u0026SWETS=1509380980024\u0026SWEHo=sbl37inf1"});
 
-GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=XpIxk0OzKIlEmFJlsRVcMocYc4jpKYrkggxu1zBxzEgb"});
-GRCHarMu.pRechercheAI.btRechercher = GRCHarMu.pRechercheAI.addItem('btRechercher');
-GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
-GRCHarMu.pRechercheAI.oRechercheIA = GRCHarMu.pRechercheAI.addItem('oRechercheIA', {"customType":"siebel.grid"});
-GRCHarMu.pRechercheAI.oBulletinAdhesion = GRCHarMu.pRechercheAI.addItem('oBulletinAdhesion');
-GRCHarMu.pRechercheAI.btCoordBancaires = GRCHarMu.pRechercheAI.addItem('btCoordBancaires');
-GRCHarMu.pRechercheAI.oIdOpportunite = GRCHarMu.pRechercheAI.addItem('oIdOpportunite');
-GRCHarMu.pRechercheAI.oPaiementAI = GRCHarMu.pRechercheAI.addItem('oPaiementAI');
-GRCHarMu.pRechercheAI.oDateAI = GRCHarMu.pRechercheAI.addItem('oDateAI');
-GRCHarMu.pRechercheAI.oDateEffet = GRCHarMu.pRechercheAI.addItem('oDateEffet');
-GRCHarMu.pRechercheAI.oTab = GRCHarMu.pRechercheAI.addItem('oTab');
-GRCHarMu.pRechercheAI.oClauseBenefAdh = GRCHarMu.pRechercheAI.addItem('oClauseBenefAdh');
-GRCHarMu.pRechercheAI.oClauseBenefCoinj = GRCHarMu.pRechercheAI.addItem('oClauseBenefCoinj');
-GRCHarMu.pRechercheAI.oComboFamilleProd = GRCHarMu.pRechercheAI.addItem('oComboFamilleProd');
-GRCHarMu.pRechercheAI.oControlGestion = GRCHarMu.pRechercheAI.addItem('oControlGestion');
+GRCHarMu.pRecherche = GRCHarMu.addPage('pRecherche', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
+GRCHarMu.pRecherche.btS1150Mb = GRCHarMu.pRecherche.addItem('btS1150Mb', {"mustExist":true});
 
-GRCHarMu.pCoordonneesBancaires = GRCHarMu.addPage('pCoordonneesBancaires', {"comment":"Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames\u0026SWEDIC=1\u0026SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d67%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3d7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb%26SWESP%3d1%26SRN%3d7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb\u0026SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb"});
-
-GRCHarMu.pCoordBancairesC = GRCHarMu.addPage('pCoordBancairesC', {"comment":"[_swepopcontent] - Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame\u0026SWEC=67\u0026SWEFrame=top._sweclient._swecontent._sweview._swetmp\u0026SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb\u0026SWESP=1\u0026SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb\u0026SRN=7aG59CeFJ5iQNjkVOUHbYoH8OOd68MgWlYFdc3WfJEUb"});
-GRCHarMu.pCoordBancairesC.oTabC = GRCHarMu.pCoordBancairesC.addItem('oTabC', {"customType":"siebel.grid"});
+GRCHarMu.pResList = GRCHarMu.addPage('pResList', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
+GRCHarMu.pResList.oList = GRCHarMu.pResList.addItem('oList', {"customType":"siebel.grid"});
