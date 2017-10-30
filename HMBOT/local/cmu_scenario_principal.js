@@ -78,6 +78,7 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stDemmarrageTableauDeBord: function(ev, sc, st) {
 	var data = sc.data;
+
 	ActivInfinitev7.pTabDeBord.wait(function(ev) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		data.webData.tabDeBordURL=infos.document.URL;
@@ -312,7 +313,20 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 		else{
 			sc.endStep();
 			return;
+
 		}
+		data.varGlobales.ligneCourante+=nbBenef;
+//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
+	  ctx.dataF.resetContratCourantCMU(data);
+//			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
+//			ctx.log( "contrat suivant ligne : "+ data.varGlobales.ligneCourante);
+		sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
+		return;
+	}
+	else{
+		sc.endStep();
+		return;
+	}
 }});
 
 

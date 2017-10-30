@@ -14,7 +14,8 @@ ctx.dataF = (function () {
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
-            controlSeul:false //controlSeul
+            controlSeul:false, //controlSeul
+						nomPageCourante : ''
         }
     };
 		

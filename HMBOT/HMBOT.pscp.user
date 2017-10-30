@@ -27,7 +27,6 @@
 		<FINDWHAT><![CDATA[ pour le produit CMU]]></FINDWHAT>
 		<FINDWHAT><![CDATA[Aucune date de fin d'effet n'a été trouvé pour le produit CMU]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRecherContratIndivCMU]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAffichageInforRO]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminFichier]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>

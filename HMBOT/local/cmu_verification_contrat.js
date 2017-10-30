@@ -445,7 +445,6 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 	var verif = false;
 	var tabstatuts = [];
 	/// Polling sur l'existance du tableau Codeproduit
-	
 		var countPoll=0;
 		ctx.polling({
 			delay: 300,
