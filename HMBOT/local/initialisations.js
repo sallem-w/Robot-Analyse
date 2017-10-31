@@ -68,7 +68,7 @@ ActivInfinitev7.step({ stConfigurationTrace: function(ev, sc, st) {
 			ctx.fso.file.create(cheminFichier);
 		}
 		ctx.traceF.cheminFichierTrace = cheminFichier;
-		ctx.traceF.infoTxt("Initialisation Trace effectuée - Chemin : "+cheminFichier);
+		ctx.log("Initialisation Trace effectuée - Chemin : "+cheminFichier);
 		//ctx.traceF.txtTrace = ctx.fso.file.read(cheminFichier);
 		sc.endStep();
 		return;
@@ -261,8 +261,8 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stFinInitialisation: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Initialisations Effectuées');
-	ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+	ctx.log('Initialisations Effectuées');
+	ctx.traceF.infoTxt('Version du projet : ' + data.version + ' - Date de la Version : ' + GLOBAL.data.projectDate);
 	sc.endScenario();
 	return;
 }});

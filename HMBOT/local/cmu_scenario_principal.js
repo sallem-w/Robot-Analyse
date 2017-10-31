@@ -43,7 +43,6 @@ ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 		sc.data=scI.data;
 		sc.endStep();
 	});
-	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
 }});
 
 

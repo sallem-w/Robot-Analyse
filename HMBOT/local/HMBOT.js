@@ -151,9 +151,11 @@ GLOBAL.events.START.on(function (ev) {
 	
 	
 	if (configCMU.afficherMenu) {
+		var version = '1.0';
 		systray.addMenu('', 'CMU', 'Scenario CMU ');
-		systray.addMenu('CMU', 'CMU', 'Résiliation CMU 1.0', '', function(ev) {	
+		systray.addMenu('CMU', 'CMU', 'Résiliation CMU '+version, '', function(ev) {	
 		var data = {};
+		data.version=version;
 		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
