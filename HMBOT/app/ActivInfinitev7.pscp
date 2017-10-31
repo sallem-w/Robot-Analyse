@@ -692,6 +692,9 @@
 						<URL Scan="Like"><![CDATA[rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=AC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIC_([0-9]+)&]]></URL>
 						<URL Scan="Like"><![CDATA[/mdg/Go.do\?id=ACRE01RE3F]]></URL>
 						<URL Scan="Like"><![CDATA[/mdg/Go.do\?id=ACRE01RE4B]]></URL>
+						<URL Scan="Like"><![CDATA[mdg\/Go\.do\?id\=ACRE01RE3F]]></URL>
+						<TITRE Scan="start-with"><![CDATA[Resiliation Contrat ]]></TITRE>
+						<URL Scan="Like"><![CDATA[\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1050,6 +1053,7 @@
 				<PAGE Name="pIdentAssuresEdit" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" Technical="Y">
 					<CRITERE>
 						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/contrat\/ACIA\.do\?method\=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACSO01ASOB([0-9_]+)&CONTAINER_NOM_FONCTION\=ACIA_([0-9_]+)&AFFICHAGE_CONTAINER\=]]></URL>
+						<URL Scan="Like"><![CDATA[\?method=modifier&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACIA_([0-9]+)&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6&CONTAINER_NOM_FONCTION=ACIC_100&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1214,7 +1218,7 @@
 				</PAGE>
 				<PAGE Name="pIdentAssuresAttest" Comment="Consultation - Adhérent : Monsieur CHARLOT GUY - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[(https?:\/\/)?infinite(-([\da-z\.-]+))?\/mdg\/LancementFonction\.do\?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACAC_403&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=([A-Z]+)_([0-9]+)&AFFICHAGE_CONTAINER]]></URL>
+						<URL Scan="Like"><![CDATA[\?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACC([A-Z-0-9]+)_([0-9]+)&CONTAINER_NOM_FONCTION=ACAC_403&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACAC_403&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_1&CONTAINER_NOM_FONCTION=ACIA_400&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
@@ -1317,10 +1321,14 @@
 						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=ACG2_([0-9]+)&]]></URL>
 						<TITRE Scan="start-with"><![CDATA[Consultation -]]></TITRE>
 						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=ACG2&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER\=OK&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER\=OK&]]></URL>
+						<URL Scan="Like"><![CDATA[method\=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO([0-9_]+)&CONTAINER_NOM_FONCTION\=ACG2(-?([0-9_]+)?)&AFFICHAGE_CONTAINER&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2&AFFICHAGE_CONTAINER&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17&CONTAINER_NOM_FONCTION=ACG2_500&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitrePage" MustExist="Y">
+						<OBJET Name="oTitrePage">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="83.R0R1R14R1R0R2R0R0R3R14R0R0R0">
 									<ATT Name="Text">
@@ -1332,7 +1340,7 @@
 						<OBJET Name="oListeAssures">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0">
-									<TAG Name="TBODY" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1">
 										<TAG Name="TR" Scope="All" CapturedPos="107.R0R1R14R1R0R2R0R0R3R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
 											<SET />
 										</TAG>
@@ -1453,7 +1461,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btSuivant">
+						<OBJET Name="btSuivant" MustExist="Y">
 							<CRITERE>
 								<TAG Name="BUTTON" Scope="All" CapturedPos="107.R0R1R14R1R2R0R0R0R1R0R0R2R0">
 									<ATT Name="id">
@@ -1480,15 +1488,16 @@
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN2121_1112378_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="148" Techno="WEB" Timestamp="20/09/2017 11:12:50" />
+					<CAPTURE Name="PAGE_ConsultationN0023_1122413_1" Comment="Consultation - N°00238668 - Valide - Adhérent : Monsieur AUGRAS MARC - haum0d - Activ Infinite - Module de gestion" CtxtId="187" Techno="WEB" Timestamp="06/10/2017 11:22:52" />
+					<CAPTURE Name="PAGE_ConsultationN0160_1358538_1" Comment="Consultation - N°01601894 - Résilié - Adhérent : Madame VOLUT ISABELLE - haum03 - Activ Infinite - Module de gestion" CtxtId="189" Techno="WEB" Timestamp="30/10/2017 13:59:09" />
 				</PAGE>
 				<PAGE Name="pVisuCptCotisConsul" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion">
 					<CRITERE>
-						<URL Scan="Like"><![CDATA[&CONTAINER_NOM_FONCTION=AC36_([0-9]+)&]]></URL>
-						<TITRE Scan="start-with"><![CDATA[Consultation -]]></TITRE>
+						<URL Scan="Like"><![CDATA[\?method\=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT\=ACCO03STSO_([0-9]+)&CONTAINER_NOM_FONCTION\=AC36([0-9_]+)&AFFICHAGE_CONTAINER=OK&]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://infinite-haum0a/mdg/LancementFonction.do?method=debuter&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC36_900&AFFICHAGE_CONTAINER=OK&CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE&CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114&CONTAINER_NOM_FONCTION=AC3Q_800&AFFICHAGE_CONTAINER]]></PATH>
 					<OBJETS>
-						<OBJET Name="oTitrePage" MustExist="Y">
+						<OBJET Name="oTitrePage">
 							<CRITERE>
 								<TAG Name="H2" Scope="All" CapturedPos="91.R0R1R15R1R0R2R0R0R3R12R0R0R0">
 									<ATT Name="Text">
@@ -1566,6 +1575,7 @@
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0024_1743355_1" Comment="Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion" CtxtId="91" Techno="WEB" Timestamp="01/06/2017 17:43:40" />
 					<CAPTURE Name="PAGE_ConsultationN2121_1118200_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="150" Techno="WEB" Timestamp="20/09/2017 11:18:34" />
+					<CAPTURE Name="PAGE_ConsultationN0023_1207102_1" Comment="Consultation - N°00238668 - Valide - Adhérent : Monsieur AUGRAS MARC - haum0d - Activ Infinite - Module de gestion" CtxtId="188" Techno="WEB" Timestamp="06/10/2017 12:07:24" />
 				</PAGE>
 				<PAGE Name="pProdGaranChgtCouv" Comment="Sans effet - Changement couverture - N°03043298 - Valide - Adhérent : Madame JEANNE FRANCOISE - haum04 - Activ Infinite - Module de gestion">
 					<CRITERE>
@@ -4469,7 +4479,7 @@
 				<SCRIPT Name="CMU_verification_contrat" Src="cmu_verification_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
 				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
-				<SCRIPT Name="libDate" Src="libdate.js" />
+				<SCRIPT Name="libDate" Src="libdate.js" Folder="Complements" />
 				<SCRIPT Name="libTrace" Folder="Complements" Src="libtrace.js" />
 				<SCRIPT Name="libPopup" Folder="Complements" Src="libpopup.js" />
 				<SCRIPT Name="testDate" Folder="Tests" Src="testdate.js" />
@@ -4498,9 +4508,10 @@
 				<SCRIPT Name="scCreationHSP" Src="Adhesion_scCreationHSP.js" Folder="Processus_Adhesion" />
 				<SCRIPT Name="libForm" Folder="Complements" Src="libForm.js" />
 				<SCRIPT Name="scCreationHSP_ajoutBenef" Folder="Processus_Adhesion" Src="scCreationHSP_ajoutBenef.js" />
-				<SCRIPT Name="initialisations" Folder="Complements" Src="initialisations.js" />
+				<SCRIPT Name="initialisations" Folder="Processus_CMU" Src="initialisations.js" />
 				<SCRIPT Name="scAdhesionInit" Folder="Processus_Adhesion" Src="scAdhesionInit.js" />
 				<SCRIPT Name="DataClass" Folder="Complements" Src="DataClass.js" />
+				<SCRIPT Name="scInitFinCMU" Folder="Processus_CMU" Src="scFinCMUInit.js" />
 			</SCRIPTS>
 			<ACTIONS />
 			<EVENTS />

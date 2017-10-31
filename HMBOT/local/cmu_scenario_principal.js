@@ -4,12 +4,12 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 	var data = sc.data;
 	sc.onTimeout(120000, function (sc, st) {
 		ctx.traceF.errorTxt(' - onTimeOut -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName );
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL);
 		sc.endScenario();
 	}); // default timeout handler for each step
 	sc.onError(function (sc, st, ex) {
 		ctx.traceF.errorTxt(' - onError -  On quitte le scenario '+ sc.name + ' durant le step : '+  st.name + ' sur la page ' +  ev.pageName + ' en raison de : '+ ex);
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL);
 		sc.endScenario();
 	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
@@ -36,23 +36,14 @@ ActivInfinitev7.scenario( { CMUScenarioPrincipal: function (ev, sc) {
 /** Description */
 ActivInfinitev7.step({ stInitScenarioCMU : function(ev, sc, st) {
 	var data = sc.data;
-	ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	//ctx.dataF.initialisationScenarioCMU(data,ctx.configF.scenario.CMU);//ctx.dataF.initialisationScenario(ctx.configF.scenario.CMU);
+	
+		st.disableTimeout();	
+	var scInit = ActivInfinitev7.scenarios.scFinCMUInit.start(data).onEnd(function(scI){
+		sc.data=scI.data;
+		sc.endStep();
+	});
 	ctx.traceF.infoTxt('Début étape - stInitScenarioCMU');
-	ctx.log('--> template.json :  Excel Debut');
-	ctx.excelF.configExcel(ctx.configF.scenario.CMU);
-	data.varGlobales.ligneCourante = data.scenarioConfig.excel.debutIndexLigne; // depuis le template.JSON
-	ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
- 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-	ctx.log(' Index dernière ligne :'+data.varGlobales.indexDerniereLigne);
-	ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
-	ctx.log(" Test URL : "+ data.webData.url);
-	ctx.traceF.infoTxt('Création du fichier résultat');	
-	ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, data.scenarioConfig.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-	ctx.log('fichier résultat créé');
-
-
-	sc.endStep();
-	return;
 }});
 
 
@@ -87,7 +78,7 @@ ActivInfinitev7.step({ stServerConnexionCMU : function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stDemmarrageTableauDeBord: function(ev, sc, st) {
 	var data = sc.data;
-	data.varGlobales.nomPageCourante=ev.pageName;
+
 	ActivInfinitev7.pTabDeBord.wait(function(ev) {
 		var infos = ActivInfinitev7.pTabDeBord.getInfos();
 		data.webData.tabDeBordURL=infos.document.URL;
@@ -116,7 +107,16 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 	data.varGlobales.nomPageCourante=ev.pageName;
 	ctx.traceF.infoTxt('Etape - stLireDonneesCMUExcel');
 	 
-	var temp_contract=ctx.dataF.CMUtemp_contractF;
+	var temp_contract={
+		typeAssure:'',
+    dateDebEffContrat:'',
+    dateFinEffContrat:'',
+    codeProduit:'',
+    dateDebEffProduit:'',
+		dateFinEffProduit:'',    
+		dateDebEffSituatParti:'',
+    dateFinEffSituatParti:''
+	};
 	/** numéro du contrat */
 	data.contratCourantCMU.dataLocale.numeroContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.CMU.excel.indexColonne.numeroContratIndiv))), '00000000');
 	/** dans une boucle on récupère l'assuré principale et les bénéficiaires */
@@ -142,6 +142,10 @@ ActivInfinitev7.step({ stLireDonneesCMUExcel : function(ev, sc, st) {
 		  data.contratCourantCMU.dataLocale.dictContratsCourantCMU.push(temp_contract);
 		  temp_ligne+=1;
 			tempNumContratIndiv = ctx.stringF.remplissageGauche(ctx.string.trim(String(ctx.excel.sheet.getCell(temp_ligne,data.scenarioConfig.CMU.excel.indexColonne.numeroContratIndiv))), '00000000');
+			// il arrive que contextor détecte mal le contenu de la cellule (notamment undefined est mal interprete par la lib excel dde contextor ( apparement pour xlsx mais pas xls ) pour éviter de modifier les librairies de transformation, on ajoute une condition de sortie de  la boucle while supplémentaire
+			if(temp_contract.typeAssure == undefined){
+				break;
+			}
 	}
 //	ctx.log('numéro courant: '+ numContratIndiv);
 	ctx.log('ligne Courante: '+ data.varGlobales.ligneCourante);
@@ -246,7 +250,25 @@ ActivInfinitev7.step( { stMiseAjourVarGloblales: function (ev, sc, st) {
 	var data = sc.data;
 	data.varGlobales.nomPageCourante=ev.pageName;
 	ctx.traceF.infoTxt('Etape - stMiseAjourVarGloblales ');
-	ctx.statsF.miseAJourCMU(data);
+	//ctx.statsF.miseAJourCMU(data);
+	data.statistiquesF.nbCasTraite +=1;
+	data.statistiquesF.nbCasTrouveDsExcel = data.varGlobales.indexDerniereLigne - data.scenarioConfig.CMU.excel.debutIndexLigne + 1;
+		// (pas besoin de mettre à jour celle là) stats.countCaseReadyToRemove = sc.data.countCaseReadyToRemove;
+		if (data.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Succes) {
+				data.statistiquesF.nbCasTraitementSucces += 1;
+		}
+		if (data.contratCourantCMU.notes.statutsContrat === ctx.excelF.constantes.statuts.Echec) {
+				data.statistiquesF.nbCasTraitementEchec += 1;
+		}
+		if (data.contratCourantCMU.notes.commentaireContrat.indexOf('centre')!==-1){
+			data.statistiquesF.nbCasRevoirCentre +=1;
+		}
+		if ( data.contratCourantCMU.statutsCMU.contratTermine == true){
+			data.statistiquesF.nbContratsPretsPrResiliation += 1;
+		}
+		if ( data.contratCourantCMU.statutsCMU.contratResilie == true){
+			data.statistiquesF.nbContratsResilies += 1;
+		}
 	sc.endStep();
 	return ;
 }});
@@ -281,24 +303,25 @@ ActivInfinitev7.step({ stContratCMUSuivant: function(ev, sc, st) {
 	var data = sc.data;
 	data.varGlobales.nomPageCourante=ev.pageName;
 	ctx.traceF.infoTxt('Etape - stContratCMUSuivant - Initialisations pour un changement de contrat');
-	if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
-		// On récupere le nombre de benef
-		var nbBenef=0;
-		for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
-			nbBenef+=1;
-		}
-		data.varGlobales.ligneCourante+=nbBenef;
+		if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne) {	
+			// On récupere le nombre de benef
+			var nbBenef=0;
+			for (var i in data.contratCourantCMU.dataLocale.dictContratsCourantCMU){
+				nbBenef+=1;
+			}
+			data.varGlobales.ligneCourante+=nbBenef;
 //			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
-	  ctx.dataF.resetContratCourantCMU(data);
+		  ctx.dataF.resetContratCourantCMU(data);
 //			ctx.log( "data.contratCourantCMU.dataLocale.dictContratsCourantCMU : "+ data.contratCourantCMU.dataLocale.dictContratsCourantCMU.length);
 //			ctx.log( "contrat suivant ligne : "+ data.varGlobales.ligneCourante);
-		sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
-		return;
-	}
-	else{
-		sc.endStep();
-		return;
-	}
+			sc.endStep(ActivInfinitev7.steps.stDebutBoucleContratCMU);
+			return;
+		}
+		else{
+			sc.endStep();
+			return;
+
+		}
 }});
 
 

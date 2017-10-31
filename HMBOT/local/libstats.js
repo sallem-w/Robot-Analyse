@@ -1,10 +1,12 @@
 ﻿ctx.statsF = (function() {
 	
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Stats';
-	var statsF = {};
-	var cheminFichierStats;
-	var contenuTemplate;
-
+	var statsF = {
+		cheminFichierStats : '',
+		contenuTemplate : ''
+	};
+	
+	
 	statsF.initFileStats = function(cheminDossierTemplate, cheminDossierResultat, nomScenario) {
 		var cheminFichierTemplate = cheminDossierTemplate + nomScenario + '.html';
 			
@@ -21,27 +23,28 @@
 			ctx.traceF.errorTxt(' Impossible de copier le fichier de template : ' + cheminFichierTemplate + ' vers ' + cheminFichier + '.html');
 		}
 
-		cheminFichierStats = cheminFichier;
+		ctx.statsF.cheminFichierStats = cheminFichier;
 		try {
-			contenuTemplate = ctx.fso.file.read(cheminFichierStats + '.html');
+			ctx.statsF.contenuTemplate = ctx.fso.file.read(ctx.statsF.cheminFichierStats + '.html');
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Impossible de lire le fichier : ' + cheminFichierStats + '.html');
+			ctx.traceF.errorTxt('Impossible de lire le fichier : ' + ctx.statsF.cheminFichierStats + '.html');
 		}
 	};
 
 //	.write
-	statsF.remplir = function(obj) {
-		statsF.remplirTemplate(obj);
-		statsF.remplirJson(obj);
+statsF.remplir = function(obj) {
+		var objStats = obj.statistiquesF;
+		statsF.remplirTemplate(objStats);
+		statsF.remplirJson(objStats);
 	}
 	
 	statsF.remplirTemplate = function(obj) {
-		if (obj === undefined || cheminFichierStats === undefined) {
+		if (obj === undefined || ctx.statsF.cheminFichierStats === undefined) {
 			return;
 		}
 		
-		var tempContent = contenuTemplate;
+		var tempContent = ctx.statsF.contenuTemplate;
 		for (var key in obj) {
 			if (obj.hasOwnProperty(key)) {
 				tempContent = tempContent.replace('{{ ' + key + ' }}', obj[key]);
@@ -49,19 +52,20 @@
 		}
 
 		try {
-			ctx.fso.file.write(cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
+			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Can not write stats template, ' + cheminFichierStats + '.html');
+			ctx.traceF.errorTxt('Can not write stats template, ' + ctx.statsF.cheminFichierStats + '.html');
 		}
 	};
 	
 	statsF.remplirJson = function(obj) {
 		try {
-			ctx.fso.file.write(cheminFichierStats + '.json', JSON.stringify(obj));
+			ctx.log('Chemin Stats : '+ctx.statsF.cheminFichierStats);
+			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.json', JSON.stringify(obj));
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Can not write stats json, ' + cheminFichierStats + '.json');
+			ctx.traceF.errorTxt('Can not write stats json, ' + ctx.statsF.cheminFichierStats + '.json');
 		}
 	}
 	
