@@ -100,6 +100,7 @@ ActivInfinitev7.step({ stInitConsultationPP: function(ev, sc, st) {
 		done: function() { 
 			// add code here
 			ctx.traceF.infoTxt('nbcount: '+nbcount);
+				ActivInfinitev7.pIdentContratRechConsul.oDateDebEffet.set(data.ppCouranteAnalyse.dataEnLigne.dateEffetConst);
 				ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche.click();
 			  sc.endStep();
 	      return;
@@ -118,13 +119,8 @@ ActivInfinitev7.step({ stInitConsultationPP: function(ev, sc, st) {
 ActivInfinitev7.step({ stConsultationPP : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stConsultationPP: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
-	
-	ActivInfinitev7.pRecherchePPRefGRC.wait(function(){	
-		
+	ActivInfinitev7.pRecherchePPRefGRC.wait(function(){		
 				if(ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne.exist()){
-					
-					//if(ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.exist()){ctx.log('existe le numero ro');}
-					
 					ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne.set('GRC');
 					ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC.set(data.ppCouranteAnalyse.dataLocale.referenceGRC);
 		    	ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP.click();
@@ -244,11 +240,7 @@ ActivInfinitev7.step({ stInitRecherchePPParRO: function(ev, sc, st) {
 		done: function() { 
 			// add code here
 			ctx.traceF.infoTxt('bcount: '+ nbcount);
-			/*	data.ppCouranteAnalyse.dataLocale.numeroRO = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numeroRO);
-	  		data.ppCouranteAnalyse.dataLocale.nom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.nom);
-	  		data.ppCouranteAnalyse.dataLocale.prenom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.prenom);
-	  		data.ppCouranteAnalyse.dataLocale.dateDeNaissance = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.dateDeNaissance);*/
-				ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche.click();
+			ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche.click();
 				sc.endStep();
 				return;
 		},
@@ -299,16 +291,9 @@ ActivInfinitev7.step({ stInitRecherchePPParRO: function(ev, sc, st) {
 /** Description */
 ActivInfinitev7.step({ stRecherchePPParRO: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);	
-	
-	
+	ctx.traceF.infoTxt('Etape stRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);		
 	ActivInfinitev7.pRecherchePPRefGRC.wait(function(){
 		if(ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.exist()){
-			
-			
-			//if(ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC.exist()){ctx.log('existe l identifiant');}
-			//if(ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne.exist()){ctx.log('existe le systeme externe');}
-			
 			ActivInfinitev7.pRecherchePPRefGRC.oNom.set(data.ppCouranteAnalyse.dataLocale.nom);
 		  ActivInfinitev7.pRecherchePPRefGRC.oPrenom.set(data.ppCouranteAnalyse.dataLocale.prenom);
 		  ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance.set(ctx.dateF.formatDateIAE(data.ppCouranteAnalyse.dataLocale.dateDeNaissance+''));
@@ -320,8 +305,7 @@ ActivInfinitev7.step({ stRecherchePPParRO: function(ev, sc, st) {
 			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
 			  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	      	return;
-		}
-			
+		}	
 	});
 }});
 
@@ -352,6 +336,9 @@ ActivInfinitev7.step({ stInitAnalyseContratsIA : function(ev, sc, st) {
 		ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.i(data.ppCouranteAnalyse.dataEnLigne.indexContrat).click();
 		if(ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.i(data.ppCouranteAnalyse.dataEnLigne.indexContrat).get() === 'I'){
 			data.ppCouranteAnalyse.dataEnLigne.nbContratRadie += 1;
+			//modif le 31/10/2017
+			//status du contart courat est inactif
+			data.ppCouranteAnalyse.dataEnLigne.statusCCourant = 'I';
 		}else{ /** deb modif 11-10-2017*/
 			data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
 		}/** fin modif 11-10-2017*/
@@ -433,12 +420,14 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 									sc.endStep(ActivInfinitev7.steps.stFinAnalyseContratsIA);
 									return;
 	      			}else{
-									ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+								//modif le 31/10/2017
+									//ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
 		      				sc.endStep(); 
 	        				return;	 
 							}
 					}else{
-							ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+						//modif le 31/10/2017
+							//ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
 		  				sc.endStep(); 
 	    				return;	 
 					}
@@ -449,10 +438,10 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 ActivInfinitev7.step({ stAnalyseContratsIA: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stAnalyseContratsIA: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);	
-	ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
+	//ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
 		sc.endStep();
 		return;
-	});
+	//});
 }});
 
 

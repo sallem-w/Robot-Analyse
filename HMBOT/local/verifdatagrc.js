@@ -7,75 +7,89 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 	
-	sc.step(GRCHarMu.steps.stInitAppGRC);
-	sc.step(GRCHarMu.steps.stStep1);
-	sc.step(GRCHarMu.steps.stStep2);
-	sc.step(GRCHarMu.steps.stStep3);
-	sc.step(GRCHarMu.steps.stStep8);
-	sc.step(GRCHarMu.steps.stStep10);
+	sc.step(GRCHarMu.steps.InitAccesGRC);
+	sc.step(GRCHarMu.steps.stRechercheAI);
+	sc.step(GRCHarMu.steps.stExecRechercheAI);
+//	sc.step(GRCHarMu.steps.stStep3);
+//	sc.step(GRCHarMu.steps.stStep8);
+	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
 }});
 
 
 
 /** Description */
-GRCHarMu.step({ stInitAppGRC: function(ev, sc, st) {
+GRCHarMu.step({ InitAccesGRC: function(ev, sc, st) {
 	var data = sc.data;
-	
-	ctx.log('*** Etape stInitAppGRC ***');
-	ctx.log('Initialisation de l application en utilisant la page main');
-		ctx.log('renommage de la page');
-		ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
-		ctx.log('initialisation');
-		ctx.siebel.initApplication(GRCHarMu.pMain);
-	  ctx.log('redirection vers la page');
-		ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
-	  sc.endStep();
-	  return;
+	ctx.log('Etape InitAccesGRC, Numéro Ext CTT: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	sc.endStep();
+	return;
 }});
 
 
 /** Description */
-GRCHarMu.step({ stStep1: function(ev, sc, st) {
+GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('step 1');
-	 GRCHarMu.pRechercheAI.wait(function(ev){
-	 	GRCHarMu.pRechercheAI.btRechercher.click();
-		  sc.endStep();
+	ctx.log('Etape stRechercheAI: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	
+	GRCHarMu.pRechercheAI.wait(function(ev){
+		ctx.polling({
+		delay: 100,
+		nbMax: 10,
+		test: function(index) { 
+			return GRCHarMu.pRechercheAI.btRechecher.exist(); 
+		},
+		done: function() { 
+			// add code here
+			GRCHarMu.pRechercheAI.btRechecher.click();
+			sc.endStep();
 	    return;
-	 });
+		},
+		fail: function() { 
+			// add code here
+			sc.endStep();
+	    return;
+		}
+	});
+	});
+	/*
+	GRCHarMu.pRechercheAI.wait(function(ev){
+	if(GRCHarMu.pRechercheAI.btRechecher.exist()){
+			GRCHarMu.pRechercheAI.btRechecher.click();
+			sc.endStep();
+	    return;
+		}else{
+			sc.endStep();
+	    return;
+		}
+	});
+	*/
 }});
 
 
 
 /** Description */
-GRCHarMu.step({ stStep2: function(ev, sc, st) {
+GRCHarMu.step({ stExecRechercheAI: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('step 2');
+	ctx.log('Etape stExecRechercheAI: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	GRCHarMu.pRechercheAI.wait(function(ev){
 		if(GRCHarMu.pRechercheAI.btExecuter.exist()){
-			//var r = GRCHarMu.pRechercheAI.oRechercheIA.getActiveRow();
-			//ctx.log('ligne courante: '+r);
-			// extraction de numero EXT CTT
 			var iUderscore = data.ppCouranteAnalyse.dataLocale.numExtCtt.indexOf('_');
       var tabNumExtCtt = data.ppCouranteAnalyse.dataLocale.numExtCtt.split('_');
    	  var numExtCtt = tabNumExtCtt[1];
-      GRCHarMu.pRechercheAI.oRechercheIA.set(numExtCtt,1,1); //la valeur, ligne, colonne
+      GRCHarMu.pRechercheAI.oList.set(numExtCtt,1,1);
       GRCHarMu.pRechercheAI.btExecuter.click();
-		//	var pos = GRCHarMu.pRechercheAI.btExecuter.getRect();
-		
 			sc.endStep();
 	    return;
 		}else{
 		sc.endStep();
 	  return;}
 	});
-
 }});
 
 
 /** Description */
-GRCHarMu.step({ stStep3: function(ev, sc, st) {
+/*GRCHarMu.step({ stStep3: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('click sur le lien');
 	GRCHarMu.pRechercheAI.wait(function(ev){
@@ -100,7 +114,7 @@ GRCHarMu.step({ stStep3: function(ev, sc, st) {
 
 
 /** Description */
-GRCHarMu.step({ stStep4: function(ev, sc, st) {
+/*GRCHarMu.step({ stStep4: function(ev, sc, st) {
 	var data = sc.data;
 	
 	ctx.log('case paiement à l adhesion');
@@ -117,21 +131,21 @@ GRCHarMu.step({ stStep4: function(ev, sc, st) {
 
 
 /** Description */
-GRCHarMu.step({ stStep8: function(ev, sc, st) {
+/*GRCHarMu.step({ stStep8: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('step 8: vérification des coordonnées bancaires');
 	var cotisation = GRCHarMu.pCoordBancairesC.oTabC.get(1,2); /* RIB cotisation*/
-	var nom = GRCHarMu.pCoordBancairesC.oTabC.get(1,3); /* nom payeur*/
-	var prenom = GRCHarMu.pCoordBancairesC.oTabC.get(1,4); /* prénom payeur*/
-	sc.endStep();
+	/*var nom = GRCHarMu.pCoordBancairesC.oTabC.get(1,3); /* nom payeur*/
+	/*var prenom = GRCHarMu.pCoordBancairesC.oTabC.get(1,4); /* prénom payeur*/
+	/*sc.endStep();
 	return;
 }});
 
 /** Description */
-GRCHarMu.step({ stStep10: function(ev, sc, st) {
+GRCHarMu.step({ stFinVerifGRC: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('step 3');
-//	GRCHarMu.pGRCMain.start();
+	ctx.traceF.infoTxt('Etape stFinVerifGRC: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 	sc.endScenario();
 	return;
 }});

@@ -7,52 +7,31 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 
-	sc.step(GRCHarMu.steps.stInitVerifDataGRC);
-	sc.step(GRCHarMu.steps.stConnexionGRCSiebel);
+	sc.step(GRCHarMu.steps.stInitRobot);
+	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stLancerSCaALSEGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
-  //sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 	
 }});
 
-
-
-
-
-
-
-
 /** Description */
-GRCHarMu.step({ stInitVerifDataGRC: function(ev, sc, st) {
+GRCHarMu.step({ stInitRobot: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stInitVerifDataGRC: ');
+	ctx.traceF.infoTxt('Etape stInitRobot: ');
 	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
 	sc.endStep();
 	return;
 }});
-
-
-/** Description */
-GRCHarMu.step({ stConnexionGRCSiebel: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stConnexionGRCSiebel: ');
-	
-	//data.webDataGRC.url =GRCHarMu.pConnexionGRC.getInfos();
-	/*data.webDataGRC.identifiant = GRCHarMu.pConnexionGRC.oIdentifiant.get();
-	data.webDataGRC.motDePasse = GRCHarMu.pConnexionGRC.oPwd.get();
-	GRCHarMu.pConnexionGRC.oConnexion.click();
-	*/sc.endStep();
-	return;
-}});
-
 
 /** Description */
 GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
@@ -71,6 +50,16 @@ GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
 	return;
 }});
 
+/** Description */
+GRCHarMu.step({ stInitVerificationGRC: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stInitVerificationGRC: ' + data.ppCouranteAnalyse.dataLocale.numExtCtt);	
+	ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
+	ctx.siebel.initApplication(GRCHarMu.pMain);
+	ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
+	sc.endStep();
+	return;
+}});
 
 /** Description */
 GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
@@ -159,7 +148,7 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 
 
 /** Description */
-GRCHarMu.step({ stLancerSCaALSEGRC: function(ev, sc, st) {
+GRCHarMu.step({ stVerificationGRC: function(ev, sc, st) {
 	var data = sc.data;
 	//extraction de numéro de l'adhésion
 
@@ -220,17 +209,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPSuivanteIAE: lecture des données de la PP suivante du fichier IAE');
 	data.varGlobales.ligneCourante += 1;
-	/*if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
-		sc.endStep();
-		return;
-	}else{
-		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
-		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
-		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
-		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
-	  return;
-	}*/
-	if(data.varGlobales.ligneCourante === 3){  //cas particulier pour tester l'isertion dans le data grid
+	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
 		sc.endStep();
 		return;
 	}else{
@@ -240,6 +219,16 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}
+	/*if(data.varGlobales.ligneCourante === 3){  //cas particulier pour tester l'isertion dans le data grid
+		sc.endStep();
+		return;
+	}else{
+		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
+		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
+		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
+		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
+	  return;
+	}*/
 }});
 
 

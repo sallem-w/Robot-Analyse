@@ -65,6 +65,7 @@ ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts = ActivInfinitev7.pIdentCo
 ActivInfinitev7.pIdentContratRechResu.oTexteErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTexteErreur');
 ActivInfinitev7.pIdentContratRechResu.oDateDebutEffet = ActivInfinitev7.pIdentContratRechResu.addItem('oDateDebutEffet');
 ActivInfinitev7.pIdentContratRechResu.oCodeOffre = ActivInfinitev7.pIdentContratRechResu.addItem('oCodeOffre');
+ActivInfinitev7.pIdentContratRechResu.oProdGaran = ActivInfinitev7.pIdentContratRechResu.addItem('oProdGaran');
 
 ActivInfinitev7.pIdentContResilRech = ActivInfinitev7.addPage('pIdentContResilRech', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContResilRech.btRecherche = ActivInfinitev7.pIdentContResilRech.addItem('btRecherche');
@@ -344,8 +345,7 @@ var GRCHarMu = ctx.addApplication('GRCHarMu', {"nature":"WEB3","path":"http://sb
 
 GRCHarMu.pMain = GRCHarMu.addPage('pMain', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb\u0026SWETS=1509380980024\u0026SWEHo=sbl37inf1"});
 
-GRCHarMu.pRecherche = GRCHarMu.addPage('pRecherche', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
-GRCHarMu.pRecherche.btS1150Mb = GRCHarMu.pRecherche.addItem('btS1150Mb', {"mustExist":true});
-
-GRCHarMu.pResList = GRCHarMu.addPage('pResList', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
-GRCHarMu.pResList.oList = GRCHarMu.pResList.addItem('oList', {"customType":"siebel.grid"});
+GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
+GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
+GRCHarMu.pRechercheAI.btRechecher = GRCHarMu.pRechercheAI.addItem('btRechecher');
+GRCHarMu.pRechercheAI.oList = GRCHarMu.pRechercheAI.addItem('oList', {"customType":"siebel.grid"});

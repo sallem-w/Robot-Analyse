@@ -1,8 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS />
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="64" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="2626" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="65" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="2642" Length="7"><![CDATA[return;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="62" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="2444" Length="123"><![CDATA[ctx.traceF.infoTxt('Etape stInitParcoursListesOptrs indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="63" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="2569" Length="54"><![CDATA[ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){]]></BREAKPOINT>
+	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[pIdentContratRechResu]]></FINDWHAT>
+		<FINDWHAT><![CDATA[oHistoriqueOpts]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitAnalyseContratsIA]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRechercheEtAnalysePP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[url]]></FINDWHAT>
 		<FINDWHAT><![CDATA[focus]]></FINDWHAT>
 		<FINDWHAT><![CDATA[GRCHarmonieMutuelle]]></FINDWHAT>
 		<FINDWHAT><![CDATA[grid]]></FINDWHAT>
@@ -18,11 +28,6 @@
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stChargementFichierIAE]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stOuvertureContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[contratEstActif]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitRecherchePPParRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecherchePPParRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ stRecherchePPParRO]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stConsultationPP]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[GRCHarMu]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
@@ -46,108 +51,18 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="3378" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Core']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="32" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="218" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="277" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="15" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="35" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="441" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[
-GRCHarMu.pRecherche.oList.clickLink();
-GRCHarMu.pRecherche.oList.clickLink();
-GRCHarMu[26576].pRecherche[1243].oList.getAll();
-GRCHarMu.pRecherche.oList.clickLink();
-GRCHarMu.pRecherche.oList.clickLink();
-GRCHarMu[26576].pRecherche[1243].oList.clickLink();
-GRCHarMu[26576].pRecherche[1243].oList.clickLink();
-GRCHarMu[26576].pRecherche[1243].oList.hasFocus();
-GRCHarMu[26576].pRecherche[1243].oList.setFocus();
-GRCHarMu[26576].pRecherche[1245].oList.setFocus();
-GRCHarMu[26576].pRecherche[1245].oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu[26576].pResList[1248].oList.getAll();
-GRCHarMu[26576].pResList[1248].oList.hasFocus();
-GRCHarMu[26576].pResList[1248].oList.html();
-GRCHarMu[26576].pResList[1248].oList.getActiveRow();
-GRCHarMu[26576].pResList[1248].oList.exist();
-GRCHarMu[26576].pResList[1253].oList.exist();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu[26576].pResList[1258].oList.getRect();
-GRCHarMu[26576].pResList[1258].oList.hasFocus();
-GRCHarMu[26576].pResList[1258].oList.highlight();
-GRCHarMu.pResList.oList.setActiveCell();
-GRCHarMu[26576].pResList[1258].oList.setFocus();
-GRCHarMu[26576].pResList[1258].oList.setActiveCell();
-GRCHarMu[26576].pResList[1258].oList.setActiveRow();
-GRCHarMu[26576].pResList[1258].oList.setActiveRow();
-GRCHarMu[26576].pResList[1258].oList.click();
-GRCHarMu[26576].pResList[1258].oList.clickLink();
-GRCHarMu[26576].pResList[1258].oList.execScript();
-GRCHarMu[26576].pResList[1258].oList.getActiveRow();
-GRCHarMu[26576].pResList[1258].oList.get();
-GRCHarMu[26576].pResList[1258].oList.getColAttribute();
-GRCHarMu.pResList.oList.getColWidth();
-GRCHarMu.pResList.oList.getColWidth();
-GRCHarMu[26576].pResList[1258].oList.getColWidth();
-GRCHarMu[26576].pResList[1258].oList.selectableRow();
-GRCHarMu[26576].pResList[1258].oList.set('iopiop');
-GRCHarMu[26576].pResList[1258].oList.get();
-oList.get();
-oList.get();
-GRCHarMu[26576].pResList[1260].oList.get();
-GRCHarMu.pResList.oList.setSortState();
-GRCHarMu.pResList.oList.setCellHTML();
-GRCHarMu.pResList.oList.scrollLeftEdge();
-GRCHarMu[26576].pResList[1260].oList.set('7007400', true);
-GRCHarMu[26576].pResList[1260].oList.set('7007400');
-GRCHarMu[26576].pResList[1260].oList.set('7007400', false);
-GRCHarMu[26576].pResList[1260].oList.set('7007400');
-GRCHarMu.pResList.oList.set('7007400');
-GRCHarMu[26576].pResList[1260].oList.set('7007400', true);
-GRCHarMu[26576].pResList[1260].oList.set('7007400', false);
-oList.setActiveCell();
-oList.setActiveCell(1,1,true);
-GRCHarMu[26576].pResList[1261].oList.setActiveCell(1,1,true);
-GRCHarMu[26576].pResList[1261].oList.setActiveCell(1,1,false);
-GRCHarMu[26576].pResList[1261].oList.setActiveCell(1,1,true);
-GRCHarMu[26576].pResList[1261].oList.setActiveCell(1,1,true);
-GRCHarMu.pResList.oList.selectableRow();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.click();
-GRCHarMu.pResList.oList.click();
-GRCHarMu.pResList.oList.click();
-GRCHarMu[26576].pResList[1261].oList.click('', 1, '', 1);
-GRCHarMu[26576].pResList[1261].oList.click(true, 1, 1);
-GRCHarMu[26576].pResList[1261].oList.click(true, 1, 1);
-GRCHarMu[26576].pResList[1261].oList.click(false, 1, 1);
-GRCHarMu[26576].pResList[1261].oList.click(false, 1, 1);
-GRCHarMu[26576].pResList[1261].oList.click(false, 1, 1);
-GRCHarMu.pResList.oList.getAll();
-GRCHarMu.pResList.oList.execScript();
-GRCHarMu.pResList.oList.exist();
-GRCHarMu.pResList.oList.getAttibute();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.clickLink();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu[26576].pResList[1261].oList.hasFocus();
-GRCHarMu[26576].pResList[1261].oList.clickLink();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();
-GRCHarMu.pResList.oList.hasFocus();]]></DebugTester>
+		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES />
 	<APPLIFILTERS />

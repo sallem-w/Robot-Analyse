@@ -26,51 +26,59 @@
 			<_ECRANS>
 				<PAGE Name="pMain" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)">
 					<CRITERE>
+						<URL Scan="Part"><![CDATA[http://sbl37inf1/fins_fra/start.swe]]></URL>
 						<MAINFRAME><![CDATA[true]]></MAINFRAME>
-						<URL Scan="Full"><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12&SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb&SWETS=1509380980024&SWEHo=sbl37inf1]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12&SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb&SWETS=1509380980024&SWEHo=sbl37inf1]]></PATH>
 					<OBJETS />
 					<CAPTURE Name="PAGE_GRCHarmonieMutuelle_1734121_1" Comment="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)" CtxtId="2674" Techno="WEB" Timestamp="30/10/2017 17:34:13" />
 				</PAGE>
-				<PAGE Name="pRecherche" Comment="[_svf0] - Mes polices/devis">
+				<PAGE Name="pRechercheAI" Comment="[_svf0] - Mes polices/devis">
 					<CRITERE>
+						<NAME Scan="Part"><![CDATA[_svf0]]></NAME>
 						<TITRE Scan="Part"><![CDATA[Mes polices/devis]]></TITRE>
-						<CY Scan="GT"><![CDATA[0]]></CY>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout&SWEView=SIHM%20All%20Individual%20Policy%20Search%20View&SWEVI=&SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L&SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb]]></PATH>
 					<OBJETS>
-						<OBJET Name="btS1150Mb" MustExist="Y">
+						<OBJET Name="btExecuter">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="2679.R0R1R2R2R0R0R0R0R0R8R0R0R0R0">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[s_1_1_5_0_mb]]></VALUE>
+									<ATT Name="Text">
+										<VALUE Scan="Part"><![CDATA[Exécuter]]></VALUE>
 									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRechecher">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="2675.R0R1R2R2R0R0R0R0R0R7R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Part"><![CDATA[Rechercher]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
+							<CRITERE>
+								<TAG Name="FORM" Scope="All" CapturedPos="2679.R0R1R2R2">
+									<TAG Name="SPAN" Scope="Children" CapturedPos="2679.R0R1R2R2R0">
+										<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0">
+											<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0R2">
+												<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0R2R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="2679.R0R1R2R2R0R0R2R0R1" Range="0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
 								</TAG>
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_MesPolicesDevis_1735256_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2675" Techno="WEB" Timestamp="30/10/2017 17:35:43" />
 					<CAPTURE Name="PAGE_MesPolicesDevis_1752501_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2679" Techno="WEB" Timestamp="30/10/2017 17:53:12" />
-				</PAGE>
-				<PAGE Name="pResList" Comment="[_svf0] - Mes polices/devis">
-					<CRITERE>
-						<TITRE Scan="Part"><![CDATA[Mes polices/devis]]></TITRE>
-						<CY Scan="GT"><![CDATA[0]]></CY>
-					</CRITERE>
-					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout&SWEView=SIHM%20All%20Individual%20Policy%20Search%20View&SWEVI=&SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L&SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb]]></PATH>
-					<OBJETS>
-						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
-							<CRITERE>
-								<TAG Name="OBJECT" Scope="All" CapturedPos="2677.R0R1R2R2R0R0R2R0R1">
-									<ATT Name="id">
-										<VALUE Scan="Full"><![CDATA[s_1_l]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
-					</OBJETS>
-					<CAPTURE Name="PAGE_MesPolicesDevis_1745301_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2678" Techno="WEB" Timestamp="30/10/2017 17:45:50" />
+					<CAPTURE Name="PAGE_MesPolicesDevis_1009225_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2683" Techno="WEB" Timestamp="31/10/2017 10:09:38" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb&SWETS=1508832674552]]></PATH>

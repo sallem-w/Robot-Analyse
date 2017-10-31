@@ -127,7 +127,9 @@ ctx.dataF = (function () {
 			  produitGammeCompatible : false,
 				codeOffre : '',
 				debDateEffet : '',
-				critereRecherche : 1
+				critereRecherche : 1,
+				dateEffetConst : '01/01/2100',
+				statusCCourant : ''
 			},
 			notes: {
 				contexteAnalyseStoppee : '',

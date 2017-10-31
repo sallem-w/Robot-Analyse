@@ -18,6 +18,8 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 	// add steps here...
 	
 	sc.step(ActivInfinitev7.steps.stInitRechercheOptrsContentieux);
+	sc.step(ActivInfinitev7.steps.stConsultProduitsGaranties);
+	sc.step(ActivInfinitev7.steps.stInitParcoursListesOptrs);
 	sc.step(ActivInfinitev7.steps.stParcourirListeOperts);
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
 	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);	
@@ -28,10 +30,41 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 ActivInfinitev7.step({ stInitRechercheOptrsContentieux: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitRechercheOptrsContentieux (voir la liste des OPERATIONS) indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-	sc.endStep();
-	return;
+	if(data.ppCouranteAnalyse.dataEnLigne.statusCCourant === 'I'){
+		//voir la date de radiation
+		ActivInfinitev7.pIdentContratRechResu.oProdGaran.click();
+		sc.endStep();
+		return;
+	}else{
+		//passer à la page des historiques des optrs
+		ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click();
+		sc.endStep(ActivInfinitev7.steps.stInitParcoursListesOptrs);
+		return;
+	}
 }});
 
+
+/** Description */
+ActivInfinitev7.step({ stConsultProduitsGaranties: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stConsultProduitsGaranties (voir la liste des PRODUITS) indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	ActivInfinitev7.pProdGaranConsul.wait(function(ev){
+		ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click();
+		sc.endStep();
+		return;
+	});
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stInitParcoursListesOptrs: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stInitParcoursListesOptrs indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
+		sc.endStep();
+		return;
+	});
+}});
 
 /** Description */
 ActivInfinitev7.step({ stParcourirListeOperts : function(ev, sc, st) {

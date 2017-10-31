@@ -583,6 +583,21 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oProdGaran">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="142.R0R1R7R0R0R0R2R0R4">
+									<TAG Name="DIV" Scope="Children" CapturedPos="142.R0R1R7R0R0R0R2R0R4R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0002_1103149_1" Comment="Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion" CtxtId="142" Techno="WEB" Timestamp="15/09/2017 11:03:27" />
 					<CAPTURE Name="PAGE_ConsultationHaum03_1108052_1" Comment="Consultation - haum03 - Activ Infinite - Module de gestion" CtxtId="143" Techno="WEB" Timestamp="15/09/2017 11:08:17" />
