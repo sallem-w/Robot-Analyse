@@ -4508,7 +4508,7 @@
 				<SCRIPT Name="scCreationHSP" Src="Adhesion_scCreationHSP.js" Folder="Processus_Adhesion" />
 				<SCRIPT Name="libForm" Folder="Complements" Src="libForm.js" />
 				<SCRIPT Name="scCreationHSP_ajoutBenef" Folder="Processus_Adhesion" Src="scCreationHSP_ajoutBenef.js" />
-				<SCRIPT Name="initialisations" Folder="Processus_CMU" Src="initialisations.js" />
+				<SCRIPT Name="initialisations" Folder="Complements" Src="initialisations.js" />
 				<SCRIPT Name="scAdhesionInit" Folder="Processus_Adhesion" Src="scAdhesionInit.js" />
 				<SCRIPT Name="DataClass" Folder="Complements" Src="DataClass.js" />
 				<SCRIPT Name="scInitFinCMU" Folder="Processus_CMU" Src="scFinCMUInit.js" />

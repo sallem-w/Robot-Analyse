@@ -1,24 +1,24 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
     "ACS": {
-        "afficherMenu": false
+        "afficherMenu": true
             },
     "CMU":{
         "afficherMenu": true
     },
     "SIRH": {
-        "afficherMenu": false
+        "afficherMenu": true
     },
     "SIRHUpdate": {
-        "afficherMenu": false
+        "afficherMenu": true
     },
     "DA": {
-        "afficherMenu": false
+        "afficherMenu": true
     },
     "Suspension": {
-        "afficherMenu": false
+        "afficherMenu": true
     },
     "Adhesion": {
-        "afficherMenu": false
+        "afficherMenu": true
     }
 }
