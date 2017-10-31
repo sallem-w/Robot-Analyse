@@ -234,6 +234,12 @@ ActivInfinitev7.step({ stConfigurationStatistiques: function(ev, sc, st) {
 			ctx.traceF.errorTxt('Impossible de lire le fichier : ' + cheminFichier + '.html');
 		}
 	
+		// on enregistre le chemin dans l'objet statsF ( necessaire pour la fonction ctx.statsF.remplir() -> à revoir  )
+		ctx.statsF.cheminFichierStats=cheminFichier;
+		ctx.statsF.contenuTemplate=contenuTemplate;
+		
+		// on enregistre l'heure de debut de traitement
+		data.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
 	sc.endStep();
 	return;
 }});

@@ -8,7 +8,7 @@ ActivInfinitev7.scenario( {
 			data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un Timeout';
 			data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 			data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-			ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
+			ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL); // retour au Tableau de bord
 			sc.endScenario(); 
 	}); 
 	
@@ -17,7 +17,7 @@ ActivInfinitev7.scenario( {
 		data.contratCourantCMU.notes.commentaireContrat = 'Contrat non Traité en raison d\'un onError';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL); // retour au Tableau de bord
+		ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL); // retour au Tableau de bord
 		sc.endScenario();	
 	}); 
 		sc.setMode(e.scenario.mode.clearIfRunning);
@@ -445,6 +445,7 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 	var verif = false;
 	var tabstatuts = [];
 	/// Polling sur l'existance du tableau Codeproduit
+	ctx.wait(function(ev){ // on attends un peu car existance ne suffit pas...
 		var countPoll=0;
 		ctx.polling({
 			delay: 300,
@@ -491,7 +492,7 @@ ActivInfinitev7.step( { stVerifEtatProduitCMU: function (ev, sc, st) {
 				return ;
 			}
 		});
-	
+	},1000);
 
 }});
 
@@ -573,22 +574,21 @@ ActivInfinitev7.step( { stProduitCMUSuivant : function (ev, sc, st) {
 		data.contratCourantCMU.notes.commentaireContrat = 'Revoir centre: le produit n\'a pas été trouvé';
 		data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Echec;
 		data.contratCourantCMU.statutsCMU.FinCMUProcessus = true;
-		sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
-		return ;
+			// On annule la consultation et clique sur annuler pour retourner au tableau de bord 
+		ActivInfinitev7.pProdGaranConsul.btFermeture.click();
+		ActivInfinitev7.pTabDeBord.wait(function(ev){
+				ctx.log('--> Retour au tableau de bord');
+				sc.endStep(ActivInfinitev7.steps.stFinScVerifContratCMU);
+				return ;
+		});	
+	
 	}
 
 	}else {
 		ActivInfinitev7.pProdGaranConsul.oTypeBenef.i(data.contratCourantCMU.dataEnLigne.variables.indiceBenef).click();
-//		ActivInfinitev7.pProdGaranConsul.events.LOAD.once(function () {
-//		sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
-//			return ;
-//		});
 		ActivInfinitev7.pProdGaranConsul.wait(function () {
-			ctx.wait(function(ev){ // on attends un peu car existance ne suffit pas...
 				sc.endStep(ActivInfinitev7.steps.stVerifEtatProduitCMU);
-				return ;
-		},500);
-	
+				return;
 		});
 	}
 }});
@@ -601,10 +601,13 @@ ActivInfinitev7.step( { stContratCMUtermine : function (ev, sc, st) {
 	data.contratCourantCMU.notes.commentaireContrat = 'À résilier';
   data.contratCourantCMU.statutsCMU.contratTermine = true; //nécessaire pour les stats
   data.contratCourantCMU.notes.statutsContrat = ctx.excelF.constantes.statuts.Succes;
-	
 	sc.endStep();
 	return ;
 }});
+
+
+
+
 
 /** Description */
 ActivInfinitev7.step( { stFinScVerifContratCMU : function (ev, sc, st) {
