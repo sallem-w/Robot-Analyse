@@ -1,7 +1,7 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
     "CMU":{
-        "devel": false,
+        "devel": true,
         "cheminRacine": "C:\\deploy\\cmu\\", 
         "controlSeul": false,
         "controlSolde": true,
