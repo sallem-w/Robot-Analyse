@@ -125,11 +125,13 @@ ctx.dataF = (function () {
 				adhesionEstEnregistree : false,
 			  HPPExiste : false,
 			  produitGammeCompatible : false,
+				tousStatutVrai : false,
 				codeOffre : '',
 				debDateEffet : '',
 				critereRecherche : 1,
 				dateEffetConst : '01/01/2100',
-				statusCCourant : ''
+				statusCCourant : '',
+				dateRadiation : ''
 			},
 			notes: {
 				contexteAnalyseStoppee : '',

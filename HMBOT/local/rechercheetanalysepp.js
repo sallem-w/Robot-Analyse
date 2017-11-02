@@ -204,6 +204,19 @@ ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
 			}else if(data.ppCouranteAnalyse.dataEnLigne.typeRelation !== '' && data.ppCouranteAnalyse.dataEnLigne.identiteRelation !== ''){
 				ctx.traceF.infoTxt('Un ou plusieurs contrats sont associe(s) à la PP courante, voir l HISTORIQUE de chaque contrat');
 				data.ppCouranteAnalyse.dataEnLigne.nbContrat = ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.count();
+				/*
+					Dans cette partie, on vérifie le status de tous les contrats
+					un flag qui prend la valeur true si tous les status === I de tous les CONTARTS associés à la PP
+				*/
+				var nbInactif = 0;
+				for(var i in ActivInfinitev7.pRecherchePPRefGRCRes.oListeContrats.getAll()){
+					if(ActivInfinitev7.pRecherchePPRefGRCRes.oStatus.i(i).get()+'' === 'I'){
+						nbInactif += 1;
+					}
+				}
+				if(data.ppCouranteAnalyse.dataEnLigne.nbContrat === nbInactif){
+					data.ppCouranteAnalyse.dataEnLigne.tousStatutVrai = true;
+				}
 				sc.endStep(ActivInfinitev7.steps.stInitAnalyseContratsIA);
 				return;
 			}else{
@@ -421,13 +434,13 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 									return;
 	      			}else{
 								//modif le 31/10/2017
-									//ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+									ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
 		      				sc.endStep(); 
 	        				return;	 
 							}
 					}else{
 						//modif le 31/10/2017
-							//ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
+							ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts.click(); //choisir l'historique des opérations
 		  				sc.endStep(); 
 	    				return;	 
 					}
@@ -438,10 +451,10 @@ ActivInfinitev7.step({ stResOuvertureContrat: function(ev, sc, st) {
 ActivInfinitev7.step({ stAnalyseContratsIA: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stAnalyseContratsIA: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);	
-	//ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
+	ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
 		sc.endStep();
 		return;
-	//});
+	});
 }});
 
 
@@ -590,6 +603,7 @@ ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = false;
 	data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = false;
 	data.ppCouranteAnalyse.dataEnLigne.contratEstActif = false;
+	data.ppCouranteAnalyse.dataEnLigne.tousStatutVrai = false;
 	
 	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
 	sc.endScenario();

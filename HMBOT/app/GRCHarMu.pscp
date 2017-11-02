@@ -58,23 +58,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
-							<CRITERE>
-								<TAG Name="FORM" Scope="All" CapturedPos="2679.R0R1R2R2">
-									<TAG Name="SPAN" Scope="Children" CapturedPos="2679.R0R1R2R2R0">
-										<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0">
-											<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0R2">
-												<TAG Name="DIV" Scope="Children" CapturedPos="2679.R0R1R2R2R0R0R2R0">
-													<TAG Name="OBJECT" Scope="All" CapturedPos="2679.R0R1R2R2R0R0R2R0R1" Range="0">
-														<SET />
-													</TAG>
-												</TAG>
-											</TAG>
-										</TAG>
-									</TAG>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_MesPolicesDevis_1735256_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2675" Techno="WEB" Timestamp="30/10/2017 17:35:43" />
 					<CAPTURE Name="PAGE_MesPolicesDevis_1752501_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2679" Techno="WEB" Timestamp="30/10/2017 17:53:12" />

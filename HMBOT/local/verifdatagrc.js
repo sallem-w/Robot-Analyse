@@ -77,7 +77,7 @@ GRCHarMu.step({ stExecRechercheAI: function(ev, sc, st) {
 			var iUderscore = data.ppCouranteAnalyse.dataLocale.numExtCtt.indexOf('_');
       var tabNumExtCtt = data.ppCouranteAnalyse.dataLocale.numExtCtt.split('_');
    	  var numExtCtt = tabNumExtCtt[1];
-      GRCHarMu.pRechercheAI.oList.set(numExtCtt,1,1);
+     // GRCHarMu.pRechercheAI.oList.set(numExtCtt,1,1);
       GRCHarMu.pRechercheAI.btExecuter.click();
 			sc.endStep();
 	    return;

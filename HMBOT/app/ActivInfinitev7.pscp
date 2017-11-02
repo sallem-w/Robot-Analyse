@@ -541,21 +541,6 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oHistoriqueOpts">
-							<CRITERE>
-								<TAG Name="LI" Scope="All" CapturedPos="142.R0R1R7R0R0R0R2R0R1">
-									<TAG Name="DIV" Scope="Children" CapturedPos="142.R0R1R7R0R0R0R2R0R1R0">
-										<ATT Name="class">
-											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
-										</ATT>
-										<SET />
-									</TAG>
-									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[Historique des opérations ]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oTexteErreur">
 							<CRITERE>
 								<TAG Name="DIV" Scope="All" CapturedPos="143.R0R1R3R0R2R0R0">
@@ -594,6 +579,21 @@
 									</TAG>
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Produits/Garanties ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oHistoriqueOpts">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="142.R0R1R7R0R0R0R2R0R1">
+									<TAG Name="DIV" Scope="Children" CapturedPos="142.R0R1R7R0R0R0R2R0R1R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="Like"><![CDATA[Historique des opérations ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1447,6 +1447,54 @@
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Produits/Garanties
 ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNomPrenom">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0R2" Range="2">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Part"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateNaissAdh">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0R3" Range="3">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Part"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateRadiation">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R5R1R0R0R1R0R6" Range="6">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Part"><![CDATA[TableAssures]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -3212,6 +3260,21 @@
 								<TAG Name="A" Scope="All" CapturedPos="174.R0R1R7R0R0R2R0R0R0R2R0R0R1R0R0R0R5R0R4R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[TableOperations_next]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oProdGaran">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="174.R0R1R7R0R0R0R2R0R4">
+									<TAG Name="DIV" Scope="Children" CapturedPos="174.R0R1R7R0R0R0R2R0R4R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Produits/Garanties ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
