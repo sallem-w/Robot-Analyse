@@ -23,8 +23,8 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
 
-	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
-	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
+//	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
+//	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
 	
 	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);	
 }});

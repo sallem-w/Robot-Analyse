@@ -135,7 +135,11 @@ ctx.dataF = (function () {
 			},
 			notes: {
 				contexteAnalyseStoppee : '',
-				presenceHPP : 'Non' 
+				presenceHPP : 'Non',
+				gestionControl : 'Non',
+				paiementAdhesion : 'Non',
+				clauseBenefAdh : 'Non',
+				clauseBenefConjoint : 'Non'
 			}	
 		};
 		

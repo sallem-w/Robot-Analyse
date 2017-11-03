@@ -24,7 +24,7 @@
                 "paiementAdhesion" : 129,
                 "dateEffetAControler" : 130,
                 "payeurSouscriptDifferent" : 131,
-                "clauseBenef": 132,
+                "clauseBenefAdh": 132,
                 "clauseBenefConjoint": 133,
                 "controleGestion" : 134
             }

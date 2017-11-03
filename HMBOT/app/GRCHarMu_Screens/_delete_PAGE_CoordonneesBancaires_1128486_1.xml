@@ -1,0 +1,187 @@
+﻿<PAGE Techno="WEB" Name="PAGE_CoordonneesBancaires_1128486_1" ProcessName="IEXPLORE" ParamName="Coordonnées bancaires" ParentTree="">
+	<PROPERTIES>
+		<TITRE>Coordonnées bancaires</TITRE>
+		<DOMAIN>sbl37inf1</DOMAIN>
+		<URL>http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames&amp;SWEDIC=1&amp;SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d174%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3dccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b%26SWESP%3d1%26SRN%3dccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b</URL>
+		<CX>1864</CX>
+		<CY>326</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+	<CHILDREN>
+		<ITEM>
+			<PROPERTIES>
+				<TAG>HTML</TAG>
+				<Text>Coordonnées bancaires</Text>
+				<InnerHTML>&lt;HEAD&gt;&lt;TITLE&gt;Coordonnées bancaires&lt;/TITLE&gt;
+&lt;SCRIPT&gt;
+function loadPopup() {
+_sweapp.S_CmdMgr.Initialize(top.opener.top._swe._sweapp.S_App,true);
+top._sweapp.cmdInit = true;
+}
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;&lt;FRAMESET onload=loadPopup() frameSpacing=0 border=0 frameBorder=0 rows=100%,*&gt;&lt;FRAME noResize marginHeight=0 src="/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;amp;SWESP=1&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_swepopcontent marginWidth=0 scrolling=no OT="_swepopcontent Frame"&gt;&lt;FRAME title="" noResize marginHeight=0 src="?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=_sweapp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_sweapp marginWidth=0 scrolling=no&gt;&lt;/FRAMESET&gt;</InnerHTML>
+				<OuterHTML>&lt;HTML OT="SiebWebPopupWindow"&gt;&lt;HEAD&gt;&lt;TITLE&gt;Coordonnées bancaires&lt;/TITLE&gt;
+&lt;SCRIPT&gt;
+function loadPopup() {
+_sweapp.S_CmdMgr.Initialize(top.opener.top._swe._sweapp.S_App,true);
+top._sweapp.cmdInit = true;
+}
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;&lt;FRAMESET onload=loadPopup() frameSpacing=0 border=0 frameBorder=0 rows=100%,*&gt;&lt;FRAME noResize marginHeight=0 src="/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;amp;SWESP=1&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_swepopcontent marginWidth=0 scrolling=no OT="_swepopcontent Frame"&gt;&lt;FRAME title="" noResize marginHeight=0 src="?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=_sweapp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_sweapp marginWidth=0 scrolling=no&gt;&lt;/FRAMESET&gt;&lt;/HTML&gt;</OuterHTML>
+				<range>0</range>
+				<contentEditable>inherit</contentEditable>
+			</PROPERTIES>
+			<CTX_PROPS>
+				<BOUNDINGRECT>0|0|1864|326</BOUNDINGRECT>
+				<TITLE>HTML</TITLE>
+				<NAMEKEY>id</NAMEKEY>
+				<CONTROLTYPE>HTML</CONTROLTYPE>
+				<PREFIX />
+				<TEXT />
+				<TEXTKEY>Text</TEXTKEY>
+				<PARAMNAME />
+				<PARENTTREE />
+				<ISVISIBLE>True</ISVISIBLE>
+			</CTX_PROPS>
+			<CHILDREN>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>HEAD</TAG>
+						<Text>Coordonnées bancaires</Text>
+						<InnerHTML>&lt;TITLE&gt;Coordonnées bancaires&lt;/TITLE&gt;
+&lt;SCRIPT&gt;
+function loadPopup() {
+_sweapp.S_CmdMgr.Initialize(top.opener.top._swe._sweapp.S_App,true);
+top._sweapp.cmdInit = true;
+}
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;</InnerHTML>
+						<OuterHTML>&lt;HEAD&gt;&lt;TITLE&gt;Coordonnées bancaires&lt;/TITLE&gt;
+&lt;SCRIPT&gt;
+function loadPopup() {
+_sweapp.S_CmdMgr.Initialize(top.opener.top._swe._sweapp.S_App,true);
+top._sweapp.cmdInit = true;
+}
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+						<TITLE>HEAD</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>HEAD</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TITLE</TAG>
+								<Text>Coordonnées bancaires</Text>
+								<InnerHTML>Coordonnées bancaires</InnerHTML>
+								<OuterHTML>&lt;TITLE&gt;Coordonnées bancaires&lt;/TITLE&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|0</BOUNDINGRECT>
+								<TITLE>TITLE - Coordonnées bancaires</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TITLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Coordonnées bancaires</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>FRAMESET</TAG>
+						<InnerHTML>&lt;FRAME noResize marginHeight=0 src="/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;amp;SWESP=1&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_swepopcontent marginWidth=0 scrolling=no OT="_swepopcontent Frame"&gt;&lt;FRAME title="" noResize marginHeight=0 src="?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=_sweapp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_sweapp marginWidth=0 scrolling=no&gt;</InnerHTML>
+						<OuterHTML>&lt;FRAMESET onload=loadPopup() frameSpacing=0 border=0 frameBorder=0 rows=100%,*&gt;&lt;FRAME noResize marginHeight=0 src="/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;amp;SWESP=1&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_swepopcontent marginWidth=0 scrolling=no OT="_swepopcontent Frame"&gt;&lt;FRAME title="" noResize marginHeight=0 src="?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=_sweapp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_sweapp marginWidth=0 scrolling=no&gt;&lt;/FRAMESET&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+						<border>0</border>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|1864|326</BOUNDINGRECT>
+						<TITLE>FRAMESET</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>FRAMESET</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_swepopcontent</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;amp;SWESP=1&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_swepopcontent marginWidth=0 scrolling=no OT="_swepopcontent Frame"&gt;</OuterHTML>
+								<src>/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;SWEC=174&amp;SWEFrame=top._sweclient._swecontent._sweview._swetmp&amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b&amp;SWESP=1&amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b</src>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>2|2|1860|322</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_swepopcontent</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_sweapp</name>
+								<OuterHTML>&lt;FRAME title="" noResize marginHeight=0 src="?SWECmd=GetCachedFrame&amp;amp;SWEC=174&amp;amp;SWEFrame=_sweapp&amp;amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b" frameBorder=Yes name=_sweapp marginWidth=0 scrolling=no&gt;</OuterHTML>
+								<src>?SWECmd=GetCachedFrame&amp;SWEC=174&amp;SWEFrame=_sweapp&amp;SRN=ccLknoRtbkFOOfpcDE2YjtIsQc0dNkqyCdAv44a5zZ0b</src>
+								<range>1</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>2|324|1860|0</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_sweapp</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+			</CHILDREN>
+		</ITEM>
+	</CHILDREN>
+</PAGE>

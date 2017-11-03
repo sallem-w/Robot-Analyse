@@ -27,7 +27,7 @@ var confFileANALYSEClass = function() {
 								paiementAdhesion : '',
 								dateEffetAControler : '',
 								payeurSouscriptDifferent : '',
-								clauseBenef : '',
+								clauseBenefAdh : '',
 								clauseBenefConjoint : '',
 								controleGestion : ''
             }

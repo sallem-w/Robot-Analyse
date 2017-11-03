@@ -352,3 +352,16 @@ GRCHarMu.pMain = GRCHarMu.addPage('pMain', {"comment":"GRC Harmonie Mutuelles - 
 GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
 GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
 GRCHarMu.pRechercheAI.btRechecher = GRCHarMu.pRechercheAI.addItem('btRechecher');
+GRCHarMu.pRechercheAI.oList = GRCHarMu.pRechercheAI.addItem('oList', {"customType":"siebel.grid"});
+
+GRCHarMu.pBulletinAdhesion = GRCHarMu.addPage('pBulletinAdhesion', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20Individual%20Policy%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=QtVljFBP8Asav7kR5gkX4HFIzP4YP55AItVGXblv4Dgb"});
+GRCHarMu.pBulletinAdhesion.oDateEffet = GRCHarMu.pBulletinAdhesion.addItem('oDateEffet', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oTab = GRCHarMu.pBulletinAdhesion.addItem('oTab', {"customType":"siebel.tab"});
+GRCHarMu.pBulletinAdhesion.btCoordBancaires = GRCHarMu.pBulletinAdhesion.addItem('btCoordBancaires');
+GRCHarMu.pBulletinAdhesion.oGestControl = GRCHarMu.pBulletinAdhesion.addItem('oGestControl', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oPaiementAdh = GRCHarMu.pBulletinAdhesion.addItem('oPaiementAdh', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oDateAdh = GRCHarMu.pBulletinAdhesion.addItem('oDateAdh');
+
+GRCHarMu.pDetailAdhesion = GRCHarMu.addPage('pDetailAdhesion', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20Individual%20Policy%20Complement%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=lY5w8uVHwvBCoe73vfNG9daIe9UrJ7I4S2sDiKeaNFAb"});
+GRCHarMu.pDetailAdhesion.oClBenefAdh = GRCHarMu.pDetailAdhesion.addItem('oClBenefAdh', {"customType":"siebel.edit"});
+GRCHarMu.pDetailAdhesion.oClBenefConj = GRCHarMu.pDetailAdhesion.addItem('oClBenefConj', {"customType":"siebel.edit"});

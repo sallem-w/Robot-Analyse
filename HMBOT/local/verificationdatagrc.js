@@ -11,11 +11,11 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
@@ -53,9 +53,6 @@ GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stInitVerificationGRC: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stInitVerificationGRC: ' + data.ppCouranteAnalyse.dataLocale.numExtCtt);	
-	ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
-	ctx.siebel.initApplication(GRCHarMu.pMain);
 	ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 	sc.endStep();
 	return;
@@ -157,6 +154,7 @@ GRCHarMu.step({ stVerificationGRC: function(ev, sc, st) {
 	GRCHarMu.scenarios.scAnalyseDataGRC.start(data).onEnd(function(sc3) {
 		sc.data=sc3.data;
 		ctx.traceF.infoTxt('************* Fin scénario Analyse Data GRC Siebel *************');
+		ActivInfinitev7.pTabDeBord.activate();
 		sc.endStep();
 	});
 }});
@@ -170,6 +168,7 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 	ActivInfinitev7.scenarios.scRechercheAnalysePP.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('************* Fin scénario recherche et analyse situation PP *************');
+		GRCHarMu.pRechercheAI.activate();
 		sc.endStep();
 	});
 }});
@@ -184,7 +183,7 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 	var compGammeCode = data.ppCouranteAnalyse.notes.presenceHPP;
 	if(data.ppCouranteAnalyse.notes.presenceHPP === 'Oui'){ 
 		if(data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible){
-			compGammeCode += '/Oui compatible';
+			compGammeCode += ' compatible';
 		}else{
 			compGammeCode += '/Non compatible';
 		}
@@ -195,6 +194,14 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.dateTraitementAnalyse, value: dateTrait
 			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.presenceHPP, value: compGammeCode
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.paiementAdhesion, value: data.ppCouranteAnalyse.notes.paiementAdhesion
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.controleGestion, value: data.ppCouranteAnalyse.notes.gestionControl
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.clauseBenefAdh, value: data.ppCouranteAnalyse.notes.clauseBenefAdh
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.clauseBenefConjoint, value: data.ppCouranteAnalyse.notes.clauseBenefConjoint
 			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
@@ -215,20 +222,14 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	}else{
 		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
 		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
+		data.ppCouranteAnalyse.notes.gestionControl = 'Non',
 		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
+		data.ppCouranteAnalyse.notes.paiementAdhesion = 'Non';
+		data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Non';
+		data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Non';
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}
-	/*if(data.varGlobales.ligneCourante === 3){  //cas particulier pour tester l'isertion dans le data grid
-		sc.endStep();
-		return;
-	}else{
-		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
-		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
-		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
-		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
-	  return;
-	}*/
 }});
 
 
@@ -237,7 +238,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	//ctx.traceF.infoTxt('Etape stFinVerifDataGRC: ');
-	ctx.log('*** Etape stFinVerifDataGRC ***');
+	
 	sc.endScenario();
 	return;
 }});

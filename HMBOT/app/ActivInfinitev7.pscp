@@ -3274,7 +3274,7 @@
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Produits/Garanties ]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Produits/Garanties ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

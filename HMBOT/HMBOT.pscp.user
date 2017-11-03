@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="87" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="3467" Length="126"><![CDATA[ctx.traceF.infoTxt('Etape stInitConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="105" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="4262" Length="71"><![CDATA[var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();]]></BREAKPOINT>
-	</BREAKPOINTS>
+	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[clickLink]]></FINDWHAT>
+		<FINDWHAT><![CDATA[navigateView]]></FINDWHAT>
+		<FINDWHAT><![CDATA[GLOBAL.events.START.on]]></FINDWHAT>
+		<FINDWHAT><![CDATA[initAppl]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stListeOprtsSuivante]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRadie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat]]></FINDWHAT>
@@ -18,14 +20,9 @@
 		<FINDWHAT><![CDATA[focus]]></FINDWHAT>
 		<FINDWHAT><![CDATA[GRCHarmonieMutuelle]]></FINDWHAT>
 		<FINDWHAT><![CDATA[grid]]></FINDWHAT>
-		<FINDWHAT><![CDATA[GLOBAL.events.START.on]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stTraiterResultatRecherchePP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRechercheProduitHPP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[tabProduits]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireRefGRC]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireRefGRC)]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLectureData]]></FINDWHAT>
-		<FINDWHAT><![CDATA[scVerifDataGRC]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[GRCHarMu]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
@@ -49,14 +46,11 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="107" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="128" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="77" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="395" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="39" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='analyse_situation']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="87" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="128" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="30" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="137" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="142" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="228" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="421" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
