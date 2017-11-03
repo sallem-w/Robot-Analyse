@@ -134,7 +134,8 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			}
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
-			}
+			} 
+			
 			sc.endStep();
 			return;
 		});
