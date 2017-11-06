@@ -202,6 +202,8 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.clauseBenefAdh, value: data.ppCouranteAnalyse.notes.clauseBenefAdh
 			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.clauseBenefConjoint, value: data.ppCouranteAnalyse.notes.clauseBenefConjoint
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.dateEffetAControler, value: data.ppCouranteAnalyse.notes.dateEffetAControler
 			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
@@ -227,6 +229,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.ppCouranteAnalyse.notes.paiementAdhesion = 'Non';
 		data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Non';
 		data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Non';
+		data.ppCouranteAnalyse.notes.dateEffetAControler = 'Non';
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}

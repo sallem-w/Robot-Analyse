@@ -228,6 +228,15 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btCoordBancaires">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Part"><![CDATA[Coordonnées bancaires]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_MesPolicesDevis_1354262_1" Comment="[_svf0] - Mes polices/devis" CtxtId="2694" Techno="WEB" Timestamp="03/11/2017 13:54:45" />
 				</PAGE>

@@ -86,9 +86,7 @@ GRCHarMu.step({ stBuletinAdhesion: function(ev, sc, st) {
 		GRCHarMu.pRechercheAI.oList.clickLink(1,1, function(){
 			sc.endStep();
 			return;
-		});
-		//ctx.siebel.navigateView(GRCHarMu.pBulletinAdhesion);
-		
+		});	
 	});
 }});
 
@@ -101,7 +99,8 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 		//get data
 		var paiemenAdh = GRCHarMu.pBulletinAdhesion.oPaiementAdh.get();
 		var dateEffet = GRCHarMu.pBulletinAdhesion.oDateEffet.get();
-		var dateAdh =  GRCHarMu.pBulletinAdhesion.oDateAdh.get();
+		var dateAdh =  GRCHarMu.pBulletinAdhesion.oDateAdh.getAttribute('value');
+		var dateRes = '01/'+ dateAdh.substr(3,2) +'/' +dateAdh.substr(6,4);
 		var gestionControl = GRCHarMu.pBulletinAdhesion.oGestControl.get();
 		// interprétation des res
 		if(paiemenAdh !== 'N'){
@@ -110,12 +109,14 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 		if(gestionControl !== 'N'){
 			data.ppCouranteAnalyse.notes.gestionControl = 'Oui';
 		}
+		if(ctx.dateF.estAvant(ctx.dateF.enObjet(dateEffet, '/'), ctx.dateF.enObjet(dateRes, '/'))){
+			data.ppCouranteAnalyse.notes.dateEffetAControler = 'Oui';
+		}	
 		GRCHarMu.pBulletinAdhesion.activate();
 			ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
 			sc.endStep();
 		  return;	
 	});
-	
 }});
 
 
@@ -134,8 +135,10 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			}
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
-			} 
-			
+			}
+			/*if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
+				GRCHarMu.pDetailAdhesion.btCoordBancaires.click();
+			}*/
 			sc.endStep();
 			return;
 		});

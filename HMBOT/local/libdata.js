@@ -139,7 +139,8 @@ ctx.dataF = (function () {
 				gestionControl : 'Non',
 				paiementAdhesion : 'Non',
 				clauseBenefAdh : 'Non',
-				clauseBenefConjoint : 'Non'
+				clauseBenefConjoint : 'Non',
+				dateEffetAControler : 'Non'
 			}	
 		};
 		

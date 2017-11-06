@@ -365,3 +365,4 @@ GRCHarMu.pBulletinAdhesion.oDateAdh = GRCHarMu.pBulletinAdhesion.addItem('oDateA
 GRCHarMu.pDetailAdhesion = GRCHarMu.addPage('pDetailAdhesion', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20Individual%20Policy%20Complement%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=lY5w8uVHwvBCoe73vfNG9daIe9UrJ7I4S2sDiKeaNFAb"});
 GRCHarMu.pDetailAdhesion.oClBenefAdh = GRCHarMu.pDetailAdhesion.addItem('oClBenefAdh', {"customType":"siebel.edit"});
 GRCHarMu.pDetailAdhesion.oClBenefConj = GRCHarMu.pDetailAdhesion.addItem('oClBenefConj', {"customType":"siebel.edit"});
+GRCHarMu.pDetailAdhesion.btCoordBancaires = GRCHarMu.pDetailAdhesion.addItem('btCoordBancaires');

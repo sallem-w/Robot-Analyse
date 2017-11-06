@@ -41,7 +41,7 @@
 			{ columnIndex: configExcel.indexColonne.paiementAdhesion, value: "Paiement à l’adhésion" },
 			{ columnIndex: configExcel.indexColonne.dateEffetAControler, value: "Date d’effet à contrôler" },
 			{ columnIndex: configExcel.indexColonne.payeurSouscriptDifferent, value: "Payeur différent du souscripteur" },
-			{ columnIndex: configExcel.indexColonne.clauseBenef, value: "Clause bénéficiaire" },
+			{ columnIndex: configExcel.indexColonne.clauseBenefAdh, value: "Clause bénéficiaire" },
 			{ columnIndex: configExcel.indexColonne.clauseBenefConjoint, value: "Clause bénéficiaire conjoint" },
 			{ columnIndex: configExcel.indexColonne.controleGestion, value: "Contrôle gestion" }
 		];	

@@ -306,19 +306,31 @@ ActivInfinitev7.step({ stRecherchePPParRO: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stRecherchePPParRO, Numéro RO : ' + data.ppCouranteAnalyse.dataLocale.numeroRO);		
 	ActivInfinitev7.pRecherchePPRefGRC.wait(function(){
-		if(ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.exist()){
-			ActivInfinitev7.pRecherchePPRefGRC.oNom.set(data.ppCouranteAnalyse.dataLocale.nom);
-		  ActivInfinitev7.pRecherchePPRefGRC.oPrenom.set(data.ppCouranteAnalyse.dataLocale.prenom);
-		  ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance.set(ctx.dateF.formatDateIAE(data.ppCouranteAnalyse.dataLocale.dateDeNaissance+''));
-			ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.set(data.ppCouranteAnalyse.dataLocale.numeroRO);
-			ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP.click();
-			sc.endStep();
-	    return;
-		}else{
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
-			  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-	      	return;
-		}	
+		var nbCount = 0;
+		ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				nbCount ++;
+				return ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.exist(); 
+			},
+			done: function() { 
+				// add code here
+				ActivInfinitev7.pRecherchePPRefGRC.oNom.set(data.ppCouranteAnalyse.dataLocale.nom);
+		  	ActivInfinitev7.pRecherchePPRefGRC.oPrenom.set(data.ppCouranteAnalyse.dataLocale.prenom);
+		  	ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance.set(ctx.dateF.formatDateIAE(data.ppCouranteAnalyse.dataLocale.dateDeNaissance+''));
+				ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo.set(data.ppCouranteAnalyse.dataLocale.numeroRO);
+				ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP.click();
+				sc.endStep();
+	    	return;
+			},
+			fail: function() { 
+				// add code here
+				data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+			  sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+	      return;
+			}
+		});
 	});
 }});
 
