@@ -466,6 +466,24 @@ ActivInfinitev7.step({ stAnalyseContratsIA: function(ev, sc, st) {
 	ActivInfinitev7.pHistoriqueOptsConsul.wait(function(){
 		sc.endStep();
 		return;
+		/*ctx.polling({
+			delay: 100,
+			nbMax: 10,
+			test: function(index) { 
+				return ActivInfinitev7.pHistoriqueOptsConsul.oTableOperationsInfo.exist(); 
+			},
+			done: function() { 
+				// add code here
+				ctx.log('page existe');
+				sc.endStep();
+				return;
+			},
+			fail: function() { 
+				// add code here
+				sc.endStep();
+				return;
+			}
+		});*/
 	});
 }});
 

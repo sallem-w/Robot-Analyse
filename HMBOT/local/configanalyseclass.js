@@ -19,6 +19,7 @@ var confFileANALYSEClass = function() {
 							  gammeProduit: '',
 							  debDateEffet: '',
 							  numProduit1 : '',
+							  numProduit10 : '',
 							  numSEQ : '',
 							  numExtCtt : '',
 								contexteAnalyseStoppee : '',

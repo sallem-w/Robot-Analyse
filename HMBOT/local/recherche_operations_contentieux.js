@@ -23,8 +23,8 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
 
-//	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
-//	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
+	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
+	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
 	
 	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);	
 }});
@@ -86,6 +86,7 @@ ActivInfinitev7.step({ stInitConsultationProGaran: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
 	if(data.ppCouranteAnalyse.dataEnLigne.tousStatutVrai === true){
+		ctx.log('============================ tous les contrats sont inactifs: ================================');
 		ActivInfinitev7.pHistoriqueOptsConsul.oProdGaran.click();
 		sc.endStep();
 		return;
@@ -101,8 +102,29 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
 	ActivInfinitev7.pProdGaranConsul.wait(function(ev){
+		
+		ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				return ActivInfinitev7.pProdGaranConsul.oTitrePage.exist(); 
+			},
+			done: function() { 
+				// add code here
+				ctx.log('existe');
+					sc.endStep();
+					return;
+			},
+			fail: function() { 
+				// add code here
+					sc.endStep();
+				return;
+			}
+		});
+		
+		
 		//récupéaration de la liste des produits et recherche de: nom, prenom, dn dans les data du chaque produit jusqu'à existe === true
-		var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();
+	/*	var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();
 		var nomPre = '';
 		var dNaiss = '';
 		var nomPP = data.ppCouranteAnalyse.dataLocale.nom+'';
@@ -116,7 +138,7 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 			}
 		}
 		sc.endStep();
-		return;
+		return;*/
 	});
 }});
 

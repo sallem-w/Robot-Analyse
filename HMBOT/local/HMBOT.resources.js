@@ -142,17 +142,14 @@ ActivInfinitev7.pIdentAssuresAttest.oBtnPageCourante = ActivInfinitev7.pIdentAss
 ActivInfinitev7.pProdGaranConsul = ActivInfinitev7.addPage('pProdGaranConsul', {"comment":"Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage', {"mustExist":true});
 ActivInfinitev7.pProdGaranConsul.oListeAssures = ActivInfinitev7.pProdGaranConsul.addItem('oListeAssures', {"occurs":1});
-ActivInfinitev7.pProdGaranConsul.oNomPrenomBenef = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenomBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oTypeBenef = ActivInfinitev7.pProdGaranConsul.addItem('oTypeBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oCodeProduit = ActivInfinitev7.pProdGaranConsul.addItem('oCodeProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateRadProduit = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oEtatProduit = ActivInfinitev7.pProdGaranConsul.addItem('oEtatProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.btVisuCotisation = ActivInfinitev7.pProdGaranConsul.addItem('btVisuCotisation');
 ActivInfinitev7.pProdGaranConsul.oLongTableGaranties = ActivInfinitev7.pProdGaranConsul.addItem('oLongTableGaranties');
-ActivInfinitev7.pProdGaranConsul.btMajPage = ActivInfinitev7.pProdGaranConsul.addItem('btMajPage');
 ActivInfinitev7.pProdGaranConsul.btFermeture = ActivInfinitev7.pProdGaranConsul.addItem('btFermeture');
 ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.addItem('btSuivant');
-ActivInfinitev7.pProdGaranConsul.oBtnPageCourante = ActivInfinitev7.pProdGaranConsul.addItem('oBtnPageCourante');
 ActivInfinitev7.pProdGaranConsul.oNomPrenom = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenom', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateNaissAdh = ActivInfinitev7.pProdGaranConsul.addItem('oDateNaissAdh', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateRadiation = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadiation', {"occurs":1});

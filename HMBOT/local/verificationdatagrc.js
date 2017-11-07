@@ -11,11 +11,11 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
@@ -73,7 +73,7 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 			ctx.traceF.infoTxt('Reference GRC: '+data.ppCouranteAnalyse.dataLocale.referenceGRC +', ligne courante: '+data.varGlobales.ligneCourante);
 			//lire la gamme du produit
 			data.ppCouranteAnalyse.dataLocale.gammeProduit = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.gammeProduit);
-			//lire le numéro de séquence
+			//lire le numéro de séquence (lu avec l'adhérent principale
 			data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
 			//lire nom, prénom, date naissace, numRO
 			
@@ -81,35 +81,30 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 	  	data.ppCouranteAnalyse.dataLocale.prenom = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.prenom);
 	  	data.ppCouranteAnalyse.dataLocale.dateDeNaissance = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.dateDeNaissance);
 			data.ppCouranteAnalyse.dataLocale.numeroRO = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numeroRO);
-			//lire la liste des produits (pour l'assuré principale et le conjoint)
+			//lire la liste des produits (pour tous les bénéficiares)
+			/**
+			*
+			* Recupération de la liste des produits de l'adhérent principale et des autres bénéficiaires (les collonnes allant de BD à BM)
+			*
+			*/
 			var j = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit1;
-			var numProdPC;
-			var tempLigneCourante = data.varGlobales.ligneCourante +1;
+			var k = data.scenarioConfig.ANALYSE.excel.indexColonne.numProduit10;
+			var numProdPC = '';
+			var tempLigneCourante = data.varGlobales.ligneCourante;
 			data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj = [];
-			if(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ === ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ) && ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type) === 'Conjoint'){
-				for(var i =0; i<10; i++){
-		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
-						numProdPC = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);
+			while(tempLigneCourante <= data.varGlobales.indexDerniereLigne && data.ppCouranteAnalyse.dataLocale.numSEQ ===ctx.excel.sheet.getCell(tempLigneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ)){
+				numProdPC = '';
+				for(var i =j; i<= k; i++){
+					var cellContent = ctx.excel.sheet.getCell(tempLigneCourante, i);
+					if(cellContent !== undefined){
+						numProdPC += ctx.excel.sheet.getCell(tempLigneCourante, i)+':';
 					}
-					if(ctx.excel.sheet.getCell(tempLigneCourante, j) !== undefined){
-						numProdPC += ':'+ctx.excel.sheet.getCell(tempLigneCourante, j);
-					}
-					data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj.push(numProdPC);
-					numProdPC = '';
-          j += 1;
-			  }
-			}else{ 
-				for(var i =0; i<10; i++){
-		  		if(ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j) !== undefined){
-						numProdPC = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, j);
-					}
-				  data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj.push(numProdPC);			
-					numProdPC = '';
-		    	j += 1;
-	    	}
+				}
+				data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj.push(numProdPC);
+				tempLigneCourante ++;
 			}
 			sc.endStep();
-	    return;
+			return;
 		}else{
 			sc.endStep(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 			return;
@@ -123,24 +118,40 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stRechercheProduitHPP - Recherche de produit HPP: '+data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	var res = [];
-	for(var i=0; i<10; i++){
-		res = data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj[i].split(':');
-		for (var j in data.ppCouranteAnalyse.dataLocale.tabProduits){	//liste des 10 produits dans la config JSON
-			if(res[0]  === data.ppCouranteAnalyse.dataLocale.tabProduits[j] || res[1] === data.ppCouranteAnalyse.dataLocale.tabProduits[j]){
+	/*
+	*
+	* Voir si la Produit HPP EXISTE ou non
+	* Voir si le produit HPP Existe la gamme (colonne BC) est compatible ou non 
+	*
+	*/
+	for (var j in data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj){
+		var jProduits = data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj[j];
+		for(var i in data.ppCouranteAnalyse.dataLocale.tabProduits){	//liste des 10 produits dans la config JSON
+			var iProduit = data.ppCouranteAnalyse.dataLocale.tabProduits[i];
+			if(jProduits.indexOf(iProduit)!== -1){
 				data.ppCouranteAnalyse.dataEnLigne.HPPExiste = true;
 				data.ppCouranteAnalyse.notes.presenceHPP = 'Oui';
-		  }
-	  }
+				break;
+			}
+		}
 	}
-	for(var i in data.ppCouranteAnalyse.dataLocale.tabGammeCode){
+	//vérification de la compatibilité des gammes
+	for(var i in data.ppCouranteAnalyse.dataLocale.tabGammeCode){ //liste des gammes, codes, comp du fichier de config JSON
 		res = data.ppCouranteAnalyse.dataLocale.tabGammeCode[i].split(':');
 		if(res[0] === data.ppCouranteAnalyse.dataLocale.gammeProduit && res[2] === '1'){
 			data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = true;
 			break;
 		}
 	}
-	sc.endStep();
-	return;
+	if(data.ppCouranteAnalyse.notes.presenceHPP === true){
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création contrat - produit HPP existe';
+		sc.endStep(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
+		return;
+	}else{
+		sc.endStep();
+		return;
+	}
+
 }});
 
 
@@ -230,6 +241,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Non';
 		data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Non';
 		data.ppCouranteAnalyse.notes.dateEffetAControler = 'Non';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = '';
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}
