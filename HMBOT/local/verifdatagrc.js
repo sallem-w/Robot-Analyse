@@ -13,6 +13,7 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
+	//sc.step(GRCHarMu.steps.stLireDataBancaires);
 //	sc.step(GRCHarMu.steps.stStep8);
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
@@ -136,7 +137,7 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
 			}
-			/*if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
+		/*	if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
 				GRCHarMu.pDetailAdhesion.btCoordBancaires.click();
 			}*/
 			sc.endStep();
@@ -146,6 +147,22 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 
 }});
 
+
+
+/** Description */
+GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.wait(function(ev){
+		GRCHarMu.pCoordonneesBancaires.activate();
+		GRCHarMu.pCoordonneesBancaires.wait(function(ev){
+		  var lignecourante = GRCHarMu.pCoordonneesBancaires.oList.getActiveRow();
+			GRCHarMu.pCoordonneesBancaires.btOk.click();
+			sc.endStep();
+			return;
+		});
+	},3000);
+
+}});
 
 /** Description */
 GRCHarMu.step({ stFinVerifGRC: function(ev, sc, st) {

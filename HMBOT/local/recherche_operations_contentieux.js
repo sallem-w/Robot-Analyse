@@ -71,7 +71,6 @@ ActivInfinitev7.step({ stListeOprtsSuivante: function(ev, sc, st) {
 	var html = ActivInfinitev7.pHistoriqueOptsConsul.btNext.html();
 	var exist = html.indexOf('disabled');
 	if(exist !== -1){
-		//sc.endStep(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
 		sc.endStep();
 	  return;	
 	}else{
@@ -85,8 +84,7 @@ ActivInfinitev7.step({ stListeOprtsSuivante: function(ev, sc, st) {
 ActivInfinitev7.step({ stInitConsultationProGaran: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-	if(data.ppCouranteAnalyse.dataEnLigne.tousStatutVrai === true){
-		ctx.log('============================ tous les contrats sont inactifs: ================================');
+	if(data.ppCouranteAnalyse.dataEnLigne.tousStatutInactifs === true){
 		ActivInfinitev7.pHistoriqueOptsConsul.oProdGaran.click();
 		sc.endStep();
 		return;
@@ -97,7 +95,10 @@ ActivInfinitev7.step({ stInitConsultationProGaran: function(ev, sc, st) {
 }});
 
 
-/** Description */
+/** Si la date de radiation est > ctx.getDate() alors le contrat est actif à la date du jour et met à jour le flag contratEstActif 
+* A interpréter dans le scénario RechercheEtAnalysePP
+* Si dateRadSupDJour === FALSE  et pas de trace PCX alors tos les cobtrats sont radiés  ==> data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création de contrat – Pas de contrat actif sur la PP';
+*/
 ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
@@ -111,9 +112,28 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 			},
 			done: function() { 
 				// add code here
-				ctx.log('existe');
-					sc.endStep();
-					return;
+				var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();
+				var nomPre = '';
+				var dNaiss = '';
+				var nomPP = data.ppCouranteAnalyse.dataLocale.nom+'';
+				var prenomPP	 = data.ppCouranteAnalyse.dataLocale.prenom+'';
+				var dNaissPP = data.ppCouranteAnalyse.dataLocale.dateDeNaissance;
+				for(var i in listeAdh){
+					nomPre = ActivInfinitev7.pProdGaranConsul.oNomPrenom.i(i).get();
+					dNaiss = ActivInfinitev7.pProdGaranConsul.oDateNaissAdh.i(i).get();
+					if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP)){
+						data.ppCouranteAnalyse.dataEnLigne.dateRadiation = ActivInfinitev7.pProdGaranConsul.oDateRadiation.i(i).get();
+						if(ctx.dateF.enObjet(data.ppCouranteAnalyse.dataEnLigne.dateRadiation) > ctx.getDate()){
+							//le conrat en cours est actif
+							data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour = true;
+							data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
+						}else{
+							data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;
+						}
+					}
+				}
+				sc.endStep();
+				return;
 			},
 			fail: function() { 
 				// add code here
@@ -121,26 +141,25 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 				return;
 			}
 		});
-		
-		
-		//récupéaration de la liste des produits et recherche de: nom, prenom, dn dans les data du chaque produit jusqu'à existe === true
-	/*	var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();
-		var nomPre = '';
-		var dNaiss = '';
-		var nomPP = data.ppCouranteAnalyse.dataLocale.nom+'';
-		var prenomPP	 = data.ppCouranteAnalyse.dataLocale.prenom+'';
-		var dNaissPP = data.ppCouranteAnalyse.dataLocale.dateDeNaissance;
-		for(var i in listeAdh){
-			nomPre = ActivInfinitev7.pProdGaranConsul.oNomPrenom.i(i).get();
-			dNaiss = ActivInfinitev7.pProdGaranConsul.oDateNaissAdh.i(i).get();
-			if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP)){
-				data.ppCouranteAnalyse.dataEnLigne.dateRadiation = ActivInfinitev7.pProdGaranConsul.oDateRadiation.i(i).get();
-			}
-		}
-		sc.endStep();
-		return;*/
 	});
 }});
+
+
+/** Description */
+ActivInfinitev7.step({ stListeProduitsSuivante: function(ev, sc, st) {
+	var data = sc.data;
+	var html = ActivInfinitev7.pProdGaranConsul.btNext.html();
+	var exist = html.indexOf('disabled');
+	if(exist !== -1){
+		sc.endStep();
+	  return;	
+	}else{
+		ActivInfinitev7.pProdGaranConsul.btNext.click();
+		sc.endStep(ActivInfinitev7.steps.stConsultationProGaran);
+		return;
+	}
+}});
+
 
 /** Description */
 /*ActivInfinitev7.step({ stConsultProduitsGaranties: function(ev, sc, st) {

@@ -1,33 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="467" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="19435" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="114" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="4432" Length="18"><![CDATA[ctx.log('existe');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="103" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="4061" Length="122"><![CDATA[ctx.traceF.infoTxt('Etape stConsultationProGaran, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="89" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="3661" Length="106"><![CDATA[ctx.log('============================ tous les contrats sont inactifs: ================================');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="506" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="20826" Length="105"><![CDATA[ctx.log('dans cette étape on vérifie si la PP est enregistrer ou non , uniquement sur un contrat actif');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="157" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="6099" Length="48"><![CDATA[ActivInfinitev7.pProdGaranConsul.btNext.click();]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stFinAnalyseContratsIA]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.statusCCourant]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRadie]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.critereRecherche]]></FINDWHAT>
+		<FINDWHAT><![CDATA[tousStatutVrai]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.tousStatutVrai]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.gammeProduit]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.contratEstActif]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nbContratRadie]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Pas de contrat actif sur la PP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[adhesionEstEnregistree]]></FINDWHAT>
 		<FINDWHAT><![CDATA[oNomPrenomBenef]]></FINDWHAT>
 		<FINDWHAT><![CDATA[oNomPrenom]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stConsultationProGaran]]></FINDWHAT>
-		<FINDWHAT><![CDATA[tousStatutVrai]]></FINDWHAT>
 		<FINDWHAT><![CDATA[indexof]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stRechercheProduitHPP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[pas de contrat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[clickLink]]></FINDWHAT>
-		<FINDWHAT><![CDATA[navigateView]]></FINDWHAT>
-		<FINDWHAT><![CDATA[GLOBAL.events.START.on]]></FINDWHAT>
-		<FINDWHAT><![CDATA[initAppl]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stListeOprtsSuivante]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRadie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContrat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[est]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pIdentContratRechResu]]></FINDWHAT>
-		<FINDWHAT><![CDATA[oHistoriqueOpts]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitAnalyseContratsIA]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitRechercheEtAnalysePP]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[tousStatutInactifs]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[GRCHarMu]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
@@ -47,21 +46,15 @@
 		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[pValidationActe.]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[pVisuCptCotisChgtCouv.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[pHistoCotisation.]]></REPLACEWITH>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="103" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="99" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="143" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="126" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="467" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="37" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="32" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="131" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libDate']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="52" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="141" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="510" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
-		<CurPerspective><![CDATA[0]]></CurPerspective>
+		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>

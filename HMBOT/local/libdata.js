@@ -117,6 +117,7 @@ ctx.dataF = (function () {
 			dataEnLigne: {
 				nbContrat : 0,
 				nbContratRadie : 0,
+				nbContratRad: 0,
 				indexContrat : 0,
 				typeRelation : '',
 				identiteRelation : '',
@@ -125,7 +126,8 @@ ctx.dataF = (function () {
 				adhesionEstEnregistree : false,
 			  HPPExiste : false,
 			  produitGammeCompatible : false,
-				tousStatutVrai : false,
+				tousStatutInactifs : false,
+			  dateRadSupDjour : false,				
 				codeOffre : '',
 				debDateEffet : '',
 				critereRecherche : 1,

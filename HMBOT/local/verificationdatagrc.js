@@ -139,6 +139,7 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 	for(var i in data.ppCouranteAnalyse.dataLocale.tabGammeCode){ //liste des gammes, codes, comp du fichier de config JSON
 		res = data.ppCouranteAnalyse.dataLocale.tabGammeCode[i].split(':');
 		if(res[0] === data.ppCouranteAnalyse.dataLocale.gammeProduit && res[2] === '1'){
+			data.ppCouranteAnalyse.dataLocale.codeOffre = res[1];
 			data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = true;
 			break;
 		}

@@ -153,6 +153,8 @@ ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.ad
 ActivInfinitev7.pProdGaranConsul.oNomPrenom = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenom', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateNaissAdh = ActivInfinitev7.pProdGaranConsul.addItem('oDateNaissAdh', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateRadiation = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadiation', {"occurs":1});
+ActivInfinitev7.pProdGaranConsul.btIdentContrat = ActivInfinitev7.pProdGaranConsul.addItem('btIdentContrat');
+ActivInfinitev7.pProdGaranConsul.btNext = ActivInfinitev7.pProdGaranConsul.addItem('btNext');
 
 ActivInfinitev7.pVisuCptCotisConsul = ActivInfinitev7.addPage('pVisuCptCotisConsul', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage', {"mustExist":true});
@@ -363,3 +365,9 @@ GRCHarMu.pDetailAdhesion = GRCHarMu.addPage('pDetailAdhesion', {"comment":"[_svf
 GRCHarMu.pDetailAdhesion.oClBenefAdh = GRCHarMu.pDetailAdhesion.addItem('oClBenefAdh', {"customType":"siebel.edit"});
 GRCHarMu.pDetailAdhesion.oClBenefConj = GRCHarMu.pDetailAdhesion.addItem('oClBenefConj', {"customType":"siebel.edit"});
 GRCHarMu.pDetailAdhesion.btCoordBancaires = GRCHarMu.pDetailAdhesion.addItem('btCoordBancaires');
+
+GRCHarMu.pMainCB = GRCHarMu.addPage('pMainCB', {"comment":"Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames\u0026SWEDIC=1\u0026SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d70%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb%26SWESP%3d1%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
+
+GRCHarMu.pCoordonneesBancaires = GRCHarMu.addPage('pCoordonneesBancaires', {"comment":"[_swepopcontent] - Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame\u0026SWEC=106\u0026SWEFrame=top._sweclient._swecontent._sweview._swetmp\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SWESP=1\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
+GRCHarMu.pCoordonneesBancaires.oList = GRCHarMu.pCoordonneesBancaires.addItem('oList', {"customType":"siebel.grid"});
+GRCHarMu.pCoordonneesBancaires.btOk = GRCHarMu.pCoordonneesBancaires.addItem('btOk');
