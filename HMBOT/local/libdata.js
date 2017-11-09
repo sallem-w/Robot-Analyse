@@ -133,7 +133,8 @@ ctx.dataF = (function () {
 				critereRecherche : 1,
 				dateEffetConst : '01/01/2100',
 				statusCCourant : '',
-				dateRadiation : ''
+				dateRadiation : '',
+				tabCoordAssures : []
 			},
 			notes: {
 				contexteAnalyseStoppee : '',

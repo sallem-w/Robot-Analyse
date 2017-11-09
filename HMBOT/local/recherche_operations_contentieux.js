@@ -18,13 +18,14 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 	// add steps here...
 	
 	sc.step(ActivInfinitev7.steps.stInitRechercheOptrsContentieux);
-	//sc.step(ActivInfinitev7.steps.stInitParcoursListesOptrs);
 	sc.step(ActivInfinitev7.steps.stParcourirListeOperts);
-
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
-
 	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
 	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
+	sc.step(ActivInfinitev7.steps.stListeProduitsSuivante);
+	sc.step(ActivInfinitev7.steps.stInitIdentAssures);
+	sc.step(ActivInfinitev7.steps.stDataIdentAssures);
+	sc.step(ActivInfinitev7.steps.stListeAssuresSuivante);
 	
 	sc.step(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);	
 }});
@@ -49,7 +50,7 @@ ActivInfinitev7.step({ stParcourirListeOperts : function(ev, sc, st) {
     if (valContexte.indexOf('PCX') !== -1){
 			data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = true;
 			ctx.traceF.infoTxt('La trace PCX EXISTE, indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d’un précontentieux';
+			//data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d’un précontentieux';
 		}
 		index ++;
 	}
@@ -89,7 +90,7 @@ ActivInfinitev7.step({ stInitConsultationProGaran: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	}else{
-		sc.endStep(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
+		sc.endStep(ActivInfinitev7.steps.stInitIdentAssures);
 		return;
 	}
 }});
@@ -121,15 +122,13 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 				for(var i in listeAdh){
 					nomPre = ActivInfinitev7.pProdGaranConsul.oNomPrenom.i(i).get();
 					dNaiss = ActivInfinitev7.pProdGaranConsul.oDateNaissAdh.i(i).get();
-					if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP)){
+					if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP) && ctx.dateF.enObjet(data.ppCouranteAnalyse.dataEnLigne.dateRadiation) > ctx.getDate()){
 						data.ppCouranteAnalyse.dataEnLigne.dateRadiation = ActivInfinitev7.pProdGaranConsul.oDateRadiation.i(i).get();
-						if(ctx.dateF.enObjet(data.ppCouranteAnalyse.dataEnLigne.dateRadiation) > ctx.getDate()){
 							//le conrat en cours est actif
 							data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour = true;
 							data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
-						}else{
-							data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;
-						}
+					}else{
+						data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;
 					}
 				}
 				sc.endStep();
@@ -160,39 +159,88 @@ ActivInfinitev7.step({ stListeProduitsSuivante: function(ev, sc, st) {
 	}
 }});
 
+/**
+* les steps suivant consistent à déterminer les coordonnées des bénéf si le contrat est actif
+*
+*/
 
 /** Description */
-/*ActivInfinitev7.step({ stConsultProduitsGaranties: function(ev, sc, st) {
+ActivInfinitev7.step({ stInitIdentAssures: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stConsultProduitsGaranties (voir la liste des PRODUITS) indice du contrat : '+data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-	ActivInfinitev7.pProdGaranConsul.wait(function(ev){
-		//récupéaration de la liste des produits et recherche de: nom, prenom, dn dans les data du chaque produit jusqu'à existe === true
-		var listeAdh = ActivInfinitev7.pProdGaranConsul.oListeAssures.getAll();
-		var nomPre = '';
-		var dNaiss = '';
-		var nomPP = data.ppCouranteAnalyse.dataLocale.nom+'';
-		var prenomPP	 = data.ppCouranteAnalyse.dataLocale.prenom+'';
-		var dNaissPP = data.ppCouranteAnalyse.dataLocale.dateDeNaissance;
-		for(var i in listeAdh){
-			nomPre = ActivInfinitev7.pProdGaranConsul.oNomPrenom.i(i).get();
-			dNaiss = ActivInfinitev7.pProdGaranConsul.oDateNaissAdh.i(i).get();
-			if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP)){
-				data.ppCouranteAnalyse.dataEnLigne.dateRadiation = ActivInfinitev7.pProdGaranConsul.oDateRadiation.i(i).get();
-			}
+	ctx.traceF.infoTxt('Etape stInitIdentAssures: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	if(data.ppCouranteAnalyse.dataEnLigne.contratEstActif === true){
+		if(ActivInfinitev7.pHistoriqueOptsConsul.exist()){
+			ActivInfinitev7.pHistoriqueOptsConsul.btIdentAssures.click();
+			sc.endStep();
+			return;
+		}else{
+			ActivInfinitev7.pProdGaranConsul.btIdentAssures.click();
+			sc.endStep();
+			return;
 		}
-		ActivInfinitev7.pProdGaranConsul.oHistoriqueOpts.click();
-		sc.endStep();
+	}else{
+		sc.endStep(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
 		return;
+	}
+}});
+
+
+/** Description */
+ActivInfinitev7.step({ stDataIdentAssures: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stDataIdentAssures: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	ActivInfinitev7.pIdentAssures.wait(function(ev){
+		
+		ctx.polling({
+			delay: 300,
+			nbMax: 10,
+			test: function(index) { 
+				return ActivInfinitev7.pIdentAssures.oTitrePage.exist();
+			},
+			done: function() { 
+				// add code here
+				var listeAssures = ActivInfinitev7.pIdentAssures.oListeAssures.getAll();
+				var coordAssures = '';
+				for(var i in listeAssures){
+					coordAssures= ActivInfinitev7.pIdentAssures.oNomPrenom.i(i).get() + ':' + ActivInfinitev7.pIdentAssures.oDateNaissance.i(i).get();
+					data.ppCouranteAnalyse.dataEnLigne.tabCoordAssures[i] = coordAssures;
+					coordAssures = '';
+				}
+				sc.endStep();
+				return;
+			},
+			fail: function() { 
+				// add code here
+				sc.endStep();
+				return;
+			}
+		});
+		
 	});
 }});
-*/
+
+/** Description */
+ActivInfinitev7.step({ stListeAssuresSuivante: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stListeAssuresSuivante, indice du contrat : '+ data.ppCouranteAnalyse.dataEnLigne.indexContrat);
+	var html = ActivInfinitev7.pIdentAssures.btNext.html();
+	var exist = html.indexOf('disabled');
+	if(exist !== -1){
+		sc.endStep();
+	  return;	
+	}else{
+		ActivInfinitev7.pIdentAssures.btNext.click();
+		sc.endStep(ActivInfinitev7.steps.stDataIdentAssures);
+		return;
+	}
+}});
 
 /** Description */
 ActivInfinitev7.step({ stFinRechercheOptrsContentieux: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinRechercheOptrsContentieux, indice du contrat : '+  data.ppCouranteAnalyse.dataEnLigne.indexContrat);
-	
-	sc.endStep();
+	//on click sur identification des assurés, si le contrat courant est actif
+	sc.endScenario();
 	return;
 }});
 

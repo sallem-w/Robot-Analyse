@@ -1016,6 +1016,61 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="oListeAssures">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1R0" Occurs="Y">
+											<SET />
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oNomPrenom">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1R0R2" Range="2">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Part"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oDateNaissance">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1">
+										<TAG Name="TR" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1R0" Occurs="Y">
+											<TAG Name="TD" Scope="Children" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R5R1R0R0R1R0R3" Range="3">
+												<SET />
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="id">
+										<VALUE Scan="Part"><![CDATA[TableAssures]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNext">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="81.R0R1R7R0R0R2R0R0R0R53R0R0R1R0R0R0R7R0R3R0">
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[TableAssures_next]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_ConsultationN0029_1516506_1" Comment="Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion" CtxtId="81" Techno="WEB" Timestamp="31/05/2017 15:17:13" />
 					<CAPTURE Name="PAGE_ConsultationN2121_1035344_1" Comment="Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion" CtxtId="145" Techno="WEB" Timestamp="20/09/2017 10:35:51" />
@@ -1463,7 +1518,7 @@
 										<SET />
 									</TAG>
 									<ATT Name="Text">
-										<VALUE Scan="like"><![CDATA[Identification contrat ]]></VALUE>
+										<VALUE Scan="Like"><![CDATA[Identification contrat ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -1473,6 +1528,21 @@
 								<TAG Name="A" Scope="All" CapturedPos="148.R0R1R7R0R0R2R0R0R0R12R0R0R1R0R1R0R7R0R3R0">
 									<ATT Name="id">
 										<VALUE Scan="Full"><![CDATA[TableAssures_next]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIdentAssures">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="148.R0R1R7R0R0R0R2R0R3">
+									<TAG Name="DIV" Scope="Children" CapturedPos="148.R0R1R7R0R0R0R2R0R3R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Identification des assurés]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -3253,6 +3323,21 @@
 									</TAG>
 									<ATT Name="Text">
 										<VALUE Scan="Like"><![CDATA[Produits/Garanties ]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIdentAssures">
+							<CRITERE>
+								<TAG Name="LI" Scope="All" CapturedPos="174.R0R1R7R0R0R0R2R0R3">
+									<TAG Name="DIV" Scope="Children" CapturedPos="174.R0R1R7R0R0R0R2R0R3R0">
+										<ATT Name="class">
+											<VALUE Scan="Full"><![CDATA[cgd-step-circle cgd-step-valid tooltipstered]]></VALUE>
+										</ATT>
+										<SET />
+									</TAG>
+									<ATT Name="Text">
+										<VALUE Scan="like"><![CDATA[Identification des assurés ]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

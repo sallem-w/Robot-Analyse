@@ -1,8 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="506" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="20826" Length="105"><![CDATA[ctx.log('dans cette étape on vérifie si la PP est enregistrer ou non , uniquement sur un contrat actif');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="157" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="6099" Length="48"><![CDATA[ActivInfinitev7.pProdGaranConsul.btNext.click();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="503" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="20546" Length="93"><![CDATA[ctx.traceF.infoTxt('Etape stVerifTracePCX'+  data.ppCouranteAnalyse.dataLocale.referenceGRC);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="505" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="20697" Length="198"><![CDATA[ctx.traceF.infoTxt('La trace PCX existe dans le contexte - Fin recherche et analyse');//si on trouve la trace PCX avec le premier contrat, on s'arrete on continue pas le parcours des autres contrats]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="603" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="25630" Length="103"><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Gestion manuelle – Présence d’un contrat actif';]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="592" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="24922" Length="100"><![CDATA[ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="599" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="25484" Length="108"><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement';]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="595" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="25267" Length="109"><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création de contrat – Pas de contrat actif sur la PP';]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="559" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="23637" Length="128"><![CDATA[ctx.traceF.infoTxt('On a traité tous les contrats pour la recherche de la trace PCX et la vérif de l\'enregistrement de la PP');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="553" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="23263" Length="53"><![CDATA[data.ppCouranteAnalyse.dataEnLigne.indexContrat += 1;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="528" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="22369" Length="65"><![CDATA[data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = true;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="522" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="21538" Length="105"><![CDATA[ctx.log('dans cette étape on vérifie si la PP est enregistrer ou non , uniquement sur un contrat actif');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="131" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="5757" Length="53"><![CDATA[data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
@@ -49,9 +58,10 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="52" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="141" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="510" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="137" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="585" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="96" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="131" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

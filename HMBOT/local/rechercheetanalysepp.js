@@ -30,6 +30,7 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stResOuvertureContrat);
 	sc.step(ActivInfinitev7.steps.stAnalyseContratsIA);
 	sc.step(ActivInfinitev7.steps.stRechercheTracePCX);
+	sc.step(ActivInfinitev7.steps.stVerifTracePCX);
 	sc.step(ActivInfinitev7.steps.stVerifAdhEnreg);
 	sc.step(ActivInfinitev7.steps.stContratsIASuivant);
 	sc.step(ActivInfinitev7.steps.stFinAnalyseContratsIA);
@@ -491,27 +492,43 @@ ActivInfinitev7.step({ stRechercheTracePCX: function(ev, sc, st) {
     });
 }});
 
+/**
+* Vérifier si on a la trace PCX, si EXISTE ==> fin du traitement
+* Si la trace EXISTE ==> fin du traitement ======> sorite
+*/
+
+/** Description */
+ActivInfinitev7.step({ stVerifTracePCX: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stVerifTracePCX'+  data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	if(data.ppCouranteAnalyse.dataEnLigne.tracePCXExist){
+		ctx.traceF.infoTxt('La trace PCX existe dans le contexte - Fin recherche et analyse');//si on trouve la trace PCX avec le premier contrat, on s'arrete on continue pas le parcours des autres contrats
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Non conformité - présence d’un précontentieux';
+		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		return;
+	}else{
+		sc.endStep();
+		return;
+	}
+}});
+
 
 /** Dans cette étape, on vérifie si le contrat courant a un status ACTIF la PP est enregistrée ou no sur Infinite
 * Si la PP est enregistrée sur Infinite ==> data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement'; et on passe à la PP suivante
 * Sinon , on passe à l'étape suivante
 */
-/**
-*
-* Ajouter un step qui affiche la page idenification des assurés et récupère les data des assurés qui sont actifs sur les contrats
-*
-*/
 ActivInfinitev7.step({ stVerifAdhEnreg: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('dans cette étape on vérifie si la PP est enregistrer ou non , uniquement sur un contrat actif');
-	if(data.ppCouranteAnalyse.dataEnLigne.contratEstActif){
+	if(data.ppCouranteAnalyse.dataEnLigne.contratEstActif && data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree === false){
 		ctx.log('====================== LE CONTRAT COURANT EST ACTIF, ON VERIFIE SI LA PP EST ENREGISTREE SUR INFINITE ========================');
 		var debDateEffet = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.debDateEffet);
 	  data.ppCouranteAnalyse.dataLocale.debDateEffet = ctx.dateF.formatDateIAE(debDateEffet+'');
 		if(ctx.dateF.estEgale(data.ppCouranteAnalyse.dataEnLigne.debDateEffet, data.ppCouranteAnalyse.dataLocale.debDateEffet) && data.ppCouranteAnalyse.dataEnLigne.codeOffre === data.ppCouranteAnalyse.dataLocale.codeOffre){
 		  data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = true;
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement';
-			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+		//	data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement';
+		//	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
+			sc.endStep();
 			return;
 	  }else{
 			sc.endStep();
@@ -523,22 +540,15 @@ ActivInfinitev7.step({ stVerifAdhEnreg: function(ev, sc, st) {
 	}
 }});
 
-
-
-/** Avant de passer au contrat suivant, on vérifie si on a une trace PCX ou si l'adhésio est déjà enregistrée */
+/** 
+*
+* Avant de passer au contrat suivant on vérifie l'indice du contrat courant par rapport au nmbre totale des contrats 
+*/
 ActivInfinitev7.step({ stContratsIASuivant: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stContratsIASuivant: ' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	
-	if(data.ppCouranteAnalyse.dataEnLigne.tracePCXExist){
-		ctx.traceF.infoTxt('La trace PCX existe dans le contexte - Fin recherche et analyse');//si on trouve la trace PCX avec le premier contrat, on s'arrete on continue pas le parcours des autres contrats
-		sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
-		return;
-	}else if(data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree){
-		sc.endStep(ActivInfinitev7.steps.stFinAnalyseContratsIA);
-		return;
-	}else if(data.ppCouranteAnalyse.dataEnLigne.indexContrat < data.ppCouranteAnalyse.dataEnLigne.nbContrat - 1){
-		ctx.traceF.infoTxt('La trace PCX n existe pas dans le contexte - on reboucle avec le contrat suivant');
+	if(data.ppCouranteAnalyse.dataEnLigne.indexContrat < data.ppCouranteAnalyse.dataEnLigne.nbContrat - 1){
 		ctx.traceF.infoTxt('+++++++++++++++++++++++++ Rebouclage sur le contrat suivant +++++++++++++++++++++++++');
 		data.ppCouranteAnalyse.dataEnLigne.indexContrat += 1;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
@@ -581,8 +591,12 @@ ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	//cas 1: pas de trace PCX et tous les contrats sont radiés (status = 'I')
-	if(data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour === false){
+	if(data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour === false && data.ppCouranteAnalyse.dataEnLigne.nbContratRad === data.ppCouranteAnalyse.dataEnLigne.nbContrat){
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création de contrat – Pas de contrat actif sur la PP';
+		sc.endStep();
+		return;
+	}else if(data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree === true){
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion déjà enregistrée – A vérifier manuellement';
 		sc.endStep();
 		return;
 	}else{
@@ -593,6 +607,12 @@ ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 }});
 
 
+
+/**
+*
+* Avant de faire 
+*/
+
 /** Description */
 ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
 	var data = sc.data;
@@ -601,7 +621,7 @@ ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataEnLigne.indexContrat = 0;
 	data.ppCouranteAnalyse.dataEnLigne.nbContrat = 0;
 	data.ppCouranteAnalyse.dataEnLigne.nbContratRadie = 0;
-	data.ppCouranteAnalyse.dataEnLigne.nbContratRad =0;
+	data.ppCouranteAnalyse.dataEnLigne.nbContratRad = 0;
 	
 	data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree = false;
 	data.ppCouranteAnalyse.dataEnLigne.tracePCXExist = false;

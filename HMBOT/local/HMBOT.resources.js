@@ -111,6 +111,10 @@ ActivInfinitev7.pIdentAssures.oAssureRO = ActivInfinitev7.pIdentAssures.addItem(
 ActivInfinitev7.pIdentAssures.oDroitROAdherent = ActivInfinitev7.pIdentAssures.addItem('oDroitROAdherent');
 ActivInfinitev7.pIdentAssures.btSuivant = ActivInfinitev7.pIdentAssures.addItem('btSuivant', {"mustExist":true});
 ActivInfinitev7.pIdentAssures.oBtnPageCourante = ActivInfinitev7.pIdentAssures.addItem('oBtnPageCourante', {"mustExist":true});
+ActivInfinitev7.pIdentAssures.oListeAssures = ActivInfinitev7.pIdentAssures.addItem('oListeAssures', {"occurs":1});
+ActivInfinitev7.pIdentAssures.oNomPrenom = ActivInfinitev7.pIdentAssures.addItem('oNomPrenom', {"occurs":1});
+ActivInfinitev7.pIdentAssures.oDateNaissance = ActivInfinitev7.pIdentAssures.addItem('oDateNaissance', {"occurs":1});
+ActivInfinitev7.pIdentAssures.btNext = ActivInfinitev7.pIdentAssures.addItem('btNext');
 
 ActivInfinitev7.pIdentAssuresEdit = ActivInfinitev7.addPage('pIdentAssuresEdit', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentAssuresEdit.oTitrePage = ActivInfinitev7.pIdentAssuresEdit.addItem('oTitrePage', {"mustExist":true});
@@ -155,6 +159,7 @@ ActivInfinitev7.pProdGaranConsul.oDateNaissAdh = ActivInfinitev7.pProdGaranConsu
 ActivInfinitev7.pProdGaranConsul.oDateRadiation = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadiation', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.btIdentContrat = ActivInfinitev7.pProdGaranConsul.addItem('btIdentContrat');
 ActivInfinitev7.pProdGaranConsul.btNext = ActivInfinitev7.pProdGaranConsul.addItem('btNext');
+ActivInfinitev7.pProdGaranConsul.btIdentAssures = ActivInfinitev7.pProdGaranConsul.addItem('btIdentAssures');
 
 ActivInfinitev7.pVisuCptCotisConsul = ActivInfinitev7.addPage('pVisuCptCotisConsul', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage', {"mustExist":true});
@@ -342,6 +347,7 @@ ActivInfinitev7.pHistoriqueOptsConsul.oTableOperations = ActivInfinitev7.pHistor
 ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oContexte', {"occurs":1});
 ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNext');
 ActivInfinitev7.pHistoriqueOptsConsul.oProdGaran = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oProdGaran');
+ActivInfinitev7.pHistoriqueOptsConsul.btIdentAssures = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btIdentAssures');
 
 
 var GRCHarMu = ctx.addApplication('GRCHarMu', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb\u0026SWETS=1508832674552","customType":"Siebel"});
