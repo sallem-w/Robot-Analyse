@@ -137,8 +137,9 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
 			}
-		/*	if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
-				GRCHarMu.pDetailAdhesion.btCoordBancaires.click();
+
+			/*if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
+				GRCHarMu.pDetailAdhesion.btCoordBancaires.
 			}*/
 			sc.endStep();
 			return;

@@ -11,7 +11,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+//	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
@@ -152,7 +152,6 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	}
-
 }});
 
 
@@ -166,7 +165,7 @@ GRCHarMu.step({ stVerificationGRC: function(ev, sc, st) {
 	GRCHarMu.scenarios.scAnalyseDataGRC.start(data).onEnd(function(sc3) {
 		sc.data=sc3.data;
 		ctx.traceF.infoTxt('************* Fin scénario Analyse Data GRC Siebel *************');
-		ActivInfinitev7.pTabDeBord.activate();
+		//ActivInfinitev7.pTabDeBord.activate();
 		sc.endStep();
 	});
 }});
@@ -180,7 +179,7 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 	ActivInfinitev7.scenarios.scRechercheAnalysePP.start(data).onEnd(function(sc2){
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('************* Fin scénario recherche et analyse situation PP *************');
-		GRCHarMu.pRechercheAI.activate();
+	//	GRCHarMu.pRechercheAI.activate();
 		sc.endStep();
 	});
 }});

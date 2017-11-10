@@ -236,7 +236,7 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCoordBancaires">
+						<OBJET Name="btCoordBancaires" GetValueMethod="siebelEditGetValue">
 							<CRITERE>
 								<TAG Name="TABLE" Scope="All" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1">
 									<TAG Name="TBODY" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0">
@@ -257,7 +257,7 @@
 										</TAG>
 									</TAG>
 									<ATT Name="class">
-										<VALUE Scan="Full"><![CDATA[AppletBackTable]]></VALUE>
+										<VALUE Scan="Part"><![CDATA[AppletBackTable]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

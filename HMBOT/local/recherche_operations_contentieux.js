@@ -118,18 +118,20 @@ ActivInfinitev7.step({ stConsultationProGaran: function(ev, sc, st) {
 				var dNaiss = '';
 				var nomPP = data.ppCouranteAnalyse.dataLocale.nom+'';
 				var prenomPP	 = data.ppCouranteAnalyse.dataLocale.prenom+'';
-				var dNaissPP = data.ppCouranteAnalyse.dataLocale.dateDeNaissance;
+				var dNaissPP = ctx.dateF.formatDateIAE(data.ppCouranteAnalyse.dataLocale.dateDeNaissance+'');
+				//parcours de la liste des produits
 				for(var i in listeAdh){
 					nomPre = ActivInfinitev7.pProdGaranConsul.oNomPrenom.i(i).get();
 					dNaiss = ActivInfinitev7.pProdGaranConsul.oDateNaissAdh.i(i).get();
 					if(nomPre.indexOf(nomPP) !== -1 && nomPre.indexOf(prenomPP) !== -1 && ctx.dateF.estEgale(dNaiss, dNaissPP) && ctx.dateF.enObjet(data.ppCouranteAnalyse.dataEnLigne.dateRadiation) > ctx.getDate()){
 						data.ppCouranteAnalyse.dataEnLigne.dateRadiation = ActivInfinitev7.pProdGaranConsul.oDateRadiation.i(i).get();
-							//le conrat en cours est actif
-							data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour = true;
-							data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
-					}else{
-						data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;
+						//le conrat en cours est actif
+						data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour = true;
+						data.ppCouranteAnalyse.dataEnLigne.contratEstActif = true;
 					}
+				}
+				if(data.ppCouranteAnalyse.dataEnLigne.contratEstActif === false){
+					data.ppCouranteAnalyse.dataEnLigne.nbContratRad += 1;
 				}
 				sc.endStep();
 				return;
