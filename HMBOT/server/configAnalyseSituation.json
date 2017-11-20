@@ -27,7 +27,17 @@
                 "payeurSouscriptDifferent" : 131,
                 "clauseBenefAdh": 132,
                 "clauseBenefConjoint": 133,
-                "controleGestion" : 134
+                "controleGestion" : 134,
+                "nomPayeur": 135,
+                "prenomPayeur": 136,
+                "appPayeur" : 137,
+                "batPayeur" : 138,
+                "voiePayeur": 139,
+                "lieuDitPayeur": 140,
+                "cpPayeur": 141,
+                "villePayeur": 142,
+                "cedexPayeur": 143,
+                "paysPayeur": 144
             }
         },
         "tabGammeCode" :[

@@ -4,13 +4,13 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	var data = sc.data;
 	sc.onTimeout(30000, function(sc, st) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
@@ -75,7 +75,7 @@ ActivInfinitev7.step({ stInitRechercheEtAnalysePP: function(ev, sc, st) {
 		},
 		fail: function() { 
 			// add code here
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			 sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	     return;
 		}
@@ -109,7 +109,7 @@ ActivInfinitev7.step({ stInitConsultationPP: function(ev, sc, st) {
 		},
 		fail: function() { 
 			// add code here
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			 sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	     return;
 		}
@@ -129,7 +129,7 @@ ActivInfinitev7.step({ stConsultationPP : function(ev, sc, st) {
 					sc.endStep();
 	      	return;
 				}else{
-					data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+					data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			  	sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	      	return;
 			} 
@@ -234,7 +234,7 @@ ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
 		},
 		fail: function() { 
 			// add code here
-			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+			data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 			return;
 		}
@@ -265,7 +265,7 @@ ActivInfinitev7.step({ stInitRecherchePPParRO: function(ev, sc, st) {
 		fail: function() { 
 			// add code here
 			ctx.traceF.infoTxt('bcount: '+ nbcount);
-			 data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+			 data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			 sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	     return;
 		}
@@ -299,7 +299,7 @@ ActivInfinitev7.step({ stRecherchePPParRO: function(ev, sc, st) {
 			},
 			fail: function() { 
 				// add code here
-				data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+				data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 			  sc.endStep(ActivInfinitev7.steps.stFinRechercheAnalysePP);
 	      return;
 			}
@@ -390,7 +390,7 @@ ActivInfinitev7.step({ stOuvertureContrat: function(ev, sc, st) {
 			},
 			fail: function() { 
 				// add code here
-				data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Adhésion non analysée - Problème technique';
+				data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;
 				sc.endStep();
 	      return;
 			}

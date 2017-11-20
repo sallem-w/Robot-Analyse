@@ -12,9 +12,10 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stExecRechercheAI);
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
+	sc.step(GRCHarMu.steps.stLireDataBancaires);
+	sc.step(GRCHarMu.steps.stNavigateDetailAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
-	//sc.step(GRCHarMu.steps.stLireDataBancaires);
-//	sc.step(GRCHarMu.steps.stStep8);
+	
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
 }});
@@ -113,11 +114,65 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 		if(ctx.dateF.estAvant(ctx.dateF.enObjet(dateEffet, '/'), ctx.dateF.enObjet(dateRes, '/'))){
 			data.ppCouranteAnalyse.notes.dateEffetAControler = 'Oui';
 		}	
-		GRCHarMu.pBulletinAdhesion.activate();
-			ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
+		//GRCHarMu.pBulletinAdhesion.activate();
+		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();
+			//ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
 			sc.endStep();
 		  return;	
 	});
+}});
+
+/** Description */
+GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stLireDataBancaires: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.wait(function(ev){
+	//	GRCHarMu.pCoordonneesBancaires.activate();
+		GRCHarMu.pCoordonneesBancaires.wait(function(ev){
+		  
+			if(GRCHarMu.pCoordonneesBancaires.oList.getActiveRow() !== 0){
+				var cotisation = GRCHarMu.pCoordonneesBancaires.oList.get(1,2);
+				if(cotisation === 'Y'){
+					var nomCB = GRCHarMu.pCoordonneesBancaires.oList.get(1,3);
+					var prenomCB = GRCHarMu.pCoordonneesBancaires.oList.get(1,4);
+					if(data.ppCouranteAnalyse.dataLocale.nom === nomCB && data.ppCouranteAnalyse.dataLocale.prenom === prenomCB){ //payeur === souscripteur
+						data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Non';
+					}else{
+						data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Oui';
+						//récupéré les data du payeur
+						data.ppCouranteAnalyse.dataEnLigne.nomPayeur = nomCB;
+						data.ppCouranteAnalyse.dataEnLigne.prenomPayeur = prenomCB;
+						data.ppCouranteAnalyse.dataEnLigne.appPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,6);
+						data.ppCouranteAnalyse.dataEnLigne.batPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,7);
+						data.ppCouranteAnalyse.dataEnLigne.voiePayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,8);
+						data.ppCouranteAnalyse.dataEnLigne.lieuDitPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,9);
+						data.ppCouranteAnalyse.dataEnLigne.cpPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,10);
+						data.ppCouranteAnalyse.dataEnLigne.villePayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,11);
+						data.ppCouranteAnalyse.dataEnLigne.cedexPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,12);
+						data.ppCouranteAnalyse.dataEnLigne.paysPayeur = GRCHarMu.pCoordonneesBancaires.oList.get(1,13);
+					}
+				}else{
+					data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
+				}
+			}
+			GRCHarMu.pCoordonneesBancaires.close();
+			sc.endStep();
+			return;
+		});
+	},3000);
+
+}});
+
+
+/** Description */
+GRCHarMu.step({ stNavigateDetailAdh: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.wait(function(ev){
+		ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
+		sc.endStep();
+		return;
+	},1000);
+
 }});
 
 
@@ -137,10 +192,6 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
 			}
-
-			/*if(GRCHarMu.pDetailAdhesion.btCoordBancaires.exist()){
-				GRCHarMu.pDetailAdhesion.btCoordBancaires.
-			}*/
 			sc.endStep();
 			return;
 		});
@@ -148,22 +199,6 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 
 }});
 
-
-
-/** Description */
-GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.wait(function(ev){
-		GRCHarMu.pCoordonneesBancaires.activate();
-		GRCHarMu.pCoordonneesBancaires.wait(function(ev){
-		  var lignecourante = GRCHarMu.pCoordonneesBancaires.oList.getActiveRow();
-			GRCHarMu.pCoordonneesBancaires.btOk.click();
-			sc.endStep();
-			return;
-		});
-	},3000);
-
-}});
 
 /** Description */
 GRCHarMu.step({ stFinVerifGRC: function(ev, sc, st) {

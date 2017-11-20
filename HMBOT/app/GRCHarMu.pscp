@@ -121,7 +121,7 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="2687.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Part"><![CDATA[Coordonnées bancaires]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[Coordonnées bancaires]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -236,28 +236,11 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="btCoordBancaires" GetValueMethod="siebelEditGetValue">
+						<OBJET Name="btCoordBancaires">
 							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1">
-									<TAG Name="TBODY" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0">
-										<TAG Name="TR" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0">
-											<TAG Name="TD" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11">
-												<TAG Name="SPAN" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0">
-													<TAG Name="SPAN" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0">
-														<TAG Name="SPAN" Scope="Children" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0R0">
-															<TAG Name="A" Scope="All" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0R0R0">
-																<ATT Name="Text">
-																	<VALUE Scan="Part"><![CDATA[Coordonnées bancaires]]></VALUE>
-																</ATT>
-															</TAG>
-														</TAG>
-													</TAG>
-												</TAG>
-											</TAG>
-										</TAG>
-									</TAG>
-									<ATT Name="class">
-										<VALUE Scan="Part"><![CDATA[AppletBackTable]]></VALUE>
+								<TAG Name="A" Scope="All" CapturedPos="2694.R0R1R2R2R0R0R0R0R0R0R1R0R0R11R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[Coordonnées bancaires]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
@@ -267,9 +250,8 @@
 				</PAGE>
 				<PAGE Name="pMainCB" Comment="Coordonnées bancaires">
 					<CRITERE>
-						<URL Scan="Part"><![CDATA[SWECmd=ShowPopupFrames]]></URL>
+						<TITRE Scan="Full"><![CDATA[Coordonnées bancaires]]></TITRE>
 						<MAINFRAME><![CDATA[true]]></MAINFRAME>
-						<TITRE Sens="N" Scan="Full"><![CDATA[Siebel]]></TITRE>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames&SWEDIC=1&SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d70%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb%26SWESP%3d1%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb]]></PATH>
 					<OBJETS />
@@ -277,35 +259,26 @@
 				</PAGE>
 				<PAGE Name="pCoordonneesBancaires" Comment="[_swepopcontent] - Coordonnées bancaires">
 					<CRITERE>
-						<NAME Scan="Part"><![CDATA[_swepopcontent]]></NAME>
-						<TITRE Scan="Part"><![CDATA[Coordonnées bancaires]]></TITRE>
 						<MAINFRAME><![CDATA[false]]></MAINFRAME>
-						<CY Scan="GT"><![CDATA[0]]></CY>
+						<TITRE Scan="Full"><![CDATA[Coordonnées bancaires]]></TITRE>
+						<CY Scan="GTOE"><![CDATA[60]]></CY>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame&SWEC=106&SWEFrame=top._sweclient._swecontent._sweview._swetmp&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb&SWESP=1&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb]]></PATH>
 					<OBJETS>
-						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
-							<CRITERE>
-								<TAG Name="TABLE" Scope="All" CapturedPos="2698.R0R1R1R0">
-									<TAG Name="TBODY" Scope="Children" CapturedPos="2698.R0R1R1R0R0">
-										<TAG Name="TR" Scope="Children" CapturedPos="2698.R0R1R1R0R0R0">
-											<TAG Name="TD" Scope="Children" CapturedPos="2698.R0R1R1R0R0R0R0">
-												<TAG Name="DIV" Scope="Children" CapturedPos="2698.R0R1R1R0R0R0R0R2">
-													<TAG Name="OBJECT" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R2R1" Range="0">
-														<SET />
-													</TAG>
-												</TAG>
-											</TAG>
-										</TAG>
-									</TAG>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="btOk">
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R3R0R0R1R0R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Like"><![CDATA[OK]]></VALUE>
+										<VALUE Scan="Full"><![CDATA[OK]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
+							<CRITERE>
+								<TAG Name="OBJECT" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R2R1">
+									<ATT Name="classid">
+										<VALUE Scan="Full"><![CDATA[CLSID:1fd72d6c-63b1-4a46-8310-6eb3e54395d7]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>

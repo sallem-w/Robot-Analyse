@@ -11,13 +11,13 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-//	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
-  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+//  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
@@ -215,6 +215,28 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.clauseBenefConjoint, value: data.ppCouranteAnalyse.notes.clauseBenefConjoint
 			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.dateEffetAControler, value: data.ppCouranteAnalyse.notes.dateEffetAControler
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.payeurSouscriptDifferent, value: data.ppCouranteAnalyse.notes.payeurEgSouscripteur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.nomPayeur, value: data.ppCouranteAnalyse.dataEnLigne.nomPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.prenomPayeur, value: data.ppCouranteAnalyse.dataEnLigne.prenomPayeur
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.appPayeur, value: data.ppCouranteAnalyse.dataEnLigne.appPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.batPayeur, value: data.ppCouranteAnalyse.dataEnLigne.batPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.voiePayeur, value: data.ppCouranteAnalyse.dataEnLigne.voiePayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.lieuDitPayeur, value: data.ppCouranteAnalyse.dataEnLigne.lieuDitPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.cpPayeur, value: data.ppCouranteAnalyse.dataEnLigne.cpPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.villePayeur, value: data.ppCouranteAnalyse.dataEnLigne.villePayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.cedexPayeur, value: data.ppCouranteAnalyse.dataEnLigne.cedexPayeur 
+			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.paysPayeur, value: data.ppCouranteAnalyse.dataEnLigne.paysPayeur 
 			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
@@ -228,7 +250,12 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPSuivanteIAE: lecture des données de la PP suivante du fichier IAE');
-	data.varGlobales.ligneCourante += 1;
+	//on vérifie si le commentaire === problème o incrément pas la ligneCourant
+	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalysee){
+		data.varGlobales.ligneCourante += 1;
+	}else{
+		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
+	}
 	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
 		sc.endStep();
 		return;
@@ -242,6 +269,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Non';
 		data.ppCouranteAnalyse.notes.dateEffetAControler = 'Non';
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = '';
+		data.ppCouranteAnalyse.notes.payeurEgSouscripteur = '';
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}

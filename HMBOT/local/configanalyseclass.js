@@ -30,7 +30,17 @@ var confFileANALYSEClass = function() {
 								payeurSouscriptDifferent : '',
 								clauseBenefAdh : '',
 								clauseBenefConjoint : '',
-								controleGestion : ''
+								controleGestion : '',
+								nomPayeur : '',
+								prenomPayeur: '',
+								appPayeur: '',
+								batPayeur: '',
+								voiePayeur: '',
+								lieuDitPayeur: '',
+								cpPayeur: '',
+								villePayeur: '',
+								cedexPayeur: '',
+								paysPayeur: ''
             }
         },
 			 tabGammeCode : [],

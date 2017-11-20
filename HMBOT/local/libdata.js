@@ -134,7 +134,17 @@ ctx.dataF = (function () {
 				dateEffetConst : '01/01/2100',
 				statusCCourant : '',
 				dateRadiation : '',
-				tabCoordAssures : []
+				tabCoordAssures : [],
+				nomPayeur : '',
+				prenomPayeur: '',
+				appPayeur: '',
+        batPayeur: '',
+        voiePayeur: '',
+        lieuDitPayeur: '',
+        cpPayeur: '',
+        villePayeur: '',
+        cedexPayeur: '',
+        paysPayeur: ''
 			},
 			notes: {
 				contexteAnalyseStoppee : '',
@@ -143,7 +153,8 @@ ctx.dataF = (function () {
 				paiementAdhesion : 'Non',
 				clauseBenefAdh : 'Non',
 				clauseBenefConjoint : 'Non',
-				dateEffetAControler : 'Non'
+				dateEffetAControler : 'Non',
+				payeurEgSouscripteur : ''
 			}	
 		};
 		
