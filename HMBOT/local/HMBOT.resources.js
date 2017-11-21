@@ -375,5 +375,11 @@ GRCHarMu.pDetailAdhesion.btCoordBancaires = GRCHarMu.pDetailAdhesion.addItem('bt
 GRCHarMu.pMainCB = GRCHarMu.addPage('pMainCB', {"comment":"Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames\u0026SWEDIC=1\u0026SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d70%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb%26SWESP%3d1%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
 
 GRCHarMu.pCoordonneesBancaires = GRCHarMu.addPage('pCoordonneesBancaires', {"comment":"[_swepopcontent] - Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame\u0026SWEC=106\u0026SWEFrame=top._sweclient._swecontent._sweview._swetmp\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SWESP=1\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
-GRCHarMu.pCoordonneesBancaires.btOk = GRCHarMu.pCoordonneesBancaires.addItem('btOk');
 GRCHarMu.pCoordonneesBancaires.oList = GRCHarMu.pCoordonneesBancaires.addItem('oList', {"customType":"siebel.grid"});
+GRCHarMu.pCoordonneesBancaires.btOk = GRCHarMu.pCoordonneesBancaires.addItem('btOk');
+
+GRCHarMu.pPersonnesPhysiques = GRCHarMu.addPage('pPersonnesPhysiques', {"comment":"[_svf0] - Tous les interlocuteurs","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=Contact%20List%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=3S9chCeX7qpy6kjNtHIOKYcwaWpgcBlLHIknwrBmGScb"});
+GRCHarMu.pPersonnesPhysiques.oCivilite = GRCHarMu.pPersonnesPhysiques.addItem('oCivilite', {"customType":"siebel.edit"});
+GRCHarMu.pPersonnesPhysiques.btExecuter = GRCHarMu.pPersonnesPhysiques.addItem('btExecuter');
+GRCHarMu.pPersonnesPhysiques.btRechercher = GRCHarMu.pPersonnesPhysiques.addItem('btRechercher');
+GRCHarMu.pPersonnesPhysiques.oList = GRCHarMu.pPersonnesPhysiques.addItem('oList', {"customType":"siebel.grid"});

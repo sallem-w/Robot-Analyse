@@ -44,6 +44,7 @@
 			{ columnIndex: configExcel.indexColonne.clauseBenefAdh, value: "Clause bénéficiaire" },
 			{ columnIndex: configExcel.indexColonne.clauseBenefConjoint, value: "Clause bénéficiaire conjoint" },
 			{ columnIndex: configExcel.indexColonne.controleGestion, value: "Contrôle gestion" },
+			{ columnIndex: configExcel.indexColonne.civilitePayeur, value: "CIVILITE_PAYEUR" },
 			{ columnIndex: configExcel.indexColonne.nomPayeur, value: "NOM_PAYEUR" },
 			{ columnIndex: configExcel.indexColonne.prenomPayeur, value: "PRENOM_PAYEUR" },
 			{ columnIndex: configExcel.indexColonne.appPayeur, value: "APP_PAYEUR" },

@@ -3,6 +3,7 @@
        "afficherMenu" : true,
        "touteTraceActive": true,
        "cheminRacine": "C:\\deploy\\analyse\\",
+       "cheminTemplateAnalyse": "C:\\deploy\\analyse\\template\\",
        "excel" : {
             "debutIndexLigne" : 2,
             "debutIndexCol" : 1,
@@ -28,16 +29,17 @@
                 "clauseBenefAdh": 132,
                 "clauseBenefConjoint": 133,
                 "controleGestion" : 134,
-                "nomPayeur": 135,
-                "prenomPayeur": 136,
-                "appPayeur" : 137,
-                "batPayeur" : 138,
-                "voiePayeur": 139,
-                "lieuDitPayeur": 140,
-                "cpPayeur": 141,
-                "villePayeur": 142,
-                "cedexPayeur": 143,
-                "paysPayeur": 144
+                "civilitePayeur": 135,
+                "nomPayeur": 136,
+                "prenomPayeur": 137,
+                "appPayeur" : 138,
+                "batPayeur" : 139,
+                "voiePayeur": 140,
+                "lieuDitPayeur": 141,
+                "cpPayeur": 142,
+                "villePayeur": 143,
+                "cedexPayeur": 144,
+                "paysPayeur": 145
             }
         },
         "tabGammeCode" :[

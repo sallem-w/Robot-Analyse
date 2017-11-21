@@ -2,7 +2,7 @@
 /** Description */
 GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
+	sc.onTimeout(120000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
 	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
@@ -13,8 +13,14 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
 	sc.step(GRCHarMu.steps.stLireDataBancaires);
+	
 	sc.step(GRCHarMu.steps.stNavigateDetailAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
+	
+	sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
+	sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
+	sc.step(GRCHarMu.steps.stExecRecherchePP);
+	sc.step(GRCHarMu.steps.stLireDataPP);
 	
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
@@ -38,9 +44,10 @@ GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 	
 	GRCHarMu.pRechercheAI.wait(function(ev){
 		ctx.polling({
-		delay: 100,
+		delay: 300,
 		nbMax: 10,
 		test: function(index) { 
+			ctx.log('delay stRechercheAI');
 			return GRCHarMu.pRechercheAI.btRechecher.exist(); 
 		},
 		done: function() { 
@@ -85,10 +92,27 @@ GRCHarMu.step({ stBuletinAdhesion: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('Etape stBulletinAdhesion: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	GRCHarMu.pRechercheAI.wait(function(ev){
-		GRCHarMu.pRechercheAI.oList.clickLink(1,1, function(){
-			sc.endStep();
-			return;
-		});	
+		ctx.polling({
+			delay: 100,
+			nbMax: 10,
+			test: function(index) { 
+				ctx.log('click sur le lien ********');
+				return GRCHarMu.pRechercheAI.oList.getActiveRow() > 0;
+			},
+			done: function() { 
+				// add code here
+				ctx.log('exec');
+				GRCHarMu.pRechercheAI.oList.clickLink(1,1, function(){
+					sc.endStep();
+					return;
+				});
+			},
+			fail: function() { 
+				// add code here
+				sc.endStep();
+				return;
+			}
+		});
 	});
 }});
 
@@ -96,8 +120,10 @@ GRCHarMu.step({ stBuletinAdhesion: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Etape stLireDataBulletinAdh: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
-	GRCHarMu.pBulletinAdhesion.wait(function(ev){
+	ctx.traceF.infoTxt('Etape stLireDataBulletinAdh: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.wait(function(ev){
+		GRCHarMu.pBulletinAdhesion.activate();
+		GRCHarMu.pBulletinAdhesion.wait(function(ev){
 		//get data
 		var paiemenAdh = GRCHarMu.pBulletinAdhesion.oPaiementAdh.get();
 		var dateEffet = GRCHarMu.pBulletinAdhesion.oDateEffet.get();
@@ -116,10 +142,11 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 		}	
 		//GRCHarMu.pBulletinAdhesion.activate();
 		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();
-			//ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
-			sc.endStep();
-		  return;	
-	});
+		sc.endStep();
+		return;	
+		});
+	}, 3000);
+
 }});
 
 /** Description */
@@ -127,9 +154,9 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataBancaires: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	ctx.wait(function(ev){
-	//	GRCHarMu.pCoordonneesBancaires.activate();
+		
 		GRCHarMu.pCoordonneesBancaires.wait(function(ev){
-		  
+		//  GRCHarMu.pCoordonneesBancaires.activate();
 			if(GRCHarMu.pCoordonneesBancaires.oList.getActiveRow() !== 0){
 				var cotisation = GRCHarMu.pCoordonneesBancaires.oList.get(1,2);
 				if(cotisation === 'Y'){
@@ -155,7 +182,9 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 					data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
 				}
 			}
-			GRCHarMu.pCoordonneesBancaires.close();
+			
+			GRCHarMu.pCoordonneesBancaires.btOk.click();
+		//	GRCHarMu.pMainCB.close();
 			sc.endStep();
 			return;
 		});
@@ -164,10 +193,13 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 }});
 
 
+
 /** Description */
 GRCHarMu.step({ stNavigateDetailAdh: function(ev, sc, st) {
 	var data = sc.data;
+	
 	ctx.wait(function(ev){
+		GRCHarMu.pBulletinAdhesion.activate();
 		ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
 		sc.endStep();
 		return;
@@ -183,8 +215,9 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 	ctx.wait(function(ev) {
 		GRCHarMu.pDetailAdhesion.activate();
 		GRCHarMu.pDetailAdhesion.wait(function(ev){
-			var cBenefAdh = GRCHarMu.pDetailAdhesion.oClBenefAdh.getComboValues();
-			var cBenefConj = GRCHarMu.pDetailAdhesion.oClBenefConj.getComboValues();
+			//ancienne méthode pour la récupération: getComboValues()
+			var cBenefAdh = GRCHarMu.pDetailAdhesion.oClBenefAdh.getAttribute('value');
+			var cBenefConj = GRCHarMu.pDetailAdhesion.oClBenefConj.getAttribute('value');
 			//interprétation
 			if(cBenefAdh === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Oui';
@@ -192,11 +225,100 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 			if(cBenefConj === 'Spécifique'){
 				data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Oui';
 			}
-			sc.endStep();
-			return;
+			if(data.ppCouranteAnalyse.notes.payeurEgSouscripteur === 'Oui'){ //on cherche la civilité
+				sc.endStep();
+				return;
+			}else{
+				sc.endStep(GRCHarMu.steps.stFinVerifGRC);
+				return;
+			}
 		});
 	}, 3000);
 
+}});
+
+/** on cherche la civilité du payeur dans le cas ou le payeur !== souscripteur */
+GRCHarMu.step({ stInitRechercheCivilitePayeur: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stInitRechercheCivilitePayeur: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.siebel.navigateView(GRCHarMu.pPersonnesPhysiques);
+	sc.endStep();
+	return;
+}});
+
+
+/** Description */
+GRCHarMu.step({ stRechercheCivilitePayeur: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stRechercheCivilitePayeur: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	GRCHarMu.pPersonnesPhysiques.activate();
+	GRCHarMu.pPersonnesPhysiques.wait(function(ev){
+		ctx.polling({
+			delay: 100,
+			nbMax: 10,
+			test: function(index) { 
+				return GRCHarMu.pPersonnesPhysiques.btRechercher.exist();
+			},
+		done: function() { 
+			// add code here
+			GRCHarMu.pPersonnesPhysiques.btRechercher.click();
+			sc.endStep();
+	    return;
+		},
+		fail: function() { 
+			// add code here
+			sc.endStep();
+	    return;
+		}
+	});
+	});
+}});
+
+
+/** Description */
+GRCHarMu.step({ stExecRecherchePP: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stExecRecherchePP: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	GRCHarMu.pPersonnesPhysiques.wait(function(ev){
+		ctx.polling({
+			delay: 100,
+			nbMax: 10,
+			test: function(index) { 
+				return GRCHarMu.pPersonnesPhysiques.btExecuter.exist(); 
+			},
+			done: function() { 
+				// add code here
+				GRCHarMu.pPersonnesPhysiques.oList.set(data.ppCouranteAnalyse.dataEnLigne.nomPayeur,1,2);
+				GRCHarMu.pPersonnesPhysiques.oList.set(data.ppCouranteAnalyse.dataEnLigne.prenomPayeur,1,3);
+				GRCHarMu.pPersonnesPhysiques.oList.set(data.ppCouranteAnalyse.dataEnLigne.cpPayeur,1,5);
+				GRCHarMu.pPersonnesPhysiques.btExecuter.click();
+				sc.endStep();
+				return;
+			},
+			fail: function() { 
+				// add code here
+				sc.endStep();
+				return;
+			}
+		});
+	});
+}});
+
+
+/** Description */
+GRCHarMu.step({ stLireDataPP: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stLireDataPP: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.wait(function(ev){
+		GRCHarMu.pPersonnesPhysiques.activate();
+		GRCHarMu.pPersonnesPhysiques.wait(function(ev){
+			if(GRCHarMu.pPersonnesPhysiques.oList.getActiveRow() !== 0){
+				data.ppCouranteAnalyse.dataEnLigne.civilitePayeur = GRCHarMu.pPersonnesPhysiques.oCivilite.getAttribute('value');
+			}
+		sc.endStep();
+		return;
+	});
+	},2000);
 }});
 
 
@@ -204,6 +326,8 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinVerifGRC: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	//if(GRCHarMu.pMainCB.activate()){}
+	//GRCHarMu.pMainCB.close();
 	ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 	sc.endScenario();
 	return;

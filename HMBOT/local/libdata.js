@@ -135,6 +135,7 @@ ctx.dataF = (function () {
 				statusCCourant : '',
 				dateRadiation : '',
 				tabCoordAssures : [],
+				civilitePayeur : '',
 				nomPayeur : '',
 				prenomPayeur: '',
 				appPayeur: '',
@@ -155,7 +156,10 @@ ctx.dataF = (function () {
 				clauseBenefConjoint : 'Non',
 				dateEffetAControler : 'Non',
 				payeurEgSouscripteur : ''
-			}	
+			},
+			dataExcel: {
+				cheminTemplateAnalyse: ''	
+			}
 		};
 		
 //		var numProd ={
@@ -181,7 +185,7 @@ ctx.dataF = (function () {
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.ANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
 		
 			ctx.excelF.configExcel(dat);
-			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
+			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier); //ouverture du fichier d'entré
 			
 			dat.varGlobales.ligneCourante = dat.scenarioConfig.ANALYSE.excel.debutIndexLigne; // depuis le config.JSON
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();

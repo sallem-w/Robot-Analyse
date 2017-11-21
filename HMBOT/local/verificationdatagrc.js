@@ -8,7 +8,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	// add steps here...
 
 	sc.step(GRCHarMu.steps.stInitRobot);
-	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
+	//sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
 	sc.step(GRCHarMu.steps.stInitVerificationGRC);
@@ -29,6 +29,7 @@ GRCHarMu.step({ stInitRobot: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitRobot: ');
 	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
+	ctx.excel.file.saveAs();
 	sc.endStep();
 	return;
 }});
@@ -62,6 +63,8 @@ GRCHarMu.step({ stInitVerificationGRC: function(ev, sc, st) {
 GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPIAE: lecture des données du fichier IAE');
+	var chemin = 
+	ctx.excelF.ouvertureFichier();
 	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
 		//lire le type de l'assuré
 		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
@@ -218,6 +221,8 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.payeurSouscriptDifferent, value: data.ppCouranteAnalyse.notes.payeurEgSouscripteur 
 			},{
+				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.civilitePayeur, value: data.ppCouranteAnalyse.dataEnLigne.civilitePayeur 
+			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.nomPayeur, value: data.ppCouranteAnalyse.dataEnLigne.nomPayeur 
 			},{
 				columnIndex: data.scenarioConfig.ANALYSE.excel.indexColonne.prenomPayeur, value: data.ppCouranteAnalyse.dataEnLigne.prenomPayeur
@@ -270,6 +275,19 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.ppCouranteAnalyse.notes.dateEffetAControler = 'Non';
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = '';
 		data.ppCouranteAnalyse.notes.payeurEgSouscripteur = '';
+		
+		data.ppCouranteAnalyse.dataEnLigne.civilitePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.nomPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.prenomPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.appPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.batPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.voiePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.lieuDitPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.cpPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.villePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.cedexPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.paysPayeur = '';
+		
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;
 	}

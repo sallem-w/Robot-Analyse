@@ -177,6 +177,7 @@ GLOBAL.events.START.on(function (ev) {
 	ctx.siebel.setViewName(GRCHarMu.pDetailAdhesion, 'SIHM%20Individual%20Policy%20Complement%20View');
 	ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
 	ctx.siebel.setViewName(GRCHarMu.pBulletinAdhesion, 'SIHM%20Individual%20Policy%20View');
+	ctx.siebel.setViewName(GRCHarMu.pPersonnesPhysiques, 'Contact%20List%20View');
 
 	ctx.siebel.initApplication(GRCHarMu.pMain);
 

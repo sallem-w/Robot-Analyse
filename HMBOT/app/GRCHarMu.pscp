@@ -265,15 +265,6 @@
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame&SWEC=106&SWEFrame=top._sweclient._swecontent._sweview._swetmp&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb&SWESP=1&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb&SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb]]></PATH>
 					<OBJETS>
-						<OBJET Name="btOk">
-							<CRITERE>
-								<TAG Name="A" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R3R0R0R1R0R0R0R0">
-									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[OK]]></VALUE>
-									</ATT>
-								</TAG>
-							</CRITERE>
-						</OBJET>
 						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
 							<CRITERE>
 								<TAG Name="OBJECT" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R2R1">
@@ -283,8 +274,76 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
+						<OBJET Name="btOk">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R3R0R0R1R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[OK]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
 					</OBJETS>
 					<CAPTURE Name="PAGE_CoordonneesBancaires_1055074_1" Comment="[_swepopcontent] - Coordonnées bancaires" CtxtId="2698" Techno="WEB" Timestamp="08/11/2017 10:55:09" />
+				</PAGE>
+				<PAGE Name="pPersonnesPhysiques" Comment="[_svf0] - Tous les interlocuteurs">
+					<CRITERE>
+						<URL Scan="Part"><![CDATA[Contact%20List%20View]]></URL>
+						<CY Scan="GT"><![CDATA[0]]></CY>
+					</CRITERE>
+					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout&SWEView=Contact%20List%20View&SWEVI=&SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L&SRN=3S9chCeX7qpy6kjNtHIOKYcwaWpgcBlLHIknwrBmGScb]]></PATH>
+					<OBJETS>
+						<OBJET Name="oCivilite" CustomType="siebel.edit" GetValueMethod="siebelEditGetValue">
+							<CRITERE>
+								<TAG Name="TABLE" Scope="All" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0">
+									<TAG Name="TBODY" Scope="Children" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0R0">
+										<TAG Name="TR" Scope="Children" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R2" Range="2">
+											<TAG Name="TD" Scope="Children" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R2R2" Range="2">
+												<TAG Name="DIV" Scope="Children" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R2R2R0">
+													<TAG Name="OBJECT" Scope="All" CapturedPos="2702.R0R1R5R1R0R0R0R0R0R0R4R0R0R0R2R2R0R0" Range="0">
+														<SET />
+													</TAG>
+												</TAG>
+											</TAG>
+										</TAG>
+									</TAG>
+									<ATT Name="class">
+										<VALUE Scan="Part"><![CDATA[GridBack]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btExecuter">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="2701.R0R1R2R2R0R0R0R0R0R9R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Part"><![CDATA[Exécuter]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btRechercher">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="2700.R0R1R2R2R0R0R0R0R0R9R0R0R0R0">
+									<ATT Name="Text">
+										<VALUE Scan="Part"><![CDATA[Rechercher]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oList" CustomType="siebel.grid" GetValueMethod="siebelGridGetValue">
+							<CRITERE>
+								<TAG Name="OBJECT" Scope="All" CapturedPos="2701.R0R1R2R2R0R0R2R0R1">
+									<ATT Name="classid">
+										<VALUE Scan="Full"><![CDATA[CLSID:1fd72d6c-63b1-4a46-8310-6eb3e54395d7]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_TousLesInterlocuteu_0840094_1" Comment="[_svf0] - Tous les interlocuteurs" CtxtId="2700" Techno="WEB" Timestamp="21/11/2017 08:40:31" />
+					<CAPTURE Name="PAGE_TousLesInterlocuteu_0841361_1" Comment="[_svf0] - Tous les interlocuteurs" CtxtId="2701" Techno="WEB" Timestamp="21/11/2017 08:41:56" />
+					<CAPTURE Name="PAGE_TousLesInterlocuteu_0842422_1" Comment="[_svf0] - Tous les interlocuteurs" CtxtId="2702" Techno="WEB" Timestamp="21/11/2017 08:43:02" />
 				</PAGE>
 			</_ECRANS>
 			<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb&SWETS=1508832674552]]></PATH>

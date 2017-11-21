@@ -5,6 +5,7 @@ var confFileANALYSEClass = function() {
   this.ANALYSE ={
        afficherMenu : '',
        cheminRacine: '',
+			 cheminTemplateAnalyse: '',
 		   touteTraceActive : '',
        excel : {
             debutIndexLigne : '',
@@ -31,6 +32,7 @@ var confFileANALYSEClass = function() {
 								clauseBenefAdh : '',
 								clauseBenefConjoint : '',
 								controleGestion : '',
+								civilitePayeur : '',
 								nomPayeur : '',
 								prenomPayeur: '',
 								appPayeur: '',
