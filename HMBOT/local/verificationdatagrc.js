@@ -8,16 +8,17 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	// add steps here...
 
 	sc.step(GRCHarMu.steps.stInitRobot);
-	//sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
+	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
+	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
-//  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
@@ -28,11 +29,27 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 GRCHarMu.step({ stInitRobot: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitRobot: ');
-	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
-	ctx.excel.file.saveAs();
+//	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
 	sc.endStep();
 	return;
 }});
+
+
+/** Description */
+GRCHarMu.step({ stConfigFichiersExcel: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('**//**//**// Cette étape consiste à découper le fichier IAE en sous fichiers chacun comporte 10 adhésions, en utilisant un template **//**//**//');
+	ctx.traceF.infoTxt('**//**//**// se trouve sous le répértoire ../analyse/template/ **//**//**//');
+	ctx.traceF.infoTxt('**//**//**// Le fichier à découper se trouve sous le répertoire /analyse/ **//**//**//');
+	ctx.traceF.infoTxt('**//**//**// Les blocs crées sont enregistrés dans un répertoire d entré ../analyse/blocs IAE/ **//**//**//');
+	ctx.traceF.infoTxt('**//**//**// Les fichiers résultats sont enregistrés dans un répertoire de sortie ../analyse/resultats/  **//**//**//');
+	GRCHarMu.scenarios.scGestionFichiersExcelConfig.start(data).onEnd(function(sc2) {
+		sc.data=sc2.data;
+		ctx.traceF.infoTxt('Etape stConfigFichiersExcel: Fin scénario configuration Excel et JSON');
+		sc.endStep();
+	});
+}});
+
 
 /** Description */
 GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
@@ -63,12 +80,12 @@ GRCHarMu.step({ stInitVerificationGRC: function(ev, sc, st) {
 GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPIAE: lecture des données du fichier IAE');
-	var chemin = 
-	ctx.excelF.ouvertureFichier();
 	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
 		//lire le type de l'assuré
 		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
 		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){
+			//augmenter le nombre des adhésions
+			data.ppCouranteAnalyse.dataLocale.nbAdhesion += 1 ;
 			//lire la um ext ctt
 			data.ppCouranteAnalyse.dataLocale.numExtCtt = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numExtCtt);
 			//lire la référece GRC
@@ -105,6 +122,7 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 				}
 				data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj.push(numProdPC);
 				tempLigneCourante ++;
+				data.ppCouranteAnalyse.dataLocale.indexFin += 1;
 			}
 			sc.endStep();
 			return;
@@ -260,6 +278,36 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.varGlobales.ligneCourante += 1;
 	}else{
 		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
+	}
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 1){
+		//copie
+		data.ppCouranteAnalyse.dataLocale.nbAdhesion = 0;
+		var time = ctx.getTime()+'';
+		var nameFichierResultat = ctx.getDate()+'-'+time.substr(0,2)+'-'+time.substr(3,2)+'-'+time.substr(6,2);
+		try {
+//			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse);
+		//	ctx.excel.sheet.selectRange('data.ppCouranteAnalyse.dataLocale.indexDeb, data.ppCouranteAnalyse.dataLocale.indexFin');
+		//	ctx.excel.sheet.copyRange(''+data.ppCouranteAnalyse.dataLocale.indexDeb+':'+data.ppCouranteAnalyse.dataLocale.indexFin+'');
+			ctx.excel.sheet.selectRange('2:2');
+			ctx.excel.sheet.copyRange('2:2');
+			var rangeValues = ctx.excel.sheet.getRangeValues('2:2');
+			//ctx.excel.sheet.pasteRange('12:12');
+			
+			ctx.excel.file.open(data.scenarioConfig.ANALYSE.cheminTemplateAnalyse + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
+			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
+			ctx.excel.file.saveAs(data.scenarioConfig.ANALYSE.cheminResultats + nameFichierResultat + '.xls');
+			//on fait la copie
+			//ctx.excel.getWorkbook(nameFichierResultat + '.xls');
+		  //ctx.excel.sheet.selectRange('2:2');
+			ctx.excel.sheet.setRangeValues('2:2',rangeValues);
+			//ctx.excel.sheet.pasteRange('2:2');
+			//on fait close de nouveau fichier créer
+			ctx.excel.file.close(nameFichierResultat + '.xls', true);
+			ctx.log('creation');
+			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse);
+		} catch (ex) {
+			ctx.traceF.errorTxt('Can not copy open excel file, ');
+		}
 	}
 	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
 		sc.endStep();

@@ -81,8 +81,9 @@ GRCHarMu.step({ stExecRechercheAI: function(ev, sc, st) {
 			sc.endStep();
 	    return;
 		}else{
-		sc.endStep();
-	  return;}
+			sc.endStep();
+	  	return;
+		}
 	});
 }});
 
@@ -114,6 +115,17 @@ GRCHarMu.step({ stBuletinAdhesion: function(ev, sc, st) {
 			}
 		});
 	});
+	/*
+		GRCHarMu.pRechercheAI.activate();
+		GRCHarMu.pRechercheAI.wait(function(ev){
+		GRCHarMu.pRechercheAI.oList.clickLink(1,1, function(){
+			sc.endStep();
+			return;
+		});
+		sc.endStep();
+		return;
+	});
+	*/
 }});
 
 
@@ -184,7 +196,6 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 			}
 			
 			GRCHarMu.pCoordonneesBancaires.btOk.click();
-		//	GRCHarMu.pMainCB.close();
 			sc.endStep();
 			return;
 		});
@@ -196,13 +207,15 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 
 /** Description */
 GRCHarMu.step({ stNavigateDetailAdh: function(ev, sc, st) {
-	var data = sc.data;
-	
+	var data = sc.data;	
 	ctx.wait(function(ev){
 		GRCHarMu.pBulletinAdhesion.activate();
-		ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
-		sc.endStep();
-		return;
+		GRCHarMu.pBulletinAdhesion.wait(function(ev){
+			ctx.siebel.navigateView(GRCHarMu.pDetailAdhesion);
+			sc.endStep();
+			return;
+		});
+		
 	},1000);
 
 }});
@@ -241,9 +254,12 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 GRCHarMu.step({ stInitRechercheCivilitePayeur: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitRechercheCivilitePayeur: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
-	ctx.siebel.navigateView(GRCHarMu.pPersonnesPhysiques);
-	sc.endStep();
-	return;
+	GRCHarMu.pDetailAdhesion.activate();
+	GRCHarMu.pDetailAdhesion.wait(function(ev){
+		ctx.siebel.navigateView(GRCHarMu.pPersonnesPhysiques);
+		sc.endStep();
+		return;
+	});
 }});
 
 
@@ -279,6 +295,7 @@ GRCHarMu.step({ stRechercheCivilitePayeur: function(ev, sc, st) {
 GRCHarMu.step({ stExecRecherchePP: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stExecRecherchePP: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	//GRCHarMu.pPersonnesPhysiques.activate();
 	GRCHarMu.pPersonnesPhysiques.wait(function(ev){
 		ctx.polling({
 			delay: 100,
@@ -326,8 +343,6 @@ GRCHarMu.step({ stLireDataPP: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinVerifGRC: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
-	//if(GRCHarMu.pMainCB.activate()){}
-	//GRCHarMu.pMainCB.close();
 	ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 	sc.endScenario();
 	return;

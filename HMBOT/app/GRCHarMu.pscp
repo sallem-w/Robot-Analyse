@@ -350,6 +350,7 @@
 			<SCRIPTS>
 				<SCRIPT Name="VerificationDataGrc" Src="VerificationDataGrc.js" />
 				<SCRIPT Name="VerifDataGRC" Src="VerifDataGRC.js" />
+				<SCRIPT Name="GestionExcel" Src="GestionExcel.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

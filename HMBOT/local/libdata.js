@@ -21,8 +21,6 @@ ctx.dataF = (function () {
             controlSeul:false //controlSeul
         }
     };
-		
-		
 	
 	////////////////////////////////////////	
 		var statistiquesF = {
@@ -41,10 +39,6 @@ ctx.dataF = (function () {
 		dataF.statistiquesF=statistiquesF;
 		
 		//////////////////////////////////////////////
-		
-		
-		 
-		
 ////// CMU ///////////////////////////////////////////////////////////////////////////////////////////////	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		var CMUtemp_contractF = {
@@ -157,8 +151,13 @@ ctx.dataF = (function () {
 				dateEffetAControler : 'Non',
 				payeurEgSouscripteur : ''
 			},
-			dataExcel: {
-				cheminTemplateAnalyse: ''	
+			dataFichiers: {
+				cheminRacine: '',
+				cheminTemplateAnalyse: '',
+				cheminBlocsIAE: '',
+				cheminResultats: '',
+				nomFichierConfigScenario: 'configAnalyseSituation.json',
+				cheminFichierConfigAnalyse: ''
 			}
 		};
 		
@@ -195,7 +194,6 @@ ctx.dataF = (function () {
 			
 			//dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //r�cup�ration config json
 		}
-		
 		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 				

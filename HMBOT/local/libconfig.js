@@ -73,7 +73,6 @@
 		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
 		configF.fichierConfigScenario = new confFileANALYSEClass();
 		configF.fichierConfigScenario = JSON.parse(chemin);
-		ctx.log('Initialisation : Chargement du fichier configCMU.json');
 	}
 	
 	

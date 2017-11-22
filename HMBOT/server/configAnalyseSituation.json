@@ -1,9 +1,12 @@
 {
     "ANALYSE": {
+       "devel": true,
        "afficherMenu" : true,
        "touteTraceActive": true,
        "cheminRacine": "C:\\deploy\\analyse\\",
        "cheminTemplateAnalyse": "C:\\deploy\\analyse\\template\\",
+       "cheminBlocsIAE": "C:\\deploy\\analyse\\blocsIAE\\",
+       "cheminResultats": "C:\\deploy\\analyse\\resultats\\",
        "excel" : {
             "debutIndexLigne" : 2,
             "debutIndexCol" : 1,

@@ -3,9 +3,12 @@
 /** @constructor */
 var confFileANALYSEClass = function() {
   this.ANALYSE ={
+			 devel: '',
        afficherMenu : '',
        cheminRacine: '',
 			 cheminTemplateAnalyse: '',
+			 cheminBlocsIAE: '',
+			 cheminResultats: '',
 		   touteTraceActive : '',
        excel : {
             debutIndexLigne : '',
