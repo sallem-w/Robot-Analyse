@@ -351,6 +351,7 @@
 				<SCRIPT Name="VerificationDataGrc" Src="VerificationDataGrc.js" />
 				<SCRIPT Name="VerifDataGRC" Src="VerifDataGRC.js" />
 				<SCRIPT Name="GestionExcel" Src="GestionExcel.js" />
+				<SCRIPT Name="CopieFiltrageResExcel" Src="CopieFiltrageResExcel.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

@@ -78,7 +78,9 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				tabProduitsPrinConj : [],
 				indexDeb: 2,
 				indexFin: 1,
-				nbAdhesion : 0
+				nbAdhesion : 0,
+				tentativeTraitInfinite : 1,
+				tentativeTraitGRC : 1
 			},
 			dataEnLigne: {
 				nbContrat : 0,

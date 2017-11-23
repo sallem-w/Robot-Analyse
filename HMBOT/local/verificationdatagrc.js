@@ -12,14 +12,17 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-  //sc.step(GRCHarMu.steps.stDemarrageServeurInfinite);
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
+	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
+	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 	
@@ -43,6 +46,7 @@ GRCHarMu.step({ stConfigFichiersExcel: function(ev, sc, st) {
 	ctx.traceF.infoTxt('**//**//**// Le fichier à découper se trouve sous le répertoire /analyse/ **//**//**//');
 	ctx.traceF.infoTxt('**//**//**// Les blocs crées sont enregistrés dans un répertoire d entré ../analyse/blocs IAE/ **//**//**//');
 	ctx.traceF.infoTxt('**//**//**// Les fichiers résultats sont enregistrés dans un répertoire de sortie ../analyse/resultats/  **//**//**//');
+	st.disableTimeout();
 	GRCHarMu.scenarios.scGestionFichiersExcelConfig.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('Etape stConfigFichiersExcel: Fin scénario configuration Excel et JSON');
@@ -84,8 +88,6 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 		//lire le type de l'assuré
 		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
 		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){
-			//augmenter le nombre des adhésions
-			data.ppCouranteAnalyse.dataLocale.nbAdhesion += 1 ;
 			//lire la um ext ctt
 			data.ppCouranteAnalyse.dataLocale.numExtCtt = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numExtCtt);
 			//lire la référece GRC
@@ -206,6 +208,67 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 }});
 
 
+/** Description */
+GRCHarMu.step({ stDeuxiemeTentativeSurSiebel: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape de test de traitement de la PP courante sur Siebel');
+	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC < 2){
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC += 1;
+		sc.endStep(GRCHarMu.steps.stVerificationGRC);
+	  return;
+	}else if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC === 2){ //passer à la ligne suivante sans faire l'analyse sur Infinite
+		sc.endStep(GRCHarMu.steps.stFinVerifGRC);
+	  return;
+	}else{
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC = 1;
+		sc.endStep();
+		return;
+	}
+}});
+
+
+/** O done une deuxième tentative sur siebel, sur Ifinite après on passe à la ligne suivante */
+GRCHarMu.step({ stDeuxiemeTentativeSurInfinite: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape de test de traitement de la PP courante sur Infinite');
+	
+	
+	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalysee && data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite < 2){
+		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
+		//donner une deuxième chance et reboucler
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite += 1;
+		//mise à jour des variables
+		//data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
+		//data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
+		data.ppCouranteAnalyse.notes.gestionControl = 'Non',
+		//data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
+		data.ppCouranteAnalyse.notes.paiementAdhesion = 'Non';
+		data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Non';
+		data.ppCouranteAnalyse.notes.clauseBenefConjoint = 'Non';
+		data.ppCouranteAnalyse.notes.dateEffetAControler = 'Non';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = '';
+		data.ppCouranteAnalyse.notes.payeurEgSouscripteur = '';
+		
+		data.ppCouranteAnalyse.dataEnLigne.civilitePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.nomPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.prenomPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.appPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.batPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.voiePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.lieuDitPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.cpPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.villePayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.cedexPayeur = '';
+		data.ppCouranteAnalyse.dataEnLigne.paysPayeur = '';
+		//reboucler à partir de l'appel du scénario vérififcation analyse GRC en principe, mais la le sc GRC est désactivé, donc rebouclage sur scénario infinite
+		sc.endStep(GRCHarMu.steps.stRechercheEtAnalysePP);
+	  return;
+	}else{
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite = 1;
+		sc.endStep();
+		return;
+	}
+}});
 
 /** Description */
 GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
@@ -270,45 +333,41 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 
 
 /** Description */
+GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stCopieFiltrageAdhesionsDansExcel: lecture des données de la PP suivante du fichier IAE');
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalysee){
+		data.ppCouranteAnalyse.dataLocale.nbAdhesion +=1;
+	}
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || data.varGlobales.ligneCourante === data.varGlobales.indexDerniereLigne ){
+		sc.endStep();
+		return;
+	}else{
+		sc.endStep(GRCHarMu.steps.stLireDataPPSuivanteIAE);
+		return;
+	}
+}});
+
+
+/** Description */
+GRCHarMu.step({ stScenarioCopieFiltrageExcel: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stScenarioCopieFiltrageExcel: cette étape permet de copier les data dans le fichier ');
+	st.disableTimeout();
+	GRCHarMu.scenarios.scCopieFiltrageExcel.start(data).onEnd(function(sc2) {
+		sc.data=sc2.data;
+		ctx.traceF.infoTxt('************* Fin scénario ScenarioCopieFiltrageExcel *************');
+		sc.endStep();
+	});
+}});
+
+
+/** Description */
 GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataPPSuivanteIAE: lecture des données de la PP suivante du fichier IAE');
 	//on vérifie si le commentaire === problème o incrément pas la ligneCourant
-	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalysee){
-		data.varGlobales.ligneCourante += 1;
-	}else{
-		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
-	}
-	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 1){
-		//copie
-		data.ppCouranteAnalyse.dataLocale.nbAdhesion = 0;
-		var time = ctx.getTime()+'';
-		var nameFichierResultat = ctx.getDate()+'-'+time.substr(0,2)+'-'+time.substr(3,2)+'-'+time.substr(6,2);
-		try {
-//			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse);
-		//	ctx.excel.sheet.selectRange('data.ppCouranteAnalyse.dataLocale.indexDeb, data.ppCouranteAnalyse.dataLocale.indexFin');
-		//	ctx.excel.sheet.copyRange(''+data.ppCouranteAnalyse.dataLocale.indexDeb+':'+data.ppCouranteAnalyse.dataLocale.indexFin+'');
-			ctx.excel.sheet.selectRange('2:2');
-			ctx.excel.sheet.copyRange('2:2');
-			var rangeValues = ctx.excel.sheet.getRangeValues('2:2');
-			//ctx.excel.sheet.pasteRange('12:12');
-			
-			ctx.excel.file.open(data.scenarioConfig.ANALYSE.cheminTemplateAnalyse + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
-			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
-			ctx.excel.file.saveAs(data.scenarioConfig.ANALYSE.cheminResultats + nameFichierResultat + '.xls');
-			//on fait la copie
-			//ctx.excel.getWorkbook(nameFichierResultat + '.xls');
-		  //ctx.excel.sheet.selectRange('2:2');
-			ctx.excel.sheet.setRangeValues('2:2',rangeValues);
-			//ctx.excel.sheet.pasteRange('2:2');
-			//on fait close de nouveau fichier créer
-			ctx.excel.file.close(nameFichierResultat + '.xls', true);
-			ctx.log('creation');
-			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse);
-		} catch (ex) {
-			ctx.traceF.errorTxt('Can not copy open excel file, ');
-		}
-	}
+	data.varGlobales.ligneCourante += 1;
 	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
 		sc.endStep();
 		return;
@@ -347,7 +406,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	//ctx.traceF.infoTxt('Etape stFinVerifDataGRC: ');
-	
+	ctx.traceF.infoTxt('nbAdh: '+data.ppCouranteAnalyse.dataLocale.nbAdhesion);
 	sc.endScenario();
 	return;
 }});

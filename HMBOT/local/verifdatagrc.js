@@ -2,8 +2,19 @@
 /** Description */
 GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(120000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
-	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
+	sc.onTimeout(120000, function(sc, st) {
+		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeGRC;
+		//ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+    sc.endScenario();
+	});
+	sc.onError(function(sc, st, ex) {
+		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeGRC;
+		//ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+    sc.endScenario();
+	});
+
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 	
@@ -12,15 +23,15 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stExecRechercheAI);
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
-	sc.step(GRCHarMu.steps.stLireDataBancaires);
+	//sc.step(GRCHarMu.steps.stLireDataBancaires);
 	
 	sc.step(GRCHarMu.steps.stNavigateDetailAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
 	
-	sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
-	sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
-	sc.step(GRCHarMu.steps.stExecRecherchePP);
-	sc.step(GRCHarMu.steps.stLireDataPP);
+	//	sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
+	//	sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
+	//	sc.step(GRCHarMu.steps.stExecRecherchePP);
+	//	sc.step(GRCHarMu.steps.stLireDataPP);
 	
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
@@ -153,7 +164,7 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 			data.ppCouranteAnalyse.notes.dateEffetAControler = 'Oui';
 		}	
 		//GRCHarMu.pBulletinAdhesion.activate();
-		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();
+	//	GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();
 		sc.endStep();
 		return;	
 		});
