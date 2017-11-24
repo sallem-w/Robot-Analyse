@@ -10,6 +10,9 @@ var confFileANALYSEClass = function() {
 			 cheminBlocsIAE: '',
 			 cheminResultats: '',
 		   touteTraceActive : '',
+			 cheminTemplateRejet : '',
+			 cheminInputTraitRejet : '',
+			 cheminOutputTraitRejet : '',
        excel : {
             debutIndexLigne : '',
 				    debutIndexCol : '',

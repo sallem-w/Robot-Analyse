@@ -19,6 +19,9 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigurationJSON);
 	sc.step(GRCHarMu.steps.stConfigTrace);
 	sc.step(GRCHarMu.steps.stChargementFichierExcelIAE);
+	
+	sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
+	sc.step(GRCHarMu.steps.stOuverturesFichiersInputRejet);
 	sc.step(GRCHarMu.steps.stOuvertureFichierIAE);
 	sc.step(GRCHarMu.steps.stCopieFichierResultat);
 	//sc.step(GRCHarMu.steps.stEchecInitialisation);
@@ -128,7 +131,15 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 			dataFichiers: {
 				nomTemplate : 'templateIAE',
 				nomFichierConfigScenario: 'configAnalyseSituation.json',
-				nomFichierResultatCompletAnalyse: ''
+				nomFichierResultatCompletAnalyse: '',
+				nomTemplateRejet: 'pivot',
+				nomFichierPreIAE : '',
+				nomFichierSfGRCRejet : '',
+				nomFichierACGRCIND : '',
+				cheminInputTraitRejet : '',
+				cheminOutputTraitRejet : '',
+				cheminTemplateRejet : '',
+				nomTemplateRejetResultat: ''
 			}
 		};
 	data.ppCouranteAnalyse = ppCouranteAnalyse;
@@ -304,6 +315,91 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 	sc.endScenario();
 	return;
 }});
+
+
+/*
+* Avant d'ouvrir le fichier IAE de traitement, on traite les fichiers de rejets
+*
+*/
+
+/** Description */
+GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stInitTraitFichiersRejets: Dans cette étape on charge les 3 fichiers (IAE, Rejet, AC056)');
+	var config = data.scenarioConfig[data.codeScenario];
+	data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet = config.cheminInputTraitRejet;
+	data.ppCouranteAnalyse.dataFichiers.cheminOutputTraitRejet = config.cheminOutputTraitRejet;
+	data.ppCouranteAnalyse.dataFichiers.cheminTemplateRejet = config.cheminTemplateRejet;
+	var extensionFichierExcel = '.xls';
+	var extensionFichierACGRCIND = '.csv';
+	var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet);
+	
+	while(!fichiers.atEnd()) {
+		var ff = fichiers.item();
+		if(ff.Name.indexOf('PRE_IAE') !== -1 && ff.Name.indexOf(extensionFichierExcel) !== -1){
+			data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE = ff.Name;
+		}else if(ff.Name.indexOf('Sf_GRC') !== -1 && ff.Name.indexOf(extensionFichierExcel) !== -1){
+			data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet = ff.Name;
+		}else{
+			data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND = ff.Name;
+		}
+		fichiers.moveNext();
+	}
+	
+	sc.endStep();
+	return;
+}});
+
+// ouverture des 3 fichiers 
+
+/** Description */
+GRCHarMu.step({ stOuverturesFichiersInputRejet: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stOuverturesFichiersInputRejet: ouverture/chargement des fichiers');
+	
+	var time = ctx.getTime()+'';
+	var extensionNomFichierResultat = ctx.getDate()+'-'+time.substr(0,2)+'-'+time.substr(3,2)+'-'+time.substr(6,2);
+	data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat = data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '_' + extensionNomFichierResultat + '.xls';
+	ctx.excelF.configExcel(data);
+	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE);
+	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet);
+	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND);
+	
+	//ouverture du fichier pivot ==> fichier template 
+	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminTemplateRejet + data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '.xls');
+	//copie du fichier pivot
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet);
+	ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminOutputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
+	
+	//activer le premier fichier à charger: fichier PRE_IAE
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE);
+	var indexDerniereLignePREIAE = ctx.excelF.indexDerniereLigne();
+	var tabRangesPREIAE = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLignePREIAE+'');
+	//fermeture du fichier PRE_IAE
+	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE, true);
+	
+	//activate le deuxième fichier à charger: fichier Sf_GRC
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet);
+	var indexDerniereLigneSfGRC = ctx.excelF.indexDerniereLigne();
+	var tabRangesSfGRC = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLigneSfGRC+'');
+	//fermeture du fichier Sf_GRC
+	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet, true);
+	
+	//activate le troixième fichier à charger: fichier AC056
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND);
+	var indexDerniereLigneACGRCIND = ctx.excelF.indexDerniereLigne();
+	var tabRangesSfGRC = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLigneACGRCIND+'');
+	//fermeture du fichier AC056
+	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND, true);
+	
+	//activation du pivot résultat
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
+	
+	sc.endStep();
+	return;
+}});
+
+
 
 /** Description */
 GRCHarMu.step({ stOuvertureFichierIAE: function(ev, sc, st) {

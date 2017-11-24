@@ -406,7 +406,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	//ctx.traceF.infoTxt('Etape stFinVerifDataGRC: ');
-	ctx.traceF.infoTxt('nbAdh: '+data.ppCouranteAnalyse.dataLocale.nbAdhesion);
+	//ctx.traceF.infoTxt('nbAdh: '+data.ppCouranteAnalyse.dataLocale.nbAdhesion);
 	sc.endScenario();
 	return;
 }});
