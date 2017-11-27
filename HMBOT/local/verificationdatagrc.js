@@ -31,8 +31,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 /** Description */
 GRCHarMu.step({ stInitRobot: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stInitRobot: ');
-//	ctx.dataF.initialisationScenarioAnalyse(data,ctx.configF.scenario.Analyse); 
+	ctx.traceF.infoTxt('Etape stInitRobot: Initialisation robot principale');
 	sc.endStep();
 	return;
 }});
@@ -41,11 +40,7 @@ GRCHarMu.step({ stInitRobot: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stConfigFichiersExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('**//**//**// Cette étape consiste à découper le fichier IAE en sous fichiers chacun comporte 10 adhésions, en utilisant un template **//**//**//');
-	ctx.traceF.infoTxt('**//**//**// se trouve sous le répértoire ../analyse/template/ **//**//**//');
-	ctx.traceF.infoTxt('**//**//**// Le fichier à découper se trouve sous le répertoire /analyse/ **//**//**//');
-	ctx.traceF.infoTxt('**//**//**// Les blocs crées sont enregistrés dans un répertoire d entré ../analyse/blocs IAE/ **//**//**//');
-	ctx.traceF.infoTxt('**//**//**// Les fichiers résultats sont enregistrés dans un répertoire de sortie ../analyse/resultats/  **//**//**//');
+	ctx.traceF.infoTxt('Initialisation des données d\'entrée: Configuration des fichiers');
 	st.disableTimeout();
 	GRCHarMu.scenarios.scGestionFichiersExcelConfig.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
@@ -211,8 +206,9 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stDeuxiemeTentativeSurSiebel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape de test de traitement de la PP courante sur Siebel');
+	ctx.traceF.infoTxt('Etape stDeuxiemeTentativeSurSiebel: Vérification de traitement de la PP courante avec la première tentative sur Siebel');
 	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC < 2){
+		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Siebel) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
 		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC += 1;
 		sc.endStep(GRCHarMu.steps.stVerificationGRC);
 	  return;
@@ -230,11 +226,11 @@ GRCHarMu.step({ stDeuxiemeTentativeSurSiebel: function(ev, sc, st) {
 /** O done une deuxième tentative sur siebel, sur Ifinite après on passe à la ligne suivante */
 GRCHarMu.step({ stDeuxiemeTentativeSurInfinite: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape de test de traitement de la PP courante sur Infinite');
+	ctx.traceF.infoTxt('Etape stDeuxiemeTentativeSurInfinite : Vérification de traitement de la PP courante avec la première tentative sur Infinite');
 	
 	
 	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalysee && data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite < 2){
-		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
+		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Infinite) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
 		//donner une deuxième chance et reboucler
 		data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite += 1;
 		//mise à jour des variables
@@ -335,7 +331,7 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stCopieFiltrageAdhesionsDansExcel: lecture des données de la PP suivante du fichier IAE');
+	ctx.traceF.infoTxt('Etape stCopieFiltrageAdhesionsDansExcel: Vérification de la taille de blocs à copier');
 	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalysee){
 		data.ppCouranteAnalyse.dataLocale.nbAdhesion +=1;
 	}
@@ -352,7 +348,7 @@ GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stScenarioCopieFiltrageExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stScenarioCopieFiltrageExcel: cette étape permet de copier les data dans le fichier ');
+	ctx.traceF.infoTxt('Etape stScenarioCopieFiltrageExcel: Copie des 10 adhésions analysées');
 	st.disableTimeout();
 	GRCHarMu.scenarios.scCopieFiltrageExcel.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
@@ -405,8 +401,7 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
-	//ctx.traceF.infoTxt('Etape stFinVerifDataGRC: ');
-	//ctx.traceF.infoTxt('nbAdh: '+data.ppCouranteAnalyse.dataLocale.nbAdhesion);
+	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
 	sc.endScenario();
 	return;
 }});

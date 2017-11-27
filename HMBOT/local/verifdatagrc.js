@@ -38,13 +38,12 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 }});
 
 
-
 /** Description */
 GRCHarMu.step({ InitAccesGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('Etape InitAccesGRC, Numéro Ext CTT: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
-		sc.endStep();
-		return;
+	sc.endStep();
+	return;
 }});
 
 
@@ -58,7 +57,6 @@ GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 		delay: 300,
 		nbMax: 10,
 		test: function(index) { 
-			ctx.log('delay stRechercheAI');
 			return GRCHarMu.pRechercheAI.btRechecher.exist(); 
 		},
 		done: function() { 
@@ -108,12 +106,10 @@ GRCHarMu.step({ stBuletinAdhesion: function(ev, sc, st) {
 			delay: 100,
 			nbMax: 10,
 			test: function(index) { 
-				ctx.log('click sur le lien ********');
 				return GRCHarMu.pRechercheAI.oList.getActiveRow() > 0;
 			},
 			done: function() { 
 				// add code here
-				ctx.log('exec');
 				GRCHarMu.pRechercheAI.oList.clickLink(1,1, function(){
 					sc.endStep();
 					return;
@@ -219,6 +215,7 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stNavigateDetailAdh: function(ev, sc, st) {
 	var data = sc.data;	
+	ctx.traceF.infoTxt('Etape stNavigateDetailAdh: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	ctx.wait(function(ev){
 		GRCHarMu.pBulletinAdhesion.activate();
 		GRCHarMu.pBulletinAdhesion.wait(function(ev){
@@ -226,16 +223,14 @@ GRCHarMu.step({ stNavigateDetailAdh: function(ev, sc, st) {
 			sc.endStep();
 			return;
 		});
-		
 	},1000);
-
 }});
 
 
 /** Description */
 GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Etape stBulletinAdhesion: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.log('Etape stLireDataDetailAdhesion '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	ctx.wait(function(ev) {
 		GRCHarMu.pDetailAdhesion.activate();
 		GRCHarMu.pDetailAdhesion.wait(function(ev){

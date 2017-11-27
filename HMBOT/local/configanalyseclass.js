@@ -7,7 +7,6 @@ var confFileANALYSEClass = function() {
        afficherMenu : '',
        cheminRacine: '',
 			 cheminTemplateAnalyse: '',
-			 cheminBlocsIAE: '',
 			 cheminResultats: '',
 		   touteTraceActive : '',
 			 cheminTemplateRejet : '',

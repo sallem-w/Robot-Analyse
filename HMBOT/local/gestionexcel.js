@@ -7,19 +7,11 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 	
-	//sc.step(GRCHarMu.steps.stInitDataBasique);
-	//sc.step(GRCHarMu.steps.stInitDataAnalyse);
-	//sc.step(GRCHarMu.steps.stConfigurationJSON);
-	//sc.step(GRCHarMu.steps.stConfigurationTrace);
-	//sc.step(GRCHarMu.steps.stConfigurationFichiersDonneesExcel_CreationChemin);
-	//sc.step(GRCHarMu.steps.stEchecInitialisation);
-	//sc.step(GRCHarMu.steps.stFinInitialisation);
 	sc.step(GRCHarMu.steps.stDeclarationDataBasique);
 	sc.step(GRCHarMu.steps.stDeclarationDataAnalyse);
 	sc.step(GRCHarMu.steps.stConfigurationJSON);
 	sc.step(GRCHarMu.steps.stConfigTrace);
-	sc.step(GRCHarMu.steps.stChargementFichierExcelIAE);
-	
+	sc.step(GRCHarMu.steps.stChargementFichierExcelIAE);	
 	sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
 	sc.step(GRCHarMu.steps.stOuverturesFichiersInputRejet);
 	sc.step(GRCHarMu.steps.stOuvertureFichierIAE);
@@ -361,44 +353,55 @@ GRCHarMu.step({ stOuverturesFichiersInputRejet: function(ev, sc, st) {
 	var extensionNomFichierResultat = ctx.getDate()+'-'+time.substr(0,2)+'-'+time.substr(3,2)+'-'+time.substr(6,2);
 	data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat = data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '_' + extensionNomFichierResultat + '.xls';
 	ctx.excelF.configExcel(data);
-	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE);
-	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet);
-	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND);
 	
 	//ouverture du fichier pivot ==> fichier template 
-	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminTemplateRejet + data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '.xls');
+	ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateRejet + data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '.xls');
 	//copie du fichier pivot
-	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet);
 	ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminOutputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
 	
 	//activer le premier fichier à charger: fichier PRE_IAE
+	ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE);
 	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE);
 	var indexDerniereLignePREIAE = ctx.excelF.indexDerniereLigne();
-	var tabRangesPREIAE = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLignePREIAE+'');
-	//fermeture du fichier PRE_IAE
+	ctx.excel.sheet.copyRange('1:'+indexDerniereLignePREIAE+'');
 	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE, true);
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
+	ctx.excel.sheet.activate('PRE_IAE_FICHIER_IND');
+	ctx.excel.sheet.pasteRange('1:'+indexDerniereLignePREIAE+'');
+	
+	
 	
 	//activate le deuxième fichier à charger: fichier Sf_GRC
+	ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet);
 	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet);
 	var indexDerniereLigneSfGRC = ctx.excelF.indexDerniereLigne();
-	var tabRangesSfGRC = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLigneSfGRC+'');
-	//fermeture du fichier Sf_GRC
+	ctx.excel.sheet.copyRange('1:'+indexDerniereLigneSfGRC+'');
 	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSfGRCRejet, true);
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
+	ctx.excel.sheet.activate('SF_GRC-IND_Rejets');
+	ctx.excel.sheet.pasteRange('1:'+indexDerniereLigneSfGRC+'');
 	
 	//activate le troixième fichier à charger: fichier AC056
+	ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND);
 	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND);
 	var indexDerniereLigneACGRCIND = ctx.excelF.indexDerniereLigne();
-	var tabRangesSfGRC = ctx.excel.sheet.getRangeValues('1:'+indexDerniereLigneACGRCIND+'');
-	//fermeture du fichier AC056
+	ctx.excel.sheet.copyRange('1:'+indexDerniereLigneACGRCIND+'');
 	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierACGRCIND, true);
-	
-	//activation du pivot résultat
 	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat);
-	
+	ctx.excel.sheet.activate('Rejets IAE');
+	ctx.excel.sheet.pasteRange('1:'+indexDerniereLigneSfGRC+'');	
 	sc.endStep();
 	return;
 }});
 
+
+/** Description */
+GRCHarMu.step({ stFermetureFichiersRejet: function(ev, sc, st) {
+	var data = sc.data;
+	
+	sc.endStep();
+	return;
+}});
 
 
 /** Description */

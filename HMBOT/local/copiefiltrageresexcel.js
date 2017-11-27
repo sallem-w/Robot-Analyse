@@ -16,7 +16,7 @@ GRCHarMu.scenario({ scCopieFiltrageExcel: function(ev, sc) {
 /** Description */
 GRCHarMu.step({ stInitCopieFiltrageExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stInitCopieFiltrageExcel');	
+	ctx.traceF.infoTxt('Etape stInitCopieFiltrageExcel: Découpage de fichers résulat en blocs de taille 10');	
 	sc.endStep();
 	return;
 }});
@@ -25,7 +25,7 @@ GRCHarMu.step({ stInitCopieFiltrageExcel: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stCreationCopieDataExcel: ');
+	ctx.traceF.infoTxt('Etape stCreationCopieDataExcel: copie des lignes qui sont traitées, les lignes qui ne sont pas analysées sont copiées dans un fichier des données non traitées');
 	var time = ctx.getTime()+'';
 	var nameFichierResultat = ctx.getDate()+'-'+time.substr(0,2)+'-'+time.substr(3,2)+'-'+time.substr(6,2);
 		try {
@@ -51,7 +51,7 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stFinCopieFiltrageExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stFinCopieFiltrageExcel');
+	ctx.traceF.infoTxt('Etape stFinCopieFiltrageExcel: Fin découpage de ième blocs de sortie');
 	data.ppCouranteAnalyse.dataLocale.nbAdhesion = 0;
 	data.ppCouranteAnalyse.dataLocale.indexDeb = data.ppCouranteAnalyse.dataLocale.indexFin + 1;
 	data.ppCouranteAnalyse.dataLocale.indexFin = data.ppCouranteAnalyse.dataLocale.indexDeb -1;

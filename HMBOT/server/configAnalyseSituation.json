@@ -5,7 +5,6 @@
        "touteTraceActive": true,
        "cheminRacine": "C:\\deploy\\analyse\\",
        "cheminTemplateAnalyse": "C:\\deploy\\analyse\\template\\",
-       "cheminBlocsIAE": "C:\\deploy\\analyse\\blocsIAE\\",
        "cheminResultats": "C:\\deploy\\analyse\\resultats\\",
        "cheminTemplateRejet" : "C:\\deploy\\analyse\\traitementRejet\\template\\",
        "cheminInputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersInput\\",
