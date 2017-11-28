@@ -12,6 +12,7 @@ var confFileANALYSEClass = function() {
 			 cheminTemplateRejet : '',
 			 cheminInputTraitRejet : '',
 			 cheminOutputTraitRejet : '',
+			 cheminAccesRejetsIAE : '', //chemin vers le serveur
        excel : {
             debutIndexLigne : '',
 				    debutIndexCol : '',

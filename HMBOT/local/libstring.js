@@ -10,6 +10,12 @@
 	stringF.suppressionRetourEtTab = function(str){
 		return str.replace(/\n|\r/g,' ');
 	};
+	
+	/*stringF.estChiffre = function(str){
+		for(var i =0; i<str.length; i++){
+			//if(str.charAt(i))
+		}
+	};*/
 
 	return stringF;
 }) ();
