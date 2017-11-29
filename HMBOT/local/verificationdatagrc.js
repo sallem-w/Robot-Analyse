@@ -12,11 +12,11 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -24,8 +24,8 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
+//	sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
-	
 }});
 
 /** Description */
@@ -396,11 +396,25 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	}
 }});
 
-
+/** Description */
+GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de la ligne dans le fichier de sortie');
+	st.disableTimeout();
+	GRCHarMu.scenarios.scGenerationFichierSortie.start(data).onEnd(function(sc2) {
+		sc.data=sc2.data;
+		ctx.traceF.infoTxt('************* Fin insertion ième ligne dans le fichier de sortie  *************');
+		sc.endStep();
+	});
+	
+	sc.endStep();
+	return;
+}});
 
 /** Description */
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt('');
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
 	sc.endScenario();
 	return;

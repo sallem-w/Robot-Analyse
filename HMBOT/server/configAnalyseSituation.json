@@ -7,9 +7,11 @@
        "cheminTemplateAnalyse": "C:\\deploy\\analyse\\template\\",
        "cheminResultats": "C:\\deploy\\analyse\\resultats\\",
        "cheminTemplateRejet" : "C:\\deploy\\analyse\\traitementRejet\\template\\",
-       "cheminInputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersInput\\",
+       "cheminInputTraitRejet" : "W:\\",
        "cheminOutputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersOutput\\",
        "cheminAccesRejetsIAE" : "W:\\",
+       "cheminLocalInputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersInput\\",
+       "cheminLocalOutputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersOutput\\",
        "excel" : {
             "debutIndexLigne" : 2,
             "debutIndexCol" : 1,
@@ -71,6 +73,10 @@
             "HPH30",
             "HPH45",
             "HPB00" 
-        ]  
+        ],
+        "excelSortie": [
+            {"NUM_EXT_CTT" : 66,
+             "contexteAnalyseStoppée": 126}
+        ] 
     }  
 }

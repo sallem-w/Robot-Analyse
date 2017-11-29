@@ -352,6 +352,7 @@
 				<SCRIPT Name="VerifDataGRC" Src="VerifDataGRC.js" />
 				<SCRIPT Name="GestionExcel" Src="GestionExcel.js" />
 				<SCRIPT Name="CopieFiltrageResExcel" Src="CopieFiltrageResExcel.js" />
+				<SCRIPT Name="GenerationExcelSortie" Src="GenerationExcelSortie.js" />
 			</SCRIPTS>
 		</APPLI>
 	</APPLICATIONS>

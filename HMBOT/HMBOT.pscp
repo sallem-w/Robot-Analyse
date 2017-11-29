@@ -106,5 +106,6 @@
 		<include href="app/GRCHarmonieMutuelle1.pscp" xpointer="xpointer(//APPLI)" />
 		<include href="app/GRCHarmonieM.pscp" xpointer="xpointer(//APPLI)" />
 		<include href="app/GRCHarMu.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/ExcelApp.pscp" xpointer="xpointer(//APPLI)" />
 	</APPLICATIONS>
 </ConteXtorStudio>

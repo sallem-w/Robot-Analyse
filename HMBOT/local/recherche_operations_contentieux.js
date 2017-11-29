@@ -20,9 +20,9 @@ ActivInfinitev7.scenario({ scRechercheOprtsContentieux: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stInitRechercheOptrsContentieux);
 	sc.step(ActivInfinitev7.steps.stParcourirListeOperts);
 	sc.step(ActivInfinitev7.steps.stListeOprtsSuivante);
-	//sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
-	//sc.step(ActivInfinitev7.steps.stConsultationProGaran);
-	//sc.step(ActivInfinitev7.steps.stListeProduitsSuivante);
+	sc.step(ActivInfinitev7.steps.stInitConsultationProGaran);
+	sc.step(ActivInfinitev7.steps.stConsultationProGaran);
+	sc.step(ActivInfinitev7.steps.stListeProduitsSuivante);
 	//sc.step(ActivInfinitev7.steps.stInitIdentAssures);
 	//sc.step(ActivInfinitev7.steps.stDataIdentAssures);
 	//sc.step(ActivInfinitev7.steps.stListeAssuresSuivante);

@@ -39,7 +39,7 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			//on fait close de nouveau fichier créer
 			ctx.excel.file.close(nameFichierResultat + '.xls', true);
 			ctx.log('creation');
-			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse);
+			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 		} catch (ex) {
 			ctx.traceF.errorTxt('Can not copy open excel file, ');
 		}

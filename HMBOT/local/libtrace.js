@@ -3,9 +3,7 @@
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Logs.log';
 	var traceF = {};
 	var cheminFichierTrace;
-	
-	
-	
+	traceF.cheminFichierTrace=cheminFichierTrace;
 	
 	traceF.constantes = {
 		touteTraceActive:false,
@@ -23,9 +21,10 @@
 		if (!ctx.fso.file.exist(cheminFichier)) {
 			ctx.fso.file.create(cheminFichier);
 		}
-		cheminFichierTrace = cheminFichier;
-		traceF.constantes.touteTraceActive=ctx.configF.fichierConfigScenario[nomScen].touteTraceActive;
+		ctx.traceF.cheminFichierTrace = cheminFichier;
+		ctx.traceF.constantes.touteTraceActive=ctx.configF.fichierConfigScenario[nomScen].touteTraceActive;
 	};
+
 	
 //	trace.writeInfo
 	traceF.infoTxt = function(str, dateObj, separateur) {
@@ -54,13 +53,11 @@
 		}
 
 		separateur = separateur || '    ';
-		dateObj = dateObj || new Date();
-		//typeM = typeM || traceF.constantes.typeM.Info;
-		
-		
-		
+		dateObj = dateObj || new Date();	
 		var traceCourante = ctx.dateF.formatTrace(dateObj) + separateur + typeM + separateur + str + '\r\n';
-		ctx.writeFile(cheminFichierTrace,traceCourante,true,true);
+		//ctx.log('Chemin Fichier Trace : '+ctx.traceF.cheminFichierTrace);
+		var cheminTr = ctx.traceF.cheminFichierTrace;
+		ctx.writeFile(cheminTr,traceCourante,true,true);
 		if (ctx.options.isDebug) {
 			ctx.log(typeM + '		' + str);
 		}

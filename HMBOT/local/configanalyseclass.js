@@ -13,6 +13,8 @@ var confFileANALYSEClass = function() {
 			 cheminInputTraitRejet : '',
 			 cheminOutputTraitRejet : '',
 			 cheminAccesRejetsIAE : '', //chemin vers le serveur
+			 cheminLocalInputTraitRejet : '',
+			 cheminLocalOutputTraitRejet : '',
        excel : {
             debutIndexLigne : '',
 				    debutIndexCol : '',
