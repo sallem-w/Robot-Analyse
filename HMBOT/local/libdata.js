@@ -196,7 +196,7 @@ ctx.dataF = (function () {
 		}
 		
 		dataF.initialisationScenarioCMU = function(dat,scenario){
-				
+				 
 			dat.codeScenario=scenario;
 			dat.nomScenario='R�siliation CMU';
 			ctx.log('Init configF');
