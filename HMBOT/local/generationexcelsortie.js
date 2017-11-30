@@ -19,6 +19,7 @@ GRCHarMu.scenario({ scGenerationFichierSortie :function(ev, sc) {
 GRCHarMu.step({ stInitCopieFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitCopieFichierSortie: Initialisation de la copie dans le fichier de sortie');
+	//mise à jour de l'indice de la ligne 
 	data.varGlobales.ligneCourante = 2 ;
 	sc.endStep();
 	return;
@@ -28,7 +29,7 @@ GRCHarMu.step({ stInitCopieFichierSortie: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stCopieLigne: function(ev, sc, st) {
 	var data = sc.data;
-	var rangeValues = ctx.excel.sheet.getRangeValues(''+2+':'+2+'');
+	
 	sc.endStep();
 	return;
 }});
@@ -38,7 +39,7 @@ GRCHarMu.step({ stCopieLigne: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stFinCopieFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
-	
+	ctx.traceF.infoTxt('Etape stFinCopieFichierSortie: Fin création fichier résultat');
 	sc.endScenario();
 	return;
 }});

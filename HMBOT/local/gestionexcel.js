@@ -29,6 +29,7 @@ GRCHarMu.step({ stDeclarationDataBasique: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitDeclarationData: '); 
 	data.scenarioConfig = '';
+	data.excelSortie = '';
 	data.codeScenario = ctx.configF.scenario.Analyse;
 	data.nomScenario ='';
 	data.webData = {
@@ -156,6 +157,7 @@ GRCHarMu.step({ stConfigurationJSON: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse = ctx.fso.file.read(ctx.options.serverURL + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierConfigScenario);
 	data.scenarioConfig = new confFileANALYSEClass();
 	data.scenarioConfig = JSON.parse(data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse);
+	data.excelSortie = data.scenarioConfig[data.codeScenario].excelSortie;
 	sc.endStep();
 	return;
 }});
@@ -225,6 +227,7 @@ GRCHarMu.step({ stChargementFichierExcelIAE: function(ev, sc, st) {
 		fichiers.moveNext();
 	}
 	if (n_fichiers == 1) {
+		ctx.traceF.infoTxt('Version du projet : 1.1 - Date de la Version : ' + GLOBAL.data.projectDate);
 		ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine+''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 		data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = ctx.dateF.formatAAAAMMJJ(new Date()) + "_" + data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length - 1)  + finTitreResultat + extensionFichier;
 		ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);

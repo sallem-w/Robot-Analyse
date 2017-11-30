@@ -12,11 +12,11 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
   //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -24,7 +24,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
-//	sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
 

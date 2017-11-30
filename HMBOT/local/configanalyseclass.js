@@ -54,7 +54,8 @@ var confFileANALYSEClass = function() {
             }
         },
 			 tabGammeCode : [],
-			 listeProduits : []
+			 listeProduits : [],
+			 excelSortie :[]
 	}
 	this.Version = '1.1'
 };

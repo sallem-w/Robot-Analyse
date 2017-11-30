@@ -160,7 +160,7 @@ ActivInfinitev7.step({ stTraiterResultatRecherchePP: function(ev, sc, st) {
 	
 	ctx.wait(function(ev){
 		ctx.polling({
-		delay: 200,
+		delay: 400,
 		nbMax: 10,
 		test: function(index) { 
 			return ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation.exist(); 

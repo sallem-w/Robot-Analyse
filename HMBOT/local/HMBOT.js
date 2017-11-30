@@ -151,10 +151,10 @@ GLOBAL.events.START.on(function (ev) {
 	}
 		
 		if(configANALYSE.afficherMenu){
-			systray.addMenu('', 'Analyse situation', 'Scenario ANALYSE ');
-		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'ANALYSE Complet V7', '', function(ev) {
+			systray.addMenu('', 'Analyse situation', 'Scenario ANALYSE');
+		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'ANALYSE Complet 1.1', '', function(ev) {
 //		  ctx.traceF.initFichierTrace(configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
-//			ctx.traceF.infoTxt('Version du projet : ' + GLOBAL.data.projectVersion + ' - Date de la Version : ' + GLOBAL.data.projectDate);
+    		
 //			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
 			var data = {};
 			GRCHarMu.scenarios.scVerifDataGRC.start(data).onEnd(function(){});
