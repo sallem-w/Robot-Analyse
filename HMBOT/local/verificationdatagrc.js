@@ -10,7 +10,6 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stInitRobot);
 	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
-  //sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite); //cette étape permet de récupérer l'URL de tab de bord
 	sc.step(GRCHarMu.steps.stLireDataConfig);
 	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
@@ -24,7 +23,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
-	sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
 
@@ -60,9 +59,20 @@ GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
 	for (var i in tab){
 		gc = tab[i].gamme +':'+ tab[i].code +':'+ tab[i].compatible;
 		data.ppCouranteAnalyse.dataLocale.tabGammeCode.push(gc);
+		//data.ppCouranteAnalyse.dataLocale.tabGammeCode[i]=gc;
 	}
 	ctx.traceF.infoTxt('Chargement des numéros des produits (10 produits)');
 	data.ppCouranteAnalyse.dataLocale.tabProduits = data.scenarioConfig.ANALYSE.listeProduits;
+	
+	//récupération des data excel du sortie
+	var tabS = {colS: '', colT: '', libS:'', libT: ''};
+	tabS = data.scenarioConfig.ANALYSE.excelSortie;
+	var exS;
+	for (var i in tabS){
+		exS = tabS[i].colS+':'+tabS[i].colT+':'+tabS[i].libS+':'+tabS[i].libT;
+		data.ppCouranteAnalyse.dataLocale.tabDataExcelS.push(exS);
+		//data.ppCouranteAnalyse.dataLocale.tabDataExcelS[i]=exS;
+	}
 	sc.endStep();
 	return;
 }});
@@ -180,8 +190,8 @@ GRCHarMu.step({ stVerificationGRC: function(ev, sc, st) {
 
 	ctx.traceF.infoTxt('************* Début scénario Analyse Data GRC Siebel *************');
 	st.disableTimeout();
-	GRCHarMu.scenarios.scAnalyseDataGRC.start(data).onEnd(function(sc3) {
-		sc.data=sc3.data;
+	GRCHarMu.scenarios.scAnalyseDataGRC.start(data).onEnd(function(sc2) {
+		sc.data=sc2.data;
 		ctx.traceF.infoTxt('************* Fin scénario Analyse Data GRC Siebel *************');
 		//ActivInfinitev7.pTabDeBord.activate();
 		sc.endStep();
@@ -406,9 +416,6 @@ GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 		ctx.traceF.infoTxt('************* Fin insertion ième ligne dans le fichier de sortie  *************');
 		sc.endStep();
 	});
-	
-	sc.endStep();
-	return;
 }});
 
 /** Description */

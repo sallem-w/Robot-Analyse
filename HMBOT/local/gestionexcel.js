@@ -78,7 +78,9 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				indexFin: 1,
 				nbAdhesion : 0,
 				tentativeTraitInfinite : 1,
-				tentativeTraitGRC : 1
+				tentativeTraitGRC : 1,
+				tabAdhesions : [],
+				tabDataExcelS : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -141,7 +143,8 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				cheminLocalInputTraitRejet: '',
 				cheminLocalOutputTraitRejet :'',
 				cheminRacine : '',
-				nomFichierLog : ''
+				nomFichierLog : '',
+				cheminFichierConfigAnalyse : ''
 			}
 		};
 	//temp_ppCouranteAnalyse = {};
@@ -154,10 +157,12 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stConfigurationJSON: function(ev, sc, st) {
 	var data = sc.data;
-	data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse = ctx.fso.file.read(ctx.options.serverURL + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierConfigScenario);
+	var fichierConfigScenario = data.ppCouranteAnalyse.dataFichiers.nomFichierConfigScenario;
+	data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse = ctx.options.serverURL + '\\' + fichierConfigScenario;
+	var fichierConfig = ctx.fso.file.read(data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse);
 	data.scenarioConfig = new confFileANALYSEClass();
-	data.scenarioConfig = JSON.parse(data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse);
-	data.excelSortie = data.scenarioConfig[data.codeScenario].excelSortie;
+	data.scenarioConfig = JSON.parse(fichierConfig);
+	//data.excelSortie = data.scenarioConfig[data.codeScenario].excelSortie;
 	sc.endStep();
 	return;
 }});

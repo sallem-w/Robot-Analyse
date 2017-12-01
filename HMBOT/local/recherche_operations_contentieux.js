@@ -90,7 +90,7 @@ ActivInfinitev7.step({ stInitConsultationProGaran: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	}else{
-		sc.endStep(ActivInfinitev7.steps.stInitIdentAssures);
+		sc.endStep(ActivInfinitev7.steps.stFinRechercheOptrsContentieux);
 		return;
 	}
 }});
