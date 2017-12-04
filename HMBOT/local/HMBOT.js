@@ -152,7 +152,7 @@ GLOBAL.events.START.on(function (ev) {
 		
 		if(configANALYSE.afficherMenu){
 			systray.addMenu('', 'Analyse situation', 'Scenario ANALYSE');
-		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'ANALYSE Complet 1.1', '', function(ev) {
+		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'ANALYSE Complet 1.2', '', function(ev) {
 //		  ctx.traceF.initFichierTrace(configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
     		
 //			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
