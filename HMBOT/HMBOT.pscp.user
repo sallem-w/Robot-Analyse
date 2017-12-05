@@ -1,74 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="413" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="15530" Length="162"><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat = data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '_' + extensionNomFichierResultat + '.xlsb';]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="383" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="13989" Length="127"><![CDATA[fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminInputTraitRejet + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE;]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="394" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="14960" Length="50"><![CDATA[ctx.fso.file.copy(fileNameSrc, fileNameDst, true);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="492" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="20120" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="209" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="9082" Length="97"><![CDATA[ctx.traceF.infoTxt('************* Fin scénario recherche et analyse situation PP *************');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="195" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="8594" Length="87"><![CDATA[ctx.traceF.infoTxt('************* Fin scénario Analyse Data GRC Siebel *************');]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomTemplate]]></FINDWHAT>
-		<FINDWHAT><![CDATA[finTitreResultat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stOuvertureCopieFichiersInputRejet]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminRacine]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomFichierATraiter]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ouvertureFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stEchecInitialisation]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomTemplateRejetResultat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomTemplateRejet]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopieFichierSortie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[push]]></FINDWHAT>
-		<FINDWHAT><![CDATA[split]]></FINDWHAT>
-		<FINDWHAT><![CDATA[GRCHarMu.pRechercheAI]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminFichierConfigAnalyse]]></FINDWHAT>
-		<FINDWHAT><![CDATA[scGestionFichiersExcelConfig]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitIdentAssures]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stListeProduitsSuivante]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomFichierResultatCompletAnalyse]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomFichierResultatCompletAnalyse]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[tentativeTraitInfinite]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalysee;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[tousStatutInactifs]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[GRCHarMu]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.scenarioConfig.CMU.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statuts]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[nomScen]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dureeTraitement]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[statistiquesF]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[temp_ligne]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[sc.data.contratCourantCMU.statusCMU.FinCMUProcessus = true;]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.typeAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.indiceBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.dataEnLigne.variables.nbBenef]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[: '']]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.statusContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.notes.commentaireContrat]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[data.contratCourantCMU.dataLocale.numeroContratIndiv]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[dateF.enObjet]]></REPLACEWITH>
+		<FINDWHAT><![CDATA[initFileStats]]></FINDWHAT>
+		<FINDWHAT><![CDATA[indexTab]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stSelectionScenarioAdhesion]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stImporterDonneesExcelAdhesion]]></FINDWHAT>
+		<FINDWHAT><![CDATA[oRoleAssure]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stAdhesionIndiv_GestionsDesErreurs]]></FINDWHAT>
+		<FINDWHAT><![CDATA[.getCurrentPage()]]></FINDWHAT>
+		<FINDWHAT><![CDATA[INFOS RO ERRONEES ou RIB MANQANT -> pas d\'edition de carte]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Appel de cotisation effectuée]]></FINDWHAT>
+		<FINDWHAT><![CDATA[La voie n\'est pas unique --> Passage en France ss ctrl]]></FINDWHAT>
+		<FINDWHAT><![CDATA[La voie n'est pas unique --> Passage en France ss ctrl]]></FINDWHAT>
+		<FINDWHAT><![CDATA[RIB MANQUANT :ENVOI COURRIER]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB ]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB n'a pas pu être réalisé]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB n'a pas pu être réalisé.]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Erreur sur le RO --> Teletransmission Désactivée + numero RO fictif]]></FINDWHAT>
+		<FINDWHAT><![CDATA[.CENTRE_PAIEMENT]]></FINDWHAT>
+		<FINDWHAT><![CDATA[oRangAttach]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ctx.polling({	]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stPageIdentificationAssures_Erreur_RO_Assure]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[Infos RO à revoir]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[RIB à revoir]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.pAdhIndivIdentAssures.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.pAdhIndivIdentAssurPageErreur.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[Assure]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stFinScenarioAjoutAssure]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[_Edition_De_Carte]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[VAL_SOUSC]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[listeVar]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[ '',]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stFinScenarioCreationIdentificationAdherent]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stPageIdentificationSouscripteur_Init]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stVersLaPageIdentificationSouscripteur_GestionErreur]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[ | ';]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.pAdhIndivIdentDestPresta.]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[stAdhesionIndividuelle_AjoutProduits_Init]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[.pAdhIndivIntervtPrin.]]></REPLACEWITH>
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="26" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="102" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="479" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="59" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="408" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libData']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="54" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS" Offset="0" Length="0" />
-		<OPENDOC LineNumber="91" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="24" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libPopup']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="113" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="138" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="17" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="202" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="492" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[]]></DebugTester>
+		<DebugTester><![CDATA[
+ActivInfinitev7.pAdhIndivParamDivers.btTabIndex.setAll();
+ActivInfinitev7.pAdhIndivParamDivers.oListeVarInfo.get();]]></DebugTester>
 	</PROPERTIES>
-	<WATCHES />
+	<WATCHES>
+		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
+		<WATCH><![CDATA[index]]></WATCH>
+		<WATCH><![CDATA[data]]></WATCH>
+	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />
 </USER>

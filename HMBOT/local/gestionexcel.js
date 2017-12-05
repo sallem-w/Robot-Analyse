@@ -157,7 +157,15 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				cheminRacine : '',
 				nomFichierLog : '',
 				cheminFichierConfigAnalyse : ''
-			}
+			},
+			dataStat : {
+						nomFichierTraite : '', // === nomFichierATraiter le fichier d'entrée
+            debutTpsTraitement : 0,
+						finTpsTraitement : 0,
+						dureeTraitement : 0,
+            nbCasTraitementSucces : 0, // countCaseSuccessProcessed
+            nbCasTraitementEchec : 0 //countCaseFailProcessed
+        }
 		};
 	//temp_ppCouranteAnalyse = {};
 	data.ppCouranteAnalyse = ppCouranteAnalyse;
