@@ -138,7 +138,7 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				payeurEgSouscripteur : ''
 			},
 			dataFichiers: {
-				nomTemplate : 'templateIAE.xls',
+				nomTemplate : 'templateIAE.xlsb',
 				nomFichierConfigScenario: 'configAnalyseSituation.json',
 				nomFichierATraiter : '', //nom du fichier d'entrée
 				nomFichierResultatAnalyse: '', //fichier résultat technique
@@ -205,7 +205,7 @@ GRCHarMu.step({ stConfigTrace: function(ev, sc, st) {
     		essaye: {label: 'Reessayer'},
     		annule: {label: ' Annuler '}  
   		}  
-		}) ;
+		});
 	// wait until the Popup closes 
 	myPopup.waitResult(function(res) 
 	{
@@ -468,7 +468,8 @@ GRCHarMu.step({ stOuvertureCopieFichiersInputRejet: function(ev, sc, st) {
 GRCHarMu.step({ stOuvertureFichierIAE: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.excelF.configExcel(data);
-	ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+	//ctx.excelF.ouvertureFichier(data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+	ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 	data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //
 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 	sc.endStep();

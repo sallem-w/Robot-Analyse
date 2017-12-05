@@ -38,7 +38,7 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			var indexFinInsert = data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb + 2 ;
 			ctx.excel.sheet.setRangeValues('2:'+ indexFinInsert +'',rangeValues);
 			//on fait close de nouveau fichier créer
-			ctx.excel.file.close(nameFichierResultat + '.xls', true);
+			ctx.excel.file.close(nameFichierResultat + '.xlsb', true);
 			ctx.log('creation');
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 		} catch (ex) {

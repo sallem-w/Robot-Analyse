@@ -422,8 +422,9 @@ GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('');
+	
   ctx.popupF.finTraitement('Analyse'); 
-
+  
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
 	sc.endScenario();
 	return;
