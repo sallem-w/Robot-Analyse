@@ -12,6 +12,7 @@
        "cheminAccesRejetsIAE" : "W:\\",
        "cheminLocalInputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersInput\\",
        "cheminLocalOutputTraitRejet" : "C:\\deploy\\analyse\\traitementRejet\\fichiersOutput\\",
+       "cheminTemplateStat" : "C:\\deploy\\template\\",
        "excel" : {
             "debutIndexLigne" : 2,
             "debutIndexCol" : 1,

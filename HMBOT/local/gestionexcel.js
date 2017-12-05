@@ -156,7 +156,8 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				cheminLocalOutputTraitRejet :'',
 				cheminRacine : '',
 				nomFichierLog : '',
-				cheminFichierConfigAnalyse : ''
+				cheminFichierConfigAnalyse : '',
+				cheminTemplateStat : ''
 			},
 			dataStat : {
 						nomFichierTraite : '', // === nomFichierATraiter le fichier d'entrée

@@ -15,6 +15,7 @@ var confFileANALYSEClass = function() {
 			 cheminAccesRejetsIAE : '', //chemin vers le serveur
 			 cheminLocalInputTraitRejet : '',
 			 cheminLocalOutputTraitRejet : '',
+			 cheminTemplateStat: '',
        excel : {
             debutIndexLigne : '',
 				    debutIndexCol : '',
