@@ -5,10 +5,12 @@
 	//excelHelper.constants
 	notes.constantes = {
 		statuts: {
-			Creation: "",
-			TracePCX: "",
-			Modification : "",
-			AdhNonAnalysee: "Adhésion non analysée sur Infinite- Problème technique",
+			CreationPPInconnue: "Création contrat – PP inconnue sur Infinite",
+			CréationPasDeContratActif: "Création de contrat – Pas de contrat actif sur la PP",
+			TracePCX: "Non conformité - présence d’un précontentieux",
+			GestionManuelle : "Gestion manuelle – Présence d’un contrat actif",
+			AdhEnregistree : "Adhésion déjà enregistrée – A vérifier manuellement",
+			AdhNonAnalyseeInfinite: "Adhésion non analysée sur Infinite - Problème technique",
 			AdhNonAnalyseeGRC : "Adhésion non analysée sur Siebel - Problème technique"
 		}
 	}

@@ -3,6 +3,18 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[cheminFichierStats]]></FINDWHAT>
+		<FINDWHAT><![CDATA[contenuTemplate]]></FINDWHAT>
+		<FINDWHAT><![CDATA[statistiquesF.FinTpsTraitement]]></FINDWHAT>
+		<FINDWHAT><![CDATA[fin]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ctx.notes.constantes.statuts.AdhNonAnalysee]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ctx.notes.constantes.statuts.creation]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Création contrat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stOuvertureCopieFichiersInputRejet]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stRecuperationFichiersRejets]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomTemplateRejetResultat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminTemplateStat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminRacine]]></FINDWHAT>
 		<FINDWHAT><![CDATA[initFileStats]]></FINDWHAT>
 		<FINDWHAT><![CDATA[indexTab]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stSelectionScenarioAdhesion]]></FINDWHAT>
@@ -11,18 +23,6 @@
 		<FINDWHAT><![CDATA[stAdhesionIndiv_GestionsDesErreurs]]></FINDWHAT>
 		<FINDWHAT><![CDATA[.getCurrentPage()]]></FINDWHAT>
 		<FINDWHAT><![CDATA[INFOS RO ERRONEES ou RIB MANQANT -> pas d\'edition de carte]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Appel de cotisation effectuée]]></FINDWHAT>
-		<FINDWHAT><![CDATA[La voie n\'est pas unique --> Passage en France ss ctrl]]></FINDWHAT>
-		<FINDWHAT><![CDATA[La voie n'est pas unique --> Passage en France ss ctrl]]></FINDWHAT>
-		<FINDWHAT><![CDATA[RIB MANQUANT :ENVOI COURRIER]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB ]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB n'a pas pu être réalisé]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Le contrôle de la clé du RIB n'a pas pu être réalisé.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Erreur sur le RO --> Teletransmission Désactivée + numero RO fictif]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.CENTRE_PAIEMENT]]></FINDWHAT>
-		<FINDWHAT><![CDATA[oRangAttach]]></FINDWHAT>
-		<FINDWHAT><![CDATA[ctx.polling({	]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stPageIdentificationAssures_Erreur_RO_Assure]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
@@ -46,17 +46,18 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="7" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="25" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="202" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="160" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="228" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="4" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="117" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="430" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="530" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
 		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[
-ActivInfinitev7.pAdhIndivParamDivers.btTabIndex.setAll();
-ActivInfinitev7.pAdhIndivParamDivers.oListeVarInfo.get();]]></DebugTester>
+		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
 		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>

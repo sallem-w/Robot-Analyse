@@ -19,6 +19,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
+	sc.step(GRCHarMu.steps.stMiseDataStat);
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
@@ -239,7 +240,7 @@ GRCHarMu.step({ stDeuxiemeTentativeSurInfinite: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stDeuxiemeTentativeSurInfinite : Vérification de traitement de la PP courante avec la première tentative sur Infinite');
 	
 	
-	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalysee && data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite < 2){
+	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite && data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite < 2){
 		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Infinite) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
 		//donner une deuxième chance et reboucler
 		data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite += 1;
@@ -275,6 +276,25 @@ GRCHarMu.step({ stDeuxiemeTentativeSurInfinite: function(ev, sc, st) {
 		return;
 	}
 }});
+
+
+/** Description */
+GRCHarMu.step({ stMiseDataStat: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stMiseDataStat: mise à jour des données de stat');
+	data.statistiquesF.nbCasTrouve += 1;
+	var commentaire = data.ppCouranteAnalyse.notes.contexteAnalyseStoppee;
+	if(commentaire === ctx.notes.constantes.statuts.AdhEnregistree || commentaire === ctx.notes.constantes.statuts.CreationPPInconnue || commentaire === ctx.notes.constantes.statuts.CréationPasDeContratActif || commentaire === ctx.notes.constantes.statuts.GestionManuelle || commentaire === ctx.notes.constantes.statuts.TracePCX){
+		data.statistiquesF.nbCasTraitementSucces += 1;
+		sc.endStep();
+	  return;
+	}else{
+		data.statistiquesF.nbCasTraitementEchec += 1;
+		sc.endStep();
+	  return;
+	}
+}});
+
 
 /** Description */
 GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
@@ -342,7 +362,7 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopieFiltrageAdhesionsDansExcel: Vérification de la taille de blocs à copier');
-	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalysee){
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite){
 		data.ppCouranteAnalyse.dataLocale.nbAdhesion +=1;
 	}
 	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || data.varGlobales.ligneCourante === data.varGlobales.indexDerniereLigne ){
@@ -421,8 +441,9 @@ GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
- // ctx.popupF.finTraitement('Analyse'); 
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
+	ctx.statsF.calculerStats(data);
+	ctx.popupF.finTraitement('Analyse'); 
 	sc.endScenario();
 	return;
 }});

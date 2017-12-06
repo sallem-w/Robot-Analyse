@@ -3349,7 +3349,6 @@
 			<PATH><![CDATA[http://infinite-haum0a/mdg/auth/Login.do]]></PATH>
 			<SCRIPTS>
 				<SCRIPT Name="libNotes" Src="libNotes.js" />
-				<SCRIPT Name="analyse_situation" Src="analyse_situation.js" Folder="Analyse Situation" />
 				<SCRIPT Name="CMU_verification_contrat" Src="cmu_verification_contrat.js" Folder="Processus_CMU" />
 				<SCRIPT Name="CMU_scenario_principal" Src="cmu_scenario_principal.js" Folder="Processus_CMU" />
 				<SCRIPT Name="libConfig" Src="libconfig.js" Folder="Complements" />
@@ -3376,7 +3375,6 @@
 				<SCRIPT Name="ConfigClass" Src="fichierConfigClass.js" Folder="Complements" />
 				<SCRIPT Name="RechercheEtAnalysePP" Src="RechercheEtAnalysePP.js" Folder="Analyse Situation" />
 				<SCRIPT Name="Recherche_Operations_Contentieux" Src="Recherche_Operations_Contentieux.js" Folder="Analyse Situation" />
-				<SCRIPT Name="AnalyseContratsEnCours" Src="AnalyseContratsEnCours.js" Folder="Analyse Situation" />
 				<SCRIPT Name="ConfigANALYSEClass" Src="ConfigANALYSEClass.js" />
 				<SCRIPT Name="libNotes" Src="libNotes.js" Folder="Complements" />
 			</SCRIPTS>

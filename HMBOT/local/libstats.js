@@ -1,9 +1,10 @@
 ﻿ctx.statsF = (function() {
 	
 	
-	var statsF = {};
-	var cheminFichierStats;
-	var contenuTemplate;
+	var statsF = {
+		cheminFichierStats : '',
+	  contenuTemplate : ''
+	};
 	
 	var nomFichier = ctx.dateF.formatAAAAMMJJ(new Date()) + '_{0}_Stats';
 	statsF.nomFichier=nomFichier;
@@ -24,12 +25,12 @@
 			ctx.traceF.errorTxt(' Impossible de copier le fichier de template : ' + cheminFichierTemplate + ' vers ' + cheminFichier + '.html');
 		}
 
-		cheminFichierStats = cheminFichier;
+		ctx.statsF.cheminFichierStats = cheminFichier;
 		try {
-			contenuTemplate = ctx.fso.file.read(cheminFichierStats + '.html');
+			ctx.statsF.contenuTemplate = ctx.fso.file.read(ctx.statsF.cheminFichierStats + '.html');
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Impossible de lire le fichier : ' + cheminFichierStats + '.html');
+			ctx.traceF.errorTxt('Impossible de lire le fichier : ' + ctx.statsF.cheminFichierStats + '.html');
 		}
 	};
 
@@ -41,11 +42,11 @@
 	}
 	
 	statsF.remplirTemplate = function(obj) {
-		if (obj === undefined || cheminFichierStats === undefined) {
+		if (obj === undefined || ctx.statsF.cheminFichierStats === undefined) {
 			return;
 		}
 		
-		var tempContent = contenuTemplate;
+		var tempContent = ctx.statsF.contenuTemplate;
 		for (var key in obj) {
 			if (obj.hasOwnProperty(key)) {
 				tempContent = tempContent.replace('{{ ' + key + ' }}', obj[key]);
@@ -53,25 +54,25 @@
 		}
 
 		try {
-			ctx.fso.file.write(cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
+			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique HTML, ' + cheminFichierStats + '.html');
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique HTML, ' + ctx.statsF.cheminFichierStats + '.html');
 		}
 	};
 	
 	statsF.remplirJson = function(obj) {
 		try {
-			ctx.fso.file.write(cheminFichierStats + '.json', JSON.stringify(obj));
+			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.json', JSON.stringify(obj));
 		}
 		catch(ex) {
-			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique JSON, ' + cheminFichierStats + '.json');
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique JSON, ' + ctx.statsF.cheminFichierStats + '.json');
 		}
 	}
 	
 	
 	statsF.debuterStats = function (dat) {
-//		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+    //ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
 		dat.statistiquesF=ctx.dataF.statistiquesF;
 		dat.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
 		dat.statistiquesF.nomFichier=ctx.configF.nomFichier;
