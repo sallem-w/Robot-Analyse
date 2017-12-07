@@ -19,17 +19,8 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stOuvertureCopieFichiersInputRejet);
 	
 	sc.step(GRCHarMu.steps.stChargementFichierExcelIAE);	
-	
 	sc.step(GRCHarMu.steps.stOuvertureFichierIAE);
 	sc.step(GRCHarMu.steps.stCopieFichierResultat);
-	
-	/*
-	sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
-	sc.step(GRCHarMu.steps.stRechercheRepertoire);
-	sc.step(GRCHarMu.steps.stRecuperationFichiersRejets);
-	sc.step(GRCHarMu.steps.stModificationExtension);
-	sc.step(GRCHarMu.steps.stOuvertureCopieFichiersInputRejet);*/
-	
 
 	//sc.step(GRCHarMu.steps.stEchecInitialisation);
 	sc.step(GRCHarMu.steps.stFinDeclarationData);
@@ -69,7 +60,7 @@ GRCHarMu.step({ stDeclarationDataBasique: function(ev, sc, st) {
     nbCasTrouve : 0,
 		dureeTraitement : 0,
 		FinTpsTraitement : 0,
-		debutTpsTraitement : 0,
+		debutTpsTraitement : ctx.dateF.conversionEnSecondes(new Date()),
     nbCasTraitementSucces : 0, // countCaseSuccessProcessed
     nbCasTraitementEchec : 0 //countCaseFailProcessed
   };

@@ -3,6 +3,11 @@
 	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stLireDataBancaires]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLireDataDetailAdhesion]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stInitRechercheCivilitePayeur]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLireDataBulletinAdh]]></FINDWHAT>
+		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminFichierStats]]></FINDWHAT>
 		<FINDWHAT><![CDATA[contenuTemplate]]></FINDWHAT>
 		<FINDWHAT><![CDATA[statistiquesF.FinTpsTraitement]]></FINDWHAT>
@@ -18,11 +23,6 @@
 		<FINDWHAT><![CDATA[initFileStats]]></FINDWHAT>
 		<FINDWHAT><![CDATA[indexTab]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stSelectionScenarioAdhesion]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stImporterDonneesExcelAdhesion]]></FINDWHAT>
-		<FINDWHAT><![CDATA[oRoleAssure]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stAdhesionIndiv_GestionsDesErreurs]]></FINDWHAT>
-		<FINDWHAT><![CDATA[.getCurrentPage()]]></FINDWHAT>
-		<FINDWHAT><![CDATA[INFOS RO ERRONEES ou RIB MANQANT -> pas d\'edition de carte]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
@@ -46,13 +46,13 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="6" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libTrace']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="95" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="223" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="141" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="36" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="228" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="4" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="117" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="430" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="530" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
@@ -60,9 +60,9 @@
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
-		<WATCH><![CDATA[index]]></WATCH>
 		<WATCH><![CDATA[data]]></WATCH>
+		<WATCH><![CDATA[index]]></WATCH>
+		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />

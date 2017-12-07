@@ -112,6 +112,8 @@
 	
 	statsF.calculerStats = function (dat) {
 		dat.statistiquesF.FinTpsTraitement = ctx.dateF.conversionEnSecondes(new Date());
+		//data.stats.dureeTraitement =  ctx.dateF.afficherDuree(ctx.dateF.conversionEnSecondes(new Date()) - data.stats.debutTraitement); 
+		
   	dat.statistiquesF.dureeTraitement = ctx.dateF.afficherDuree(dat.statistiquesF.FinTpsTraitement - dat.statistiquesF.debutTpsTraitement);
 		ctx.statsF.remplir(dat);
 	}
