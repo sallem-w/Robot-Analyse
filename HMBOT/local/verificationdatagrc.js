@@ -23,7 +23,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
- 	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE);
+ 	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE); 
 	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
@@ -66,14 +66,14 @@ GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataLocale.tabProduits = data.scenarioConfig.ANALYSE.listeProduits;
 	
 	//récupération des data excel du sortie
-	var tabS = {colS: '', colT: '', libS:'', libT: ''};
+	/*var tabS = {colS: '', colT: '', libS:'', libT: ''};
 	tabS = data.scenarioConfig.ANALYSE.excelSortie;
 	var exS;
 	for (var i in tabS){
 		exS = tabS[i].colS+':'+tabS[i].colT+':'+tabS[i].libS+':'+tabS[i].libT;
 		data.ppCouranteAnalyse.dataLocale.tabDataExcelS.push(exS);
 		//data.ppCouranteAnalyse.dataLocale.tabDataExcelS[i]=exS;
-	}
+	}*/
 	sc.endStep();
 	return;
 }});

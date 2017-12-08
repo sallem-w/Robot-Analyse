@@ -24,15 +24,15 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
 	
-	sc.step(GRCHarMu.steps.stLireDataBancaires);
+	//sc.step(GRCHarMu.steps.stLireDataBancaires);
 	
 	sc.step(GRCHarMu.steps.stNavigateDetailAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
 	
-	sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
-	sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
-	sc.step(GRCHarMu.steps.stExecRecherchePP);
-	sc.step(GRCHarMu.steps.stLireDataPP);
+	//sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
+	//sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
+	//sc.step(GRCHarMu.steps.stExecRecherchePP);
+	//sc.step(GRCHarMu.steps.stLireDataPP);
 	
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
@@ -161,8 +161,8 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 			data.ppCouranteAnalyse.notes.dateEffetAControler = 'Oui';
 		}	
 		//deux lignes étaient commentées
-		GRCHarMu.pBulletinAdhesion.activate();
-		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();	
+//		GRCHarMu.pBulletinAdhesion.activate();
+//		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();	
 		sc.endStep();
 		return;	
 		});
@@ -204,13 +204,13 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 				}else{
 					data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
 				}
-				GRCHarMu.pCoordonneesBancaires.btOk.click();
+				//GRCHarMu.pCoordonneesBancaires.btOk.click();
 				sc.endStep();
 				return;
 			}else{
 				//Pas de data dans la popup
 				data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
-				GRCHarMu.pCoordonneesBancaires.btOk.click();
+				//GRCHarMu.pCoordonneesBancaires.btOk.click();
 				sc.endStep();
 				return;
 			}	

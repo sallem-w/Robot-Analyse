@@ -93,7 +93,7 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				nbAdhesion : 0,
 				tentativeTraitInfinite : 1,
 				tentativeTraitGRC : 1,
-				tabAdhesions : [],
+			//tabAdhesions : [],
 				tabDataExcelS : []
 			},
 			dataEnLigne: {
@@ -145,6 +145,7 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				nomFichierATraiter : '', //nom du fichier d'entrée
 				nomFichierResultatAnalyse: '', //fichier résultat technique
 				nomTemplateRejet: 'PRE_IAE_FICHIER-IND.xlsb',
+				nomTemplateSortie : 'template sortie.xlsb',
 				nomFichierPreIAE : '',
 				nomFichierSfGRCRejet : '',
 				nomFichierACGRCIND : '',
@@ -162,7 +163,8 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				cheminTemplateStat : '',
 				nomTemplateStat : '',
 				nomFichierStat : '',
-				cheminFichierStat : ''
+				cheminFichierStat : '',
+				cheminTemplateAnalyse : ''
 			}
 		};
 	//temp_ppCouranteAnalyse = {};
@@ -292,6 +294,7 @@ GRCHarMu.step({ stChargementFichierExcelIAE: function(ev, sc, st) {
 		ctx.traceF.infoTxt('Version du projet : 1.2 - Date de la Version : ' + GLOBAL.data.projectDate);
 		ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine+''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 		data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length - 1)  + finTitreResultat + extensionFichier;
+		data.ppCouranteAnalyse.dataFichiers.cheminTemplateAnalyse = config.cheminTemplateAnalyse;
 		ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 		ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 		data.statistiquesF.nomFichierTraite = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
@@ -456,7 +459,7 @@ GRCHarMu.step({ stOuvertureCopieFichiersInputRejet: function(ev, sc, st) {
 	ctx.excel.initialize();
 	var maDate = ctx.getDate()+'';
 	var extensionNomFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2);
-	data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat = data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet + '_' + extensionNomFichierResultat + '.xlsb';
+	data.ppCouranteAnalyse.dataFichiers.nomTemplateRejetResultat = extensionNomFichierResultat +'_'+ data.ppCouranteAnalyse.dataFichiers.nomTemplateRejet;
 	ctx.excelF.configExcel(data);
 	try{
 		//ouverture du fichier pivot ==> fichier template 
