@@ -28,7 +28,7 @@
 					<CRITERE>
 						<MAINFRAME><![CDATA[true]]></MAINFRAME>
 						<TITRE Scan="Part"><![CDATA[GRC Harmonie Mutuelles]]></TITRE>
-						<URL Scan="like"><![CDATA[(https?:\/\/)?([a-z-A-Z-0-9]+)\/fins_fra\/start\.swe\?SWECmd=Login]]></URL>
+						<URL Scan="Like"><![CDATA[(https?:\/\/)?([a-z-A-Z-0-9]+)\/fins_fra\/start\.swe\?SWECmd=Login]]></URL>
 					</CRITERE>
 					<PATH><![CDATA[http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&SWEPL=1&_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12&SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb&SWETS=1509380980024&SWEHo=sbl37inf1]]></PATH>
 					<OBJETS />

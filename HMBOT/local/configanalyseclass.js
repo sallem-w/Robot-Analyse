@@ -16,6 +16,9 @@ var confFileANALYSEClass = function() {
 			 cheminLocalInputTraitRejet : '',
 			 cheminLocalOutputTraitRejet : '',
 			 cheminTemplateStat: '',
+		   cheminTemplateSortie : '',
+			 cheminInputData : '',
+		   cheminResultats : '',
        excel : {
             debutIndexLigne : '',
 				    debutIndexCol : '',

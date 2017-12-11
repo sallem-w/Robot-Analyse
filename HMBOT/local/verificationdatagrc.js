@@ -45,7 +45,11 @@ GRCHarMu.step({ stConfigFichiersExcel: function(ev, sc, st) {
 	GRCHarMu.scenarios.scGestionFichiersExcelConfig.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('Etape stConfigFichiersExcel: Fin scénario configuration Excel et JSON');
-		sc.endStep();
+		if(sc2.data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
+			sc.endStep(GRCHarMu.steps.stFinVerifDataGRC);
+		}else{
+			sc.endStep();
+		}
 	});
 }});
 
@@ -443,7 +447,11 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
 	ctx.statsF.calculerStats(data);
-	ctx.popupF.finTraitement('Analyse'); 
+	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
+		ctx.popupF.finTraitementMsg('Analyse', data.ppCouranteAnalyse.notes.msgPopup);
+	}else{
+		ctx.popupF.finTraitement('Analyse'); 
+	}
 	sc.endScenario();
 	return;
 }});

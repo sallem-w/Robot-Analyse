@@ -8,6 +8,7 @@ GRCHarMu.scenario({ scGenerationFichierSortie :function(ev, sc) {
 	// add steps here...
 	
 	sc.step(GRCHarMu.steps.stInitCopieFichierSortie);
+	sc.step(GRCHarMu.steps.stCreationFichierDeSortie);
 	sc.step(GRCHarMu.steps.stCopiePPCourante);
 	//sc.step(GRCHarMu.steps.stCopieDataExcel);
 	sc.step(GRCHarMu.steps.stCopiePPSuivante);
@@ -32,10 +33,29 @@ GRCHarMu.step({ stInitCopieFichierSortie: function(ev, sc, st) {
 	return;
 }});
 
+/** Description */
+GRCHarMu.step({ stCreationFichierDeSortie: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stCreationFichierDeSortie: Creation de fichier de sortie fichier de sortie');
+	var maDate = ctx.getDate()+'';
+	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_';
+	try{
+		//open de template de sortie
+		ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateSortie + data.ppCouranteAnalyse.dataFichiers.nomTemplateSortie);
+		//save as dans le répertoire analyse
+		//ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminRacine + extensionFichierS + data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
+	}catch(ex){
+		ctx.traceF.errorTxt('Template de sortie introuvable');
+	}
+	sc.endStep();
+	return;
+}});
+
 
 /** Description */
 GRCHarMu.step({ stCopiePPCourante: function(ev, sc, st) {
 	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stCopiePPCourante: ');
 	data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
 	data.ppCouranteAnalyse.dataLocale.indexDeb = data.varGlobales.ligneCourante;
 	var numSeqTemp = data.ppCouranteAnalyse.dataLocale.numSEQ;
@@ -53,16 +73,17 @@ GRCHarMu.step({ stCopiePPCourante: function(ev, sc, st) {
 
 
 
+
 /** Description */
 GRCHarMu.step({ stCopieDataExcel: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stCopieDataExcel: ');
-	//boucle sur tabAdhésion
-	/*var tab = data.ppCouranteAnalyse.dataLocale.tabDataExcelS;
-	for (var i in tab){
-		ctx.log(tab[i]);
+	ctx.traceF.infoTxt('Etape stCopieDataExcel: Copie des données dans le fichier de sortie');
+	//faut vérifier l'existance des deux feuilles excel "Analyse à traiter" et "Analyse - Transmis"
+	/*try{
+		
+	}catch(ex){
+		
 	}*/
-	//boucle sur excelSortie
 	sc.endStep();
 	return;
 }});

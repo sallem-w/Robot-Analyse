@@ -14,6 +14,13 @@
 			AdhNonAnalyseeGRC : "Adhésion non analysée sur Siebel - Problème technique"
 		}
 	}
+	
+	
+	notes.popup =  {
+		msg : {
+			dataIndispo : "Fichiers des rejets IAE introuvables"
+		}
+	}
 	return notes;
 	//
 })();

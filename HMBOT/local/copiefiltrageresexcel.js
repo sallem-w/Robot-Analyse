@@ -42,7 +42,7 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.log('creation');
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 		} catch (ex) {
-			ctx.traceF.errorTxt('Can not copy open excel file, ');
+			ctx.traceF.errorTxt('Can not copy open excel file');
 		}
 	sc.endStep();
 	return;

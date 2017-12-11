@@ -1,19 +1,19 @@
 {
     "cheminTemplate": "C:\\deploy\\template\\",
     "ACS": {
-        "afficherMenu": true
+        "afficherMenu": false
             },
     "CMU":{
-        "afficherMenu": true
+        "afficherMenu": false
     },
     "SIRH": {
-        "afficherMenu": true
+        "afficherMenu": false
     },
     "SIRHUpdate": {
-        "afficherMenu": true
+        "afficherMenu": false
     },
     "DA": {
-        "afficherMenu": true,
+        "afficherMenu": false,
         "cheminRacine": "C:\\deploy\\da\\"
     },
     "ANALYSE":{
