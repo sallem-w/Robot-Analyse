@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="59" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="2197" Length="156"><![CDATA[data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="433" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="17816" Length="64"><![CDATA[ctx.traceF.errorTxt('Erreur chargement fichiers dans le pivot');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="47" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="1909" Length="92"><![CDATA[ctx.traceF.infoTxt('Etape stConfigFichiersExcel: Fin scénario configuration Excel et JSON');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="43" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="1694" Length="87"><![CDATA[ctx.traceF.infoTxt('Initialisation des données d\'entrée: Configuration des fichiers');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="59" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="2203" Length="156"><![CDATA[data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ);]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="19" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="622" Length="106"><![CDATA[ctx.traceF.infoTxt('Etape stInitCopieFiltrageExcel: Découpage de fichers résulat en blocs de taille 10');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="449" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="20749" Length="31"><![CDATA[ctx.statsF.calculerStats(data);]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
-		<FINDWHAT><![CDATA[nomFichierResultatAnalyse]]></FINDWHAT>
+		<FINDWHAT><![CDATA[getlast]]></FINDWHAT>
+		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminFichierResultat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[replace]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stConfigTrace]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stTriNom]]></FINDWHAT>
+		<FINDWHAT><![CDATA[copieFichier]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nomFichierATraiter]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomTemplateRejetResultat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nomTemplateRejet]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomFichierResultatAnalyse]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminTemplateExcel]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminTemplateSortie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stCopieFichierSortie]]></FINDWHAT>
@@ -17,16 +27,8 @@
 		<FINDWHAT><![CDATA[stCopieFiltrageAdhesionsDansExcel]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nomTemplate]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stScenarioCopieFiltrageExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomTemplateRejetResultat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stCopieDataExcel]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stContratCMUSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopiePPCourante]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopiePPSuivante]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopiePPSuivant]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireDataBulletinAdh]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireDataBancaires]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stLireDataDetailAdhesion]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitRechercheCivilitePayeur]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
@@ -50,15 +52,15 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="512" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="437" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="63" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="141" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="225" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="11" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="445" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="46" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="452" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="50" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="49" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
@@ -66,9 +68,9 @@
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
-		<WATCH><![CDATA[index]]></WATCH>
 		<WATCH><![CDATA[data]]></WATCH>
+		<WATCH><![CDATA[index]]></WATCH>
+		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />

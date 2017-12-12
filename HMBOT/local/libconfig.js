@@ -240,7 +240,7 @@
 
 		ctx.traceF.infoTxt("Ouverture réussie : fichier trouvé");
 		configF.nomFichierResultat = nomFichierResultatComplet;
-		configF.cheminFichierResultat = configF.cheminRacine+configF.nomFichierResultat;
+		configF.cheminFichierResultat = configF.cheminRacine + configF.nomFichierResultat;
 		return true;	
 	}
 

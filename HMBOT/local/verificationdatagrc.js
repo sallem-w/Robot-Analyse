@@ -356,7 +356,8 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
-  ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
+ // ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
+	ctx.excelF.sauverFichier(data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	sc.endStep();
 	return;
 }});

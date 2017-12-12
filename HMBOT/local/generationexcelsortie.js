@@ -39,14 +39,14 @@ GRCHarMu.step({ stCreationFichierDeSortie: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stCreationFichierDeSortie: Creation de fichier de sortie fichier de sortie');
 	var maDate = ctx.getDate()+'';
 	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_';
-	try{
+	/*try{
 		//open de template de sortie
-		ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateSortie + data.ppCouranteAnalyse.dataFichiers.nomTemplateSortie);
+		//ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateSortie + data.ppCouranteAnalyse.dataFichiers.nomTemplateSortie);
 		//save as dans le répertoire analyse
 		//ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminRacine + extensionFichierS + data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
 	}catch(ex){
 		ctx.traceF.errorTxt('Template de sortie introuvable');
-	}
+	}*/
 	sc.endStep();
 	return;
 }});
