@@ -435,12 +435,12 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de la ligne dans le fichier de sortie');
-	st.disableTimeout();
+	/*st.disableTimeout();
 	GRCHarMu.scenarios.scGenerationFichierSortie.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('************* Fin insertion ième ligne dans le fichier de sortie  *************');
 		sc.endStep();
-	});
+	});*/
 }});
 
 /** Description */

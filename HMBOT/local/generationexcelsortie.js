@@ -23,9 +23,9 @@ GRCHarMu.step({ stInitCopieFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitCopieFichierSortie: Initialisation de la copie dans le fichier de sortie');
 	//mise à jour de l'indice de la ligne 
-	data.varGlobales.ligneCourante = 2 ;
+	/*data.varGlobales.ligneCourante = 2 ;
 	data.ppCouranteAnalyse.dataLocale.numSEQ = '';
-	data.ppCouranteAnalyse.dataLocale.typeAssure = '';
+	*/data.ppCouranteAnalyse.dataLocale.typeAssure = '';
 	//data.ppCouranteAnalyse.dataLocale.indexDeb = data.varGlobales.ligneCourante;
 	//data.ppCouranteAnalyse.dataLocale.indexFin = data.varGlobales.ligneCourante;
 	
@@ -56,7 +56,7 @@ GRCHarMu.step({ stCreationFichierDeSortie: function(ev, sc, st) {
 GRCHarMu.step({ stCopiePPCourante: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopiePPCourante: ');
-	data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
+/*	data.ppCouranteAnalyse.dataLocale.numSEQ =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numSEQ); 
 	data.ppCouranteAnalyse.dataLocale.indexDeb = data.varGlobales.ligneCourante;
 	var numSeqTemp = data.ppCouranteAnalyse.dataLocale.numSEQ;
 	var temp_ligne = data.varGlobales.ligneCourante;
@@ -67,6 +67,7 @@ GRCHarMu.step({ stCopiePPCourante: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataLocale.indexFin = temp_ligne - 1;
 	//récupération des données
 	data.ppCouranteAnalyse.dataLocale.tabAdhesions = ctx.excel.sheet.getRangeValues(''+data.ppCouranteAnalyse.dataLocale.indexDeb+':'+data.ppCouranteAnalyse.dataLocale.indexFin+'');
+	*/
 	sc.endStep();
 	return;
 }});
@@ -94,17 +95,19 @@ GRCHarMu.step({ stCopiePPSuivante: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopiePPSuivante: Rebouclage sur la PP Suivante');
 	ctx.traceF.infoTxt('index debut : index fin: '+data.ppCouranteAnalyse.dataLocale.indexDeb+' : '+data.ppCouranteAnalyse.dataLocale.indexFin+'');
-	data.varGlobales.ligneCourante = data.ppCouranteAnalyse.dataLocale.indexFin + 1;
+	//data.varGlobales.ligneCourante = data.ppCouranteAnalyse.dataLocale.indexFin + 1;
 //	if(data.varGlobales.ligneCourante < data.varGlobales.indexDerniereLigne){    // cas général
 //		data.varGlobales.ligneCourante = data.ppCouranteAnalyse.dataLocale.indexFin + 1;
 //	}
-	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
+	/*if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
 		sc.endStep(GRCHarMu.steps.stCopiePPCourante);
 		return;
 	}else{
 		sc.endStep();
 		return;
-	}
+	}*/
+	sc.endStep();
+	return;
 }});
 
 

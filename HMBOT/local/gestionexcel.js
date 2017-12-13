@@ -10,6 +10,7 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stDeclarationDataBasique);
 	sc.step(GRCHarMu.steps.stDeclarationDataAnalyse);
 	sc.step(GRCHarMu.steps.stConfigurationJSON);
+	sc.step(GRCHarMu.steps.stSuppressionFichier);
 	sc.step(GRCHarMu.steps.stConfigTrace);
 	sc.step(GRCHarMu.steps.stConfigStat);
 	
@@ -91,9 +92,9 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				indexFin: 1,
 				nbAdhesion : 0,
 				tentativeTraitInfinite : 1,
-				tentativeTraitGRC : 1,
-			  tabAdhesions : [],
-				tabDataExcelS : []
+				tentativeTraitGRC : 1
+			  //tabAdhesions : [],
+				//tabDataExcelS : []
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -176,7 +177,7 @@ GRCHarMu.step({ stConfigurationJSON: function(ev, sc, st) {
 	ctx.traceF.infoTxt('++++++++ Etape configuration JSON');
 	var fichierConfigScenario = data.ppCouranteAnalyse.dataFichiers.nomFichierConfigScenario;
 	data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse = ctx.options.serverURL + '\\' + fichierConfigScenario;
-	data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel = ctx.options.serverURL + '\\template\\' 
+	data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel = ctx.options.serverURL + '\\template\\';
 	var fichierConfig = ctx.fso.file.read(data.ppCouranteAnalyse.dataFichiers.cheminFichierConfigAnalyse);
 	data.scenarioConfig = new confFileANALYSEClass();
 	data.scenarioConfig = JSON.parse(fichierConfig);
@@ -187,12 +188,30 @@ GRCHarMu.step({ stConfigurationJSON: function(ev, sc, st) {
 
 
 /** Description */
+GRCHarMu.step({ stSuppressionFichier: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stSuppressionFichier: suppression des fichiers de répetoires data, résultats et analyse');
+	var config = data.scenarioConfig[data.codeScenario];
+	//configurer chemin racine
+	data.ppCouranteAnalyse.dataFichiers.cheminRacine = config.cheminRacine;
+	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminRacine);
+	//configuer cheminInputData
+	data.ppCouranteAnalyse.dataFichiers.cheminInputData =  config.cheminInputData;
+	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminInputData);
+	//configurer cheminResultats
+	data.ppCouranteAnalyse.dataFichiers.cheminResultats = config.cheminResultats;
+	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminResultats);
+	sc.endStep();
+	return;
+}});
+
+/** Description */
 GRCHarMu.step({ stConfigTrace: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('++++++++ Etape configuration trace');
 	var config = data.scenarioConfig[data.codeScenario];
 	var nomScen = data.codeScenario;
-	data.ppCouranteAnalyse.dataFichiers.cheminRacine = config.cheminRacine;
+	//data.ppCouranteAnalyse.dataFichiers.cheminRacine = config.cheminRacine;
 	data.ppCouranteAnalyse.dataFichiers.nomFichierLog = ctx.dateF.formatAAAAMMJJ(new Date()) + '_' + nomScen + '_Logs.log';
 	
 	//Activation trace
@@ -236,7 +255,7 @@ GRCHarMu.step({ stConfigStat: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataFichiers.cheminTemplateStat = config.cheminTemplateStat;
 	var nomScen = data.codeScenario;
 	data.ppCouranteAnalyse.dataFichiers.nomTemplateStat = nomScen + '.html';
-	data.ppCouranteAnalyse.dataFichiers.nomFichierStat = ctx.dateF.formatAAAAMMJJ(new Date()) +'_'+ nomScen + '_Stats.html'; 
+	data.ppCouranteAnalyse.dataFichiers.nomFichierStat = ctx.dateF.formatAAAAMMJJ(new Date()) +'_'+ nomScen + '_Stats'; 
   if (!ctx.fso.file.exist(data.ppCouranteAnalyse.dataFichiers.cheminTemplateStat + data.ppCouranteAnalyse.dataFichiers.nomTemplateStat)) {
     ctx.traceF.errorTxt(' Le fichier de template n\'est pas trouvé pour ' + nomScen + ' scenario');
 		sc.endStep();
@@ -247,19 +266,19 @@ GRCHarMu.step({ stConfigStat: function(ev, sc, st) {
 		var fileDst = '';
   	try{
 			fileSrc = data.ppCouranteAnalyse.dataFichiers.cheminTemplateStat + data.ppCouranteAnalyse.dataFichiers.nomTemplateStat;
-			fileDst = data.ppCouranteAnalyse.dataFichiers.cheminFichierStat;
+			fileDst = data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + '.html';
     	ctx.fso.file.copy(fileSrc, fileDst, true);
   	}catch(ex) {
     	ctx.traceF.errorTxt(' Impossible de copier le fichier de template : ' + fileSrc + ' vers ' + fileDst + '.html');
   	}
 		var contenuTemplate = '';
   	try {
-    	contenuTemplate = ctx.fso.file.read(data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + data.ppCouranteAnalyse.dataFichiers.nomFichierStat + '.html');
+    	contenuTemplate = ctx.fso.file.read(data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + '.html');
  		}catch(ex) {
     	ctx.traceF.errorTxt('Impossible de lire le fichier : ' + data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + data.ppCouranteAnalyse.dataFichiers.nomFichierStat + '.html');
   	}
   	// on enregistre le chemin dans l'objet statsF ( necessaire pour la fonction ctx.statsF.remplir() -> à revoir  )
-  	ctx.statsF.cheminFichierStats = data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + data.ppCouranteAnalyse.dataFichiers.nomFichierStat;
+  	ctx.statsF.cheminFichierStats = data.ppCouranteAnalyse.dataFichiers.cheminFichierStat;
   	ctx.statsF.contenuTemplate = contenuTemplate; 
   	// on enregistre l'heure de debut de traitement
   	//data.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
@@ -278,7 +297,7 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	var extensionFichier = '.xlsb';
 	ctx.traceF.infoTxt('Version du projet : 1.2 - Date de la Version : ' + GLOBAL.data.projectDate);
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
-	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length - 1)  + finTitreResultat + extensionFichier;
+	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
 	ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 	data.statistiquesF.nomFichierTraite = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
@@ -306,9 +325,7 @@ GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitTraitFichiersRejets: Dans cette étape on charge les 3 fichiers (IAE, Rejet, AC056)');
 	var config = data.scenarioConfig[data.codeScenario];
-	data.ppCouranteAnalyse.dataFichiers.cheminInputData =  config.cheminInputData;
 	data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur = config.cheminAccesServeur;
-	data.ppCouranteAnalyse.dataFichiers.cheminResultats = config.cheminResultats;
 	var folders = ctx.fso.folder.getFolderCollection(data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);
 	while(!folders.atEnd()){
 		var folder = folders.item();
@@ -451,7 +468,6 @@ GRCHarMu.step({ stCopieFichierResultat: function(ev, sc, st) {
 GRCHarMu.step({ stFinDeclarationData: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinDeclarationData: Fin scénario gestion data');
-	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminInputData);
 	sc.endScenario();
 	return;
 }});

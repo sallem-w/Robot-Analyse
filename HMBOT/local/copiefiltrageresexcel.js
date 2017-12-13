@@ -31,9 +31,9 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2)+'_Analyse_';
 		try {
 			var rangeValues = ctx.excel.sheet.getRangeValues(''+data.ppCouranteAnalyse.dataLocale.indexDeb+':'+data.ppCouranteAnalyse.dataLocale.indexFin+'');
-			ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateAnalyse + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
+			ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
-			ctx.excel.file.saveAs(data.scenarioConfig.ANALYSE.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			//on fait la copie que des lignes traitées
 			var indexFinInsert = data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb + 2 ;
 			ctx.excel.sheet.setRangeValues('2:'+ indexFinInsert +'',rangeValues);
