@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="461" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="18904" Length="86"><![CDATA[data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="465" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="19126" Length="86"><![CDATA[data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[split]]></FINDWHAT>
+		<FINDWHAT><![CDATA[.length]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminTemplateExcel]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomTemplateSortie]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLireDataPPIAE]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLiraDataPP]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLiraDataPPIAE]]></FINDWHAT>
+		<FINDWHAT><![CDATA[ctx.configF]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminFichierResultat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[nomFichierResultatAnalyse]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stCopieFiltrageAdhesionsDansExcel]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomFichierStat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[calculerStats]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stDeclarationDataBasique]]></FINDWHAT>
 		<FINDWHAT><![CDATA[getlast]]></FINDWHAT>
 		<FINDWHAT><![CDATA[sauverFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminFichierResultat]]></FINDWHAT>
 		<FINDWHAT><![CDATA[replace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stConfigTrace]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stTriNom]]></FINDWHAT>
-		<FINDWHAT><![CDATA[copieFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomFichierATraiter]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomTemplateRejetResultat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomTemplateRejet]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomFichierResultatAnalyse]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminTemplateExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminTemplateSortie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopieFichierSortie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecuperationFichiersRejets]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopieFiltrageAdhesionsDansExcel]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
@@ -48,17 +48,20 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="26" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="13" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="520" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="83" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="145" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="16" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="210" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="12" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="15" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="95" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="13" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="33" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="465" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="136" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="43" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="106" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="155" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="33" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="39" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

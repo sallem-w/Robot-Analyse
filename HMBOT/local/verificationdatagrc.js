@@ -24,7 +24,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE); 
-	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
 
@@ -70,14 +70,14 @@ GRCHarMu.step({ stLireDataConfig: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataLocale.tabProduits = data.scenarioConfig.ANALYSE.listeProduits;
 	
 	//récupération des data excel du sortie
-	/*var tabS = {colS: '', colT: '', libS:'', libT: ''};
+	var tabS = {colS: '', colT: '', libS:'', libT: ''};
 	tabS = data.scenarioConfig.ANALYSE.excelSortie;
 	var exS;
 	for (var i in tabS){
 		exS = tabS[i].colS+':'+tabS[i].colT+':'+tabS[i].libS+':'+tabS[i].libT;
 		data.ppCouranteAnalyse.dataLocale.tabDataExcelS.push(exS);
 		//data.ppCouranteAnalyse.dataLocale.tabDataExcelS[i]=exS;
-	}*/
+	}
 	sc.endStep();
 	return;
 }});
@@ -356,8 +356,7 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 			}
   ];
   ctx.excelF.remplirObjetTableau(data.varGlobales.ligneCourante, arrayMessage);
- // ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
-	ctx.excelF.sauverFichier(data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+  ctx.excelF.sauverFichier(ctx.configF.cheminFichierResultat);
 	sc.endStep();
 	return;
 }});
@@ -435,12 +434,12 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de la ligne dans le fichier de sortie');
-	/*st.disableTimeout();
+	st.disableTimeout();
 	GRCHarMu.scenarios.scGenerationFichierSortie.start(data).onEnd(function(sc2) {
 		sc.data=sc2.data;
 		ctx.traceF.infoTxt('************* Fin insertion ième ligne dans le fichier de sortie  *************');
 		sc.endStep();
-	});*/
+	});
 }});
 
 /** Description */

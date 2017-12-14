@@ -13,6 +13,8 @@ var confFileANALYSEClass = function() {
 			 cheminInputData : '',
        excel : {
             debutIndexLigne : '',
+				    finIndexCol : '',
+            carFinIndexCol : '',
 				    debutIndexCol : '',
             indexColonne : {
       	        nom : '',

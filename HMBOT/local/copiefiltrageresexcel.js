@@ -30,13 +30,13 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 	var maDate = ctx.getDate()+'';
 	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2)+'_Analyse_';
 		try {
-			var rangeValues = ctx.excel.sheet.getRangeValues(''+data.ppCouranteAnalyse.dataLocale.indexDeb+':'+data.ppCouranteAnalyse.dataLocale.indexFin+'');
+			var rangeValues = ctx.excel.sheet.getRangeValues('A' + data.ppCouranteAnalyse.dataLocale.indexDeb + ':' + data.varGlobales.carFinIndexCol + '' + data.ppCouranteAnalyse.dataLocale.indexFin + '');
 			ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			//on fait la copie que des lignes traitées
 			var indexFinInsert = data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb + 2 ;
-			ctx.excel.sheet.setRangeValues('2:'+ indexFinInsert +'',rangeValues);
+			ctx.excel.sheet.setRangeValues('A2:'+ data.varGlobales.carFinIndexCol + '' + indexFinInsert +'',rangeValues);
 			//on fait close de nouveau fichier créer
 			ctx.excel.file.close(nameFichierResultat + '.xlsb', true);
 			ctx.log('creation');

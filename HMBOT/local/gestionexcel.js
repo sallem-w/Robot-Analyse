@@ -52,7 +52,9 @@ GRCHarMu.step({ stDeclarationDataBasique: function(ev, sc, st) {
  	data.varGlobales = { 
     ligneCourante :'',
     indexDerniereLigne :'', 
-    controlSeul:'' 
+    controlSeul:'',
+		finIndexCol : '',
+		carFinIndexCol : ''
   };	
 	
 	data.statistiquesF = {
@@ -92,9 +94,10 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				indexFin: 1,
 				nbAdhesion : 0,
 				tentativeTraitInfinite : 1,
-				tentativeTraitGRC : 1
-			  //tabAdhesions : [],
-				//tabDataExcelS : []
+				tentativeTraitGRC : 1,
+			  tabAdhesions : [],
+				tabDataExcelS : [],
+				statusCreation: false
 			},
 			dataEnLigne: {
 				nbContrat : 0,
@@ -301,6 +304,7 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 	data.statistiquesF.nomFichierTraite = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+	//ctx.configF.cheminFichierResultat = data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
 	sc.endStep();
 	return;
 }});
@@ -460,6 +464,8 @@ GRCHarMu.step({ stCopieFichierResultat: function(ev, sc, st) {
 	ctx.excelF.copieFichier(data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse, data.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
 	data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //
 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+	data.varGlobales.finIndexCol =  data.scenarioConfig.ANALYSE.excel.finIndexCol;
+  data.varGlobales.carFinIndexCol =  data.scenarioConfig.ANALYSE.excel.carFinIndexCol;
 	sc.endStep();
 	return;
 }});
