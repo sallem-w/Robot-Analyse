@@ -177,14 +177,8 @@ GRCHarMu.step({ stRechercheProduitHPP: function(ev, sc, st) {
 			break;
 		}
 	}
-	if(data.ppCouranteAnalyse.notes.presenceHPP === true){
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = 'Création contrat - produit HPP existe';
-		sc.endStep(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
-		return;
-	}else{
-		sc.endStep();
-		return;
-	}
+	sc.endStep();
+	return;
 }});
 
 
