@@ -55,7 +55,7 @@ GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 	
 	GRCHarMu.pRechercheAI.wait(function(ev){
 		ctx.polling({
-		delay: 300,
+		delay: 150,
 		nbMax: 10,
 		test: function(index) { 
 			return GRCHarMu.pRechercheAI.btRechecher.exist(); 
@@ -166,7 +166,7 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 		sc.endStep();
 		return;	
 		});
-	}, 3000);
+	}, 1000);
 
 }});
 
@@ -215,7 +215,7 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 				return;
 			}	
 		});
-	},3000);
+	},1000);
 
 }});
 
@@ -261,7 +261,7 @@ GRCHarMu.step({ stLireDataDetailAdhesion: function(ev, sc, st) {
 				return;
 			}
 		});
-	}, 3000);
+	}, 1000);
 
 }});
 
@@ -350,7 +350,7 @@ GRCHarMu.step({ stLireDataPP: function(ev, sc, st) {
 		sc.endStep();
 		return;
 	});
-	},2000);
+	},1000);
 }});
 
 

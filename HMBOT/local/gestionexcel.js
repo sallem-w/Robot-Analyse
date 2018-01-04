@@ -14,8 +14,10 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigTrace);
 	sc.step(GRCHarMu.steps.stConfigStat);
 	
-	sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
-	sc.step(GRCHarMu.steps.stRechercheRepertoire);
+	//sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
+	sc.step(GRCHarMu.steps.stChoixRepertoireDansServeur);
+	sc.step(GRCHarMu.steps.stEchecInitialisation);
+	//sc.step(GRCHarMu.steps.stRechercheRepertoire);
 	sc.step(GRCHarMu.steps.stRecuperationFichiersRejets);
 	sc.step(GRCHarMu.steps.stOuvertureCopieFichiersInputRejet);
 	
@@ -310,10 +312,10 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 }});
 
 /** Description */
-ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
+GRCHarMu.step({ stEchecInitialisation: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.log('Echec initialisation');
-	ActivInfinitev7.scenarios.clearAll() ;
+	GRCHarMu.scenarios.clearAll() ;
 	sc.endScenario();
 	return;
 }});
@@ -324,7 +326,7 @@ ActivInfinitev7.step({ stEchecInitialisation: function(ev, sc, st) {
 *
 */
 
-/** Description */
+/** Récupération de la liste des répertoie das la structure nomsRepertoires */
 GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitTraitFichiersRejets: Dans cette étape on charge les 3 fichiers (IAE, Rejet, AC056)');
@@ -344,7 +346,50 @@ GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 }});
 
 
+
 /** Description */
+GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stChoixRepertoireSurServeur: Choix de répertoire de travail');
+	var config = data.scenarioConfig[data.codeScenario];
+	data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur = config.cheminAccesServeur;
+	var listeRep = ctx.fso.folder.getFolderCollection(data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);
+	var selectionRep = undefined;
+			var label = "<script>function cl(element) { close(element.id); }</script>";
+			label = label + "<p><center> Avec quel dossier souhaitez-vous travailler ? </center><br/><br/><ul>";
+			var count = 0;
+			var tabRep = [];
+			while(!listeRep.atEnd()) {
+				var rep = listeRep.item();
+				tabRep[count]=rep.Name;
+					label = label + "<a href='javascript:void(0)' id='Option"+count+"' onclick='cl(this);' > ";
+					label = label + "<b> <li>"+ rep.Name+" </li></b> </a>";
+					count += 1;
+				listeRep.moveNext();
+				}
+					
+			label = label +"</ul>";
+		  var pMaPopup = ctx.popup('maPopup', e.popup.template.NoButton) ;
+			pMaPopup.open({	message: label }) ;
+			pMaPopup.waitResult(function(res){
+				var it = Number(res[6]);
+				selectionRep = tabRep[it];
+			  ctx.log('Résultat cliqué: '+ selectionRep); //le rép séléctionné
+				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
+				var nomRep = selectionRep;
+				data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur += nomRep + '\\';			
+				if(nomRep == undefined){
+					sc.endStep(GRCHarMu.steps.stEchecInitialisation);
+					return;
+				}else{
+					sc.endStep(GRCHarMu.steps.stRecuperationFichiersRejets);
+					return;
+				}
+			});
+}});
+
+
+/** Changement de répertoire de la veille */
 GRCHarMu.step({ stRechercheRepertoire : function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stRechercheRepertoire: Sélection répertoire de data');
@@ -358,6 +403,7 @@ GRCHarMu.step({ stRechercheRepertoire : function(ev, sc, st) {
 GRCHarMu.step({ stRecuperationFichiersRejets: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stRecuperationFichiersRejets : Recherche des fichers de rejets à partir de répertoire ' + data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);
+	ctx.popup('maPopup').close();
 	var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);
 	var fileNameSrc;
 	var fileNameDst;

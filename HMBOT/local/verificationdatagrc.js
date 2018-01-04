@@ -24,7 +24,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE); 
-	sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
 
