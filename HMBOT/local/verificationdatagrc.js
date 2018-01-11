@@ -16,8 +16,9 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
 	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+  sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
+	
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
 	sc.step(GRCHarMu.steps.stMiseDataStat);
   sc.step(GRCHarMu.steps.stInsertionDonneesAnalyseExcel);
@@ -199,6 +200,37 @@ GRCHarMu.step({ stVerificationGRC: function(ev, sc, st) {
 
 
 /** Description */
+GRCHarMu.step({ stDeuxiemeTentativeSurSiebel: function(ev, sc, st) {
+	var data = sc.data;
+	ctx.traceF.infoTxt('Etape stDeuxiemeTentativeSurSiebel: Vérification de traitement de la PP courante avec la première tentative sur Siebel');
+	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC < 2){
+		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Siebel) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC += 1;
+		sc.endStep(GRCHarMu.steps.stVerificationGRC);
+	  return;
+	}else if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC === 2){ //passer à la ligne suivante sans faire l'analyse sur Infinite
+	
+		//mattre à vide car l'analyse sur siebel n'est pas effectué
+		data.ppCouranteAnalyse.notes.gestionControl = '';
+		data.ppCouranteAnalyse.notes.presenceHPP = '';
+		data.ppCouranteAnalyse.notes.paiementAdhesion = '';
+		data.ppCouranteAnalyse.notes.clauseBenefAdh = '';
+		data.ppCouranteAnalyse.notes.clauseBenefConjoint = '';
+		data.ppCouranteAnalyse.notes.dateEffetAControler = '';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = '';
+		data.ppCouranteAnalyse.notes.payeurEgSouscripteur = '';
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeGRC;
+		sc.endStep(GRCHarMu.steps.stMiseDataStat);
+	  return;
+	}else{
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC = 1;
+		sc.endStep();
+		return;
+	}
+}});
+
+
+/** Description */
 GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('************* Début scénario recherche et analyse situation PP *************');
@@ -211,25 +243,6 @@ GRCHarMu.step({ stRechercheEtAnalysePP: function(ev, sc, st) {
 	});
 }});
 
-
-/** Description */
-GRCHarMu.step({ stDeuxiemeTentativeSurSiebel: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stDeuxiemeTentativeSurSiebel: Vérification de traitement de la PP courante avec la première tentative sur Siebel');
-	if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC < 2){
-		ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Siebel) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');
-		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC += 1;
-		sc.endStep(GRCHarMu.steps.stVerificationGRC);
-	  return;
-	}else if(data.ppCouranteAnalyse.notes.contexteAnalyseStoppee === ctx.notes.constantes.statuts.AdhNonAnalyseeGRC && data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC === 2){ //passer à la ligne suivante sans faire l'analyse sur Infinite
-		sc.endStep(GRCHarMu.steps.stFinVerifGRC);
-	  return;
-	}else{
-		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC = 1;
-		sc.endStep();
-		return;
-	}
-}});
 
 
 /** O done une deuxième tentative sur siebel, sur Ifinite après on passe à la ligne suivante */
@@ -418,6 +431,9 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 		data.ppCouranteAnalyse.dataEnLigne.villePayeur = '';
 		data.ppCouranteAnalyse.dataEnLigne.cedexPayeur = '';
 		data.ppCouranteAnalyse.dataEnLigne.paysPayeur = '';
+		
+		data.ppCouranteAnalyse.dataLocale.tentativeTraitGRC = 1;
+		//data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite = 0;
 		
 		sc.endStep(GRCHarMu.steps.stLireDataPPIAE);
 	  return;

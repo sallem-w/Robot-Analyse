@@ -2,15 +2,17 @@
 /** Description */
 GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(120000, function(sc, st) {
-		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');
+	sc.onTimeout(30000, function(sc, st) {
+		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' onTimeout GRC: Timeout le scénario courant a été arrêté');
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeGRC;
+		ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 		//ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
-		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');
+		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' onError GRC: le scénario courant a été arrêté');
 		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeGRC;
+		ctx.siebel.navigateView(GRCHarMu.pRechercheAI);
 		//ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
     sc.endScenario();
 	});
