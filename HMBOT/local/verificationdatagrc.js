@@ -406,12 +406,14 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	//on vérifie si le commentaire === problème o incrément pas la ligneCourant
 	data.varGlobales.ligneCourante += 1;
 	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
+		ctx.excelF.fermerFichier();
+		ctx.execRun("taskkill /f /im excel.exe "); 
 		sc.endStep();
 		return;
 	}else{
 		data.ppCouranteAnalyse.dataEnLigne.HPPExiste = false;
 		data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible = false;
-		data.ppCouranteAnalyse.notes.gestionControl = 'Non',
+		data.ppCouranteAnalyse.notes.gestionControl = 'Non';
 		data.ppCouranteAnalyse.notes.presenceHPP = 'Non';
 		data.ppCouranteAnalyse.notes.paiementAdhesion = 'Non';
 		data.ppCouranteAnalyse.notes.clauseBenefAdh = 'Non';
