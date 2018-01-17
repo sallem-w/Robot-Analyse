@@ -25,7 +25,11 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCopieFiltrageAdhesionsDansExcel);
 	sc.step(GRCHarMu.steps.stScenarioCopieFiltrageExcel);
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE); 
+	
+	//génération de fichier de sortie "lot 1.5"
 	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	//fin génération de fichier de sortie
+	
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);
 }});
 
@@ -406,8 +410,6 @@ GRCHarMu.step({ stLireDataPPSuivanteIAE: function(ev, sc, st) {
 	//on vérifie si le commentaire === problème o incrément pas la ligneCourant
 	data.varGlobales.ligneCourante += 1;
 	if(data.varGlobales.ligneCourante > data.varGlobales.indexDerniereLigne){    // cas général
-		ctx.excelF.fermerFichier();
-		ctx.execRun("taskkill /f /im excel.exe "); 
 		sc.endStep();
 		return;
 	}else{

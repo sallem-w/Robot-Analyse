@@ -151,8 +151,12 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				nomFichierATraiter : '', //nom du fichier d'entrée
 				nomFichierResultatAnalyse: '', //fichier résultat technique
 				nomTemplateRejet: 'PRE_IAE_FICHIER-IND.xlsb',
-				nomTemplateSortie : 'template-sortie.xlsb',
-				nomFichierSortie : 'Resultats-Analyse.xlsb',
+				
+				nomTemplateSortie : 'fichier de résultats-Analyse.xlsm', //ancien template de sortie: 'template-sortie.xlsb',
+				nomFichierSortie : 'fichier de résultats-Analyse.xlsm', //ancien nom: 'Resultats-Analyse.xlsb'
+				
+				//nomTemplateSortie : 'template-sortie.xlsb',
+				//nomFichierSortie : 'Resultats-Analyse.xlsb',
 				nomFichierPreIAE : '',
 				nomFichierSfGRCRejet : '',
 				nomFichierACGRCIND : '',
