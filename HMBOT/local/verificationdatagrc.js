@@ -27,7 +27,7 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
  	sc.step(GRCHarMu.steps.stLireDataPPSuivanteIAE); 
 	
 	//génération de fichier de sortie "lot 1.5"
-	//sc.step(GRCHarMu.steps.stCopieFichierSortie);
+	sc.step(GRCHarMu.steps.stCopieFichierSortie);
 	//fin génération de fichier de sortie
 	
 	sc.step(GRCHarMu.steps.stFinVerifDataGRC);

@@ -49,14 +49,21 @@ GRCHarMu.step({ stChargementFichierTechnique: function(ev, sc, st) {
 	var deb = data.varGlobales.ligneCourante;
 	var fin = data.varGlobales.indexDerniereLigne;
 	//copie de la ième ligne de fichier technique vers le fichier de résultats "feuille data"
-	for(var i = deb; i <= fin; i++){
+	/*for(var i = deb; i <= fin; i++){
 		ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 		var rangeValues = ctx.excel.sheet.getRangeValues('A' + i + ':' + data.varGlobales.carFinIndexCol + '' + i + '');
 		ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
 		ctx.excel.sheet.activate('data');
 		ctx.excel.sheet.setRangeValues('A' + i + ':' + data.varGlobales.carFinIndexCol + '' + i + '',rangeValues);
 		ctx.excel.file.save();
-	}
+	}*/
+	
+	//copie par bloc de deb à fin
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+	ctx.excel.sheet.copyRange('A2:' + data.varGlobales.carFinIndexCol + '' +fin);
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
+	ctx.excel.sheet.pasteRange('A2:' + data.varGlobales.carFinIndexCol + '' +fin);
+	ctx.excel.file.save();
 	sc.endStep();
 	return;
 }});
