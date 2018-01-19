@@ -11,6 +11,8 @@ var confFileANALYSEClass = function() {
 			 cheminAccesServeur : '',
 			 cheminTemplateStat: '',
 			 cheminInputData : '',
+		   cheminData : '',
+			 cheminResultat : '',
        excel : {
             debutIndexLigne : '',
 				    finIndexCol : '',

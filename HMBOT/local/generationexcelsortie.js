@@ -10,7 +10,7 @@ GRCHarMu.scenario({ scGenerationFichierSortie :function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCreationFichierSortie);
 	sc.step(GRCHarMu.steps.stChargementFichierTechnique);
 	sc.step(GRCHarMu.steps.stExecMacroSortie);
-	//sc.step(GRCHarMu.steps.stCopieFichierSortieServeur);
+	sc.step(GRCHarMu.steps.stCopieFichierSortieServeur);
 	sc.step(GRCHarMu.steps.stFinGestionFichierSortie);
 	
 }});
@@ -86,17 +86,19 @@ GRCHarMu.step({ stExecMacroSortie: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stCopieFichierSortieServeur: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de fichier de sortie sous ..\\Resultat\\Adhesion_Individuelle\\REC\\Analyse\\');
+	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de fichier de sortie sous ..\\Resultat\\Adhesion_Individuelle\\XXX\\Analyse\\');
 	var maDate = ctx.getDate()+'';
 	var vDate = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2);
 	var fileNameSrc;
 	var fileNameDst;
-	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminResultats + vDate) === false){
-		ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminResultats + vDate);
+	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){
+		ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);
 	}
 	fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
-	fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultats + vDate + '\\' +  data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
+	fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' +  data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
 	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+	//fermeture de fichier de sortie
+	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie , true); //d'extension .xlsm qui contient la macro
 	sc.endStep();
 	return;
 }});
@@ -105,9 +107,6 @@ GRCHarMu.step({ stCopieFichierSortieServeur: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stFinGestionFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
-	//fermeture des fichiers excel
-	ctx.excelF.fermerFichier();
-	ctx.execRun("taskkill /f /im excel.exe "); 
 	ctx.traceF.infoTxt('Etape stFinGestionFichierSortie: Fin génération de fichier de résultats');
 	sc.endStep();
 	return;

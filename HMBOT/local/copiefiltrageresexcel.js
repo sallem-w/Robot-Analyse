@@ -39,8 +39,25 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.excel.sheet.setRangeValues('A2:'+ data.varGlobales.carFinIndexCol + '' + indexFinInsert +'',rangeValues);
 			//on fait close de nouveau fichier créer
 			ctx.excel.file.close(nameFichierResultat + '.xlsb', true);
-			ctx.log('creation');
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+			//création de ticket
+			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND');
+			var fileNameSrc;
+			var fileNameDst;
+			if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel') === false){
+				ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\');
+			}
+			if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets') === false){
+				ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\');
+			}
+			//copie de l'étiquette
+			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
+			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
+			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+			// copie de fichier Excel
+			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 		} catch (ex) {
 			ctx.traceF.errorTxt('Can not copy open excel file');
 		}

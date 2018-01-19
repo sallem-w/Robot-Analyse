@@ -10,12 +10,13 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stDeclarationDataBasique);
 	sc.step(GRCHarMu.steps.stDeclarationDataAnalyse);
 	sc.step(GRCHarMu.steps.stConfigurationJSON);
+	sc.step(GRCHarMu.steps.stChoixRepertoireDansServeur);
 	sc.step(GRCHarMu.steps.stSuppressionFichier);
 	sc.step(GRCHarMu.steps.stConfigTrace);
 	sc.step(GRCHarMu.steps.stConfigStat);
 	
 	//sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
-	sc.step(GRCHarMu.steps.stChoixRepertoireDansServeur);
+	
 	sc.step(GRCHarMu.steps.stEchecInitialisation);
 	//sc.step(GRCHarMu.steps.stRechercheRepertoire);
 	sc.step(GRCHarMu.steps.stRecuperationFichiersRejets);
@@ -161,6 +162,7 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				nomFichierSfGRCRejet : '',
 				nomFichierACGRCIND : '',
 				nomsRepertoires : [],
+				nomRepertoire : '', //le nom de répertoire sélectionné du serveur de Rennes
 				cheminRacine : '',
 				nomFichierLog : '',
 				cheminFichierConfigAnalyse : '',
@@ -210,6 +212,17 @@ GRCHarMu.step({ stSuppressionFichier: function(ev, sc, st) {
 	//configurer cheminResultats
 	data.ppCouranteAnalyse.dataFichiers.cheminResultats = config.cheminResultats;
 	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminResultats);
+	
+	//configurer les chemins Data et Resultat sur le R
+	data.ppCouranteAnalyse.dataFichiers.cheminData = config.cheminData;
+	//avant de charger les fichiers, on créé le répertoire data
+	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){ //création de dossier + depot de résultats das ce dossier
+		ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);
+	}
+	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\');
+	data.ppCouranteAnalyse.dataFichiers.cheminResultat = config.cheminResultat;
+	ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminResultats);
+	
 	sc.endStep();
 	return;
 }});
@@ -226,17 +239,17 @@ GRCHarMu.step({ stConfigTrace: function(ev, sc, st) {
 	//Activation trace
 	ctx.traceF.constantes.touteTraceActive = config.touteTraceActive;
 	// Si le chemin racine existe, on créé le fichier de log
-	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminRacine)) {
-		if(!ctx.fso.file.exist(data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog)) {
-			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
+	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\')) {
+		if(!ctx.fso.file.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog)) {
+			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 		}
-		ctx.traceF.cheminFichierTrace = data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog;
+		ctx.traceF.cheminFichierTrace = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog;
 		sc.endStep();
 		return;
 	}else{
 		// create the Popup using the 'e.popup.template.OkCancel' template
 		var myPopup = ctx.popup('pMyPopup', e.popup.template.OkCancel);
-		myPopup.open({title: ' Dossier : '+data.ppCouranteAnalyse.dataFichiers.cheminRacine+' introuvable',message: ' Veuillez ajouter le dossier et cliquez sur réessayer .',  
+		myPopup.open({title: ' Dossier : '+data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + ' introuvable',message: ' Veuillez ajouter le dossier et cliquez sur réessayer .',  
   		buttons: {  
     		essaye: {label: 'Reessayer'},
     		annule: {label: ' Annuler '}  
@@ -270,7 +283,7 @@ GRCHarMu.step({ stConfigStat: function(ev, sc, st) {
 		sc.endStep();
 		return;
   }else{	
-		data.ppCouranteAnalyse.dataFichiers.cheminFichierStat = data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierStat;
+		data.ppCouranteAnalyse.dataFichiers.cheminFichierStat = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierStat;
 		var fileSrc = '';
 		var fileDst = '';
   	try{
@@ -308,7 +321,7 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
 	ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
+	ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 	data.statistiquesF.nomFichierTraite = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
 	//ctx.configF.cheminFichierResultat = data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
 	sc.endStep();
@@ -330,7 +343,7 @@ GRCHarMu.step({ stEchecInitialisation: function(ev, sc, st) {
 *
 */
 
-/** Récupération de la liste des répertoie das la structure nomsRepertoires */
+/** Récupération de la liste des répertoires das la structure nomsRepertoires */
 GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stInitTraitFichiersRejets: Dans cette étape on charge les 3 fichiers (IAE, Rejet, AC056)');
@@ -380,13 +393,15 @@ GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
 				selectionRep = tabRep[it];
 			  ctx.log('Résultat cliqué: '+ selectionRep); //le rép séléctionné
 				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
-				var nomRep = selectionRep;
-				data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur += nomRep + '\\';			
-				if(nomRep == undefined){
+				data.ppCouranteAnalyse.dataFichiers.nomRepertoire =  selectionRep;
+				data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur += data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\';			
+				if(data.ppCouranteAnalyse.dataFichiers.nomRepertoire == undefined){
 					sc.endStep(GRCHarMu.steps.stEchecInitialisation);
 					return;
 				}else{
-					sc.endStep(GRCHarMu.steps.stRecuperationFichiersRejets);
+					//sc.endStep(GRCHarMu.steps.stRecuperationFichiersRejets);
+					//faut aller à la première step après le choix de répertoire de traail
+					sc.endStep();
 					return;
 				}
 			});
@@ -425,6 +440,10 @@ GRCHarMu.step({ stRecuperationFichiersRejets: function(ev, sc, st) {
 		fichiers.moveNext();
 	}
 	try{
+		//avant de charger les fichiers, on créé le répertoire data
+		if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){ //création de dossier + depot de résultats das ce dossier
+			ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);
+		}
 		//copie de fichier PRE_IAE
 		fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE;
 		fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminInputData + data.ppCouranteAnalyse.dataFichiers.nomFichierPreIAE;

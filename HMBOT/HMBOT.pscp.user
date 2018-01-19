@@ -1,21 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="80" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="3290" Length="22"><![CDATA[ctx.excel.file.save();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="65" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="2782" Length="78"><![CDATA[ctx.excel.sheet.pasteRange('A2:' + data.varGlobales.carFinIndexCol + '' +fin);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="62" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="2538" Length="85"><![CDATA[ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="21" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="786" Length="104"><![CDATA[ctx.traceF.infoTxt('Etape stInitGestionFichierSortie: Initialisation de création de fichier de sortie');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="30" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="1027" Length="85"><![CDATA[ctx.traceF.infoTxt('Etape stCreationFichierSortie: Creatio de fichier de résultats');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="47" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="1676" Length="114"><![CDATA[ctx.traceF.infoTxt('Etape stChargementFichierTechnique: Chargement de fichier de résultats dans la feuille data');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="76" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="3016" Length="104"><![CDATA[ctx.traceF.infoTxt('Etape stExecMacroSortie: Exécution de la macro de génération de fichier de sortie');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="67" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="2886" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="79" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="3251" Length="37"><![CDATA[ctx.excel.sheet.selectRange('B1:B1');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="213" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="9481" Length="45"><![CDATA[sc.endStep(GRCHarMu.steps.stVerificationGRC);]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="211" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="9212" Length="206"><![CDATA[ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Siebel) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="515" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="21283" Length="86"><![CDATA[data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="424" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="16873" Length="172"><![CDATA[ctx.traceF.infoTxt('Etape stRecuperationFichiersRejets : Recherche des fichers de rejets à partir de répertoire ' + data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="300" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="11234" Length="175"><![CDATA[ctx.traceF.errorTxt('Impossible de lire le fichier : ' + data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + data.ppCouranteAnalyse.dataFichiers.nomFichierStat + '.html');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="303" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="11534" Length="86"><![CDATA[ctx.statsF.cheminFichierStats = data.ppCouranteAnalyse.dataFichiers.cheminFichierStat;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="282" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="10283" Length="95"><![CDATA[ctx.traceF.errorTxt(' Le fichier de template n\'est pas trouvé pour ' + nomScen + ' scenario');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="286" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="10417" Length="215"><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminFichierStat = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierStat;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="290" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="10684" Length="119"><![CDATA[fileSrc = data.ppCouranteAnalyse.dataFichiers.cheminTemplateStat + data.ppCouranteAnalyse.dataFichiers.nomTemplateStat;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="294" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="10951" Length="112"><![CDATA[ctx.traceF.errorTxt(' Impossible de copier le fichier de template : ' + fileSrc + ' vers ' + fileDst + '.html');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="298" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="11111" Length="101"><![CDATA[contenuTemplate = ctx.fso.file.read(data.ppCouranteAnalyse.dataFichiers.cheminFichierStat + '.html');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="247" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="8854" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="233" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="7661" Length="57"><![CDATA[ctx.traceF.infoTxt('++++++++ Etape configuration trace');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="307" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="11811" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="275" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="9711" Length="63"><![CDATA[ctx.traceF.infoTxt('++++++++ Etape configuration statistique');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="226" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="7537" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="404" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="16295" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="444" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="17850" Length="193"><![CDATA[if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){ //création de dossier + depot de résultats das ce dossier]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="427" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="17184" Length="16"><![CDATA[var fileNameSrc;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="426" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="17078" Length="104"><![CDATA[var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="425" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="17047" Length="29"><![CDATA[ctx.popup('maPopup').close();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="399" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="16076" Length="49"><![CDATA[sc.endStep(GRCHarMu.steps.stEchecInitialisation);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="189" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="5273" Length="89"><![CDATA[var fichierConfigScenario = data.ppCouranteAnalyse.dataFichiers.nomFichierConfigScenario;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="372" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="14654" Length="83"><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur = config.cheminAccesServeur;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="207" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="6194" Length="71"><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminRacine = config.cheminRacine;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="217" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="6785" Length="67"><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminData = config.cheminData;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="244" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="8475" Length="179"><![CDATA[ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="534" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="23178" Length="86"><![CDATA[data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="46" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="2486" Length="16"><![CDATA[var fileNameDst;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="64" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="4011" Length="13"><![CDATA[sc.endStep();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="62" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="3953" Length="52"><![CDATA[ctx.traceF.errorTxt('Can not copy open excel file');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="30" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="1079" Length="30"><![CDATA[var maDate = ctx.getDate()+'';]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="21" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="784" Length="104"><![CDATA[ctx.traceF.infoTxt('Etape stInitGestionFichierSortie: Initialisation de création de fichier de sortie');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="211" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="9218" Length="206"><![CDATA[ctx.traceF.infoTxt('**//**//**//**//**//**//**//**//**//**//**//**//**//**//**// Retraitement de la ligne courante (2éme tentative sur Siebel) **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="213" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="9487" Length="45"><![CDATA[sc.endStep(GRCHarMu.steps.stVerificationGRC);]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[stRecuperationFichiersRejets]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminResultatSerR]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminRacine]]></FINDWHAT>
+		<FINDWHAT><![CDATA[json]]></FINDWHAT>
+		<FINDWHAT><![CDATA[cheminRes]]></FINDWHAT>
 		<FINDWHAT><![CDATA[nomTemplateSortie]]></FINDWHAT>
 		<FINDWHAT><![CDATA[stLireDataPPSuivanteIAE]]></FINDWHAT>
 		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.tentativeTraitInfinite]]></FINDWHAT>
@@ -31,11 +56,6 @@
 		<FINDWHAT><![CDATA[stLiraDataPPIAE]]></FINDWHAT>
 		<FINDWHAT><![CDATA[ctx.configF]]></FINDWHAT>
 		<FINDWHAT><![CDATA[cheminFichierResultat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[nomFichierResultatAnalyse]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCopieFiltrageAdhesionsDansExcel]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomFichierStat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[calculerStats]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
@@ -59,21 +79,21 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="6" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Test']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="13" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="520" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="38" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="79" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="145" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="27" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="496" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="138" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="43" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="106" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="155" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Main']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="66" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libstats']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="15" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="138" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libexcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="435" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="464" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="203" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='Recherche_Operations_Contentieux']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="145" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libConfig']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="18" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="45" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="520" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="13" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libString']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="23" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="6" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Test']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
@@ -81,9 +101,9 @@
 		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
 	<WATCHES>
-		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
-		<WATCH><![CDATA[index]]></WATCH>
 		<WATCH><![CDATA[data]]></WATCH>
+		<WATCH><![CDATA[index]]></WATCH>
+		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
 	</WATCHES>
 	<APPLIFILTERS />
 	<EVENTFILTERS />
