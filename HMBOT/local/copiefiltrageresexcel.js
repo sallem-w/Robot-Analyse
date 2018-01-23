@@ -33,7 +33,8 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			var rangeValues = ctx.excel.sheet.getRangeValues('A' + data.ppCouranteAnalyse.dataLocale.indexDeb + ':' + data.varGlobales.carFinIndexCol + '' + data.ppCouranteAnalyse.dataLocale.indexFin + '');
 			ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
-			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			//ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			//on fait la copie que des lignes traitées
 			var indexFinInsert = data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb + 2 ;
 			ctx.excel.sheet.setRangeValues('A2:'+ data.varGlobales.carFinIndexCol + '' + indexFinInsert +'',rangeValues);
@@ -44,20 +45,14 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND');
 			var fileNameSrc;
 			var fileNameDst;
-			if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel') === false){
-				ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\');
-			}
-			if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets') === false){
-				ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\');
-			}
 			//copie de l'étiquette
 			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
 			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
 			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 			// copie de fichier Excel
-			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+			/*fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
 			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
-			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);*/
 		} catch (ex) {
 			ctx.traceF.errorTxt('Can not copy open excel file');
 		}
