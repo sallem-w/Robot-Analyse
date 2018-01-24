@@ -102,7 +102,7 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 	if(data.varGlobales.ligneCourante <= data.varGlobales.indexDerniereLigne){
 		//lire le type de l'assuré
 		data.ppCouranteAnalyse.dataLocale.typeAssure =  ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.type);
-		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){
+		if(data.ppCouranteAnalyse.dataLocale.typeAssure === 'Principale'){ //on récupére les data du pp Principale
 			//lire la um ext ctt
 			data.ppCouranteAnalyse.dataLocale.numExtCtt = ctx.excel.sheet.getCell(data.varGlobales.ligneCourante, data.scenarioConfig.ANALYSE.excel.indexColonne.numExtCtt);
 			//lire la référece GRC
@@ -139,7 +139,7 @@ GRCHarMu.step({ stLireDataPPIAE: function(ev, sc, st) {
 				}
 				data.ppCouranteAnalyse.dataLocale.tabProduitsPrinConj.push(numProdPC);
 				tempLigneCourante ++;
-				data.ppCouranteAnalyse.dataLocale.indexFin += 1;
+				data.ppCouranteAnalyse.dataLocale.indexFin += 1; //car on a un principale  ==> OK
 			}
 			sc.endStep();
 			return;
@@ -377,10 +377,10 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCopieFiltrageAdhesionsDansExcel: Vérification de la taille de blocs à copier');
-	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite){
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeGRC){
 		data.ppCouranteAnalyse.dataLocale.nbAdhesion +=1;
 	}
-	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || data.varGlobales.ligneCourante === data.varGlobales.indexDerniereLigne ){
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || (data.varGlobales.ligneCourante + (data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb)) === data.varGlobales.indexDerniereLigne ){
 		sc.endStep();
 		return;
 	}else{

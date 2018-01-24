@@ -3,11 +3,8 @@
        "devel": true,
        "afficherMenu" : true,
        "touteTraceActive": true,
-       "cheminRacine": "C:\\deploy\\analyse\\",
-       "cheminInputData" : "C:\\deploy\\analyse\\data\\",
        "cheminAccesServeur" : "W:\\",
-       "cheminResultats" : "C:\\deploy\\analyse\\resultats\\",
-       "cheminTemplateStat" : "C:\\deploy\\template\\",
+       "cheminTemplateStat" : "R:\\Walli\\Adhesion_Individuelle\\INT\\Analyse\\deploy\\template\\",
        "cheminData" : "R:\\Data\\Adhesion_Individuelle\\DEV\\Analyse\\", /*data sur le serveur R*/
        "cheminResultat" : "R:\\Resultat\\Adhesion_Individuelle\\DEV\\Analyse\\", /*chemin de resultat pour la gestion*/
        "excel" : {
