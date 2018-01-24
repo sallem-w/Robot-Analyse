@@ -10,6 +10,6 @@
 	stringF.suppressionRetourEtTab = function(str){
 		return str.replace(/\n|\r/g,' ');
 	};
-
+	
 	return stringF;
 }) ();

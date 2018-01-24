@@ -317,7 +317,7 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	//var config = data.scenarioConfig[data.codeScenario];
 	var finTitreResultat = '_Resultats';
 	var extensionFichier = '.xlsb';
-	ctx.traceF.infoTxt('Version du projet : 1.2 - Date de la Version : ' + GLOBAL.data.projectDate);
+	ctx.traceF.infoTxt('Version du projet : 1.3 - Date de la Version : ' + GLOBAL.data.projectDate);
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
 	ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
@@ -550,7 +550,7 @@ GRCHarMu.step({ stCopieFichierResultat: function(ev, sc, st) {
 	//ctx.excelF.copieFichier(data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse, data.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
 	ctx.excelF.copieFichier(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire +'\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse, data.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
 	
-	data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //
+ 	data.varGlobales.ligneCourante = data.scenarioConfig.ANALYSE.excel.debutIndexLigne; //
 	data.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
 	data.varGlobales.finIndexCol =  data.scenarioConfig.ANALYSE.excel.finIndexCol;
   data.varGlobales.carFinIndexCol =  data.scenarioConfig.ANALYSE.excel.carFinIndexCol;

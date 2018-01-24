@@ -35,6 +35,9 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			//ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+			var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
 			//on fait la copie que des lignes traitées
 			var indexFinInsert = data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb + 2 ;
 			ctx.excel.sheet.setRangeValues('A2:'+ data.varGlobales.carFinIndexCol + '' + indexFinInsert +'',rangeValues);
@@ -42,13 +45,13 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.excel.file.close(nameFichierResultat + '.xlsb', true);
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 			//création de ticket
-			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND');
-			var fileNameSrc;
-			var fileNameDst;
+			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + nomFichierSansExt);
+//			var fileNameSrc;
+//			var fileNameDst;
 			//copie de l'étiquette
-			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
-			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
-			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+//			fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
+//			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + 'PRE_IAE_FICHIER-IND';
+//			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 			// copie de fichier Excel
 			/*fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
 			fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;

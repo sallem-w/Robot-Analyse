@@ -10,7 +10,7 @@ GRCHarMu.scenario({ scGenerationFichierSortie :function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCreationFichierSortie);
 	sc.step(GRCHarMu.steps.stChargementFichierTechnique);
 	sc.step(GRCHarMu.steps.stExecMacroSortie);
-	sc.step(GRCHarMu.steps.stCopieFichierSortieServeur);
+	//sc.step(GRCHarMu.steps.stCopieFichierSortieServeur);
 	sc.step(GRCHarMu.steps.stFinGestionFichierSortie);
 	
 }});
@@ -29,10 +29,16 @@ GRCHarMu.step({ stCreationFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCreationFichierSortie: Creatio de fichier de résultats');
 	try{
+		//création de répertoire sous WALLI
+		if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){
+			ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);
+		}else{
+			ctx.fso.file.deleteInFolder(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\');
+		}
 		//open de template de sortie
 		ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel + data.ppCouranteAnalyse.dataFichiers.nomTemplateSortie);
-		//save as dans le répertoire analyse
-		ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats +  data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
+		//save as dans le répertoire résultat
+		ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
 	}catch(ex){
 		ctx.traceF.errorTxt('Erreur création fichier de sortie');
 	}
@@ -78,6 +84,7 @@ GRCHarMu.step({ stExecMacroSortie: function(ev, sc, st) {
 	ctx.excel.sheet.activate('Table correspondance');
 	ctx.excel.sheet.selectRange('B1:B1');
 	ctx.excel.file.save();
+	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie , true); //d'extension .xlsm qui contient la macro
 	sc.endStep();
 	return;
 }});
@@ -98,7 +105,7 @@ GRCHarMu.step({ stCopieFichierSortieServeur: function(ev, sc, st) {
 	fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' +  data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
 	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 	//fermeture de fichier de sortie
-	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie , true); //d'extension .xlsm qui contient la macro
+	
 	sc.endStep();
 	return;
 }});

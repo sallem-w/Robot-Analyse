@@ -11,12 +11,12 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-	//sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -461,25 +461,28 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
 	ctx.statsF.calculerStats(data);
+	//copie de fichier de stat dans le dossier résultat
+	var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\');
+	while(!fichiers.atEnd()) {
+		var ff = fichiers.item();
+		if(ff.Name.indexOf('.html') !== -1 || ff.Name.indexOf('.json') !== -1){
+			var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
+			var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
+			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+		}
+		fichiers.moveNext();
+	}
+	
+	//fermeture de fichier technique global
+//	ctx.excelF.fermerFichier();
+//	ctx.execRun("taskkill /f /im excel.exe "); 
+	
 	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
 		ctx.popupF.finTraitementMsg('Analyse', data.ppCouranteAnalyse.notes.msgPopup);
 	}else{
 		ctx.popupF.finTraitement('Analyse'); 
 	}
-/*	
-	//copie de fichier de log "data.ppCouranteAnalyse.dataFichiers.nomFichierLog"
-	var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminRacine + data.ppCouranteAnalyse.dataFichiers.nomFichierLog;
-	var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierLog;
-	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 	
-	//copie de fichier résultat technique
-	fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
-	fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminData + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
-	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
-	*/
-	//fermeture de fichier technique global
-//	ctx.excelF.fermerFichier();
-//	ctx.execRun("taskkill /f /im excel.exe "); 
 	sc.endScenario();
 	return;
 }});
