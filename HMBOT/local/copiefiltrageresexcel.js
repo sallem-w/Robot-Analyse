@@ -46,11 +46,16 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 			//création de ticket
 			ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Tickets\\' + nameFichierResultat + nomFichierSansExt);
+			ctx.wait(function(ev){
+			 	ctx.traceF.infoTxt('************************ Fin try\catch - découpage excel');
+				sc.endStep();
+				return;
+			}, 1000);
 		} catch (ex) {
-			ctx.traceF.errorTxt('Can not copy open excel file');
+			ctx.traceF.errorTxt('Can not copy open excel file');	
+			sc.endStep();
+			return;
 		}
-	sc.endStep();
-	return;
 }});
 
 

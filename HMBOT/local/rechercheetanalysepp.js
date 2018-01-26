@@ -46,7 +46,7 @@ ActivInfinitev7.step({ stDemarrageServeurInfinite: function(ev, sc, st) {
 		ActivInfinitev7.pTabDeBord.wait(function(ev) {
 			var infos = ActivInfinitev7.pTabDeBord.getInfos();
 			data.webData.tabDeBordURL=infos.document.URL;
-			ctx.log('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
+			ctx.traceF.infoTxt('URL de Tableau de bord : ' + data.webData.tabDeBordURL);
 			sc.endStep();
 			return;
 		});

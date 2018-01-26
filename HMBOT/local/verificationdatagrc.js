@@ -2,8 +2,14 @@
 /** Description */
 GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	var data = sc.data;
-	sc.onTimeout(30000, function(sc, st) { sc.endScenario();	}); // default timeout handler for each step
-	sc.onError(function(sc, st, ex) { sc.endScenario();	}); // default error handler
+	sc.onTimeout(30000, function(sc, st) { 
+		ctx.traceF.errorTxt('onTimeout : Timeout le scénario principale a été arrêté');
+		sc.endScenario();	
+	}); // default timeout handler for each step
+	sc.onError(function(sc, st, ex) {
+		ctx.traceF.errorTxt('onError : Erreur le scénario principale a été arrêté');
+		sc.endScenario();	
+	}); // default error handler
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	// add steps here...
 
@@ -11,12 +17,12 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -380,7 +386,7 @@ GRCHarMu.step({ stCopieFiltrageAdhesionsDansExcel: function(ev, sc, st) {
 	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion < 10 && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite && data.ppCouranteAnalyse.notes.contexteAnalyseStoppee !== ctx.notes.constantes.statuts.AdhNonAnalyseeGRC){
 		data.ppCouranteAnalyse.dataLocale.nbAdhesion +=1;
 	}
-	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || (data.varGlobales.ligneCourante + (data.ppCouranteAnalyse.dataLocale.indexFin - data.ppCouranteAnalyse.dataLocale.indexDeb)) === data.varGlobales.indexDerniereLigne ){
+	if(data.ppCouranteAnalyse.dataLocale.nbAdhesion === 10 || (data.varGlobales.ligneCourante + (data.ppCouranteAnalyse.dataLocale.indexFin - data.varGlobales.ligneCourante)) === data.varGlobales.indexDerniereLigne ){
 		sc.endStep();
 		return;
 	}else{
