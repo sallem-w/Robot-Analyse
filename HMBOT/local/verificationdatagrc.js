@@ -17,12 +17,12 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	//sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -478,7 +478,15 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 		}
 		fichiers.moveNext();
 	}
+	//copie de fichier technique dans adhésion\Data_Excel et data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion;
+	var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
+	var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Data_Excel\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
+	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 	
+	var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+	var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
+	ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
 	//fermeture de fichier technique global
 //	ctx.excelF.fermerFichier();
 //	ctx.execRun("taskkill /f /im excel.exe "); 

@@ -159,8 +159,8 @@ GRCHarMu.step({ stDeclarationDataAnalyse: function(ev, sc, st) {
 				nomFichierResultatAnalyse: '', //fichier résultat technique
 				nomTemplateRejet: 'PRE_IAE_FICHIER-IND.xlsb',
 				
-				nomTemplateSortie : 'fichier de résultats-Analyse.xlsm', //ancien template de sortie: 'template-sortie.xlsb',
-				nomFichierSortie : 'fichier de résultats-Analyse.xlsm', //ancien nom: 'Resultats-Analyse.xlsb'
+				nomTemplateSortie : 'Fichier_Resultats.xlsm', //ancien template de sortie: 'template-sortie.xlsb',
+				nomFichierSortie : 'Fichier_Resultats.xlsm', //ancien nom: 'Resultats-Analyse.xlsb'
 				
 				//nomTemplateSortie : 'template-sortie.xlsb',
 				//nomFichierSortie : 'Resultats-Analyse.xlsb',
@@ -212,6 +212,7 @@ GRCHarMu.step({ stSuppressionFichier: function(ev, sc, st) {
 
 	//configurer les chemins Data et Resultat sur le R
 	data.ppCouranteAnalyse.dataFichiers.cheminData = config.cheminData;
+	data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion = config.cheminDataAdhesion;
 	//avant de charger les fichiers, on créé le répertoire date
 	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){ //création de dossier + depot de résultats dans ce dossier
 		ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);

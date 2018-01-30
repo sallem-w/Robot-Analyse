@@ -13,6 +13,7 @@ var confFileANALYSEClass = function() {
 			 cheminInputData : '',
 		   cheminData : '',
 			 cheminResultat : '',
+		   cheminDataAdhesion : '',
        excel : {
             debutIndexLigne : '',
 				    finIndexCol : '',

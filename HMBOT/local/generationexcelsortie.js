@@ -10,7 +10,6 @@ GRCHarMu.scenario({ scGenerationFichierSortie :function(ev, sc) {
 	sc.step(GRCHarMu.steps.stCreationFichierSortie);
 	sc.step(GRCHarMu.steps.stChargementFichierTechnique);
 	sc.step(GRCHarMu.steps.stExecMacroSortie);
-	//sc.step(GRCHarMu.steps.stCopieFichierSortieServeur);
 	sc.step(GRCHarMu.steps.stFinGestionFichierSortie);
 	
 }});
@@ -28,6 +27,10 @@ GRCHarMu.step({ stInitGestionFichierSortie: function(ev, sc, st) {
 GRCHarMu.step({ stCreationFichierSortie: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stCreationFichierSortie: Creatio de fichier de résultats');
+	var time = ctx.getTime()+'';
+	var maDate = ctx.getDate()+'';
+	var extensionNom = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2) + '_';
+	data.ppCouranteAnalyse.dataFichiers.nomFichierSortie = data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '_Analyse_' + extensionNom + data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
 	try{
 		//création de répertoire sous WALLI
 		if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){
@@ -68,17 +71,9 @@ GRCHarMu.step({ stChargementFichierTechnique: function(ev, sc, st) {
 		ctx.excel.sheet.setRangeValues('A' + i + ':' + data.varGlobales.carFinIndexCol + '' + i + '',rangeValues);
 		ctx.excel.file.save();
 	}
-	
-	//copie par bloc de deb à fin
-	/*ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	ctx.excel.sheet.copyRange('A2:' + data.varGlobales.carFinIndexCol + '' +fin);
-	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie);
-	ctx.excel.sheet.pasteRange('A2:' + data.varGlobales.carFinIndexCol + '' +fin);
-	ctx.excel.file.save();*/
 	sc.endStep();
 	return;
 }});
-
 
 
 /** Description */
@@ -90,27 +85,6 @@ GRCHarMu.step({ stExecMacroSortie: function(ev, sc, st) {
 	ctx.excel.sheet.selectRange('B1:B1');
 	ctx.excel.file.save();
 	ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierSortie , true); //d'extension .xlsm qui contient la macro
-	sc.endStep();
-	return;
-}});
-
-
-/** Description */
-GRCHarMu.step({ stCopieFichierSortieServeur: function(ev, sc, st) {
-	var data = sc.data;
-	ctx.traceF.infoTxt('Etape stCopieFichierSortie: Copie de fichier de sortie sous ..\\Resultat\\Adhesion_Individuelle\\XXX\\Analyse\\');
-	var maDate = ctx.getDate()+'';
-	var vDate = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2);
-	var fileNameSrc;
-	var fileNameDst;
-	if(ctx.fso.folder.exist(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire) === false){
-		ctx.fso.folder.create(data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire);
-	}
-	fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
-	fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' +  data.ppCouranteAnalyse.dataFichiers.nomFichierSortie;
-	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
-	//fermeture de fichier de sortie
-	
 	sc.endStep();
 	return;
 }});
