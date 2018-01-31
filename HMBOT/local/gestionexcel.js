@@ -323,9 +323,10 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	//var config = data.scenarioConfig[data.codeScenario];
 	var finTitreResultat = '_Resultats';
 	var extensionFichier = '.xlsb';
+	
 	ctx.traceF.infoTxt('Version du projet : 1.3 - Date de la Version : ' + GLOBAL.data.projectDate);
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
-	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
+	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.ppCouranteAnalyse.dataFichiers.nomRepertoire +'_'+ data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
 	ctx.traceF.infoTxt('******** Ficher de sortie: '+data.ppCouranteAnalyse.dataFichiers.cheminResultats + data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	ctx.traceF.infoTxt('******** Ficher de trace: '+data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\' + data.ppCouranteAnalyse.dataFichiers.nomFichierLog);
 	data.statistiquesF.nomFichierTraite = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
@@ -374,6 +375,13 @@ GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stChoixRepertoireSurServeur: Choix de répertoire de travail');
+	
+	st.onTimeout(120000, function(sc, st){
+		ctx.traceF.infoTxt('Timeout du step stChoixRepertoireDansServeur');
+		ctx.popup('maPopup').close();
+		ctx.popupF.finTraitementMsg('Analyse', 'Robot Analyse à relancer - Temps de réponse trop long');
+	});
+	
 	var config = data.scenarioConfig[data.codeScenario];
 	data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur = config.cheminAccesServeur;
 	var listeRep = ctx.fso.folder.getFolderCollection(data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur);
@@ -397,7 +405,7 @@ GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
 			pMaPopup.waitResult(function(res){
 				var it = Number(res[6]);
 				selectionRep = tabRep[it];
-			  ctx.log('Résultat cliqué: '+ selectionRep); //le rép séléctionné
+			 // ctx.log('Résultat cliqué: '+ selectionRep); //le rép séléctionné
 				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
 				data.ppCouranteAnalyse.dataFichiers.nomRepertoire =  selectionRep;
 				data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur += data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\';			

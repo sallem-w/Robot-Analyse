@@ -17,12 +17,12 @@ GRCHarMu.scenario({ scVerifDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stConfigFichiersExcel);
 	sc.step(ActivInfinitev7.steps.stDemarrageServeurInfinite);
 	sc.step(GRCHarMu.steps.stLireDataConfig);
-	//sc.step(GRCHarMu.steps.stInitVerificationGRC);
+	sc.step(GRCHarMu.steps.stInitVerificationGRC);
 	sc.step(GRCHarMu.steps.stLireDataPPIAE);
 	sc.step(GRCHarMu.steps.stRechercheProduitHPP);
 	
-	//sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
-	//sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
+	sc.step(GRCHarMu.steps.stVerificationGRC); //dans la fin de ce step on vérifie si on va analyser la 1ere PP sur infinite ou non c'est une PP > 2
+	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurSiebel);
   sc.step(GRCHarMu.steps.stRechercheEtAnalysePP);  //scénario analyse et recherche de la pp
 	
 	sc.step(GRCHarMu.steps.stDeuxiemeTentativeSurInfinite);
@@ -484,12 +484,13 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 	
 	var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
 	var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
 	ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	//fermeture de fichier technique global
-//	ctx.excelF.fermerFichier();
-//	ctx.execRun("taskkill /f /im excel.exe "); 
+	ctx.excelF.fermerFichier();
+	ctx.execRun("taskkill /f /im excel.exe "); 
 	
 	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
 		ctx.popupF.finTraitementMsg('Analyse', data.ppCouranteAnalyse.notes.msgPopup);
