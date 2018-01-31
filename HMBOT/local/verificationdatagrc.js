@@ -484,12 +484,14 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
 	
 	var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
+	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
 	var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
 	ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
 	//fermeture de fichier technique global
-//	ctx.excelF.fermerFichier();
-//	ctx.execRun("taskkill /f /im excel.exe "); 
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+	ctx.excelF.fermerFichier();
+	//ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse , true);
+	ctx.execRun("taskkill /f /im excel.exe "); 
 	
 	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
 		ctx.popupF.finTraitementMsg('Analyse', data.ppCouranteAnalyse.notes.msgPopup);
