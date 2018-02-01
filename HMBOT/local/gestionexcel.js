@@ -17,7 +17,7 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stDeclarationDataAnalyse);
 	sc.step(GRCHarMu.steps.stConfigurationJSON);
 	sc.step(GRCHarMu.steps.stChoixRepertoireDansServeur);
-	sc.step(GRCHarMu.steps.stEchecInitialisation);
+	sc.step(GRCHarMu.steps.stEchecInitialisation); 
 	sc.step(GRCHarMu.steps.stSuppressionFichier);
 	sc.step(GRCHarMu.steps.stConfigTrace);
 	sc.step(GRCHarMu.steps.stConfigStat);
@@ -324,6 +324,13 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	var finTitreResultat = '_Resultats';
 	var extensionFichier = '.xlsb';
 	
+<<<<<<< HEAD
+=======
+	var time = ctx.getTime()+'';
+	var maDate = ctx.getDate()+'';
+	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2)+'_Analyse_';
+	
+>>>>>>> e319c23cd85d2e04d4c3b9d6f9029cf79b6219ba
 	ctx.traceF.infoTxt('Version du projet : 1.3 - Date de la Version : ' + GLOBAL.data.projectDate);
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.ppCouranteAnalyse.dataFichiers.nomRepertoire +'_'+ data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;
@@ -374,6 +381,15 @@ GRCHarMu.step({ stInitTraitFichiersRejets: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
 	var data = sc.data;
+	
+	st.onTimeout(120000, function(sc, st){
+		ctx.traceF.infoTxt('Timeout du step stChoixRepertoireDansServeur');
+		ctx.popup('maPopup').close();
+		ctx.popupF.finTraitementMsg('Analyse', 'Robot Analyse à relancer - Temps de réponse trop long');
+		//sc.endStep(GRCHarMu.steps.stEchecInitialisation);
+		//return;
+	});
+	
 	ctx.traceF.infoTxt('Etape stChoixRepertoireSurServeur: Choix de répertoire de travail');
 	
 	st.onTimeout(120000, function(sc, st){
@@ -402,23 +418,29 @@ GRCHarMu.step({ stChoixRepertoireDansServeur: function(ev, sc, st) {
 			label = label +"</ul>";
 		  var pMaPopup = ctx.popup('maPopup', e.popup.template.NoButton) ;
 			pMaPopup.open({	message: label }) ;
+			//var it;
 			pMaPopup.waitResult(function(res){
+				//ctx.log('test 1 ');
 				var it = Number(res[6]);
+				//ctx.log('test 2');
+				/*if(it == 'NaN'){
+					sc.endStep(GRCHarMu.steps.stEchecInitialisation);
+					return;
+				}*/
 				selectionRep = tabRep[it];
 			 // ctx.log('Résultat cliqué: '+ selectionRep); //le rép séléctionné
 				// Quand on clique, res renvoi l'id, dans notre cas id=Option"k".Ce que nous interresse est le "k"
 				data.ppCouranteAnalyse.dataFichiers.nomRepertoire =  selectionRep;
 				data.ppCouranteAnalyse.dataFichiers.cheminAccesServeur += data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\';			
-				if(data.ppCouranteAnalyse.dataFichiers.nomRepertoire == undefined){
-					sc.endStep(GRCHarMu.steps.stEchecInitialisation);
+				if(selectionRep != undefined){
+					sc.endStep(GRCHarMu.steps.stSuppressionFichier);
 					return;
 				}else{
-					//sc.endStep(GRCHarMu.steps.stRecuperationFichiersRejets);
-					//faut aller à la première step après le choix de répertoire de traail
-					sc.endStep(GRCHarMu.steps.stSuppressionFichier);
+					sc.endStep(GRCHarMu.steps.stEchecInitialisation);
 					return;
 				}
 			});
+			
 }});
 
 /** Description */

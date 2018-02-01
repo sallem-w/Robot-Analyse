@@ -2,67 +2,18 @@
 <USER>
 	<BREAKPOINTS />
 	<BOOKMARKS />
-	<FINDHISTORY>
-		<FINDWHAT><![CDATA[nomFichierSortie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stSuppressionFichier]]></FINDWHAT>
-		<FINDWHAT><![CDATA[indexDeb]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataLocale.indexDeb]]></FINDWHAT>
-		<FINDWHAT><![CDATA[GRCHarMu.scenarios.]]></FINDWHAT>
-		<FINDWHAT><![CDATA[length]]></FINDWHAT>
-		<FINDWHAT><![CDATA[legth]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Etape stFinCopieFiltrageExcel: Fin découpage de ième blocs de sortie]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Le fichier de template n'est pas trouvé]]></FINDWHAT>
-		<FINDWHAT><![CDATA[Le fichier de template n'est pas trouvé pour ANALYSE scenario]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data.ppCouranteAnalyse.dataFichiers.nomRepertoire]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stCreationSousDossiers]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stChoixRepertoireDansServeur]]></FINDWHAT>
-		<FINDWHAT><![CDATA[data_]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stConfigTrace]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stConfigStat]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRechercheRepertoire]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stInitTraitFichiersRejets]]></FINDWHAT>
-		<FINDWHAT><![CDATA[stRecuperationFichiersRejets]]></FINDWHAT>
-		<FINDWHAT><![CDATA[cheminResultatSerR]]></FINDWHAT>
-		<REPLACEWITH><![CDATA[Appel de cotisation effectué]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[Pas d\'édition de carte]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[Adresse à revoir]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[Infos RO à revoir]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[RIB à revoir]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.pAdhIndivIdentAssures.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.pAdhIndivIdentAssurPageErreur.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[Assure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[stFinScenarioAjoutAssure]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[_Edition_De_Carte]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[VAL_SOUSC]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[listeVar]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ '',]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[stFinScenarioCreationIdentificationAdherent]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[stPageIdentificationSouscripteur_Init]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[stVersLaPageIdentificationSouscripteur_GestionErreur]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[ | ';]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.pAdhIndivIdentDestPresta.]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[stAdhesionIndividuelle_AjoutProduits_Init]]></REPLACEWITH>
-		<REPLACEWITH><![CDATA[.pAdhIndivIntervtPrin.]]></REPLACEWITH>
-	</FINDHISTORY>
+	<FINDHISTORY />
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="20" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigANALYSEClass']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="48" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="84" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GenerationExcelSortie']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="569" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="477" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="69" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="470" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="3" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>
-		<CurEnvironment><![CDATA[Development]]></CurEnvironment>
-		<DebugTester><![CDATA[]]></DebugTester>
 	</PROPERTIES>
-	<WATCHES>
-		<WATCH><![CDATA[data]]></WATCH>
-		<WATCH><![CDATA[index]]></WATCH>
-		<WATCH><![CDATA[data.contratCourantAdhesion.dataLocale.tabPersonnesPhysiques.[4]]]></WATCH>
-	</WATCHES>
+	<WATCHES />
 	<APPLIFILTERS />
 	<EVENTFILTERS />
 </USER>

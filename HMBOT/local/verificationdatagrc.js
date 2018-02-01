@@ -489,7 +489,13 @@ GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
 	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
 	//fermeture de fichier technique global
+<<<<<<< HEAD
 	ctx.excelF.fermerFichier();
+=======
+	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+	ctx.excelF.fermerFichier();
+	//ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse , true);
+>>>>>>> e319c23cd85d2e04d4c3b9d6f9029cf79b6219ba
 	ctx.execRun("taskkill /f /im excel.exe "); 
 	
 	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
