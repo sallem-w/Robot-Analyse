@@ -323,14 +323,6 @@ GRCHarMu.step({ stChargementFichierDeSortie: function(ev, sc, st) {
 	//var config = data.scenarioConfig[data.codeScenario];
 	var finTitreResultat = '_Resultats';
 	var extensionFichier = '.xlsb';
-	
-<<<<<<< HEAD
-=======
-	var time = ctx.getTime()+'';
-	var maDate = ctx.getDate()+'';
-	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2)+'_Analyse_';
-	
->>>>>>> e319c23cd85d2e04d4c3b9d6f9029cf79b6219ba
 	ctx.traceF.infoTxt('Version du projet : 1.3 - Date de la Version : ' + GLOBAL.data.projectDate);
 	ctx.traceF.infoTxt('******** Fichier d\'entrée: '+data.ppCouranteAnalyse.dataFichiers.cheminInputData +''+data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 	data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse = data.ppCouranteAnalyse.dataFichiers.nomRepertoire +'_'+ data.codeScenario + "_" + ctx.string.left(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter, data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter.length - extensionFichier.length )  + finTitreResultat + extensionFichier;

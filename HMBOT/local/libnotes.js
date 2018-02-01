@@ -6,7 +6,7 @@
 	notes.constantes = {
 		statuts: {
 			CreationPPInconnue: "Création contrat – PP inconnue sur Infinite",
-			CréationPasDeContratActif: "Création de contrat – Pas de contrat actif sur la PP",
+			CreationPasDeContratActif: "Création de contrat – Pas de contrat actif sur la PP",
 			TracePCX: "Non conformité - présence d’un précontentieux",
 			GestionManuelle : "Gestion manuelle – Présence d’un contrat actif",
 			AdhEnregistree : "Adhésion déjà enregistrée – A vérifier manuellement",

@@ -4,14 +4,14 @@ ActivInfinitev7.scenario({ scRechercheAnalysePP: function(ev, sc) {
 	var data = sc.data;
 	sc.onTimeout(30000, function(sc, st) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ' Timeout le scénario courant a été arrêté');
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite;
+		ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.onError(function(sc, st, ex) {
 		ctx.traceF.errorTxt(data.ppCouranteAnalyse.dataLocale.referenceGRC + ex + ' le scénario courant a été arrêté');
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite;
-		ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+		sc.data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.AdhNonAnalyseeInfinite;
+		ActivInfinitev7.pTabDeBord.start(sc.data.webData.tabDeBordURL);
     sc.endScenario();
 	});
 	sc.setMode(e.scenario.mode.clearIfRunning);
@@ -510,7 +510,7 @@ ActivInfinitev7.step({ stFinAnalyseContratsIA: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stFinAnalyseContratsIA' + data.ppCouranteAnalyse.dataLocale.referenceGRC);
 	//cas 1: pas de trace PCX et tous les contrats sont radiés (status = 'I')
 	if(data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour === false && data.ppCouranteAnalyse.dataEnLigne.nbContratRad === data.ppCouranteAnalyse.dataEnLigne.nbContrat){
-		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.CréationPasDeContratActif;
+		data.ppCouranteAnalyse.notes.contexteAnalyseStoppee = ctx.notes.constantes.statuts.CreationPasDeContratActif;
 		sc.endStep();
 		return;
 	}else if(data.ppCouranteAnalyse.dataEnLigne.adhesionEstEnregistree === true){
@@ -543,6 +543,7 @@ ActivInfinitev7.step({ stFinRechercheAnalysePP: function(ev, sc, st) {
 	data.ppCouranteAnalyse.dataEnLigne.dateRadSupDjour = false;
 	
 	ActivInfinitev7.pTabDeBord.start(data.webData.tabDeBordURL);
+	ctx.traceF.infoTxt('########################################################### status avant de revenir au scenario principale: ' + data.ppCouranteAnalyse.notes.contexteAnalyseStoppee);
 	sc.endScenario();
 	return;
 }});

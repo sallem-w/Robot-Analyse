@@ -305,7 +305,7 @@ GRCHarMu.step({ stMiseDataStat: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stMiseDataStat: mise à jour des données de stat');
 	data.statistiquesF.nbCasTrouve += 1;
 	var commentaire = data.ppCouranteAnalyse.notes.contexteAnalyseStoppee;
-	if(commentaire === ctx.notes.constantes.statuts.AdhEnregistree || commentaire === ctx.notes.constantes.statuts.CreationPPInconnue || commentaire === ctx.notes.constantes.statuts.CréationPasDeContratActif || commentaire === ctx.notes.constantes.statuts.GestionManuelle || commentaire === ctx.notes.constantes.statuts.TracePCX){
+	if(commentaire === ctx.notes.constantes.statuts.AdhEnregistree || commentaire === ctx.notes.constantes.statuts.CreationPPInconnue || commentaire === ctx.notes.constantes.statuts.CreationPasDeContratActif || commentaire === ctx.notes.constantes.statuts.GestionManuelle || commentaire === ctx.notes.constantes.statuts.TracePCX){
 		data.statistiquesF.nbCasTraitementSucces += 1;
 		sc.endStep();
 	  return;
@@ -322,6 +322,9 @@ GRCHarMu.step({ stInsertionDonneesAnalyseExcel : function(ev, sc, st) {
 	var data = sc.data;
 	var dateTrait = ctx.getDate();
 	ctx.traceF.infoTxt('Etape stInsertionDonneesAnalyseExcel - Insertion des données dans le fichier résultat: '+data.ppCouranteAnalyse.dataLocale.referenceGRC);
+	ctx.traceF.infoTxt('*************************************************************************************************************');
+	ctx.traceF.infoTxt('Etape insertion des data dans le fichier excel, status: '+data.ppCouranteAnalyse.notes.contexteAnalyseStoppee + ', ligne courante: ' +  data.varGlobales.ligneCourante);
+	
 	var compGammeCode = data.ppCouranteAnalyse.notes.presenceHPP;
 	if(data.ppCouranteAnalyse.notes.presenceHPP === 'Oui'){ 
 		if(data.ppCouranteAnalyse.dataEnLigne.produitGammeCompatible){
@@ -466,43 +469,39 @@ GRCHarMu.step({ stCopieFichierSortie: function(ev, sc, st) {
 GRCHarMu.step({ stFinVerifDataGRC: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stFinVerifDataGRC: Fin scénario principale');
-	ctx.statsF.calculerStats(data);
-	//copie de fichier de stat dans le dossier résultat
-	var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\');
-	while(!fichiers.atEnd()) {
-		var ff = fichiers.item();
-		if(ff.Name.indexOf('.html') !== -1 || ff.Name.indexOf('.json') !== -1){
-			var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
-			var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
-			ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
-		}
-		fichiers.moveNext();
-	}
-	//copie de fichier technique dans adhésion\Data_Excel et data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion;
-	var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
-	var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Data_Excel\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
-	ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
-	
-	var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
-	var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
-	ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
-	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	//fermeture de fichier technique global
-<<<<<<< HEAD
-	ctx.excelF.fermerFichier();
-=======
-	ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
-	ctx.excelF.fermerFichier();
-	//ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse , true);
->>>>>>> e319c23cd85d2e04d4c3b9d6f9029cf79b6219ba
-	ctx.execRun("taskkill /f /im excel.exe "); 
-	
 	if(data.ppCouranteAnalyse.notes.msgPopup === ctx.notes.popup.msg.dataIndispo){
 		ctx.popupF.finTraitementMsg('Analyse', data.ppCouranteAnalyse.notes.msgPopup);
 	}else{
+		ctx.statsF.calculerStats(data);
+		//copie de fichier de stat dans le dossier résultat
+		var fichiers = ctx.fso.folder.getFileCollection(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\');
+		while(!fichiers.atEnd()) {
+			var ff = fichiers.item();
+			if(ff.Name.indexOf('.html') !== -1 || ff.Name.indexOf('.json') !== -1){
+				var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
+				var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminResultat + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ ff.Name;
+				ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+			}
+			fichiers.moveNext();
+		}
+		//copie de fichier technique dans adhésion\Data_Excel et data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion;
+		var fileNameSrc = data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
+		var fileNameDst = data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Data_Excel\\'+ data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
+		ctx.fso.file.copy(fileNameSrc, fileNameDst, true);
+	
+		var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+		var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse;
+		var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);
+		ctx.fso.file.create(data.ppCouranteAnalyse.dataFichiers.cheminDataAdhesion + '\\Tickets\\' + nomFichierSansExt);
+		ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+		//fermeture de fichier technique global
+		ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse);
+		ctx.excelF.fermerFichier();
+		//ctx.excel.file.close(data.ppCouranteAnalyse.dataFichiers.nomFichierResultatAnalyse , true);
+		ctx.execRun("taskkill /f /im excel.exe "); 
 		ctx.popupF.finTraitement('Analyse'); 
 	}
+
 	
 	sc.endScenario();
 	return;
