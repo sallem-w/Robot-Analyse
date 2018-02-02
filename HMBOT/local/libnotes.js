@@ -11,7 +11,8 @@
 			GestionManuelle : "Gestion manuelle – Présence d’un contrat actif",
 			AdhEnregistree : "Adhésion déjà enregistrée – A vérifier manuellement",
 			AdhNonAnalyseeInfinite: "Adhésion non analysée sur Infinite - Problème technique",
-			AdhNonAnalyseeGRC : "Adhésion non analysée sur Siebel - Problème technique"
+			AdhNonAnalyseeGRC : "Adhésion non analysée sur Siebel - Problème technique",
+			AdhSansLien: "Création de contrat – PP créée sur Infinite sans lien avec un contrat"
 		}
 	}
 	

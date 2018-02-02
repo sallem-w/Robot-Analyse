@@ -28,13 +28,13 @@ GRCHarMu.step({ stCreationCopieDataExcel: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stCreationCopieDataExcel: copie des lignes qui sont traitées, les lignes qui ne sont pas analysées sont copiées dans un fichier des données non traitées');
 	var time = ctx.getTime()+'';
 	var maDate = ctx.getDate()+'';
-	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2)+'_Analyse_';
+	var nameFichierResultat = maDate.substr(0,4)+''+maDate.substr(5,2)+''+maDate.substr(8,2)+'_'+time.substr(0,2)+''+time.substr(3,2)+''+time.substr(6,2);
 		try {
 			var rangeValues = ctx.excel.sheet.getRangeValues('A' + data.ppCouranteAnalyse.dataLocale.indexDeb + ':' + data.varGlobales.carFinIndexCol + '' + data.ppCouranteAnalyse.dataLocale.indexFin + '');
 			ctx.excel.file.open(data.ppCouranteAnalyse.dataFichiers.cheminTemplateExcel + data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			ctx.excel.getWorkbook(data.ppCouranteAnalyse.dataFichiers.nomTemplate);
 			//ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminResultats + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
-			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
+			ctx.excel.file.saveAs(data.ppCouranteAnalyse.dataFichiers.cheminData + data.ppCouranteAnalyse.dataFichiers.nomRepertoire + '\\Data_Excel\\' + data.ppCouranteAnalyse.dataFichiers.nomRepertoire +'_Analyse_'+ nameFichierResultat + data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			var extension = ctx.fso.file.getExtensionName(data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter);
 			var nomFichier = data.ppCouranteAnalyse.dataFichiers.nomFichierATraiter;
 			var nomFichierSansExt = nomFichier.substr(0, nomFichier.length - extension.length -1);

@@ -305,7 +305,7 @@ GRCHarMu.step({ stMiseDataStat: function(ev, sc, st) {
 	ctx.traceF.infoTxt('Etape stMiseDataStat: mise à jour des données de stat');
 	data.statistiquesF.nbCasTrouve += 1;
 	var commentaire = data.ppCouranteAnalyse.notes.contexteAnalyseStoppee;
-	if(commentaire === ctx.notes.constantes.statuts.AdhEnregistree || commentaire === ctx.notes.constantes.statuts.CreationPPInconnue || commentaire === ctx.notes.constantes.statuts.CreationPasDeContratActif || commentaire === ctx.notes.constantes.statuts.GestionManuelle || commentaire === ctx.notes.constantes.statuts.TracePCX){
+	if(commentaire === ctx.notes.constantes.statuts.AdhSansLien || commentaire === ctx.notes.constantes.statuts.AdhEnregistree || commentaire === ctx.notes.constantes.statuts.CreationPPInconnue || commentaire === ctx.notes.constantes.statuts.CreationPasDeContratActif || commentaire === ctx.notes.constantes.statuts.GestionManuelle || commentaire === ctx.notes.constantes.statuts.TracePCX){
 		data.statistiquesF.nbCasTraitementSucces += 1;
 		sc.endStep();
 	  return;

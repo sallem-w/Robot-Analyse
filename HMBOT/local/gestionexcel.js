@@ -20,8 +20,8 @@ GRCHarMu.scenario({ scGestionFichiersExcelConfig: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stEchecInitialisation); 
 	sc.step(GRCHarMu.steps.stSuppressionFichier);
 	sc.step(GRCHarMu.steps.stConfigTrace);
-	sc.step(GRCHarMu.steps.stConfigStat);
 	sc.step(GRCHarMu.steps.stRecuperationFichiersRejets);
+	sc.step(GRCHarMu.steps.stConfigStat);
 	//sc.step(GRCHarMu.steps.stInitTraitFichiersRejets);
 	
 	//sc.step(GRCHarMu.steps.stEchecInitialisation);
