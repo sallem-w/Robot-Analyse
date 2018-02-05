@@ -26,16 +26,18 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 	sc.step(GRCHarMu.steps.stBuletinAdhesion);
 	sc.step(GRCHarMu.steps.stLireDataBulletinAdh);
 	
-	//sc.step(GRCHarMu.steps.stLireDataBancaires);
+	//popup qui vérifie si le payeur est différent de souscripteur ou on
+//	sc.step(GRCHarMu.steps.stLireDataBancaires); 
 	
 	sc.step(GRCHarMu.steps.stNavigateDetailAdh);
 	sc.step(GRCHarMu.steps.stLireDataDetailAdhesion);
 	
-	//sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
-	//sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
-	//sc.step(GRCHarMu.steps.stExecRecherchePP);
-	//sc.step(GRCHarMu.steps.stLireDataPP);
-	
+	//les étapes qui vérifient la civilité de payeur (si différent de souscripteur)
+	/*sc.step(GRCHarMu.steps.stInitRechercheCivilitePayeur);
+	sc.step(GRCHarMu.steps.stRechercheCivilitePayeur);
+	sc.step(GRCHarMu.steps.stExecRecherchePP);
+	sc.step(GRCHarMu.steps.stLireDataPP);
+	*/
 	sc.step(GRCHarMu.steps.stFinVerifGRC);
 	
 }});
@@ -44,7 +46,7 @@ GRCHarMu.scenario({ scAnalyseDataGRC: function(ev, sc) {
 /** Description */
 GRCHarMu.step({ InitAccesGRC: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Etape InitAccesGRC, Numéro Ext CTT: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.traceF.infoTxt('Etape InitAccesGRC, Numéro Ext CTT: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	sc.endStep();
 	return;
 }});
@@ -53,7 +55,7 @@ GRCHarMu.step({ InitAccesGRC: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Etape stRechercheAI: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.traceF.infoTxt('Etape stRechercheAI: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	
 	GRCHarMu.pRechercheAI.wait(function(ev){
 		ctx.polling({
@@ -82,7 +84,7 @@ GRCHarMu.step({ stRechercheAI: function(ev, sc, st) {
 /** Description */
 GRCHarMu.step({ stExecRechercheAI: function(ev, sc, st) {
 	var data = sc.data;
-	ctx.log('Etape stExecRechercheAI: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
+	ctx.traceF.infoTxt('Etape stExecRechercheAI: '+data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	GRCHarMu.pRechercheAI.wait(function(ev){
 		if(GRCHarMu.pRechercheAI.btExecuter.exist()){
 			var iUderscore = data.ppCouranteAnalyse.dataLocale.numExtCtt.indexOf('_');
@@ -163,8 +165,8 @@ GRCHarMu.step({ stLireDataBulletinAdh: function(ev, sc, st) {
 			data.ppCouranteAnalyse.notes.dateEffetAControler = 'Oui';
 		}	
 		//deux lignes étaient commentées
-//		GRCHarMu.pBulletinAdhesion.activate();
-//		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();	
+		GRCHarMu.pBulletinAdhesion.activate();
+		GRCHarMu.pBulletinAdhesion.btCoordBancaires.click();	
 		sc.endStep();
 		return;	
 		});
@@ -178,16 +180,16 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 	var data = sc.data;
 	ctx.traceF.infoTxt('Etape stLireDataBancaires: '+ data.ppCouranteAnalyse.dataLocale.numExtCtt);
 	ctx.wait(function(ev){
-		GRCHarMu.pCoordonneesBancaires.activate();
+		GRCHarMu.pCoordonneesBancaires.activate(); //la popup
 		GRCHarMu.pCoordonneesBancaires.wait(function(ev){
-		//  GRCHarMu.pCoordonneesBancaires.activate();
+		  GRCHarMu.pCoordonneesBancaires.activate();
 			var numRow = GRCHarMu.pCoordonneesBancaires.oList.getActiveRow();
 			if(numRow != 0){
 				var cotisation = GRCHarMu.pCoordonneesBancaires.oList.get(1,2);
-				if(cotisation === 'Y'){
+				if(cotisation == 'Y'){
 					var nomCB = GRCHarMu.pCoordonneesBancaires.oList.get(1,3);
 					var prenomCB = GRCHarMu.pCoordonneesBancaires.oList.get(1,4);
-					if(data.ppCouranteAnalyse.dataLocale.nom === nomCB && data.ppCouranteAnalyse.dataLocale.prenom === prenomCB){ //payeur === souscripteur
+					if(data.ppCouranteAnalyse.dataLocale.nom == nomCB && data.ppCouranteAnalyse.dataLocale.prenom == prenomCB){ //payeur === souscripteur
 						data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Non';
 					}else{
 						data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Oui';
@@ -206,18 +208,34 @@ GRCHarMu.step({ stLireDataBancaires: function(ev, sc, st) {
 				}else{
 					data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
 				}
+				GRCHarMu.pCoordonneesBancaires.activate();
+				GRCHarMu.pCoordonneesBancaires.close();
 				//GRCHarMu.pCoordonneesBancaires.btOk.click();
-				sc.endStep();
-				return;
+				GRCHarMu.pCoordonneesBancaires.waitClose(function(ev){
+					ctx.traceF.infoTxt("closed popup");
+					sc.endStep();
+					return;
+				});
+			//	GRCHarMu.pCoordonneesBancaires.btOk.click();
+				
 			}else{
 				//Pas de data dans la popup
 				data.ppCouranteAnalyse.notes.payeurEgSouscripteur = 'Pas de RIB';
+				GRCHarMu.pCoordonneesBancaires.activate();
+				GRCHarMu.pCoordonneesBancaires.close();
 				//GRCHarMu.pCoordonneesBancaires.btOk.click();
-				sc.endStep();
-				return;
+					GRCHarMu.pCoordonneesBancaires.waitClose(function(ev){
+						ctx.traceF.infoTxt("closed popup");
+					sc.endStep();
+					return;
+				});
+				
+				//GRCHarMu.pCoordonneesBancaires.btOk.click();
+			/*	sc.endStep();
+				return;*/
 			}	
 		});
-	},1000);
+	},2000);
 
 }});
 

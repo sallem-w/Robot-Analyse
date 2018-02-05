@@ -277,7 +277,7 @@
 							<CRITERE>
 								<TAG Name="A" Scope="All" CapturedPos="2698.R0R1R1R0R0R0R0R3R0R0R1R0R0R0R0">
 									<ATT Name="Text">
-										<VALUE Scan="Full"><![CDATA[OK]]></VALUE>
+										<VALUE Scan="like"><![CDATA[OK]]></VALUE>
 									</ATT>
 								</TAG>
 							</CRITERE>
