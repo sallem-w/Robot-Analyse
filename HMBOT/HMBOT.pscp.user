@@ -9,6 +9,7 @@
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+<<<<<<< HEAD
 		<FINDWHAT><![CDATA[contenuTemplate]]></FINDWHAT>
 		<FINDWHAT><![CDATA[dans le ]]></FINDWHAT>
 		<FINDWHAT><![CDATA[il faut un et un seul]]></FINDWHAT>
@@ -69,6 +70,24 @@
 		<OPENDOC LineNumber="35" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='scAdhesionPrincipal']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="8" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigAdhesionClass']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="1" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='ConfigACSClass']" Offset="0" Length="0" />
+=======
+		<FINDWHAT><![CDATA[stInitRechercheCivilitePayeur]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stLireDataBancaires]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stConfigStat]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stChoixRepertoireDansServeur]]></FINDWHAT>
+		<FINDWHAT><![CDATA[stConfigurationJSON]]></FINDWHAT>
+		<FINDWHAT><![CDATA[PasDeContratActif]]></FINDWHAT>
+		<FINDWHAT><![CDATA[<<<<<<<]]></FINDWHAT>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="24" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='libNotes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="16" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerificationDataGrc']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='CopieFiltrageResExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="34" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='GestionExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="22" SearchPath="APPLI[@Name='GRCHarMu']/SCRIPTS/SCRIPT[@Name='VerifDataGRC']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="68" SearchPath="APPLI[@Name='ActivInfinitev7']/SCRIPTS/SCRIPT[@Name='RechercheEtAnalysePP']" Offset="0" Length="0" />
+>>>>>>> scAnalyseSituBis
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[1]]></CurPerspective>

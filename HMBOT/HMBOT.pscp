@@ -66,6 +66,7 @@
 				<SCRIPT Name="Ctx Discovery" Src="%sdk%\lib\ctx\ctx.discovery.js" Folder="Framework" />
 				<SCRIPT Name="Excel" Comment="Excel Integration" Folder="Framework" Src="%sdk%\lib\office\excel.js" />
 				<SCRIPT Name="Outlook" Comment="Outlook Integration" Folder="Framework" Src="%sdk%\lib\office\outlook.js" />
+				<SCRIPT Name="Siebel" Comment="Siebel Integration" Folder="Framework" Src="%sdk%\lib\siebel\siebel.js" />
 				<!-- generated definition file -->
 				<SCRIPT Name="Declarations" Src="HMBOT.resources.js" ReadOnly="Y" />
 				<!-- project files -->
@@ -106,5 +107,11 @@
 	</PROCESSUS>
 	<APPLICATIONS>
 		<include href="app/ActivInfinitev7.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/ActivInfiniteFichePP.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/GRCHarmonieMutuelle.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/GRCHarmonieMutuelle1.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/GRCHarmonieM.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/GRCHarMu.pscp" xpointer="xpointer(//APPLI)" />
+		<include href="app/ExcelApp.pscp" xpointer="xpointer(//APPLI)" />
 	</APPLICATIONS>
 </ConteXtorStudio>

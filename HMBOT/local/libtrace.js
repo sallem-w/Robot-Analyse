@@ -64,5 +64,9 @@
 	};
 	
 	return traceF;
+<<<<<<< HEAD
 }) ();
 
+=======
+}) ();
+>>>>>>> scAnalyseSituBis

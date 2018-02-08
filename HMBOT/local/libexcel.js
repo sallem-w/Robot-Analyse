@@ -33,6 +33,33 @@
 		];
 		return tab;
 	}
+	
+	excelF.modifierEnteteIAE = function(){
+		var tab = [
+		  { columnIndex: configExcel.indexColonne.contexteAnalyseStoppee, value: "Contexte Analyse Stoppée" },
+			{ columnIndex: configExcel.indexColonne.dateTraitementAnalyse, value: "Date Traitement Analyse" },
+			{ columnIndex: configExcel.indexColonne.presenceHPP, value: "Présence HPP" },
+			{ columnIndex: configExcel.indexColonne.paiementAdhesion, value: "Paiement à l’adhésion" },
+			{ columnIndex: configExcel.indexColonne.dateEffetAControler, value: "Date d’effet à contrôler" },
+			{ columnIndex: configExcel.indexColonne.payeurSouscriptDifferent, value: "Payeur différent du souscripteur" },
+			{ columnIndex: configExcel.indexColonne.clauseBenefAdh, value: "Clause bénéficiaire" },
+			{ columnIndex: configExcel.indexColonne.clauseBenefConjoint, value: "Clause bénéficiaire conjoint" },
+			{ columnIndex: configExcel.indexColonne.controleGestion, value: "Contrôle gestion" },
+			{ columnIndex: configExcel.indexColonne.civilitePayeur, value: "CIVILITE_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.nomPayeur, value: "NOM_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.prenomPayeur, value: "PRENOM_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.appPayeur, value: "APP_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.batPayeur, value: "BAT_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.voiePayeur, value: "VOIE_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.lieuDitPayeur, value: "LIEU_DIT_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.cpPayeur, value: "CP_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.villePayeur, value: "VILLE_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.cedexPayeur, value: "CEDEX_PAYEUR" },
+			{ columnIndex: configExcel.indexColonne.paysPayeur, value: "PAYS_PAYEUR" }
+		];	
+		return tab;
+	}
+	
 	//startRowIndex
 	excelF.debutIndexLigne = function() {
 		return ctx.excelF.configExcel.debutIndexLigne - 1;

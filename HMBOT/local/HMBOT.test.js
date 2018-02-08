@@ -2,10 +2,10 @@
 /** main process start handler */
 GLOBAL.events.START.on(function (ev) {
 
-	systray.addMenu('', 'MenuTest', ' Tests unitaires');
+	/*systray.addMenu('', 'MenuTest', ' Tests unitaires');
 	systray.addMenu('MenuTest', 'evMenuDate', 'Test opérations sur les dates', '', function(ev) {
 		GLOBAL.scenarios.scOperationsDate.start();
-	});
+	});*/
 //	systray.addMenu('MainMenu', 'evMenu2', 'Menu 2', '', function(ev) {
 //		// add code here
 //	});

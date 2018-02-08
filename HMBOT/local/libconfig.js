@@ -39,9 +39,13 @@
 	scenario.SIRH = 'SIRH';
 	scenario.SIRHUpdate = 'SIRHUpdate';
 	scenario.DA = 'DA';
+<<<<<<< HEAD
 	scenario.Suspension ='Suspension';
 
 	scenario.Adhesion = 'Adhesion';
+=======
+	scenario.Analyse = 'ANALYSE';
+>>>>>>> scAnalyseSituBis
 	
 	configF.scenario=scenario;
 	
@@ -65,6 +69,7 @@
 		var obj = configF.fichierConfigScenario;
 		ctx.log('Initialisation : Chargement du fichier configCMU.json');
 	}
+<<<<<<< HEAD
 		
 	configF.chargementFichierConfigScenarioAdhesion = function() {
 		var cheminConfig = 'configAdhesion.json';
@@ -76,6 +81,17 @@
 		configF.fichierConfigScenario = JSON.parse(chemin);
 		ctx.log('Initialisation : Chargement du fichier configAdhesion.json');
 		}
+=======
+	
+	configF.chargementFichierConfigScenarioANALYSE = function() {
+		var cheminConfigScenario = 'configAnalyseSituation.json';
+		ctx.log('-->configF.chargementFichierConfig()');
+		var chemin = ctx.fso.file.read(ctx.options.serverURL + '\\' + cheminConfigScenario);
+		configF.fichierConfigScenario = new confFileANALYSEClass();
+		configF.fichierConfigScenario = JSON.parse(chemin);
+	}
+	
+>>>>>>> scAnalyseSituBis
 	
 	configF.recupConfigScenario = function(codeScenario) {
 		ctx.log('--> config '+codeScenario);
@@ -180,7 +196,11 @@
 		var extension = ctx.configF.extensionFichierResultat(codeScenario, ctx.configF.nomFichier);
 		var test = ctx.string.left(ctx.configF.nomFichier, configF.nomFichier.length - extension.length - 1);
 		ctx.log('test : '+test);
+<<<<<<< HEAD
 		var nomFichierResultatComplet = ctx.dateF.formatAAAAMMJJ(new Date()) + "_" + codeScenario + "_" + ctx.string.left(ctx.configF.nomFichier, ctx.configF.nomFichier.length - extension.length - 1)  + finTitreResultat + extension;
+=======
+		var nomFichierResultatComplet = ctx.dateF.formatAAAAMMJJ(new Date())+ "_" + codeScenario + "_" + ctx.string.left(configF.nomFichier, configF.nomFichier.length - extension.length - 1)  + finTitreResultat + extension;
+>>>>>>> scAnalyseSituBis
 		
 		ctx.configF.cheminFichier=ctx.configF.cheminRacine + ctx.configF.nomFichier;
 		if (!ctx.fso.file.exist(ctx.configF.cheminFichier)) {
@@ -239,7 +259,15 @@
 		if(resultat == ''){
 			ctx.traceF.errorTxt('Pas de correspondance trouvée pour ' + nom);
 		}
+<<<<<<< HEAD
 		return resultat;
+=======
+
+		ctx.traceF.infoTxt("Ouverture réussie : fichier trouvé");
+		configF.nomFichierResultat = nomFichierResultatComplet;
+		configF.cheminFichierResultat = configF.cheminRacine + configF.nomFichierResultat;
+		return true;	
+>>>>>>> scAnalyseSituBis
 	}
 	
 	

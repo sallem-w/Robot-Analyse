@@ -68,13 +68,19 @@ ActivInfinitev7.pIdentContratRechConsul.btRecherche = ActivInfinitev7.pIdentCont
 ActivInfinitev7.pIdentContratRechConsul.btFermeture = ActivInfinitev7.pIdentContratRechConsul.addItem('btFermeture');
 ActivInfinitev7.pIdentContratRechConsul.oBtnPageCourante = ActivInfinitev7.pIdentContratRechConsul.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentContratRechConsul.oTypeCttStatic = ActivInfinitev7.pIdentContratRechConsul.addItem('oTypeCttStatic');
+ActivInfinitev7.pIdentContratRechConsul.oBonHommeRecherche = ActivInfinitev7.pIdentContratRechConsul.addItem('oBonHommeRecherche');
 
 ActivInfinitev7.pIdentContratRechResu = ActivInfinitev7.addPage('pIdentContratRechResu', {"comment":"Consultation - N°00023788 - Valide - Adhérent : Mademoiselle MAHE BEATRICE - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_9\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
-ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
 ActivInfinitev7.pIdentContratRechResu.btBtnFooterSuivant = ActivInfinitev7.pIdentContratRechResu.addItem('btBtnFooterSuivant');
 ActivInfinitev7.pIdentContratRechResu.btDETAIL = ActivInfinitev7.pIdentContratRechResu.addItem('btDETAIL');
 ActivInfinitev7.pIdentContratRechResu.oTitreErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTitreErreur');
 ActivInfinitev7.pIdentContratRechResu.oBtIdentAssures = ActivInfinitev7.pIdentContratRechResu.addItem('oBtIdentAssures');
+ActivInfinitev7.pIdentContratRechResu.oBtnPageCourante = ActivInfinitev7.pIdentContratRechResu.addItem('oBtnPageCourante');
+ActivInfinitev7.pIdentContratRechResu.oTexteErreur = ActivInfinitev7.pIdentContratRechResu.addItem('oTexteErreur');
+ActivInfinitev7.pIdentContratRechResu.oDateDebutEffet = ActivInfinitev7.pIdentContratRechResu.addItem('oDateDebutEffet');
+ActivInfinitev7.pIdentContratRechResu.oCodeOffre = ActivInfinitev7.pIdentContratRechResu.addItem('oCodeOffre');
+ActivInfinitev7.pIdentContratRechResu.oProdGaran = ActivInfinitev7.pIdentContratRechResu.addItem('oProdGaran');
+ActivInfinitev7.pIdentContratRechResu.oHistoriqueOpts = ActivInfinitev7.pIdentContratRechResu.addItem('oHistoriqueOpts');
 
 ActivInfinitev7.pIdentContResilRech = ActivInfinitev7.addPage('pIdentContResilRech', {"comment":"Resiliation Contrat - N°22404280 - Valide - Adhérent : Monsieur RAKOTOARISOA MARTIAL - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercher\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACRE01RE3F_426\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentContResilRech.btRecherche = ActivInfinitev7.pIdentContResilRech.addItem('btRecherche');
@@ -113,6 +119,10 @@ ActivInfinitev7.pIdentAssures.oAssureRO = ActivInfinitev7.pIdentAssures.addItem(
 ActivInfinitev7.pIdentAssures.oDroitROAdherent = ActivInfinitev7.pIdentAssures.addItem('oDroitROAdherent');
 ActivInfinitev7.pIdentAssures.btSuivant = ActivInfinitev7.pIdentAssures.addItem('btSuivant', {"mustExist":true});
 ActivInfinitev7.pIdentAssures.oBtnPageCourante = ActivInfinitev7.pIdentAssures.addItem('oBtnPageCourante', {"mustExist":true});
+ActivInfinitev7.pIdentAssures.oListeAssures = ActivInfinitev7.pIdentAssures.addItem('oListeAssures', {"occurs":1});
+ActivInfinitev7.pIdentAssures.oNomPrenom = ActivInfinitev7.pIdentAssures.addItem('oNomPrenom', {"occurs":1});
+ActivInfinitev7.pIdentAssures.oDateNaissance = ActivInfinitev7.pIdentAssures.addItem('oDateNaissance', {"occurs":1});
+ActivInfinitev7.pIdentAssures.btNext = ActivInfinitev7.pIdentAssures.addItem('btNext');
 
 ActivInfinitev7.pIdentAssuresEdit = ActivInfinitev7.addPage('pIdentAssuresEdit', {"comment":"Consultation - N°00293756 - Résilié - Adhérent : Monsieur CALVEZ DANIEL - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIA_400\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_6\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pIdentAssuresEdit.oTitrePage = ActivInfinitev7.pIdentAssuresEdit.addItem('oTitrePage', {"mustExist":true});
@@ -144,17 +154,25 @@ ActivInfinitev7.pIdentAssuresAttest.oBtnPageCourante = ActivInfinitev7.pIdentAss
 ActivInfinitev7.pProdGaranConsul = ActivInfinitev7.addPage('pProdGaranConsul', {"comment":"Consultation - N°21213405 - Valide - Adhérent : Monsieur BOURGOIN JEAN HUGUES - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/contrat/ACG2.do?method=doSelectionAssure\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2\u0026AFFICHAGE_CONTAINER\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_17\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pProdGaranConsul.oTitrePage = ActivInfinitev7.pProdGaranConsul.addItem('oTitrePage');
 ActivInfinitev7.pProdGaranConsul.oListeAssures = ActivInfinitev7.pProdGaranConsul.addItem('oListeAssures', {"occurs":1});
-ActivInfinitev7.pProdGaranConsul.oNomPrenomBenef = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenomBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oTypeBenef = ActivInfinitev7.pProdGaranConsul.addItem('oTypeBenef', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oCodeProduit = ActivInfinitev7.pProdGaranConsul.addItem('oCodeProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oDateRadProduit = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.oEtatProduit = ActivInfinitev7.pProdGaranConsul.addItem('oEtatProduit', {"occurs":1});
 ActivInfinitev7.pProdGaranConsul.btVisuCotisation = ActivInfinitev7.pProdGaranConsul.addItem('btVisuCotisation');
 ActivInfinitev7.pProdGaranConsul.oLongTableGaranties = ActivInfinitev7.pProdGaranConsul.addItem('oLongTableGaranties');
-ActivInfinitev7.pProdGaranConsul.btMajPage = ActivInfinitev7.pProdGaranConsul.addItem('btMajPage');
 ActivInfinitev7.pProdGaranConsul.btFermeture = ActivInfinitev7.pProdGaranConsul.addItem('btFermeture');
+<<<<<<< HEAD
 ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.addItem('btSuivant', {"mustExist":true});
 ActivInfinitev7.pProdGaranConsul.oBtnPageCourante = ActivInfinitev7.pProdGaranConsul.addItem('oBtnPageCourante');
+=======
+ActivInfinitev7.pProdGaranConsul.btSuivant = ActivInfinitev7.pProdGaranConsul.addItem('btSuivant');
+ActivInfinitev7.pProdGaranConsul.oNomPrenom = ActivInfinitev7.pProdGaranConsul.addItem('oNomPrenom', {"occurs":1});
+ActivInfinitev7.pProdGaranConsul.oDateNaissAdh = ActivInfinitev7.pProdGaranConsul.addItem('oDateNaissAdh', {"occurs":1});
+ActivInfinitev7.pProdGaranConsul.oDateRadiation = ActivInfinitev7.pProdGaranConsul.addItem('oDateRadiation', {"occurs":1});
+ActivInfinitev7.pProdGaranConsul.btIdentContrat = ActivInfinitev7.pProdGaranConsul.addItem('btIdentContrat');
+ActivInfinitev7.pProdGaranConsul.btNext = ActivInfinitev7.pProdGaranConsul.addItem('btNext');
+ActivInfinitev7.pProdGaranConsul.btIdentAssures = ActivInfinitev7.pProdGaranConsul.addItem('btIdentAssures');
+>>>>>>> scAnalyseSituBis
 
 ActivInfinitev7.pVisuCptCotisConsul = ActivInfinitev7.addPage('pVisuCptCotisConsul', {"comment":"Consultation - N°00248886 - Valide - Adhérent : Monsieur GOURIO LOIC - haum0a - Activ Infinite - Module de gestion","path":"http://infinite-haum0a/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC36_900\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_114\u0026CONTAINER_NOM_FONCTION=AC3Q_800\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pVisuCptCotisConsul.oTitrePage = ActivInfinitev7.pVisuCptCotisConsul.addItem('oTitrePage');
@@ -296,6 +314,7 @@ ActivInfinitev7.pIntervenantPrincipal.oBtnPageCourante = ActivInfinitev7.pInterv
 ActivInfinitev7.pServeurWebFerme = ActivInfinitev7.addPage('pServeurWebFerme', {"comment":"Weblogic Bridge Message","path":"http://infinite-haum04/mdg/auth/login"});
 ActivInfinitev7.pServeurWebFerme.oMessageErreur = ActivInfinitev7.pServeurWebFerme.addItem('oMessageErreur');
 
+<<<<<<< HEAD
 ActivInfinitev7.pAdhesionsIndividuelles = ActivInfinitev7.addPage('pAdhesionsIndividuelles', {"comment":"Adhésions individuelles - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACSO01ASOA"});
 ActivInfinitev7.pAdhesionsIndividuelles.oDateDebutEffet = ActivInfinitev7.pAdhesionsIndividuelles.addItem('oDateDebutEffet');
 ActivInfinitev7.pAdhesionsIndividuelles.btRecherche = ActivInfinitev7.pAdhesionsIndividuelles.addItem('btRecherche');
@@ -474,3 +493,76 @@ ActivInfinitev7.pAdhIndivDemandeCarte.oTypePasEdition = ActivInfinitev7.pAdhIndi
 
 ActivInfinitev7.pAdhIndivValidActe = ActivInfinitev7.addPage('pAdhIndivValidActe', {"comment":"Adhésions individuelles - N°22629854 - EN COURS - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACVV_1500\u0026AFFICHAGE_CONTAINER=OK\u0026BOUTON_CONTAINER=BOUTON_SUIVANT\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACSO01ASOA_68\u0026CONTAINER_NOM_FONCTION=ACEK_1400\u0026AFFICHAGE_CONTAINER"});
 ActivInfinitev7.pAdhIndivValidActe.btSauvegarder = ActivInfinitev7.pAdhIndivValidActe.addItem('btSauvegarder');
+=======
+ActivInfinitev7.pResiliationConcu = ActivInfinitev7.addPage('pResiliationConcu', {"comment":"Resiliation Contrat - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/Go.do?id=ACRE01RE2B"});
+ActivInfinitev7.pResiliationConcu.oNumeroContratIndiv = ActivInfinitev7.pResiliationConcu.addItem('oNumeroContratIndiv');
+ActivInfinitev7.pResiliationConcu.oDateDebutEffet = ActivInfinitev7.pResiliationConcu.addItem('oDateDebutEffet');
+ActivInfinitev7.pResiliationConcu.oNumeroContratCol = ActivInfinitev7.pResiliationConcu.addItem('oNumeroContratCol');
+ActivInfinitev7.pResiliationConcu.oGroupeAssure = ActivInfinitev7.pResiliationConcu.addItem('oGroupeAssure');
+ActivInfinitev7.pResiliationConcu.btRecherche = ActivInfinitev7.pResiliationConcu.addItem('btRecherche');
+ActivInfinitev7.pResiliationConcu.btFermer = ActivInfinitev7.pResiliationConcu.addItem('btFermer');
+
+ActivInfinitev7.pRecherchePPRefGRC = ActivInfinitev7.addPage('pRecherchePPRefGRC', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/contrat/ACIC.do?method=rechercheContrat\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pRecherchePPRefGRC.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRC.addItem('oSystemeExterne');
+ActivInfinitev7.pRecherchePPRefGRC.oIdentifiantGRC = ActivInfinitev7.pRecherchePPRefGRC.addItem('oIdentifiantGRC');
+ActivInfinitev7.pRecherchePPRefGRC.btRecherchePP = ActivInfinitev7.pRecherchePPRefGRC.addItem('btRecherchePP');
+ActivInfinitev7.pRecherchePPRefGRC.oNumeroRo = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNumeroRo');
+ActivInfinitev7.pRecherchePPRefGRC.oNom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oNom');
+ActivInfinitev7.pRecherchePPRefGRC.oPrenom = ActivInfinitev7.pRecherchePPRefGRC.addItem('oPrenom');
+ActivInfinitev7.pRecherchePPRefGRC.oDateNaissance = ActivInfinitev7.pRecherchePPRefGRC.addItem('oDateNaissance');
+
+ActivInfinitev7.pRecherchePPRefGRCRes = ActivInfinitev7.addPage('pRecherchePPRefGRCRes', {"comment":"Consultation - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/personne/RecherchePersonne.do?method=doRecherchePersonne\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_233\u0026CONTAINER_NOM_FONCTION=ACIC_100\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pRecherchePPRefGRCRes.oResultatParRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oResultatParRelation');
+ActivInfinitev7.pRecherchePPRefGRCRes.oListeContrats = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oListeContrats', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.btValider = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btValider');
+ActivInfinitev7.pRecherchePPRefGRCRes.btFermer = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btFermer');
+ActivInfinitev7.pRecherchePPRefGRCRes.oTypeRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oTypeRelation', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.oIdentiteRelation = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oIdentiteRelation', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.oStatus = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oStatus', {"occurs":1});
+ActivInfinitev7.pRecherchePPRefGRCRes.oAucunContratDispo = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oAucunContratDispo');
+ActivInfinitev7.pRecherchePPRefGRCRes.oSystemeExterne = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('oSystemeExterne');
+ActivInfinitev7.pRecherchePPRefGRCRes.btAnnuler = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btAnnuler');
+ActivInfinitev7.pRecherchePPRefGRCRes.btVisualiser = ActivInfinitev7.pRecherchePPRefGRCRes.addItem('btVisualiser');
+
+ActivInfinitev7.pHistoriqueOptsConsul = ActivInfinitev7.addPage('pHistoriqueOptsConsul', {"comment":"Consultation - N°22602103 - Valide - Adhérent : Mademoiselle LESIEUR LAURY - haum03 - Activ Infinite - Module de gestion","path":"http://infinite-haum03/mdg/LancementFonction.do?method=debuter\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACHO_200\u0026AFFICHAGE_CONTAINER=OK\u0026CONTAINER_FONCTION_FORCAGE_VALIDATION=FALSE\u0026CONTAINER_NOM_SCENARIO_ENREGISTREMENT=ACCO03STSO_207\u0026CONTAINER_NOM_FONCTION=ACG2_500\u0026AFFICHAGE_CONTAINER"});
+ActivInfinitev7.pHistoriqueOptsConsul.oTableOperations = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oTableOperations', {"occurs":1});
+ActivInfinitev7.pHistoriqueOptsConsul.oContexte = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oContexte', {"occurs":1});
+ActivInfinitev7.pHistoriqueOptsConsul.btNext = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btNext');
+ActivInfinitev7.pHistoriqueOptsConsul.oProdGaran = ActivInfinitev7.pHistoriqueOptsConsul.addItem('oProdGaran');
+ActivInfinitev7.pHistoriqueOptsConsul.btIdentAssures = ActivInfinitev7.pHistoriqueOptsConsul.addItem('btIdentAssures');
+
+
+var GRCHarMu = ctx.addApplication('GRCHarMu', {"nature":"WEB3","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb\u0026SWETS=1508832674552","customType":"Siebel"});
+
+GRCHarMu.pMain = GRCHarMu.addPage('pMain', {"comment":"GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=Login\u0026SWEPL=1\u0026_sn=54BLZSWYC8oABeaVpij6WR19NkAnLa9gg0iKWZlaSzfoMEhbedqAxP9SnMerqPc3UgpmV1Gf8OCuDAmmjhsTfiZf.rPDnnZ6G0WTmiElfuzaNHVquuA07WOVoBDBI.aDyiajl6eIVPmFMzoNoMDrYzfWcmIefSRRVfi7AZXzjUEuBFZ78BcXdgRylCAtQX12\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb\u0026SWETS=1509380980024\u0026SWEHo=sbl37inf1"});
+
+GRCHarMu.pRechercheAI = GRCHarMu.addPage('pRechercheAI', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20All%20Individual%20Policy%20Search%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=qw3EUlhVU9oRGyuly1g8FoulTmVgpf4ZeJGTjc1h3HUb"});
+GRCHarMu.pRechercheAI.btExecuter = GRCHarMu.pRechercheAI.addItem('btExecuter');
+GRCHarMu.pRechercheAI.btRechecher = GRCHarMu.pRechercheAI.addItem('btRechecher');
+GRCHarMu.pRechercheAI.oList = GRCHarMu.pRechercheAI.addItem('oList', {"customType":"siebel.grid"});
+
+GRCHarMu.pBulletinAdhesion = GRCHarMu.addPage('pBulletinAdhesion', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20Individual%20Policy%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=QtVljFBP8Asav7kR5gkX4HFIzP4YP55AItVGXblv4Dgb"});
+GRCHarMu.pBulletinAdhesion.oDateEffet = GRCHarMu.pBulletinAdhesion.addItem('oDateEffet', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oTab = GRCHarMu.pBulletinAdhesion.addItem('oTab', {"customType":"siebel.tab"});
+GRCHarMu.pBulletinAdhesion.btCoordBancaires = GRCHarMu.pBulletinAdhesion.addItem('btCoordBancaires');
+GRCHarMu.pBulletinAdhesion.oGestControl = GRCHarMu.pBulletinAdhesion.addItem('oGestControl', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oPaiementAdh = GRCHarMu.pBulletinAdhesion.addItem('oPaiementAdh', {"customType":"siebel.edit"});
+GRCHarMu.pBulletinAdhesion.oDateAdh = GRCHarMu.pBulletinAdhesion.addItem('oDateAdh');
+
+GRCHarMu.pDetailAdhesion = GRCHarMu.addPage('pDetailAdhesion', {"comment":"[_svf0] - Mes polices/devis","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=SIHM%20Individual%20Policy%20Complement%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=lY5w8uVHwvBCoe73vfNG9daIe9UrJ7I4S2sDiKeaNFAb"});
+GRCHarMu.pDetailAdhesion.oClBenefAdh = GRCHarMu.pDetailAdhesion.addItem('oClBenefAdh', {"customType":"siebel.edit"});
+GRCHarMu.pDetailAdhesion.oClBenefConj = GRCHarMu.pDetailAdhesion.addItem('oClBenefConj', {"customType":"siebel.edit"});
+GRCHarMu.pDetailAdhesion.btCoordBancaires = GRCHarMu.pDetailAdhesion.addItem('btCoordBancaires');
+
+GRCHarMu.pMainCB = GRCHarMu.addPage('pMainCB', {"comment":"Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=ShowPopupFrames\u0026SWEDIC=1\u0026SWEU=/fins_fra/start.swe%3fSWECmd%3dGetCachedFrame%26SWEC%3d70%26SWEFrame%3dtop._sweclient._swecontent._sweview._swetmp%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb%26SWESP%3d1%26SRN%3dStXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
+
+GRCHarMu.pCoordonneesBancaires = GRCHarMu.addPage('pCoordonneesBancaires', {"comment":"[_swepopcontent] - Coordonnées bancaires","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame\u0026SWEC=106\u0026SWEFrame=top._sweclient._swecontent._sweview._swetmp\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SWESP=1\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb\u0026SRN=StXJoPmjOaAEJLPjhvIK4PWiwsxkXG2bNBZFt9vjancb"});
+GRCHarMu.pCoordonneesBancaires.oList = GRCHarMu.pCoordonneesBancaires.addItem('oList', {"customType":"siebel.grid"});
+GRCHarMu.pCoordonneesBancaires.btOk = GRCHarMu.pCoordonneesBancaires.addItem('btOk');
+
+GRCHarMu.pPersonnesPhysiques = GRCHarMu.addPage('pPersonnesPhysiques', {"comment":"[_svf0] - Tous les interlocuteurs","path":"http://sbl37inf1/fins_fra/start.swe?SWECmd=GetViewLayout\u0026SWEView=Contact%20List%20View\u0026SWEVI=\u0026SWEVLC=1-1E31ZN_Siebel%2bFinancial%2bServices_43%257c1506445245%257c1507204104_0_23021_QF000220000_L\u0026SRN=3S9chCeX7qpy6kjNtHIOKYcwaWpgcBlLHIknwrBmGScb"});
+GRCHarMu.pPersonnesPhysiques.oCivilite = GRCHarMu.pPersonnesPhysiques.addItem('oCivilite', {"customType":"siebel.edit"});
+GRCHarMu.pPersonnesPhysiques.btExecuter = GRCHarMu.pPersonnesPhysiques.addItem('btExecuter');
+GRCHarMu.pPersonnesPhysiques.btRechercher = GRCHarMu.pPersonnesPhysiques.addItem('btRechercher');
+GRCHarMu.pPersonnesPhysiques.oList = GRCHarMu.pPersonnesPhysiques.addItem('oList', {"customType":"siebel.grid"});
+>>>>>>> scAnalyseSituBis

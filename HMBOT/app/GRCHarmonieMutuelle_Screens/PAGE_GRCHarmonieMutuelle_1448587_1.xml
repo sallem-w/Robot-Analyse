@@ -1,0 +1,375 @@
+﻿<PAGE Techno="WEB" Name="PAGE_GRCHarmonieMutuelle_1448587_1" ProcessName="IEXPLORE" ParamName="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)" ParentTree="">
+	<PROPERTIES>
+		<NAME>_sweclient</NAME>
+		<TITRE>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</TITRE>
+		<DOMAIN>sbl37inf1</DOMAIN>
+		<URL>http://sbl37inf1/fins_fra/start.swe?SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWERT=5&amp;SWEC=2&amp;SWEFrame=top._sweclient&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb</URL>
+		<REFERRER>http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&amp;SWEPL=1&amp;_sn=gQAHjp2qTBg8-g5B7V9zaqQuogpSTK48KVDtZXwvnDKVQ.GYiPkumPBxDPP4Zg7mrxD4NKTvANwMZX-UYQzNHo5m7BkFXvveP8jWb8M0IZLdtAoXbFm8TS.MwYEbyHOlxaCjOXgBYxZ4rfGF2kzAu.zdldIduBzvt-lkx9VhaERfD44x.PMXrd-ZNL3YCeVX&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=1508935678649&amp;SWEHo=sbl37inf1</REFERRER>
+		<CX>1436</CX>
+		<CY>767</CY>
+		<MAINFRAME>false</MAINFRAME>
+	</PROPERTIES>
+	<CHILDREN>
+		<ITEM>
+			<PROPERTIES>
+				<TAG>HTML</TAG>
+				<Text>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</Text>
+				<InnerHTML>&lt;HEAD&gt;&lt;TITLE&gt;GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)&lt;/TITLE&gt;&lt;LINK rel=stylesheet href="files/main.css"&gt;
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;&lt;FRAMESET frameSpacing=0 border=0 frameBorder=0 rows=25,27,18,42,*,15&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweappmenu&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweappmenu marginWidth=0 scrolling=no OT="_sweappmenu Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweviewbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweviewbar marginWidth=0 scrolling=no OT="_sweviewbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swethreadbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swethreadbar marginWidth=0 scrolling=no OT="_swethreadbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swescrnbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swescrnbar marginWidth=0 scrolling=no OT="_swescrnbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swecontent&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swecontent marginWidth=0 OT="_swecontent Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient.Toolbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=Toolbar marginWidth=0 scrolling=no OT="Toolbar Frame"&gt;&lt;/FRAMESET&gt;&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+
+if (typeof(top._samePage) != 'undefined' &amp;&amp; top._samePage!="") top._samePage = "";
+if (top.opener == null || typeof top.opener.swetop == 'unknown' || typeof top.opener.swetop == 'undefined') top._swe._sweapp.S_App.SWECount = 2;
+else top.opener.top._swe._sweapp.S_App.SWECount = 2;
+g_bInitialized = true;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;/BODY&gt;</InnerHTML>
+				<OuterHTML>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)&lt;/TITLE&gt;&lt;LINK rel=stylesheet href="files/main.css"&gt;
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;&lt;FRAMESET frameSpacing=0 border=0 frameBorder=0 rows=25,27,18,42,*,15&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweappmenu&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweappmenu marginWidth=0 scrolling=no OT="_sweappmenu Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweviewbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweviewbar marginWidth=0 scrolling=no OT="_sweviewbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swethreadbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swethreadbar marginWidth=0 scrolling=no OT="_swethreadbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swescrnbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swescrnbar marginWidth=0 scrolling=no OT="_swescrnbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swecontent&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swecontent marginWidth=0 OT="_swecontent Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient.Toolbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=Toolbar marginWidth=0 scrolling=no OT="Toolbar Frame"&gt;&lt;/FRAMESET&gt;&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+
+if (typeof(top._samePage) != 'undefined' &amp;&amp; top._samePage!="") top._samePage = "";
+if (top.opener == null || typeof top.opener.swetop == 'unknown' || typeof top.opener.swetop == 'undefined') top._swe._sweapp.S_App.SWECount = 2;
+else top.opener.top._swe._sweapp.S_App.SWECount = 2;
+g_bInitialized = true;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;/BODY&gt;&lt;/HTML&gt;</OuterHTML>
+				<range>0</range>
+				<contentEditable>inherit</contentEditable>
+			</PROPERTIES>
+			<CTX_PROPS>
+				<BOUNDINGRECT>0|0|1436|767</BOUNDINGRECT>
+				<TITLE>HTML</TITLE>
+				<NAMEKEY>id</NAMEKEY>
+				<CONTROLTYPE>HTML</CONTROLTYPE>
+				<PREFIX />
+				<TEXT />
+				<TEXTKEY>Text</TEXTKEY>
+				<PARAMNAME />
+				<PARENTTREE />
+				<ISVISIBLE>True</ISVISIBLE>
+			</CTX_PROPS>
+			<CHILDREN>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>HEAD</TAG>
+						<Text>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</Text>
+						<InnerHTML>&lt;TITLE&gt;GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)&lt;/TITLE&gt;&lt;LINK rel=stylesheet href="files/main.css"&gt;
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;</InnerHTML>
+						<OuterHTML>&lt;HEAD&gt;&lt;TITLE&gt;GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)&lt;/TITLE&gt;&lt;LINK rel=stylesheet href="files/main.css"&gt;
+&lt;SCRIPT language=javascript src="23021/scripts/swecommon.js"&gt;&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|0|767</BOUNDINGRECT>
+						<TITLE>HEAD</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>HEAD</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TITLE</TAG>
+								<Text>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</Text>
+								<InnerHTML>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</InnerHTML>
+								<OuterHTML>&lt;TITLE&gt;GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)&lt;/TITLE&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|767</BOUNDINGRECT>
+								<TITLE>TITLE - GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TITLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>LINK</TAG>
+								<href>files/main.css</href>
+								<OuterHTML>&lt;LINK rel=stylesheet href="files/main.css"&gt;</OuterHTML>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+								<rel>stylesheet</rel>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|767</BOUNDINGRECT>
+								<TITLE>LINK</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>LINK</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>FRAMESET</TAG>
+						<InnerHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweappmenu&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweappmenu marginWidth=0 scrolling=no OT="_sweappmenu Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweviewbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweviewbar marginWidth=0 scrolling=no OT="_sweviewbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swethreadbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swethreadbar marginWidth=0 scrolling=no OT="_swethreadbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swescrnbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swescrnbar marginWidth=0 scrolling=no OT="_swescrnbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swecontent&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swecontent marginWidth=0 OT="_swecontent Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient.Toolbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=Toolbar marginWidth=0 scrolling=no OT="Toolbar Frame"&gt;</InnerHTML>
+						<OuterHTML>&lt;FRAMESET frameSpacing=0 border=0 frameBorder=0 rows=25,27,18,42,*,15&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweappmenu&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweappmenu marginWidth=0 scrolling=no OT="_sweappmenu Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweviewbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweviewbar marginWidth=0 scrolling=no OT="_sweviewbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swethreadbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swethreadbar marginWidth=0 scrolling=no OT="_swethreadbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swescrnbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swescrnbar marginWidth=0 scrolling=no OT="_swescrnbar Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swecontent&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swecontent marginWidth=0 OT="_swecontent Frame"&gt;&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient.Toolbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=Toolbar marginWidth=0 scrolling=no OT="Toolbar Frame"&gt;&lt;/FRAMESET&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+						<border>0</border>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|1436|767</BOUNDINGRECT>
+						<TITLE>FRAMESET</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>FRAMESET</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_sweappmenu</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweappmenu&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweappmenu marginWidth=0 scrolling=no OT="_sweappmenu Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient._sweappmenu&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|1436|25</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_sweappmenu</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_sweviewbar</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._sweviewbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_sweviewbar marginWidth=0 scrolling=no OT="_sweviewbar Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient._sweviewbar&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>1</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|25|1436|27</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_sweviewbar</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_swethreadbar</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swethreadbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swethreadbar marginWidth=0 scrolling=no OT="_swethreadbar Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient._swethreadbar&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>2</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|52|1436|18</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_swethreadbar</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_swescrnbar</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swescrnbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swescrnbar marginWidth=0 scrolling=no OT="_swescrnbar Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient._swescrnbar&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>3</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|70|1436|42</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_swescrnbar</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>_swecontent</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient._swecontent&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=_swecontent marginWidth=0 OT="_swecontent Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient._swecontent&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>4</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|112|1436|640</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>_swecontent</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>FRAME</TAG>
+								<name>Toolbar</name>
+								<OuterHTML>&lt;FRAME noResize marginHeight=0 src="http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;amp;SWECmd=GetCachedFrame&amp;amp;SWEACn=28270&amp;amp;SWEC=2&amp;amp;SWEFrame=top._sweclient.Toolbar&amp;amp;SWEBID=-1&amp;amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;amp;SWETS=" name=Toolbar marginWidth=0 scrolling=no OT="Toolbar Frame"&gt;</OuterHTML>
+								<src>http://sbl37inf1/fins_fra/start.swe?SWENeedContext=false&amp;SWECmd=GetCachedFrame&amp;SWEACn=28270&amp;SWEC=2&amp;SWEFrame=top._sweclient.Toolbar&amp;SWEBID=-1&amp;SRN=bzDLNze5rWwzP2z67vqdFTCPFdFacjvg0GN4OxXgfjkb&amp;SWETS=</src>
+								<range>5</range>
+								<contentEditable>inherit</contentEditable>
+								<type>Document HTML</type>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|752|1436|15</BOUNDINGRECT>
+								<TITLE>FRAME</TITLE>
+								<NAMEKEY>name</NAMEKEY>
+								<CONTROLTYPE>FRAME</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Toolbar</PARAMNAME>
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>HEAD</TAG>
+						<InnerHTML>
+&lt;SCRIPT&gt;
+
+if (typeof(top._samePage) != 'undefined' &amp;&amp; top._samePage!="") top._samePage = "";
+if (top.opener == null || typeof top.opener.swetop == 'unknown' || typeof top.opener.swetop == 'undefined') top._swe._sweapp.S_App.SWECount = 2;
+else top.opener.top._swe._sweapp.S_App.SWECount = 2;
+g_bInitialized = true;
+&lt;/SCRIPT&gt;</InnerHTML>
+						<OuterHTML>&lt;HEAD&gt;
+&lt;SCRIPT&gt;
+
+if (typeof(top._samePage) != 'undefined' &amp;&amp; top._samePage!="") top._samePage = "";
+if (top.opener == null || typeof top.opener.swetop == 'unknown' || typeof top.opener.swetop == 'undefined') top._swe._sweapp.S_App.SWECount = 2;
+else top.opener.top._swe._sweapp.S_App.SWECount = 2;
+g_bInitialized = true;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;</OuterHTML>
+						<range>1</range>
+						<contentEditable>inherit</contentEditable>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|0|0|767</BOUNDINGRECT>
+						<TITLE>HEAD</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>HEAD</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<TAG>TITLE</TAG>
+								<range>0</range>
+								<contentEditable>inherit</contentEditable>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>0|0|0|767</BOUNDINGRECT>
+								<TITLE>TITLE</TITLE>
+								<NAMEKEY>id</NAMEKEY>
+								<CONTROLTYPE>TITLE</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME />
+								<PARENTTREE />
+								<ISVISIBLE>True</ISVISIBLE>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<TAG>BODY</TAG>
+						<OuterHTML>
+&lt;BODY&gt;&lt;/BODY&gt;</OuterHTML>
+						<range>0</range>
+						<contentEditable>inherit</contentEditable>
+						<topMargin>15</topMargin>
+						<rightMargin>10</rightMargin>
+						<bottomMargin>15</bottomMargin>
+						<leftMargin>10</leftMargin>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>0|767|1436|767</BOUNDINGRECT>
+						<TITLE>BODY</TITLE>
+						<NAMEKEY>id</NAMEKEY>
+						<CONTROLTYPE>BODY</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME />
+						<PARENTTREE />
+						<ISVISIBLE>True</ISVISIBLE>
+					</CTX_PROPS>
+				</ITEM>
+			</CHILDREN>
+		</ITEM>
+	</CHILDREN>
+</PAGE>

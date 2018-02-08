@@ -10,6 +10,7 @@
 	stringF.suppressionRetourEtTab = function(str){
 		return str.replace(/\n|\r/g,' ');
 	};
+<<<<<<< HEAD
 
 		//padLeft
 	stringF.format2c = function(nombre) {
@@ -36,6 +37,8 @@
 			return '';
 		}
 	}
+=======
+>>>>>>> scAnalyseSituBis
 	
 	return stringF;
 }) ();

@@ -6,6 +6,13 @@
 		contenuTemplate : ''
 	};
 	
+<<<<<<< HEAD
+=======
+	var statsF = {
+		cheminFichierStats : '',
+	  contenuTemplate : ''
+	};
+>>>>>>> scAnalyseSituBis
 	
 	statsF.initFileStats = function(cheminDossierTemplate, cheminDossierResultat, nomScenario) {
 		var cheminFichierTemplate = cheminDossierTemplate + nomScenario + '.html';
@@ -55,23 +62,39 @@ statsF.remplir = function(obj) {
 			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.html', tempContent, e.file.encoding.UTF8);
 		}
 		catch(ex) {
+<<<<<<< HEAD
 			ctx.traceF.errorTxt('Can not write stats template, ' + ctx.statsF.cheminFichierStats + '.html');
+=======
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique HTML, ' + ctx.statsF.cheminFichierStats + '.html');
+>>>>>>> scAnalyseSituBis
 		}
 	};
 	
 	statsF.remplirJson = function(obj) {
 		try {
+<<<<<<< HEAD
 			ctx.log('Chemin Stats : '+ctx.statsF.cheminFichierStats);
 			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.json', JSON.stringify(obj));
 		}
 		catch(ex) {
 			ctx.traceF.errorTxt('Can not write stats json, ' + ctx.statsF.cheminFichierStats + '.json');
+=======
+			ctx.fso.file.write(ctx.statsF.cheminFichierStats + '.json', JSON.stringify(obj));
+		}
+		catch(ex) {
+			ctx.traceF.errorTxt('Ne peut pas ecrire dans le template des statististique JSON, ' + ctx.statsF.cheminFichierStats + '.json');
+>>>>>>> scAnalyseSituBis
 		}
 	}
 	
 	
+<<<<<<< HEAD
 		statsF.debuterStats = function (dat) {
 //		ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+=======
+	statsF.debuterStats = function (dat) {
+    //ctx.statsF.nomFichier = ctx.configF.nomFichierResultat;
+>>>>>>> scAnalyseSituBis
 		dat.statistiquesF=ctx.dataF.statistiquesF;
 		dat.statistiquesF.debutTpsTraitement=ctx.dateF.conversionEnSecondes(new Date());
 		dat.statistiquesF.nomFichier=ctx.configF.nomFichier;
@@ -108,6 +131,8 @@ statsF.remplir = function(obj) {
 
 	statsF.calculerStats = function (dat) {
 		dat.statistiquesF.FinTpsTraitement = ctx.dateF.conversionEnSecondes(new Date());
+		//data.stats.dureeTraitement =  ctx.dateF.afficherDuree(ctx.dateF.conversionEnSecondes(new Date()) - data.stats.debutTraitement); 
+		
   	dat.statistiquesF.dureeTraitement = ctx.dateF.afficherDuree(dat.statistiquesF.FinTpsTraitement - dat.statistiquesF.debutTpsTraitement);
 		ctx.statsF.remplir(dat);
 	}

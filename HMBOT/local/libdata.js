@@ -11,6 +11,11 @@ ctx.dataF = (function () {
             identifiant:'', 
             motDePasse:'' 
         },
+				webDataGRC : {
+						url: '',
+					  identifiant : '',
+					  motDePasse: ''
+				},
         varGlobales : { //globalVariables
             ligneCourante:0, //currentRow
             indexDerniereLigne:0, //indexLastRow
@@ -18,8 +23,6 @@ ctx.dataF = (function () {
 						nomPageCourante : ''
         }
     };
-		
-		
 	
 	////////////////////////////////////////	
 		var statistiquesF = {
@@ -38,10 +41,6 @@ ctx.dataF = (function () {
 		dataF.statistiquesF=statistiquesF;
 		
 		//////////////////////////////////////////////
-		
-		
-		 
-		
 ////// CMU ///////////////////////////////////////////////////////////////////////////////////////////////	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		var CMUtemp_contractF = {
@@ -95,6 +94,7 @@ ctx.dataF = (function () {
 		
 		dataF.contratCourantCMU=contratCourantCMU;
 		
+<<<<<<< HEAD
 		dataF.initialisationScenarioCMU = function(dat,scenario){
 	
 //			dat.webData=ctx.dataF.webData;
@@ -122,8 +122,116 @@ ctx.dataF = (function () {
 //			ctx.log('Init statsF');
 //			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 //			ctx.statsF.debuterStats(dat);
+=======
+		var ppCouranteAnalyse = {
+			dataLocale: {
+				referenceGRC : '',
+			  typeAssure : '',
+				numeroRO : '',
+				nom : '',
+				prenom : '',
+				dateDeNaissance : '',
+				debDateEffet: '',
+				gammeProduit:'',
+				codeOffre :'',
+				tabGammeCode : [],
+				tabProduits: [], //10 produits du fichier JSON
+				numSEQ : '',
+				numExtCtt : '',
+				tabProduitsPrinConj : []
+			},
+			dataEnLigne: {
+				nbContrat : 0,
+				nbContratRadie : 0,
+				nbContratRad: 0,
+				indexContrat : 0,
+				typeRelation : '',
+				identiteRelation : '',
+				tracePCXExist : false,
+				contratEstActif : false,
+				adhesionEstEnregistree : false,
+			  HPPExiste : false,
+			  produitGammeCompatible : false,
+				tousStatutInactifs : false,
+			  dateRadSupDjour : false,				
+				codeOffre : '',
+				debDateEffet : '',
+				critereRecherche : 1,
+				dateEffetConst : '01/01/2100',
+				statusCCourant : '',
+				dateRadiation : '',
+				tabCoordAssures : [],
+				civilitePayeur : '',
+				nomPayeur : '',
+				prenomPayeur: '',
+				appPayeur: '',
+        batPayeur: '',
+        voiePayeur: '',
+        lieuDitPayeur: '',
+        cpPayeur: '',
+        villePayeur: '',
+        cedexPayeur: '',
+        paysPayeur: ''
+			},
+			notes: {
+				contexteAnalyseStoppee : '',
+				presenceHPP : 'Non',
+				gestionControl : 'Non',
+				paiementAdhesion : 'Non',
+				clauseBenefAdh : 'Non',
+				clauseBenefConjoint : 'Non',
+				dateEffetAControler : 'Non',
+				payeurEgSouscripteur : ''
+			},
+			dataFichiers: {
+				cheminRacine: '',
+				cheminTemplateAnalyse: '',
+				cheminBlocsIAE: '',
+				cheminResultats: '',
+				nomFichierConfigScenario: 'configAnalyseSituation.json',
+				cheminFichierConfigAnalyse: ''
+			}
+		};
+		
+//		var numProd ={
+//			numProdC : '',
+//			numProdP : ''
+//		};
+		
+//		dataF.numProd = numProd;
+		
+		dataF.ppCouranteAnalyse = ppCouranteAnalyse;
+		
+		dataF.initialisationScenarioAnalyse = function(dat, scenario){
+			
 			dat.codeScenario=scenario;
-			dat.nomScenario='Résiliation CMU';
+			ctx.configF.chargementFichierConfigScenarioANALYSE();
+			dat.scenarioConfig = new confFileANALYSEClass(); //initialisation des objets
+			dat.scenarioConfig=ctx.configF.fichierConfigScenario;//?????
+			ctx.configF.init(dat);
+			dat.webData=ctx.dataF.webData;
+			dat.webDataGRC=ctx.dataF.webDataGRC;
+			dat.ppCouranteAnalyse=ctx.dataF.ppCouranteAnalyse;
+			dat.varGlobales=ctx.dataF.varGlobales;
+			ctx.traceF.initFichierTrace(dat.scenarioConfig.ANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+		
+			ctx.excelF.configExcel(dat);
+			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier); //ouverture du fichier d'entré
+			
+			dat.varGlobales.ligneCourante = dat.scenarioConfig.ANALYSE.excel.debutIndexLigne; // depuis le config.JSON
+			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
+			
+			
+			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.ANALYSE.excel.debutIndexLigne-1, ctx.excelF.modifierEnteteIAE());
+			
+			//dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario); //rï¿½cupï¿½ration config json
+		}
+		
+		dataF.initialisationScenarioCMU = function(dat,scenario){
+				 
+>>>>>>> scAnalyseSituBis
+			dat.codeScenario=scenario;
+			dat.nomScenario='Rï¿½siliation CMU';
 			ctx.log('Init configF');
 			ctx.configF.chargementFichierConfigScenarioCMU();
 			dat.scenarioConfig = new confFileCMUClass();
@@ -136,15 +244,19 @@ ctx.dataF = (function () {
 			ctx.traceF.initFichierTrace(dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);
 			ctx.traceF.simpleTxt('Date de la Version : ' + GLOBAL.data.projectDate);
 			ctx.log('Init excelF');
+			
+			
 			ctx.excelF.configExcel(dat);
 			ctx.traceF.infoTxt('Ouverture du fichier : ' +  ctx.configF.cheminFichier);
+			
+			
 			ctx.excelF.ouvertureFichier(ctx.configF.cheminFichier);
 			dat.varGlobales.ligneCourante = dat.scenarioConfig.CMU.excel.debutIndexLigne; // depuis le config.JSON
 			dat.varGlobales.indexDerniereLigne = ctx.excelF.indexDerniereLigne();
-			ctx.log(' Index dernière ligne :'+dat.varGlobales.indexDerniereLigne);
-			ctx.traceF.infoTxt('Création du fichier résultat');	
+			ctx.log(' Index derniï¿½re ligne :'+dat.varGlobales.indexDerniereLigne);
+			ctx.traceF.infoTxt('Crï¿½ation du fichier rï¿½sultat');	
 			ctx.excelF.copieFichier(ctx.configF.cheminFichierResultat, dat.scenarioConfig.CMU.excel.debutIndexLigne-1, ctx.excelF.modifierEntete());
-			ctx.log('fichier résultat créé');
+			ctx.log('fichier rï¿½sultat crï¿½ï¿½');
 //			dat.scenarioConfig = ctx.configF.recupConfigScenario(scenario);
 			ctx.log('Init statsF');
 			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, dat.scenarioConfig.CMU.cheminRacine, ctx.configF.scenario.CMU);

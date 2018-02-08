@@ -135,9 +135,16 @@ GLOBAL.events.START.on(function (ev) {
 	var configDA = ctx.configF.recupConfigScenario(ctx.configF.scenario.DA);
 	var configSuspension = ctx.configF.recupConfigScenario(ctx.configF.scenario.Suspension);
 	var configSIRHUpdate = ctx.configF.recupConfigScenario(ctx.configF.scenario.SIRHUpdate);
+<<<<<<< HEAD
 	var configAdhesion = ctx.configF.recupConfigScenario(ctx.configF.scenario.Adhesion);
 
 	if (configACS.afficherMenu) {
+=======
+	var configANALYSE = ctx.configF.recupConfigScenario(ctx.configF.scenario.Analyse);
+	
+	
+		if (configACS.afficherMenu) {
+>>>>>>> scAnalyseSituBis
 		systray.addMenu('', 'ACS', 'Scenario ACS ');
 		systray.addMenu('ACS', 'ACSCompletV7', 'ACS Complet V7', '', function(ev) {
 //			ctx.traceF.initFichierTrace(configACS.cheminRacine, ctx.configF.scenario.ACS);
@@ -147,8 +154,6 @@ GLOBAL.events.START.on(function (ev) {
 				ActivInfinitev7.scenarios.ACSScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
-
-	
 	
 	if (configCMU.afficherMenu) {
 		var version = '1.0';
@@ -159,6 +164,17 @@ GLOBAL.events.START.on(function (ev) {
 		ActivInfinitev7.scenarios.CMUScenarioPrincipal.start(data).onEnd(function(){});
 		});	
 	}
+		
+		if(configANALYSE.afficherMenu){
+			systray.addMenu('', 'Analyse situation', 'Scenario Analyse');
+		  systray.addMenu('Analyse situation', 'ANALYSECompletV7', 'Analyse Complet 1.3', '', function(ev) {
+//		  ctx.traceF.initFichierTrace(configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+    		
+//			ctx.statsF.initFileStats(ctx.configF.cheminVersTemplate, configANALYSE.cheminRacine, ctx.configF.scenario.Analyse);
+			var data = {};
+			GRCHarMu.scenarios.scVerifDataGRC.start(data).onEnd(function(){});
+		});	
+		}
 	
 	if(configAdhesion.afficherMenu){
 		systray.addMenu('', 'Adhesion', 'Scenario Adhesion ');
@@ -193,6 +209,14 @@ GLOBAL.events.START.on(function (ev) {
 			
 		});	
 	}
+	
+	ctx.siebel.setViewName(GRCHarMu.pDetailAdhesion, 'SIHM%20Individual%20Policy%20Complement%20View');
+	ctx.siebel.setViewName(GRCHarMu.pRechercheAI, 'SIHM%20All%20Individual%20Policy%20Search%20View');
+	ctx.siebel.setViewName(GRCHarMu.pBulletinAdhesion, 'SIHM%20Individual%20Policy%20View');
+	ctx.siebel.setViewName(GRCHarMu.pPersonnesPhysiques, 'Contact%20List%20View');
+
+	ctx.siebel.initApplication(GRCHarMu.pMain);
+
 });
 
 /** Auto-update menu handler */

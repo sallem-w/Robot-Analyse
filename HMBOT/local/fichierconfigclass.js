@@ -94,6 +94,26 @@ var confFileClass = function() {
 	this.DA = {
 		afficherMenu : '',
 		sauverMiseAJour : ''
+	};
+	this.ANALYSE ={
+       afficherMenu : '',
+       cheminRacine: '',
+       excel : {
+            debutIndexLigne : '',
+				    debutIndexCol : '',
+            indexColonne : {
+      	        nom : '',
+                prenom : '',
+                dateDeNaissance : '', 
+                referenceGRC : '',
+                type : '',
+                numeroRO : '',
+							  gammeProduit: '',
+							  debDateEffet: '',
+								contexteAnalyseStoppee : ''
+            }
+        },
+			 tabGammeCode : []
 	}
 };
 

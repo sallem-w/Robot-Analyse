@@ -145,9 +145,7 @@ dateF.mettreEnFormeDateExcel = function(date){
 	}
 	
 }
-	dateF.dateEnString = function (tps){
-		
-		
+	dateF.dateEnString = function (tps){	
 		var tt=new Date(tps); //creation de l'objet
 		var jj = dateF.format2c(tt.getDate());
 		var mm = dateF.format2c(tt.getMonth()+1);
@@ -156,14 +154,23 @@ dateF.mettreEnFormeDateExcel = function(date){
 		return stTps;
 	}
 	
+<<<<<<< HEAD
 	
 	dateF.formatDateGRC = function (tps){	
+=======
+  dateF.formatDateIAE = function (tps){	
+>>>>>>> scAnalyseSituBis
     var jj=tps.substr(6,2);
 		var mm=tps.substr(4,2);
 		var yy=tps.substr(0,4);
 		return jj+'/'+mm+'/'+yy;
+<<<<<<< HEAD
 	}
 	
+=======
+	}	
+
+>>>>>>> scAnalyseSituBis
 	dateF.enObjet = function(dateString, separator) {
 		separator = separator || '/';
 		var parts = dateString.split(separator);
@@ -199,7 +206,7 @@ dateF.mettreEnFormeDateExcel = function(date){
 	    return String("00" + nombre).slice(-2);
 	}
 	
-		dateF.estEgalle = function(date1, date2) {
+		dateF.estEgale = function(date1, date2) {
 		//ctx.log('isEqual  : dateStart'+dateStart+' =?  dateEnd :'+ dateEnd);
 		return date1 === date2;
 	}

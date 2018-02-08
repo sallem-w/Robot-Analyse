@@ -27,5 +27,11 @@
 		});
 	}
 	
+	popupF.finTraitementMsg = function(nomScenario, msg){
+		popupF.newPopup(msg, 'Fin', function(){
+			GLOBAL.notify(GLOBAL.events.PRESTOPCTX);
+		});
+	}
+	
 	return popupF;
-}) ();
+}) (); 

@@ -1,0 +1,10 @@
+﻿<APPLI Techno="WEB" Name="APPLI_GRCHarmonieMutuelle_1" ParamName="GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)">
+	<PROPERTIES>
+		<TITRE>GRC Harmonie Mutuelles - INFOCENTRE(16.90.02_001 / 36.00.00_001 / 5.4.1_B012)</TITRE>
+		<DOMAIN>sbl37inf1</DOMAIN>
+		<URL>http://sbl37inf1/fins_fra/start.swe?SWECmd=Login&amp;SWEPL=1&amp;SRN=0esr4fnBcnFtKeSh7yeqjnxckJLSTIe2bR4kmPQSqVMb&amp;SWETS=1508832674552</URL>
+		<CX>1440</CX>
+		<CY>771</CY>
+		<MAINFRAME>true</MAINFRAME>
+	</PROPERTIES>
+</APPLI>
